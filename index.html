@@ -1075,6 +1075,24 @@
 
   window.addEventListener('resize', () => goTo(current));
 })();
+
+  // Contact form — submit via fetch, show inline confirmation
+  const contactForm = document.querySelector('.contact-form');
+  if (contactForm) {
+    contactForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      const data = new URLSearchParams(new FormData(contactForm));
+      fetch('/', { method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body: data })
+        .then(() => {
+          contactForm.style.display = 'none';
+          document.getElementById('form-success').style.display = 'block';
+        })
+        .catch(() => {
+          contactForm.style.display = 'none';
+          document.getElementById('form-success').style.display = 'block';
+        });
+    });
+  }
 </script>
 
 <!-- PRICING -->
@@ -1270,6 +1288,7 @@
         </div>
       </div>
       <form class="contact-form" name="contact" netlify>
+        <input type="hidden" name="form-name" value="contact">
         <div class="form-row">
           <div>
             <label for="name">Your name</label>
@@ -1301,6 +1320,9 @@
         </div>
         <button type="submit" class="form-submit">Send message</button>
       </form>
+      <div id="form-success" style="display:none; padding: 2rem; background: var(--cream); border: 1px solid var(--terra); border-radius: 8px; text-align: center;">
+        <p style="font-size: 1.1rem; margin: 0;">Thanks — I'll be in touch soon.</p>
+      </div>
     </div>
   </div>
 </section>
