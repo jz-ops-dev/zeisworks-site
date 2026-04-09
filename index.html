@@ -1038,6 +1038,115 @@
   .reveal-d3 { transition-delay: 0.3s; }
   .reveal-d4 { transition-delay: 0.4s; }
 
+  /* HERO EYEBROW BADGE */
+  .hero-eyebrow-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: var(--terra-light);
+    color: var(--terra);
+    font-size: 0.8125rem;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    padding: 0.35rem 0.875rem;
+    border-radius: var(--radius-full);
+    margin-bottom: 1.5rem;
+    animation: fadeUp 0.55s ease-out 0.05s both;
+  }
+  .hero-eyebrow-dot {
+    width: 6px; height: 6px;
+    background: var(--terra);
+    border-radius: 50%;
+    flex-shrink: 0;
+    animation: dotPulse 2s ease-in-out infinite;
+  }
+  @keyframes dotPulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.45; transform: scale(0.7); }
+  }
+  @keyframes ctaGlow {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(45,74,107,0); }
+    50% { box-shadow: 0 0 0 8px rgba(45,74,107,0.15); }
+  }
+  .hero-actions .btn-primary {
+    animation: ctaGlow 2.8s ease-in-out 1.5s infinite;
+  }
+  .hero-trust {
+    width: 100%;
+    font-size: 0.8rem;
+    color: var(--ink-light);
+    margin-top: 0.25rem;
+    letter-spacing: 0.01em;
+  }
+  /* HERO INLINE FORM */
+  .hero-form { display: none; }
+  .hero-form-back {
+    background: none; border: none; cursor: pointer;
+    font-size: 0.875rem; color: var(--ink-mid);
+    padding: 0; margin-bottom: 1.5rem;
+    font-family: var(--font-sans);
+    transition: color 0.2s;
+  }
+  .hero-form-back:hover { color: var(--ink); }
+  .hero-form-title {
+    font-family: var(--font-serif);
+    font-size: 1.75rem; color: var(--ink);
+    margin-bottom: 0.5rem; line-height: 1.3;
+    font-weight: 400;
+  }
+  .hero-form-sub { font-size: 0.9375rem; color: var(--ink-mid); margin-bottom: 1.5rem; line-height: 1.65; }
+  .hero-form-field { margin-bottom: 0.75rem; }
+  .hero-form-field input,
+  .hero-form-field textarea {
+    width: 100%; padding: 0.75rem 1rem;
+    border: 1.5px solid var(--cream-dark);
+    border-radius: var(--radius);
+    font-family: var(--font-sans); font-size: 0.9375rem;
+    background: #fff; color: var(--ink);
+    transition: border-color 0.2s;
+    box-sizing: border-box;
+  }
+  .hero-form-field input:focus,
+  .hero-form-field textarea:focus { outline: none; border-color: var(--forest); }
+  .hero-form-field textarea { resize: vertical; }
+  .hero-form-submit {
+    width: 100%; padding: 0.85rem;
+    background: var(--terra); color: #fff;
+    border: none; border-radius: var(--radius);
+    font-family: var(--font-sans); font-size: 0.9375rem;
+    font-weight: 500; cursor: pointer;
+    transition: background 0.2s, transform 0.15s;
+    margin-top: 0.25rem;
+  }
+  .hero-form-submit:hover { background: var(--terra-dark); transform: translateY(-1px); }
+  .hero-form-trust { font-size: 0.8rem; color: var(--ink-light); margin-top: 0.75rem; text-align: center; }
+  .hero-form-success { text-align: center; padding: 2rem 0; font-size: 1rem; color: var(--ink-mid); }
+  /* PRICING HOW-IT-WORKS CTAs */
+  .hiw-ctas {
+    display: flex; gap: 1rem; flex-wrap: wrap;
+    margin-top: 2rem; padding-top: 1.5rem;
+    border-top: 1px solid rgba(255,255,255,0.1);
+  }
+  .btn-hiw-primary {
+    display: inline-flex; align-items: center;
+    padding: 0.8rem 1.75rem; border-radius: var(--radius);
+    font-size: 0.9375rem; font-weight: 500;
+    background: #fff; color: var(--forest);
+    text-decoration: none;
+    transition: background 0.2s, transform 0.15s;
+  }
+  .btn-hiw-primary:hover { background: var(--cream); transform: translateY(-1px); }
+  .btn-hiw-ghost {
+    display: inline-flex; align-items: center;
+    padding: 0.8rem 1.75rem; border-radius: var(--radius);
+    font-size: 0.9375rem; font-weight: 500;
+    background: transparent; color: rgba(255,255,255,0.7);
+    border: 1.5px solid rgba(255,255,255,0.2);
+    text-decoration: none;
+    transition: border-color 0.2s, color 0.2s;
+  }
+  .btn-hiw-ghost:hover { border-color: rgba(255,255,255,0.5); color: #fff; }
+
   /* Card hover 3D tilt */
   .pcard { transition: transform 0.3s ease, box-shadow 0.3s ease; }
   .pcard:hover { transform: perspective(800px) rotateY(-2deg) translateY(-4px); box-shadow: 0 16px 40px rgba(30,28,24,0.12); }
@@ -1312,12 +1421,40 @@
 <!-- HERO -->
 <section class="hero">
   <div>
-    <p class="hero-eyebrow">Free diagnosis. You only pay to execute.</p>
-    <h1>You know things could work better.<br><em>You're just not sure<br>where to start.</em></h1>
-    <p class="hero-sub">Tell me what's going on. I'll tell you exactly what to do about it — for free. You only pay if you want me to fix it.</p>
-    <div class="hero-actions">
-      <a href="#contact" class="btn-primary">Submit your problem — it's free</a>
-      <a href="#services" class="btn-secondary">See recent work →</a>
+    <div id="heroContent">
+      <div class="hero-eyebrow-badge">
+        <span class="hero-eyebrow-dot"></span>
+        Free diagnosis. Pay only to execute.
+      </div>
+      <h1>You know things could work better.<br><em>You're just not sure<br>where to start.</em></h1>
+      <p class="hero-sub">Tell me what's going on. I'll tell you exactly what to do about it — for free. You only pay if you want me to fix it.</p>
+      <div class="hero-actions">
+        <a href="#contact" class="btn-primary" id="heroCta">Submit your problem — it's free</a>
+        <a href="#services" class="btn-secondary">See recent work →</a>
+        <p class="hero-trust">No commitment required &nbsp;·&nbsp; ★★★★★ Top Rated on Upwork</p>
+      </div>
+    </div>
+    <div id="heroForm" class="hero-form">
+      <button class="hero-form-back" id="heroFormBack" type="button">← Back</button>
+      <h2 class="hero-form-title">Tell me what's going on.</h2>
+      <p class="hero-form-sub">I'll come back with a clear plan — free. No commitment.</p>
+      <form name="contact" netlify data-netlify="true">
+        <input type="hidden" name="form-name" value="contact">
+        <div class="hero-form-field">
+          <input type="text" name="name" placeholder="Your name" required>
+        </div>
+        <div class="hero-form-field">
+          <input type="email" name="email" placeholder="Email address" required>
+        </div>
+        <div class="hero-form-field">
+          <textarea name="message" placeholder="What's the problem? Even a rough description is enough — you don't need to know the solution." rows="4" required></textarea>
+        </div>
+        <button type="submit" class="hero-form-submit">Send it — it's free</button>
+        <p class="hero-form-trust">Typical response within 24 hours. Your plan is always free.</p>
+      </form>
+      <div class="hero-form-success" style="display:none;">
+        <p>Thanks — I'll be in touch soon.</p>
+      </div>
     </div>
   </div>
   <div class="hero-visual">
@@ -1564,6 +1701,60 @@
       }, { threshold: 0.1 });
       contactObserver.observe(contactSection);
     }
+
+    // Hero inline form
+    const heroCta = document.getElementById('heroCta');
+    const heroContent = document.getElementById('heroContent');
+    const heroFormWrap = document.getElementById('heroForm');
+    const heroFormBack = document.getElementById('heroFormBack');
+    const heroFormEl = heroFormWrap ? heroFormWrap.querySelector('form') : null;
+    const heroFormSuccess = heroFormWrap ? heroFormWrap.querySelector('.hero-form-success') : null;
+
+    function showHeroForm() {
+      heroContent.style.transition = 'opacity 0.25s ease, transform 0.25s ease';
+      heroContent.style.opacity = '0';
+      heroContent.style.transform = 'translateY(-8px)';
+      setTimeout(function() {
+        heroContent.style.display = 'none';
+        heroFormWrap.style.display = 'block';
+        heroFormWrap.style.opacity = '0';
+        heroFormWrap.style.transform = 'translateY(8px)';
+        heroFormWrap.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
+        requestAnimationFrame(function() {
+          heroFormWrap.style.opacity = '1';
+          heroFormWrap.style.transform = 'translateY(0)';
+        });
+      }, 250);
+    }
+
+    function hideHeroForm() {
+      heroFormWrap.style.transition = 'opacity 0.2s ease';
+      heroFormWrap.style.opacity = '0';
+      setTimeout(function() {
+        heroFormWrap.style.display = 'none';
+        heroContent.style.display = 'block';
+        heroContent.style.opacity = '0';
+        heroContent.style.transform = 'translateY(8px)';
+        heroContent.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
+        requestAnimationFrame(function() {
+          heroContent.style.opacity = '1';
+          heroContent.style.transform = 'translateY(0)';
+        });
+      }, 200);
+    }
+
+    if (heroCta) heroCta.addEventListener('click', function(e) { e.preventDefault(); showHeroForm(); });
+    if (heroFormBack) heroFormBack.addEventListener('click', hideHeroForm);
+
+    if (heroFormEl) {
+      heroFormEl.addEventListener('submit', function(e) {
+        e.preventDefault();
+        var data = new URLSearchParams(new FormData(heroFormEl));
+        fetch('/', { method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body: data })
+          .then(function() { heroFormEl.style.display = 'none'; heroFormSuccess.style.display = 'block'; })
+          .catch(function() { heroFormEl.style.display = 'none'; heroFormSuccess.style.display = 'block'; });
+      });
+    }
   });
 </script>
 
@@ -1622,11 +1813,10 @@
           <p>Once approved, I build it. You get finished work handed off and ready to use — documented, and not dependent on me to keep running.</p>
         </div>
       </div>
-    </div>
-
-    <div style="display:flex;gap:1rem;flex-wrap:wrap;margin-top:2rem;">
-      <a href="#contact" class="btn-primary reveal reveal-d3">Get your free plan</a>
-      <a href="#services" class="btn-ghost reveal reveal-d4">See recent work →</a>
+      <div class="hiw-ctas">
+        <a href="#contact" class="btn-hiw-primary reveal reveal-d3">Get your free plan</a>
+        <a href="#services" class="btn-hiw-ghost reveal reveal-d4">See recent work →</a>
+      </div>
     </div>
 
   </div>
