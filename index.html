@@ -707,6 +707,44 @@
     color: rgba(255,255,255,0.6);
     line-height: 1.5;
   }
+  .pricing-project-headline {
+    font-family: var(--font-serif);
+    font-size: 1.5rem;
+    font-weight: 400;
+    color: #fff;
+    line-height: 1.3;
+    margin-bottom: 0.75rem;
+  }
+  /* FAQ SECTION */
+  .faq-section { background: var(--cream); }
+  .faq-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0 3rem;
+    margin-top: 2.5rem;
+  }
+  .faq-item {
+    padding: 1.5rem 0;
+    border-bottom: 1px solid var(--cream-dark);
+  }
+  .faq-item:first-child,
+  .faq-item:nth-child(2) { border-top: 1px solid var(--cream-dark); }
+  .faq-q {
+    font-family: var(--font-sans);
+    font-size: 0.9375rem;
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: 0.5rem;
+    line-height: 1.4;
+  }
+  .faq-a {
+    font-family: var(--font-sans);
+    font-size: 0.9rem;
+    font-weight: 400;
+    color: var(--ink-mid);
+    line-height: 1.75;
+    margin: 0;
+  }
   .pricing-divider {
     width: 1px;
     background: rgba(255,255,255,0.12);
@@ -1396,6 +1434,8 @@
     .pricing-model-flow { gap: 0.625rem; }
     .pricing-main-inner { flex-direction: column; }
     .pricing-divider { display: none; }
+    .faq-grid { grid-template-columns: 1fr; }
+    .faq-item:nth-child(2) { border-top: none; }
     .pricing-rate-col { padding-right: 0; padding-bottom: 1.5rem; border-bottom: 1px solid rgba(255,255,255,0.12); }
     .hiw-steps { grid-template-columns: 1fr; gap: 1.5rem; }
     .portfolio-grid { grid-template-columns: 1fr; }
@@ -1768,9 +1808,9 @@
     <div class="pricing-main reveal reveal-d2" style="margin-top:2.5rem;">
       <div class="pricing-main-inner">
         <div class="pricing-rate-col">
-          <p class="pricing-rate-label">HOURLY RATE</p>
-          <p class="pricing-rate-num">$125<span>/hr</span></p>
-          <p class="pricing-rate-sub">One rate. Everything included.</p>
+          <p class="pricing-rate-label">HOW PRICING WORKS</p>
+          <p class="pricing-project-headline">You see a project price.<br>Not an hourly rate.</p>
+          <p class="pricing-rate-sub">One flat number for the specific work — reviewed and approved before anything starts.</p>
         </div>
         <div class="pricing-divider"></div>
         <div class="pricing-points-col">
@@ -1826,10 +1866,10 @@
   <div class="section-inner">
     <p class="section-label">Client reviews</p>
     <h2 class="section-title">What clients say.</h2>
-    <div class="upwork-bar">
+    <a class="upwork-bar" href="https://www.upwork.com/freelancers/~01ddd112c03a2e1428" target="_blank" rel="noopener noreferrer" style="text-decoration:none;cursor:pointer;">
       <div class="upwork-dot"></div>
       <strong>100% Job Success &nbsp;·&nbsp; Top Rated</strong>&nbsp; on Upwork
-    </div>
+    </a>
     <div class="testimonials-grid">
 
       <div class="tcard">
@@ -1899,6 +1939,55 @@
           <p>I grew up around a small business — a family company that had survived for over 60 years on instinct, relationships, and hard work. I watched it struggle to see where it was heading, not because anything was broken, but because the world changed faster than anyone warned it would.</p>
           <p>That's why ZeisWorks exists. Not to replace how your business works or who makes it run. To bridge the gap between people who built something real and the tools that can actually help them — without the complexity, the retainers, or the agency overhead.</p>
           <p>In my day job I serve as Director of Business Development Technology, working directly with client-facing and internal teams to improve how they operate. I've spent years translating between the people who run a business and the tools that are supposed to help them. ZeisWorks is that, available directly — without the agency overhead.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq-section">
+  <div class="section-inner">
+    <p class="section-label reveal">Common questions</p>
+    <h2 class="section-title reveal reveal-d1">Before you hit send.</h2>
+    <div class="faq-grid">
+
+      <div>
+        <div class="faq-item reveal reveal-d1">
+          <p class="faq-q">Do I have to know what the solution is?</p>
+          <p class="faq-a">No. Most people who reach out know something isn't working — they just can't put a name to it. Figuring that out is what the free plan is for.</p>
+        </div>
+        <div class="faq-item reveal reveal-d2">
+          <p class="faq-q">What happens after I submit?</p>
+          <p class="faq-a">I read it and respond within 24 hours. You get a plain-English plan — what I'd do, how long it takes, what it costs. No call required to get that far.</p>
+        </div>
+        <div class="faq-item reveal reveal-d2">
+          <p class="faq-q">What kinds of problems can you help with?</p>
+          <p class="faq-a">The kind that have been on your list for months. A report nobody can pull without exporting to Excel. A process three people do manually that nobody has time to fix. A system you're paying for that half the team doesn't use. If it's slowing your business down, send it.</p>
+        </div>
+        <div class="faq-item reveal reveal-d3">
+          <p class="faq-q">What does it cost?</p>
+          <p class="faq-a">The plan is free. If you want me to execute it, you get a flat project price — one number, approved before anything starts. No hourly clock, no surprises mid-project.</p>
+        </div>
+      </div>
+
+      <div>
+        <div class="faq-item reveal reveal-d1">
+          <p class="faq-q">What if you can't help?</p>
+          <p class="faq-a">I'll tell you straight, and point you somewhere better if I can. Some problems are the wrong fit for what I do — and you'll hear that for free rather than find out after paying someone else.</p>
+        </div>
+        <div class="faq-item reveal reveal-d2">
+          <p class="faq-q">What if the plan isn't what I was expecting?</p>
+          <p class="faq-a">Tell me. Plans aren't binding — they're a starting point. If something's off, we talk through it before anything begins. You're not committed to anything until you say so.</p>
+        </div>
+        <div class="faq-item reveal reveal-d2">
+          <p class="faq-q">Is there any commitment involved?</p>
+          <p class="faq-a">None. Submitting a problem doesn't start a project. Reading the plan doesn't start a project. You decide if and when anything moves forward.</p>
+        </div>
+        <div class="faq-item reveal reveal-d3">
+          <p class="faq-q">How is the free plan actually viable?</p>
+          <p class="faq-a">Two years ago this model didn't work — understanding a problem well enough to return a real plan took hours of calls and back-and-forth. AI has changed that. I can triage a submission and produce a genuine, actionable plan in a fraction of the time. The cost of that step dropped, so I stopped charging for it. You get a real answer before spending anything.</p>
         </div>
       </div>
 
