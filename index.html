@@ -671,6 +671,167 @@
     color: var(--ink-mid);
     line-height: 1.7;
   }
+  /* PRICING REDESIGN */
+  .pricing-main-inner {
+    display: flex;
+    gap: 0;
+    align-items: stretch;
+  }
+  .pricing-rate-col {
+    min-width: 180px;
+    padding-right: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .pricing-rate-label {
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.5);
+    margin-bottom: 0.5rem;
+  }
+  .pricing-rate-num {
+    font-family: var(--font-serif);
+    font-size: 3rem;
+    font-weight: 600;
+    color: #fff;
+    letter-spacing: -0.03em;
+    line-height: 1;
+    margin-bottom: 0.5rem;
+  }
+  .pricing-rate-num span { font-size: 1.25rem; color: rgba(255,255,255,0.6); font-weight: 300; }
+  .pricing-rate-sub {
+    font-size: 0.8125rem;
+    color: rgba(255,255,255,0.6);
+    line-height: 1.5;
+  }
+  .pricing-divider {
+    width: 1px;
+    background: rgba(255,255,255,0.12);
+    align-self: stretch;
+    flex-shrink: 0;
+    margin: 0 2rem;
+  }
+  .pricing-points-col {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+  .pricing-point-item {
+    padding: 1rem 0;
+  }
+  .pricing-point-item strong {
+    display: block;
+    font-weight: 500;
+    color: #fff;
+    margin-bottom: 0.375rem;
+    font-size: 0.9375rem;
+  }
+  .pricing-point-item p {
+    font-size: 0.875rem;
+    color: rgba(255,255,255,0.7);
+    line-height: 1.7;
+    margin: 0;
+  }
+  .pricing-hr {
+    border: none;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    margin: 0;
+  }
+  /* HOW IT WORKS BLOCK (embedded in pricing) */
+  .how-it-works-block {
+    background: var(--forest);
+    border-radius: var(--radius-lg);
+    padding: 2.5rem;
+    margin-top: 1.5rem;
+  }
+  .hiw-label {
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.45);
+    margin-bottom: 2rem;
+  }
+  .hiw-steps {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 1.5rem;
+    position: relative;
+  }
+  .hiw-step {
+    position: relative;
+  }
+  .hiw-num {
+    font-family: var(--font-serif);
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: rgba(255,255,255,0.3);
+    margin-bottom: 0.875rem;
+    line-height: 1;
+  }
+  .hiw-connector {
+    display: none;
+  }
+  .hiw-step h4 {
+    font-size: 0.9375rem;
+    font-weight: 500;
+    color: #fff;
+    margin-bottom: 0.5rem;
+    font-family: var(--font-sans);
+  }
+  .hiw-step p {
+    font-size: 0.875rem;
+    color: rgba(255,255,255,0.65);
+    line-height: 1.7;
+    margin: 0;
+  }
+  /* PORTFOLIO GRID */
+  .portfolio-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+  }
+  .pcard-dark {
+    background: var(--forest);
+    border-radius: var(--radius-lg);
+    padding: 2rem;
+    color: #fff;
+  }
+  .pcard-what-changed {
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.45);
+    margin-bottom: 0.75rem;
+    margin-top: 0.5rem;
+  }
+  .pcard-dark h3 {
+    color: #fff;
+    font-family: var(--font-serif);
+    font-size: 1.1rem;
+    line-height: 1.4;
+    margin-bottom: 0;
+  }
+  /* GHOST BUTTON */
+  .btn-ghost {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.75rem 1.5rem;
+    border-radius: var(--radius-full);
+    font-size: 0.9375rem;
+    font-weight: 500;
+    color: var(--ink);
+    background: transparent;
+    border: 1.5px solid var(--ink-light);
+    text-decoration: none;
+    transition: border-color 0.2s, color 0.2s;
+  }
+  .btn-ghost:hover { border-color: var(--forest); color: var(--forest); }
 
   /* TESTIMONIALS */
   .upwork-bar {
@@ -1124,6 +1285,11 @@
     .sticky-cta { bottom: 1rem; right: 1rem; left: 1rem; }
     .sticky-cta a { justify-content: center; border-radius: var(--radius-lg); }
     .pricing-model-flow { gap: 0.625rem; }
+    .pricing-main-inner { flex-direction: column; }
+    .pricing-divider { display: none; }
+    .pricing-rate-col { padding-right: 0; padding-bottom: 1.5rem; border-bottom: 1px solid rgba(255,255,255,0.12); }
+    .hiw-steps { grid-template-columns: 1fr; gap: 1.5rem; }
+    .portfolio-grid { grid-template-columns: 1fr; }
   }
 </style>
 </head>
@@ -1158,52 +1324,31 @@
     <p class="proof-label">How the model works</p>
     <div class="proof-item reveal reveal-d1">
       <div class="proof-dot"></div>
-      <p><strong>Submit any problem — no cost.</strong> Tell me what's going on in whatever words you have. You don't need to know what the solution is or what category it falls into.</p>
+      <p><strong>Submit any problem — no cost.</strong> Whatever words you have. No category needed.</p>
     </div>
     <div class="proof-item reveal reveal-d2">
       <div class="proof-dot"></div>
-      <p><strong>Get a clear, actionable plan — free.</strong> I'll return a plain-English breakdown: what I'd do, how long it takes, and what it costs. AI-assisted triage makes this possible at no charge.</p>
+      <p><strong>Get a clear plan — free.</strong> What I'd do, how long, what it costs.</p>
     </div>
     <div class="proof-item reveal reveal-d3">
       <div class="proof-dot"></div>
-      <p><strong>Pay only to execute.</strong> You approve the plan first. Only pay if and when you want me to build it. No surprises, ever.</p>
-    </div>
-    <div class="proof-item reveal reveal-d4" style="margin-top:1.5rem;padding-top:1.25rem;border-top:1px solid #E8E3D8;">
-      <div class="proof-dot" style="background:var(--terra);opacity:0.5;"></div>
-      <p style="font-style:italic;color:var(--ink-mid);font-size:0.875rem;line-height:1.65;">"Jack consistently exceeded my expectations across numerous projects. He brings both technical skill and a genuine understanding of how businesses actually work."<br><strong style="font-style:normal;font-size:0.8125rem;color:var(--ink);">— Alex Zemianek, CEO, Goby &nbsp;·&nbsp; ★★★★★</strong></p>
+      <p><strong>Pay only to execute.</strong> Approve the plan first. No surprises.</p>
     </div>
   </div>
 </section>
 
-<!-- SOCIAL PROOF BAR -->
-<div class="proof-bar reveal">
-  <div class="proof-bar-inner">
-    <div class="proof-bar-item">
-      <div class="proof-bar-dot"></div>
-      <span><strong style="color:var(--ink);font-weight:500;">100% Job Success · Top Rated</strong> on Upwork</span>
-    </div>
-    <div class="proof-bar-item">
-      <div class="proof-bar-dot"></div>
-      <span>4 real projects — <a href="#services" style="color:var(--terra);text-decoration:none;">see the work →</a></span>
-    </div>
-    <div class="proof-bar-item">
-      <div class="proof-bar-dot"></div>
-      <span>Free to start — no commitment required</span>
-    </div>
-  </div>
-</div>
+
 
 <!-- FOUNDING STORY -->
 <section class="story">
   <div class="story-grid">
     <div class="story-text">
       <p class="section-label reveal">Why this exists</p>
-      <h2 class="section-title reveal reveal-d1">This isn't a service offering.<br>It's a worldview.</h2>
+      <h2 class="section-title reveal reveal-d1">Built for businesses<br>that already work.</h2>
       <div class="story-body">
-        <p class="reveal reveal-d2">ZeisWorks wasn't built to serve a market category. It was built because of a specific experience: watching a brilliant, decades-old family business struggle to know where it was heading.</p>
-        <p class="reveal reveal-d2">The company had survived for over 60 years — not because they had dashboards or automation, but because the people running it were good at what they do. They operated on instinct, relationships, and hard work. But the world changed around them faster than anyone warned them it would. Not in a way that threatened the business immediately — but in a way that made it harder to see clearly. Harder to answer: <em>where are we heading?</em></p>
-        <p class="reveal reveal-d3">What they needed wasn't a consultant who'd rip everything out and replace it. They needed someone who understood that the business has a soul — that the relationships matter — and who also knew how to actually fix things.</p>
-        <p class="reveal reveal-d3"><strong>That's what ZeisWorks is. And it's nearly impossible to copy.</strong></p>
+        <p class="reveal reveal-d2">ZeisWorks was built because of one experience: watching a brilliant family business — over 60 years old — struggle to see where it was heading.</p>
+        <p class="reveal reveal-d2">Not because anything was broken. Because nobody spoke both languages: the language of the business, and the language of the tools that are supposed to serve it.</p>
+        <p class="reveal reveal-d3"><strong>That's the gap ZeisWorks fills. And it's nearly impossible to copy.</strong></p>
       </div>
     </div>
     <div>
@@ -1286,14 +1431,8 @@
 
     </div>
     <div class="doors-tenet">
-      <div class="doors-not">
-        <span>Not a retainer.</span>
-        <span>Not a proposal process.</span>
-        <span>Not a big agency.</span>
-        <span>Not dependent on you knowing the right question.</span>
-      </div>
-      <p>The goal is never to change how your business works or <strong>replace the people who make it run.</strong> It's to make their jobs — and yours — a little easier.</p>
-      <a href="#contact" class="doors-tenet-cta">Submit your problem — I'll send you a plan, free →</a>
+      <p>The goal is never to change how your business works or replace the people who make it run. It's to make their jobs — and yours — a little easier.</p>
+      <a href="#contact" class="doors-tenet-cta">Submit your problem — get a plan, free →</a>
     </div>
   </div>
 </section>
@@ -1301,125 +1440,71 @@
 <!-- PORTFOLIO -->
 <section class="portfolio" id="services">
   <div class="section-inner">
-    <div class="portfolio-header">
-      <div>
-        <p class="section-label">Recent work</p>
-        <h2 class="section-title">Problems solved.<br>In plain English.</h2>
+    <p class="section-label">Recent work</p>
+    <h2 class="section-title">Real problems.<br><em>Real outcomes.</em></h2>
+    <p style="font-size:0.9375rem;color:var(--ink-mid);margin-top:0.5rem;margin-bottom:2rem;">A sample of what I've built.</p>
+
+    <div class="portfolio-grid">
+
+      <!-- CARD 1 -->
+      <div class="pcard-dark reveal reveal-d1">
+        <p class="pcard-type" style="color:rgba(255,255,255,0.5);">Salesforce · Custom Build</p>
+        <p class="pcard-what-changed">WHAT CHANGED</p>
+        <h3>10-year trend data — visible directly on every prospect record.</h3>
+        <p style="font-size:0.9rem;color:rgba(255,255,255,0.75);line-height:1.7;margin-top:0.75rem;">A client needed historical data across 12 datasets on their Salesforce prospect pages — something standard reporting couldn't touch. I built a custom Lightning component that lives natively on the record. No tab-switching, no BI license.</p>
+        <div class="pcard-outcome" style="background:rgba(255,255,255,0.08);border:none;color:rgba(255,255,255,0.85);">Completed in 4.5 hours. Replaced a recurring license and an agency build that would have cost 2–3× as much.</div>
+        <div class="pcard-tags" style="margin-top:1rem;">
+          <span class="tag" style="background:rgba(255,255,255,0.1);color:rgba(255,255,255,0.7);border:none;">Salesforce</span>
+          <span class="tag" style="background:rgba(255,255,255,0.1);color:rgba(255,255,255,0.7);border:none;">Lightning Components</span>
+          <span class="tag" style="background:rgba(255,255,255,0.1);color:rgba(255,255,255,0.7);border:none;">Custom Reporting</span>
+        </div>
       </div>
-      <div class="carousel-nav">
-        <button class="carousel-btn" id="prev" aria-label="Previous">
-          <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
-        </button>
-        <div class="carousel-dots">
-          <button class="carousel-dot active" data-index="0"></button>
-          <button class="carousel-dot" data-index="1"></button>
-          <button class="carousel-dot" data-index="2"></button>
-          <button class="carousel-dot" data-index="3"></button>
+
+      <!-- CARD 2 -->
+      <div class="pcard-dark reveal reveal-d2">
+        <p class="pcard-type" style="color:rgba(255,255,255,0.5);">Salesforce · AI + Data</p>
+        <p class="pcard-what-changed">WHAT CHANGED</p>
+        <h3>2,000+ records cleaned, corrected, and trusted again.</h3>
+        <p style="font-size:0.9rem;color:rgba(255,255,255,0.75);line-height:1.7;margin-top:0.75rem;">Missing fields, bad formatting, duplicates — a Salesforce database nobody trusted. I exported, cleaned, and re-uploaded it using AI and custom tooling. What would have taken a staff member 60–100 hours took a fraction of the time.</p>
+        <div class="pcard-outcome" style="background:rgba(255,255,255,0.08);border:none;color:rgba(255,255,255,0.85);">Clean data, immediately usable for audience segmentation and targeted outreach.</div>
+        <div class="pcard-tags" style="margin-top:1rem;">
+          <span class="tag" style="background:rgba(255,255,255,0.1);color:rgba(255,255,255,0.7);border:none;">Salesforce</span>
+          <span class="tag" style="background:rgba(255,255,255,0.1);color:rgba(255,255,255,0.7);border:none;">AI</span>
+          <span class="tag" style="background:rgba(255,255,255,0.1);color:rgba(255,255,255,0.7);border:none;">Data Cleanup</span>
         </div>
-        <button class="carousel-btn" id="next" aria-label="Next">
-          <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
-        </button>
       </div>
-    </div>
 
-    <div class="carousel-track-wrap">
-      <div class="carousel-track" id="carouselTrack">
-
-        <!-- CARD 1 -->
-        <div class="pcard">
-          <p class="pcard-type">Salesforce · Custom Build</p>
-          <h3>"We were maintaining a dashboard outside Salesforce just to see our own prospect history."</h3>
-          <p class="pcard-body">A client needed 10-year trend data across 12 datasets visible directly on their prospect records — something standard Salesforce reporting couldn't touch. Rather than expanding their BI stack, I built a custom Lightning component that lives natively on the prospect page. Historical data, clean layout, no tab-switching.</p>
-          <div class="pcard-outcome">Completed in 4.5 hours. Replaced a recurring BI license and a Salesforce agency build that would have cost 2–3× as much.</div>
-          <div class="pcard-tags">
-            <span class="tag">Salesforce</span>
-            <span class="tag">Lightning Components</span>
-            <span class="tag">Custom Reporting</span>
-          </div>
+      <!-- CARD 3 -->
+      <div class="pcard-dark reveal reveal-d3">
+        <p class="pcard-type" style="color:rgba(255,255,255,0.5);">AI · Internal Tools</p>
+        <p class="pcard-what-changed">WHAT CHANGED</p>
+        <h3>HR stopped answering the same questions. An AI agent does it instead.</h3>
+        <p style="font-size:0.9rem;color:rgba(255,255,255,0.75);line-height:1.7;margin-top:0.75rem;">Employees had nowhere consistent to go for HR questions. I built an AI agent inside Microsoft Copilot that pulls from existing company documents to answer instantly — no new software, no extra training.</p>
+        <div class="pcard-outcome" style="background:rgba(255,255,255,0.08);border:none;color:rgba(255,255,255,0.85);">The agent also flags gaps in the documentation — so HR knows what to update before the next person has to ask.</div>
+        <div class="pcard-tags" style="margin-top:1rem;">
+          <span class="tag" style="background:rgba(255,255,255,0.1);color:rgba(255,255,255,0.7);border:none;">AI</span>
+          <span class="tag" style="background:rgba(255,255,255,0.1);color:rgba(255,255,255,0.7);border:none;">Microsoft Copilot</span>
+          <span class="tag" style="background:rgba(255,255,255,0.1);color:rgba(255,255,255,0.7);border:none;">Workflow Automation</span>
         </div>
-
-        <!-- CARD 2 -->
-        <div class="pcard">
-          <p class="pcard-type">Salesforce · AI + Data</p>
-          <h3>"We knew our CRM was a mess. We just didn't have anyone to fix it."</h3>
-          <p class="pcard-body">Missing fields, bad formatting, duplicates — a 2,000+ record Salesforce database that nobody trusted. I exported the data, cleaned and re-populated it using AI and custom tooling, and re-uploaded a complete, accurate set of records. What would have taken a staff member 60–100 hours of manual work was done in a fraction of the time.</p>
-          <div class="pcard-outcome">Clean data, immediately usable for audience segmentation and targeted outreach.</div>
-          <div class="pcard-tags">
-            <span class="tag">Salesforce</span>
-            <span class="tag">AI</span>
-            <span class="tag">Data Cleanup</span>
-          </div>
-        </div>
-
-        <!-- CARD 3 -->
-        <div class="pcard">
-          <p class="pcard-type">AI · Internal Tools</p>
-          <h3>"HR was spending half their day answering the same questions over and over."</h3>
-          <p class="pcard-body">Employees had nowhere consistent to turn for HR and operations questions — so they emailed, messaged, or walked over to ask. I built an AI agent inside Microsoft Copilot that pulls from existing company documents to answer questions instantly, without new software or extra training. Employees get answers. HR gets their time back.</p>
-          <div class="pcard-outcome">The agent also flags gaps in the documentation — so HR knows what to update before the next person has to ask.</div>
-          <div class="pcard-tags">
-            <span class="tag">AI</span>
-            <span class="tag">Microsoft Copilot</span>
-            <span class="tag">Workflow Automation</span>
-          </div>
-        </div>
-
-        <!-- CARD 4 -->
-        <div class="pcard">
-          <p class="pcard-type">Automation · Data</p>
-          <h3>"We needed to find the right partners — but that meant reviewing hundreds of websites by hand."</h3>
-          <p class="pcard-body">A client needed to evaluate 530 websites to identify the right partners for a key initiative. Manual research wasn't just slow — at the scale required, it wasn't financially viable. I built a custom web agent that scraped and compiled the relevant data from all 530 sites automatically, delivering a complete picture that simply wouldn't have been possible otherwise.</p>
-          <div class="pcard-outcome">Made a previously impossible research project achievable — at a fraction of what manual work would have cost.</div>
-          <div class="pcard-tags">
-            <span class="tag">Automation</span>
-            <span class="tag">Web Scraping</span>
-            <span class="tag">Data</span>
-          </div>
-        </div>
-
       </div>
+
+      <!-- CARD 4 -->
+      <div class="pcard-dark reveal reveal-d4">
+        <p class="pcard-type" style="color:rgba(255,255,255,0.5);">Automation · Data</p>
+        <p class="pcard-what-changed">WHAT CHANGED</p>
+        <h3>530 websites evaluated automatically — a project that wasn't financially viable any other way.</h3>
+        <p style="font-size:0.9rem;color:rgba(255,255,255,0.75);line-height:1.7;margin-top:0.75rem;">A client needed to evaluate hundreds of sites to find the right partners. Manual research wasn't viable at that scale. I built a web agent that scraped and compiled the relevant data from all 530 sites automatically.</p>
+        <div class="pcard-outcome" style="background:rgba(255,255,255,0.08);border:none;color:rgba(255,255,255,0.85);">Made a previously impossible research project achievable — at a fraction of what manual work would have cost.</div>
+        <div class="pcard-tags" style="margin-top:1rem;">
+          <span class="tag" style="background:rgba(255,255,255,0.1);color:rgba(255,255,255,0.7);border:none;">Automation</span>
+          <span class="tag" style="background:rgba(255,255,255,0.1);color:rgba(255,255,255,0.7);border:none;">Web Scraping</span>
+          <span class="tag" style="background:rgba(255,255,255,0.1);color:rgba(255,255,255,0.7);border:none;">Data</span>
+        </div>
+      </div>
+
     </div>
   </div>
 </section>
-
-<script>
-(function() {
-  const track = document.getElementById('carouselTrack');
-  const dots = document.querySelectorAll('.carousel-dot');
-  const prev = document.getElementById('prev');
-  const next = document.getElementById('next');
-  const cards = track.querySelectorAll('.pcard');
-  let current = 0;
-  const total = cards.length;
-  const visible = 2;
-
-  function getCardWidth() {
-    if (!cards[0]) return 0;
-    return cards[0].getBoundingClientRect().width + 24; // card + gap
-  }
-
-  function goTo(index) {
-    const max = total - visible;
-    current = Math.max(0, Math.min(index, max));
-    track.style.transform = `translateX(-${current * getCardWidth()}px)`;
-    dots.forEach((d, i) => d.classList.toggle('active', i === current));
-  }
-
-  prev.addEventListener('click', () => goTo(current - 1));
-  next.addEventListener('click', () => goTo(current + 1));
-  dots.forEach(d => d.addEventListener('click', () => goTo(+d.dataset.index)));
-
-  // Touch support
-  let startX = 0;
-  track.addEventListener('touchstart', e => { startX = e.touches[0].clientX; }, { passive: true });
-  track.addEventListener('touchend', e => {
-    const diff = startX - e.changedTouches[0].clientX;
-    if (Math.abs(diff) > 50) goTo(diff > 0 ? current + 1 : current - 1);
-  });
-
-  window.addEventListener('resize', () => goTo(current));
-})();
-
   // Contact form — submit via fetch, show inline confirmation
   document.addEventListener('DOMContentLoaded', function() {
     const contactForm = document.querySelector('.contact-form');
@@ -1484,103 +1569,66 @@
 <section id="pricing">
   <div class="section-inner">
     <p class="section-label reveal">Pricing</p>
-    <h2 class="section-title reveal reveal-d1">The plan is always free.<br>You only pay for execution.</h2>
-    <div class="pricing-grid">
+    <h2 class="section-title reveal reveal-d1">Simple pricing.<br><em>Zero risk to find out.</em></h2>
+    <p class="section-body reveal reveal-d2" style="margin-top:0.5rem;">The first part — figuring out if I can help — costs nothing.</p>
 
-      <div class="pricing-main reveal reveal-d2">
-        <p class="pricing-model-head">The Model</p>
-        <div class="pricing-model-flow">
-          <div class="pmf-step">
-            <span class="pmf-tag pmf-free">Free</span>
-            <strong>Submit any problem</strong>
-          </div>
-          <div class="pmf-arrow">↓</div>
-          <div class="pmf-step">
-            <span class="pmf-tag pmf-free">Free</span>
-            <strong>Get an actionable plan</strong>
-          </div>
-          <div class="pmf-arrow">↓</div>
-          <div class="pmf-step">
-            <span class="pmf-tag pmf-paid">$125/hr</span>
-            <strong>Pay only to execute</strong>
-          </div>
+    <div class="pricing-main reveal reveal-d2" style="margin-top:2.5rem;">
+      <div class="pricing-main-inner">
+        <div class="pricing-rate-col">
+          <p class="pricing-rate-label">HOURLY RATE</p>
+          <p class="pricing-rate-num">$125<span>/hr</span></p>
+          <p class="pricing-rate-sub">One rate. Everything included.</p>
         </div>
-        <p class="rate-desc" style="margin-top:1.5rem;">Execution at $125/hr — scoped and approved before anything starts. No retainer, no minimum.</p>
-        <a href="#contact" class="btn-primary" style="margin-top:1.75rem;display:inline-block;">Submit your problem — it's free</a>
-        <div class="pricing-not">
-          <p class="pricing-not-label">What this isn't</p>
-          <ul>
-            <li>Not a retainer or long-term commitment</li>
-            <li>Not a proposal process or sales call</li>
-            <li>Not an agency that passes you to a junior</li>
-            <li>Not dependent on you knowing the right question</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="pricing-details">
-        <div class="pricing-point reveal reveal-d2">
-          <div class="pricing-point-icon">
-            <svg viewBox="0 0 24 24" style="width:18px;height:18px;stroke:var(--forest-mid);fill:none;stroke-width:1.75;stroke-linecap:round;stroke-linejoin:round;"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+        <div class="pricing-divider"></div>
+        <div class="pricing-points-col">
+          <div class="pricing-point-item">
+            <strong>Calls and advice are always free</strong>
+            <p>Talk through the problem, get an honest read, ask anything you want. No clock running until you approve work.</p>
           </div>
-          <div>
-            <strong>The plan is free — always</strong>
-            <p>Tell me what's going on. I'll come back with a clear, actionable plan — what I'd do, how long, and what it costs. No charge for that part, ever.</p>
+          <hr class="pricing-hr">
+          <div class="pricing-point-item">
+            <strong>Scoped and approved before anything starts</strong>
+            <p>You get a clear outline — what I'll do, how long it takes, what it costs. Nothing begins until you're comfortable with it.</p>
           </div>
-        </div>
-        <div class="pricing-point reveal reveal-d3">
-          <div class="pricing-point-icon">
-            <svg viewBox="0 0 24 24" style="width:18px;height:18px;stroke:var(--forest-mid);fill:none;stroke-width:1.75;stroke-linecap:round;stroke-linejoin:round;"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.68A2 2 0 012 .84h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 8.91a16 16 0 006 6l1.23-1.23a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
-          </div>
-          <div>
-            <strong>Scoped before anything starts</strong>
-            <p>You get a clear outline — what I'll do, how many hours I estimate, what the total looks like. You approve it before a single hour is billed.</p>
-          </div>
-        </div>
-        <div class="pricing-point reveal reveal-d4">
-          <div class="pricing-point-icon">
-            <svg viewBox="0 0 24 24" style="width:18px;height:18px;stroke:var(--forest-mid);fill:none;stroke-width:1.75;stroke-linecap:round;stroke-linejoin:round;"><polyline points="20 6 9 17 4 12"/></svg>
-          </div>
-          <div>
-            <strong>You only pay for approved work</strong>
-            <p>If something changes mid-project, I'll tell you before going over scope. No surprise invoices.</p>
+          <hr class="pricing-hr">
+          <div class="pricing-point-item">
+            <strong>No surprises, ever</strong>
+            <p>If something changes mid-project, you hear about it before I go over scope. No retainer, no minimum, no markups.</p>
           </div>
         </div>
       </div>
-
     </div>
+
+    <div class="how-it-works-block reveal reveal-d3">
+      <p class="hiw-label">HOW IT WORKS</p>
+      <div class="hiw-steps">
+        <div class="hiw-step">
+          <div class="hiw-num">01</div>
+          <div class="hiw-connector"></div>
+          <h4>Tell me what's going on</h4>
+          <p>Send the problem in whatever words you have. No charge, no commitment. You don't need to know what the solution is.</p>
+        </div>
+        <div class="hiw-step">
+          <div class="hiw-num">02</div>
+          <div class="hiw-connector"></div>
+          <h4>You get a clear plan</h4>
+          <p>I'll come back with exactly what I'd do, how long it takes, and what it costs. You approve it before a single hour is billed.</p>
+        </div>
+        <div class="hiw-step">
+          <div class="hiw-num">03</div>
+          <h4>I get it done</h4>
+          <p>Once approved, I build it. You get finished work handed off and ready to use — documented, and not dependent on me to keep running.</p>
+        </div>
+      </div>
+    </div>
+
+    <div style="display:flex;gap:1rem;flex-wrap:wrap;margin-top:2rem;">
+      <a href="#contact" class="btn-primary reveal reveal-d3">Get your free plan</a>
+      <a href="#services" class="btn-ghost reveal reveal-d4">See recent work →</a>
+    </div>
+
   </div>
 </section>
-
-<!-- HOW I WORK -->
-<section class="how" id="how">
-  <div class="section-inner">
-    <p class="section-label reveal">How it works</p>
-    <h2 class="section-title reveal reveal-d1">As simple as it should be.</h2>
-    <div class="pricing-pill reveal reveal-d2">
-      <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-      <span><strong style="color:var(--ink);font-weight:500;">The diagnosis is always free.</strong> You only pay for work you've approved.</span>
-    </div>
-    <div class="steps">
-      <div class="step reveal reveal-d1">
-        <div class="step-num">01</div>
-        <h3>Tell me what's going on</h3>
-        <p>Send me a message. Describe the problem in whatever words you have — you don't need to know what the solution is or what category it falls into. No charge, no commitment.</p>
-      </div>
-      <div class="step reveal reveal-d2">
-        <div class="step-num">02</div>
-        <h3>You get a clear plan — free</h3>
-        <p>I'll come back with a plain-English outline: what I'd do, how long it would take, and what it costs. The plan is always free. You don't agree to anything until you're comfortable.</p>
-      </div>
-      <div class="step reveal reveal-d3">
-        <div class="step-num">03</div>
-        <h3>I get it done</h3>
-        <p>Once you approve, I build it. I'll check in if something comes up, but I don't need managing. You get the finished work handed off and ready to use.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
 <!-- TESTIMONIALS -->
 <section id="testimonials">
   <div class="section-inner">
@@ -1658,7 +1706,7 @@
         <div class="about-copy">
           <p>I grew up around a small business — a family company that had survived for over 60 years on instinct, relationships, and hard work. I watched it struggle to see where it was heading, not because anything was broken, but because the world changed faster than anyone warned it would.</p>
           <p>That's why ZeisWorks exists. Not to replace how your business works or who makes it run. To bridge the gap between people who built something real and the tools that can actually help them — without the complexity, the retainers, or the agency overhead.</p>
-          <p>In my day job I serve as Director of Business Development Technology, working directly with client-facing and internal teams to improve how they operate. I've spent years translating between the people who run a business and the tools that are supposed to help them. ZeisWorks is how I bring that to small businesses directly.</p>
+          <p>In my day job I serve as Director of Business Development Technology, working directly with client-facing and internal teams to improve how they operate. I've spent years translating between the people who run a business and the tools that are supposed to help them. ZeisWorks is that, available directly — without the agency overhead.</p>
         </div>
       </div>
 
