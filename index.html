@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ZeisWorks — Tell me what's wrong. I'll figure out the rest.</title>
+<title>zeisWorks — Tell me what's wrong. I'll figure out the rest.</title>
 <link rel="icon" type="image/png" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAABjElEQVR4nO2XoY7CQBCG/zanECRTEhykgcAb8AZoFC/AE5Ag+xqoupIgEfgiayqxGBBYtg2OpMmcKrfXO7hdSpcT/Grbzub/MjvN7FiQREQMA0qSxMrXtmnzopdVfCGEqNTccZzrOkkSyzJp/hvE9QhMmRe97DtxRvQGeDnAh2qg67o4n89/xtVqNRyPR2WAp2eg3+9rxStn4HA43Px2uVwwGo2w3++xWCyqAbin2WyG7XaL9XqNVqult5mImIj4Uc3ncyYiXi6XWvty31IAYRhyo9Fgz/O095YG2O123G63eTwec5ZlDwNcm5FOL0jTFMPhELZtY7PZoF6v6507vhqSdhFmWYbJZAIhBMIwfMhcljaA53mIogir1QrdbreUOQC9vyAIAiYi9n1f+8xv1YAyQBRF3Gw2eTqdljaXAZSKME1TDAYDnE4npazGcYxer3c3Ji9CpV4ghFA215VSEXY6ncqubC+/D7wB/g+APCxUrW+DiTwomoD4MZrlDyaH09wckI5AzoQpcwD4BBCLmt1P+sElAAAAAElFTkSuQmCC">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -20,6 +20,8 @@
     --terra: #2D4A6B;
     --terra-light: #D6E0EC;
     --terra-dark: #1E3350;
+    --orange: #C85A20;
+    --orange-light: #F2E0D5;
     --slate: #2D4557;
     --forest: #2C4A3E;
     --forest-mid: #3D6B5A;
@@ -68,7 +70,7 @@
     text-decoration: none;
     letter-spacing: -0.01em;
   }
-  .nav-logo .logo-period { color: var(--terra); }
+  .nav-logo .logo-period { color: var(--orange); }
   .nav-links {
     display: flex;
     align-items: center;
@@ -120,7 +122,7 @@
     margin-bottom: 1.5rem;
     letter-spacing: -0.02em;
   }
-  .hero h1 em { color: var(--terra); font-style: italic; }
+  .hero h1 em { color: var(--orange); font-style: italic; }
   .hero-sub {
     font-size: 1.0625rem;
     color: var(--ink-mid);
@@ -174,6 +176,26 @@
     border-radius: 50%;
     opacity: 0.5;
   }
+  .hero-steps { display: flex; flex-direction: column; gap: 1.25rem; }
+  .hero-step { display: flex; gap: 1rem; align-items: flex-start; }
+  .hero-step-num {
+    font-family: var(--font-serif);
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--orange);
+    min-width: 2rem;
+    line-height: 1.2;
+  }
+  .hero-step h4 { font-size: 0.9375rem; font-weight: 600; color: var(--ink); margin-bottom: 0.25rem; line-height: 1.35; }
+  .hero-step p { font-size: 0.8125rem; color: var(--ink-mid); line-height: 1.65; margin: 0; }
+  .hero-step-ctas {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    padding-top: 1.25rem;
+    border-top: 1px solid #E0D9CE;
+    flex-wrap: wrap;
+  }
   .proof-label {
     font-size: 0.75rem;
     font-weight: 500;
@@ -205,7 +227,7 @@
     font-weight: 500;
     letter-spacing: 0.1em;
     text-transform: uppercase;
-    color: var(--terra);
+    color: var(--orange);
     margin-bottom: 1rem;
   }
   .section-title {
@@ -756,7 +778,7 @@
   .faq-section { background: var(--cream); }
   .faq-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr;
     gap: 0 3rem;
     margin-top: 2.5rem;
   }
@@ -1495,7 +1517,7 @@
 <!-- NAV -->
 <nav>
   <div class="nav-inner">
-    <a href="#" class="nav-logo">ZeisWorks<span class="logo-period">.</span></a>
+    <a href="#" class="nav-logo">zeisWorks<span class="logo-period">.</span></a>
     <ul class="nav-links">
       <li><a href="#services">Recent work</a></li>
       <li><a href="#how">How It Works</a></li>
@@ -1546,18 +1568,33 @@
     </div>
   </div>
   <div class="hero-visual">
-    <p class="proof-label">How the model works</p>
-    <div class="proof-item reveal reveal-d1">
-      <div class="proof-dot"></div>
-      <p><strong>Submit any problem — no cost.</strong> Whatever words you have. No category needed.</p>
+    <p class="proof-label">How it works</p>
+    <div class="hero-steps">
+      <div class="hero-step reveal reveal-d1">
+        <div class="hero-step-num">01</div>
+        <div>
+          <h4>Tell me what's going on</h4>
+          <p>Send the problem in whatever words you have. No charge, no commitment. You don't need to know what the solution is.</p>
+        </div>
+      </div>
+      <div class="hero-step reveal reveal-d2">
+        <div class="hero-step-num">02</div>
+        <div>
+          <h4>You get a clear plan</h4>
+          <p>I'll come back with exactly what I'd do, how long it takes, and what it costs. You approve it before a single hour is billed.</p>
+        </div>
+      </div>
+      <div class="hero-step reveal reveal-d3">
+        <div class="hero-step-num">03</div>
+        <div>
+          <h4>I get it done</h4>
+          <p>Once approved, I build it. You get finished work handed off and ready to use — documented, and not dependent on me to keep running.</p>
+        </div>
+      </div>
     </div>
-    <div class="proof-item reveal reveal-d2">
-      <div class="proof-dot"></div>
-      <p><strong>Get a clear plan — free.</strong> What I'd do, how long, what it costs.</p>
-    </div>
-    <div class="proof-item reveal reveal-d3">
-      <div class="proof-dot"></div>
-      <p><strong>Pay only to execute.</strong> Approve the plan first. No surprises.</p>
+    <div class="hero-step-ctas">
+      <a href="#contact" class="btn-primary">Get your free plan →</a>
+      <a href="#services" class="btn-secondary" style="font-size:0.875rem;color:var(--ink-mid);text-decoration:none;">See recent work →</a>
     </div>
   </div>
 </section>
@@ -1571,36 +1608,24 @@
       <p class="section-label reveal">Why this exists</p>
       <h2 class="section-title reveal reveal-d1">Built for businesses<br>that already work.</h2>
       <div class="story-body">
-        <p class="reveal reveal-d2">ZeisWorks was built because of one experience: watching a brilliant family business — over 60 years old — struggle to see where it was heading.</p>
+        <p class="reveal reveal-d2">zeisWorks was built because of one experience: watching a brilliant family business — over 60 years old — struggle to see where it was heading.</p>
         <p class="reveal reveal-d2">Not because anything was broken. Because nobody spoke both languages: the language of the business, and the language of the tools that are supposed to serve it.</p>
-        <p class="reveal reveal-d3"><strong>That's the gap ZeisWorks fills. And it's nearly impossible to copy.</strong></p>
+        <p class="reveal reveal-d3"><strong>That's the gap zeisWorks fills. And it's nearly impossible to copy.</strong></p>
       </div>
     </div>
     <div>
-      <div class="story-model-card reveal reveal-d2">
-        <p class="story-model-label">The model</p>
-        <div class="story-model-step reveal reveal-d2">
-          <div class="story-step-num">1</div>
-          <div>
-            <strong>Submit any problem — free</strong>
-            <p>Tell me what's going on. You don't need to know what category it falls into.</p>
+      <div class="tcard reveal reveal-d2">
+        <div class="tcard-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+        <p class="tcard-quote">"Jack was amazing to work with, which is why he worked for us on a long-term basis for our Salesforce tasks. He is thorough, accurate, and timely. I highly recommend him for any Salesforce, sales, or sales operations work."</p>
+        <div class="tcard-attr">
+          <strong>Ray Updyke</strong>
+          Alpaca VC · Salesforce &amp; Data Consultant · 254 hrs
+          <div class="tcard-chips">
+            <span class="chip">Collaborative</span>
+            <span class="chip">Detail Oriented</span>
+            <span class="chip">Reliable</span>
           </div>
         </div>
-        <div class="story-model-step reveal reveal-d3">
-          <div class="story-step-num">2</div>
-          <div>
-            <strong>Get a clear plan — free</strong>
-            <p>AI-assisted triage means I can return an actionable plan at no cost. What I'd do, how long, what it costs.</p>
-          </div>
-        </div>
-        <div class="story-model-step reveal reveal-d4">
-          <div class="story-step-num">3</div>
-          <div>
-            <strong>Pay only to execute</strong>
-            <p>Approve the plan. Pay only if and when you want me to build it. No surprises.</p>
-          </div>
-        </div>
-        <a href="#contact" class="btn-primary" style="margin-top:1.75rem;display:inline-block;">Submit a problem — it's free</a>
       </div>
     </div>
   </div>
@@ -1623,7 +1648,7 @@
           <div class="quote-card qcard-scatter" style="--qrot:-8deg;--qtop:51%;--qleft:5%">We bought software to solve the problem. Two years later the problem is still there and now we're also paying for software.</div>
           <div class="quote-card qcard-scatter" style="--qrot:6deg;--qtop:54%;--qleft:50%">I know there's a better way to do this. I just don't have the time to figure out what it is.</div>
           <div class="quote-resolution" id="quoteResolution">
-            <p class="resolution-text">That's what ZeisWorks is for.</p>
+            <p class="resolution-text">That's what zeisWorks is for.</p>
             <a href="#contact" class="btn-primary">Submit your problem — it's free</a>
           </div>
         </div>
@@ -1634,7 +1659,7 @@
           <div class="quote-card">We bought software to solve the problem. Two years later the problem is still there and now we're also paying for software.</div>
           <div class="quote-card">I know there's a better way to do this. I just don't have the time to figure out what it is.</div>
           <div class="quote-resolution-mobile">
-            <p class="resolution-text">That's what ZeisWorks is for.</p>
+            <p class="resolution-text">That's what zeisWorks is for.</p>
             <a href="#contact" class="btn-primary" style="display:inline-block;margin-top:0.25rem;">Submit your problem — it's free</a>
           </div>
         </div>
@@ -2072,8 +2097,8 @@
         <h2 class="section-title">A real person,<br>not an agency.</h2>
         <div class="about-copy">
           <p>I grew up around a small business — a family company that had survived for over 60 years on instinct, relationships, and hard work. I watched it struggle to see where it was heading, not because anything was broken, but because the world changed faster than anyone warned it would.</p>
-          <p>That's why ZeisWorks exists. Not to replace how your business works or who makes it run. To bridge the gap between people who built something real and the tools that can actually help them — without the complexity, the retainers, or the agency overhead.</p>
-          <p>In my day job I serve as Director of Business Development Technology, working directly with client-facing and internal teams to improve how they operate. I've spent years translating between the people who run a business and the tools that are supposed to help them. ZeisWorks is that, available directly — without the agency overhead.</p>
+          <p>That's why zeisWorks exists. Not to replace how your business works or who makes it run. To bridge the gap between people who built something real and the tools that can actually help them — without the complexity, the retainers, or the agency overhead.</p>
+          <p>In my day job I serve as Director of Business Development Technology, working directly with client-facing and internal teams to improve how they operate. I've spent years translating between the people who run a business and the tools that are supposed to help them. zeisWorks is that, available directly — without the agency overhead.</p>
         </div>
       </div>
 
@@ -2094,39 +2119,40 @@
           <p class="faq-a">No. Most people who reach out know something isn't working — they just can't put a name to it. Figuring that out is what the free plan is for.</p>
         </div>
         <div class="faq-item reveal reveal-d2">
-          <p class="faq-q">What happens after I submit?</p>
-          <p class="faq-a">I read it and respond within 24 hours. You get a plain-English plan — what I'd do, how long it takes, what it costs. No call required to get that far.</p>
+          <p class="faq-q">What kinds of problems can you help with?</p>
+          <p class="faq-a">The kind that have been on your list for months. A report nobody can pull without exporting to Excel. A process three people do manually that nobody has time to fix. A system you're paying for that half the team doesn't use. A grant pipeline that lives in three spreadsheets nobody fully trusts. If it's slowing your business down, send it.</p>
         </div>
         <div class="faq-item reveal reveal-d2">
-          <p class="faq-q">What kinds of problems can you help with?</p>
-          <p class="faq-a">The kind that have been on your list for months. A report nobody can pull without exporting to Excel. A process three people do manually that nobody has time to fix. A system you're paying for that half the team doesn't use. If it's slowing your business down, send it.</p>
-        </div>
-        <div class="faq-item reveal reveal-d3">
           <p class="faq-q">What does it cost?</p>
           <p class="faq-a">The plan is free. If you want me to execute it, you get a flat project price — one number, approved before anything starts. No hourly clock, no surprises mid-project.</p>
-        </div>
-      </div>
-
-      <div>
-        <div class="faq-item reveal reveal-d1">
-          <p class="faq-q">What if you can't help?</p>
-          <p class="faq-a">I'll tell you straight, and point you somewhere better if I can. Some problems are the wrong fit for what I do — and you'll hear that for free rather than find out after paying someone else.</p>
-        </div>
-        <div class="faq-item reveal reveal-d2">
-          <p class="faq-q">What if the plan isn't what I was expecting?</p>
-          <p class="faq-a">Tell me. Plans aren't binding — they're a starting point. If something's off, we talk through it before anything begins. You're not committed to anything until you say so.</p>
-        </div>
-        <div class="faq-item reveal reveal-d2">
-          <p class="faq-q">Is there any commitment involved?</p>
-          <p class="faq-a">None. Submitting a problem doesn't start a project. Reading the plan doesn't start a project. You decide if and when anything moves forward.</p>
         </div>
         <div class="faq-item reveal reveal-d3">
           <p class="faq-q">How is the free plan actually viable?</p>
           <p class="faq-a">Two years ago this model didn't work — understanding a problem well enough to return a real plan took hours of calls and back-and-forth. AI has changed that. I can triage a submission and produce a genuine, actionable plan in a fraction of the time. The cost of that step dropped, so I stopped charging for it. You get a real answer before spending anything.</p>
         </div>
+        <div class="faq-item reveal reveal-d3">
+          <p class="faq-q">What happens after I submit?</p>
+          <p class="faq-a">I'll read it and come back with a real plan, usually within a day.</p>
+        </div>
+        <div class="faq-item reveal reveal-d4">
+          <p class="faq-q">What if the plan isn't what I was expecting?</p>
+          <p class="faq-a">Tell me. Plans aren't binding — they're a starting point. If something's off, we talk through it before anything begins. You're not committed to anything until you say so.</p>
+        </div>
+        <div class="faq-item reveal reveal-d4">
+          <p class="faq-q">Is there any commitment involved?</p>
+          <p class="faq-a">None. Submitting a problem doesn't start a project. Reading the plan doesn't start a project. You decide if and when anything moves forward.</p>
+        </div>
         <div class="faq-item reveal reveal-d4">
           <p class="faq-q">Will I be dependent on you after the project is done?</p>
           <p class="faq-a">No. Everything I build is designed for you to own and run without me. If a solution requires software subscriptions — AI tools, automation platforms, that kind of thing — those costs are spelled out in the plan before anything starts. Once the project is handed off, it's yours. I'm not in the loop unless you want me to be.</p>
+        </div>
+        <div class="faq-item reveal reveal-d5">
+          <p class="faq-q">What if you can't help?</p>
+          <p class="faq-a">I'll tell you straight, and point you somewhere better if I can. Some problems are the wrong fit for what I do — and you'll hear that for free rather than find out after paying someone else.</p>
+        </div>
+        <div class="faq-item reveal reveal-d5">
+          <p class="faq-q">Who is behind this?</p>
+          <p class="faq-a">Jack Zeis, a technical consultant based in Golden, Colorado. I've spent six years building CRM systems, automation tools, and data infrastructure for organizations that can't afford to get it wrong — nonprofits, grant-funded teams, and small businesses where the technical person is also the only technical person.</p>
         </div>
       </div>
 
@@ -2222,10 +2248,10 @@
 <footer>
   <div class="footer-inner">
     <div>
-      <div class="footer-logo">ZeisWorks<span class="logo-period">.</span></div>
+      <div class="footer-logo">zeisWorks<span class="logo-period">.</span></div>
       <div class="footer-tag">Tell me what's wrong. I'll figure out the rest.</div>
     </div>
-    <div class="footer-copy">© 2025 ZeisWorks. Golden, CO.</div>
+    <div class="footer-copy">© 2025 zeisWorks. Golden, CO.</div>
   </div>
 </footer>
 
