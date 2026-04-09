@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ZeisWorks — Smart systems for small teams</title>
+<title>ZeisWorks — Tell me what's wrong. I'll figure out the rest.</title>
 <link rel="icon" type="image/png" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAABjElEQVR4nO2XoY7CQBCG/zanECRTEhykgcAb8AZoFC/AE5Ag+xqoupIgEfgiayqxGBBYtg2OpMmcKrfXO7hdSpcT/Grbzub/MjvN7FiQREQMA0qSxMrXtmnzopdVfCGEqNTccZzrOkkSyzJp/hvE9QhMmRe97DtxRvQGeDnAh2qg67o4n89/xtVqNRyPR2WAp2eg3+9rxStn4HA43Px2uVwwGo2w3++xWCyqAbin2WyG7XaL9XqNVqult5mImIj4Uc3ncyYiXi6XWvty31IAYRhyo9Fgz/O095YG2O123G63eTwec5ZlDwNcm5FOL0jTFMPhELZtY7PZoF6v6507vhqSdhFmWYbJZAIhBMIwfMhcljaA53mIogir1QrdbreUOQC9vyAIAiYi9n1f+8xv1YAyQBRF3Gw2eTqdljaXAZSKME1TDAYDnE4npazGcYxer3c3Ji9CpV4ghFA215VSEXY6ncqubC+/D7wB/g+APCxUrW+DiTwomoD4MZrlDyaH09wckI5AzoQpcwD4BBCLmt1P+sElAAAAAElFTkSuQmCC">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -829,6 +829,277 @@
   .footer-tag { font-size: 0.8125rem; color: rgba(255,255,255,0.45); margin-top: 0.2rem; }
   .footer-copy { font-size: 0.8125rem; color: rgba(255,255,255,0.4); text-align: right; }
 
+  /* =====================
+     ANIMATIONS
+  ===================== */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-6px); }
+  }
+  @keyframes gradShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+
+  /* Hero load stagger */
+  .hero-eyebrow { animation: fadeUp 0.55s ease-out 0.05s both; }
+  .hero h1 { animation: fadeUp 0.6s ease-out 0.2s both; }
+  .hero-sub { animation: fadeUp 0.6s ease-out 0.35s both; }
+  .hero-actions { animation: fadeUp 0.6s ease-out 0.5s both; }
+  .hero-visual { animation: fadeUp 0.7s ease-out 0.4s both, float 7s ease-in-out 1.2s infinite; }
+
+  /* Animated gradient on dark sections */
+  .problem {
+    background: linear-gradient(135deg, var(--forest-dark) 0%, var(--forest) 50%, var(--forest-mid) 100%);
+    background-size: 200% 200%;
+    animation: gradShift 12s ease infinite;
+  }
+  .free-cta {
+    background: linear-gradient(135deg, var(--forest-dark) 0%, var(--forest) 55%, #2a5c4a 100%);
+    background-size: 200% 200%;
+    animation: gradShift 14s ease infinite;
+  }
+
+  /* Scroll-triggered reveals */
+  .reveal {
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity 0.65s cubic-bezier(0.16,1,0.3,1), transform 0.65s cubic-bezier(0.16,1,0.3,1);
+  }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+  .reveal-d1 { transition-delay: 0.1s; }
+  .reveal-d2 { transition-delay: 0.2s; }
+  .reveal-d3 { transition-delay: 0.3s; }
+  .reveal-d4 { transition-delay: 0.4s; }
+
+  /* Card hover 3D tilt */
+  .pcard { transition: transform 0.3s ease, box-shadow 0.3s ease; }
+  .pcard:hover { transform: perspective(800px) rotateY(-2deg) translateY(-4px); box-shadow: 0 16px 40px rgba(30,28,24,0.12); }
+  .tcard { transition: transform 0.3s ease, box-shadow 0.3s ease; }
+  .tcard:hover { transform: perspective(800px) rotateY(2deg) translateY(-4px); box-shadow: 0 12px 32px rgba(30,28,24,0.1); }
+
+  /* =====================
+     SOCIAL PROOF BAR
+  ===================== */
+  .proof-bar {
+    background: var(--cream-dark);
+    border-top: 1px solid #E8E3D8;
+    border-bottom: 1px solid #E8E3D8;
+    padding: 0.875rem 2rem;
+  }
+  .proof-bar-inner {
+    max-width: var(--max);
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    gap: 2.5rem;
+    flex-wrap: wrap;
+  }
+  .proof-bar-item {
+    font-size: 0.8125rem;
+    color: var(--ink-mid);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .proof-bar-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--forest-mid); flex-shrink: 0; }
+
+  /* =====================
+     FOUNDING STORY
+  ===================== */
+  .story { background: var(--cream); padding: 5rem 2rem; border-top: 1px solid var(--cream-dark); }
+  .story-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: start;
+    max-width: var(--max);
+    margin: 0 auto;
+  }
+  .story-body p { color: var(--ink-mid); line-height: 1.85; margin-bottom: 1.25rem; font-size: 1.0625rem; }
+  .story-body p:last-child { margin-bottom: 0; }
+  .story-body p strong { color: var(--ink); font-weight: 500; }
+  .story-body p em { font-style: italic; color: var(--ink); }
+  .story-model-card {
+    background: var(--cream-dark);
+    border: 1px solid #E8E3D8;
+    border-radius: var(--radius-lg);
+    padding: 2.5rem;
+  }
+  .story-model-label {
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--ink-light);
+    margin-bottom: 1.75rem;
+  }
+  .story-model-step { display: flex; gap: 1rem; align-items: flex-start; margin-bottom: 1.5rem; }
+  .story-model-step:last-of-type { margin-bottom: 0; }
+  .story-step-num {
+    width: 28px; height: 28px; min-width: 28px;
+    border-radius: 50%;
+    background: var(--terra);
+    color: #fff;
+    font-size: 0.8125rem;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 3px;
+    font-family: var(--font-sans);
+  }
+  .story-model-step strong { color: var(--ink); font-weight: 500; display: block; margin-bottom: 0.25rem; font-size: 0.9375rem; }
+  .story-model-step p { font-size: 0.875rem; color: var(--ink-mid); line-height: 1.6; margin: 0; }
+
+  /* =====================
+     DOORS-NOT (What this isn't)
+  ===================== */
+  .doors-not {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 1.75rem;
+    margin-bottom: 1.25rem;
+  }
+  .doors-not span { font-size: 0.875rem; color: var(--ink-light); }
+  .doors-not span::before { content: '✕ '; color: var(--terra); }
+
+  /* =====================
+     PRICING MODEL FLOW
+  ===================== */
+  .pricing-model-head {
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--ink-light);
+    margin-bottom: 1.5rem;
+  }
+  .pricing-model-flow { display: flex; flex-direction: column; gap: 0.75rem; }
+  .pmf-step { display: flex; align-items: center; gap: 0.875rem; }
+  .pmf-tag {
+    font-size: 0.75rem;
+    font-weight: 500;
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+    white-space: nowrap;
+  }
+  .pmf-free { background: var(--forest-light); color: var(--forest); }
+  .pmf-paid { background: var(--terra-light); color: var(--terra-dark); }
+  .pmf-step strong { font-size: 0.9375rem; color: var(--ink); font-weight: 500; }
+  .pmf-arrow { color: var(--ink-light); font-size: 1.125rem; padding-left: 1rem; line-height: 1; }
+  .pricing-not {
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--cream-dark);
+  }
+  .pricing-not-label {
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: var(--ink-light);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 0.75rem;
+  }
+  .pricing-not ul { list-style: none; display: flex; flex-direction: column; gap: 0.4rem; }
+  .pricing-not li { font-size: 0.875rem; color: var(--ink-mid); }
+  .pricing-not li::before { content: '✕ '; color: var(--terra); }
+
+  /* =====================
+     AVAILABILITY SIGNAL
+  ===================== */
+  .availability-dot {
+    display: inline-block;
+    width: 7px; height: 7px;
+    border-radius: 50%;
+    background: #4CAF50;
+    margin-right: 0.4rem;
+    box-shadow: 0 0 0 2px rgba(76,175,80,0.25);
+    vertical-align: middle;
+    position: relative;
+    top: -1px;
+  }
+
+  /* =====================
+     STICKY CTA
+  ===================== */
+  .sticky-cta {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    z-index: 99;
+    opacity: 0;
+    transform: translateY(8px);
+    transition: opacity 0.3s, transform 0.3s;
+    pointer-events: none;
+  }
+  .sticky-cta.visible { opacity: 1; transform: translateY(0); pointer-events: auto; }
+  .sticky-cta a {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: var(--terra);
+    color: #fff;
+    padding: 0.75rem 1.5rem;
+    border-radius: 40px;
+    font-family: var(--font-sans);
+    font-size: 0.875rem;
+    font-weight: 500;
+    text-decoration: none;
+    box-shadow: 0 4px 20px rgba(45,74,107,0.35);
+    transition: background 0.2s, transform 0.15s;
+  }
+  .sticky-cta a:hover { background: var(--terra-dark); transform: translateY(-2px); }
+
+  /* =====================
+     WHAT HAPPENS NEXT
+  ===================== */
+  .contact-next { margin-top: 2rem; }
+  .contact-next-label {
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--ink-light);
+    margin-bottom: 0.875rem;
+  }
+  .contact-next-step {
+    display: flex;
+    gap: 0.875rem;
+    align-items: flex-start;
+    margin-bottom: 0.75rem;
+  }
+  .contact-next-num {
+    width: 22px; height: 22px; min-width: 22px;
+    border-radius: 50%;
+    background: var(--terra-light);
+    color: var(--terra);
+    font-size: 0.75rem;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 2px;
+    font-family: var(--font-sans);
+  }
+  .contact-next-step p { font-size: 0.875rem; color: var(--ink-mid); line-height: 1.55; margin: 0; }
+
+  /* =====================
+     FORM TRUST NOTE
+  ===================== */
+  .form-trust {
+    font-size: 0.8125rem;
+    color: var(--ink-light);
+    margin-top: 0.75rem;
+    text-align: center;
+    line-height: 1.5;
+  }
+
   /* RESPONSIVE */
   @media (max-width: 768px) {
     .hero { grid-template-columns: 1fr; gap: 2.5rem; padding: 4rem 1.25rem 3rem; }
@@ -847,6 +1118,12 @@
     .pricing-main { position: static; }
     .testimonials-grid { grid-template-columns: 1fr; }
     section { padding: 3.5rem 1.25rem; }
+    .story-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+    .story { padding: 3.5rem 1.25rem; }
+    .proof-bar-inner { gap: 1rem 1.75rem; }
+    .sticky-cta { bottom: 1rem; right: 1rem; left: 1rem; }
+    .sticky-cta a { justify-content: center; border-radius: var(--radius-lg); }
+    .pricing-model-flow { gap: 0.625rem; }
   }
 </style>
 </head>
@@ -858,10 +1135,10 @@
     <a href="#" class="nav-logo">ZeisWorks<span class="logo-period">.</span></a>
     <ul class="nav-links">
       <li><a href="#services">Recent work</a></li>
-      <li><a href="#pricing">Pricing</a></li>
+      <li><a href="#how">How It Works</a></li>
       <li><a href="#testimonials">Reviews</a></li>
       <li><a href="#about">About</a></li>
-      <li><a href="#contact" class="nav-cta">Get in touch</a></li>
+      <li><a href="#contact" class="nav-cta"><span class="availability-dot"></span>Submit a problem — free</a></li>
     </ul>
   </div>
 </nav>
@@ -869,31 +1146,92 @@
 <!-- HERO -->
 <section class="hero">
   <div>
-    <p class="hero-eyebrow">Smart systems for small teams · Golden, CO</p>
+    <p class="hero-eyebrow">Free diagnosis. You only pay to execute.</p>
     <h1>You know things could work better.<br><em>You're just not sure<br>where to start.</em></h1>
-    <p class="hero-sub">Your business runs well. A few things could run better — and you probably already know which ones. Send me the problem. I'll come back with a plain-English plan: what I'd do, how long it takes, and what it costs. No charge for that part.</p>
+    <p class="hero-sub">Tell me what's going on. I'll tell you exactly what to do about it — for free. You only pay if you want me to fix it.</p>
     <div class="hero-actions">
-      <a href="#contact" class="btn-primary">Get your free plan</a>
+      <a href="#contact" class="btn-primary">Submit your problem — it's free</a>
       <a href="#services" class="btn-secondary">See recent work →</a>
     </div>
   </div>
   <div class="hero-visual">
-    <p class="proof-label">A few things worth knowing upfront</p>
-    <div class="proof-item">
+    <p class="proof-label">How the model works</p>
+    <div class="proof-item reveal reveal-d1">
       <div class="proof-dot"></div>
-      <p><strong>Calls and advice are free.</strong> You only pay when you approve work. No retainer required to pick my brain.</p>
+      <p><strong>Submit any problem — no cost.</strong> Tell me what's going on in whatever words you have. You don't need to know what the solution is or what category it falls into.</p>
     </div>
-    <div class="proof-item">
+    <div class="proof-item reveal reveal-d2">
       <div class="proof-dot"></div>
-      <p><strong>No long-term commitments.</strong> Some clients have one thing to fix. Others come back regularly. Both are fine.</p>
+      <p><strong>Get a clear, actionable plan — free.</strong> I'll return a plain-English breakdown: what I'd do, how long it takes, and what it costs. AI-assisted triage makes this possible at no charge.</p>
     </div>
-    <div class="proof-item">
+    <div class="proof-item reveal reveal-d3">
       <div class="proof-dot"></div>
-      <p><strong>Plain English, always.</strong> You'll understand what I'm doing and why. No black boxes.</p>
+      <p><strong>Pay only to execute.</strong> You approve the plan first. Only pay if and when you want me to build it. No surprises, ever.</p>
     </div>
-    <div class="proof-item">
-      <div class="proof-dot"></div>
-      <p><strong>You keep ownership.</strong> Everything I build is yours — documented, handed off, and not dependent on me to keep running.</p>
+    <div class="proof-item reveal reveal-d4" style="margin-top:1.5rem;padding-top:1.25rem;border-top:1px solid #E8E3D8;">
+      <div class="proof-dot" style="background:var(--terra);opacity:0.5;"></div>
+      <p style="font-style:italic;color:var(--ink-mid);font-size:0.875rem;line-height:1.65;">"Jack consistently exceeded my expectations across numerous projects. He brings both technical skill and a genuine understanding of how businesses actually work."<br><strong style="font-style:normal;font-size:0.8125rem;color:var(--ink);">— Alex Zemianek, CEO, Goby &nbsp;·&nbsp; ★★★★★</strong></p>
+    </div>
+  </div>
+</section>
+
+<!-- SOCIAL PROOF BAR -->
+<div class="proof-bar reveal">
+  <div class="proof-bar-inner">
+    <div class="proof-bar-item">
+      <div class="proof-bar-dot"></div>
+      <span><strong style="color:var(--ink);font-weight:500;">100% Job Success · Top Rated</strong> on Upwork</span>
+    </div>
+    <div class="proof-bar-item">
+      <div class="proof-bar-dot"></div>
+      <span>4 real projects — <a href="#services" style="color:var(--terra);text-decoration:none;">see the work →</a></span>
+    </div>
+    <div class="proof-bar-item">
+      <div class="proof-bar-dot"></div>
+      <span>Free to start — no commitment required</span>
+    </div>
+  </div>
+</div>
+
+<!-- FOUNDING STORY -->
+<section class="story">
+  <div class="story-grid">
+    <div class="story-text">
+      <p class="section-label reveal">Why this exists</p>
+      <h2 class="section-title reveal reveal-d1">This isn't a service offering.<br>It's a worldview.</h2>
+      <div class="story-body">
+        <p class="reveal reveal-d2">ZeisWorks wasn't built to serve a market category. It was built because of a specific experience: watching a brilliant, decades-old family business struggle to know where it was heading.</p>
+        <p class="reveal reveal-d2">The company had survived for over 60 years — not because they had dashboards or automation, but because the people running it were good at what they do. They operated on instinct, relationships, and hard work. But the world changed around them faster than anyone warned them it would. Not in a way that threatened the business immediately — but in a way that made it harder to see clearly. Harder to answer: <em>where are we heading?</em></p>
+        <p class="reveal reveal-d3">What they needed wasn't a consultant who'd rip everything out and replace it. They needed someone who understood that the business has a soul — that the relationships matter — and who also knew how to actually fix things.</p>
+        <p class="reveal reveal-d3"><strong>That's what ZeisWorks is. And it's nearly impossible to copy.</strong></p>
+      </div>
+    </div>
+    <div>
+      <div class="story-model-card reveal reveal-d2">
+        <p class="story-model-label">The model</p>
+        <div class="story-model-step reveal reveal-d2">
+          <div class="story-step-num">1</div>
+          <div>
+            <strong>Submit any problem — free</strong>
+            <p>Tell me what's going on. You don't need to know what category it falls into.</p>
+          </div>
+        </div>
+        <div class="story-model-step reveal reveal-d3">
+          <div class="story-step-num">2</div>
+          <div>
+            <strong>Get a clear plan — free</strong>
+            <p>AI-assisted triage means I can return an actionable plan at no cost. What I'd do, how long, what it costs.</p>
+          </div>
+        </div>
+        <div class="story-model-step reveal reveal-d4">
+          <div class="story-step-num">3</div>
+          <div>
+            <strong>Pay only to execute</strong>
+            <p>Approve the plan. Pay only if and when you want me to build it. No surprises.</p>
+          </div>
+        </div>
+        <a href="#contact" class="btn-primary" style="margin-top:1.75rem;display:inline-block;">Submit a problem — it's free</a>
+      </div>
     </div>
   </div>
 </section>
@@ -921,8 +1259,8 @@
 <section class="two-doors">
   <div class="section-inner">
     <div class="doors-intro">
-      <p class="section-label">Where are you starting from?</p>
-      <h2 class="section-title">Most people come in<br>one of two ways.</h2>
+      <p class="section-label reveal">Who this is for</p>
+      <h2 class="section-title reveal reveal-d1">Built for businesses that run<br>on relationships, not software.</h2>
     </div>
     <div class="doors-grid">
 
@@ -932,7 +1270,7 @@
         </div>
         <h3>I have a specific problem</h3>
         <blockquote>"We've been doing this the same way for years. It works, but it takes longer than it should — and nobody ever has time to fix it."</blockquote>
-        <p style="font-size:0.9rem;color:var(--ink-mid);line-height:1.7;">You know what's broken. You just need someone who can actually fix it without turning it into a six-month project. That's exactly what I do.</p>
+        <p style="font-size:0.9rem;color:var(--ink-mid);line-height:1.7;">You know what's broken. You just need someone who can actually fix it without turning it into a six-month project — and without needing to hire an agency or an in-house IT person to get it done.</p>
         <a href="#contact" class="door-cta">Tell me what it is →</a>
       </div>
 
@@ -942,14 +1280,20 @@
         </div>
         <h3>I'm not sure where to start</h3>
         <blockquote>"I know things are changing fast. I just don't know what we should actually be doing about it — and I can't expect my team to figure that out on top of everything else."</blockquote>
-        <p style="font-size:0.9rem;color:var(--ink-mid);line-height:1.7;">You don't have to show up with a clear problem. A call costs nothing, and most people leave with a clearer picture of where to start — even if they don't hire me.</p>
+        <p style="font-size:0.9rem;color:var(--ink-mid);line-height:1.7;">You don't have to show up with a clear problem or know what category it falls into. That's what the free plan is for. Most people walk away with a clearer picture of where to start — even if they don't hire me.</p>
         <a href="#contact" class="door-cta">Let's talk it through →</a>
       </div>
 
     </div>
     <div class="doors-tenet">
+      <div class="doors-not">
+        <span>Not a retainer.</span>
+        <span>Not a proposal process.</span>
+        <span>Not a big agency.</span>
+        <span>Not dependent on you knowing the right question.</span>
+      </div>
       <p>The goal is never to change how your business works or <strong>replace the people who make it run.</strong> It's to make their jobs — and yours — a little easier.</p>
-      <a href="#contact" class="doors-tenet-cta">Send me your problem — I'll send you a plan, free →</a>
+      <a href="#contact" class="doors-tenet-cta">Submit your problem — I'll send you a plan, free →</a>
     </div>
   </div>
 </section>
@@ -1094,45 +1438,106 @@
           });
       });
     }
+
+    // Scroll-triggered reveals
+    const reveals = document.querySelectorAll('.reveal');
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+    reveals.forEach(el => revealObserver.observe(el));
+
+    // Sticky CTA — show after hero exits, hide when contact is visible
+    const stickyCta = document.getElementById('stickyCta');
+    const heroSection = document.querySelector('.hero');
+    const contactSection = document.getElementById('contact');
+
+    if (stickyCta && heroSection && contactSection) {
+      const heroObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (!entry.isIntersecting) {
+            stickyCta.classList.add('visible');
+          } else {
+            stickyCta.classList.remove('visible');
+          }
+        });
+      }, { threshold: 0 });
+      heroObserver.observe(heroSection);
+
+      const contactObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            stickyCta.classList.remove('visible');
+          }
+        });
+      }, { threshold: 0.1 });
+      contactObserver.observe(contactSection);
+    }
   });
 </script>
 
 <!-- PRICING -->
 <section id="pricing">
   <div class="section-inner">
-    <p class="section-label">Pricing</p>
-    <h2 class="section-title">Simple, transparent,<br>no surprises.</h2>
+    <p class="section-label reveal">Pricing</p>
+    <h2 class="section-title reveal reveal-d1">The plan is always free.<br>You only pay for execution.</h2>
     <div class="pricing-grid">
 
-      <div class="pricing-main">
-        <div class="pricing-rate">
-          <span class="rate-number">$125</span>
-          <span class="rate-per">/hr</span>
+      <div class="pricing-main reveal reveal-d2">
+        <p class="pricing-model-head">The Model</p>
+        <div class="pricing-model-flow">
+          <div class="pmf-step">
+            <span class="pmf-tag pmf-free">Free</span>
+            <strong>Submit any problem</strong>
+          </div>
+          <div class="pmf-arrow">↓</div>
+          <div class="pmf-step">
+            <span class="pmf-tag pmf-free">Free</span>
+            <strong>Get an actionable plan</strong>
+          </div>
+          <div class="pmf-arrow">↓</div>
+          <div class="pmf-step">
+            <span class="pmf-tag pmf-paid">$125/hr</span>
+            <strong>Pay only to execute</strong>
+          </div>
         </div>
-        <p class="rate-desc">One rate for everything. No retainer, no minimum, no markups.</p>
-        <a href="#contact" class="btn-primary" style="margin-top:1.75rem;display:inline-block;">Get your free plan</a>
+        <p class="rate-desc" style="margin-top:1.5rem;">Execution at $125/hr — scoped and approved before anything starts. No retainer, no minimum.</p>
+        <a href="#contact" class="btn-primary" style="margin-top:1.75rem;display:inline-block;">Submit your problem — it's free</a>
+        <div class="pricing-not">
+          <p class="pricing-not-label">What this isn't</p>
+          <ul>
+            <li>Not a retainer or long-term commitment</li>
+            <li>Not a proposal process or sales call</li>
+            <li>Not an agency that passes you to a junior</li>
+            <li>Not dependent on you knowing the right question</li>
+          </ul>
+        </div>
       </div>
 
       <div class="pricing-details">
-        <div class="pricing-point">
-          <div class="pricing-point-icon">
-            <svg viewBox="0 0 24 24" style="width:18px;height:18px;stroke:var(--forest-mid);fill:none;stroke-width:1.75;stroke-linecap:round;stroke-linejoin:round;"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.68A2 2 0 012 .84h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 8.91a16 16 0 006 6l1.23-1.23a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
-          </div>
-          <div>
-            <strong>Calls and advice are free</strong>
-            <p>Talk through your problem, get my honest read, ask as many questions as you want. No clock running until you approve work.</p>
-          </div>
-        </div>
-        <div class="pricing-point">
+        <div class="pricing-point reveal reveal-d2">
           <div class="pricing-point-icon">
             <svg viewBox="0 0 24 24" style="width:18px;height:18px;stroke:var(--forest-mid);fill:none;stroke-width:1.75;stroke-linecap:round;stroke-linejoin:round;"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+          </div>
+          <div>
+            <strong>The plan is free — always</strong>
+            <p>Tell me what's going on. I'll come back with a clear, actionable plan — what I'd do, how long, and what it costs. No charge for that part, ever.</p>
+          </div>
+        </div>
+        <div class="pricing-point reveal reveal-d3">
+          <div class="pricing-point-icon">
+            <svg viewBox="0 0 24 24" style="width:18px;height:18px;stroke:var(--forest-mid);fill:none;stroke-width:1.75;stroke-linecap:round;stroke-linejoin:round;"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.68A2 2 0 012 .84h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 8.91a16 16 0 006 6l1.23-1.23a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
           </div>
           <div>
             <strong>Scoped before anything starts</strong>
             <p>You get a clear outline — what I'll do, how many hours I estimate, what the total looks like. You approve it before a single hour is billed.</p>
           </div>
         </div>
-        <div class="pricing-point">
+        <div class="pricing-point reveal reveal-d4">
           <div class="pricing-point-icon">
             <svg viewBox="0 0 24 24" style="width:18px;height:18px;stroke:var(--forest-mid);fill:none;stroke-width:1.75;stroke-linecap:round;stroke-linejoin:round;"><polyline points="20 6 9 17 4 12"/></svg>
           </div>
@@ -1150,24 +1555,24 @@
 <!-- HOW I WORK -->
 <section class="how" id="how">
   <div class="section-inner">
-    <p class="section-label">How it works</p>
-    <h2 class="section-title">As simple as it should be.</h2>
-    <div class="pricing-pill">
+    <p class="section-label reveal">How it works</p>
+    <h2 class="section-title reveal reveal-d1">As simple as it should be.</h2>
+    <div class="pricing-pill reveal reveal-d2">
       <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-      <span><strong style="color:var(--ink);font-weight:500;">Calls and advice are always free.</strong> You only pay for work you've approved.</span>
+      <span><strong style="color:var(--ink);font-weight:500;">The diagnosis is always free.</strong> You only pay for work you've approved.</span>
     </div>
     <div class="steps">
-      <div class="step">
+      <div class="step reveal reveal-d1">
         <div class="step-num">01</div>
         <h3>Tell me what's going on</h3>
-        <p>Send me a message or book a call. Describe the problem in whatever words you have — you don't need to know what the solution is. No charge, no commitment.</p>
+        <p>Send me a message. Describe the problem in whatever words you have — you don't need to know what the solution is or what category it falls into. No charge, no commitment.</p>
       </div>
-      <div class="step">
+      <div class="step reveal reveal-d2">
         <div class="step-num">02</div>
-        <h3>You get a clear outline</h3>
-        <p>I'll come back with exactly what I'd do, how long it takes, and what it costs. We'll talk it through if needed. You don't agree to anything until you're comfortable with it.</p>
+        <h3>You get a clear plan — free</h3>
+        <p>I'll come back with a plain-English outline: what I'd do, how long it would take, and what it costs. The plan is always free. You don't agree to anything until you're comfortable.</p>
       </div>
-      <div class="step">
+      <div class="step reveal reveal-d3">
         <div class="step-num">03</div>
         <h3>I get it done</h3>
         <p>Once you approve, I build it. I'll check in if something comes up, but I don't need managing. You get the finished work handed off and ready to use.</p>
@@ -1251,9 +1656,9 @@
       <div class="about-right">
         <h2 class="section-title">A real person,<br>not an agency.</h2>
         <div class="about-copy">
-          <p>I grew up around a small business. I know what owners actually care about — their people, their clients, and the thing they've spent years building.</p>
-          <p>In my day job I serve as Director of Business Development Technology, where I work directly with both client-facing and internal teams to improve how they operate. I've spent years translating between the people who run a business and the tools that are supposed to help them — and figuring out what actually works versus what sounds good in a proposal.</p>
-          <p>ZeisWorks is how I bring that to small businesses directly.</p>
+          <p>I grew up around a small business — a family company that had survived for over 60 years on instinct, relationships, and hard work. I watched it struggle to see where it was heading, not because anything was broken, but because the world changed faster than anyone warned it would.</p>
+          <p>That's why ZeisWorks exists. Not to replace how your business works or who makes it run. To bridge the gap between people who built something real and the tools that can actually help them — without the complexity, the retainers, or the agency overhead.</p>
+          <p>In my day job I serve as Director of Business Development Technology, working directly with client-facing and internal teams to improve how they operate. I've spent years translating between the people who run a business and the tools that are supposed to help them. ZeisWorks is how I bring that to small businesses directly.</p>
         </div>
       </div>
 
@@ -1267,12 +1672,12 @@
     <p class="section-label">No commitment required</p>
     <h2 class="section-title">Send me your problem.<br>I'll send you a plan.</h2>
     <p class="free-cta-body">
-      Tell me what's going on — in whatever words you have. I'll spend an hour on it and come back with a plain-English plan: <strong>what I'd do, how long it would take, and what it would cost.</strong> No charge for any of that. Then it's your call — build it yourself or let's work on it together.
+      Tell me what's going on — in whatever words you have. I'll return a plain-English plan: <strong>what I'd do, how long it would take, and what it would cost.</strong> No charge for any of that. Then it's your call — approve the plan and I'll execute, or take it and run with it yourself.
     </p>
     <div class="free-cta-actions">
-      <a href="#contact" class="btn-primary">Get your free plan</a>
+      <a href="#contact" class="btn-primary">Submit your problem — it's free</a>
     </div>
-    <p class="free-cta-note">You only pay if you decide to work together — and only for work you've approved.</p>
+    <p class="free-cta-note">The plan is always free. You only pay if you decide to work together — and only for work you've approved.</p>
   </div>
 </section>
 
@@ -1283,10 +1688,25 @@
       <div class="contact-left">
         <p class="section-label">Get your free plan</p>
         <h2 class="section-title">Tell me what's going on.</h2>
-        <p>Doesn't need to be polished. Just tell me what's happening — I'll take it from there.</p>
+        <p>Tell me what's happening. You don't need to know what the solution is or what category it falls into — that's what the plan is for. No charge, no commitment, no sales call.</p>
         <div class="contact-email-block">
           <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
           <a href="mailto:hello@zeisworks.com">hello@zeisworks.com</a>
+        </div>
+        <div class="contact-next">
+          <p class="contact-next-label">What happens after you submit</p>
+          <div class="contact-next-step">
+            <div class="contact-next-num">1</div>
+            <p>I review your problem — usually within 24 hours</p>
+          </div>
+          <div class="contact-next-step">
+            <div class="contact-next-num">2</div>
+            <p>I send a plain-English plan — always free</p>
+          </div>
+          <div class="contact-next-step">
+            <div class="contact-next-num">3</div>
+            <p>You decide: build it yourself, or let me do it</p>
+          </div>
         </div>
       </div>
       <form class="contact-form" name="contact" netlify>
@@ -1320,7 +1740,8 @@
           <label for="message">Tell me more</label>
           <textarea id="message" name="message" placeholder="What's the problem? Even a rough description is helpful — you don't need to have it figured out."></textarea>
         </div>
-        <button type="submit" class="form-submit">Send message</button>
+        <button type="submit" class="form-submit">Send it over — it's free</button>
+        <p class="form-trust">Typical response within 24 hours. Your plan is always free — no commitment required.</p>
       </form>
       <div id="form-success" style="display:none; padding: 2rem; background: var(--cream); border: 1px solid var(--terra); border-radius: 8px; text-align: center;">
         <p style="font-size: 1.1rem; margin: 0;">Thanks — I'll be in touch soon.</p>
@@ -1335,3 +1756,18 @@
     <div>
       <div class="footer-logo">ZeisWorks<span class="logo-period">.</span></div>
       <div class="footer-tag">Tell me what's wrong. I'll figure out the rest.</div>
+    </div>
+    <div class="footer-copy">© 2025 ZeisWorks. Golden, CO.</div>
+  </div>
+</footer>
+
+<!-- STICKY CTA -->
+<div class="sticky-cta" id="stickyCta">
+  <a href="#contact">
+    <svg viewBox="0 0 24 24" style="width:16px;height:16px;stroke:#fff;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+    Submit a problem — it's free
+  </a>
+</div>
+
+</body>
+</html>
