@@ -100,10 +100,7 @@
     padding: 6rem 2rem 5rem;
     max-width: var(--max);
     margin: 0 auto;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 4rem;
-    align-items: center;
+
   }
   .hero-eyebrow {
     font-size: 0.8125rem;
@@ -1102,7 +1099,6 @@
   .hero h1 { animation: fadeUp 0.6s ease-out 0.2s both; }
   .hero-sub { animation: fadeUp 0.6s ease-out 0.35s both; }
   .hero-actions { animation: fadeUp 0.6s ease-out 0.5s both; }
-  .hero-visual { animation: fadeUp 0.7s ease-out 0.4s both, float 7s ease-in-out 1.2s infinite; }
 
   /* Animated gradient on dark sections */
   .problem {
@@ -1516,7 +1512,7 @@
       <li><a href="#how">How It Works</a></li>
       <li><a href="#testimonials">Reviews</a></li>
       <li><a href="#about">About</a></li>
-      <li><a href="#contact" class="nav-cta"><span class="availability-dot"></span>Submit a problem — free</a></li>
+      <li><a href="#contact" class="nav-cta"><span class="availability-dot"></span>Submit your problem — it’s free</a></li>
     </ul>
   </div>
 </nav>
@@ -1552,7 +1548,7 @@
         <div class="hero-form-field">
           <textarea name="message" placeholder="What's the problem? Even a rough description is enough — you don't need to know the solution." rows="4" required></textarea>
         </div>
-        <button type="submit" class="hero-form-submit">Send it — it's free</button>
+        <button type="submit" class="hero-form-submit">Submit your problem — it’s free</button>
         <p class="hero-form-trust">Typical response within 24 hours. Your plan is always free.</p>
       </form>
       <div class="hero-form-success" style="display:none;">
@@ -1560,120 +1556,37 @@
       </div>
     </div>
   </div>
-  <div class="hero-visual">
-    <p class="proof-label">How it works</p>
-    <div class="hero-steps">
-      <div class="hero-step reveal reveal-d1">
-        <div class="hero-step-num">01</div>
-        <div>
-          <h4>Tell me what's going on</h4>
-          <p>Send the problem in whatever words you have. No charge, no commitment. You don't need to know what the solution is.</p>
-        </div>
-      </div>
-      <div class="hero-step reveal reveal-d2">
-        <div class="hero-step-num">02</div>
-        <div>
-          <h4>You get a clear plan</h4>
-          <p>I'll come back with exactly what I'd do, how long it takes, and what it costs. You approve it before a single hour is billed.</p>
-        </div>
-      </div>
-      <div class="hero-step reveal reveal-d3">
-        <div class="hero-step-num">03</div>
-        <div>
-          <h4>I get it done</h4>
-          <p>Once approved, I build it. You get finished work handed off and ready to use — documented, and not dependent on me to keep running.</p>
-        </div>
-      </div>
-    </div>
 
-  </div>
 </section>
 
-
-
-<!-- FOUNDING STORY -->
-<section class="story">
-  <div class="story-grid">
-    <div class="story-text">
-      <p class="section-label reveal">Why this exists</p>
-      <h2 class="section-title reveal reveal-d1">Built for businesses<br>that already work.</h2>
-      <div class="story-body">
-        <p class="reveal reveal-d2">zeisWorks was built because of one experience: watching a brilliant family business — over 60 years old — struggle to see where it was heading.</p>
-        <p class="reveal reveal-d2">Not because anything was broken. Because nobody spoke both languages: the language of the business, and the language of the tools that are supposed to serve it.</p>
-        <p class="reveal reveal-d3"><strong>That's the gap zeisWorks fills. And it's nearly impossible to copy.</strong></p>
-      </div>
-    </div>
-    <div>
-      <div class="tcard reveal reveal-d2">
-        <div class="tcard-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
-        <p class="tcard-quote">"Jack was amazing to work with, which is why he worked for us on a long-term basis for our Salesforce tasks. He is thorough, accurate, and timely. I highly recommend him for any Salesforce, sales, or sales operations work."</p>
-        <div class="tcard-attr">
-          <strong>Ray Updyke</strong>
-          Alpaca VC · Salesforce &amp; Data Consultant · 254 hrs
-          <div class="tcard-chips">
-            <span class="chip">Collaborative</span>
-            <span class="chip">Detail Oriented</span>
-            <span class="chip">Reliable</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- PROBLEM -->
+<!-- SOUND FAMILIAR / WHO THIS IS FOR -->
 <section class="problem" id="problem">
   <div class="section-inner">
     <div class="problem-grid">
       <div>
         <p class="section-label">Sound familiar?</p>
-        <h2 class="section-title" style="color:#fff;">You've built something real.<br>Parts of it haven't kept up.</h2>
-        <p class="section-body">Most established businesses have at least one thing — a process, a system, a spreadsheet — that works, but barely. You know it. You've been meaning to fix it. I help you actually fix it, without making it a bigger project than it needs to be.</p>
+        <h2 class="section-title" style="color:#fff;">You’ve built something real.<br>Parts of it haven’t kept up.</h2>
+        <p class="section-body">Most established businesses have at least one thing — a process, a system, a spreadsheet — that works, but barely. You know it. You’ve been meaning to fix it. I help you actually fix it, without making it a bigger project than it needs to be.</p>
       </div>
       <div class="problem-quotes">
-        <!-- Desktop: scatter animation -->
-        <div class="quote-scatter" id="quoteScatter">
-          <div class="quote-card qcard-scatter" style="--qrot:-5deg;--qtop:4%;--qleft:3%">I feel like we're leaving time on the table every day. I just don't know where to start fixing it.</div>
-          <div class="quote-card qcard-scatter" style="--qrot:4deg;--qtop:2%;--qleft:51%">Our data is all over the place. I can never get a straight answer out of it when I need one.</div>
-          <div class="quote-card qcard-scatter" style="--qrot:-8deg;--qtop:51%;--qleft:5%">We bought software to solve the problem. Two years later the problem is still there and now we're also paying for software.</div>
-          <div class="quote-card qcard-scatter" style="--qrot:6deg;--qtop:54%;--qleft:50%">I know there's a better way to do this. I just don't have the time to figure out what it is.</div>
-          <div class="quote-resolution" id="quoteResolution">
-            <p class="resolution-text">That's what zeisWorks is for.</p>
-            <a href="#contact" class="btn-primary">Submit your problem — it's free</a>
-          </div>
-        </div>
-        <!-- Mobile: static stacked fallback -->
-        <div class="quote-mobile-stack">
-          <div class="quote-card">I feel like we're leaving time on the table every day. I just don't know where to start fixing it.</div>
+        <div class="quote-mobile-stack" style="display:flex;flex-direction:column;gap:1.25rem;">
+          <div class="quote-card">I feel like we’re leaving time on the table every day. I just don’t know where to start fixing it.</div>
           <div class="quote-card">Our data is all over the place. I can never get a straight answer out of it when I need one.</div>
-          <div class="quote-card">We bought software to solve the problem. Two years later the problem is still there and now we're also paying for software.</div>
-          <div class="quote-card">I know there's a better way to do this. I just don't have the time to figure out what it is.</div>
-          <div class="quote-resolution-mobile">
-            <p class="resolution-text">That's what zeisWorks is for.</p>
-            <a href="#contact" class="btn-primary" style="display:inline-block;margin-top:0.25rem;">Submit your problem — it's free</a>
-          </div>
+          <div class="quote-card">We bought software to solve the problem. Two years later the problem is still there and now we’re also paying for software.</div>
+          <div class="quote-card">I know there’s a better way to do this. I just don’t have the time to figure out what it is.</div>
         </div>
       </div>
     </div>
-  </div>
-</section>
 
-<!-- TWO DOORS -->
-<section class="two-doors">
-  <div class="section-inner">
-    <div class="doors-intro">
-      <p class="section-label reveal">Who this is for</p>
-      <h2 class="section-title reveal reveal-d1">Built for businesses that run<br>on relationships, not software.</h2>
-    </div>
-    <div class="doors-grid">
+    <div class="doors-grid" style="margin-top:3rem;">
 
       <div class="door-card">
         <div class="door-icon">
           <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
         </div>
         <h3>I have a specific problem</h3>
-        <blockquote>"We've been doing this the same way for years. It works, but it takes longer than it should — and nobody ever has time to fix it."</blockquote>
-        <p style="font-size:0.9rem;color:var(--ink-mid);line-height:1.7;">You know what's broken. You just need someone who can actually fix it without turning it into a six-month project — and without needing to hire an agency or an in-house IT person to get it done.</p>
+        <blockquote>“We’ve been doing this the same way for years. It works, but it takes longer than it should — and nobody ever has time to fix it.”</blockquote>
+        <p style="font-size:0.9rem;color:var(--ink-mid);line-height:1.7;">You know what’s broken. You just need someone who can actually fix it without turning it into a six-month project — and without needing to hire an agency or an in-house IT person to get it done.</p>
         <a href="#contact" class="door-cta">Tell me what it is →</a>
       </div>
 
@@ -1681,16 +1594,16 @@
         <div class="door-icon">
           <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 015.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
         </div>
-        <h3>I'm not sure where to start</h3>
-        <blockquote>"I know things are changing fast. I just don't know what we should actually be doing about it — and I can't expect my team to figure that out on top of everything else."</blockquote>
-        <p style="font-size:0.9rem;color:var(--ink-mid);line-height:1.7;">You don't have to show up with a clear problem or know what category it falls into. That's what the free plan is for. Most people walk away with a clearer picture of where to start — even if they don't hire me.</p>
-        <a href="#contact" class="door-cta">Let's talk it through →</a>
+        <h3>I’m not sure where to start</h3>
+        <blockquote>“I know things are changing fast. I just don’t know what we should actually be doing about it — and I can’t expect my team to figure that out on top of everything else.”</blockquote>
+        <p style="font-size:0.9rem;color:var(--ink-mid);line-height:1.7;">You don’t have to show up with a clear problem or know what category it falls into. That’s what the free plan is for. Most people walk away with a clearer picture of where to start — even if they don’t hire me.</p>
+        <a href="#contact" class="door-cta">Let’s talk it through →</a>
       </div>
 
     </div>
-    <div class="doors-tenet">
-      <p>The goal is never to change how your business works or replace the people who make it run. It's to make their jobs — and yours — a little easier.</p>
-      <a href="#contact" class="doors-tenet-cta">Submit your problem — get a plan, free →</a>
+    <div class="doors-tenet" style="border-top-color:rgba(255,255,255,0.12);">
+      <p style="color:rgba(255,255,255,0.65);">The goal is never to change how your business works or replace the people who make it run. It’s to make their jobs — and yours — a little easier.</p>
+      <a href="#contact" class="doors-tenet-cta" style="color:rgba(255,255,255,0.75);">Submit your problem — it’s free →</a>
     </div>
   </div>
 </section>
@@ -1734,15 +1647,15 @@
 
       <!-- CARD 3 -->
       <div class="pcard-dark reveal reveal-d3">
-        <p class="pcard-type" style="color:rgba(255,255,255,0.5);">AI · Internal Tools</p>
+        <p class="pcard-type" style="color:rgba(255,255,255,0.5);">Automation · Data · Mapping</p>
         <p class="pcard-what-changed">WHAT CHANGED</p>
-        <h3>HR stopped answering the same questions. An AI agent does it instead.</h3>
-        <p style="font-size:0.9rem;color:rgba(255,255,255,0.75);line-height:1.7;margin-top:0.75rem;">Employees had nowhere consistent to go for HR questions. I built an AI agent inside Microsoft Copilot that pulls from existing company documents to answer instantly — no new software, no extra training.</p>
-        <div class="pcard-outcome" style="background:rgba(255,255,255,0.08);border:none;color:rgba(255,255,255,0.85);">The agent also flags gaps in the documentation — so HR knows what to update before the next person has to ask.</div>
+        <h3>A marketing deliverable that wasn’t viable to produce manually.</h3>
+        <p style="font-size:0.9rem;color:rgba(255,255,255,0.75);line-height:1.7;margin-top:0.75rem;">A large financial institution needed a polished, data-driven marketing deliverable that pulled from multiple data sources and presented geographic analysis in a client-ready format. I built a pipeline using Python, ChatGPT, and ArcGIS that automated the research, analysis, and formatting end to end. What would have required weeks of manual work was produced in a fraction of the time — at a quality level that wouldn’t have been achievable without modern tooling.</p>
         <div class="pcard-tags" style="margin-top:1rem;">
-          <span class="tag" style="background:rgba(255,255,255,0.1);color:rgba(255,255,255,0.7);border:none;">AI</span>
-          <span class="tag" style="background:rgba(255,255,255,0.1);color:rgba(255,255,255,0.7);border:none;">Microsoft Copilot</span>
-          <span class="tag" style="background:rgba(255,255,255,0.1);color:rgba(255,255,255,0.7);border:none;">Workflow Automation</span>
+          <span class="tag" style="background:rgba(255,255,255,0.1);color:rgba(255,255,255,0.7);border:none;">Python</span>
+          <span class="tag" style="background:rgba(255,255,255,0.1);color:rgba(255,255,255,0.7);border:none;">ChatGPT</span>
+          <span class="tag" style="background:rgba(255,255,255,0.1);color:rgba(255,255,255,0.7);border:none;">ArcGIS</span>
+          <span class="tag" style="background:rgba(255,255,255,0.1);color:rgba(255,255,255,0.7);border:none;">Automation</span>
         </div>
       </div>
 
@@ -1760,6 +1673,62 @@
         </div>
       </div>
 
+
+
+    <div id="testimonials" style="margin-top:4rem;padding-top:3.5rem;border-top:1px solid #E8E3D8;">
+  <div class="section-inner">
+    <p class="section-label">Client reviews</p>
+    <h2 class="section-title">What clients say.</h2>
+    <a class="upwork-bar" href="https://www.upwork.com/freelancers/~01ddd112c03a2e1428" target="_blank" rel="noopener noreferrer" style="text-decoration:none;cursor:pointer;">
+      <div class="upwork-dot"></div>
+      <strong>100% Job Success &nbsp;·&nbsp; Top Rated</strong>&nbsp; on Upwork
+    </a>
+    <div class="testimonials-grid">
+
+      <div class="tcard">
+        <div class="tcard-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+        <p class="tcard-quote">I've had the pleasure to work closely with Jack in numerous projects, roles, and challenges — all of which have exceeded my expectations as a company leader.</p>
+        <div class="tcard-attr">
+          <strong>Alex Zemianek</strong>
+          Owner & CEO, JZ Vacation Rentals
+          <div class="tcard-chips">
+            <span class="chip">Long-term Partnership</span>
+            <span class="chip">Exceeded Expectations</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="tcard">
+        <div class="tcard-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+        <p class="tcard-quote">Jack was great at communicating, efficient, personable and dependable. He was easy to work with and a great asset to our team. We know he will be the first person we reach out to for similar projects in the future.</p>
+        <div class="tcard-attr">
+          <strong>Verified Client</strong>
+          Upwork · 5.0
+          <div class="tcard-chips">
+            <span class="chip">Collaborative</span>
+            <span class="chip">Clear Communicator</span>
+            <span class="chip">Reliable</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="tcard">
+        <div class="tcard-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+        <p class="tcard-quote">Jack was amazing to work with, which is why he worked for us on a long-term basis for our Salesforce tasks. He is thorough, accurate, and timely. I highly recommend him for any Salesforce, sales, or sales operations work.</p>
+        <div class="tcard-attr">
+          <strong>Ray Updyke</strong>
+          Alpaca VC · Salesforce & Data Consultant · 254 hrs
+          <div class="tcard-chips">
+            <span class="chip">Collaborative</span>
+            <span class="chip">Detail Oriented</span>
+            <span class="chip">Reliable</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
     </div>
   </div>
 </section>
@@ -1985,7 +1954,7 @@
           <div class="hiw-num">01</div>
           <div class="hiw-connector"></div>
           <h4>Tell me what's going on</h4>
-          <p>Send the problem in whatever words you have. No charge, no commitment. You don't need to know what the solution is.</p>
+          <p>Send the problem in whatever words you have. No charge. You don’t need to know what the solution is.</p>
         </div>
         <div class="hiw-step">
           <div class="hiw-num">02</div>
@@ -2000,66 +1969,11 @@
         </div>
       </div>
       <div class="hiw-ctas">
-        <a href="#contact" class="btn-hiw-primary reveal reveal-d3">Get your free plan</a>
+        <a href="#contact" class="btn-hiw-primary reveal reveal-d3">Submit your problem — it’s free</a>
         <a href="#services" class="btn-hiw-ghost reveal reveal-d4">See recent work →</a>
       </div>
     </div>
 
-  </div>
-</section>
-<!-- TESTIMONIALS -->
-<section id="testimonials">
-  <div class="section-inner">
-    <p class="section-label">Client reviews</p>
-    <h2 class="section-title">What clients say.</h2>
-    <a class="upwork-bar" href="https://www.upwork.com/freelancers/~01ddd112c03a2e1428" target="_blank" rel="noopener noreferrer" style="text-decoration:none;cursor:pointer;">
-      <div class="upwork-dot"></div>
-      <strong>100% Job Success &nbsp;·&nbsp; Top Rated</strong>&nbsp; on Upwork
-    </a>
-    <div class="testimonials-grid">
-
-      <div class="tcard">
-        <div class="tcard-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
-        <p class="tcard-quote">I've had the pleasure to work closely with Jack in numerous projects, roles, and challenges — all of which have exceeded my expectations as a company leader.</p>
-        <div class="tcard-attr">
-          <strong>Alex Zemianek</strong>
-          Owner & CEO, JZ Vacation Rentals
-          <div class="tcard-chips">
-            <span class="chip">Long-term Partnership</span>
-            <span class="chip">Exceeded Expectations</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="tcard">
-        <div class="tcard-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
-        <p class="tcard-quote">Jack was great at communicating, efficient, personable and dependable. He was easy to work with and a great asset to our team. We know he will be the first person we reach out to for similar projects in the future.</p>
-        <div class="tcard-attr">
-          <strong>Verified Client</strong>
-          Upwork · 5.0
-          <div class="tcard-chips">
-            <span class="chip">Collaborative</span>
-            <span class="chip">Clear Communicator</span>
-            <span class="chip">Reliable</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="tcard">
-        <div class="tcard-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
-        <p class="tcard-quote">Jack was amazing to work with, which is why he worked for us on a long-term basis for our Salesforce tasks. He is thorough, accurate, and timely. I highly recommend him for any Salesforce, sales, or sales operations work.</p>
-        <div class="tcard-attr">
-          <strong>Ray Updyke</strong>
-          Alpaca VC · Salesforce & Data Consultant · 254 hrs
-          <div class="tcard-chips">
-            <span class="chip">Collaborative</span>
-            <span class="chip">Detail Oriented</span>
-            <span class="chip">Reliable</span>
-          </div>
-        </div>
-      </div>
-
-    </div>
   </div>
 </section>
 
@@ -2153,7 +2067,7 @@
 <!-- FREE DIAGNOSIS CTA -->
 <section class="free-cta">
   <div class="section-inner">
-    <p class="section-label">No commitment required</p>
+    <p class="section-label">Always free to find out</p>
     <h2 class="section-title">Send me your problem.<br>I'll send you a plan.</h2>
     <p class="free-cta-body">
       Tell me what's going on — in whatever words you have. I'll return a plain-English plan: <strong>what I'd do, how long it would take, and what it would cost.</strong> No charge for any of that. Then it's your call — approve the plan and I'll execute, or take it and run with it yourself.
@@ -2172,7 +2086,7 @@
       <div class="contact-left">
         <p class="section-label">Get your free plan</p>
         <h2 class="section-title">Tell me what's going on.</h2>
-        <p>Tell me what's happening. You don't need to know what the solution is or what category it falls into — that's what the plan is for. No charge, no commitment, no sales call.</p>
+        <p>Tell me what's happening. You don't need to know what the solution is or what category it falls into — that's what the plan is for. No charge. No sales call.</p>
         <div class="contact-email-block">
           <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
           <a href="mailto:hello@zeisworks.com">hello@zeisworks.com</a>
@@ -2224,8 +2138,8 @@
           <label for="message">Tell me more</label>
           <textarea id="message" name="message" placeholder="What's the problem? Even a rough description is helpful — you don't need to have it figured out."></textarea>
         </div>
-        <button type="submit" class="form-submit">Send it over — it's free</button>
-        <p class="form-trust">Typical response within 24 hours. Your plan is always free — no commitment required.</p>
+        <button type="submit" class="form-submit">Submit your problem — it’s free</button>
+        <p class="form-trust">Typical response within 24 hours. Your plan is always free.</p>
       </form>
       <div id="form-success" style="display:none; padding: 2rem; background: var(--cream); border: 1px solid var(--terra); border-radius: 8px; text-align: center;">
         <p style="font-size: 1.1rem; margin: 0;">Thanks — I'll be in touch soon.</p>
@@ -2241,7 +2155,7 @@
       <div class="footer-logo">zeisWorks<span class="logo-period">.</span></div>
       <div class="footer-tag">Tell me what's wrong. I'll figure out the rest.</div>
     </div>
-    <div class="footer-copy">© 2025 zeisWorks. Golden, CO.</div>
+    <div class="footer-copy">© 2026 zeisWorks. Golden, CO.</div>
   </div>
 </footer>
 
@@ -2249,7 +2163,7 @@
 <div class="sticky-cta" id="stickyCta">
   <a href="#contact">
     <svg viewBox="0 0 24 24" style="width:16px;height:16px;stroke:#fff;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
-    Submit a problem — it's free
+    Submit your problem — it’s free
   </a>
 </div>
 
