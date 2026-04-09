@@ -1,0 +1,172 @@
+# ZeisWorks Website Improvement Brief
+**For: Claude Code**
+**Prepared: April 2026**
+**Site: zeisworks.com**
+
+---
+
+## Context
+
+ZeisWorks is a solo technical consulting business run by Jack Zeis, based in Golden, CO. The service model is diagnostic-first: clients submit any operational business problem for free, receive an actionable plain-English plan within 24 hours at no cost, and only pay if they want Jack to execute the plan. The target client is a traditional business owner — fewer than 100 employees, trades/professional services/healthcare/manufacturing — who is skeptical of technology consultants, has likely been burned before, and does not have an in-house IT person.
+
+The site is a single-page HTML site. Three specific improvements are required based on a design and conversion research review. Do not alter any other sections, copy, layout, or design elements outside of what is specified below.
+
+---
+
+## Design System Reference
+
+The existing site uses the following design tokens. All new components must match exactly:
+
+- **Background (page):** Warm off-white / cream — `#F5F0E8` or equivalent
+- **Primary dark (nav, footer, CTA sections):** Deep forest green — `#1C3829` or equivalent
+- **Text primary:** Near-black — `#1A1A1A` or equivalent
+- **Text secondary / muted:** Medium gray-green — matches existing muted label style
+- **Accent / CTA button:** Deep navy blue — `#2D3F6B` or equivalent (used on primary buttons)
+- **Card background (dark):** Forest green — same as primary dark
+- **Card background (light):** White or very light cream
+- **Typography display:** Lora (serif) — used for headlines and italic emphasis
+- **Typography body:** DM Sans — used for all body copy, labels, UI text
+- **Border radius:** Rounded but not pill-shaped — consistent with existing cards (~8-12px)
+- **Spacing:** Generous. The existing site has strong vertical rhythm. Match section padding.
+
+---
+
+## Change 1: Upwork Badge — Add Hyperlink
+
+### What to change
+The existing "100% Job Success · Top Rated on Upwork" badge in the Client Reviews section currently has no link. Make the badge a hyperlink.
+
+### Specification
+- **Link destination:** `https://www.upwork.com/freelancers/~01ddd112c03a2e1428`
+- **Opens in:** New tab (`target="_blank"` with `rel="noopener noreferrer"`)
+- **Visual treatment:** No change to the badge appearance. No underline. No arrow or external link icon. The badge should not visually signal that it is clickable — it functions as a quiet verification link for visitors who choose to investigate, not as a prompt to leave the site.
+- **Cursor:** `cursor: pointer` on hover is sufficient.
+
+---
+
+## Change 2: FAQ Section — New Component
+
+### Where it goes
+Insert the FAQ section **between the case studies / recent work section and the existing "Send me your problem" CTA section**. It should not appear below the form. This placement follows the visitor's decision journey: understand the model → feel seen by the pain points → believe it works (case studies) → remove final objections (FAQ) → submit.
+
+### Format
+**Static, fully expanded** — not an accordion. All questions and answers visible without interaction. Rationale: the ICP is not highly technical, is slightly skeptical, and should not have to work to see reassurance. Every answer is short enough that static display does not create a length problem.
+
+### Section structure
+```
+[Section label: "COMMON QUESTIONS" — small caps, muted, same style as other section labels]
+[Section headline: "Before you hit send."]
+[Subhead optional: omit if it feels redundant with the questions themselves]
+[FAQ grid: two-column on desktop, single-column on mobile]
+```
+
+The headline "Before you hit send." is intentional — it acknowledges the visitor is close to submitting and positions the FAQ as a pre-send checklist, not a generic help section.
+
+### Layout
+- Two-column grid on desktop (4 questions left, 4 questions right)
+- Single column on mobile
+- Each Q&A is a discrete unit — question in bold/semi-bold DM Sans, answer in regular weight below it
+- Subtle divider or spacing between each unit — no heavy card borders. Match the visual lightness of the existing site.
+- Section sits on the cream/off-white background, not inside a dark card
+
+### Questions and answers (use verbatim)
+
+**Do I have to know what the solution is?**
+No. Most people who reach out know something isn't working — they just can't put a name to it. Figuring that out is what the free plan is for.
+
+**What happens after I submit?**
+I read it and respond within 24 hours. You get a plain-English plan — what I'd do, how long it takes, what it costs. No call required to get that far.
+
+**What kinds of problems can you help with?**
+The kind that have been on your list for months. A report nobody can pull without exporting to Excel. A process three people do manually that nobody has time to fix. A system you're paying for that half the team doesn't use. If it's slowing your business down, send it.
+
+**What does it cost?**
+The plan is free. If you want me to execute it, you get a flat project price — one number, approved before anything starts. No hourly clock, no surprises mid-project.
+
+**What if you can't help?**
+I'll tell you straight, and point you somewhere better if I can. Some problems are the wrong fit for what I do — and you'll hear that for free rather than find out after paying someone else.
+
+**What if the plan isn't what I was expecting?**
+Tell me. Plans aren't binding — they're a starting point. If something's off, we talk through it before anything begins. You're not committed to anything until you say so.
+
+**Is there any commitment involved?**
+None. Submitting a problem doesn't start a project. Reading the plan doesn't start a project. You decide if and when anything moves forward.
+
+**How is the free plan actually viable?**
+Two years ago this model didn't work — understanding a problem well enough to return a real plan took hours of calls and back-and-forth. AI has changed that. I can triage a submission and produce a genuine, actionable plan in a fraction of the time. The cost of that step dropped, so I stopped charging for it. You get a real answer before spending anything.
+
+### Typography treatment
+- Question text: DM Sans, ~15-16px, semi-bold or bold, near-black
+- Answer text: DM Sans, ~14-15px, regular weight, slightly muted (not full black — match the existing body copy tone)
+- Section label: Same small-caps muted style as "RECENT WORK", "PRICING", etc.
+- Headline "Before you hit send.": Lora serif, same scale as other section headlines
+
+---
+
+## Change 3: Pricing Section — Remove Hourly Rate
+
+### What to change
+The current pricing card prominently displays `$125/hr` as the primary number. This directly contradicts the business model, which is task/project-based — clients never see a rate, they see a project price. Remove the hourly rate and replace with messaging that reflects the actual model.
+
+### What to remove
+- The "HOURLY RATE" label
+- The `$125/hr` number
+- "One rate. Everything included." subtext
+
+### What to replace it with
+In the same left-column position where the rate currently sits, use:
+
+```
+HOW PRICING WORKS
+
+You see a project price.
+Not an hourly rate.
+
+One flat number for the specific work — 
+reviewed and approved before anything starts.
+```
+
+- "HOW PRICING WORKS" in the same small-caps muted label style
+- "You see a project price. / Not an hourly rate." as the primary statement — Lora serif, sized similarly to how `$125/hr` was displayed, white text on the dark card
+- The supporting sentence in smaller DM Sans, muted white/light tone, matching the existing descriptor text style
+
+### What stays the same
+The three right-column items remain unchanged:
+- "Calls and advice are always free"
+- "Scoped and approved before anything starts"
+- "No surprises, ever"
+
+The "HOW IT WORKS" three-step section (01/02/03) below inside the same card also remains unchanged.
+
+The card layout, background color, border radius, and all other visual properties remain unchanged.
+
+---
+
+## Quality Check Before Submitting
+
+Before delivering, verify:
+
+1. The Upwork badge links correctly and opens in a new tab
+2. The FAQ section appears between case studies and the CTA form section — not after the form
+3. The FAQ is two columns on desktop, one column on mobile
+4. All eight FAQ answers are present and verbatim
+5. The `$125/hr` rate and "HOURLY RATE" label are fully removed from the pricing card
+6. No other sections, copy, or layout elements have been altered
+7. The new components match the existing design system — cream background, Lora/DM Sans typography, consistent spacing and visual weight
+8. Mobile rendering is tested for the FAQ grid collapse and pricing card text reflow
+
+---
+
+## What Not to Touch
+
+- Hero section and headline copy
+- Navigation
+- "Why this exists" / "Built for businesses that already work" section
+- "Sound familiar?" pain point quotes section
+- "Who this is for" cards
+- Case study cards (content or layout)
+- The three-step "How it works" inside the pricing card
+- Client reviews / testimonials (content or layout — the Upwork badge link is the only change here)
+- About section
+- Contact form
+- Footer
