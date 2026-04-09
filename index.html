@@ -257,6 +257,43 @@
     margin-bottom: 0.25rem;
   }
 
+  /* PROBLEM ANIMATION */
+  .quote-scatter {
+    position: relative;
+    min-height: 460px;
+  }
+  .quote-mobile-stack { display: none; }
+  .qcard-scatter {
+    position: absolute;
+    width: 46%;
+    top: var(--qtop);
+    left: var(--qleft);
+    transform: rotate(var(--qrot));
+    opacity: 0;
+  }
+  .quote-resolution {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    text-align: center;
+    width: 90%;
+    pointer-events: none;
+  }
+  .quote-resolution.visible { pointer-events: auto; }
+  .resolution-text {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: 1.5rem;
+    color: #fff;
+    margin-bottom: 1.25rem;
+    line-height: 1.4;
+  }
+  .quote-resolution .btn-primary {
+    background: var(--terra);
+    color: #fff;
+  }
   /* PORTFOLIO CAROUSEL */
   .portfolio { background: var(--cream); }
   .portfolio-header {
@@ -1426,6 +1463,17 @@
     .hero { grid-template-columns: 1fr; gap: 2.5rem; padding: 4rem 1.25rem 3rem; }
     .hero-visual { display: none; }
     .problem-grid { grid-template-columns: 1fr; gap: 2rem; }
+    .quote-scatter { display: none; }
+    .quote-mobile-stack { display: flex; flex-direction: column; gap: 1.25rem; }
+    .quote-resolution-mobile { padding-top: 1.5rem; }
+    .quote-resolution-mobile .resolution-text {
+      font-family: var(--font-serif);
+      font-style: italic;
+      font-size: 1.25rem;
+      color: #fff;
+      line-height: 1.45;
+      margin-bottom: 1rem;
+    }
     .services-grid { grid-template-columns: 1fr; }
     .steps { grid-template-columns: 1fr; gap: 1.75rem; }
     .about-grid { grid-template-columns: 1fr; gap: 2rem; }
@@ -1581,10 +1629,28 @@
         <p class="section-body">Most established businesses have at least one thing — a process, a system, a spreadsheet — that works, but barely. You know it. You've been meaning to fix it. I help you actually fix it, without making it a bigger project than it needs to be.</p>
       </div>
       <div class="problem-quotes">
-        <div class="quote-card">I feel like we're leaving time on the table every day. I just don't know where to start fixing it.</div>
-        <div class="quote-card">Our data is all over the place. I can never get a straight answer out of it when I need one.</div>
-        <div class="quote-card">We're in Salesforce but I don't think we're really using it. Half the team doesn't even log in.</div>
-        <div class="quote-card">I know there's a better way to do this. I just don't have the time to figure out what it is.</div>
+        <!-- Desktop: scatter animation -->
+        <div class="quote-scatter" id="quoteScatter">
+          <div class="quote-card qcard-scatter" style="--qrot:-5deg;--qtop:4%;--qleft:3%">I feel like we're leaving time on the table every day. I just don't know where to start fixing it.</div>
+          <div class="quote-card qcard-scatter" style="--qrot:4deg;--qtop:2%;--qleft:51%">Our data is all over the place. I can never get a straight answer out of it when I need one.</div>
+          <div class="quote-card qcard-scatter" style="--qrot:-8deg;--qtop:51%;--qleft:5%">We bought software to solve the problem. Two years later the problem is still there and now we're also paying for software.</div>
+          <div class="quote-card qcard-scatter" style="--qrot:6deg;--qtop:54%;--qleft:50%">I know there's a better way to do this. I just don't have the time to figure out what it is.</div>
+          <div class="quote-resolution" id="quoteResolution">
+            <p class="resolution-text">That's what ZeisWorks is for.</p>
+            <a href="#contact" class="btn-primary">Submit your problem — it's free</a>
+          </div>
+        </div>
+        <!-- Mobile: static stacked fallback -->
+        <div class="quote-mobile-stack">
+          <div class="quote-card">I feel like we're leaving time on the table every day. I just don't know where to start fixing it.</div>
+          <div class="quote-card">Our data is all over the place. I can never get a straight answer out of it when I need one.</div>
+          <div class="quote-card">We bought software to solve the problem. Two years later the problem is still there and now we're also paying for software.</div>
+          <div class="quote-card">I know there's a better way to do this. I just don't have the time to figure out what it is.</div>
+          <div class="quote-resolution-mobile">
+            <p class="resolution-text">That's what ZeisWorks is for.</p>
+            <a href="#contact" class="btn-primary" style="display:inline-block;margin-top:0.25rem;">Submit your problem — it's free</a>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -1797,6 +1863,71 @@
     }
 
     if (heroCta) heroCta.addEventListener('click', function(e) { e.preventDefault(); showHeroForm(); });
+
+    // Sound Familiar — chaos to calm animation (desktop only)
+    if (window.innerWidth > 768) {
+      var problemSection = document.getElementById('problem');
+      var scatterCards = document.querySelectorAll('.qcard-scatter');
+      var resolution = document.getElementById('quoteResolution');
+      var chaosTimers = [];
+
+      function resetChaos() {
+        chaosTimers.forEach(function(t) { clearTimeout(t); });
+        chaosTimers = [];
+        scatterCards.forEach(function(card) {
+          card.style.transition = 'none';
+          card.style.opacity = '0';
+        });
+        if (resolution) {
+          resolution.style.transition = 'none';
+          resolution.style.opacity = '0';
+          resolution.classList.remove('visible');
+        }
+      }
+
+      function runChaos() {
+        resetChaos();
+        // Phase 1: stagger cards in one by one
+        scatterCards.forEach(function(card, i) {
+          var t = setTimeout(function() {
+            card.style.transition = 'opacity 0.4s ease';
+            card.style.opacity = '1';
+          }, i * 150);
+          chaosTimers.push(t);
+        });
+        // Phase 2: after last card fades in + 1.5s pause, fade all out
+        var lastCardStart = (scatterCards.length - 1) * 150;
+        var t2 = setTimeout(function() {
+          scatterCards.forEach(function(card) {
+            card.style.transition = 'opacity 0.6s ease';
+            card.style.opacity = '0';
+          });
+          // Resolution fades in 300ms after cards start fading
+          var t3 = setTimeout(function() {
+            if (resolution) {
+              resolution.style.transition = 'opacity 0.6s ease';
+              resolution.style.opacity = '1';
+              resolution.classList.add('visible');
+            }
+          }, 300);
+          chaosTimers.push(t3);
+        }, lastCardStart + 500 + 1500);
+        chaosTimers.push(t2);
+      }
+
+      if (problemSection) {
+        var chaosObserver = new IntersectionObserver(function(entries) {
+          entries.forEach(function(entry) {
+            if (entry.isIntersecting) {
+              runChaos();
+            } else {
+              resetChaos();
+            }
+          });
+        }, { threshold: 0.25 });
+        chaosObserver.observe(problemSection);
+      }
+    }
     if (heroFormBack) heroFormBack.addEventListener('click', hideHeroForm);
 
     if (heroFormEl) {
@@ -2006,6 +2137,10 @@
           <p class="faq-q">How is the free plan actually viable?</p>
           <p class="faq-a">Two years ago this model didn't work — understanding a problem well enough to return a real plan took hours of calls and back-and-forth. AI has changed that. I can triage a submission and produce a genuine, actionable plan in a fraction of the time. The cost of that step dropped, so I stopped charging for it. You get a real answer before spending anything.</p>
         </div>
+        <div class="faq-item reveal reveal-d4">
+          <p class="faq-q">Will I be dependent on you after the project is done?</p>
+          <p class="faq-a">No. Everything I build is designed for you to own and run without me. If a solution requires software subscriptions — AI tools, automation platforms, that kind of thing — those costs are spelled out in the plan before anything starts. Once the project is handed off, it's yours. I'm not in the loop unless you want me to be.</p>
+        </div>
       </div>
 
     </div>
@@ -2077,7 +2212,7 @@
             <option value="">Not sure yet...</option>
             <option>Something specific needs fixing</option>
             <option>A process or workflow issue</option>
-            <option>A Salesforce problem</option>
+            <option>A software or tool we're not really using</option>
             <option>A data or reporting issue</option>
             <option>Something bigger I need help scoping</option>
           </select>
