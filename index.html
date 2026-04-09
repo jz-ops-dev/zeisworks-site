@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ZeisWorks — Smart systems for small teams</title>
+<title>zeisWorks — Tell me what's wrong. I'll figure out the rest.</title>
 <link rel="icon" type="image/png" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAABjElEQVR4nO2XoY7CQBCG/zanECRTEhykgcAb8AZoFC/AE5Ag+xqoupIgEfgiayqxGBBYtg2OpMmcKrfXO7hdSpcT/Grbzub/MjvN7FiQREQMA0qSxMrXtmnzopdVfCGEqNTccZzrOkkSyzJp/hvE9QhMmRe97DtxRvQGeDnAh2qg67o4n89/xtVqNRyPR2WAp2eg3+9rxStn4HA43Px2uVwwGo2w3++xWCyqAbin2WyG7XaL9XqNVqult5mImIj4Uc3ncyYiXi6XWvty31IAYRhyo9Fgz/O095YG2O123G63eTwec5ZlDwNcm5FOL0jTFMPhELZtY7PZoF6v6507vhqSdhFmWYbJZAIhBMIwfMhcljaA53mIogir1QrdbreUOQC9vyAIAiYi9n1f+8xv1YAyQBRF3Gw2eTqdljaXAZSKME1TDAYDnE4npazGcYxer3c3Ji9CpV4ghFA215VSEXY6ncqubC+/D7wB/g+APCxUrW+DiTwomoD4MZrlDyaH09wckI5AzoQpcwD4BBCLmt1P+sElAAAAAElFTkSuQmCC">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -20,6 +20,8 @@
     --terra: #2D4A6B;
     --terra-light: #D6E0EC;
     --terra-dark: #1E3350;
+    --orange: #C85A20;
+    --orange-light: #F2E0D5;
     --slate: #2D4557;
     --forest: #2C4A3E;
     --forest-mid: #3D6B5A;
@@ -68,7 +70,7 @@
     text-decoration: none;
     letter-spacing: -0.01em;
   }
-  .nav-logo .logo-period { color: var(--terra); }
+  .nav-logo .logo-period { color: var(--orange); }
   .nav-links {
     display: flex;
     align-items: center;
@@ -120,7 +122,7 @@
     margin-bottom: 1.5rem;
     letter-spacing: -0.02em;
   }
-  .hero h1 em { color: var(--terra); font-style: italic; }
+  .hero h1 em { color: var(--orange); font-style: italic; }
   .hero-sub {
     font-size: 1.0625rem;
     color: var(--ink-mid);
@@ -174,6 +176,19 @@
     border-radius: 50%;
     opacity: 0.5;
   }
+  .hero-steps { display: flex; flex-direction: column; gap: 1.25rem; }
+  .hero-step { display: flex; gap: 1rem; align-items: flex-start; }
+  .hero-step-num {
+    font-family: var(--font-serif);
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--orange);
+    min-width: 2rem;
+    line-height: 1.2;
+  }
+  .hero-step h4 { font-size: 0.9375rem; font-weight: 600; color: var(--ink); margin-bottom: 0.25rem; line-height: 1.35; }
+  .hero-step p { font-size: 0.8125rem; color: var(--ink-mid); line-height: 1.65; margin: 0; }
+
   .proof-label {
     font-size: 0.75rem;
     font-weight: 500;
@@ -205,7 +220,7 @@
     font-weight: 500;
     letter-spacing: 0.1em;
     text-transform: uppercase;
-    color: var(--terra);
+    color: var(--orange);
     margin-bottom: 1rem;
   }
   .section-title {
@@ -257,6 +272,43 @@
     margin-bottom: 0.25rem;
   }
 
+  /* PROBLEM ANIMATION */
+  .quote-scatter {
+    position: relative;
+    min-height: 460px;
+  }
+  .quote-mobile-stack { display: none; }
+  .qcard-scatter {
+    position: absolute;
+    width: 46%;
+    top: var(--qtop);
+    left: var(--qleft);
+    transform: rotate(var(--qrot));
+    opacity: 0;
+  }
+  .quote-resolution {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    text-align: center;
+    width: 90%;
+    pointer-events: none;
+  }
+  .quote-resolution.visible { pointer-events: auto; }
+  .resolution-text {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: 1.5rem;
+    color: #fff;
+    margin-bottom: 1.25rem;
+    line-height: 1.4;
+  }
+  .quote-resolution .btn-primary {
+    background: var(--terra);
+    color: #fff;
+  }
   /* PORTFOLIO CAROUSEL */
   .portfolio { background: var(--cream); }
   .portfolio-header {
@@ -671,6 +723,205 @@
     color: var(--ink-mid);
     line-height: 1.7;
   }
+  /* PRICING REDESIGN */
+  .pricing-main-inner {
+    display: flex;
+    gap: 0;
+    align-items: stretch;
+  }
+  .pricing-rate-col {
+    min-width: 180px;
+    padding-right: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .pricing-rate-label {
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.5);
+    margin-bottom: 0.5rem;
+  }
+  .pricing-rate-num {
+    font-family: var(--font-serif);
+    font-size: 3rem;
+    font-weight: 600;
+    color: #fff;
+    letter-spacing: -0.03em;
+    line-height: 1;
+    margin-bottom: 0.5rem;
+  }
+  .pricing-rate-num span { font-size: 1.25rem; color: rgba(255,255,255,0.6); font-weight: 300; }
+  .pricing-rate-sub {
+    font-size: 0.8125rem;
+    color: rgba(255,255,255,0.6);
+    line-height: 1.5;
+  }
+  .pricing-project-headline {
+    font-family: var(--font-serif);
+    font-size: 1.5rem;
+    font-weight: 400;
+    color: #fff;
+    line-height: 1.3;
+    margin-bottom: 0.75rem;
+  }
+  /* FAQ SECTION */
+  .faq-section { background: var(--cream); }
+  .faq-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0 3rem;
+    margin-top: 2.5rem;
+  }
+  .faq-item {
+    padding: 1.5rem 0;
+    border-bottom: 1px solid var(--cream-dark);
+  }
+  .faq-item:first-child,
+  .faq-item:nth-child(2) { border-top: 1px solid var(--cream-dark); }
+  .faq-q {
+    font-family: var(--font-sans);
+    font-size: 0.9375rem;
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: 0.5rem;
+    line-height: 1.4;
+  }
+  .faq-a {
+    font-family: var(--font-sans);
+    font-size: 0.9rem;
+    font-weight: 400;
+    color: var(--ink-mid);
+    line-height: 1.75;
+    margin: 0;
+  }
+  .pricing-divider {
+    width: 1px;
+    background: rgba(255,255,255,0.12);
+    align-self: stretch;
+    flex-shrink: 0;
+    margin: 0 2rem;
+  }
+  .pricing-points-col {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+  .pricing-point-item {
+    padding: 1rem 0;
+  }
+  .pricing-point-item strong {
+    display: block;
+    font-weight: 500;
+    color: #fff;
+    margin-bottom: 0.375rem;
+    font-size: 0.9375rem;
+  }
+  .pricing-point-item p {
+    font-size: 0.875rem;
+    color: rgba(255,255,255,0.7);
+    line-height: 1.7;
+    margin: 0;
+  }
+  .pricing-hr {
+    border: none;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    margin: 0;
+  }
+  /* HOW IT WORKS BLOCK (embedded in pricing) */
+  .how-it-works-block {
+    background: var(--forest);
+    border-radius: var(--radius-lg);
+    padding: 2.5rem;
+    margin-top: 1.5rem;
+  }
+  .hiw-label {
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.45);
+    margin-bottom: 2rem;
+  }
+  .hiw-steps {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 1.5rem;
+    position: relative;
+  }
+  .hiw-step {
+    position: relative;
+  }
+  .hiw-num {
+    font-family: var(--font-serif);
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: rgba(255,255,255,0.3);
+    margin-bottom: 0.875rem;
+    line-height: 1;
+  }
+  .hiw-connector {
+    display: none;
+  }
+  .hiw-step h4 {
+    font-size: 0.9375rem;
+    font-weight: 500;
+    color: #fff;
+    margin-bottom: 0.5rem;
+    font-family: var(--font-sans);
+  }
+  .hiw-step p {
+    font-size: 0.875rem;
+    color: rgba(255,255,255,0.65);
+    line-height: 1.7;
+    margin: 0;
+  }
+  /* PORTFOLIO GRID */
+  .portfolio-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+  }
+  .pcard-dark {
+    background: var(--forest);
+    border-radius: var(--radius-lg);
+    padding: 2rem;
+    color: #fff;
+  }
+  .pcard-what-changed {
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.45);
+    margin-bottom: 0.75rem;
+    margin-top: 0.5rem;
+  }
+  .pcard-dark h3 {
+    color: #fff;
+    font-family: var(--font-serif);
+    font-size: 1.1rem;
+    line-height: 1.4;
+    margin-bottom: 0;
+  }
+  /* GHOST BUTTON */
+  .btn-ghost {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.75rem 1.5rem;
+    border-radius: var(--radius-full);
+    font-size: 0.9375rem;
+    font-weight: 500;
+    color: var(--ink);
+    background: transparent;
+    border: 1.5px solid var(--ink-light);
+    text-decoration: none;
+    transition: border-color 0.2s, color 0.2s;
+  }
+  .btn-ghost:hover { border-color: var(--forest); color: var(--forest); }
 
   /* TESTIMONIALS */
   .upwork-bar {
@@ -699,16 +950,15 @@
     padding: 1.75rem;
     display: flex;
     flex-direction: column;
-    gap: 1rem;
   }
-  .tcard-stars { display: flex; gap: 3px; }
+  .tcard-stars { display: flex; gap: 3px; margin-bottom: 1rem; }
   .tcard-stars span { color: #F5A623; font-size: 0.875rem; }
   .tcard-quote {
     font-family: var(--font-serif);
     font-style: italic;
     font-size: 0.9375rem;
     color: var(--ink);
-    line-height: 1.7;
+    line-height: 1.75;
     flex: 1;
   }
   .tcard-attr {
@@ -716,10 +966,11 @@
     color: var(--ink-mid);
     border-top: 1px solid #E8E3D8;
     padding-top: 0.875rem;
+    margin-top: 1.25rem;
   }
   .tcard-attr strong { display: block; color: var(--ink); font-weight: 500; font-size: 0.875rem; }
   .tcard-chips { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 0.5rem; }
-  .chip { font-size: 0.7rem; background: var(--cream-dark); color: var(--ink-mid); padding: 0.15rem 0.6rem; border-radius: 99px; }
+  .chip { font-size: 0.7rem; background: var(--cream-dark); color: var(--ink-mid); padding: 0.2rem 0.625rem; border-radius: 99px; }
 
   /* FREE DIAGNOSIS CTA */
   .free-cta {
@@ -825,15 +1076,406 @@
     gap: 1rem;
   }
   .footer-logo { font-family: var(--font-serif); font-size: 1.125rem; font-weight: 400; color: #fff; }
-  .footer-logo .logo-period { color: var(--terra); }
+  .footer-logo .logo-period { color: var(--orange); }
   .footer-tag { font-size: 0.8125rem; color: rgba(255,255,255,0.45); margin-top: 0.2rem; }
   .footer-copy { font-size: 0.8125rem; color: rgba(255,255,255,0.4); text-align: right; }
+
+  /* =====================
+     ANIMATIONS
+  ===================== */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-6px); }
+  }
+  @keyframes gradShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+
+  /* Hero load stagger */
+  .hero-eyebrow { animation: fadeUp 0.55s ease-out 0.05s both; }
+  .hero h1 { animation: fadeUp 0.6s ease-out 0.2s both; }
+  .hero-sub { animation: fadeUp 0.6s ease-out 0.35s both; }
+  .hero-actions { animation: fadeUp 0.6s ease-out 0.5s both; }
+  .hero-visual { animation: fadeUp 0.7s ease-out 0.4s both, float 7s ease-in-out 1.2s infinite; }
+
+  /* Animated gradient on dark sections */
+  .problem {
+    background: linear-gradient(135deg, var(--forest-dark) 0%, var(--forest) 50%, var(--forest-mid) 100%);
+    background-size: 200% 200%;
+    animation: gradShift 12s ease infinite;
+  }
+  .free-cta {
+    background: linear-gradient(135deg, var(--forest-dark) 0%, var(--forest) 55%, #2a5c4a 100%);
+    background-size: 200% 200%;
+    animation: gradShift 14s ease infinite;
+  }
+
+  /* Scroll-triggered reveals */
+  .reveal {
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity 0.65s cubic-bezier(0.16,1,0.3,1), transform 0.65s cubic-bezier(0.16,1,0.3,1);
+  }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+  .reveal-d1 { transition-delay: 0.1s; }
+  .reveal-d2 { transition-delay: 0.2s; }
+  .reveal-d3 { transition-delay: 0.3s; }
+  .reveal-d4 { transition-delay: 0.4s; }
+
+  /* HERO EYEBROW BADGE */
+  .hero-eyebrow-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: var(--terra-light);
+    color: var(--terra);
+    font-size: 0.8125rem;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    padding: 0.35rem 0.875rem;
+    border-radius: var(--radius-full);
+    margin-bottom: 1.5rem;
+    animation: fadeUp 0.55s ease-out 0.05s both;
+  }
+  .hero-eyebrow-dot {
+    width: 6px; height: 6px;
+    background: var(--terra);
+    border-radius: 50%;
+    flex-shrink: 0;
+    animation: dotPulse 2s ease-in-out infinite;
+  }
+  @keyframes dotPulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.45; transform: scale(0.7); }
+  }
+  @keyframes ctaGlow {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(45,74,107,0); }
+    50% { box-shadow: 0 0 0 8px rgba(45,74,107,0.15); }
+  }
+  .hero-actions .btn-primary {
+    animation: ctaGlow 2.8s ease-in-out 1.5s infinite;
+  }
+  .hero-trust {
+    width: 100%;
+    font-size: 0.8rem;
+    color: var(--ink-light);
+    margin-top: 0.25rem;
+    letter-spacing: 0.01em;
+  }
+  /* HERO INLINE FORM */
+  .hero-form { display: none; }
+  .hero-form-back {
+    background: none; border: none; cursor: pointer;
+    font-size: 0.875rem; color: var(--ink-mid);
+    padding: 0; margin-bottom: 1.5rem;
+    font-family: var(--font-sans);
+    transition: color 0.2s;
+  }
+  .hero-form-back:hover { color: var(--ink); }
+  .hero-form-title {
+    font-family: var(--font-serif);
+    font-size: 1.75rem; color: var(--ink);
+    margin-bottom: 0.5rem; line-height: 1.3;
+    font-weight: 400;
+  }
+  .hero-form-sub { font-size: 0.9375rem; color: var(--ink-mid); margin-bottom: 1.5rem; line-height: 1.65; }
+  .hero-form-field { margin-bottom: 0.75rem; }
+  .hero-form-field input,
+  .hero-form-field textarea {
+    width: 100%; padding: 0.75rem 1rem;
+    border: 1.5px solid var(--cream-dark);
+    border-radius: var(--radius);
+    font-family: var(--font-sans); font-size: 0.9375rem;
+    background: #fff; color: var(--ink);
+    transition: border-color 0.2s;
+    box-sizing: border-box;
+  }
+  .hero-form-field input:focus,
+  .hero-form-field textarea:focus { outline: none; border-color: var(--forest); }
+  .hero-form-field textarea { resize: vertical; }
+  .hero-form-submit {
+    width: 100%; padding: 0.85rem;
+    background: var(--terra); color: #fff;
+    border: none; border-radius: var(--radius);
+    font-family: var(--font-sans); font-size: 0.9375rem;
+    font-weight: 500; cursor: pointer;
+    transition: background 0.2s, transform 0.15s;
+    margin-top: 0.25rem;
+  }
+  .hero-form-submit:hover { background: var(--terra-dark); transform: translateY(-1px); }
+  .hero-form-trust { font-size: 0.8rem; color: var(--ink-light); margin-top: 0.75rem; text-align: center; }
+  .hero-form-success { text-align: center; padding: 2rem 0; font-size: 1rem; color: var(--ink-mid); }
+  /* PRICING HOW-IT-WORKS CTAs */
+  .hiw-ctas {
+    display: flex; gap: 1rem; flex-wrap: wrap;
+    margin-top: 2rem; padding-top: 1.5rem;
+    border-top: 1px solid rgba(255,255,255,0.1);
+  }
+  .btn-hiw-primary {
+    display: inline-flex; align-items: center;
+    padding: 0.8rem 1.75rem; border-radius: var(--radius);
+    font-size: 0.9375rem; font-weight: 500;
+    background: #fff; color: var(--forest);
+    text-decoration: none;
+    transition: background 0.2s, transform 0.15s;
+  }
+  .btn-hiw-primary:hover { background: var(--cream); transform: translateY(-1px); }
+  .btn-hiw-ghost {
+    display: inline-flex; align-items: center;
+    padding: 0.8rem 1.75rem; border-radius: var(--radius);
+    font-size: 0.9375rem; font-weight: 500;
+    background: transparent; color: rgba(255,255,255,0.7);
+    border: 1.5px solid rgba(255,255,255,0.2);
+    text-decoration: none;
+    transition: border-color 0.2s, color 0.2s;
+  }
+  .btn-hiw-ghost:hover { border-color: rgba(255,255,255,0.5); color: #fff; }
+
+  /* Card hover 3D tilt */
+  .pcard { transition: transform 0.3s ease, box-shadow 0.3s ease; }
+  .pcard:hover { transform: perspective(800px) rotateY(-2deg) translateY(-4px); box-shadow: 0 16px 40px rgba(30,28,24,0.12); }
+  .tcard { transition: transform 0.3s ease, box-shadow 0.3s ease; }
+  .tcard:hover { transform: perspective(800px) rotateY(2deg) translateY(-4px); box-shadow: 0 12px 32px rgba(30,28,24,0.1); }
+
+  /* =====================
+     SOCIAL PROOF BAR
+  ===================== */
+  .proof-bar {
+    background: var(--cream-dark);
+    border-top: 1px solid #E8E3D8;
+    border-bottom: 1px solid #E8E3D8;
+    padding: 0.875rem 2rem;
+  }
+  .proof-bar-inner {
+    max-width: var(--max);
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    gap: 2.5rem;
+    flex-wrap: wrap;
+  }
+  .proof-bar-item {
+    font-size: 0.8125rem;
+    color: var(--ink-mid);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .proof-bar-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--forest-mid); flex-shrink: 0; }
+
+  /* =====================
+     FOUNDING STORY
+  ===================== */
+  .story { background: var(--cream); padding: 5rem 2rem; border-top: 1px solid var(--cream-dark); }
+  .story-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: start;
+    max-width: var(--max);
+    margin: 0 auto;
+  }
+  .story-body p { color: var(--ink-mid); line-height: 1.85; margin-bottom: 1.25rem; font-size: 1.0625rem; }
+  .story-body p:last-child { margin-bottom: 0; }
+  .story-body p strong { color: var(--ink); font-weight: 500; }
+  .story-body p em { font-style: italic; color: var(--ink); }
+  .story-model-card {
+    background: var(--cream-dark);
+    border: 1px solid #E8E3D8;
+    border-radius: var(--radius-lg);
+    padding: 2.5rem;
+  }
+  .story-model-label {
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--ink-light);
+    margin-bottom: 1.75rem;
+  }
+  .story-model-step { display: flex; gap: 1rem; align-items: flex-start; margin-bottom: 1.5rem; }
+  .story-model-step:last-of-type { margin-bottom: 0; }
+  .story-step-num {
+    width: 28px; height: 28px; min-width: 28px;
+    border-radius: 50%;
+    background: var(--terra);
+    color: #fff;
+    font-size: 0.8125rem;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 3px;
+    font-family: var(--font-sans);
+  }
+  .story-model-step strong { color: var(--ink); font-weight: 500; display: block; margin-bottom: 0.25rem; font-size: 0.9375rem; }
+  .story-model-step p { font-size: 0.875rem; color: var(--ink-mid); line-height: 1.6; margin: 0; }
+
+  /* =====================
+     DOORS-NOT (What this isn't)
+  ===================== */
+  .doors-not {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 1.75rem;
+    margin-bottom: 1.25rem;
+  }
+  .doors-not span { font-size: 0.875rem; color: var(--ink-light); }
+  .doors-not span::before { content: '✕ '; color: var(--terra); }
+
+  /* =====================
+     PRICING MODEL FLOW
+  ===================== */
+  .pricing-model-head {
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--ink-light);
+    margin-bottom: 1.5rem;
+  }
+  .pricing-model-flow { display: flex; flex-direction: column; gap: 0.75rem; }
+  .pmf-step { display: flex; align-items: center; gap: 0.875rem; }
+  .pmf-tag {
+    font-size: 0.75rem;
+    font-weight: 500;
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+    white-space: nowrap;
+  }
+  .pmf-free { background: var(--forest-light); color: var(--forest); }
+  .pmf-paid { background: var(--terra-light); color: var(--terra-dark); }
+  .pmf-step strong { font-size: 0.9375rem; color: var(--ink); font-weight: 500; }
+  .pmf-arrow { color: var(--ink-light); font-size: 1.125rem; padding-left: 1rem; line-height: 1; }
+  .pricing-not {
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--cream-dark);
+  }
+  .pricing-not-label {
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: var(--ink-light);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 0.75rem;
+  }
+  .pricing-not ul { list-style: none; display: flex; flex-direction: column; gap: 0.4rem; }
+  .pricing-not li { font-size: 0.875rem; color: var(--ink-mid); }
+  .pricing-not li::before { content: '✕ '; color: var(--terra); }
+
+  /* =====================
+     AVAILABILITY SIGNAL
+  ===================== */
+  .availability-dot {
+    display: inline-block;
+    width: 7px; height: 7px;
+    border-radius: 50%;
+    background: #4CAF50;
+    margin-right: 0.4rem;
+    box-shadow: 0 0 0 2px rgba(76,175,80,0.25);
+    vertical-align: middle;
+    position: relative;
+    top: -1px;
+  }
+
+  /* =====================
+     STICKY CTA
+  ===================== */
+  .sticky-cta {
+    position: fixed;
+    bottom: 1.5rem;
+    right: 1.5rem;
+    z-index: 99;
+    opacity: 0;
+    transform: translateY(8px);
+    transition: opacity 0.3s, transform 0.3s;
+    pointer-events: none;
+  }
+  .sticky-cta.visible { opacity: 1; transform: translateY(0); pointer-events: auto; }
+  .sticky-cta a {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: var(--terra);
+    color: #fff;
+    padding: 0.75rem 1.5rem;
+    border-radius: 40px;
+    font-family: var(--font-sans);
+    font-size: 0.875rem;
+    font-weight: 500;
+    text-decoration: none;
+    box-shadow: 0 4px 20px rgba(45,74,107,0.35);
+    transition: background 0.2s, transform 0.15s;
+  }
+  .sticky-cta a:hover { background: var(--terra-dark); transform: translateY(-2px); }
+
+  /* =====================
+     WHAT HAPPENS NEXT
+  ===================== */
+  .contact-next { margin-top: 2rem; }
+  .contact-next-label {
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--ink-light);
+    margin-bottom: 0.875rem;
+  }
+  .contact-next-step {
+    display: flex;
+    gap: 0.875rem;
+    align-items: flex-start;
+    margin-bottom: 0.75rem;
+  }
+  .contact-next-num {
+    width: 22px; height: 22px; min-width: 22px;
+    border-radius: 50%;
+    background: var(--terra-light);
+    color: var(--terra);
+    font-size: 0.75rem;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 2px;
+    font-family: var(--font-sans);
+  }
+  .contact-next-step p { font-size: 0.875rem; color: var(--ink-mid); line-height: 1.55; margin: 0; }
+
+  /* =====================
+     FORM TRUST NOTE
+  ===================== */
+  .form-trust {
+    font-size: 0.8125rem;
+    color: var(--ink-light);
+    margin-top: 0.75rem;
+    text-align: center;
+    line-height: 1.5;
+  }
 
   /* RESPONSIVE */
   @media (max-width: 768px) {
     .hero { grid-template-columns: 1fr; gap: 2.5rem; padding: 4rem 1.25rem 3rem; }
     .hero-visual { display: none; }
     .problem-grid { grid-template-columns: 1fr; gap: 2rem; }
+    .quote-scatter { display: none; }
+    .quote-mobile-stack { display: flex; flex-direction: column; gap: 1.25rem; }
+    .quote-resolution-mobile { padding-top: 1.5rem; }
+    .quote-resolution-mobile .resolution-text {
+      font-family: var(--font-serif);
+      font-style: italic;
+      font-size: 1.25rem;
+      color: #fff;
+      line-height: 1.45;
+      margin-bottom: 1rem;
+    }
     .services-grid { grid-template-columns: 1fr; }
     .steps { grid-template-columns: 1fr; gap: 1.75rem; }
     .about-grid { grid-template-columns: 1fr; gap: 2rem; }
@@ -847,6 +1489,19 @@
     .pricing-main { position: static; }
     .testimonials-grid { grid-template-columns: 1fr; }
     section { padding: 3.5rem 1.25rem; }
+    .story-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+    .story { padding: 3.5rem 1.25rem; }
+    .proof-bar-inner { gap: 1rem 1.75rem; }
+    .sticky-cta { bottom: 1rem; right: 1rem; left: 1rem; }
+    .sticky-cta a { justify-content: center; border-radius: var(--radius-lg); }
+    .pricing-model-flow { gap: 0.625rem; }
+    .pricing-main-inner { flex-direction: column; }
+    .pricing-divider { display: none; }
+    .faq-grid { grid-template-columns: 1fr; }
+    .faq-item:nth-child(2) { border-top: none; }
+    .pricing-rate-col { padding-right: 0; padding-bottom: 1.5rem; border-bottom: 1px solid rgba(255,255,255,0.12); }
+    .hiw-steps { grid-template-columns: 1fr; gap: 1.5rem; }
+    .portfolio-grid { grid-template-columns: 1fr; }
   }
 </style>
 </head>
@@ -855,13 +1510,13 @@
 <!-- NAV -->
 <nav>
   <div class="nav-inner">
-    <a href="#" class="nav-logo">ZeisWorks<span class="logo-period">.</span></a>
+    <a href="#" class="nav-logo">zeisWorks<span class="logo-period">.</span></a>
     <ul class="nav-links">
       <li><a href="#services">Recent work</a></li>
-      <li><a href="#pricing">Pricing</a></li>
+      <li><a href="#how">How It Works</a></li>
       <li><a href="#testimonials">Reviews</a></li>
       <li><a href="#about">About</a></li>
-      <li><a href="#contact" class="nav-cta">Get in touch</a></li>
+      <li><a href="#contact" class="nav-cta"><span class="availability-dot"></span>Submit a problem — free</a></li>
     </ul>
   </div>
 </nav>
@@ -869,31 +1524,99 @@
 <!-- HERO -->
 <section class="hero">
   <div>
-    <p class="hero-eyebrow">Smart systems for small teams · Golden, CO</p>
-    <h1>You know things could work better.<br><em>You're just not sure<br>where to start.</em></h1>
-    <p class="hero-sub">Your business runs well. A few things could run better — and you probably already know which ones. Send me the problem. I'll come back with a plain-English plan: what I'd do, how long it takes, and what it costs. No charge for that part.</p>
-    <div class="hero-actions">
-      <a href="#contact" class="btn-primary">Get your free plan</a>
-      <a href="#services" class="btn-secondary">See recent work →</a>
+    <div id="heroContent">
+      <div class="hero-eyebrow-badge">
+        <span class="hero-eyebrow-dot"></span>
+        Free diagnosis. Pay only to execute.
+      </div>
+      <h1>You know things could work better.<br><em>You're just not sure<br>where to start.</em></h1>
+      <p class="hero-sub">Tell me what's going on. I'll tell you exactly what to do about it — for free. You only pay if you want me to fix it.</p>
+      <div class="hero-actions">
+        <a href="#contact" class="btn-primary" id="heroCta">Submit your problem — it's free</a>
+        <a href="#services" class="btn-secondary">See recent work →</a>
+        <p class="hero-trust">No commitment required &nbsp;·&nbsp; ★★★★★ Top Rated on Upwork</p>
+      </div>
+    </div>
+    <div id="heroForm" class="hero-form">
+      <button class="hero-form-back" id="heroFormBack" type="button">← Back</button>
+      <h2 class="hero-form-title">Tell me what's going on.</h2>
+      <p class="hero-form-sub">I'll come back with a clear plan — free. No commitment.</p>
+      <form name="contact" netlify data-netlify="true">
+        <input type="hidden" name="form-name" value="contact">
+        <div class="hero-form-field">
+          <input type="text" name="name" placeholder="Your name" required>
+        </div>
+        <div class="hero-form-field">
+          <input type="email" name="email" placeholder="Email address" required>
+        </div>
+        <div class="hero-form-field">
+          <textarea name="message" placeholder="What's the problem? Even a rough description is enough — you don't need to know the solution." rows="4" required></textarea>
+        </div>
+        <button type="submit" class="hero-form-submit">Send it — it's free</button>
+        <p class="hero-form-trust">Typical response within 24 hours. Your plan is always free.</p>
+      </form>
+      <div class="hero-form-success" style="display:none;">
+        <p>Thanks — I'll be in touch soon.</p>
+      </div>
     </div>
   </div>
   <div class="hero-visual">
-    <p class="proof-label">A few things worth knowing upfront</p>
-    <div class="proof-item">
-      <div class="proof-dot"></div>
-      <p><strong>Calls and advice are free.</strong> You only pay when you approve work. No retainer required to pick my brain.</p>
+    <p class="proof-label">How it works</p>
+    <div class="hero-steps">
+      <div class="hero-step reveal reveal-d1">
+        <div class="hero-step-num">01</div>
+        <div>
+          <h4>Tell me what's going on</h4>
+          <p>Send the problem in whatever words you have. No charge, no commitment. You don't need to know what the solution is.</p>
+        </div>
+      </div>
+      <div class="hero-step reveal reveal-d2">
+        <div class="hero-step-num">02</div>
+        <div>
+          <h4>You get a clear plan</h4>
+          <p>I'll come back with exactly what I'd do, how long it takes, and what it costs. You approve it before a single hour is billed.</p>
+        </div>
+      </div>
+      <div class="hero-step reveal reveal-d3">
+        <div class="hero-step-num">03</div>
+        <div>
+          <h4>I get it done</h4>
+          <p>Once approved, I build it. You get finished work handed off and ready to use — documented, and not dependent on me to keep running.</p>
+        </div>
+      </div>
     </div>
-    <div class="proof-item">
-      <div class="proof-dot"></div>
-      <p><strong>No long-term commitments.</strong> Some clients have one thing to fix. Others come back regularly. Both are fine.</p>
+
+  </div>
+</section>
+
+
+
+<!-- FOUNDING STORY -->
+<section class="story">
+  <div class="story-grid">
+    <div class="story-text">
+      <p class="section-label reveal">Why this exists</p>
+      <h2 class="section-title reveal reveal-d1">Built for businesses<br>that already work.</h2>
+      <div class="story-body">
+        <p class="reveal reveal-d2">zeisWorks was built because of one experience: watching a brilliant family business — over 60 years old — struggle to see where it was heading.</p>
+        <p class="reveal reveal-d2">Not because anything was broken. Because nobody spoke both languages: the language of the business, and the language of the tools that are supposed to serve it.</p>
+        <p class="reveal reveal-d3"><strong>That's the gap zeisWorks fills. And it's nearly impossible to copy.</strong></p>
+      </div>
     </div>
-    <div class="proof-item">
-      <div class="proof-dot"></div>
-      <p><strong>Plain English, always.</strong> You'll understand what I'm doing and why. No black boxes.</p>
-    </div>
-    <div class="proof-item">
-      <div class="proof-dot"></div>
-      <p><strong>You keep ownership.</strong> Everything I build is yours — documented, handed off, and not dependent on me to keep running.</p>
+    <div>
+      <div class="tcard reveal reveal-d2">
+        <div class="tcard-stars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></div>
+        <p class="tcard-quote">"Jack was amazing to work with, which is why he worked for us on a long-term basis for our Salesforce tasks. He is thorough, accurate, and timely. I highly recommend him for any Salesforce, sales, or sales operations work."</p>
+        <div class="tcard-attr">
+          <strong>Ray Updyke</strong>
+          Alpaca VC · Salesforce &amp; Data Consultant · 254 hrs
+          <div class="tcard-chips">
+            <span class="chip">Collaborative</span>
+            <span class="chip">Detail Oriented</span>
+            <span class="chip">Reliable</span>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -908,10 +1631,28 @@
         <p class="section-body">Most established businesses have at least one thing — a process, a system, a spreadsheet — that works, but barely. You know it. You've been meaning to fix it. I help you actually fix it, without making it a bigger project than it needs to be.</p>
       </div>
       <div class="problem-quotes">
-        <div class="quote-card">I feel like we're leaving time on the table every day. I just don't know where to start fixing it.</div>
-        <div class="quote-card">Our data is all over the place. I can never get a straight answer out of it when I need one.</div>
-        <div class="quote-card">We're in Salesforce but I don't think we're really using it. Half the team doesn't even log in.</div>
-        <div class="quote-card">I know there's a better way to do this. I just don't have the time to figure out what it is.</div>
+        <!-- Desktop: scatter animation -->
+        <div class="quote-scatter" id="quoteScatter">
+          <div class="quote-card qcard-scatter" style="--qrot:-5deg;--qtop:4%;--qleft:3%">I feel like we're leaving time on the table every day. I just don't know where to start fixing it.</div>
+          <div class="quote-card qcard-scatter" style="--qrot:4deg;--qtop:2%;--qleft:51%">Our data is all over the place. I can never get a straight answer out of it when I need one.</div>
+          <div class="quote-card qcard-scatter" style="--qrot:-8deg;--qtop:51%;--qleft:5%">We bought software to solve the problem. Two years later the problem is still there and now we're also paying for software.</div>
+          <div class="quote-card qcard-scatter" style="--qrot:6deg;--qtop:54%;--qleft:50%">I know there's a better way to do this. I just don't have the time to figure out what it is.</div>
+          <div class="quote-resolution" id="quoteResolution">
+            <p class="resolution-text">That's what zeisWorks is for.</p>
+            <a href="#contact" class="btn-primary">Submit your problem — it's free</a>
+          </div>
+        </div>
+        <!-- Mobile: static stacked fallback -->
+        <div class="quote-mobile-stack">
+          <div class="quote-card">I feel like we're leaving time on the table every day. I just don't know where to start fixing it.</div>
+          <div class="quote-card">Our data is all over the place. I can never get a straight answer out of it when I need one.</div>
+          <div class="quote-card">We bought software to solve the problem. Two years later the problem is still there and now we're also paying for software.</div>
+          <div class="quote-card">I know there's a better way to do this. I just don't have the time to figure out what it is.</div>
+          <div class="quote-resolution-mobile">
+            <p class="resolution-text">That's what zeisWorks is for.</p>
+            <a href="#contact" class="btn-primary" style="display:inline-block;margin-top:0.25rem;">Submit your problem — it's free</a>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -921,8 +1662,8 @@
 <section class="two-doors">
   <div class="section-inner">
     <div class="doors-intro">
-      <p class="section-label">Where are you starting from?</p>
-      <h2 class="section-title">Most people come in<br>one of two ways.</h2>
+      <p class="section-label reveal">Who this is for</p>
+      <h2 class="section-title reveal reveal-d1">Built for businesses that run<br>on relationships, not software.</h2>
     </div>
     <div class="doors-grid">
 
@@ -932,7 +1673,7 @@
         </div>
         <h3>I have a specific problem</h3>
         <blockquote>"We've been doing this the same way for years. It works, but it takes longer than it should — and nobody ever has time to fix it."</blockquote>
-        <p style="font-size:0.9rem;color:var(--ink-mid);line-height:1.7;">You know what's broken. You just need someone who can actually fix it without turning it into a six-month project. That's exactly what I do.</p>
+        <p style="font-size:0.9rem;color:var(--ink-mid);line-height:1.7;">You know what's broken. You just need someone who can actually fix it without turning it into a six-month project — and without needing to hire an agency or an in-house IT person to get it done.</p>
         <a href="#contact" class="door-cta">Tell me what it is →</a>
       </div>
 
@@ -942,14 +1683,14 @@
         </div>
         <h3>I'm not sure where to start</h3>
         <blockquote>"I know things are changing fast. I just don't know what we should actually be doing about it — and I can't expect my team to figure that out on top of everything else."</blockquote>
-        <p style="font-size:0.9rem;color:var(--ink-mid);line-height:1.7;">You don't have to show up with a clear problem. A call costs nothing, and most people leave with a clearer picture of where to start — even if they don't hire me.</p>
+        <p style="font-size:0.9rem;color:var(--ink-mid);line-height:1.7;">You don't have to show up with a clear problem or know what category it falls into. That's what the free plan is for. Most people walk away with a clearer picture of where to start — even if they don't hire me.</p>
         <a href="#contact" class="door-cta">Let's talk it through →</a>
       </div>
 
     </div>
     <div class="doors-tenet">
-      <p>The goal is never to change how your business works or <strong>replace the people who make it run.</strong> It's to make their jobs — and yours — a little easier.</p>
-      <a href="#contact" class="doors-tenet-cta">Send me your problem — I'll send you a plan, free →</a>
+      <p>The goal is never to change how your business works or replace the people who make it run. It's to make their jobs — and yours — a little easier.</p>
+      <a href="#contact" class="doors-tenet-cta">Submit your problem — get a plan, free →</a>
     </div>
   </div>
 </section>
@@ -957,125 +1698,73 @@
 <!-- PORTFOLIO -->
 <section class="portfolio" id="services">
   <div class="section-inner">
-    <div class="portfolio-header">
-      <div>
-        <p class="section-label">Recent work</p>
-        <h2 class="section-title">Problems solved.<br>In plain English.</h2>
+    <p class="section-label">Recent work</p>
+    <h2 class="section-title">Real problems.<br><em>Real outcomes.</em></h2>
+    <p style="font-size:0.9375rem;color:var(--ink-mid);margin-top:0.5rem;margin-bottom:2rem;">A sample of what I've built.</p>
+
+    <div class="portfolio-grid">
+
+      <!-- CARD 1 -->
+      <div class="pcard-dark reveal reveal-d1">
+        <p class="pcard-type" style="color:rgba(255,255,255,0.5);">Salesforce · Custom Build</p>
+        <p class="pcard-what-changed">WHAT CHANGED</p>
+        <h3>10-year trend data — visible directly on every prospect record.</h3>
+        <p style="font-size:0.9rem;color:rgba(255,255,255,0.75);line-height:1.7;margin-top:0.75rem;">A client needed historical data across 12 datasets on their Salesforce prospect pages — something standard reporting couldn't touch. I built a custom Lightning component that lives natively on the record. No tab-switching, no BI license.</p>
+        <div class="pcard-outcome" style="background:rgba(255,255,255,0.08);border:none;color:rgba(255,255,255,0.85);">Completed in 4.5 hours. Replaced a recurring license and an agency build that would have cost 2–3× as much.</div>
+        <div class="pcard-tags" style="margin-top:1rem;">
+          <span class="tag" style="background:rgba(255,255,255,0.1);color:rgba(255,255,255,0.7);border:none;">Salesforce</span>
+          <span class="tag" style="background:rgba(255,255,255,0.1);color:rgba(255,255,255,0.7);border:none;">Lightning Components</span>
+          <span class="tag" style="background:rgba(255,255,255,0.1);color:rgba(255,255,255,0.7);border:none;">Custom Reporting</span>
+        </div>
       </div>
-      <div class="carousel-nav">
-        <button class="carousel-btn" id="prev" aria-label="Previous">
-          <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
-        </button>
-        <div class="carousel-dots">
-          <button class="carousel-dot active" data-index="0"></button>
-          <button class="carousel-dot" data-index="1"></button>
-          <button class="carousel-dot" data-index="2"></button>
-          <button class="carousel-dot" data-index="3"></button>
+
+      <!-- CARD 2 -->
+      <div class="pcard-dark reveal reveal-d2">
+        <p class="pcard-type" style="color:rgba(255,255,255,0.5);">Salesforce · AI + Data</p>
+        <p class="pcard-what-changed">WHAT CHANGED</p>
+        <h3>2,000+ records cleaned, corrected, and trusted again.</h3>
+        <p style="font-size:0.9rem;color:rgba(255,255,255,0.75);line-height:1.7;margin-top:0.75rem;">Missing fields, bad formatting, duplicates — a Salesforce database nobody trusted. I exported, cleaned, and re-uploaded it using AI and custom tooling. What would have taken a staff member 60–100 hours took a fraction of the time.</p>
+        <div class="pcard-outcome" style="background:rgba(255,255,255,0.08);border:none;color:rgba(255,255,255,0.85);">Clean data, immediately usable for audience segmentation and targeted outreach.</div>
+        <div class="pcard-tags" style="margin-top:1rem;">
+          <span class="tag" style="background:rgba(255,255,255,0.1);color:rgba(255,255,255,0.7);border:none;">Salesforce</span>
+          <span class="tag" style="background:rgba(255,255,255,0.1);color:rgba(255,255,255,0.7);border:none;">AI</span>
+          <span class="tag" style="background:rgba(255,255,255,0.1);color:rgba(255,255,255,0.7);border:none;">Data Cleanup</span>
         </div>
-        <button class="carousel-btn" id="next" aria-label="Next">
-          <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
-        </button>
       </div>
-    </div>
 
-    <div class="carousel-track-wrap">
-      <div class="carousel-track" id="carouselTrack">
-
-        <!-- CARD 1 -->
-        <div class="pcard">
-          <p class="pcard-type">Salesforce · Custom Build</p>
-          <h3>"We were maintaining a dashboard outside Salesforce just to see our own prospect history."</h3>
-          <p class="pcard-body">A client needed 10-year trend data across 12 datasets visible directly on their prospect records — something standard Salesforce reporting couldn't touch. Rather than expanding their BI stack, I built a custom Lightning component that lives natively on the prospect page. Historical data, clean layout, no tab-switching.</p>
-          <div class="pcard-outcome">Completed in 4.5 hours. Replaced a recurring BI license and a Salesforce agency build that would have cost 2–3× as much.</div>
-          <div class="pcard-tags">
-            <span class="tag">Salesforce</span>
-            <span class="tag">Lightning Components</span>
-            <span class="tag">Custom Reporting</span>
-          </div>
+      <!-- CARD 3 -->
+      <div class="pcard-dark reveal reveal-d3">
+        <p class="pcard-type" style="color:rgba(255,255,255,0.5);">AI · Internal Tools</p>
+        <p class="pcard-what-changed">WHAT CHANGED</p>
+        <h3>HR stopped answering the same questions. An AI agent does it instead.</h3>
+        <p style="font-size:0.9rem;color:rgba(255,255,255,0.75);line-height:1.7;margin-top:0.75rem;">Employees had nowhere consistent to go for HR questions. I built an AI agent inside Microsoft Copilot that pulls from existing company documents to answer instantly — no new software, no extra training.</p>
+        <div class="pcard-outcome" style="background:rgba(255,255,255,0.08);border:none;color:rgba(255,255,255,0.85);">The agent also flags gaps in the documentation — so HR knows what to update before the next person has to ask.</div>
+        <div class="pcard-tags" style="margin-top:1rem;">
+          <span class="tag" style="background:rgba(255,255,255,0.1);color:rgba(255,255,255,0.7);border:none;">AI</span>
+          <span class="tag" style="background:rgba(255,255,255,0.1);color:rgba(255,255,255,0.7);border:none;">Microsoft Copilot</span>
+          <span class="tag" style="background:rgba(255,255,255,0.1);color:rgba(255,255,255,0.7);border:none;">Workflow Automation</span>
         </div>
-
-        <!-- CARD 2 -->
-        <div class="pcard">
-          <p class="pcard-type">Salesforce · AI + Data</p>
-          <h3>"We knew our CRM was a mess. We just didn't have anyone to fix it."</h3>
-          <p class="pcard-body">Missing fields, bad formatting, duplicates — a 2,000+ record Salesforce database that nobody trusted. I exported the data, cleaned and re-populated it using AI and custom tooling, and re-uploaded a complete, accurate set of records. What would have taken a staff member 60–100 hours of manual work was done in a fraction of the time.</p>
-          <div class="pcard-outcome">Clean data, immediately usable for audience segmentation and targeted outreach.</div>
-          <div class="pcard-tags">
-            <span class="tag">Salesforce</span>
-            <span class="tag">AI</span>
-            <span class="tag">Data Cleanup</span>
-          </div>
-        </div>
-
-        <!-- CARD 3 -->
-        <div class="pcard">
-          <p class="pcard-type">AI · Internal Tools</p>
-          <h3>"HR was spending half their day answering the same questions over and over."</h3>
-          <p class="pcard-body">Employees had nowhere consistent to turn for HR and operations questions — so they emailed, messaged, or walked over to ask. I built an AI agent inside Microsoft Copilot that pulls from existing company documents to answer questions instantly, without new software or extra training. Employees get answers. HR gets their time back.</p>
-          <div class="pcard-outcome">The agent also flags gaps in the documentation — so HR knows what to update before the next person has to ask.</div>
-          <div class="pcard-tags">
-            <span class="tag">AI</span>
-            <span class="tag">Microsoft Copilot</span>
-            <span class="tag">Workflow Automation</span>
-          </div>
-        </div>
-
-        <!-- CARD 4 -->
-        <div class="pcard">
-          <p class="pcard-type">Automation · Data</p>
-          <h3>"We needed to find the right partners — but that meant reviewing hundreds of websites by hand."</h3>
-          <p class="pcard-body">A client needed to evaluate 530 websites to identify the right partners for a key initiative. Manual research wasn't just slow — at the scale required, it wasn't financially viable. I built a custom web agent that scraped and compiled the relevant data from all 530 sites automatically, delivering a complete picture that simply wouldn't have been possible otherwise.</p>
-          <div class="pcard-outcome">Made a previously impossible research project achievable — at a fraction of what manual work would have cost.</div>
-          <div class="pcard-tags">
-            <span class="tag">Automation</span>
-            <span class="tag">Web Scraping</span>
-            <span class="tag">Data</span>
-          </div>
-        </div>
-
       </div>
+
+      <!-- CARD 4 -->
+      <div class="pcard-dark reveal reveal-d4">
+        <p class="pcard-type" style="color:rgba(255,255,255,0.5);">Automation · Data</p>
+        <p class="pcard-what-changed">WHAT CHANGED</p>
+        <h3>530 websites evaluated automatically — a project that wasn't financially viable any other way.</h3>
+        <p style="font-size:0.9rem;color:rgba(255,255,255,0.75);line-height:1.7;margin-top:0.75rem;">A client needed to evaluate hundreds of sites to find the right partners. Manual research wasn't viable at that scale. I built a web agent that scraped and compiled the relevant data from all 530 sites automatically.</p>
+        <div class="pcard-outcome" style="background:rgba(255,255,255,0.08);border:none;color:rgba(255,255,255,0.85);">Made a previously impossible research project achievable — at a fraction of what manual work would have cost.</div>
+        <div class="pcard-tags" style="margin-top:1rem;">
+          <span class="tag" style="background:rgba(255,255,255,0.1);color:rgba(255,255,255,0.7);border:none;">Automation</span>
+          <span class="tag" style="background:rgba(255,255,255,0.1);color:rgba(255,255,255,0.7);border:none;">Web Scraping</span>
+          <span class="tag" style="background:rgba(255,255,255,0.1);color:rgba(255,255,255,0.7);border:none;">Data</span>
+        </div>
+      </div>
+
     </div>
   </div>
 </section>
 
 <script>
-(function() {
-  const track = document.getElementById('carouselTrack');
-  const dots = document.querySelectorAll('.carousel-dot');
-  const prev = document.getElementById('prev');
-  const next = document.getElementById('next');
-  const cards = track.querySelectorAll('.pcard');
-  let current = 0;
-  const total = cards.length;
-  const visible = 2;
-
-  function getCardWidth() {
-    if (!cards[0]) return 0;
-    return cards[0].getBoundingClientRect().width + 24; // card + gap
-  }
-
-  function goTo(index) {
-    const max = total - visible;
-    current = Math.max(0, Math.min(index, max));
-    track.style.transform = `translateX(-${current * getCardWidth()}px)`;
-    dots.forEach((d, i) => d.classList.toggle('active', i === current));
-  }
-
-  prev.addEventListener('click', () => goTo(current - 1));
-  next.addEventListener('click', () => goTo(current + 1));
-  dots.forEach(d => d.addEventListener('click', () => goTo(+d.dataset.index)));
-
-  // Touch support
-  let startX = 0;
-  track.addEventListener('touchstart', e => { startX = e.touches[0].clientX; }, { passive: true });
-  track.addEventListener('touchend', e => {
-    const diff = startX - e.changedTouches[0].clientX;
-    if (Math.abs(diff) > 50) goTo(diff > 0 ? current + 1 : current - 1);
-  });
-
-  window.addEventListener('resize', () => goTo(current));
-})();
-
   // Contact form — submit via fetch, show inline confirmation
   document.addEventListener('DOMContentLoaded', function() {
     const contactForm = document.querySelector('.contact-form');
@@ -1094,97 +1783,239 @@
           });
       });
     }
+
+    // Scroll-triggered reveals
+    const reveals = document.querySelectorAll('.reveal');
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+    reveals.forEach(el => revealObserver.observe(el));
+
+    // Sticky CTA — show after hero exits, hide when contact is visible
+    const stickyCta = document.getElementById('stickyCta');
+    const heroSection = document.querySelector('.hero');
+    const contactSection = document.getElementById('contact');
+
+    if (stickyCta && heroSection && contactSection) {
+      const heroObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (!entry.isIntersecting) {
+            stickyCta.classList.add('visible');
+          } else {
+            stickyCta.classList.remove('visible');
+          }
+        });
+      }, { threshold: 0 });
+      heroObserver.observe(heroSection);
+
+      const contactObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            stickyCta.classList.remove('visible');
+          }
+        });
+      }, { threshold: 0.1 });
+      contactObserver.observe(contactSection);
+    }
+
+    // Hero inline form
+    const heroCta = document.getElementById('heroCta');
+    const heroContent = document.getElementById('heroContent');
+    const heroFormWrap = document.getElementById('heroForm');
+    const heroFormBack = document.getElementById('heroFormBack');
+    const heroFormEl = heroFormWrap ? heroFormWrap.querySelector('form') : null;
+    const heroFormSuccess = heroFormWrap ? heroFormWrap.querySelector('.hero-form-success') : null;
+
+    function showHeroForm() {
+      heroContent.style.transition = 'opacity 0.25s ease, transform 0.25s ease';
+      heroContent.style.opacity = '0';
+      heroContent.style.transform = 'translateY(-8px)';
+      setTimeout(function() {
+        heroContent.style.display = 'none';
+        heroFormWrap.style.display = 'block';
+        heroFormWrap.style.opacity = '0';
+        heroFormWrap.style.transform = 'translateY(8px)';
+        heroFormWrap.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
+        requestAnimationFrame(function() {
+          heroFormWrap.style.opacity = '1';
+          heroFormWrap.style.transform = 'translateY(0)';
+        });
+      }, 250);
+    }
+
+    function hideHeroForm() {
+      heroFormWrap.style.transition = 'opacity 0.2s ease';
+      heroFormWrap.style.opacity = '0';
+      setTimeout(function() {
+        heroFormWrap.style.display = 'none';
+        heroContent.style.display = 'block';
+        heroContent.style.opacity = '0';
+        heroContent.style.transform = 'translateY(8px)';
+        heroContent.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
+        requestAnimationFrame(function() {
+          heroContent.style.opacity = '1';
+          heroContent.style.transform = 'translateY(0)';
+        });
+      }, 200);
+    }
+
+    if (heroCta) heroCta.addEventListener('click', function(e) { e.preventDefault(); showHeroForm(); });
+
+    // Sound Familiar — chaos to calm animation (desktop only)
+    if (window.innerWidth > 768) {
+      var problemSection = document.getElementById('problem');
+      var scatterCards = document.querySelectorAll('.qcard-scatter');
+      var resolution = document.getElementById('quoteResolution');
+      var chaosTimers = [];
+
+      function resetChaos() {
+        chaosTimers.forEach(function(t) { clearTimeout(t); });
+        chaosTimers = [];
+        scatterCards.forEach(function(card) {
+          card.style.transition = 'none';
+          card.style.opacity = '0';
+        });
+        if (resolution) {
+          resolution.style.transition = 'none';
+          resolution.style.opacity = '0';
+          resolution.classList.remove('visible');
+        }
+      }
+
+      function runChaos() {
+        resetChaos();
+        // Phase 1: stagger cards in one by one
+        scatterCards.forEach(function(card, i) {
+          var t = setTimeout(function() {
+            card.style.transition = 'opacity 0.4s ease';
+            card.style.opacity = '1';
+          }, i * 150);
+          chaosTimers.push(t);
+        });
+        // Phase 2: after last card fades in + 1.5s pause, fade all out
+        var lastCardStart = (scatterCards.length - 1) * 150;
+        var t2 = setTimeout(function() {
+          scatterCards.forEach(function(card) {
+            card.style.transition = 'opacity 0.6s ease';
+            card.style.opacity = '0';
+          });
+          // Resolution fades in 300ms after cards start fading
+          var t3 = setTimeout(function() {
+            if (resolution) {
+              resolution.style.transition = 'opacity 0.6s ease';
+              resolution.style.opacity = '1';
+              resolution.classList.add('visible');
+            }
+          }, 300);
+          chaosTimers.push(t3);
+        }, lastCardStart + 500 + 1500);
+        chaosTimers.push(t2);
+      }
+
+      if (problemSection) {
+        var chaosObserver = new IntersectionObserver(function(entries) {
+          entries.forEach(function(entry) {
+            if (entry.isIntersecting) {
+              runChaos();
+            } else {
+              resetChaos();
+            }
+          });
+        }, { threshold: 0.25 });
+        chaosObserver.observe(problemSection);
+      }
+    }
+    if (heroFormBack) heroFormBack.addEventListener('click', hideHeroForm);
+
+    if (heroFormEl) {
+      heroFormEl.addEventListener('submit', function(e) {
+        e.preventDefault();
+        var data = new URLSearchParams(new FormData(heroFormEl));
+        fetch('/', { method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body: data })
+          .then(function() { heroFormEl.style.display = 'none'; heroFormSuccess.style.display = 'block'; })
+          .catch(function() { heroFormEl.style.display = 'none'; heroFormSuccess.style.display = 'block'; });
+      });
+    }
   });
 </script>
 
 <!-- PRICING -->
 <section id="pricing">
   <div class="section-inner">
-    <p class="section-label">Pricing</p>
-    <h2 class="section-title">Simple, transparent,<br>no surprises.</h2>
-    <div class="pricing-grid">
+    <p class="section-label reveal">Pricing</p>
+    <h2 class="section-title reveal reveal-d1">Simple pricing.<br><em>Zero risk to find out.</em></h2>
+    <p class="section-body reveal reveal-d2" style="margin-top:0.5rem;">The first part — figuring out if I can help — costs nothing.</p>
 
-      <div class="pricing-main">
-        <div class="pricing-rate">
-          <span class="rate-number">$125</span>
-          <span class="rate-per">/hr</span>
+    <div class="pricing-main reveal reveal-d2" style="margin-top:2.5rem;">
+      <div class="pricing-main-inner">
+        <div class="pricing-rate-col">
+          <p class="pricing-rate-label">HOW PRICING WORKS</p>
+          <p class="pricing-project-headline">You see a project price.<br>Not an hourly rate.</p>
+          <p class="pricing-rate-sub">One flat number for the specific work — reviewed and approved before anything starts.</p>
         </div>
-        <p class="rate-desc">One rate for everything. No retainer, no minimum, no markups.</p>
-        <a href="#contact" class="btn-primary" style="margin-top:1.75rem;display:inline-block;">Get your free plan</a>
-      </div>
-
-      <div class="pricing-details">
-        <div class="pricing-point">
-          <div class="pricing-point-icon">
-            <svg viewBox="0 0 24 24" style="width:18px;height:18px;stroke:var(--forest-mid);fill:none;stroke-width:1.75;stroke-linecap:round;stroke-linejoin:round;"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a19.79 19.79 0 01-3.07-8.68A2 2 0 012 .84h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 8.91a16 16 0 006 6l1.23-1.23a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+        <div class="pricing-divider"></div>
+        <div class="pricing-points-col">
+          <div class="pricing-point-item">
+            <strong>Calls and advice are always free</strong>
+            <p>Talk through the problem, get an honest read, ask anything you want. No clock running until you approve work.</p>
           </div>
-          <div>
-            <strong>Calls and advice are free</strong>
-            <p>Talk through your problem, get my honest read, ask as many questions as you want. No clock running until you approve work.</p>
+          <hr class="pricing-hr">
+          <div class="pricing-point-item">
+            <strong>Scoped and approved before anything starts</strong>
+            <p>You get a clear outline — what I'll do, how long it takes, what it costs. Nothing begins until you're comfortable with it.</p>
           </div>
-        </div>
-        <div class="pricing-point">
-          <div class="pricing-point-icon">
-            <svg viewBox="0 0 24 24" style="width:18px;height:18px;stroke:var(--forest-mid);fill:none;stroke-width:1.75;stroke-linecap:round;stroke-linejoin:round;"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
-          </div>
-          <div>
-            <strong>Scoped before anything starts</strong>
-            <p>You get a clear outline — what I'll do, how many hours I estimate, what the total looks like. You approve it before a single hour is billed.</p>
-          </div>
-        </div>
-        <div class="pricing-point">
-          <div class="pricing-point-icon">
-            <svg viewBox="0 0 24 24" style="width:18px;height:18px;stroke:var(--forest-mid);fill:none;stroke-width:1.75;stroke-linecap:round;stroke-linejoin:round;"><polyline points="20 6 9 17 4 12"/></svg>
-          </div>
-          <div>
-            <strong>You only pay for approved work</strong>
-            <p>If something changes mid-project, I'll tell you before going over scope. No surprise invoices.</p>
+          <hr class="pricing-hr">
+          <div class="pricing-point-item">
+            <strong>No surprises, ever</strong>
+            <p>If something changes mid-project, you hear about it before I go over scope. No retainer, no minimum, no markups.</p>
           </div>
         </div>
       </div>
-
     </div>
+
+    <div class="how-it-works-block reveal reveal-d3">
+      <p class="hiw-label">HOW IT WORKS</p>
+      <div class="hiw-steps">
+        <div class="hiw-step">
+          <div class="hiw-num">01</div>
+          <div class="hiw-connector"></div>
+          <h4>Tell me what's going on</h4>
+          <p>Send the problem in whatever words you have. No charge, no commitment. You don't need to know what the solution is.</p>
+        </div>
+        <div class="hiw-step">
+          <div class="hiw-num">02</div>
+          <div class="hiw-connector"></div>
+          <h4>You get a clear plan</h4>
+          <p>I'll come back with exactly what I'd do, how long it takes, and what it costs. You approve it before a single hour is billed.</p>
+        </div>
+        <div class="hiw-step">
+          <div class="hiw-num">03</div>
+          <h4>I get it done</h4>
+          <p>Once approved, I build it. You get finished work handed off and ready to use — documented, and not dependent on me to keep running.</p>
+        </div>
+      </div>
+      <div class="hiw-ctas">
+        <a href="#contact" class="btn-hiw-primary reveal reveal-d3">Get your free plan</a>
+        <a href="#services" class="btn-hiw-ghost reveal reveal-d4">See recent work →</a>
+      </div>
+    </div>
+
   </div>
 </section>
-
-<!-- HOW I WORK -->
-<section class="how" id="how">
-  <div class="section-inner">
-    <p class="section-label">How it works</p>
-    <h2 class="section-title">As simple as it should be.</h2>
-    <div class="pricing-pill">
-      <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-      <span><strong style="color:var(--ink);font-weight:500;">Calls and advice are always free.</strong> You only pay for work you've approved.</span>
-    </div>
-    <div class="steps">
-      <div class="step">
-        <div class="step-num">01</div>
-        <h3>Tell me what's going on</h3>
-        <p>Send me a message or book a call. Describe the problem in whatever words you have — you don't need to know what the solution is. No charge, no commitment.</p>
-      </div>
-      <div class="step">
-        <div class="step-num">02</div>
-        <h3>You get a clear outline</h3>
-        <p>I'll come back with exactly what I'd do, how long it takes, and what it costs. We'll talk it through if needed. You don't agree to anything until you're comfortable with it.</p>
-      </div>
-      <div class="step">
-        <div class="step-num">03</div>
-        <h3>I get it done</h3>
-        <p>Once you approve, I build it. I'll check in if something comes up, but I don't need managing. You get the finished work handed off and ready to use.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
 <!-- TESTIMONIALS -->
 <section id="testimonials">
   <div class="section-inner">
     <p class="section-label">Client reviews</p>
     <h2 class="section-title">What clients say.</h2>
-    <div class="upwork-bar">
+    <a class="upwork-bar" href="https://www.upwork.com/freelancers/~01ddd112c03a2e1428" target="_blank" rel="noopener noreferrer" style="text-decoration:none;cursor:pointer;">
       <div class="upwork-dot"></div>
       <strong>100% Job Success &nbsp;·&nbsp; Top Rated</strong>&nbsp; on Upwork
-    </div>
+    </a>
     <div class="testimonials-grid">
 
       <div class="tcard">
@@ -1193,6 +2024,10 @@
         <div class="tcard-attr">
           <strong>Alex Zemianek</strong>
           Owner & CEO, JZ Vacation Rentals
+          <div class="tcard-chips">
+            <span class="chip">Long-term Partnership</span>
+            <span class="chip">Exceeded Expectations</span>
+          </div>
         </div>
       </div>
 
@@ -1251,9 +2086,63 @@
       <div class="about-right">
         <h2 class="section-title">A real person,<br>not an agency.</h2>
         <div class="about-copy">
-          <p>I grew up around a small business. I know what owners actually care about — their people, their clients, and the thing they've spent years building.</p>
-          <p>In my day job I serve as Director of Business Development Technology, where I work directly with both client-facing and internal teams to improve how they operate. I've spent years translating between the people who run a business and the tools that are supposed to help them — and figuring out what actually works versus what sounds good in a proposal.</p>
-          <p>ZeisWorks is how I bring that to small businesses directly.</p>
+          <p>I grew up around a small business — a family company that had survived for over 60 years on instinct, relationships, and hard work. I watched it struggle to see where it was heading, not because anything was broken, but because the world changed faster than anyone warned it would.</p>
+          <p>That's why zeisWorks exists. Not to replace how your business works or who makes it run. To bridge the gap between people who built something real and the tools that can actually help them — without the complexity, the retainers, or the agency overhead.</p>
+          <p>In my day job I serve as Director of Business Development Technology, working directly with client-facing and internal teams to improve how they operate. I've spent years translating between the people who run a business and the tools that are supposed to help them. zeisWorks is that, available directly — without the agency overhead.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq-section">
+  <div class="section-inner">
+    <p class="section-label reveal">Common questions</p>
+    <h2 class="section-title reveal reveal-d1">Before you hit send.</h2>
+    <div class="faq-grid">
+
+      <div>
+        <div class="faq-item reveal reveal-d1">
+          <p class="faq-q">Do I have to know what the solution is?</p>
+          <p class="faq-a">No. Most people who reach out know something isn't working — they just can't put a name to it. Figuring that out is what the free plan is for.</p>
+        </div>
+        <div class="faq-item reveal reveal-d2">
+          <p class="faq-q">What kinds of problems can you help with?</p>
+          <p class="faq-a">The kind that have been on your list for months. A report nobody can pull without exporting to Excel. A process three people do manually that nobody has time to fix. A system you're paying for that half the team doesn't use. A grant pipeline that lives in three spreadsheets nobody fully trusts. If it's slowing your business down, send it.</p>
+        </div>
+        <div class="faq-item reveal reveal-d2">
+          <p class="faq-q">What does it cost?</p>
+          <p class="faq-a">The plan is free. If you want me to execute it, you get a flat project price — one number, approved before anything starts. No hourly clock, no surprises mid-project.</p>
+        </div>
+        <div class="faq-item reveal reveal-d3">
+          <p class="faq-q">How is the free plan actually viable?</p>
+          <p class="faq-a">Two years ago this model didn't work — understanding a problem well enough to return a real plan took hours of calls and back-and-forth. AI has changed that. I can triage a submission and produce a genuine, actionable plan in a fraction of the time. The cost of that step dropped, so I stopped charging for it. You get a real answer before spending anything.</p>
+        </div>
+        <div class="faq-item reveal reveal-d3">
+          <p class="faq-q">What happens after I submit?</p>
+          <p class="faq-a">I'll read it and come back with a real plan, usually within a day.</p>
+        </div>
+        <div class="faq-item reveal reveal-d4">
+          <p class="faq-q">What if the plan isn't what I was expecting?</p>
+          <p class="faq-a">Tell me. Plans aren't binding — they're a starting point. If something's off, we talk through it before anything begins. You're not committed to anything until you say so.</p>
+        </div>
+        <div class="faq-item reveal reveal-d4">
+          <p class="faq-q">Is there any commitment involved?</p>
+          <p class="faq-a">None. Submitting a problem doesn't start a project. Reading the plan doesn't start a project. You decide if and when anything moves forward.</p>
+        </div>
+        <div class="faq-item reveal reveal-d4">
+          <p class="faq-q">Will I be dependent on you after the project is done?</p>
+          <p class="faq-a">No. Everything I build is designed for you to own and run without me. If a solution requires software subscriptions — AI tools, automation platforms, that kind of thing — those costs are spelled out in the plan before anything starts. Once the project is handed off, it's yours. I'm not in the loop unless you want me to be.</p>
+        </div>
+        <div class="faq-item reveal reveal-d5">
+          <p class="faq-q">What if you can't help?</p>
+          <p class="faq-a">I'll tell you straight, and point you somewhere better if I can. Some problems are the wrong fit for what I do — and you'll hear that for free rather than find out after paying someone else.</p>
+        </div>
+        <div class="faq-item reveal reveal-d5">
+          <p class="faq-q">Who is behind this?</p>
+          <p class="faq-a">Jack Zeis, a technical consultant based in Golden, Colorado. I've spent six years building CRM systems, automation tools, and data infrastructure for organizations that can't afford to get it wrong — nonprofits, grant-funded teams, and small businesses where the technical person is also the only technical person.</p>
         </div>
       </div>
 
@@ -1267,12 +2156,12 @@
     <p class="section-label">No commitment required</p>
     <h2 class="section-title">Send me your problem.<br>I'll send you a plan.</h2>
     <p class="free-cta-body">
-      Tell me what's going on — in whatever words you have. I'll spend an hour on it and come back with a plain-English plan: <strong>what I'd do, how long it would take, and what it would cost.</strong> No charge for any of that. Then it's your call — build it yourself or let's work on it together.
+      Tell me what's going on — in whatever words you have. I'll return a plain-English plan: <strong>what I'd do, how long it would take, and what it would cost.</strong> No charge for any of that. Then it's your call — approve the plan and I'll execute, or take it and run with it yourself.
     </p>
     <div class="free-cta-actions">
-      <a href="#contact" class="btn-primary">Get your free plan</a>
+      <a href="#contact" class="btn-primary">Submit your problem — it's free</a>
     </div>
-    <p class="free-cta-note">You only pay if you decide to work together — and only for work you've approved.</p>
+    <p class="free-cta-note">The plan is always free. You only pay if you decide to work together — and only for work you've approved.</p>
   </div>
 </section>
 
@@ -1283,10 +2172,25 @@
       <div class="contact-left">
         <p class="section-label">Get your free plan</p>
         <h2 class="section-title">Tell me what's going on.</h2>
-        <p>Doesn't need to be polished. Just tell me what's happening — I'll take it from there.</p>
+        <p>Tell me what's happening. You don't need to know what the solution is or what category it falls into — that's what the plan is for. No charge, no commitment, no sales call.</p>
         <div class="contact-email-block">
           <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
           <a href="mailto:hello@zeisworks.com">hello@zeisworks.com</a>
+        </div>
+        <div class="contact-next">
+          <p class="contact-next-label">What happens after you submit</p>
+          <div class="contact-next-step">
+            <div class="contact-next-num">1</div>
+            <p>I review your problem — usually within 24 hours</p>
+          </div>
+          <div class="contact-next-step">
+            <div class="contact-next-num">2</div>
+            <p>I send a plain-English plan — always free</p>
+          </div>
+          <div class="contact-next-step">
+            <div class="contact-next-num">3</div>
+            <p>You decide: build it yourself, or let me do it</p>
+          </div>
         </div>
       </div>
       <form class="contact-form" name="contact" netlify>
@@ -1311,7 +2215,7 @@
             <option value="">Not sure yet...</option>
             <option>Something specific needs fixing</option>
             <option>A process or workflow issue</option>
-            <option>A Salesforce problem</option>
+            <option>A software or tool we're not really using</option>
             <option>A data or reporting issue</option>
             <option>Something bigger I need help scoping</option>
           </select>
@@ -1320,7 +2224,8 @@
           <label for="message">Tell me more</label>
           <textarea id="message" name="message" placeholder="What's the problem? Even a rough description is helpful — you don't need to have it figured out."></textarea>
         </div>
-        <button type="submit" class="form-submit">Send message</button>
+        <button type="submit" class="form-submit">Send it over — it's free</button>
+        <p class="form-trust">Typical response within 24 hours. Your plan is always free — no commitment required.</p>
       </form>
       <div id="form-success" style="display:none; padding: 2rem; background: var(--cream); border: 1px solid var(--terra); border-radius: 8px; text-align: center;">
         <p style="font-size: 1.1rem; margin: 0;">Thanks — I'll be in touch soon.</p>
@@ -1333,5 +2238,20 @@
 <footer>
   <div class="footer-inner">
     <div>
-      <div class="footer-logo">ZeisWorks<span class="logo-period">.</span></div>
+      <div class="footer-logo">zeisWorks<span class="logo-period">.</span></div>
       <div class="footer-tag">Tell me what's wrong. I'll figure out the rest.</div>
+    </div>
+    <div class="footer-copy">© 2025 zeisWorks. Golden, CO.</div>
+  </div>
+</footer>
+
+<!-- STICKY CTA -->
+<div class="sticky-cta" id="stickyCta">
+  <a href="#contact">
+    <svg viewBox="0 0 24 24" style="width:16px;height:16px;stroke:#fff;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+    Submit a problem — it's free
+  </a>
+</div>
+
+</body>
+</html>
