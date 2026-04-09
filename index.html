@@ -1569,11 +1569,27 @@
         <p class="section-body">Most established businesses have at least one thing — a process, a system, a spreadsheet — that works, but barely. You know it. You’ve been meaning to fix it. I help you actually fix it, without making it a bigger project than it needs to be.</p>
       </div>
       <div class="problem-quotes">
-        <div class="quote-mobile-stack" style="display:flex;flex-direction:column;gap:1.25rem;">
+        <!-- Desktop: scatter animation -->
+        <div class="quote-scatter" id="quoteScatter">
+          <div class="quote-card qcard-scatter" style="--qrot:-5deg;--qtop:4%;--qleft:3%">I feel like we’re leaving time on the table every day. I just don’t know where to start fixing it.</div>
+          <div class="quote-card qcard-scatter" style="--qrot:4deg;--qtop:2%;--qleft:51%">Our data is all over the place. I can never get a straight answer out of it when I need one.</div>
+          <div class="quote-card qcard-scatter" style="--qrot:-8deg;--qtop:51%;--qleft:5%">We bought software to solve the problem. Two years later the problem is still there and now we’re also paying for software.</div>
+          <div class="quote-card qcard-scatter" style="--qrot:6deg;--qtop:54%;--qleft:50%">I know there’s a better way to do this. I just don’t have the time to figure out what it is.</div>
+          <div class="quote-resolution" id="quoteResolution">
+            <p class="resolution-text">That’s what zeisWorks is for.</p>
+            <a href="#contact" class="btn-primary">Submit your problem — it’s free</a>
+          </div>
+        </div>
+        <!-- Mobile: static stacked fallback -->
+        <div class="quote-mobile-stack">
           <div class="quote-card">I feel like we’re leaving time on the table every day. I just don’t know where to start fixing it.</div>
           <div class="quote-card">Our data is all over the place. I can never get a straight answer out of it when I need one.</div>
           <div class="quote-card">We bought software to solve the problem. Two years later the problem is still there and now we’re also paying for software.</div>
           <div class="quote-card">I know there’s a better way to do this. I just don’t have the time to figure out what it is.</div>
+          <div class="quote-resolution-mobile">
+            <p class="resolution-text">That’s what zeisWorks is for.</p>
+            <a href="#contact" class="btn-primary" style="display:inline-block;margin-top:0.25rem;">Submit your problem — it’s free</a>
+          </div>
         </div>
       </div>
     </div>
