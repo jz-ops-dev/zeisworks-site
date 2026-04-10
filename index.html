@@ -438,42 +438,36 @@
     background: #fff;
     border-radius: var(--radius-lg);
     border: 1px solid #E8E3D8;
-    padding: 2.25rem;
+    /* left padding clears the swinging panel (~75deg leaves ~26% visible on left) */
+    padding: 2.25rem 2.25rem 2.25rem 38%;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    gap: 1.25rem;
+    gap: 0.875rem;
   }
-  .door-interior blockquote {
+  .door-ack {
     font-family: var(--font-serif);
     font-style: italic;
-    color: var(--ink-mid);
-    font-size: 0.9375rem;
-    line-height: 1.7;
-    border-left: 2px solid var(--terra-light);
-    padding-left: 1rem;
+    font-size: 1.125rem;
+    color: var(--forest);
     margin: 0;
+    line-height: 1.3;
   }
-  .door-interior .door-desc {
-    font-size: 0.875rem;
+  .door-looking {
+    font-size: 0.9rem;
     color: var(--ink-mid);
     line-height: 1.6;
     margin: 0;
   }
   .door-interior .door-cta {
-    display: inline-block;
-    padding: 0.625rem 1.375rem;
-    background: var(--forest);
-    color: #fff;
     font-size: 0.875rem;
-    font-weight: 500;
-    border-radius: var(--radius-full);
+    font-weight: 600;
+    color: var(--forest);
     text-decoration: none;
-    align-self: flex-start;
-    margin-top: auto;
-    transition: background 0.2s;
+    margin-top: 0.25rem;
+    transition: color 0.2s;
   }
-  .door-interior .door-cta:hover { background: #1e3329; }
+  .door-interior .door-cta:hover { color: var(--terra); }
   .door-panel {
     position: absolute;
     inset: 0;
@@ -1559,8 +1553,8 @@
     .doors-grid { grid-template-columns: 1fr; margin-top: 1.5rem !important; }
     .door-wrapper { height: auto; perspective: none; }
     .door-panel { position: relative; inset: auto; transform: none !important; border-radius: var(--radius-lg) var(--radius-lg) 0 0; box-shadow: none; height: auto; padding: 1.5rem 2rem; flex-direction: row; align-items: center; justify-content: flex-start; gap: 1rem; }
-    .door-interior { position: relative; inset: auto; border-radius: 0 0 var(--radius-lg) var(--radius-lg); border-top: none; justify-content: flex-start; max-height: 0; overflow: hidden; padding: 0 2rem; transition: max-height 0.4s ease, padding 0.4s ease; }
-    .door-wrapper.open .door-interior { max-height: 400px; padding: 1.5rem 2rem; }
+    .door-interior { position: relative; inset: auto; border-radius: 0 0 var(--radius-lg) var(--radius-lg); border-top: none; justify-content: flex-start; max-height: 0; overflow: hidden; padding: 0 1.5rem; transition: max-height 0.4s ease, padding 0.4s ease; }
+    .door-wrapper.open .door-interior { max-height: 400px; padding: 1.5rem; }
     .door-knob { display: none; }
     .door-hint { display: none; }
     .door-label { font-size: 1rem; padding: 0; text-align: left; }
@@ -1663,9 +1657,9 @@
 
       <div class="door-wrapper">
         <div class="door-interior">
-          <blockquote>“We’ve been doing this the same way for years. It works, but it takes longer than it should — and nobody ever has time to fix it.”</blockquote>
-          <p class="door-desc">You get a scoped plan and a flat price before anything starts — no agency overhead, no open-ended engagement.</p>
-          <a href="#contact" class="door-cta">Submit your problem — it’s free</a>
+          <p class="door-ack">Ah — so you picked door 1.</p>
+          <p class="door-looking">Looking for a fix, not a six-month project. You’ll have a scoped plan and flat price before anything starts.</p>
+          <a href="#contact" class="door-cta">Submit your problem — it’s free →</a>
         </div>
         <div class="door-panel">
           <div class="door-icon">
@@ -1679,9 +1673,9 @@
 
       <div class="door-wrapper">
         <div class="door-interior">
-          <blockquote>“I know things are changing fast. I just don’t know what we should actually be doing about it.”</blockquote>
-          <p class="door-desc">Most people walk away from the free plan with a clearer picture of what to fix first — even without hiring me.</p>
-          <a href="#contact" class="door-cta">Submit your problem — it’s free</a>
+          <p class="door-ack">Ah — so you picked door 2.</p>
+          <p class="door-looking">Looking for a clearer picture before committing to anything. Most people leave the free plan with exactly that.</p>
+          <a href="#contact" class="door-cta">Submit your problem — it’s free →</a>
         </div>
         <div class="door-panel">
           <div class="door-icon">
