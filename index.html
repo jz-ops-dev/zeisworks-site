@@ -305,14 +305,41 @@
     border-radius: var(--radius);
     padding: 1.25rem 1.5rem;
     display: flex;
-    align-items: center;
+    flex-direction: column;
     justify-content: center;
-    text-align: center;
+    gap: 0.4rem;
+  }
+  .qcard-back-type {
+    font-size: 0.75rem;
+    color: rgba(255,255,255,0.5);
+    margin-bottom: 0.1rem;
+  }
+  .qcard-back-label {
+    font-size: 0.65rem;
+    font-weight: 600;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.4);
+  }
+  .qcard-back-headline {
     font-family: var(--font-serif);
     font-style: italic;
     color: rgba(255,255,255,0.95);
-    font-size: 1rem;
-    line-height: 1.5;
+    font-size: 0.9375rem;
+    line-height: 1.4;
+    margin: 0.1rem 0 0.35rem;
+  }
+  .qcard-back-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.3rem;
+  }
+  .qcard-back-tag {
+    font-size: 0.68rem;
+    background: rgba(255,255,255,0.1);
+    color: rgba(255,255,255,0.65);
+    padding: 0.15rem 0.5rem;
+    border-radius: 99px;
   }
   .quote-resolution {
     position: absolute;
@@ -932,34 +959,37 @@
     line-height: 1.7;
     margin: 0;
   }
-  /* PORTFOLIO GRID */
-  .portfolio-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1.5rem;
-  }
-  .pcard-dark {
-    background: var(--forest);
-    border-radius: var(--radius-lg);
-    color: #fff;
-    perspective: 900px;
-    cursor: default;
-  }
-  .pcard-what-changed {
-    font-size: 0.7rem;
-    font-weight: 500;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: rgba(255,255,255,0.45);
-    margin-bottom: 0.75rem;
+  /* WORK LIST */
+  .work-list {
+    display: flex;
+    flex-direction: column;
+    border-top: 1px solid #E8E3D8;
     margin-top: 0.5rem;
   }
-  .pcard-dark h3 {
-    color: #fff;
+  .work-item {
+    display: grid;
+    grid-template-columns: 170px 1fr auto;
+    align-items: start;
+    gap: 1.5rem;
+    padding: 1.25rem 0;
+    border-bottom: 1px solid #E8E3D8;
+  }
+  .work-type {
+    font-size: 0.8125rem;
+    color: var(--ink-mid);
+    padding-top: 0.15rem;
+  }
+  .work-title {
     font-family: var(--font-serif);
-    font-size: 1.1rem;
+    font-size: 1.0625rem;
+    color: var(--ink);
     line-height: 1.4;
-    margin-bottom: 0;
+  }
+  .work-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem;
+    justify-content: flex-end;
   }
   /* GHOST BUTTON */
   .btn-ghost {
@@ -1026,37 +1056,7 @@
   .tcard-chips { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 0.5rem; }
   .chip { font-size: 0.7rem; background: var(--cream-dark); color: var(--ink-mid); padding: 0.2rem 0.625rem; border-radius: 99px; }
 
-  /* PORTFOLIO CARD HOVER-FADE */
-  .pcard-flip-inner {
-    position: relative;
-    min-height: 280px;
-    height: 100%;
-  }
-  .pcard-face {
-    padding: 2rem;
-    display: flex;
-    flex-direction: column;
-    transition: opacity 0.3s ease;
-  }
-  .pcard-front { min-height: 280px; }
-  .pcard-back {
-    position: absolute;
-    inset: 0;
-    background: var(--forest);
-    border-radius: var(--radius-lg);
-    justify-content: center;
-    gap: 0.75rem;
-    opacity: 0;
-  }
-  .pcard-dark:hover .pcard-front { opacity: 0; }
-  .pcard-dark:hover .pcard-back { opacity: 1; }
-  .pcard-hint {
-    font-size: 0.75rem;
-    color: rgba(255,255,255,0.35);
-    margin-top: 0.75rem;
-    letter-spacing: 0.04em;
-    user-select: none;
-  }
+
 
   /* FREE DIAGNOSIS CTA */
   .free-cta {
@@ -1590,7 +1590,8 @@
     .faq-item:nth-child(2) { border-top: none; }
     .pricing-rate-col { padding-right: 0; padding-bottom: 1.5rem; border-bottom: 1px solid rgba(255,255,255,0.12); }
     .hiw-steps { grid-template-columns: 1fr; gap: 1.5rem; }
-    .portfolio-grid { grid-template-columns: 1fr; }
+    .work-item { grid-template-columns: 1fr; gap: 0.4rem; }
+    .work-tags { justify-content: flex-start; }
     .doors-grid { grid-template-columns: 1fr; margin-top: 1.5rem !important; }
     .door-wrapper { height: auto; perspective: none; }
     .door-panel { position: relative; inset: auto; transform: none !important; border-radius: var(--radius-lg) var(--radius-lg) 0 0; box-shadow: none; height: auto; padding: 1.5rem 2rem; flex-direction: row; align-items: center; justify-content: flex-start; gap: 1rem; }
@@ -1680,25 +1681,62 @@
           <div class="quote-card qcard-scatter" style="--qrot:-5deg;--qtop:4%;--qleft:3%">
             <div class="qcard-flip">
               <div class="qcard-front">I feel like we’re leaving time on the table every day. I just don’t know where to start fixing it.</div>
-              <div class="qcard-back">zeisWorks finds where the time goes and gives you a clear fix — scoped and priced before anything starts.</div>
+              <div class="qcard-back">
+              <p class="qcard-back-type">Salesforce · Custom Build</p>
+              <p class="qcard-back-label">What changed</p>
+              <p class="qcard-back-headline">10-year trend data — visible on every prospect record.</p>
+              <div class="qcard-back-tags">
+                <span class="qcard-back-tag">Salesforce</span>
+                <span class="qcard-back-tag">Lightning Components</span>
+                <span class="qcard-back-tag">Custom Reporting</span>
+              </div>
+            </div>
             </div>
           </div>
           <div class="quote-card qcard-scatter" style="--qrot:4deg;--qtop:2%;--qleft:51%">
             <div class="qcard-flip">
               <div class="qcard-front">Our data is all over the place. I can never get a straight answer out of it when I need one.</div>
-              <div class="qcard-back">zeisWorks builds the single source of truth — connected, queryable, and ready when you need it.</div>
+              <div class="qcard-back">
+              <p class="qcard-back-type">Salesforce · AI + Data</p>
+              <p class="qcard-back-label">What changed</p>
+              <p class="qcard-back-headline">2,000+ records cleaned, corrected, and trusted again.</p>
+              <div class="qcard-back-tags">
+                <span class="qcard-back-tag">Salesforce</span>
+                <span class="qcard-back-tag">AI</span>
+                <span class="qcard-back-tag">Data Cleanup</span>
+              </div>
+            </div>
             </div>
           </div>
           <div class="quote-card qcard-scatter" style="--qrot:-8deg;--qtop:51%;--qleft:5%">
             <div class="qcard-flip">
               <div class="qcard-front">We bought software to solve the problem. Two years later the problem is still there and now we’re also paying for software.</div>
-              <div class="qcard-back">zeisWorks fixes the process, not the tool. The software you have probably does more than you think.</div>
+              <div class="qcard-back">
+              <p class="qcard-back-type">Automation · Data · Mapping</p>
+              <p class="qcard-back-label">What changed</p>
+              <p class="qcard-back-headline">A marketing deliverable that wasn’t viable to produce manually.</p>
+              <div class="qcard-back-tags">
+                <span class="qcard-back-tag">Python</span>
+                <span class="qcard-back-tag">ChatGPT</span>
+                <span class="qcard-back-tag">ArcGIS</span>
+                <span class="qcard-back-tag">Automation</span>
+              </div>
+            </div>
             </div>
           </div>
           <div class="quote-card qcard-scatter" style="--qrot:6deg;--qtop:54%;--qleft:50%">
             <div class="qcard-flip">
               <div class="qcard-front">I know there’s a better way to do this. I just don’t have the time to figure out what it is.</div>
-              <div class="qcard-back">zeisWorks figures out the better way and builds it — so you don’t have to find the time.</div>
+              <div class="qcard-back">
+              <p class="qcard-back-type">Automation · Data</p>
+              <p class="qcard-back-label">What changed</p>
+              <p class="qcard-back-headline">530 websites evaluated automatically.</p>
+              <div class="qcard-back-tags">
+                <span class="qcard-back-tag">Automation</span>
+                <span class="qcard-back-tag">Web Scraping</span>
+                <span class="qcard-back-tag">Data</span>
+              </div>
+            </div>
             </div>
           </div>
 
@@ -1762,98 +1800,50 @@
     <h2 class="section-title">Real problems.<br><em>Real outcomes.</em></h2>
     <p style="font-size:0.9375rem;color:var(--ink-mid);margin-top:0.5rem;margin-bottom:2rem;">A sample of what I've built.</p>
 
-    <div class="portfolio-grid">
+    <div class="work-list">
 
-      <!-- CARD 1 -->
-      <div class="pcard-dark reveal reveal-d1">
-        <div class="pcard-flip-inner">
-          <div class="pcard-face pcard-front">
-            <p class="pcard-type" style="color:rgba(255,255,255,0.5);">Salesforce · Custom Build</p>
-            <p class="pcard-what-changed">WHAT CHANGED</p>
-            <h3>10-year trend data — visible directly on every prospect record.</h3>
-            <div class="pcard-tags" style="margin-top:auto;padding-top:1rem;">
-              <span class="tag" style="background:rgba(255,255,255,0.1);color:rgba(255,255,255,0.7);border:none;">Salesforce</span>
-              <span class="tag" style="background:rgba(255,255,255,0.1);color:rgba(255,255,255,0.7);border:none;">Lightning Components</span>
-              <span class="tag" style="background:rgba(255,255,255,0.1);color:rgba(255,255,255,0.7);border:none;">Custom Reporting</span>
-            </div>
-            <p class="pcard-hint">Hover for details</p>
-          </div>
-          <div class="pcard-face pcard-back">
-            <p class="pcard-type" style="color:rgba(255,255,255,0.45);">Salesforce · Custom Build</p>
-            <p style="font-size:0.9rem;color:rgba(255,255,255,0.75);line-height:1.7;">A client needed historical data across 12 datasets on their Salesforce prospect pages — something standard reporting couldn't touch. I built a custom Lightning component that lives natively on the record. No tab-switching, no BI license.</p>
-            <div class="pcard-outcome" style="background:rgba(255,255,255,0.08);border:none;color:rgba(255,255,255,0.85);padding:0.75rem;border-radius:8px;margin-top:auto;">Completed in 4.5 hours. Replaced a recurring license and an agency build that would have cost 2–3× as much.</div>
-          </div>
+      <div class="work-item">
+        <span class="work-type">Salesforce · Custom Build</span>
+        <span class="work-title">10-year trend data — visible directly on every prospect record.</span>
+        <div class="work-tags">
+          <span class="tag">Salesforce</span>
+          <span class="tag">Lightning Components</span>
+          <span class="tag">Custom Reporting</span>
         </div>
       </div>
 
-            <!-- CARD 2 -->
-      <div class="pcard-dark reveal reveal-d2">
-        <div class="pcard-flip-inner">
-          <div class="pcard-face pcard-front">
-            <p class="pcard-type" style="color:rgba(255,255,255,0.5);">Salesforce · AI + Data</p>
-            <p class="pcard-what-changed">WHAT CHANGED</p>
-            <h3>2,000+ records cleaned, corrected, and trusted again.</h3>
-            <div class="pcard-tags" style="margin-top:auto;padding-top:1rem;">
-              <span class="tag" style="background:rgba(255,255,255,0.1);color:rgba(255,255,255,0.7);border:none;">Salesforce</span>
-              <span class="tag" style="background:rgba(255,255,255,0.1);color:rgba(255,255,255,0.7);border:none;">AI</span>
-              <span class="tag" style="background:rgba(255,255,255,0.1);color:rgba(255,255,255,0.7);border:none;">Data Cleanup</span>
-            </div>
-            <p class="pcard-hint">Hover for details</p>
-          </div>
-          <div class="pcard-face pcard-back">
-            <p class="pcard-type" style="color:rgba(255,255,255,0.45);">Salesforce · AI + Data</p>
-            <p style="font-size:0.9rem;color:rgba(255,255,255,0.75);line-height:1.7;">Missing fields, bad formatting, duplicates — a Salesforce database nobody trusted. I exported, cleaned, and re-uploaded it using AI and custom tooling. What would have taken a staff member 60–100 hours took a fraction of the time.</p>
-            <div class="pcard-outcome" style="background:rgba(255,255,255,0.08);border:none;color:rgba(255,255,255,0.85);padding:0.75rem;border-radius:8px;margin-top:auto;">Clean data, immediately usable for audience segmentation and targeted outreach.</div>
-          </div>
+      <div class="work-item">
+        <span class="work-type">Salesforce · AI + Data</span>
+        <span class="work-title">2,000+ records cleaned, corrected, and trusted again.</span>
+        <div class="work-tags">
+          <span class="tag">Salesforce</span>
+          <span class="tag">AI</span>
+          <span class="tag">Data Cleanup</span>
         </div>
       </div>
 
-            <!-- CARD 3 -->
-      <div class="pcard-dark reveal reveal-d3">
-        <div class="pcard-flip-inner">
-          <div class="pcard-face pcard-front">
-            <p class="pcard-type" style="color:rgba(255,255,255,0.5);">Automation · Data · Mapping</p>
-            <p class="pcard-what-changed">WHAT CHANGED</p>
-            <h3>A marketing deliverable that wasn't viable to produce manually.</h3>
-            <div class="pcard-tags" style="margin-top:auto;padding-top:1rem;">
-              <span class="tag" style="background:rgba(255,255,255,0.1);color:rgba(255,255,255,0.7);border:none;">Python</span>
-              <span class="tag" style="background:rgba(255,255,255,0.1);color:rgba(255,255,255,0.7);border:none;">ChatGPT</span>
-              <span class="tag" style="background:rgba(255,255,255,0.1);color:rgba(255,255,255,0.7);border:none;">ArcGIS</span>
-              <span class="tag" style="background:rgba(255,255,255,0.1);color:rgba(255,255,255,0.7);border:none;">Automation</span>
-            </div>
-            <p class="pcard-hint">Hover for details</p>
-          </div>
-          <div class="pcard-face pcard-back">
-            <p class="pcard-type" style="color:rgba(255,255,255,0.45);">Automation · Data · Mapping</p>
-            <p style="font-size:0.9rem;color:rgba(255,255,255,0.75);line-height:1.7;">A large financial institution needed a polished, data-driven marketing deliverable pulling from multiple sources with geographic analysis. I built a Python/ChatGPT/ArcGIS pipeline that automated research, analysis, and formatting end to end.</p>
-            <div class="pcard-outcome" style="background:rgba(255,255,255,0.08);border:none;color:rgba(255,255,255,0.85);padding:0.75rem;border-radius:8px;margin-top:auto;">Weeks of manual work compressed into hours — at a quality only possible with modern tooling.</div>
-          </div>
+      <div class="work-item">
+        <span class="work-type">Automation · Data · Mapping</span>
+        <span class="work-title">A marketing deliverable that wasn’t viable to produce manually.</span>
+        <div class="work-tags">
+          <span class="tag">Python</span>
+          <span class="tag">ChatGPT</span>
+          <span class="tag">ArcGIS</span>
+          <span class="tag">Automation</span>
         </div>
       </div>
 
-            <!-- CARD 4 -->
-      <div class="pcard-dark reveal reveal-d4">
-        <div class="pcard-flip-inner">
-          <div class="pcard-face pcard-front">
-            <p class="pcard-type" style="color:rgba(255,255,255,0.5);">Automation · Data</p>
-            <p class="pcard-what-changed">WHAT CHANGED</p>
-            <h3>530 websites evaluated automatically — a project that wasn't financially viable any other way.</h3>
-            <div class="pcard-tags" style="margin-top:auto;padding-top:1rem;">
-              <span class="tag" style="background:rgba(255,255,255,0.1);color:rgba(255,255,255,0.7);border:none;">Automation</span>
-              <span class="tag" style="background:rgba(255,255,255,0.1);color:rgba(255,255,255,0.7);border:none;">Web Scraping</span>
-              <span class="tag" style="background:rgba(255,255,255,0.1);color:rgba(255,255,255,0.7);border:none;">Data</span>
-            </div>
-            <p class="pcard-hint">Hover for details</p>
-          </div>
-          <div class="pcard-face pcard-back">
-            <p class="pcard-type" style="color:rgba(255,255,255,0.45);">Automation · Data</p>
-            <p style="font-size:0.9rem;color:rgba(255,255,255,0.75);line-height:1.7;">A client needed to evaluate hundreds of sites to find the right partners. Manual research wasn't viable at that scale. I built a web agent that scraped and compiled the relevant data from all 530 sites automatically.</p>
-            <div class="pcard-outcome" style="background:rgba(255,255,255,0.08);border:none;color:rgba(255,255,255,0.85);padding:0.75rem;border-radius:8px;margin-top:auto;">Made a previously impossible research project achievable — at a fraction of what manual work would have cost.</div>
-          </div>
+      <div class="work-item">
+        <span class="work-type">Automation · Data</span>
+        <span class="work-title">530 websites evaluated automatically — a project that wasn’t financially viable any other way.</span>
+        <div class="work-tags">
+          <span class="tag">Automation</span>
+          <span class="tag">Web Scraping</span>
+          <span class="tag">Data</span>
         </div>
       </div>
 
-        </div><!-- /portfolio-grid -->
+    </div><!-- /work-list -->
 
     <div id="testimonials" style="margin-top:4rem;padding-top:3.5rem;border-top:1px solid #E8E3D8;">
     <p class="section-label">Client reviews</p>
