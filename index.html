@@ -457,7 +457,6 @@
   .door-wrapper {
     position: relative;
     height: 360px;
-    perspective: 1400px;
   }
   .door-interior {
     position: absolute;
@@ -465,12 +464,13 @@
     background: #fff;
     border-radius: var(--radius-lg);
     border: 1px solid #E8E3D8;
-    /* left padding clears the swinging panel (~75deg leaves ~26% visible on left) */
-    padding: 2.25rem 2.25rem 2.25rem 38%;
+    padding: 2.25rem;
     display: flex;
     flex-direction: column;
     justify-content: center;
     gap: 0.875rem;
+    opacity: 0;
+    transition: opacity 0.3s ease 0.15s;
   }
   .door-ack {
     font-family: var(--font-serif);
@@ -500,21 +500,23 @@
     inset: 0;
     background: var(--forest);
     border-radius: var(--radius-lg);
-    transform-origin: left center;
-    transition: transform 0.65s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.65s ease;
+    transition: opacity 0.3s ease;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     gap: 1.25rem;
-    box-shadow: 4px 0 20px rgba(0,0,0,0.3);
     border: 1px solid rgba(255,255,255,0.07);
     cursor: default;
   }
   .door-wrapper:hover .door-panel,
   .door-wrapper.open .door-panel {
-    transform: rotateY(-75deg);
-    box-shadow: 18px 0 36px rgba(0,0,0,0.1);
+    opacity: 0;
+    pointer-events: none;
+  }
+  .door-wrapper:hover .door-interior,
+  .door-wrapper.open .door-interior {
+    opacity: 1;
   }
   .door-label {
     font-family: var(--font-serif);
@@ -1024,32 +1026,30 @@
   .tcard-chips { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 0.5rem; }
   .chip { font-size: 0.7rem; background: var(--cream-dark); color: var(--ink-mid); padding: 0.2rem 0.625rem; border-radius: 99px; }
 
-  /* PORTFOLIO CARD HOVER-FLIP */
+  /* PORTFOLIO CARD HOVER-FADE */
   .pcard-flip-inner {
     position: relative;
-    transform-style: preserve-3d;
-    transition: transform 0.55s ease;
     min-height: 280px;
     height: 100%;
   }
-  .pcard-dark:hover .pcard-flip-inner { transform: rotateY(180deg); }
   .pcard-face {
-    backface-visibility: hidden;
-    -webkit-backface-visibility: hidden;
     padding: 2rem;
     display: flex;
     flex-direction: column;
+    transition: opacity 0.3s ease;
   }
   .pcard-front { min-height: 280px; }
   .pcard-back {
     position: absolute;
     inset: 0;
-    transform: rotateY(180deg);
     background: var(--forest);
     border-radius: var(--radius-lg);
     justify-content: center;
     gap: 0.75rem;
+    opacity: 0;
   }
+  .pcard-dark:hover .pcard-front { opacity: 0; }
+  .pcard-dark:hover .pcard-back { opacity: 1; }
   .pcard-hint {
     font-size: 0.75rem;
     color: rgba(255,255,255,0.35);
@@ -1253,13 +1253,7 @@
     line-height: 1.5;
     width: 100%;
   }
-  .hero-why-free a {
-    color: var(--forest);
-    text-decoration: none;
-    font-weight: 500;
-    transition: color 0.2s;
-  }
-  .hero-why-free a:hover { color: var(--terra); }
+
   .hero-trust {
     width: 100%;
     font-size: 0.8rem;
@@ -1639,7 +1633,7 @@
         <a href="#contact" class="btn-primary" id="heroCta">Submit your problem — it's free</a>
         <a href="#services" class="btn-secondary">See recent work →</a>
         <p class="hero-trust">No commitment required &nbsp;·&nbsp; ★★★★★ Top Rated on Upwork</p>
-        <p class="hero-why-free">Build work is $85/hr, always quoted flat before it starts. <a href="#faq">Why is the plan itself free? →</a></p>
+        <p class="hero-why-free">$85/hr for build work — always quoted flat before anything starts. The diagnosis is free because AI made it fast: I return a real, specific plan. Not a sales call.</p>
       </div>
     </div>
     <div id="heroForm" class="hero-form">
@@ -1650,6 +1644,9 @@
         <input type="hidden" name="form-name" value="contact">
         <div class="hero-form-field">
           <input type="text" name="name" placeholder="Your name" required>
+        </div>
+        <div class="hero-form-field">
+          <input type="text" name="company" placeholder="Company (optional)">
         </div>
         <div class="hero-form-field">
           <input type="email" name="email" placeholder="Email address" required>
@@ -1683,30 +1680,28 @@
           <div class="quote-card qcard-scatter" style="--qrot:-5deg;--qtop:4%;--qleft:3%">
             <div class="qcard-flip">
               <div class="qcard-front">I feel like we’re leaving time on the table every day. I just don’t know where to start fixing it.</div>
-              <div class="qcard-back">You already know the cost. You just haven’t named it yet.</div>
+              <div class="qcard-back">zeisWorks finds where the time goes and gives you a clear fix — scoped and priced before anything starts.</div>
             </div>
           </div>
           <div class="quote-card qcard-scatter" style="--qrot:4deg;--qtop:2%;--qleft:51%">
             <div class="qcard-flip">
               <div class="qcard-front">Our data is all over the place. I can never get a straight answer out of it when I need one.</div>
-              <div class="qcard-back">If you have to guess, you don’t have data. You have noise.</div>
+              <div class="qcard-back">zeisWorks builds the single source of truth — connected, queryable, and ready when you need it.</div>
             </div>
           </div>
           <div class="quote-card qcard-scatter" style="--qrot:-8deg;--qtop:51%;--qleft:5%">
             <div class="qcard-flip">
               <div class="qcard-front">We bought software to solve the problem. Two years later the problem is still there and now we’re also paying for software.</div>
-              <div class="qcard-back">The problem was never the software.</div>
+              <div class="qcard-back">zeisWorks fixes the process, not the tool. The software you have probably does more than you think.</div>
             </div>
           </div>
           <div class="quote-card qcard-scatter" style="--qrot:6deg;--qtop:54%;--qleft:50%">
             <div class="qcard-flip">
               <div class="qcard-front">I know there’s a better way to do this. I just don’t have the time to figure out what it is.</div>
-              <div class="qcard-back">You’re right. There is. That’s kind of the whole thing.</div>
+              <div class="qcard-back">zeisWorks figures out the better way and builds it — so you don’t have to find the time.</div>
             </div>
           </div>
-          <div class="quote-resolution" id="quoteResolution">
-            <p class="resolution-text">That’s what zeisWorks is for.</p>
-          </div>
+
         </div>
         </div>
         <!-- Mobile: static stacked fallback -->
@@ -2025,17 +2020,6 @@
       });
     }
 
-    // Scatter cards: reveal "That's what zeisWorks is for" after all 4 flipped
-    if (window.innerWidth > 768) {
-      var seenCards = new Set();
-      var resEl = document.getElementById('quoteResolution');
-      document.querySelectorAll('.qcard-scatter').forEach(function(card, idx) {
-        card.addEventListener('mouseenter', function() {
-          seenCards.add(idx);
-          if (seenCards.size >= 4 && resEl) resEl.classList.add('visible');
-        });
-      });
-    }
         if (heroFormBack) heroFormBack.addEventListener('click', hideHeroForm);
 
     if (heroFormEl) {
