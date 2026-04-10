@@ -281,19 +281,24 @@
     top: var(--qtop);
     left: var(--qleft);
     transform: rotate(var(--qrot));
-    opacity: 0;
+    opacity: 1;
+    transition: transform 0.35s ease, box-shadow 0.35s ease;
+    cursor: default;
+  }
+  .qcard-scatter:hover {
+    transform: rotate(0deg) scale(1.04) translateY(-4px);
+    box-shadow: 0 16px 40px rgba(0,0,0,0.2);
+    z-index: 20;
   }
   .quote-resolution {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    opacity: 0;
+    opacity: 1;
     text-align: center;
     width: 90%;
-    pointer-events: none;
   }
-  .quote-resolution.visible { pointer-events: auto; }
   .resolution-text {
     font-family: var(--font-serif);
     font-style: italic;
@@ -421,38 +426,25 @@
     gap: 1.5rem;
     margin-bottom: 3rem;
   }
-  .door-card {
+  /* Literal hover-to-open doors */
+  .door-wrapper {
+    position: relative;
+    height: 360px;
+    perspective: 1400px;
+  }
+  .door-interior {
+    position: absolute;
+    inset: 0;
     background: #fff;
-    border: 1px solid #E8E3D8;
     border-radius: var(--radius-lg);
+    border: 1px solid #E8E3D8;
     padding: 2.25rem;
-    transition: box-shadow 0.2s, transform 0.2s;
     display: flex;
     flex-direction: column;
-    gap: 1rem;
-  }
-  .door-card:hover {
-    box-shadow: 0 8px 32px rgba(30,28,24,0.08);
-    transform: translateY(-2px);
-  }
-  .door-icon {
-    width: 44px; height: 44px;
-    background: var(--forest-light);
-    border-radius: var(--radius);
-    display: flex;
-    align-items: center;
     justify-content: center;
+    gap: 1.25rem;
   }
-  .door-icon svg { width: 22px; height: 22px; stroke: var(--forest-mid); fill: none; stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round; }
-  .door-card h3 {
-    font-family: var(--font-serif);
-    font-size: 1.125rem;
-    font-weight: 600;
-    color: var(--ink);
-    line-height: 1.35;
-    letter-spacing: -0.01em;
-  }
-  .door-card blockquote {
+  .door-interior blockquote {
     font-family: var(--font-serif);
     font-style: italic;
     color: var(--ink-mid);
@@ -462,44 +454,85 @@
     padding-left: 1rem;
     margin: 0;
   }
-  .door-card .door-cta {
+  .door-interior .door-desc {
     font-size: 0.875rem;
-    color: var(--terra);
-    text-decoration: none;
-    font-weight: 500;
-    display: inline-flex;
-    align-items: center;
-    gap: 0.3rem;
-    margin-top: auto;
-    padding-top: 0.5rem;
-    transition: color 0.2s;
-  }
-  .door-card .door-cta:hover { color: var(--terra-dark); }
-  .doors-tenet {
-    text-align: center;
-    padding: 1.75rem 2rem;
-    border-top: 1px solid #E0DAD0;
-    max-width: 680px;
-    margin: 0 auto;
-  }
-  .doors-tenet p {
-    font-family: var(--font-serif);
-    font-style: italic;
-    font-size: 1.0625rem;
     color: var(--ink-mid);
-    line-height: 1.75;
+    line-height: 1.6;
+    margin: 0;
   }
-  .doors-tenet p strong { color: var(--ink); font-style: normal; font-weight: 600; }
-  .doors-tenet-cta {
+  .door-interior .door-cta {
     display: inline-block;
-    margin-top: 1.25rem;
-    font-size: 0.9375rem;
-    color: var(--terra);
-    text-decoration: none;
+    padding: 0.625rem 1.375rem;
+    background: var(--forest);
+    color: #fff;
+    font-size: 0.875rem;
     font-weight: 500;
-    transition: color 0.2s;
+    border-radius: var(--radius-full);
+    text-decoration: none;
+    align-self: flex-start;
+    margin-top: auto;
+    transition: background 0.2s;
   }
-  .doors-tenet-cta:hover { color: var(--terra-dark); }
+  .door-interior .door-cta:hover { background: #1e3329; }
+  .door-panel {
+    position: absolute;
+    inset: 0;
+    background: var(--forest);
+    border-radius: var(--radius-lg);
+    transform-origin: left center;
+    transition: transform 0.65s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.65s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1.25rem;
+    box-shadow: 4px 0 20px rgba(0,0,0,0.3);
+    border: 1px solid rgba(255,255,255,0.07);
+    cursor: default;
+  }
+  .door-wrapper:hover .door-panel,
+  .door-wrapper.open .door-panel {
+    transform: rotateY(-75deg);
+    box-shadow: 18px 0 36px rgba(0,0,0,0.1);
+  }
+  .door-label {
+    font-family: var(--font-serif);
+    font-size: 1.25rem;
+    font-weight: 400;
+    color: #fff;
+    text-align: center;
+    line-height: 1.4;
+    padding: 0 2.5rem;
+    letter-spacing: -0.01em;
+  }
+  .door-icon {
+    width: 44px; height: 44px;
+    background: rgba(255,255,255,0.1);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .door-icon svg { width: 22px; height: 22px; stroke: rgba(255,255,255,0.65); fill: none; stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round; }
+  .door-knob {
+    position: absolute;
+    right: 1.375rem;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 10px; height: 10px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.2);
+    border: 1px solid rgba(255,255,255,0.12);
+  }
+  .door-hint {
+    position: absolute;
+    bottom: 1rem;
+    font-size: 0.6875rem;
+    color: rgba(255,255,255,0.3);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    pointer-events: none;
+  }
 
   /* HOW */
   .how { background: var(--cream-dark); }
@@ -1524,6 +1557,14 @@
     .hiw-steps { grid-template-columns: 1fr; gap: 1.5rem; }
     .portfolio-grid { grid-template-columns: 1fr; }
     .doors-grid { grid-template-columns: 1fr; margin-top: 1.5rem !important; }
+    .door-wrapper { height: auto; perspective: none; }
+    .door-panel { position: relative; inset: auto; transform: none !important; border-radius: var(--radius-lg) var(--radius-lg) 0 0; box-shadow: none; height: auto; padding: 1.5rem 2rem; flex-direction: row; align-items: center; justify-content: flex-start; gap: 1rem; }
+    .door-interior { position: relative; inset: auto; border-radius: 0 0 var(--radius-lg) var(--radius-lg); border-top: none; justify-content: flex-start; max-height: 0; overflow: hidden; padding: 0 2rem; transition: max-height 0.4s ease, padding 0.4s ease; }
+    .door-wrapper.open .door-interior { max-height: 400px; padding: 1.5rem 2rem; }
+    .door-knob { display: none; }
+    .door-hint { display: none; }
+    .door-label { font-size: 1rem; padding: 0; text-align: left; }
+    .door-icon { width: 36px; height: 36px; flex-shrink: 0; }
   }
 </style>
 </head>
@@ -1618,26 +1659,38 @@
       </div>
     </div>
 
-    <div class="doors-grid" style="margin-top:3rem;">
+    <div class="doors-grid" style="margin-top:2rem;">
 
-      <div class="door-card">
-        <div class="door-icon">
-          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+      <div class="door-wrapper">
+        <div class="door-interior">
+          <blockquote>“We’ve been doing this the same way for years. It works, but it takes longer than it should — and nobody ever has time to fix it.”</blockquote>
+          <p class="door-desc">You get a scoped plan and a flat price before anything starts — no agency overhead, no open-ended engagement.</p>
+          <a href="#contact" class="door-cta">Submit your problem — it’s free</a>
         </div>
-        <h3>I have a specific problem</h3>
-        <blockquote>“We’ve been doing this the same way for years. It works, but it takes longer than it should — and nobody ever has time to fix it.”</blockquote>
-        <p style="font-size:0.9rem;color:var(--ink-mid);line-height:1.7;">You get a scoped plan and a flat price before anything starts — no agency overhead, no open-ended engagement.</p>
-        <a href="#contact" class="door-cta">Submit your problem — it’s free</a>
+        <div class="door-panel">
+          <div class="door-icon">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+          </div>
+          <p class="door-label">I have a specific problem</p>
+          <div class="door-knob"></div>
+          <p class="door-hint">hover to open</p>
+        </div>
       </div>
 
-      <div class="door-card">
-        <div class="door-icon">
-          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 015.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+      <div class="door-wrapper">
+        <div class="door-interior">
+          <blockquote>“I know things are changing fast. I just don’t know what we should actually be doing about it.”</blockquote>
+          <p class="door-desc">Most people walk away from the free plan with a clearer picture of what to fix first — even without hiring me.</p>
+          <a href="#contact" class="door-cta">Submit your problem — it’s free</a>
         </div>
-        <h3>I’m not sure where to start</h3>
-        <blockquote>“I know things are changing fast. I just don’t know what we should actually be doing about it — and I can’t expect my team to figure that out on top of everything else.”</blockquote>
-        <p style="font-size:0.9rem;color:var(--ink-mid);line-height:1.7;">Most people walk away from the free plan with a clearer picture of what to fix first — even without hiring me.</p>
-        <a href="#contact" class="door-cta">Submit your problem — it’s free</a>
+        <div class="door-panel">
+          <div class="door-icon">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 015.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+          </div>
+          <p class="door-label">I’m not sure where to start</p>
+          <div class="door-knob"></div>
+          <p class="door-hint">hover to open</p>
+        </div>
       </div>
 
     </div>
@@ -1887,71 +1940,13 @@
       });
     });
 
-    // Sound Familiar — chaos to calm animation (desktop only)
-    if (window.innerWidth > 768) {
-      var problemSection = document.getElementById('problem');
-      var scatterCards = document.querySelectorAll('.qcard-scatter');
-      var resolution = document.getElementById('quoteResolution');
-      var chaosTimers = [];
-
-      function resetChaos() {
-        chaosTimers.forEach(function(t) { clearTimeout(t); });
-        chaosTimers = [];
-        scatterCards.forEach(function(card) {
-          card.style.transition = 'none';
-          card.style.opacity = '0';
-        });
-        if (resolution) {
-          resolution.style.transition = 'none';
-          resolution.style.opacity = '0';
-          resolution.classList.remove('visible');
-        }
-      }
-
-      function runChaos() {
-        resetChaos();
-        // Phase 1: stagger cards in one by one
-        scatterCards.forEach(function(card, i) {
-          var t = setTimeout(function() {
-            card.style.transition = 'opacity 0.4s ease';
-            card.style.opacity = '1';
-          }, i * 150);
-          chaosTimers.push(t);
-        });
-        // Phase 2: after last card fades in + 1.5s pause, fade all out
-        var lastCardStart = (scatterCards.length - 1) * 150;
-        var t2 = setTimeout(function() {
-          scatterCards.forEach(function(card) {
-            card.style.transition = 'opacity 0.6s ease';
-            card.style.opacity = '0';
-          });
-          // Resolution fades in 300ms after cards start fading
-          var t3 = setTimeout(function() {
-            if (resolution) {
-              resolution.style.transition = 'opacity 0.6s ease';
-              resolution.style.opacity = '1';
-              resolution.classList.add('visible');
-            }
-          }, 300);
-          chaosTimers.push(t3);
-        }, lastCardStart + 500 + 1500);
-        chaosTimers.push(t2);
-      }
-
-      if (problemSection) {
-        var chaosObserver = new IntersectionObserver(function(entries) {
-          entries.forEach(function(entry) {
-            if (entry.isIntersecting) {
-              runChaos();
-            } else {
-              resetChaos();
-            }
-          });
-        }, { threshold: 0.25 });
-        chaosObserver.observe(problemSection);
-      }
+    // Mobile: tap to open doors
+    if (window.innerWidth <= 768) {
+      document.querySelectorAll('.door-wrapper').forEach(function(dw) {
+        dw.addEventListener('click', function() { dw.classList.toggle('open'); });
+      });
     }
-    if (heroFormBack) heroFormBack.addEventListener('click', hideHeroForm);
+        if (heroFormBack) heroFormBack.addEventListener('click', hideHeroForm);
 
     if (heroFormEl) {
       heroFormEl.addEventListener('submit', function(e) {
