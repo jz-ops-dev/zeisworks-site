@@ -297,10 +297,10 @@
   .resolution-text {
     font-family: var(--font-serif);
     font-style: italic;
-    font-size: 1.5rem;
+    font-size: 1.125rem;
     color: #fff;
-    margin-bottom: 1.25rem;
-    line-height: 1.4;
+    margin-bottom: 0;
+    line-height: 1.5;
   }
   .quote-resolution .btn-primary {
     background: var(--terra);
@@ -969,6 +969,35 @@
   .tcard-chips { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 0.5rem; }
   .chip { font-size: 0.7rem; background: var(--cream-dark); color: var(--ink-mid); padding: 0.2rem 0.625rem; border-radius: 99px; }
 
+  /* PORTFOLIO CARD EXPAND */
+  .pcard-dark {
+    cursor: pointer;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+  }
+  .pcard-dark:hover { transform: translateY(-2px); box-shadow: 0 12px 32px rgba(0,0,0,0.25); }
+  .pcard-expand {
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: max-height 0.45s ease, opacity 0.3s ease;
+  }
+  .pcard-dark.open .pcard-expand {
+    max-height: 600px;
+    opacity: 1;
+  }
+  .pcard-hint {
+    font-size: 0.75rem;
+    color: rgba(255,255,255,0.4);
+    margin-top: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.375rem;
+    transition: opacity 0.2s;
+    user-select: none;
+  }
+  .pcard-hint::after { content: '+'; font-size: 1rem; font-weight: 300; }
+  .pcard-dark.open .pcard-hint { opacity: 0; pointer-events: none; }
+
   /* FREE DIAGNOSIS CTA */
   .free-cta {
     background: var(--forest);
@@ -1523,10 +1552,10 @@
     <div id="heroContent">
       <div class="hero-eyebrow-badge">
         <span class="hero-eyebrow-dot"></span>
-        One person. The tools of a full team.
+        You’ll know exactly what to do — before spending anything.
       </div>
       <h1>You know things could work better.<br><em>You're just not sure<br>where to start.</em></h1>
-      <p class="hero-sub">Tell me what's going on. I'll tell you exactly what to do about it — for free. You only pay if you want me to fix it.</p>
+      <p class="hero-sub">Describe what’s going on. I’ll come back with a specific, actionable plan — what I’d do, how long it takes, what it costs. Keep it and run with it yourself, or let me build it. Either way, you’ll have a clear answer.</p>
       <div class="hero-actions">
         <a href="#contact" class="btn-primary" id="heroCta">Submit your problem — it's free</a>
         <a href="#services" class="btn-secondary">See recent work →</a>
@@ -1576,8 +1605,7 @@
           <div class="quote-card qcard-scatter" style="--qrot:-8deg;--qtop:51%;--qleft:5%">We bought software to solve the problem. Two years later the problem is still there and now we’re also paying for software.</div>
           <div class="quote-card qcard-scatter" style="--qrot:6deg;--qtop:54%;--qleft:50%">I know there’s a better way to do this. I just don’t have the time to figure out what it is.</div>
           <div class="quote-resolution" id="quoteResolution">
-            <p class="resolution-text">That’s what zeisWorks is for.</p>
-            <a href="#contact" class="btn-primary">Submit your problem — it’s free</a>
+            <p class="resolution-text">Now that you’re thinking about it, what sounds more like you?</p>
           </div>
         </div>
         <!-- Mobile: static stacked fallback -->
@@ -1587,8 +1615,7 @@
           <div class="quote-card">We bought software to solve the problem. Two years later the problem is still there and now we’re also paying for software.</div>
           <div class="quote-card">I know there’s a better way to do this. I just don’t have the time to figure out what it is.</div>
           <div class="quote-resolution-mobile">
-            <p class="resolution-text">That’s what zeisWorks is for.</p>
-            <a href="#contact" class="btn-primary" style="display:inline-block;margin-top:0.25rem;">Submit your problem — it’s free</a>
+            <p class="resolution-text">Now that you’re thinking about it, what sounds more like you?</p>
           </div>
         </div>
       </div>
@@ -1634,13 +1661,16 @@
         <p class="pcard-type" style="color:rgba(255,255,255,0.5);">Salesforce · Custom Build</p>
         <p class="pcard-what-changed">WHAT CHANGED</p>
         <h3>10-year trend data — visible directly on every prospect record.</h3>
-        <p style="font-size:0.9rem;color:rgba(255,255,255,0.75);line-height:1.7;margin-top:0.75rem;">A client needed historical data across 12 datasets on their Salesforce prospect pages — something standard reporting couldn't touch. I built a custom Lightning component that lives natively on the record. No tab-switching, no BI license.</p>
-        <div class="pcard-outcome" style="background:rgba(255,255,255,0.08);border:none;color:rgba(255,255,255,0.85);">Completed in 4.5 hours. Replaced a recurring license and an agency build that would have cost 2–3× as much.</div>
+        <div class="pcard-expand">
+          <p style="font-size:0.9rem;color:rgba(255,255,255,0.75);line-height:1.7;margin-top:0.75rem;">A client needed historical data across 12 datasets on their Salesforce prospect pages — something standard reporting couldn't touch. I built a custom Lightning component that lives natively on the record. No tab-switching, no BI license.</p>
+          <div class="pcard-outcome" style="background:rgba(255,255,255,0.08);border:none;color:rgba(255,255,255,0.85);">Completed in 4.5 hours. Replaced a recurring license and an agency build that would have cost 2–3× as much.</div>
+        </div>
         <div class="pcard-tags" style="margin-top:1rem;">
           <span class="tag" style="background:rgba(255,255,255,0.1);color:rgba(255,255,255,0.7);border:none;">Salesforce</span>
           <span class="tag" style="background:rgba(255,255,255,0.1);color:rgba(255,255,255,0.7);border:none;">Lightning Components</span>
           <span class="tag" style="background:rgba(255,255,255,0.1);color:rgba(255,255,255,0.7);border:none;">Custom Reporting</span>
         </div>
+        <p class="pcard-hint">Details</p>
       </div>
 
       <!-- CARD 2 -->
@@ -1648,13 +1678,16 @@
         <p class="pcard-type" style="color:rgba(255,255,255,0.5);">Salesforce · AI + Data</p>
         <p class="pcard-what-changed">WHAT CHANGED</p>
         <h3>2,000+ records cleaned, corrected, and trusted again.</h3>
-        <p style="font-size:0.9rem;color:rgba(255,255,255,0.75);line-height:1.7;margin-top:0.75rem;">Missing fields, bad formatting, duplicates — a Salesforce database nobody trusted. I exported, cleaned, and re-uploaded it using AI and custom tooling. What would have taken a staff member 60–100 hours took a fraction of the time.</p>
-        <div class="pcard-outcome" style="background:rgba(255,255,255,0.08);border:none;color:rgba(255,255,255,0.85);">Clean data, immediately usable for audience segmentation and targeted outreach.</div>
+        <div class="pcard-expand">
+          <p style="font-size:0.9rem;color:rgba(255,255,255,0.75);line-height:1.7;margin-top:0.75rem;">Missing fields, bad formatting, duplicates — a Salesforce database nobody trusted. I exported, cleaned, and re-uploaded it using AI and custom tooling. What would have taken a staff member 60–100 hours took a fraction of the time.</p>
+          <div class="pcard-outcome" style="background:rgba(255,255,255,0.08);border:none;color:rgba(255,255,255,0.85);margin-top:0.75rem;">Clean data, immediately usable for audience segmentation and targeted outreach.</div>
+        </div>
         <div class="pcard-tags" style="margin-top:1rem;">
           <span class="tag" style="background:rgba(255,255,255,0.1);color:rgba(255,255,255,0.7);border:none;">Salesforce</span>
           <span class="tag" style="background:rgba(255,255,255,0.1);color:rgba(255,255,255,0.7);border:none;">AI</span>
           <span class="tag" style="background:rgba(255,255,255,0.1);color:rgba(255,255,255,0.7);border:none;">Data Cleanup</span>
         </div>
+        <p class="pcard-hint">Details</p>
       </div>
 
       <!-- CARD 3 -->
@@ -1662,13 +1695,16 @@
         <p class="pcard-type" style="color:rgba(255,255,255,0.5);">Automation · Data · Mapping</p>
         <p class="pcard-what-changed">WHAT CHANGED</p>
         <h3>A marketing deliverable that wasn’t viable to produce manually.</h3>
-        <p style="font-size:0.9rem;color:rgba(255,255,255,0.75);line-height:1.7;margin-top:0.75rem;">A large financial institution needed a polished, data-driven marketing deliverable that pulled from multiple data sources and presented geographic analysis in a client-ready format. I built a pipeline using Python, ChatGPT, and ArcGIS that automated the research, analysis, and formatting end to end. What would have required weeks of manual work was produced in a fraction of the time — at a quality level that wouldn’t have been achievable without modern tooling.</p>
+        <div class="pcard-expand">
+          <p style="font-size:0.9rem;color:rgba(255,255,255,0.75);line-height:1.7;margin-top:0.75rem;">A large financial institution needed a polished, data-driven marketing deliverable that pulled from multiple data sources and presented geographic analysis in a client-ready format. I built a pipeline using Python, ChatGPT, and ArcGIS that automated the research, analysis, and formatting end to end. What would have required weeks of manual work was produced in a fraction of the time — at a quality level that wouldn’t have been achievable without modern tooling.</p>
+        </div>
         <div class="pcard-tags" style="margin-top:1rem;">
           <span class="tag" style="background:rgba(255,255,255,0.1);color:rgba(255,255,255,0.7);border:none;">Python</span>
           <span class="tag" style="background:rgba(255,255,255,0.1);color:rgba(255,255,255,0.7);border:none;">ChatGPT</span>
           <span class="tag" style="background:rgba(255,255,255,0.1);color:rgba(255,255,255,0.7);border:none;">ArcGIS</span>
           <span class="tag" style="background:rgba(255,255,255,0.1);color:rgba(255,255,255,0.7);border:none;">Automation</span>
         </div>
+        <p class="pcard-hint">Details</p>
       </div>
 
       <!-- CARD 4 -->
@@ -1676,16 +1712,19 @@
         <p class="pcard-type" style="color:rgba(255,255,255,0.5);">Automation · Data</p>
         <p class="pcard-what-changed">WHAT CHANGED</p>
         <h3>530 websites evaluated automatically — a project that wasn't financially viable any other way.</h3>
-        <p style="font-size:0.9rem;color:rgba(255,255,255,0.75);line-height:1.7;margin-top:0.75rem;">A client needed to evaluate hundreds of sites to find the right partners. Manual research wasn't viable at that scale. I built a web agent that scraped and compiled the relevant data from all 530 sites automatically.</p>
-        <div class="pcard-outcome" style="background:rgba(255,255,255,0.08);border:none;color:rgba(255,255,255,0.85);">Made a previously impossible research project achievable — at a fraction of what manual work would have cost.</div>
+        <div class="pcard-expand">
+          <p style="font-size:0.9rem;color:rgba(255,255,255,0.75);line-height:1.7;margin-top:0.75rem;">A client needed to evaluate hundreds of sites to find the right partners. Manual research wasn't viable at that scale. I built a web agent that scraped and compiled the relevant data from all 530 sites automatically.</p>
+          <div class="pcard-outcome" style="background:rgba(255,255,255,0.08);border:none;color:rgba(255,255,255,0.85);">Made a previously impossible research project achievable — at a fraction of what manual work would have cost.</div>
+        </div>
         <div class="pcard-tags" style="margin-top:1rem;">
           <span class="tag" style="background:rgba(255,255,255,0.1);color:rgba(255,255,255,0.7);border:none;">Automation</span>
           <span class="tag" style="background:rgba(255,255,255,0.1);color:rgba(255,255,255,0.7);border:none;">Web Scraping</span>
           <span class="tag" style="background:rgba(255,255,255,0.1);color:rgba(255,255,255,0.7);border:none;">Data</span>
         </div>
+        <p class="pcard-hint">Details</p>
       </div>
 
-
+    </div><!-- /portfolio-grid -->
 
     <div id="testimonials" style="margin-top:4rem;padding-top:3.5rem;border-top:1px solid #E8E3D8;">
     <p class="section-label">Client reviews</p>
@@ -1739,8 +1778,6 @@
 
     </div>
   </div>
-</div>
-    </div>
   </div>
 </section>
 
@@ -1845,6 +1882,13 @@
     }
 
     if (heroCta) heroCta.addEventListener('click', function(e) { e.preventDefault(); showHeroForm(); });
+
+    // Portfolio card click-to-expand
+    document.querySelectorAll('.pcard-dark').forEach(function(card) {
+      card.addEventListener('click', function() {
+        card.classList.toggle('open');
+      });
+    });
 
     // Sound Familiar — chaos to calm animation (desktop only)
     if (window.innerWidth > 768) {
