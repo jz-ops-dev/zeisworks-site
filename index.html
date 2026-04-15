@@ -295,6 +295,16 @@
     backface-visibility: hidden;
     -webkit-backface-visibility: hidden;
   }
+  .qcard-scatter .qcard-front::after {
+    content: 'flip for a real example →';
+    display: block;
+    margin-top: 0.875rem;
+    font-size: 0.68rem;
+    font-family: var(--font-sans);
+    font-style: normal;
+    color: rgba(255,255,255,0.35);
+    letter-spacing: 0.05em;
+  }
   .qcard-back {
     position: absolute;
     inset: 0;
@@ -1612,7 +1622,7 @@
     <a href="#" class="nav-logo">zeisWorks<span class="logo-period">.</span></a>
     <ul class="nav-links">
       <li><a href="#services">Recent work</a></li>
-      <li><a href="#how">How It Works</a></li>
+      <li><a href="#pricing">How It Works</a></li>
       <li><a href="#testimonials">Reviews</a></li>
       <li><a href="#about">About</a></li>
       <li><a href="#contact" class="nav-cta"><span class="availability-dot"></span>Submit your problem — it’s free</a></li>
@@ -1759,9 +1769,8 @@
 
       <div class="door-wrapper">
         <div class="door-interior">
-          <p class="door-ack">Ah — so you picked door 1.</p>
-          <p class="door-looking">Looking for a fix, not a six-month project. You’ll have a scoped plan and flat price before anything starts.</p>
-          <a href="#contact" class="door-cta">Submit your problem — it’s free →</a>
+          <p class="door-looking">You’ll have a scoped plan and flat price before anything starts. No discovery call required.</p>
+          <a href="#contact" class="door-cta">Get your free plan →</a>
         </div>
         <div class="door-panel">
           <div class="door-icon">
@@ -1775,9 +1784,8 @@
 
       <div class="door-wrapper">
         <div class="door-interior">
-          <p class="door-ack">Ah — so you picked door 2.</p>
-          <p class="door-looking">Looking for a clearer picture before committing to anything. Most people leave the free plan with exactly that.</p>
-          <a href="#contact" class="door-cta">Submit your problem — it’s free →</a>
+          <p class="door-looking">Most people leave the free plan with a clearer picture than they expected — and a specific next step.</p>
+          <a href="#contact" class="door-cta">Get your free plan →</a>
         </div>
         <div class="door-panel">
           <div class="door-icon">
@@ -1797,8 +1805,7 @@
 <section class="portfolio" id="services">
   <div class="section-inner">
     <p class="section-label">Recent work</p>
-    <h2 class="section-title">Real problems.<br><em>Real outcomes.</em></h2>
-    <p style="font-size:0.9375rem;color:var(--ink-mid);margin-top:0.5rem;margin-bottom:2rem;">A sample of what I've built.</p>
+    <h2 class="section-title">A few things<br><em>I've built.</em></h2>
 
     <div class="work-list">
 
@@ -2080,7 +2087,7 @@
         </div>
       </div>
       <div class="hiw-ctas">
-        <a href="#contact" class="btn-hiw-primary reveal reveal-d3">Submit your problem — it’s free</a>
+        <a href="#contact" class="btn-hiw-primary reveal reveal-d3">Get your free plan</a>
         <a href="#services" class="btn-hiw-ghost reveal reveal-d4">See recent work →</a>
       </div>
     </div>
@@ -2113,7 +2120,7 @@
         <div class="about-copy">
           <p>I grew up around a small business — a family company that had survived for over 60 years on instinct, relationships, and hard work. I watched it struggle to see where it was heading, not because anything was broken, but because the world changed faster than anyone warned it would.</p>
           <p>That's why zeisWorks exists. Not to replace how your business works or who makes it run. To bridge the gap between people who built something real and the tools that can actually help them — without the complexity, the retainers, or the agency overhead.</p>
-          <p>In my day job I serve as Director of Business Development Technology, working directly with client-facing and internal teams to improve how they operate. I've spent years translating between the people who run a business and the tools that are supposed to help them. zeisWorks is that, available directly — without the agency overhead.</p>
+          <p>In my day job I serve as Director of Business Development Technology, working directly with client-facing and internal teams to improve how they operate. I've spent years translating between the people who run a business and the tools that are supposed to help them. zeisWorks is what that looks like without the agency in the middle.</p>
         </div>
       </div>
 
@@ -2156,10 +2163,6 @@
         <div class="faq-item reveal reveal-d4">
           <p class="faq-q">What if the plan isn't what I was expecting?</p>
           <p class="faq-a">Tell me. Plans aren't binding — they're a starting point. If something's off, we talk through it before anything begins. You're not committed to anything until you say so.</p>
-        </div>
-        <div class="faq-item reveal reveal-d4">
-          <p class="faq-q">Is there any commitment involved?</p>
-          <p class="faq-a">None. Submitting a problem doesn't start a project. Reading the plan doesn't start a project. You decide if and when anything moves forward.</p>
         </div>
         <div class="faq-item reveal reveal-d4">
           <p class="faq-q">Will I be dependent on you after the project is done?</p>
