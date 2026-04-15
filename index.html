@@ -241,140 +241,88 @@
   .problem .section-label { color: #94B8CE; }
   .problem .section-title { color: #fff; }
   .problem .section-body { color: #94B8CE; max-width: 100%; }
-  .problem-grid {
+  .problem-header { max-width: 720px; margin: 0 auto 3rem; text-align: center; }
+  .problem-body { color: rgba(255,255,255,0.75); margin-top: 1rem; }
+  .problem-cards {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 4rem;
-    align-items: start;
+    gap: 1.25rem;
+    max-width: 980px;
+    margin: 0 auto;
   }
-  .problem-quotes { display: flex; flex-direction: column; gap: 1.25rem; }
-  .quote-card {
-    background: rgba(255,255,255,0.06);
-    border: 1px solid rgba(255,255,255,0.1);
-    border-radius: var(--radius);
-    padding: 1.25rem 1.5rem;
-    font-family: var(--font-serif);
-    font-style: italic;
-    color: #D0E2EC;
-    font-size: 0.9375rem;
-    line-height: 1.65;
-  }
-  .quote-card::before {
-    content: '\201C';
-    font-size: 2.5rem;
-    color: rgba(255,255,255,0.25);
-    font-family: var(--font-serif);
-    line-height: 1;
-    display: block;
-    margin-bottom: 0.25rem;
-  }
-
-  /* PROBLEM ANIMATION */
-  .quote-scatter {
-    position: relative;
-    min-height: 460px;
-  }
-  .quote-mobile-stack { display: none; }
-  .qcard-scatter {
-    position: absolute;
-    width: 46%;
-    top: var(--qtop);
-    left: var(--qleft);
-    transform: rotate(var(--qrot));
-    opacity: 1;
-    perspective: 900px;
-    cursor: pointer;
-  }
-  .qcard-flip {
-    position: relative;
-    transform-style: preserve-3d;
-    transition: transform 0.55s ease;
-  }
-  .qcard-scatter:hover .qcard-flip { transform: rotateY(180deg); }
-  .qcard-front {
-    backface-visibility: hidden;
-    -webkit-backface-visibility: hidden;
-  }
-  .qcard-scatter .qcard-front::after {
-    content: 'flip for a real example →';
-    display: block;
-    margin-top: 0.875rem;
-    font-size: 0.68rem;
-    font-family: var(--font-sans);
-    font-style: normal;
-    color: rgba(255,255,255,0.35);
-    letter-spacing: 0.05em;
-  }
-  .qcard-back {
-    position: absolute;
-    inset: 0;
-    transform: rotateY(180deg);
-    backface-visibility: hidden;
-    -webkit-backface-visibility: hidden;
-    background: rgba(255,255,255,0.14);
-    border-radius: var(--radius);
-    padding: 1.25rem 1.5rem;
+  .problem-card {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.09);
+    border-radius: var(--radius-lg);
+    padding: 1.75rem;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    gap: 0.4rem;
+    gap: 1.25rem;
   }
-  .qcard-back-type {
-    font-size: 0.75rem;
-    color: rgba(255,255,255,0.5);
-    margin-bottom: 0.1rem;
+  .problem-quote {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: 1rem;
+    line-height: 1.55;
+    color: rgba(255,255,255,0.92);
+    margin: 0;
   }
-  .qcard-back-label {
+  .problem-resolution {
+    border-top: 1px solid rgba(255,255,255,0.1);
+    padding-top: 1.25rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  .problem-resolution-label {
     font-size: 0.65rem;
     font-weight: 600;
-    letter-spacing: 0.09em;
+    letter-spacing: 0.1em;
     text-transform: uppercase;
-    color: rgba(255,255,255,0.4);
+    color: rgba(255,255,255,0.45);
+    margin: 0;
   }
-  .qcard-back-headline {
-    font-family: var(--font-serif);
-    font-style: italic;
-    color: rgba(255,255,255,0.95);
-    font-size: 0.9375rem;
-    line-height: 1.4;
-    margin: 0.1rem 0 0.35rem;
+  .problem-resolution-headline {
+    font-size: 0.95rem;
+    line-height: 1.45;
+    color: #fff;
+    margin: 0;
   }
-  .qcard-back-tags {
+  .problem-resolution-tags {
     display: flex;
     flex-wrap: wrap;
-    gap: 0.3rem;
+    gap: 0.35rem;
+    margin-top: 0.25rem;
   }
-  .qcard-back-tag {
+  .problem-tag {
     font-size: 0.68rem;
-    background: rgba(255,255,255,0.1);
+    background: rgba(255,255,255,0.08);
     color: rgba(255,255,255,0.65);
-    padding: 0.15rem 0.5rem;
+    padding: 0.18rem 0.55rem;
     border-radius: 99px;
   }
-  .quote-resolution {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    opacity: 0;
+  .problem-cta {
+    margin-top: 3rem;
     text-align: center;
-    width: 90%;
-    pointer-events: none;
-    transition: opacity 0.7s ease;
   }
-  .quote-resolution.visible { opacity: 1; pointer-events: auto; }
-  .resolution-text {
-    font-family: var(--font-serif);
-    font-style: italic;
-    font-size: 1.125rem;
-    color: #fff;
-    margin-bottom: 0;
-    line-height: 1.5;
+  .btn-on-dark {
+    display: inline-block;
+    background: #fff;
+    color: var(--ink);
+    padding: 0.85rem 1.75rem;
+    border-radius: var(--radius-full);
+    font-weight: 500;
+    text-decoration: none;
+    font-size: 0.95rem;
+    transition: transform 0.15s ease, background 0.15s ease;
   }
-  .quote-resolution .btn-primary {
-    background: var(--terra);
-    color: #fff;
+  .btn-on-dark:hover { background: var(--cream); transform: translateY(-1px); }
+  .problem-cta-note {
+    margin-top: 0.75rem;
+    font-size: 0.8125rem;
+    color: rgba(255,255,255,0.5);
   }
+
   /* PORTFOLIO CAROUSEL */
   .portfolio { background: var(--cream); }
   .portfolio-header {
@@ -478,122 +426,6 @@
     border-radius: 99px;
   }
 
-  /* TWO DOORS */
-  .two-doors { background: var(--cream-dark); }
-  .doors-intro {
-    max-width: 560px;
-    margin-bottom: 3rem;
-  }
-  .doors-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1.5rem;
-    margin-bottom: 3rem;
-  }
-  /* Literal hover-to-open doors */
-  .door-wrapper {
-    position: relative;
-    height: 360px;
-  }
-  .door-interior {
-    position: absolute;
-    inset: 0;
-    background: #fff;
-    border-radius: var(--radius-lg);
-    border: 1px solid #E8E3D8;
-    padding: 2.25rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    gap: 0.875rem;
-    opacity: 0;
-    transition: opacity 0.3s ease 0.15s;
-  }
-  .door-ack {
-    font-family: var(--font-serif);
-    font-style: italic;
-    font-size: 1.125rem;
-    color: var(--forest);
-    margin: 0;
-    line-height: 1.3;
-  }
-  .door-looking {
-    font-size: 0.9rem;
-    color: var(--ink-mid);
-    line-height: 1.6;
-    margin: 0;
-  }
-  .door-interior .door-cta {
-    font-size: 0.875rem;
-    font-weight: 600;
-    color: var(--forest);
-    text-decoration: none;
-    margin-top: 0.25rem;
-    transition: color 0.2s;
-  }
-  .door-interior .door-cta:hover { color: var(--terra); }
-  .door-panel {
-    position: absolute;
-    inset: 0;
-    background: var(--forest);
-    border-radius: var(--radius-lg);
-    transition: opacity 0.3s ease;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 1.25rem;
-    border: 1px solid rgba(255,255,255,0.07);
-    cursor: default;
-  }
-  .door-wrapper:hover .door-panel,
-  .door-wrapper.open .door-panel {
-    opacity: 0;
-    pointer-events: none;
-  }
-  .door-wrapper:hover .door-interior,
-  .door-wrapper.open .door-interior {
-    opacity: 1;
-  }
-  .door-label {
-    font-family: var(--font-serif);
-    font-size: 1.25rem;
-    font-weight: 400;
-    color: #fff;
-    text-align: center;
-    line-height: 1.4;
-    padding: 0 2.5rem;
-    letter-spacing: -0.01em;
-  }
-  .door-icon {
-    width: 44px; height: 44px;
-    background: rgba(255,255,255,0.1);
-    border-radius: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  .door-icon svg { width: 22px; height: 22px; stroke: rgba(255,255,255,0.65); fill: none; stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round; }
-  .door-knob {
-    position: absolute;
-    right: 1.375rem;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 10px; height: 10px;
-    border-radius: 50%;
-    background: rgba(255,255,255,0.2);
-    border: 1px solid rgba(255,255,255,0.12);
-  }
-  .door-hint {
-    position: absolute;
-    bottom: 1rem;
-    font-size: 0.6875rem;
-    color: rgba(255,255,255,0.3);
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    pointer-events: none;
-  }
-
   /* HOW */
   .how { background: var(--cream-dark); }
   .pricing-pill {
@@ -665,6 +497,14 @@
     font-size: 1.175rem;
     color: var(--ink);
     line-height: 1.7;
+  }
+  .about-role {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: 0.95rem;
+    color: var(--terra);
+    margin-bottom: 0.5rem;
+    letter-spacing: 0.01em;
   }
   .about-badge {
     background: var(--cream-dark);
@@ -1567,14 +1407,8 @@
   @media (max-width: 768px) {
     .hero { grid-template-columns: 1fr; gap: 2.5rem; padding: 4rem 1.25rem 3rem; }
     .hero-visual { display: none; }
-    .problem-grid { grid-template-columns: 1fr; gap: 2rem; }
-    .quote-scatter { display: none; }
-    .quote-mobile-stack { display: flex; flex-direction: column; gap: 1.25rem; }
-    .quote-resolution-mobile { padding-top: 1rem; }
-    .quote-resolution-mobile .resolution-text {
-      font-size: 1rem;
-      margin-bottom: 0.5rem;
-    }
+    .problem-cards { grid-template-columns: 1fr; }
+    .problem-header { margin-bottom: 2rem; }
     .services-grid { grid-template-columns: 1fr; }
     .steps { grid-template-columns: 1fr; gap: 1.75rem; }
     .about-grid { grid-template-columns: 1fr; gap: 2rem; }
@@ -1602,15 +1436,6 @@
     .hiw-steps { grid-template-columns: 1fr; gap: 1.5rem; }
     .work-item { grid-template-columns: 1fr; gap: 0.4rem; }
     .work-tags { justify-content: flex-start; }
-    .doors-grid { grid-template-columns: 1fr; margin-top: 1.5rem !important; }
-    .door-wrapper { height: auto; perspective: none; }
-    .door-panel { position: relative; inset: auto; transform: none !important; border-radius: var(--radius-lg) var(--radius-lg) 0 0; box-shadow: none; height: auto; padding: 1.5rem 2rem; flex-direction: row; align-items: center; justify-content: flex-start; gap: 1rem; }
-    .door-interior { position: relative; inset: auto; border-radius: 0 0 var(--radius-lg) var(--radius-lg); border-top: none; justify-content: flex-start; max-height: 0; overflow: hidden; padding: 0 1.5rem; transition: max-height 0.4s ease, padding 0.4s ease; }
-    .door-wrapper.open .door-interior { max-height: 400px; padding: 1.5rem; }
-    .door-knob { display: none; }
-    .door-hint { display: none; }
-    .door-label { font-size: 1rem; padding: 0; text-align: left; }
-    .door-icon { width: 36px; height: 36px; flex-shrink: 0; }
   }
 </style>
 </head>
@@ -1636,7 +1461,7 @@
     <div id="heroContent">
       <div class="hero-eyebrow-badge">
         <span class="hero-eyebrow-dot"></span>
-        You’ll know exactly what to do — before spending anything.
+        Fractional Growth & Operations Partner · Available now
       </div>
       <h1>You know things could work better.<br><em>You're just not sure<br>where to start.</em></h1>
       <p class="hero-sub">Describe what’s going on. I’ll come back with a specific, actionable plan — what I’d do, how long it takes, what it costs. Keep it and run with it yourself, or let me build it. Either way, you’ll have a clear answer.</p>
@@ -1679,124 +1504,72 @@
 <!-- SOUND FAMILIAR / WHO THIS IS FOR -->
 <section class="problem" id="problem">
   <div class="section-inner">
-    <div class="problem-grid">
-      <div>
-        <p class="section-label">Sound familiar?</p>
-        <h2 class="section-title" style="color:#fff;">You’ve built something real.<br>Parts of it haven’t kept up.</h2>
-        <p class="section-body">Most established businesses have at least one thing — a process, a system, a spreadsheet — that works, but barely. You know it. You’ve been meaning to fix it. I help you actually fix it, without making it a bigger project than it needs to be.</p>
-      </div>
-      <div class="problem-quotes">
-        <!-- Desktop: scatter animation -->
-        <div class="quote-scatter" id="quoteScatter">
-          <div class="quote-card qcard-scatter" style="--qrot:-5deg;--qtop:4%;--qleft:3%">
-            <div class="qcard-flip">
-              <div class="qcard-front">I feel like we’re leaving time on the table every day. I just don’t know where to start fixing it.</div>
-              <div class="qcard-back">
-              <p class="qcard-back-type">Salesforce · Custom Build</p>
-              <p class="qcard-back-label">What changed</p>
-              <p class="qcard-back-headline">10-year trend data — visible on every prospect record.</p>
-              <div class="qcard-back-tags">
-                <span class="qcard-back-tag">Salesforce</span>
-                <span class="qcard-back-tag">Lightning Components</span>
-                <span class="qcard-back-tag">Custom Reporting</span>
-              </div>
-            </div>
-            </div>
-          </div>
-          <div class="quote-card qcard-scatter" style="--qrot:4deg;--qtop:2%;--qleft:51%">
-            <div class="qcard-flip">
-              <div class="qcard-front">Our data is all over the place. I can never get a straight answer out of it when I need one.</div>
-              <div class="qcard-back">
-              <p class="qcard-back-type">Salesforce · AI + Data</p>
-              <p class="qcard-back-label">What changed</p>
-              <p class="qcard-back-headline">2,000+ records cleaned, corrected, and trusted again.</p>
-              <div class="qcard-back-tags">
-                <span class="qcard-back-tag">Salesforce</span>
-                <span class="qcard-back-tag">AI</span>
-                <span class="qcard-back-tag">Data Cleanup</span>
-              </div>
-            </div>
-            </div>
-          </div>
-          <div class="quote-card qcard-scatter" style="--qrot:-8deg;--qtop:51%;--qleft:5%">
-            <div class="qcard-flip">
-              <div class="qcard-front">We bought software to solve the problem. Two years later the problem is still there and now we’re also paying for software.</div>
-              <div class="qcard-back">
-              <p class="qcard-back-type">Automation · Data · Mapping</p>
-              <p class="qcard-back-label">What changed</p>
-              <p class="qcard-back-headline">A marketing deliverable that wasn’t viable to produce manually.</p>
-              <div class="qcard-back-tags">
-                <span class="qcard-back-tag">Python</span>
-                <span class="qcard-back-tag">ChatGPT</span>
-                <span class="qcard-back-tag">ArcGIS</span>
-                <span class="qcard-back-tag">Automation</span>
-              </div>
-            </div>
-            </div>
-          </div>
-          <div class="quote-card qcard-scatter" style="--qrot:6deg;--qtop:54%;--qleft:50%">
-            <div class="qcard-flip">
-              <div class="qcard-front">I know there’s a better way to do this. I just don’t have the time to figure out what it is.</div>
-              <div class="qcard-back">
-              <p class="qcard-back-type">Automation · Data</p>
-              <p class="qcard-back-label">What changed</p>
-              <p class="qcard-back-headline">530 websites evaluated automatically.</p>
-              <div class="qcard-back-tags">
-                <span class="qcard-back-tag">Automation</span>
-                <span class="qcard-back-tag">Web Scraping</span>
-                <span class="qcard-back-tag">Data</span>
-              </div>
-            </div>
-            </div>
-          </div>
-
-        </div>
-        </div>
-        <!-- Mobile: static stacked fallback -->
-        <div class="quote-mobile-stack">
-          <div class="quote-card">I feel like we’re leaving time on the table every day. I just don’t know where to start fixing it.</div>
-          <div class="quote-card">Our data is all over the place. I can never get a straight answer out of it when I need one.</div>
-          <div class="quote-card">We bought software to solve the problem. Two years later the problem is still there and now we’re also paying for software.</div>
-          <div class="quote-card">I know there’s a better way to do this. I just don’t have the time to figure out what it is.</div>
-          <div class="quote-resolution-mobile">
-            <p class="resolution-text">Now that you’re thinking about it, what sounds more like you?</p>
-          </div>
-        </div>
-      </div>
+    <div class="problem-header">
+      <p class="section-label">Sound familiar?</p>
+      <h2 class="section-title" style="color:#fff;">You’ve built something real.<br>Parts of it haven’t kept up.</h2>
+      <p class="section-body problem-body">Most established businesses have at least one thing that works, but barely. Here’s what people have come to me with — and what it actually turned into.</p>
     </div>
 
-    <div class="doors-grid" style="margin-top:2rem;">
+    <div class="problem-cards">
 
-      <div class="door-wrapper">
-        <div class="door-interior">
-          <p class="door-looking">You’ll have a scoped plan and flat price before anything starts. No discovery call required.</p>
-          <a href="#contact" class="door-cta">Get your free plan →</a>
-        </div>
-        <div class="door-panel">
-          <div class="door-icon">
-            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+      <article class="problem-card">
+        <p class="problem-quote">“I feel like we’re leaving time on the table every day. I just don’t know where to start fixing it.”</p>
+        <div class="problem-resolution">
+          <p class="problem-resolution-label">What that turned into</p>
+          <p class="problem-resolution-headline">10-year trend data — visible on every Salesforce prospect record.</p>
+          <div class="problem-resolution-tags">
+            <span class="problem-tag">Salesforce</span>
+            <span class="problem-tag">Lightning Components</span>
+            <span class="problem-tag">Custom Reporting</span>
           </div>
-          <p class="door-label">I have a specific problem</p>
-          <div class="door-knob"></div>
-          <p class="door-hint">hover to open</p>
         </div>
-      </div>
+      </article>
 
-      <div class="door-wrapper">
-        <div class="door-interior">
-          <p class="door-looking">Most people leave the free plan with a clearer picture than they expected — and a specific next step.</p>
-          <a href="#contact" class="door-cta">Get your free plan →</a>
-        </div>
-        <div class="door-panel">
-          <div class="door-icon">
-            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 015.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+      <article class="problem-card">
+        <p class="problem-quote">“Our data is all over the place. I can never get a straight answer out of it when I need one.”</p>
+        <div class="problem-resolution">
+          <p class="problem-resolution-label">What that turned into</p>
+          <p class="problem-resolution-headline">2,000+ records cleaned, corrected, and trusted again.</p>
+          <div class="problem-resolution-tags">
+            <span class="problem-tag">Salesforce</span>
+            <span class="problem-tag">AI</span>
+            <span class="problem-tag">Data Cleanup</span>
           </div>
-          <p class="door-label">I’m not sure where to start</p>
-          <div class="door-knob"></div>
-          <p class="door-hint">hover to open</p>
         </div>
-      </div>
+      </article>
 
+      <article class="problem-card">
+        <p class="problem-quote">“We bought software to solve the problem. Two years later the problem is still there — and now we’re also paying for software.”</p>
+        <div class="problem-resolution">
+          <p class="problem-resolution-label">What that turned into</p>
+          <p class="problem-resolution-headline">A marketing deliverable that wasn’t viable to produce manually.</p>
+          <div class="problem-resolution-tags">
+            <span class="problem-tag">Python</span>
+            <span class="problem-tag">ChatGPT</span>
+            <span class="problem-tag">ArcGIS</span>
+            <span class="problem-tag">Automation</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="problem-card">
+        <p class="problem-quote">“I know there’s a better way to do this. I just don’t have the time to figure out what it is.”</p>
+        <div class="problem-resolution">
+          <p class="problem-resolution-label">What that turned into</p>
+          <p class="problem-resolution-headline">530 websites evaluated automatically.</p>
+          <div class="problem-resolution-tags">
+            <span class="problem-tag">Automation</span>
+            <span class="problem-tag">Web Scraping</span>
+            <span class="problem-tag">Data</span>
+          </div>
+        </div>
+      </article>
+
+    </div>
+
+    <div class="problem-cta">
+      <a href="#contact" class="btn-on-dark">Get your free plan →</a>
+      <p class="problem-cta-note">Free. No commitment. A specific plan in plain English.</p>
     </div>
   </div>
 </section>
@@ -2010,12 +1783,6 @@
     if (heroCta) heroCta.addEventListener('click', function(e) { e.preventDefault(); showHeroForm(); });
 
 
-    // Mobile: tap to open doors
-    if (window.innerWidth <= 768) {
-      document.querySelectorAll('.door-wrapper').forEach(function(dw) {
-        dw.addEventListener('click', function() { dw.classList.toggle('open'); });
-      });
-    }
 
         if (heroFormBack) heroFormBack.addEventListener('click', hideHeroForm);
 
@@ -2116,6 +1883,7 @@
       </div>
 
       <div class="about-right">
+        <p class="about-role">Fractional Growth & Operations Partner</p>
         <h2 class="section-title">A real person,<br>not an agency.</h2>
         <div class="about-copy">
           <p>I grew up around a small business — a family company that had survived for over 60 years on instinct, relationships, and hard work. I watched it struggle to see where it was heading, not because anything was broken, but because the world changed faster than anyone warned it would.</p>
@@ -2174,7 +1942,7 @@
         </div>
         <div class="faq-item reveal reveal-d5">
           <p class="faq-q">Who is behind this?</p>
-          <p class="faq-a">Jack Zeis, a technical consultant based in Golden, Colorado. I've spent six years building CRM systems, automation tools, and data infrastructure for organizations that can't afford to get it wrong — nonprofits, grant-funded teams, and small businesses where the technical person is also the only technical person.</p>
+          <p class="faq-a">Jack Zeis — a Fractional Growth & Operations Partner based in Golden, Colorado. I've spent six years building CRM systems, automation tools, and data infrastructure for organizations that can't afford to get it wrong — nonprofits, grant-funded teams, and small businesses where the technical person is also the only technical person.</p>
         </div>
       </div>
 
