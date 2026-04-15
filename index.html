@@ -323,109 +323,6 @@
     color: rgba(255,255,255,0.5);
   }
 
-  /* PORTFOLIO CAROUSEL */
-  .portfolio { background: var(--cream); }
-  .portfolio-header {
-    display: flex;
-    align-items: flex-end;
-    justify-content: space-between;
-    margin-bottom: 2.5rem;
-    gap: 2rem;
-    flex-wrap: wrap;
-  }
-  .carousel-nav {
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-    flex-shrink: 0;
-  }
-  .carousel-btn {
-    width: 40px; height: 40px;
-    border-radius: 50%;
-    border: 1px solid #E8E3D8;
-    background: #fff;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: background 0.2s, border-color 0.2s;
-    color: var(--ink-mid);
-  }
-  .carousel-btn:hover { background: var(--forest); border-color: var(--forest); color: #fff; }
-  .carousel-btn svg { width: 16px; height: 16px; stroke: currentColor; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
-  .carousel-dots {
-    display: flex;
-    gap: 0.5rem;
-    align-items: center;
-  }
-  .carousel-dot {
-    width: 6px; height: 6px;
-    border-radius: 50%;
-    background: #D8D3CC;
-    cursor: pointer;
-    transition: background 0.2s, transform 0.2s;
-    border: none;
-    padding: 0;
-  }
-  .carousel-dot.active { background: var(--terra); transform: scale(1.4); }
-  .carousel-track-wrap { overflow: hidden; }
-  .carousel-track {
-    display: flex;
-    gap: 1.5rem;
-    transition: transform 0.45s cubic-bezier(0.4, 0, 0.2, 1);
-    will-change: transform;
-  }
-  .pcard {
-    background: #fff;
-    border: 1px solid #E8E3D8;
-    border-radius: var(--radius-lg);
-    padding: 2.25rem;
-    min-width: calc(50% - 0.75rem);
-    display: flex;
-    flex-direction: column;
-    gap: 1.25rem;
-    box-sizing: border-box;
-  }
-  .pcard-type {
-    font-size: 0.7rem;
-    font-weight: 500;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--forest-mid);
-  }
-  .pcard h3 {
-    font-family: var(--font-serif);
-    font-size: 1.125rem;
-    font-weight: 600;
-    color: var(--ink);
-    line-height: 1.35;
-    letter-spacing: -0.01em;
-    font-style: italic;
-  }
-  .pcard-body {
-    font-size: 0.9375rem;
-    color: var(--ink-mid);
-    line-height: 1.75;
-    flex: 1;
-  }
-  .pcard-outcome {
-    background: var(--forest-light);
-    border-radius: var(--radius);
-    padding: 1rem 1.25rem;
-    font-size: 0.9rem;
-    color: var(--forest);
-    line-height: 1.6;
-    font-weight: 500;
-  }
-  .pcard-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
-  .tag {
-    font-size: 0.75rem;
-    background: var(--cream-dark);
-    color: var(--ink-mid);
-    padding: 0.2rem 0.65rem;
-    border-radius: 99px;
-  }
-
   /* HOW */
   .how { background: var(--cream-dark); }
   .pricing-pill {
@@ -529,54 +426,6 @@
     color: var(--ink-mid);
   }
   .cred-dot { width: 6px; height: 6px; min-width: 6px; background: var(--forest-mid); border-radius: 50%; }
-
-  /* PORTFOLIO */
-  .portfolio-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1.5rem;
-    margin-top: 3rem;
-  }
-  .portfolio-card {
-    background: #fff;
-    border: 1px solid #E8E3D8;
-    border-radius: var(--radius-lg);
-    padding: 1.75rem;
-    display: flex;
-    flex-direction: column;
-    gap: 0.875rem;
-  }
-  .portfolio-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 0.25rem;
-  }
-  .portfolio-type {
-    font-size: 0.75rem;
-    font-weight: 500;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    color: var(--forest-mid);
-  }
-  .portfolio-duration {
-    font-size: 0.75rem;
-    color: var(--ink-light);
-  }
-  .portfolio-card h3 {
-    font-family: var(--font-serif);
-    font-size: 1.0625rem;
-    font-weight: 600;
-    color: var(--ink);
-    line-height: 1.35;
-  }
-  .portfolio-card p {
-    font-size: 0.9rem;
-    color: var(--ink-mid);
-    line-height: 1.7;
-    flex: 1;
-  }
-  .portfolio-footer { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 0.5rem; }
 
   /* PRICING */
   .pricing-grid {
@@ -810,37 +659,6 @@
     margin: 0;
   }
   /* WORK LIST */
-  .work-list {
-    display: flex;
-    flex-direction: column;
-    border-top: 1px solid #E8E3D8;
-    margin-top: 0.5rem;
-  }
-  .work-item {
-    display: grid;
-    grid-template-columns: 170px 1fr auto;
-    align-items: start;
-    gap: 1.5rem;
-    padding: 1.25rem 0;
-    border-bottom: 1px solid #E8E3D8;
-  }
-  .work-type {
-    font-size: 0.8125rem;
-    color: var(--ink-mid);
-    padding-top: 0.15rem;
-  }
-  .work-title {
-    font-family: var(--font-serif);
-    font-size: 1.0625rem;
-    color: var(--ink);
-    line-height: 1.4;
-  }
-  .work-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.35rem;
-    justify-content: flex-end;
-  }
   /* GHOST BUTTON */
   .btn-ghost {
     display: inline-flex;
@@ -1180,9 +998,6 @@
   }
   .btn-hiw-ghost:hover { border-color: rgba(255,255,255,0.5); color: #fff; }
 
-  /* Card hover 3D tilt */
-  .pcard { transition: transform 0.3s ease, box-shadow 0.3s ease; }
-  .pcard:hover { transform: perspective(800px) rotateY(-2deg) translateY(-4px); box-shadow: 0 16px 40px rgba(30,28,24,0.12); }
   .tcard { transition: transform 0.3s ease, box-shadow 0.3s ease; }
   .tcard:hover { transform: perspective(800px) rotateY(2deg) translateY(-4px); box-shadow: 0 12px 32px rgba(30,28,24,0.1); }
 
@@ -1417,7 +1232,6 @@
     .contact-grid { grid-template-columns: 1fr; gap: 2.5rem; }
     .form-row { grid-template-columns: 1fr; }
     .nav-links { display: none; }
-    .pcard { min-width: calc(100% - 0px); }
     .pricing-grid { grid-template-columns: 1fr; gap: 2rem; }
     .pricing-main { position: static; }
     .testimonials-grid { grid-template-columns: 1fr; }
@@ -1434,8 +1248,6 @@
     .faq-item:nth-child(2) { border-top: none; }
     .pricing-rate-col { padding-right: 0; padding-bottom: 1.5rem; border-bottom: 1px solid rgba(255,255,255,0.12); }
     .hiw-steps { grid-template-columns: 1fr; gap: 1.5rem; }
-    .work-item { grid-template-columns: 1fr; gap: 0.4rem; }
-    .work-tags { justify-content: flex-start; }
   }
 </style>
 </head>
@@ -1446,7 +1258,6 @@
   <div class="nav-inner">
     <a href="#" class="nav-logo">zeisWorks<span class="logo-period">.</span></a>
     <ul class="nav-links">
-      <li><a href="#services">Recent work</a></li>
       <li><a href="#pricing">How It Works</a></li>
       <li><a href="#testimonials">Reviews</a></li>
       <li><a href="#about">About</a></li>
@@ -1467,7 +1278,7 @@
       <p class="hero-sub">Describe what’s going on. I’ll come back with a specific, actionable plan — what I’d do, how long it takes, what it costs. Keep it and run with it yourself, or let me build it. Either way, you’ll have a clear answer.</p>
       <div class="hero-actions">
         <a href="#contact" class="btn-primary" id="heroCta">Submit your problem — it's free</a>
-        <a href="#services" class="btn-secondary">See recent work →</a>
+        <a href="#problem" class="btn-secondary">See real examples →</a>
         <p class="hero-trust">No commitment required &nbsp;·&nbsp; ★★★★★ Top Rated on Upwork</p>
         <p class="hero-why-free">$85/hr for build work — always quoted flat before anything starts. The diagnosis is free because AI made it fast: I return a real, specific plan. Not a sales call.</p>
       </div>
@@ -1574,58 +1385,9 @@
   </div>
 </section>
 
-<!-- PORTFOLIO -->
-<section class="portfolio" id="services">
+<!-- TESTIMONIALS -->
+<section class="portfolio" id="testimonials">
   <div class="section-inner">
-    <p class="section-label">Recent work</p>
-    <h2 class="section-title">A few things<br><em>I've built.</em></h2>
-
-    <div class="work-list">
-
-      <div class="work-item">
-        <span class="work-type">Salesforce · Custom Build</span>
-        <span class="work-title">10-year trend data — visible directly on every prospect record.</span>
-        <div class="work-tags">
-          <span class="tag">Salesforce</span>
-          <span class="tag">Lightning Components</span>
-          <span class="tag">Custom Reporting</span>
-        </div>
-      </div>
-
-      <div class="work-item">
-        <span class="work-type">Salesforce · AI + Data</span>
-        <span class="work-title">2,000+ records cleaned, corrected, and trusted again.</span>
-        <div class="work-tags">
-          <span class="tag">Salesforce</span>
-          <span class="tag">AI</span>
-          <span class="tag">Data Cleanup</span>
-        </div>
-      </div>
-
-      <div class="work-item">
-        <span class="work-type">Automation · Data · Mapping</span>
-        <span class="work-title">A marketing deliverable that wasn’t viable to produce manually.</span>
-        <div class="work-tags">
-          <span class="tag">Python</span>
-          <span class="tag">ChatGPT</span>
-          <span class="tag">ArcGIS</span>
-          <span class="tag">Automation</span>
-        </div>
-      </div>
-
-      <div class="work-item">
-        <span class="work-type">Automation · Data</span>
-        <span class="work-title">530 websites evaluated automatically — a project that wasn’t financially viable any other way.</span>
-        <div class="work-tags">
-          <span class="tag">Automation</span>
-          <span class="tag">Web Scraping</span>
-          <span class="tag">Data</span>
-        </div>
-      </div>
-
-    </div><!-- /work-list -->
-
-    <div id="testimonials" style="margin-top:4rem;padding-top:3.5rem;border-top:1px solid #E8E3D8;">
     <p class="section-label">Client reviews</p>
     <h2 class="section-title">What clients say.</h2>
     <a class="upwork-bar" href="https://www.upwork.com/freelancers/~01ddd112c03a2e1428" target="_blank" rel="noopener noreferrer" style="text-decoration:none;cursor:pointer;">
@@ -1676,7 +1438,6 @@
       </div>
 
     </div>
-  </div>
   </div>
 </section>
 
@@ -1855,7 +1616,7 @@
       </div>
       <div class="hiw-ctas">
         <a href="#contact" class="btn-hiw-primary reveal reveal-d3">Get your free plan</a>
-        <a href="#services" class="btn-hiw-ghost reveal reveal-d4">See recent work →</a>
+        <a href="#testimonials" class="btn-hiw-ghost reveal reveal-d4">See client reviews →</a>
       </div>
     </div>
 
