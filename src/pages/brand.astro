@@ -7,9 +7,9 @@ const colors = [
   { name: 'Ink', token: 'ink', hex: '#1E1C18', textClass: 'text-cream', desc: 'Primary text' },
   { name: 'Ink Mid', token: 'ink-mid', hex: '#5A5650', textClass: 'text-cream', desc: 'Secondary text' },
   { name: 'Ink Light', token: 'ink-light', hex: '#9A9590', textClass: 'text-ink', desc: 'Muted text, captions' },
-  { name: 'Navy', token: 'navy', hex: '#2D4A6B', textClass: 'text-cream', desc: 'Links, CTAs, logo mark' },
+  { name: 'Navy', token: 'navy', hex: '#2D4A6B', textClass: 'text-cream', desc: 'Links, CTAs' },
   { name: 'Forest', token: 'forest', hex: '#2C4A3E', textClass: 'text-cream', desc: 'Code blocks' },
-  { name: 'Orange', token: 'orange', hex: '#C85A20', textClass: 'text-cream', desc: 'Accent, logo period' },
+  { name: 'Orange', token: 'orange', hex: '#C85A20', textClass: 'text-cream', desc: 'Accent, logo mark, logo period' },
 ];
 
 const extendedColors = [
@@ -26,6 +26,7 @@ const extendedColors = [
   title="Brand Kit"
   description="zeisWorks brand assets — colors, typography, logo, and usage guidelines."
 >
+  <meta name="robots" content="noindex" slot="head" />
   <div class="max-w-3xl mx-auto px-6 py-16 space-y-20">
 
     <!-- Header -->
@@ -47,7 +48,7 @@ const extendedColors = [
         <div class="rounded-xl border border-cream-dark bg-cream p-10 flex flex-col items-center gap-6">
           <div class="flex items-center gap-3">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" class="w-10 h-10 shrink-0">
-              <rect width="32" height="32" rx="6" fill="#2D3F6B"/>
+              <rect width="32" height="32" rx="6" fill="#C85A20"/>
               <text x="16" y="23" font-family="Georgia, serif" font-size="20" font-weight="700" text-anchor="middle" fill="#FAF8F3">Z</text>
             </svg>
             <span class="font-serif text-2xl font-semibold text-ink">
@@ -60,7 +61,7 @@ const extendedColors = [
         <div class="rounded-xl bg-ink p-10 flex flex-col items-center gap-6">
           <div class="flex items-center gap-3">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" class="w-10 h-10 shrink-0">
-              <rect width="32" height="32" rx="6" fill="#2D4A6B"/>
+              <rect width="32" height="32" rx="6" fill="#C85A20"/>
               <text x="16" y="23" font-family="Georgia, serif" font-size="20" font-weight="700" text-anchor="middle" fill="#FAF8F3">Z</text>
             </svg>
             <span class="font-serif text-2xl font-semibold text-cream">
@@ -75,19 +76,19 @@ const extendedColors = [
         <h3 class="font-serif font-semibold text-ink">Mark only</h3>
         <div class="flex items-end gap-6">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" class="w-8 h-8">
-            <rect width="32" height="32" rx="6" fill="#2D3F6B"/>
+            <rect width="32" height="32" rx="6" fill="#C85A20"/>
             <text x="16" y="23" font-family="Georgia, serif" font-size="20" font-weight="700" text-anchor="middle" fill="#FAF8F3">Z</text>
           </svg>
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" class="w-12 h-12">
-            <rect width="32" height="32" rx="6" fill="#2D3F6B"/>
+            <rect width="32" height="32" rx="6" fill="#C85A20"/>
             <text x="16" y="23" font-family="Georgia, serif" font-size="20" font-weight="700" text-anchor="middle" fill="#FAF8F3">Z</text>
           </svg>
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" class="w-16 h-16">
-            <rect width="32" height="32" rx="6" fill="#2D3F6B"/>
+            <rect width="32" height="32" rx="6" fill="#C85A20"/>
             <text x="16" y="23" font-family="Georgia, serif" font-size="20" font-weight="700" text-anchor="middle" fill="#FAF8F3">Z</text>
           </svg>
         </div>
-        <p class="text-sm text-ink-mid">Navy mark (#2D3F6B) with cream "Z" on rounded rectangle. Use as favicon and icon-only contexts.</p>
+        <p class="text-sm text-ink-mid">Orange mark (#C85A20) with cream "Z" on rounded rectangle. Use as favicon and icon-only contexts.</p>
       </div>
     </section>
 
