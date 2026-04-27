@@ -1,0 +1,98 @@
+---
+interface Props {
+  title: string;
+  description: string;
+  ogTitle?: string;
+  ogDescription?: string;
+  ogImage?: string;
+  canonicalUrl?: string;
+}
+
+const {
+  title,
+  description,
+  ogTitle,
+  ogDescription,
+  ogImage,
+  canonicalUrl,
+} = Astro.props;
+
+const siteUrl = 'https://zeisworks.com';
+const canonical = canonicalUrl ?? new URL(Astro.url.pathname, siteUrl).href;
+const resolvedOgImage = ogImage
+  ? new URL(ogImage, siteUrl).href
+  : undefined;
+---
+
+<!doctype html>
+<html lang="en" class="bg-cream text-ink scroll-smooth">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+
+    <meta property="og:title" content={ogTitle ?? title} />
+    <meta property="og:description" content={ogDescription ?? description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonical} />
+    {resolvedOgImage && <meta property="og:image" content={resolvedOgImage} />}
+
+    <link rel="canonical" href={canonical} />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,400&display=swap"
+      rel="stylesheet"
+    />
+
+    <title>{title} — ZeisWorks</title>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <slot name="head" />
+  </head>
+  <body class="font-sans antialiased min-h-screen flex flex-col">
+    <header class="border-b border-cream-dark sticky top-0 bg-cream/95 backdrop-blur-sm z-10">
+      <div class="max-w-3xl mx-auto px-6 py-4 flex items-center justify-between">
+        <a
+          href="/"
+          class="font-serif text-xl font-semibold text-ink hover:text-navy transition-colors"
+        >
+          ZeisWorks<span class="text-orange">.</span>
+        </a>
+        <nav class="flex items-center gap-6 text-sm">
+          <a href="/guides/" class="text-ink-mid hover:text-ink transition-colors">
+            Guides
+          </a>
+          <a href="/#contact" class="text-ink-mid hover:text-ink transition-colors">
+            Contact
+          </a>
+          <a
+            href="/#contact"
+            class="bg-navy text-cream text-sm px-4 py-2 rounded-lg hover:bg-navy/90 transition-colors font-medium"
+          >
+            Free diagnosis
+          </a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="flex-1">
+      <slot />
+    </main>
+
+    <footer class="border-t border-cream-dark mt-24">
+      <div
+        class="max-w-3xl mx-auto px-6 py-10 flex flex-col sm:flex-row justify-between items-start gap-4 text-sm text-ink-mid"
+      >
+        <div>
+          <span class="font-serif font-semibold text-ink">
+            ZeisWorks<span class="text-orange">.</span>
+          </span>
+          <p class="mt-1">Operations and Salesforce consulting. Golden, CO.</p>
+        </div>
+        <p class="shrink-0">&copy; {new Date().getFullYear()} Jack Zeis. All rights reserved.</p>
+      </div>
+    </footer>
+  </body>
+</html>
