@@ -1,0 +1,51 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import GuideCard from '../../components/GuideCard.astro';
+
+const allGuides = await getCollection('guides');
+const sortedGuides = allGuides.sort(
+  (a, b) => b.data.publishDate.getTime() - a.data.publishDate.getTime()
+);
+---
+
+<BaseLayout
+  title="Guides"
+  description="Plain-English guides on Salesforce, operations, and fixing the problems that slow businesses down."
+  canonicalUrl="https://zeisworks.com/guides/"
+>
+  <div class="max-w-3xl mx-auto px-6 py-16">
+    <header class="mb-14">
+      <p class="text-xs font-semibold uppercase tracking-widest text-ink-light mb-3">
+        Guides
+      </p>
+      <h1 class="font-serif text-4xl font-bold mb-4">
+        Practical writing on operations and Salesforce.
+      </h1>
+      <p class="text-ink-mid leading-relaxed max-w-xl">
+        No frameworks, no theory. If it's here, it's because someone had the problem and
+        needed a real answer.
+      </p>
+    </header>
+
+    {
+      sortedGuides.length === 0 ? (
+        <p class="text-ink-mid">No guides yet. Check back soon.</p>
+      ) : (
+        <div class="divide-y divide-cream-dark">
+          {sortedGuides.map((guide) => (
+            <div class="py-10 first:pt-0">
+              <GuideCard
+                title={guide.data.title}
+                description={guide.data.description}
+                publishDate={guide.data.publishDate}
+                readingTime={guide.data.readingTime}
+                slug={guide.id}
+              />
+            </div>
+          ))}
+        </div>
+      )
+    }
+  </div>
+</BaseLayout>
