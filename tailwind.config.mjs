@@ -11,13 +11,12 @@ export default {
         ink: '#1E1C18',
         'ink-mid': '#5A5650',
         'ink-light': '#9A9590',
-        forest: '#1C3829',
-        'forest-mid': '#2C4A3E',
-        navy: '#2D3F6B',
+        forest: '#2C4A3E',
+        navy: '#2D4A6B',
         orange: '#C85A20',
       },
       fontFamily: {
-        serif: ['"Playfair Display"', 'Georgia', 'serif'],
+        serif: ['Lora', 'Georgia', 'serif'],
         sans: ['"DM Sans"', 'system-ui', 'sans-serif'],
       },
       typography: ({ theme }) => ({
@@ -44,16 +43,16 @@ export default {
             lineHeight: '1.75',
             maxWidth: 'none',
             h1: {
-              fontFamily: '"Playfair Display", Georgia, serif',
+              fontFamily: 'Lora, Georgia, serif',
               fontWeight: '700',
             },
             h2: {
-              fontFamily: '"Playfair Display", Georgia, serif',
+              fontFamily: 'Lora, Georgia, serif',
               fontWeight: '600',
               marginTop: '2em',
             },
             h3: {
-              fontFamily: '"Playfair Display", Georgia, serif',
+              fontFamily: 'Lora, Georgia, serif',
               fontWeight: '600',
             },
             a: {
