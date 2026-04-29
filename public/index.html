@@ -3,7 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>zeisWorks — Tell me what's wrong. I'll figure out the rest.</title>
+<meta name="description" content="ZeisWorks is a one-operator consulting practice serving small businesses. Marketing, operations, and custom-built tools. No agency overhead, no team handoffs.">
+<title>zeisWorks — Modern small business consulting. Built by one person.</title>
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -1248,7 +1249,112 @@
     .faq-item:nth-child(2) { border-top: none; }
     .pricing-rate-col { padding-right: 0; padding-bottom: 1.5rem; border-bottom: 1px solid rgba(255,255,255,0.12); }
     .hiw-steps { grid-template-columns: 1fr; gap: 1.5rem; }
+    .pillars-grid { grid-template-columns: 1fr; }
+    .footer-links { flex-direction: column; gap: 0.5rem; align-items: flex-start; }
   }
+
+  /* =====================
+     THREE PILLARS
+  ===================== */
+  .pillars { background: var(--cream); border-top: 1px solid var(--cream-dark); padding: 5rem 2rem; }
+  .pillars-inner { max-width: var(--max); margin: 0 auto; }
+  .pillars-header { text-align: center; margin-bottom: 3rem; }
+  .pillars-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+  .pillar-card {
+    background: var(--cream-dark);
+    border: 1px solid #E8E3D8;
+    border-radius: var(--radius-lg);
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.875rem;
+    transition: border-color 0.2s, transform 0.2s;
+  }
+  .pillar-card:hover { border-color: var(--terra); transform: translateY(-2px); }
+  .pillar-number {
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--orange);
+  }
+  .pillar-name {
+    font-family: var(--font-serif);
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--ink);
+    line-height: 1.3;
+    margin: 0;
+  }
+  .pillar-body {
+    font-size: 0.9375rem;
+    color: var(--ink-mid);
+    line-height: 1.7;
+    flex: 1;
+    margin: 0;
+  }
+  .pillar-link {
+    font-size: 0.875rem;
+    color: var(--terra);
+    font-weight: 500;
+    text-decoration: none;
+    transition: color 0.2s;
+    align-self: flex-start;
+  }
+  .pillar-link:hover { color: var(--forest); }
+
+  /* =====================
+     BRAND PROMISE STRIP
+  ===================== */
+  .brand-promise {
+    background: var(--forest);
+    padding: 3rem 2rem;
+    text-align: center;
+  }
+  .brand-promise-inner { max-width: 740px; margin: 0 auto; }
+  .brand-promise p {
+    font-family: var(--font-serif);
+    font-size: clamp(1.0625rem, 2vw, 1.3125rem);
+    font-style: italic;
+    color: rgba(255,255,255,0.92);
+    line-height: 1.65;
+    margin: 0;
+  }
+
+  /* =====================
+     STACK TEASER
+  ===================== */
+  .stack-teaser {
+    background: var(--cream-dark);
+    border-top: 1px solid #E8E3D8;
+    border-bottom: 1px solid #E8E3D8;
+    padding: 1rem 2rem;
+    text-align: center;
+  }
+  .stack-teaser p { font-size: 0.875rem; color: var(--ink-mid); margin: 0; }
+  .stack-teaser a { color: var(--terra); font-weight: 500; text-decoration: none; }
+  .stack-teaser a:hover { text-decoration: underline; }
+
+  /* =====================
+     UPDATED FOOTER LINKS
+  ===================== */
+  .footer-links {
+    display: flex;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    margin-top: 0.5rem;
+  }
+  .footer-links a {
+    font-size: 0.8125rem;
+    color: rgba(255,255,255,0.5);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .footer-links a:hover { color: rgba(255,255,255,0.85); }
 </style>
 </head>
 <body>
@@ -1256,12 +1362,13 @@
 <!-- NAV -->
 <nav>
   <div class="nav-inner">
-    <a href="#" class="nav-logo">zeisWorks<span class="logo-period">.</span></a>
+    <a href="/" class="nav-logo">zeisWorks<span class="logo-period">.</span></a>
     <ul class="nav-links">
-      <li><a href="#pricing">How It Works</a></li>
-      <li><a href="#testimonials">Reviews</a></li>
-      <li><a href="#about">About</a></li>
-      <li><a href="#contact" class="nav-cta"><span class="availability-dot"></span>Submit your problem — it’s free</a></li>
+      <li><a href="/#services">Services</a></li>
+      <li><a href="/stack">Stack</a></li>
+      <li><a href="/about">About</a></li>
+      <li><a href="/#contact">Contact</a></li>
+      <li><a href="{{GROWBOTIK_ENGINE_URL}}" class="nav-cta" target="_blank" rel="noopener noreferrer"><span class="availability-dot"></span>Free marketing analysis</a></li>
     </ul>
   </div>
 </nav>
@@ -1272,45 +1379,56 @@
     <div id="heroContent">
       <div class="hero-eyebrow-badge">
         <span class="hero-eyebrow-dot"></span>
-        Fractional Growth & Operations Partner · Available now
+        Marketing, operations, and custom tools &nbsp;·&nbsp; One operator, no agency overhead
       </div>
-      <h1>You know things could work better.<br><em>You're just not sure<br>where to start.</em></h1>
-      <p class="hero-sub">Describe what’s going on. I’ll come back with a specific, actionable plan — what I’d do, how long it takes, what it costs. Keep it and run with it yourself, or let me build it. Either way, you’ll have a clear answer.</p>
+      <h1>The human face of<br>modern small business<br><em>consulting.</em></h1>
+      <p class="hero-sub">Find out what’s working in your marketing in 5 minutes. Then fix what isn’t. One operator handles everything: no handoffs, no agency markup, no lock-in.</p>
       <div class="hero-actions">
-        <a href="#contact" class="btn-primary" id="heroCta">Submit your problem — it's free</a>
-        <a href="#problem" class="btn-secondary">See real examples →</a>
-        <p class="hero-trust">No commitment required &nbsp;·&nbsp; ★★★★★ Top Rated on Upwork</p>
-        <p class="hero-why-free">$85/hr for build work — always quoted flat before anything starts. The diagnosis is free because AI made it fast: I return a real, specific plan. Not a sales call.</p>
-      </div>
-    </div>
-    <div id="heroForm" class="hero-form">
-      <button class="hero-form-back" id="heroFormBack" type="button">← Back</button>
-      <h2 class="hero-form-title">Tell me what's going on.</h2>
-      <p class="hero-form-sub">I'll come back with a clear plan — free. No commitment.</p>
-      <form name="contact" netlify data-netlify="true">
-        <input type="hidden" name="form-name" value="contact">
-        <div class="hero-form-field">
-          <input type="text" name="name" placeholder="Your name" required>
-        </div>
-        <div class="hero-form-field">
-          <input type="text" name="company" placeholder="Company (optional)">
-        </div>
-        <div class="hero-form-field">
-          <input type="email" name="email" placeholder="Email address" required>
-        </div>
-        <div class="hero-form-field">
-          <textarea name="message" placeholder="What's the problem? Even a rough description is enough — you don't need to know the solution." rows="4" required></textarea>
-        </div>
-        <button type="submit" class="hero-form-submit">Submit your problem — it’s free</button>
-        <p class="hero-form-trust">Typical response within 24 hours. Your plan is always free.</p>
-      </form>
-      <div class="hero-form-success" style="display:none;">
-        <p>Thanks — I'll be in touch soon.</p>
+        <a href="{{GROWBOTIK_ENGINE_URL}}" class="btn-primary" target="_blank" rel="noopener noreferrer">Run your free 5-minute marketing analysis</a>
+        <a href="#contact" class="btn-secondary">Tell us what you’re trying to fix →</a>
+        <p class="hero-trust">No commitment required &nbsp;·&nbsp; Free first call &nbsp;·&nbsp; You own everything we build</p>
+        <p class="hero-why-free">Modern small business consulting. Built by one person.</p>
       </div>
     </div>
   </div>
-
 </section>
+
+<!-- THREE PILLARS -->
+<section class="pillars" id="services">
+  <div class="pillars-inner">
+    <div class="pillars-header">
+      <p class="section-label">What we do</p>
+      <h2 class="section-title">Three connected services.<br>One operator.</h2>
+    </div>
+    <div class="pillars-grid">
+      <article class="pillar-card reveal">
+        <p class="pillar-number">01 / Marketing</p>
+        <h3 class="pillar-name">Marketing execution</h3>
+        <p class="pillar-body">Marketing that runs and learns. Local SEO, paid ads, web optimization, and the systems that bring in the right leads. We handle the campaigns. You handle the calls.</p>
+        <a href="/marketing" class="pillar-link">Learn more →</a>
+      </article>
+      <article class="pillar-card reveal reveal-d1">
+        <p class="pillar-number">02 / Operations</p>
+        <h3 class="pillar-name">Operational efficiency</h3>
+        <p class="pillar-body">Your business runs on systems most owners can't see. We build, fix, and automate them. Salesforce, HubSpot, custom CRMs, and the workflows that connect everything you already use.</p>
+        <a href="/operations" class="pillar-link">Learn more →</a>
+      </article>
+      <article class="pillar-card reveal reveal-d2">
+        <p class="pillar-number">03 / Custom Tools</p>
+        <h3 class="pillar-name">Custom-built tools</h3>
+        <p class="pillar-body">Sometimes the off-the-shelf software doesn't fit. We build the custom tools that do. Internal apps, custom integrations, AI-powered workflows, made specifically for your business.</p>
+        <a href="/custom-tools" class="pillar-link">Learn more →</a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- BRAND PROMISE -->
+<div class="brand-promise reveal">
+  <div class="brand-promise-inner">
+    <p>"Most consultants sell decks. Most agencies sell hours. ZeisWorks builds the systems your business actually runs on. One operator, three connected services, no team handoffs."</p>
+  </div>
+</div>
 
 <!-- SOUND FAMILIAR / WHO THIS IS FOR -->
 <section class="problem" id="problem">
@@ -1500,62 +1618,6 @@
       contactObserver.observe(contactSection);
     }
 
-    // Hero inline form
-    const heroCta = document.getElementById('heroCta');
-    const heroContent = document.getElementById('heroContent');
-    const heroFormWrap = document.getElementById('heroForm');
-    const heroFormBack = document.getElementById('heroFormBack');
-    const heroFormEl = heroFormWrap ? heroFormWrap.querySelector('form') : null;
-    const heroFormSuccess = heroFormWrap ? heroFormWrap.querySelector('.hero-form-success') : null;
-
-    function showHeroForm() {
-      heroContent.style.transition = 'opacity 0.25s ease, transform 0.25s ease';
-      heroContent.style.opacity = '0';
-      heroContent.style.transform = 'translateY(-8px)';
-      setTimeout(function() {
-        heroContent.style.display = 'none';
-        heroFormWrap.style.display = 'block';
-        heroFormWrap.style.opacity = '0';
-        heroFormWrap.style.transform = 'translateY(8px)';
-        heroFormWrap.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
-        requestAnimationFrame(function() {
-          heroFormWrap.style.opacity = '1';
-          heroFormWrap.style.transform = 'translateY(0)';
-        });
-      }, 250);
-    }
-
-    function hideHeroForm() {
-      heroFormWrap.style.transition = 'opacity 0.2s ease';
-      heroFormWrap.style.opacity = '0';
-      setTimeout(function() {
-        heroFormWrap.style.display = 'none';
-        heroContent.style.display = 'block';
-        heroContent.style.opacity = '0';
-        heroContent.style.transform = 'translateY(8px)';
-        heroContent.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
-        requestAnimationFrame(function() {
-          heroContent.style.opacity = '1';
-          heroContent.style.transform = 'translateY(0)';
-        });
-      }, 200);
-    }
-
-    if (heroCta) heroCta.addEventListener('click', function(e) { e.preventDefault(); showHeroForm(); });
-
-
-
-        if (heroFormBack) heroFormBack.addEventListener('click', hideHeroForm);
-
-    if (heroFormEl) {
-      heroFormEl.addEventListener('submit', function(e) {
-        e.preventDefault();
-        var data = new URLSearchParams(new FormData(heroFormEl));
-        fetch('/', { method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body: data })
-          .then(function() { heroFormEl.style.display = 'none'; heroFormSuccess.style.display = 'block'; })
-          .catch(function() { heroFormEl.style.display = 'none'; heroFormSuccess.style.display = 'block'; });
-      });
-    }
   });
 </script>
 
@@ -1570,13 +1632,13 @@
       <div class="pricing-main-inner">
         <div class="pricing-rate-col">
           <p class="pricing-rate-label">HOW PRICING WORKS</p>
-          <p class="pricing-project-headline">You see a project price.<br>Not an hourly rate.</p>
-          <p class="pricing-rate-sub">One flat number for the specific work — reviewed and approved before anything starts.</p>
+          <p class="pricing-project-headline">Retainer-based for ongoing work.<br>A la carte for one-time projects.</p>
+          <p class="pricing-rate-sub">$125/hr — but you never watch a clock. Every engagement is scoped flat before anything starts.</p>
         </div>
         <div class="pricing-divider"></div>
         <div class="pricing-points-col">
           <div class="pricing-point-item">
-            <strong>Calls and advice are always free</strong>
+            <strong>Face-to-face time is always free</strong>
             <p>Talk through the problem, get an honest read, ask anything you want. No clock running until you approve work.</p>
           </div>
           <hr class="pricing-hr">
@@ -1586,8 +1648,8 @@
           </div>
           <hr class="pricing-hr">
           <div class="pricing-point-item">
-            <strong>No surprises, ever</strong>
-            <p>If something changes mid-project, you hear about it before I go over scope. No retainer, no minimum, no markups.</p>
+            <strong>You own everything we build</strong>
+            <p>No lock-in, no dependency on ZeisWorks to keep things running. If something changes mid-project, you hear about it first.</p>
           </div>
         </div>
       </div>
@@ -1636,26 +1698,36 @@
         <div class="about-badge">
           <p class="badge-label">Background & credentials</p>
           <div class="cred-item"><div class="cred-dot"></div>Salesforce Certified</div>
-          <div class="cred-item"><div class="cred-dot"></div>Sales operations</div>
-          <div class="cred-item"><div class="cred-dot"></div>Python & Data</div>
-          <div class="cred-item"><div class="cred-dot"></div>AI Workflows</div>
-          <div class="cred-item"><div class="cred-dot"></div>Web scraping & automation</div>
+          <div class="cred-item"><div class="cred-dot"></div>Marketing operations</div>
+          <div class="cred-item"><div class="cred-dot"></div>CRM builds (Salesforce, HubSpot)</div>
+          <div class="cred-item"><div class="cred-dot"></div>Python, AI workflows</div>
+          <div class="cred-item"><div class="cred-dot"></div>Custom app development</div>
         </div>
       </div>
 
       <div class="about-right">
-        <p class="about-role">Fractional Growth & Operations Partner</p>
+        <p class="about-role">One-operator consulting. Golden, CO.</p>
         <h2 class="section-title">A real person,<br>not an agency.</h2>
         <div class="about-copy">
-          <p>I grew up around a small business — a family company that had survived for over 60 years on instinct, relationships, and hard work. I watched it struggle to see where it was heading, not because anything was broken, but because the world changed faster than anyone warned it would.</p>
-          <p>That's why zeisWorks exists. Not to replace how your business works or who makes it run. To bridge the gap between people who built something real and the tools that can actually help them — without the complexity, the retainers, or the agency overhead.</p>
-          <p>In my day job I serve as Director of Business Development Technology, working directly with client-facing and internal teams to improve how they operate. I've spent years translating between the people who run a business and the tools that are supposed to help them. zeisWorks is what that looks like without the agency in the middle.</p>
+          <p>ZeisWorks is run by Jack Zeis. One person, three connected services: marketing, operations, and the custom-built tools most consultants outsource or skip entirely.</p>
+          <p>Most small businesses don't need an agency. They don't need a team of specialists handing work between each other. They need a real operator who can run the marketing, fix the operations, and build the things nobody else will.</p>
+          <p>That's what ZeisWorks does.</p>
+          <p>Based in Golden, Colorado. Serves clients across the US, fully remote. No lock-in, free first call, plain English on everything.</p>
+        </div>
+        <div style="margin-top:1.5rem;display:flex;gap:0.75rem;flex-wrap:wrap;">
+          <a href="/about" class="btn-ghost" style="font-size:0.875rem;">Full story →</a>
+          <a href="{{LINKEDIN_URL}}" class="btn-ghost" style="font-size:0.875rem;" target="_blank" rel="noopener noreferrer">LinkedIn →</a>
         </div>
       </div>
 
     </div>
   </div>
 </section>
+
+<!-- STACK TEASER -->
+<div class="stack-teaser">
+  <p>See the tools and platforms behind every ZeisWorks engagement. <a href="/stack">View the Stack →</a></p>
+</div>
 
 <!-- FAQ -->
 <section class="faq-section">
@@ -1671,7 +1743,7 @@
         </div>
         <div class="faq-item reveal reveal-d2">
           <p class="faq-q">What kinds of problems can you help with?</p>
-          <p class="faq-a">The kind that have been on your list for months. A report nobody can pull without exporting to Excel. A process three people do manually that nobody has time to fix. A system you're paying for that half the team doesn't use. A CRM nobody updates because it's faster to keep notes in a spreadsheet. If it's slowing your business down, send it.</p>
+          <p class="faq-a">Three areas: marketing that isn't generating leads, operations that are slow or manual, and tools that don't exist yet. A report nobody can pull without exporting to Excel. A CRM nobody updates. Marketing spend with no visibility into results. A process that three people do by hand because nobody's built the automation. If it's slowing your business down, send it.</p>
         </div>
         <div class="faq-item reveal reveal-d2">
           <p class="faq-q">What does it cost?</p>
@@ -1683,7 +1755,7 @@
         </div>
         <div class="faq-item reveal reveal-d3">
           <p class="faq-q">What’s the rate for build work?</p>
-          <p class="faq-a">$85/hr — but you never watch a clock. Every project is scoped and quoted as a flat number before anything starts. You see the total, approve it, and that’s what you pay. No surprises, no minimum hours, no retainer.</p>
+          <p class="faq-a">$125/hr for a la carte work — but you never watch a clock. Every project is scoped and quoted as a flat number before anything starts. You see the total, approve it, and that’s what you pay. Ongoing work runs on retainer. The first call is always free.</p>
         </div>
         <div class="faq-item reveal reveal-d3">
           <p class="faq-q">What happens after I submit?</p>
@@ -1703,7 +1775,7 @@
         </div>
         <div class="faq-item reveal reveal-d5">
           <p class="faq-q">Who is behind this?</p>
-          <p class="faq-a">Jack Zeis — a Fractional Growth & Operations Partner based in Golden, Colorado. I've spent six years building CRM systems, automation tools, and data infrastructure for organizations that can't afford to get it wrong — small and mid-sized businesses where the technical person is also the only technical person.</p>
+          <p class="faq-a">Jack Zeis, based in Golden, Colorado. One person running three connected services: marketing, operations, and custom-built tools. I've spent years building CRM systems, automation workflows, and marketing infrastructure for small and mid-sized businesses across the US. No team, no handoffs, no agency in the middle.</p>
         </div>
       </div>
 
@@ -1711,16 +1783,17 @@
   </div>
 </section>
 
-<!-- FREE DIAGNOSIS CTA -->
+<!-- FOOTER CTA -->
 <section class="free-cta">
   <div class="section-inner">
     <p class="section-label">Always free to find out</p>
-    <h2 class="section-title">Send me your problem.<br>I'll send you a plan.</h2>
+    <h2 class="section-title">Got a problem? Tell us about it.</h2>
     <p class="free-cta-body">
-      Tell me what's going on — in whatever words you have. I'll return a plain-English plan: <strong>what I'd do, how long it would take, and what it would cost.</strong> No charge for any of that. Then it's your call — approve the plan and I'll execute, or take it and run with it yourself.
+      Free first call, free plan, no obligation. Tell me what you're trying to fix — in whatever words you have. I'll return a plain-English plan: <strong>what I'd do, how long it would take, and what it would cost.</strong> Then it's your call.
     </p>
     <div class="free-cta-actions">
-      <a href="#contact" class="btn-primary">Submit your problem — it's free</a>
+      <a href="#contact" class="btn-primary">Tell us what you're trying to fix</a>
+      <a href="{{GROWBOTIK_ENGINE_URL}}" class="btn-hiw-ghost" target="_blank" rel="noopener noreferrer">Free marketing analysis →</a>
     </div>
     <p class="free-cta-note">The plan is always free. You only pay if you decide to work together — and only for work you've approved.</p>
   </div>
@@ -1731,9 +1804,9 @@
   <div class="section-inner">
     <div class="contact-grid">
       <div class="contact-left">
-        <p class="section-label">Get your free plan</p>
-        <h2 class="section-title">Tell me what's going on.</h2>
-        <p>Tell me what's happening. You don't need to know what the solution is or what category it falls into — that's what the plan is for. No charge. No sales call.</p>
+        <p class="section-label">Free first call. No obligation.</p>
+        <h2 class="section-title">Tell us what you're trying to fix.</h2>
+        <p>Describe what's happening. You don't need to know what the solution is — figuring that out is the free part. Marketing, operations, or a custom tool you need built. Send it and I'll come back with a plain-English plan.</p>
         <div class="contact-email-block">
           <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
           <a href="mailto:hello@zeisworks.com">hello@zeisworks.com</a>
@@ -1774,18 +1847,18 @@
           <label for="interest">What kind of problem is it?</label>
           <select id="interest" name="interest">
             <option value="">Not sure yet...</option>
-            <option>Something specific needs fixing</option>
-            <option>A process or workflow issue</option>
-            <option>A software or tool we're not really using</option>
-            <option>A data or reporting issue</option>
-            <option>Something bigger I need help scoping</option>
+            <option>Marketing and lead generation</option>
+            <option>Operations or process improvement</option>
+            <option>Custom tools or integrations</option>
+            <option>CRM setup or cleanup</option>
+            <option>Something else</option>
           </select>
         </div>
         <div>
           <label for="message">Tell me more</label>
           <textarea id="message" name="message" placeholder="What's the problem? Even a rough description is helpful — you don't need to have it figured out."></textarea>
         </div>
-        <button type="submit" class="form-submit">Submit your problem — it’s free</button>
+        <button type="submit" class="form-submit">Send it — it’s free</button>
         <p class="form-trust">Typical response within 24 hours. Your plan is always free.</p>
       </form>
       <div id="form-success" style="display:none; padding: 2rem; background: var(--cream); border: 1px solid var(--terra); border-radius: 8px; text-align: center;">
@@ -1800,9 +1873,17 @@
   <div class="footer-inner">
     <div>
       <div class="footer-logo">zeisWorks<span class="logo-period">.</span></div>
-      <div class="footer-tag">Tell me what's wrong. I'll figure out the rest.</div>
+      <div class="footer-tag">Modern small business consulting. Built by one person.</div>
+      <div class="footer-links">
+        <a href="/marketing">Marketing</a>
+        <a href="/operations">Operations</a>
+        <a href="/custom-tools">Custom Tools</a>
+        <a href="/stack">Stack</a>
+        <a href="/about">About</a>
+        <a href="/#contact">Contact</a>
+      </div>
     </div>
-    <div class="footer-copy">© 2026 zeisWorks. Golden, CO.</div>
+    <div class="footer-copy">© 2026 Jack Zeis. Golden, CO.<br>All rights reserved.</div>
   </div>
 </footer>
 
@@ -1810,7 +1891,7 @@
 <div class="sticky-cta" id="stickyCta">
   <a href="#contact">
     <svg viewBox="0 0 24 24" style="width:16px;height:16px;stroke:#fff;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
-    Submit your problem — it’s free
+    Tell us what you’re trying to fix
   </a>
 </div>
 
