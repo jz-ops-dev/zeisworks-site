@@ -1,0 +1,259 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const tools = {
+  crm: [
+    {
+      name: 'Salesforce',
+      desc: 'Enterprise CRM for complex sales processes and reporting.',
+      why: 'The most powerful CRM on the market. I use it for clients with multi-stage pipelines, custom objects, and serious reporting needs. It has a steep learning curve and a steep price. Both worth it at the right scale.',
+      link: '{{AFFILIATE_LINK_SALESFORCE}}',
+    },
+    {
+      name: 'HubSpot',
+      desc: 'CRM, marketing, and sales hub with a generous free tier.',
+      why: "Better starting point than Salesforce for most SMBs under $5M in revenue. The free CRM is genuinely good. Marketing automation gets expensive fast, so scope carefully before you commit.",
+      link: '{{AFFILIATE_LINK_HUBSPOT}}',
+    },
+    {
+      name: 'Apollo.io',
+      desc: 'Prospecting database with built-in outreach sequencing.',
+      why: 'I use this for lead list building and outbound sequencing. The contact database is solid for B2B. Works well as a first-touch channel before moving qualified leads into a CRM.',
+      link: '{{AFFILIATE_LINK_APOLLO}}',
+    },
+  ],
+  ai: [
+    {
+      name: 'Anthropic Claude',
+      desc: 'Large language model for reasoning, writing, and analysis.',
+      why: "My primary model for client work that involves complex reasoning, long documents, or nuanced judgment calls. Handles context well. What you're reading right now was written by a person, but Claude helps with research and drafts.",
+      link: 'https://claude.ai',
+    },
+    {
+      name: 'OpenAI (GPT-4o)',
+      desc: 'Multimodal LLM with strong tool-use and function-calling.',
+      why: "Used for structured outputs, image analysis, and integrations that need reliable JSON. I reach for this when the task needs precise formatting or I'm building an automated pipeline.",
+      link: 'https://openai.com',
+    },
+    {
+      name: 'n8n',
+      desc: 'Open-source workflow automation with code flexibility.',
+      why: "My preferred automation tool for clients who want self-hosted control or complex logic. More powerful than Zapier for custom workflows. Requires more setup but saves money long-term.",
+      link: '{{AFFILIATE_LINK_N8N}}',
+    },
+    {
+      name: 'Zapier',
+      desc: 'No-code automation connecting 5,000+ apps.',
+      why: 'The fastest way to connect tools without writing code. Best for straightforward triggers and actions. Gets expensive if you run high volume. For complex conditional logic, I switch to n8n.',
+      link: '{{AFFILIATE_LINK_ZAPIER}}',
+    },
+  ],
+  marketing: [
+    {
+      name: 'Growbotik',
+      desc: 'Marketing execution platform built for local and regional businesses.',
+      why: 'What I use to run the marketing pillar for ZeisWorks clients. Covers local SEO, paid ads, and reporting in one place. The analysis engine behind the free 5-minute marketing check.',
+      link: '{{GROWBOTIK_ENGINE_URL}}',
+    },
+    {
+      name: 'Instantly',
+      desc: 'Cold email platform with deliverability infrastructure.',
+      why: "Used for outbound email campaigns where deliverability matters. Handles sending volume, domain warming, and inbox rotation. Pair it with Apollo for prospecting plus outreach.",
+      link: '{{AFFILIATE_LINK_INSTANTLY}}',
+    },
+    {
+      name: 'Google Search Console',
+      desc: 'Free tool for SEO monitoring and indexing control.',
+      why: "Should be set up for every client with a website. Free, authoritative, and tells you exactly what Google sees. I check this before recommending any other SEO tool.",
+      link: 'https://search.google.com/search-console',
+    },
+  ],
+  web: [
+    {
+      name: 'Astro',
+      desc: 'Static site framework with component islands.',
+      why: 'What this site is built on. Fast by default, flexible enough for dynamic features, and easy to deploy. Good choice for content-heavy marketing sites that need performance.',
+      link: 'https://astro.build',
+    },
+    {
+      name: 'Tailwind CSS',
+      desc: 'Utility-first CSS framework.',
+      why: 'Speeds up styling without creating a mess of custom class names. I use it on every web project. The design token system maps well to brand guidelines.',
+      link: 'https://tailwindcss.com',
+    },
+    {
+      name: 'Netlify',
+      desc: 'Web hosting and deployment platform.',
+      why: 'Where zeisworks.com is deployed. Handles forms, edge functions, and CI/CD without needing a separate infrastructure setup. Free tier covers most small sites.',
+      link: 'https://netlify.com',
+    },
+    {
+      name: 'Notion',
+      desc: 'Docs, wikis, and databases in one workspace.',
+      why: 'Where I manage project notes, client documentation, and internal processes. Works as a lightweight CMS for content that changes frequently.',
+      link: '{{AFFILIATE_LINK_NOTION}}',
+    },
+  ],
+  ops: [
+    {
+      name: 'Claude Code',
+      desc: 'AI coding agent integrated into the development workflow.',
+      why: "The tool I use to write and edit code faster without losing control of what's being built. Handles routine implementation so I can focus on architecture and judgment.",
+      link: 'https://claude.ai/code',
+    },
+    {
+      name: 'GitHub',
+      desc: 'Version control and code hosting.',
+      why: 'All client code lives in version-controlled repositories. Every project is backed up, reversible, and transferable. Clients own the repo.',
+      link: 'https://github.com',
+    },
+    {
+      name: 'Loom',
+      desc: 'Async video messaging for walkthroughs and handoffs.',
+      why: "I record Loom walkthroughs for every project handoff. A 5-minute video explaining how something works is worth more than a doc nobody reads. Clients consistently say it's the most useful part of the deliverable.",
+      link: '{{AFFILIATE_LINK_LOOM}}',
+    },
+  ],
+};
+---
+
+<BaseLayout
+  title="The Stack"
+  description="The tools and platforms ZeisWorks actually uses to run client work. CRM, automation, marketing, web, and operations tools, with honest notes on each."
+  ogTitle="The Stack — zeisWorks"
+  ogDescription="The tools and platforms ZeisWorks actually uses and recommends. Updated when something changes."
+>
+  <div class="max-w-3xl mx-auto px-6 py-16 space-y-20">
+
+    <!-- Header -->
+    <div>
+      <p class="text-sm font-medium text-orange uppercase tracking-widest mb-3">Tools & platforms</p>
+      <h1 class="font-serif text-4xl font-semibold text-ink leading-tight">
+        The Stack
+      </h1>
+      <p class="mt-4 text-ink-mid text-lg leading-relaxed max-w-xl">
+        These are the tools and platforms I actually use to run ZeisWorks and the work I do for clients. Some I recommend without reservation, some have tradeoffs I'll name. I update this page when something changes.
+      </p>
+    </div>
+
+    <!-- CRM section -->
+    <section>
+      <h2 class="font-serif text-2xl font-semibold text-ink mb-1">CRM and customer data</h2>
+      <p class="text-ink-mid text-sm mb-6">Where leads, contacts, and sales activity live.</p>
+      <div class="space-y-4">
+        {tools.crm.map(tool => (
+          <div class="rounded-xl border border-cream-dark bg-cream p-6">
+            <div class="flex items-start justify-between gap-4 mb-2">
+              <h3 class="font-serif font-semibold text-ink text-lg">{tool.name}</h3>
+              {tool.link && !tool.link.startsWith('{{') && (
+                <a href={tool.link} target="_blank" rel="noopener noreferrer" class="text-xs text-navy font-medium shrink-0 hover:underline">
+                  Visit →
+                </a>
+              )}
+            </div>
+            <p class="text-sm text-ink-mid mb-3">{tool.desc}</p>
+            <p class="text-sm text-ink leading-relaxed">{tool.why}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- AI and automation -->
+    <section>
+      <h2 class="font-serif text-2xl font-semibold text-ink mb-1">AI and automation</h2>
+      <p class="text-ink-mid text-sm mb-6">Models, workflow tools, and the infrastructure that connects them.</p>
+      <div class="space-y-4">
+        {tools.ai.map(tool => (
+          <div class="rounded-xl border border-cream-dark bg-cream p-6">
+            <div class="flex items-start justify-between gap-4 mb-2">
+              <h3 class="font-serif font-semibold text-ink text-lg">{tool.name}</h3>
+              {tool.link && !tool.link.startsWith('{{') && (
+                <a href={tool.link} target="_blank" rel="noopener noreferrer" class="text-xs text-navy font-medium shrink-0 hover:underline">
+                  Visit →
+                </a>
+              )}
+            </div>
+            <p class="text-sm text-ink-mid mb-3">{tool.desc}</p>
+            <p class="text-sm text-ink leading-relaxed">{tool.why}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- Marketing platforms -->
+    <section>
+      <h2 class="font-serif text-2xl font-semibold text-ink mb-1">Marketing platforms</h2>
+      <p class="text-ink-mid text-sm mb-6">Lead generation, outbound, and visibility tools.</p>
+      <div class="space-y-4">
+        {tools.marketing.map(tool => (
+          <div class="rounded-xl border border-cream-dark bg-cream p-6">
+            <div class="flex items-start justify-between gap-4 mb-2">
+              <h3 class="font-serif font-semibold text-ink text-lg">{tool.name}</h3>
+              {tool.link && !tool.link.startsWith('{{') && (
+                <a href={tool.link} target="_blank" rel="noopener noreferrer" class="text-xs text-navy font-medium shrink-0 hover:underline">
+                  Visit →
+                </a>
+              )}
+            </div>
+            <p class="text-sm text-ink-mid mb-3">{tool.desc}</p>
+            <p class="text-sm text-ink leading-relaxed">{tool.why}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- Web and content -->
+    <section>
+      <h2 class="font-serif text-2xl font-semibold text-ink mb-1">Web and content</h2>
+      <p class="text-ink-mid text-sm mb-6">How client sites and content infrastructure get built.</p>
+      <div class="space-y-4">
+        {tools.web.map(tool => (
+          <div class="rounded-xl border border-cream-dark bg-cream p-6">
+            <div class="flex items-start justify-between gap-4 mb-2">
+              <h3 class="font-serif font-semibold text-ink text-lg">{tool.name}</h3>
+              {tool.link && !tool.link.startsWith('{{') && (
+                <a href={tool.link} target="_blank" rel="noopener noreferrer" class="text-xs text-navy font-medium shrink-0 hover:underline">
+                  Visit →
+                </a>
+              )}
+            </div>
+            <p class="text-sm text-ink-mid mb-3">{tool.desc}</p>
+            <p class="text-sm text-ink leading-relaxed">{tool.why}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- Internal operations -->
+    <section>
+      <h2 class="font-serif text-2xl font-semibold text-ink mb-1">Internal operations</h2>
+      <p class="text-ink-mid text-sm mb-6">Tools for running ZeisWorks day-to-day.</p>
+      <div class="space-y-4">
+        {tools.ops.map(tool => (
+          <div class="rounded-xl border border-cream-dark bg-cream p-6">
+            <div class="flex items-start justify-between gap-4 mb-2">
+              <h3 class="font-serif font-semibold text-ink text-lg">{tool.name}</h3>
+              {tool.link && !tool.link.startsWith('{{') && (
+                <a href={tool.link} target="_blank" rel="noopener noreferrer" class="text-xs text-navy font-medium shrink-0 hover:underline">
+                  Visit →
+                </a>
+              )}
+            </div>
+            <p class="text-sm text-ink-mid mb-3">{tool.desc}</p>
+            <p class="text-sm text-ink leading-relaxed">{tool.why}</p>
+          </div>
+        ))}
+      </div>
+      <p class="text-sm text-ink-light mt-6 italic">More coming as I document the rest of the stack.</p>
+    </section>
+
+    <!-- Disclosure -->
+    <div class="rounded-xl border border-cream-dark bg-cream-dark p-6">
+      <p class="text-xs text-ink-light uppercase tracking-widest mb-2">Disclosure</p>
+      <p class="text-sm text-ink-mid leading-relaxed">
+        I link to some of these tools through partner programs. I only recommend things I actually use. If a tool stops being useful, I drop it from this list.
+      </p>
+    </div>
+
+  </div>
+</BaseLayout>
