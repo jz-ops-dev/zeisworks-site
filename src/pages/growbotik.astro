@@ -3,70 +3,75 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 ---
 
 <BaseLayout
-  title="Growbotik — White Label Autonomous Marketing"
-  description="Run a full-service marketing agency without the headcount. Growbotik handles discovery, planning, execution, and reporting — all under your brand."
-  ogTitle="Growbotik — White Label Autonomous Marketing Agency"
-  ogDescription="Scale to hundreds of clients with one staff member. Growbotik is the white-label AI platform that executes your marketing fulfillment end-to-end."
+  title="AI-Powered Marketing Execution"
+  description="Full-service marketing done for you. Discovery, planning, campaigns, lead tracking, and weekly reporting — run by ZeisWorks for small businesses that need results, not slide decks."
+  ogTitle="AI-Powered Marketing Execution — zeisWorks"
+  ogDescription="ZeisWorks handles the discovery, the 12-month plan, the campaigns, and the reporting. You handle your business."
 >
-  <div class="max-w-3xl mx-auto px-6 py-16 space-y-20">
+  <div class="max-w-3xl mx-auto px-6 py-16 space-y-16">
 
-    <!-- Hero -->
+    <!-- Header -->
     <div>
-      <p class="text-sm font-medium text-orange uppercase tracking-widest mb-3">New product offering</p>
-      <h1 class="font-serif text-4xl sm:text-5xl font-semibold text-ink leading-tight">
-        Run a full-service agency.<br class="hidden sm:block" /> Without the headcount.
+      <p class="text-sm font-medium text-orange uppercase tracking-widest mb-3">Marketing · AI-powered</p>
+      <h1 class="font-serif text-4xl font-semibold text-ink leading-tight">
+        Full-service marketing.<br class="hidden sm:block" /> Done for you.
       </h1>
-      <p class="mt-5 text-ink-mid text-lg leading-relaxed max-w-2xl">
-        Growbotik is a white-label autonomous marketing platform. It handles client discovery, 12-month planning, campaign execution, lead tracking, and reporting — all under your brand, at your pricing.
+      <p class="mt-4 text-ink-mid text-lg leading-relaxed max-w-xl">
+        We handle the discovery, the 12-month plan, the campaigns, the lead tracking, and the weekly reports. You handle your business.
       </p>
-      <p class="mt-3 text-ink-mid leading-relaxed max-w-2xl">
-        One staff member. Hundreds of clients. The margin your agency was supposed to have.
-      </p>
-      <div class="mt-8 flex flex-wrap items-center gap-4">
+      <div class="mt-8 flex flex-wrap gap-3">
         <a
-          href="https://join.growbotik.com/"
+          href="{{GROWBOTIK_ENGINE_URL}}"
           target="_blank"
           rel="noopener noreferrer"
-          class="bg-navy text-cream text-sm px-6 py-3 rounded-lg hover:bg-navy/90 transition-colors font-medium"
+          class="bg-navy text-cream text-sm px-5 py-2.5 rounded-lg hover:bg-navy/90 transition-colors font-medium"
         >
-          Start 7-day free trial →
+          Run your free 5-minute marketing analysis
         </a>
-        <p class="text-sm text-ink-light">Starts at $0 &nbsp;·&nbsp; Cancel anytime</p>
+        <a
+          href="/#contact"
+          class="border border-navy text-navy text-sm px-5 py-2.5 rounded-lg hover:bg-navy/5 transition-colors font-medium"
+        >
+          Talk through your situation →
+        </a>
       </div>
     </div>
 
-    <!-- The problem -->
+    <!-- Problem -->
     <section>
-      <h2 class="font-serif text-2xl font-semibold text-ink mb-4">The agency growth wall</h2>
+      <h2 class="font-serif text-2xl font-semibold text-ink mb-4">Most marketing doesn't work. Here's why.</h2>
       <div class="space-y-4 text-ink-mid leading-relaxed">
         <p>
-          Most marketing agencies hit the same ceiling. You land more clients, so you hire more people. Margin disappears into payroll. You're managing a team instead of running a business. Every new client means new risk — a new hire who might not work out, a new process that might not hold.
+          Traditional marketing agencies charge a retainer and deliver a slide deck. You get a strategy document, a few campaign tweaks, and a monthly call where someone reads you numbers you could have read yourself. The campaigns either run on autopilot or require constant supervision from you.
         </p>
         <p>
-          The alternative most agencies don't know exists: fulfillment that scales without headcount. Growbotik is an AI platform that acts as a top-tier execution layer for your agency — doing the discovery, the planning, the campaign work, and the client communication under your brand so you keep the relationship and the margin.
+          The other path — doing it yourself — works until it doesn't. You can manage Google Ads or post on social media, but the moment your business gets busy, the marketing stops. Leads dry up. You get busy again, scramble on the marketing, and repeat the cycle.
+        </p>
+        <p>
+          What actually moves the needle is execution that happens consistently, tracks every lead back to its source, and improves over time — without requiring your attention to keep running.
         </p>
       </div>
     </section>
 
     <!-- How it works -->
     <section>
-      <h2 class="font-serif text-2xl font-semibold text-ink mb-6">End-to-end in one platform</h2>
+      <h2 class="font-serif text-2xl font-semibold text-ink mb-6">How it works</h2>
       <div class="space-y-4">
         {[
           {
             num: '01',
-            name: 'Gap analysis + AI discovery',
-            body: 'Growbotik runs a professional discovery session with your client in under 5 minutes — the equivalent of a full AE prep and call. It analyzes the marketing gap between where the business is and where it needs to go, including location-based ROI projections sized to your retail pricing.',
+            name: 'Marketing gap analysis',
+            body: 'We start with a fast, AI-powered discovery session to understand your business, your goals, and the gap between where you are and where you want to be. We come back with a plain-English assessment: what\'s working, what\'s missing, and what the ROI looks like if we fix it. This takes about 5 minutes of your time and costs nothing.',
           },
           {
             num: '02',
             name: '12-month growth roadmap',
-            body: 'The output of discovery becomes a customized 12-month plan designed to hit and exceed client goals. Built automatically, delivered under your agency\'s brand.',
+            body: 'From the gap analysis, we build a customized 12-month plan — specific campaigns, specific channels, specific targets. Not a template. A plan built for your business, your location, and your market. You review it, approve it, and we execute it.',
           },
           {
             num: '03',
-            name: 'Execution and optimization',
-            body: 'Growbotik\'s CMO engine runs campaigns, monitors performance across thousands of active accounts in real time, and continuously optimizes. It handles 90% of client communication, sends white-label Monday reports, and even answers after-hours calls on behalf of your clients.',
+            name: 'Done-for-you execution',
+            body: 'ZeisWorks runs the campaigns. Every lead is tracked back to its source — organic, ads, your Google Business Profile, your website. Calls are recorded and transcribed. A plain-English performance report lands in your inbox every Monday. The system keeps learning and improving without your intervention.',
           },
         ].map(step => (
           <div class="rounded-xl border border-cream-dark bg-cream p-6">
@@ -78,146 +83,106 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       </div>
     </section>
 
-    <!-- Features -->
+    <!-- What's included -->
     <section>
-      <h2 class="font-serif text-2xl font-semibold text-ink mb-2">What's included</h2>
-      <p class="text-ink-mid mb-6 leading-relaxed">Every feature runs under your brand. Your clients interact with your agency — Growbotik is the engine underneath.</p>
-      <div class="grid sm:grid-cols-2 gap-4">
+      <h2 class="font-serif text-2xl font-semibold text-ink mb-6">What's included</h2>
+      <ul class="space-y-4">
         {[
-          { title: 'AI Discovery Session', body: 'Conducts professional discovery calls as your top-level account executive. Completes in minutes what takes a human AE hours.' },
-          { title: 'Gap Analysis Engine', body: 'Analyzes each client\'s marketing gap with location-based projections and ROI estimates tuned to your retail pricing.' },
-          { title: '12-Month Growth Roadmap', body: 'Automatically builds a customized annual marketing plan from discovery data. Client-ready and delivered under your brand.' },
-          { title: 'Lead Tracking — All Channels', body: 'Tracks form and phone leads from organic, ads, Google Business Profile, landing pages, and websites. All calls recorded and transcribed.' },
-          { title: 'After-Hours AI Voice', body: 'Answers client calls after hours, transcribes them, logs conversions, provides sales feedback, and pushes CRM automations to close more leads.' },
-          { title: 'Client Communication (90%)', body: 'Handles info requests, approvals, billing alerts, and progress updates under your agency brand so your team stays focused on growth.' },
-          { title: 'Automated Monday Reports', body: 'White-label performance reports sent automatically every Monday. Call recordings, transcripts, and traffic source data pushed live to you and your clients.' },
-          { title: 'CMO Engine', body: 'Monitors every campaign in real time, learns from thousands of active accounts, and continuously optimizes strategy — without you touching it.' },
-        ].map(feature => (
-          <div class="rounded-lg border border-cream-dark bg-cream p-5">
-            <strong class="block text-ink font-medium text-sm mb-1">{feature.title}</strong>
-            <p class="text-sm text-ink-mid leading-relaxed">{feature.body}</p>
-          </div>
-        ))}
-      </div>
-    </section>
-
-    <!-- White label -->
-    <section class="rounded-xl border border-cream-dark bg-cream-dark p-8">
-      <p class="text-xs text-ink-light uppercase tracking-widest mb-3">White label</p>
-      <h2 class="font-serif text-xl font-semibold text-ink mb-4">Your brand. Your pricing. Their execution.</h2>
-      <div class="space-y-4 text-ink-mid text-sm leading-relaxed">
-        <p>
-          Growbotik operates invisibly inside your agency. Clients interact with your brand, your domain, and your name at every touchpoint. You set the markup — agencies typically price at 2–3× wholesale. Growbotik does the work. You keep the relationship and the margin.
-        </p>
-        <div class="grid sm:grid-cols-2 gap-3 pt-2">
-          {[
-            { label: 'Grey label', body: 'Start immediately and hit the ground running. Transition to fully branded when you\'re ready.' },
-            { label: 'White label', body: 'Growbotik lives on your domain. Every client interaction carries your agency\'s identity. No extra cost.' },
-            { label: 'Retail price control', body: 'You set what clients pay. Growbotik runs at wholesale. The markup is yours, always.' },
-            { label: 'Done-for-you fulfillment', body: 'Beyond marketing: AI SDR implementation, CRM automation, and high-converting website builds — all under your brand.' },
-          ].map(item => (
-            <div class="rounded-lg border border-cream-dark bg-cream p-4">
-              <strong class="block text-ink font-medium text-sm mb-1">{item.label}</strong>
-              <p class="text-xs text-ink-mid leading-relaxed">{item.body}</p>
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
-
-    <!-- Pricing -->
-    <section>
-      <h2 class="font-serif text-2xl font-semibold text-ink mb-2">Pricing</h2>
-      <p class="text-ink-mid mb-6 leading-relaxed">
-        Starts at $0. 7-day free trial. Cancel anytime. No contract required to get started — explore the platform before committing to a plan.
-      </p>
-      <div class="rounded-xl border border-navy/20 bg-navy/5 p-8">
-        <p class="text-xs text-navy uppercase tracking-widest mb-3">Get started</p>
-        <h3 class="font-serif text-2xl font-semibold text-ink mb-2">Start free. Scale when you're ready.</h3>
-        <p class="text-sm text-ink-mid mb-6 leading-relaxed max-w-lg">
-          The free trial gives you full access to evaluate Growbotik against your real clients and real workflows. When you upgrade, you pay wholesale — clients pay your retail price.
-        </p>
-        <a
-          href="https://join.growbotik.com/"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="inline-block bg-navy text-cream text-sm px-6 py-3 rounded-lg font-medium hover:bg-navy/90 transition-colors"
-        >
-          Start 7-day free trial →
-        </a>
-        <p class="mt-3 text-xs text-ink-light">Starts at $0 &nbsp;·&nbsp; Cancel anytime &nbsp;·&nbsp; No credit card required to start</p>
-      </div>
-    </section>
-
-    <!-- FAQ -->
-    <section>
-      <p class="text-xs text-ink-light uppercase tracking-widest mb-3">Common questions</p>
-      <h2 class="font-serif text-2xl font-semibold text-ink mb-8">Before you get started.</h2>
-      <div class="grid sm:grid-cols-2 gap-x-10 gap-y-7">
-        {[
-          {
-            q: 'Do my clients know it\'s Growbotik?',
-            a: 'No. With white label, every touchpoint carries your agency\'s brand. Growbotik operates entirely behind the scenes on your domain.',
-          },
-          {
-            q: 'What does "autonomous" actually mean?',
-            a: 'Growbotik runs the full lifecycle without you managing it — discovery, planning, execution, optimization, and reporting happen automatically once set up.',
-          },
-          {
-            q: 'Do my clients need their own CRM?',
-            a: 'No. Growbotik handles CRM automation on the client side. It pushes data and automations into whatever setup each client already has — or runs without one entirely.',
-          },
-          {
-            q: 'How does pricing work for my clients?',
-            a: 'You set the retail price. Growbotik charges you wholesale. Agencies typically price at 2–3× the wholesale rate and keep the margin.',
-          },
-          {
-            q: 'What if I already have a team running fulfillment?',
-            a: 'Growbotik becomes the layer that handles the high-volume, repeatable work — freeing your team to focus on strategy, upsells, and relationships rather than execution.',
-          },
-          {
-            q: 'Is this a fit for small agencies just starting out?',
-            a: 'Yes. The free trial and $0 start point make it accessible at any scale. Some agencies use Growbotik from day one to avoid building a fulfillment operation at all.',
-          },
+          { title: 'AI-powered discovery', body: 'A structured analysis of your current marketing, your market, and the gap. Completed in minutes. No long discovery calls, no homework for you.' },
+          { title: '12-month growth plan', body: 'A real plan, specific to your business. Channels, campaigns, timelines, and projected outcomes — built to be executed, not presented.' },
+          { title: 'Campaign execution', body: 'Google Ads, Meta, local SEO, Google Business Profile — we run the campaigns. Ongoing optimization without you managing it.' },
+          { title: 'Lead tracking across every channel', body: 'Every form fill and inbound call traced back to its source. You always know what\'s generating leads and what isn\'t.' },
+          { title: 'Call recording and transcription', body: 'All inbound calls recorded, transcribed, and reviewed. After-hours calls are answered and handled — no lead goes to voicemail unanswered.' },
+          { title: 'Weekly performance reports', body: 'A plain-English Monday report: what happened, where leads came from, what\'s improving. No jargon, no vanity metrics.' },
+          { title: 'Ongoing optimization', body: 'The system monitors performance continuously and adjusts — not just at the monthly check-in. Campaigns improve over time without you having to ask.' },
         ].map(item => (
-          <div>
-            <p class="font-medium text-ink text-sm mb-1">{item.q}</p>
-            <p class="text-sm text-ink-mid leading-relaxed">{item.a}</p>
-          </div>
+          <li class="flex gap-4 items-start">
+            <span class="mt-1.5 w-2 h-2 rounded-full bg-orange shrink-0"></span>
+            <div>
+              <strong class="text-ink font-medium">{item.title}.</strong>{' '}
+              <span class="text-ink-mid">{item.body}</span>
+            </div>
+          </li>
+        ))}
+      </ul>
+    </section>
+
+    <!-- Who it's for -->
+    <section>
+      <h2 class="font-serif text-2xl font-semibold text-ink mb-4">Who it's for</h2>
+      <p class="text-ink-mid leading-relaxed mb-4">
+        This service fits businesses where inbound leads drive revenue and nobody on your team has time to manage marketing consistently. If any of these sound familiar, it's the right fit:
+      </p>
+      <div class="grid sm:grid-cols-2 gap-3">
+        {[
+          'You\'re generating leads but don\'t know where they\'re coming from',
+          'Your Google Ads are running but you\'ve never looked at what\'s converting',
+          'You rely on word-of-mouth because you never had time to set up anything else',
+          'You tried an agency and got a report, not results',
+          'Your marketing stops when you get busy',
+          'You\'re missing calls and losing business after hours',
+        ].map(situation => (
+          <div class="rounded-lg border border-cream-dark bg-cream p-4 text-sm text-ink-mid">{situation}</div>
+        ))}
+      </div>
+      <div class="mt-4 grid sm:grid-cols-3 gap-3">
+        {['Home services (HVAC, plumbing, electrical, roofing)', 'Healthcare and dental practices', 'Professional services (law, accounting, insurance)', 'Real estate and property management', 'Trades and contractors'].map(sector => (
+          <div class="rounded-lg border border-cream-dark bg-cream p-4 text-sm text-ink-mid">{sector}</div>
         ))}
       </div>
     </section>
 
-    <!-- Final CTA -->
+    <!-- Pricing note -->
+    <div class="rounded-xl border border-cream-dark bg-cream-dark p-8">
+      <p class="text-xs text-ink-light uppercase tracking-widest mb-3">Pricing</p>
+      <h2 class="font-serif text-xl font-semibold text-ink mb-4">Flat monthly. No hourly rate.</h2>
+      <ul class="space-y-4">
+        {[
+          { label: 'One flat number', body: 'You get a specific monthly price for the specific scope. No hourly clock, no surprises when the invoice arrives.' },
+          { label: 'Approved before anything starts', body: 'You see the plan and the price before we do anything. Nothing begins until you say so.' },
+          { label: 'Start with the free analysis', body: 'The gap analysis and 5-minute discovery are free. The plan comes back with a price attached. You decide what happens next.' },
+        ].map(item => (
+          <li class="flex gap-4 items-start">
+            <span class="mt-1 w-2 h-2 rounded-full bg-orange shrink-0"></span>
+            <div>
+              <strong class="text-ink font-medium">{item.label}.</strong>{' '}
+              <span class="text-ink-mid text-sm">{item.body}</span>
+            </div>
+          </li>
+        ))}
+      </ul>
+    </div>
+
+    <!-- CTA -->
     <div class="rounded-xl border border-navy/20 bg-navy/5 p-8">
-      <p class="text-xs text-navy uppercase tracking-widest mb-2">Next step</p>
-      <h3 class="font-serif text-xl font-semibold text-ink mb-2">See it running on your agency.</h3>
-      <p class="text-sm text-ink-mid mb-6 leading-relaxed max-w-lg">
-        The 7-day free trial is the fastest way to understand the platform. No commitment until you're ready to scale.
+      <p class="text-xs text-navy uppercase tracking-widest mb-2">Start here</p>
+      <h3 class="font-serif text-xl font-semibold text-ink mb-2">See what your marketing looks like right now.</h3>
+      <p class="text-sm text-ink-mid mb-6 leading-relaxed">
+        The free marketing analysis takes 5 minutes and shows you exactly where leads are coming from, what's missing, and what's worth fixing. No commitment. No sales call required to get that far.
       </p>
       <div class="flex flex-wrap gap-3">
         <a
-          href="https://join.growbotik.com/"
+          href="{{GROWBOTIK_ENGINE_URL}}"
           target="_blank"
           rel="noopener noreferrer"
           class="inline-block bg-navy text-cream text-sm px-5 py-2.5 rounded-lg font-medium hover:bg-navy/90 transition-colors"
         >
-          Start 7-day free trial →
+          Run the free analysis
         </a>
         <a
-          href="https://www.growbotik.com/"
-          target="_blank"
-          rel="noopener noreferrer"
+          href="/#contact"
           class="inline-block border border-navy text-navy text-sm px-5 py-2.5 rounded-lg font-medium hover:bg-navy/5 transition-colors"
         >
-          Learn more at growbotik.com
+          Or tell us what you're trying to fix →
         </a>
       </div>
     </div>
 
     <!-- Back -->
     <p class="text-sm text-ink-light">
-      <a href="/" class="hover:text-ink transition-colors">← Back to zeisWorks</a>
+      <a href="/marketing" class="hover:text-ink transition-colors">← Marketing</a>
+      &nbsp;·&nbsp;
+      <a href="/" class="hover:text-ink transition-colors">Back to home →</a>
     </p>
 
   </div>
