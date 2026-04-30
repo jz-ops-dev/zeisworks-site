@@ -61,28 +61,76 @@ const resolvedOgImage = ogImage
         >
           zeisWorks<span class="text-orange">.</span>
         </a>
-        <nav class="flex items-center gap-5 text-sm">
-          <a href="/#services" class="text-ink-mid hover:text-ink transition-colors">
-            Services
-          </a>
-          <a href="/guides/" class="text-ink-mid hover:text-ink transition-colors">
-            Guides
-          </a>
-          <a href="/what-i-use" class="text-ink-mid hover:text-ink transition-colors">
-            What I Use
-          </a>
-          <a href="/about" class="text-ink-mid hover:text-ink transition-colors">
-            About
-          </a>
-          <a
-            href="/#contact"
-            class="bg-navy text-cream text-sm px-4 py-2 rounded-lg hover:bg-navy/90 transition-colors font-medium"
-          >
+        <!-- Desktop nav -->
+        <nav class="hidden sm:flex items-center gap-5 text-sm">
+          <a href="/#services" class="text-ink-mid hover:text-ink transition-colors">Services</a>
+          <a href="/guides/" class="text-ink-mid hover:text-ink transition-colors">Guides</a>
+          <a href="/what-i-use" class="text-ink-mid hover:text-ink transition-colors">What I Use</a>
+          <a href="/about" class="text-ink-mid hover:text-ink transition-colors">About</a>
+          <a href="/#contact" class="bg-navy text-cream text-sm px-4 py-2 rounded-lg hover:bg-navy/90 transition-colors font-medium">
             Free analysis
+          </a>
+        </nav>
+        <!-- Mobile hamburger -->
+        <button
+          id="mobileMenuBtn"
+          class="sm:hidden flex flex-col justify-center gap-[5px] w-9 h-9 p-1 rounded-lg hover:bg-cream-dark transition-colors"
+          aria-label="Open menu"
+          aria-expanded="false"
+        >
+          <span class="block w-[22px] h-[2px] bg-ink rounded transition-transform duration-250 origin-center" id="hb1"></span>
+          <span class="block w-[22px] h-[2px] bg-ink rounded transition-opacity duration-200" id="hb2"></span>
+          <span class="block w-[22px] h-[2px] bg-ink rounded transition-transform duration-250 origin-center" id="hb3"></span>
+        </button>
+      </div>
+      <!-- Mobile menu drawer -->
+      <div id="mobileMenu" class="hidden sm:hidden border-t border-cream-dark bg-cream px-6 pb-5 pt-4">
+        <nav class="flex flex-col gap-0">
+          <a href="/#services" class="mobile-nav-link py-3 border-b border-cream-dark text-ink-mid hover:text-ink transition-colors text-sm">Services</a>
+          <a href="/guides/" class="mobile-nav-link py-3 border-b border-cream-dark text-ink-mid hover:text-ink transition-colors text-sm">Guides</a>
+          <a href="/what-i-use" class="mobile-nav-link py-3 border-b border-cream-dark text-ink-mid hover:text-ink transition-colors text-sm">What I Use</a>
+          <a href="/about" class="mobile-nav-link py-3 border-b border-cream-dark text-ink-mid hover:text-ink transition-colors text-sm">About</a>
+          <a href="/#contact" class="mobile-nav-link mt-4 block text-center bg-navy text-cream text-sm px-4 py-3 rounded-lg hover:bg-navy/90 transition-colors font-medium">
+            Free analysis →
           </a>
         </nav>
       </div>
     </header>
+
+    <script>
+      const btn = document.getElementById('mobileMenuBtn');
+      const menu = document.getElementById('mobileMenu');
+      const hb1 = document.getElementById('hb1');
+      const hb2 = document.getElementById('hb2');
+      const hb3 = document.getElementById('hb3');
+      if (btn && menu) {
+        btn.addEventListener('click', () => {
+          const open = menu.classList.toggle('hidden');
+          btn.setAttribute('aria-expanded', String(!open));
+          hb1.style.transform = open ? '' : 'translateY(7px) rotate(45deg)';
+          hb2.style.opacity = open ? '' : '0';
+          hb3.style.transform = open ? '' : 'translateY(-7px) rotate(-45deg)';
+        });
+        menu.querySelectorAll('.mobile-nav-link').forEach(link => {
+          link.addEventListener('click', () => {
+            menu.classList.add('hidden');
+            btn.setAttribute('aria-expanded', 'false');
+            hb1.style.transform = '';
+            hb2.style.opacity = '';
+            hb3.style.transform = '';
+          });
+        });
+        document.addEventListener('click', (e) => {
+          if (!btn.contains(e.target) && !menu.contains(e.target)) {
+            menu.classList.add('hidden');
+            btn.setAttribute('aria-expanded', 'false');
+            hb1.style.transform = '';
+            hb2.style.opacity = '';
+            hb3.style.transform = '';
+          }
+        });
+      }
+    </script>
 
     <main class="flex-1">
       <slot />
