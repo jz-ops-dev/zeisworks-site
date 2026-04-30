@@ -15,15 +15,15 @@ const sortedGuides = allGuides.sort(
   canonicalUrl="https://zeisworks.com/guides/"
 >
   <div class="max-w-3xl mx-auto px-6 py-16">
-    <header class="mb-14">
-      <p class="text-xs font-semibold uppercase tracking-widest text-ink-light mb-3">
+    <header class="mb-10">
+      <p class="text-xs font-semibold uppercase tracking-widest text-ink-light mb-4">
         Guides
       </p>
-      <h1 class="font-serif text-4xl font-bold mb-4">
-        Guides
+      <h1 class="font-serif text-3xl font-semibold text-ink mb-3 leading-snug">
+        Plain-English breakdowns of what's actually working.
       </h1>
-      <p class="text-ink-mid leading-relaxed max-w-xl">
-        Plain-English breakdowns of what's actually working in small business marketing, operations, and growth. Written from real experience, not agency talking points.
+      <p class="text-ink-mid leading-relaxed max-w-xl text-sm">
+        Small business marketing, operations, and growth — written from real experience, not agency talking points.
       </p>
     </header>
 
@@ -40,7 +40,7 @@ const sortedGuides = allGuides.sort(
       ) : (
         <div class="divide-y divide-cream-dark">
           {sortedGuides.map((guide) => (
-            <div class="py-10 first:pt-0">
+            <div class="py-7 first:pt-0">
               <GuideCard
                 title={guide.data.title}
                 description={guide.data.description}

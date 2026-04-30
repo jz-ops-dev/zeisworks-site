@@ -18,12 +18,12 @@ const dateFormatted = publishDate.toLocaleDateString('en-US', {
 
 <article>
   <a href={`/guides/${slug}/`} class="group block">
-    <p class="text-xs text-ink-mid mb-2">
+    <div class="flex items-center gap-2 text-xs text-ink-light mb-2">
       <time datetime={publishDate.toISOString()}>{dateFormatted}</time>
-      <span class="mx-1.5" aria-hidden="true">·</span>
+      <span aria-hidden="true">·</span>
       <span>{readingTime}</span>
-    </p>
-    <h2 class="font-serif text-xl font-bold leading-snug group-hover:text-navy transition-colors mb-2">
+    </div>
+    <h2 class="font-serif text-lg font-semibold leading-snug group-hover:text-navy transition-colors mb-1.5">
       {title}
     </h2>
     <p class="text-ink-mid text-sm leading-relaxed line-clamp-2">{description}</p>
