@@ -1,0 +1,224 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="Growbotik — White Label Autonomous Marketing"
+  description="Run a full-service marketing agency without the headcount. Growbotik handles discovery, planning, execution, and reporting — all under your brand."
+  ogTitle="Growbotik — White Label Autonomous Marketing Agency"
+  ogDescription="Scale to hundreds of clients with one staff member. Growbotik is the white-label AI platform that executes your marketing fulfillment end-to-end."
+>
+  <div class="max-w-3xl mx-auto px-6 py-16 space-y-20">
+
+    <!-- Hero -->
+    <div>
+      <p class="text-sm font-medium text-orange uppercase tracking-widest mb-3">New product offering</p>
+      <h1 class="font-serif text-4xl sm:text-5xl font-semibold text-ink leading-tight">
+        Run a full-service agency.<br class="hidden sm:block" /> Without the headcount.
+      </h1>
+      <p class="mt-5 text-ink-mid text-lg leading-relaxed max-w-2xl">
+        Growbotik is a white-label autonomous marketing platform. It handles client discovery, 12-month planning, campaign execution, lead tracking, and reporting — all under your brand, at your pricing.
+      </p>
+      <p class="mt-3 text-ink-mid leading-relaxed max-w-2xl">
+        One staff member. Hundreds of clients. The margin your agency was supposed to have.
+      </p>
+      <div class="mt-8 flex flex-wrap items-center gap-4">
+        <a
+          href="https://join.growbotik.com/"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="bg-navy text-cream text-sm px-6 py-3 rounded-lg hover:bg-navy/90 transition-colors font-medium"
+        >
+          Start 7-day free trial →
+        </a>
+        <p class="text-sm text-ink-light">Starts at $0 &nbsp;·&nbsp; Cancel anytime</p>
+      </div>
+    </div>
+
+    <!-- The problem -->
+    <section>
+      <h2 class="font-serif text-2xl font-semibold text-ink mb-4">The agency growth wall</h2>
+      <div class="space-y-4 text-ink-mid leading-relaxed">
+        <p>
+          Most marketing agencies hit the same ceiling. You land more clients, so you hire more people. Margin disappears into payroll. You're managing a team instead of running a business. Every new client means new risk — a new hire who might not work out, a new process that might not hold.
+        </p>
+        <p>
+          The alternative most agencies don't know exists: fulfillment that scales without headcount. Growbotik is an AI platform that acts as a top-tier execution layer for your agency — doing the discovery, the planning, the campaign work, and the client communication under your brand so you keep the relationship and the margin.
+        </p>
+      </div>
+    </section>
+
+    <!-- How it works -->
+    <section>
+      <h2 class="font-serif text-2xl font-semibold text-ink mb-6">End-to-end in one platform</h2>
+      <div class="space-y-4">
+        {[
+          {
+            num: '01',
+            name: 'Gap analysis + AI discovery',
+            body: 'Growbotik runs a professional discovery session with your client in under 5 minutes — the equivalent of a full AE prep and call. It analyzes the marketing gap between where the business is and where it needs to go, including location-based ROI projections sized to your retail pricing.',
+          },
+          {
+            num: '02',
+            name: '12-month growth roadmap',
+            body: 'The output of discovery becomes a customized 12-month plan designed to hit and exceed client goals. Built automatically, delivered under your agency\'s brand.',
+          },
+          {
+            num: '03',
+            name: 'Execution and optimization',
+            body: 'Growbotik\'s CMO engine runs campaigns, monitors performance across thousands of active accounts in real time, and continuously optimizes. It handles 90% of client communication, sends white-label Monday reports, and even answers after-hours calls on behalf of your clients.',
+          },
+        ].map(step => (
+          <div class="rounded-xl border border-cream-dark bg-cream p-6">
+            <p class="text-xs text-orange font-medium uppercase tracking-widest mb-2">{step.num}</p>
+            <h3 class="font-serif font-semibold text-ink text-lg mb-2">{step.name}</h3>
+            <p class="text-sm text-ink-mid leading-relaxed">{step.body}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- Features -->
+    <section>
+      <h2 class="font-serif text-2xl font-semibold text-ink mb-2">What's included</h2>
+      <p class="text-ink-mid mb-6 leading-relaxed">Every feature runs under your brand. Your clients interact with your agency — Growbotik is the engine underneath.</p>
+      <div class="grid sm:grid-cols-2 gap-4">
+        {[
+          { title: 'AI Discovery Session', body: 'Conducts professional discovery calls as your top-level account executive. Completes in minutes what takes a human AE hours.' },
+          { title: 'Gap Analysis Engine', body: 'Analyzes each client\'s marketing gap with location-based projections and ROI estimates tuned to your retail pricing.' },
+          { title: '12-Month Growth Roadmap', body: 'Automatically builds a customized annual marketing plan from discovery data. Client-ready and delivered under your brand.' },
+          { title: 'Lead Tracking — All Channels', body: 'Tracks form and phone leads from organic, ads, Google Business Profile, landing pages, and websites. All calls recorded and transcribed.' },
+          { title: 'After-Hours AI Voice', body: 'Answers client calls after hours, transcribes them, logs conversions, provides sales feedback, and pushes CRM automations to close more leads.' },
+          { title: 'Client Communication (90%)', body: 'Handles info requests, approvals, billing alerts, and progress updates under your agency brand so your team stays focused on growth.' },
+          { title: 'Automated Monday Reports', body: 'White-label performance reports sent automatically every Monday. Call recordings, transcripts, and traffic source data pushed live to you and your clients.' },
+          { title: 'CMO Engine', body: 'Monitors every campaign in real time, learns from thousands of active accounts, and continuously optimizes strategy — without you touching it.' },
+        ].map(feature => (
+          <div class="rounded-lg border border-cream-dark bg-cream p-5">
+            <strong class="block text-ink font-medium text-sm mb-1">{feature.title}</strong>
+            <p class="text-sm text-ink-mid leading-relaxed">{feature.body}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- White label -->
+    <section class="rounded-xl border border-cream-dark bg-cream-dark p-8">
+      <p class="text-xs text-ink-light uppercase tracking-widest mb-3">White label</p>
+      <h2 class="font-serif text-xl font-semibold text-ink mb-4">Your brand. Your pricing. Their execution.</h2>
+      <div class="space-y-4 text-ink-mid text-sm leading-relaxed">
+        <p>
+          Growbotik operates invisibly inside your agency. Clients interact with your brand, your domain, and your name at every touchpoint. You set the markup — agencies typically price at 2–3× wholesale. Growbotik does the work. You keep the relationship and the margin.
+        </p>
+        <div class="grid sm:grid-cols-2 gap-3 pt-2">
+          {[
+            { label: 'Grey label', body: 'Start immediately and hit the ground running. Transition to fully branded when you\'re ready.' },
+            { label: 'White label', body: 'Growbotik lives on your domain. Every client interaction carries your agency\'s identity. No extra cost.' },
+            { label: 'Retail price control', body: 'You set what clients pay. Growbotik runs at wholesale. The markup is yours, always.' },
+            { label: 'Done-for-you fulfillment', body: 'Beyond marketing: AI SDR implementation, CRM automation, and high-converting website builds — all under your brand.' },
+          ].map(item => (
+            <div class="rounded-lg border border-cream-dark bg-cream p-4">
+              <strong class="block text-ink font-medium text-sm mb-1">{item.label}</strong>
+              <p class="text-xs text-ink-mid leading-relaxed">{item.body}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Pricing -->
+    <section>
+      <h2 class="font-serif text-2xl font-semibold text-ink mb-2">Pricing</h2>
+      <p class="text-ink-mid mb-6 leading-relaxed">
+        Starts at $0. 7-day free trial. Cancel anytime. No contract required to get started — explore the platform before committing to a plan.
+      </p>
+      <div class="rounded-xl border border-navy/20 bg-navy/5 p-8">
+        <p class="text-xs text-navy uppercase tracking-widest mb-3">Get started</p>
+        <h3 class="font-serif text-2xl font-semibold text-ink mb-2">Start free. Scale when you're ready.</h3>
+        <p class="text-sm text-ink-mid mb-6 leading-relaxed max-w-lg">
+          The free trial gives you full access to evaluate Growbotik against your real clients and real workflows. When you upgrade, you pay wholesale — clients pay your retail price.
+        </p>
+        <a
+          href="https://join.growbotik.com/"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-block bg-navy text-cream text-sm px-6 py-3 rounded-lg font-medium hover:bg-navy/90 transition-colors"
+        >
+          Start 7-day free trial →
+        </a>
+        <p class="mt-3 text-xs text-ink-light">Starts at $0 &nbsp;·&nbsp; Cancel anytime &nbsp;·&nbsp; No credit card required to start</p>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section>
+      <p class="text-xs text-ink-light uppercase tracking-widest mb-3">Common questions</p>
+      <h2 class="font-serif text-2xl font-semibold text-ink mb-8">Before you get started.</h2>
+      <div class="grid sm:grid-cols-2 gap-x-10 gap-y-7">
+        {[
+          {
+            q: 'Do my clients know it\'s Growbotik?',
+            a: 'No. With white label, every touchpoint carries your agency\'s brand. Growbotik operates entirely behind the scenes on your domain.',
+          },
+          {
+            q: 'What does "autonomous" actually mean?',
+            a: 'Growbotik runs the full lifecycle without you managing it — discovery, planning, execution, optimization, and reporting happen automatically once set up.',
+          },
+          {
+            q: 'Do my clients need their own CRM?',
+            a: 'No. Growbotik handles CRM automation on the client side. It pushes data and automations into whatever setup each client already has — or runs without one entirely.',
+          },
+          {
+            q: 'How does pricing work for my clients?',
+            a: 'You set the retail price. Growbotik charges you wholesale. Agencies typically price at 2–3× the wholesale rate and keep the margin.',
+          },
+          {
+            q: 'What if I already have a team running fulfillment?',
+            a: 'Growbotik becomes the layer that handles the high-volume, repeatable work — freeing your team to focus on strategy, upsells, and relationships rather than execution.',
+          },
+          {
+            q: 'Is this a fit for small agencies just starting out?',
+            a: 'Yes. The free trial and $0 start point make it accessible at any scale. Some agencies use Growbotik from day one to avoid building a fulfillment operation at all.',
+          },
+        ].map(item => (
+          <div>
+            <p class="font-medium text-ink text-sm mb-1">{item.q}</p>
+            <p class="text-sm text-ink-mid leading-relaxed">{item.a}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- Final CTA -->
+    <div class="rounded-xl border border-navy/20 bg-navy/5 p-8">
+      <p class="text-xs text-navy uppercase tracking-widest mb-2">Next step</p>
+      <h3 class="font-serif text-xl font-semibold text-ink mb-2">See it running on your agency.</h3>
+      <p class="text-sm text-ink-mid mb-6 leading-relaxed max-w-lg">
+        The 7-day free trial is the fastest way to understand the platform. No commitment until you're ready to scale.
+      </p>
+      <div class="flex flex-wrap gap-3">
+        <a
+          href="https://join.growbotik.com/"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-block bg-navy text-cream text-sm px-5 py-2.5 rounded-lg font-medium hover:bg-navy/90 transition-colors"
+        >
+          Start 7-day free trial →
+        </a>
+        <a
+          href="https://www.growbotik.com/"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-block border border-navy text-navy text-sm px-5 py-2.5 rounded-lg font-medium hover:bg-navy/5 transition-colors"
+        >
+          Learn more at growbotik.com
+        </a>
+      </div>
+    </div>
+
+    <!-- Back -->
+    <p class="text-sm text-ink-light">
+      <a href="/" class="hover:text-ink transition-colors">← Back to zeisWorks</a>
+    </p>
+
+  </div>
+</BaseLayout>
