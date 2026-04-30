@@ -2,9 +2,6 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import ContactModal from '../components/ContactModal.astro';
 
-const CLIENT_QUOTE = "{{CLIENT_QUOTE}}";
-const CLIENT_NAME = "{{CLIENT_NAME}}";
-const CLIENT_TITLE_COMPANY = "{{CLIENT_TITLE_COMPANY}}";
 
 const faqSchema = {
   "@context": "https://schema.org",
@@ -23,7 +20,7 @@ const faqSchema = {
       "name": "What's in the free marketing analysis?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "You get a ranked assessment of what's currently working, what's missing, and what the projected ROI looks like if we fix it. It takes about 5 minutes of your time. No sales call required to get the output."
+        "text": "You get a ranked assessment of what's currently working, what's missing, and what the projected ROI looks like if I fix it. It takes about 5 minutes of your time. No sales call required to get the output."
       }
     },
     {
@@ -55,9 +52,9 @@ const faqSchema = {
 ---
 
 <BaseLayout
-  title="Marketing — Done for You"
-  description="Your marketing runs. I set it up, I watch it, and I'm the one you call. Full-service marketing execution for small businesses — gap analysis, 12-month plan, done-for-you campaigns, and weekly reporting."
-  ogTitle="Marketing Done for You — zeisWorks"
+  title="Marketing Done for You"
+  description="Your marketing runs. I set it up, I watch it, and I'm the one you call. Full-service marketing execution for small businesses: gap analysis, 12-month plan, done-for-you campaigns, and weekly reporting."
+  ogTitle="Marketing Done for You | zeisWorks"
   ogDescription="One operator. Direct accountability. I run the campaigns, track every lead, and send you a plain-English report every Monday."
 >
   <Fragment slot="head">
@@ -85,12 +82,10 @@ const faqSchema = {
       </p>
       <div class="mt-8 flex flex-wrap items-center gap-4">
         <a
-          href="{{GROWBOTIK_ENGINE_URL}}"
-          target="_blank"
-          rel="noopener noreferrer"
+          href="/#contact"
           class="bg-navy text-cream text-sm px-5 py-2.5 rounded-lg hover:bg-navy/90 transition-colors font-medium"
         >
-          Run the free analysis
+          Free analysis
         </a>
         <button
           type="button"
@@ -132,7 +127,7 @@ const faqSchema = {
           <p class="text-xs text-orange font-medium uppercase tracking-widest mb-2" style="font-family: 'DM Mono', monospace;">01</p>
           <h3 class="font-serif font-semibold text-ink text-lg mb-2">Free gap analysis</h3>
           <p class="text-sm text-ink-mid leading-relaxed mb-4">
-            You answer a few questions about your business and your goals. I run an analysis that maps the gap between where your marketing is now and where it needs to be, with projected ROI if we close it. You get the output in writing. No sales call required.
+            You answer a few questions about your business and your goals. I run an analysis that maps the gap between where your marketing is now and where it needs to be, with projected ROI if I close it. You get the output in writing. No sales call required.
           </p>
           <p class="text-sm text-ink italic leading-relaxed border-l-2 border-orange pl-4">
             An HVAC company in the Denver suburbs had Google Ads running for two years. The analysis showed 80% of their spend was going to keywords that had never produced a booked job.
@@ -256,22 +251,11 @@ const faqSchema = {
         ))}
       </ul>
       <a
-        href="{{GROWBOTIK_ENGINE_URL}}"
-        target="_blank"
-        rel="noopener noreferrer"
+        href="/#contact"
         class="inline-block bg-navy text-cream text-sm px-5 py-2.5 rounded-lg font-medium hover:bg-navy/90 transition-colors"
       >
-        Run the free analysis
+        Free analysis
       </a>
-    </section>
-
-    <!-- Testimonial -->
-    <section class="rounded-xl border border-cream-dark bg-cream p-8">
-      <blockquote class="font-serif text-xl text-ink leading-relaxed italic border-l-4 border-orange pl-6 mb-6">
-        {CLIENT_QUOTE}
-      </blockquote>
-      <p class="text-sm font-medium text-ink">{CLIENT_NAME}</p>
-      <p class="text-sm text-ink-mid">{CLIENT_TITLE_COMPANY}</p>
     </section>
 
     <!-- Author bio -->
@@ -279,11 +263,11 @@ const faqSchema = {
       <p class="text-xs text-ink-light uppercase tracking-widest mb-3" style="font-family: 'DM Mono', monospace;">About</p>
       <h3 class="font-serif text-xl font-semibold text-ink mb-3">Jack Zeis</h3>
       <p class="text-sm text-ink-mid leading-relaxed mb-4 max-w-xl">
-        Jack runs <strong class="text-ink font-medium">ZeisWorks</strong>, a one-operator consulting practice serving small businesses across the US. He is also Director of BD Technology at McAllister &amp; Quinn, based in Golden, Colorado.
+        Jack runs <strong class="text-ink font-medium">ZeisWorks</strong>, a modern growth practice for independent service businesses. Based in Golden, Colorado.
       </p>
       <div class="flex flex-wrap gap-4 text-sm">
         <a
-          href="{{LINKEDIN_URL}}"
+          href="https://www.linkedin.com/in/jackzeis"
           target="_blank"
           rel="noopener noreferrer"
           class="text-navy hover:underline font-medium"
@@ -311,7 +295,7 @@ const faqSchema = {
           },
           {
             q: "What's in the free marketing analysis?",
-            a: "You get a ranked assessment of what's currently working, what's missing, and what the projected ROI looks like if we fix it. It takes about 5 minutes of your time. No sales call required to get the output.",
+            a: "You get a ranked assessment of what's currently working, what's missing, and what the projected ROI looks like. It takes about 5 minutes of your time. No sales call required to get the output.",
           },
           {
             q: 'How is this different from a marketing agency?',
