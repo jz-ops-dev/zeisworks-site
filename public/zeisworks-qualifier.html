@@ -110,10 +110,6 @@ body {
   animation: slideIn 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 .screen.active { display: block; }
-.screen.exit {
-  display: block;
-  animation: slideOut 0.3s cubic-bezier(0.4, 0, 0.2, 1) forwards;
-}
 
 @keyframes slideIn {
   from { opacity: 0; transform: translateX(28px); }
@@ -695,9 +691,6 @@ function advance(targetIndex) {
   if (!next) return;
 
   current.classList.remove('active');
-  current.classList.add('exit');
-  setTimeout(() => current.classList.remove('exit'), 300);
-
   next.classList.add('active');
 
   const fill = document.getElementById('progress-fill');
