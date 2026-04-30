@@ -11,7 +11,7 @@ const sortedGuides = allGuides.sort(
 
 <BaseLayout
   title="Guides"
-  description="Plain-English guides on Salesforce, operations, and fixing the problems that slow businesses down."
+  description="Plain-English breakdowns of what's actually working in small business marketing, operations, and growth. Written from real experience, not agency talking points."
   canonicalUrl="https://zeisworks.com/guides/"
 >
   <div class="max-w-3xl mx-auto px-6 py-16">
@@ -20,17 +20,23 @@ const sortedGuides = allGuides.sort(
         Guides
       </p>
       <h1 class="font-serif text-4xl font-bold mb-4">
-        Practical writing on operations and Salesforce.
+        Guides
       </h1>
       <p class="text-ink-mid leading-relaxed max-w-xl">
-        No frameworks, no theory. If it's here, it's because someone had the problem and
-        needed a real answer.
+        Plain-English breakdowns of what's actually working in small business marketing, operations, and growth. Written from real experience, not agency talking points.
       </p>
     </header>
 
     {
       sortedGuides.length === 0 ? (
-        <p class="text-ink-mid">No guides yet. Check back soon.</p>
+        <div class="space-y-4">
+          <p class="text-ink-mid leading-relaxed">
+            More coming soon. In the meantime, the free analysis is a good place to start.
+          </p>
+          <a href="/#contact" class="inline-block bg-navy text-cream text-sm px-5 py-2.5 rounded-lg font-medium hover:bg-navy/90 transition-colors">
+            Free analysis →
+          </a>
+        </div>
       ) : (
         <div class="divide-y divide-cream-dark">
           {sortedGuides.map((guide) => (

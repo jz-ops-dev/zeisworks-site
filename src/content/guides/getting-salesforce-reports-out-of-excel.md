@@ -1,6 +1,6 @@
 ---
 title: "How to Get Your Salesforce Reports Out of Excel"
-description: "Most Salesforce reports end up in a spreadsheet before anyone can use them. Here's how to fix that — and why it keeps happening."
+description: "Most Salesforce reports end up in a spreadsheet before anyone can use them. Here's how to fix that, and why it keeps happening."
 publishDate: 2026-04-01
 readingTime: "6 min read"
 faq:
@@ -24,7 +24,7 @@ So people export. Then they filter in Excel. Then they build their own pivot tab
 
 **1. The report doesn't filter to what people actually need**
 
-A sales report that shows all opportunities — open and closed, from the last three years — is not useful. People export it so they can filter to *this quarter, their territory, open only*.
+A sales report that shows all opportunities (open and closed, from the last three years) is not useful. People export it so they can filter to *this quarter, their territory, open only*.
 
 Fix: Build saved report views for each team or use case. One view per audience.
 
@@ -44,7 +44,7 @@ Fix: Use matrix reports with row/column groupings, or build a dashboard panel th
 
 A report that people use directly in Salesforce has three properties:
 
-- **It answers one question.** Not "all pipeline data" — "open opportunities closing this quarter for the West team, by rep."
+- **It answers one question.** Not "all pipeline data." Something specific: "open opportunities closing this quarter for the West team, by rep."
 - **The first columns are the decision columns.** Opportunity name, amount, close date, stage. Not Salesforce ID, record type, created date.
 - **It's bookmarked.** A report nobody can find is a report nobody uses.
 

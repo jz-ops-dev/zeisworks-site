@@ -4,9 +4,9 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
 <BaseLayout
   title="About"
-  description="ZeisWorks is run by Jack Zeis. One person, three connected services: marketing, operations, and custom-built tools. Based in Golden, Colorado, serving small businesses across the US."
-  ogTitle="About — zeisWorks"
-  ogDescription="ZeisWorks is run by Jack Zeis. One operator, three connected services, no team handoffs. Based in Golden, CO."
+  description="Jack Zeis runs ZeisWorks, a modern growth practice for independent service businesses. Based in Golden, Colorado."
+  ogTitle="About | zeisWorks"
+  ogDescription="Jack Zeis runs ZeisWorks. One person. No agency. Just someone who knows what works and will tell you straight."
 >
   <div class="max-w-3xl mx-auto px-6 py-16 space-y-16">
 
@@ -14,46 +14,27 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     <div>
       <p class="text-sm font-medium text-orange uppercase tracking-widest mb-3">About</p>
       <h1 class="font-serif text-4xl font-semibold text-ink leading-tight">
-        A real person, not an agency.
+        Why this exists
       </h1>
-      <p class="mt-6 font-serif text-xl text-ink leading-relaxed max-w-2xl">
-        ZeisWorks is run by Jack Zeis. One person, three connected services: marketing, operations, and the custom-built tools most consultants outsource or skip entirely.
-      </p>
     </div>
 
-    <!-- Main copy -->
+    <!-- Bio section -->
     <section class="space-y-5 text-ink-mid leading-relaxed">
       <p>
-        Most small businesses don't need an agency. They don't need a team of specialists handing work between each other. They need a real operator who can run the marketing, fix the operations, and build the things nobody else will.
+        I grew up around a small business. Watched my dad do everything right and still lose sleep over the same question: how do I keep up?
       </p>
       <p>
-        That's what ZeisWorks does.
+        Not with competitors. With technology. With the way customers find businesses now. With what good marketing actually looks like in 2026.
       </p>
       <p>
-        I grew up around a small business, a family company that had survived for over 60 years on instinct, relationships, and hard work. I watched it struggle to see where it was heading, not because anything was broken, but because the world changed faster than anyone warned it would. The tools existed. The time and expertise to use them didn't.
+        I spent the years since learning exactly that. Building sales and marketing systems for organizations with real budgets, then watching those same tools become accessible to anyone who knows how to run them.
       </p>
       <p>
-        That gap is what ZeisWorks closes. Not by replacing what your business already does well, but by building the systems underneath it: the marketing that generates leads, the operations that run cleanly, and the custom tools that make your specific workflow faster than any off-the-shelf option.
+        ZeisWorks is the answer to the question my dad never had a good answer to. One person. No agency. Just someone who knows what works and will tell you straight.
       </p>
-      <p>
-        Based in Golden, Colorado. Serves clients across the US, fully remote. No lock-in, free first call, plain English on everything.
+      <p class="text-ink font-medium pt-2">
+        Jack Zeis runs ZeisWorks, a modern growth practice for independent service businesses. Based in Golden, Colorado.
       </p>
-    </section>
-
-    <!-- Why one operator -->
-    <section>
-      <h2 class="font-serif text-2xl font-semibold text-ink mb-4">Why one operator matters</h2>
-      <div class="space-y-4 text-ink-mid leading-relaxed">
-        <p>
-          When you work with an agency, your problem goes through a salesperson, a project manager, a strategist, a developer, and sometimes a contractor the agency hired last week. By the time the work comes back, nobody in that chain fully understands your business.
-        </p>
-        <p>
-          When you work with ZeisWorks, you talk to Jack. He understands the marketing context and the operations context and the technical constraints at the same time, because they're all the same person. That means faster decisions, fewer miscommunications, and work that actually fits the business it was built for.
-        </p>
-        <p>
-          The tradeoff is bandwidth. I work with about a dozen clients at a time. When I'm full, you wait. When I'm not, you don't. That's honest, and it's how I keep the quality up.
-        </p>
-      </div>
     </section>
 
     <!-- Three pillars -->
@@ -61,9 +42,9 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       <h2 class="font-serif text-2xl font-semibold text-ink mb-6">Three connected services</h2>
       <div class="space-y-4">
         {[
-          { num: '01', name: 'Marketing execution', href: '/marketing', desc: 'Local SEO, paid ads, web optimization, and lead generation systems. The campaigns run. You handle the calls.' },
-          { num: '02', name: 'Operational efficiency', href: '/operations', desc: 'CRM builds, process automation, workflow design, and the systems that connect everything you already use.' },
-          { num: '03', name: 'Custom-built tools', href: '/custom-tools', desc: 'Internal apps, custom integrations, and AI-powered workflows made specifically for your business.' },
+          { num: '01', name: 'Get found', href: '/marketing', desc: 'How your business shows up on Google, in local search, and in the AI tools your customers are already using.' },
+          { num: '02', name: 'Turn attention into leads', href: '/operations', desc: 'Getting found is step one. Converting that attention into calls, bookings, and revenue is step two. Most businesses stop at step one.' },
+          { num: '03', name: 'Build systems that stick', href: '/custom-tools', desc: 'The tools and processes that make growth repeatable. So it does not depend on you doing more.' },
         ].map(p => (
           <a href={p.href} class="block rounded-xl border border-cream-dark bg-cream p-6 hover:border-navy/30 transition-colors group">
             <p class="text-xs text-orange font-medium uppercase tracking-widest mb-1">{p.num}</p>
@@ -99,10 +80,9 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     <section>
       <h2 class="font-serif text-2xl font-semibold text-ink mb-4">Background</h2>
       <div class="space-y-3 text-ink-mid leading-relaxed">
-        <p>Salesforce Certified. Six years building CRM systems, marketing operations, and automation workflows for organizations that can't afford to get it wrong. Healthcare, professional services, trades, real estate, and finance.</p>
-        <p>The work spans Salesforce and HubSpot builds, Python automation, AI-powered workflows, web development, marketing campaign management, and data infrastructure. The common thread is helping small teams do more with less friction.</p>
+        <p>Six years building sales and marketing systems for organizations across healthcare, professional services, trades, real estate, and finance. The work spans CRM builds, Python automation, AI-powered workflows, web development, marketing campaign management, and data infrastructure. The common thread is helping small teams do more with less friction.</p>
         <div class="flex flex-wrap gap-2 mt-4">
-          {['Salesforce', 'HubSpot', 'Python', 'n8n', 'Zapier', 'Google Ads', 'Meta Ads', 'Anthropic Claude', 'OpenAI', 'Astro', 'SQL'].map(skill => (
+          {['HubSpot', 'Python', 'n8n', 'Zapier', 'Google Ads', 'Meta Ads', 'Anthropic Claude', 'OpenAI', 'Astro', 'SQL'].map(skill => (
             <span class="text-xs bg-cream-dark text-ink-mid px-3 py-1 rounded-full border border-cream-dark">{skill}</span>
           ))}
         </div>
@@ -117,9 +97,9 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       </p>
       <div class="flex flex-wrap gap-3">
         <a href="/#contact" class="inline-block bg-navy text-cream text-sm px-5 py-2.5 rounded-lg font-medium hover:bg-navy/90 transition-colors">
-          Tell us what you're trying to fix
+          Free analysis
         </a>
-        <a href="{{LINKEDIN_URL}}" target="_blank" rel="noopener noreferrer" class="inline-block border border-navy text-navy text-sm px-5 py-2.5 rounded-lg font-medium hover:bg-navy/5 transition-colors">
+        <a href="https://www.linkedin.com/in/jackzeis" target="_blank" rel="noopener noreferrer" class="inline-block border border-navy text-navy text-sm px-5 py-2.5 rounded-lg font-medium hover:bg-navy/5 transition-colors">
           LinkedIn →
         </a>
       </div>
