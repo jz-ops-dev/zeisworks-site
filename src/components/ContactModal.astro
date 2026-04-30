@@ -1,0 +1,151 @@
+---
+---
+<dialog
+  id="contact-modal"
+  class="fixed inset-0 m-0 p-0 w-full h-full max-w-none max-h-none bg-transparent backdrop:bg-ink/50"
+  style="width:100vw;height:100vh;max-width:100vw;max-height:100vh;"
+>
+  <div class="flex items-center justify-center min-h-full p-4">
+    <div class="bg-cream rounded-xl border border-cream-dark w-full max-w-lg p-8 relative">
+
+      <!-- Close button -->
+      <button
+        id="contact-modal-close"
+        type="button"
+        aria-label="Close"
+        class="absolute top-4 right-4 text-ink-light hover:text-ink transition-colors text-xl leading-none"
+      >
+        &times;
+      </button>
+
+      <h2 class="font-serif text-xl font-semibold text-ink mb-1">Tell me what you're trying to fix.</h2>
+      <p class="text-sm text-ink-mid mb-6">Free. I'll come back with a plain-English plan within 24 hours.</p>
+
+      <!-- Form -->
+      <form id="contact-modal-form" name="contact" class="space-y-4">
+        <input type="hidden" name="form-name" value="contact" />
+
+        <div class="grid sm:grid-cols-2 gap-3">
+          <div>
+            <label for="modal-name" class="text-xs font-medium text-ink-mid uppercase tracking-wide block mb-1">Your name</label>
+            <input
+              type="text"
+              id="modal-name"
+              name="name"
+              placeholder="Jane Smith"
+              required
+              class="w-full bg-cream border border-cream-dark rounded-lg px-3 py-2.5 text-sm text-ink focus:outline-none focus:border-orange transition-colors"
+            />
+          </div>
+          <div>
+            <label for="modal-email" class="text-xs font-medium text-ink-mid uppercase tracking-wide block mb-1">Email address</label>
+            <input
+              type="email"
+              id="modal-email"
+              name="email"
+              placeholder="jane@yourbusiness.com"
+              required
+              class="w-full bg-cream border border-cream-dark rounded-lg px-3 py-2.5 text-sm text-ink focus:outline-none focus:border-orange transition-colors"
+            />
+          </div>
+        </div>
+
+        <div>
+          <label for="modal-business" class="text-xs font-medium text-ink-mid uppercase tracking-wide block mb-1">Your business</label>
+          <input
+            type="text"
+            id="modal-business"
+            name="business"
+            placeholder="What do you do?"
+            class="w-full bg-cream border border-cream-dark rounded-lg px-3 py-2.5 text-sm text-ink focus:outline-none focus:border-orange transition-colors"
+          />
+        </div>
+
+        <div>
+          <label for="modal-interest" class="text-xs font-medium text-ink-mid uppercase tracking-wide block mb-1">What kind of problem is it?</label>
+          <select
+            id="modal-interest"
+            name="interest"
+            class="w-full bg-cream border border-cream-dark rounded-lg px-3 py-2.5 text-sm text-ink focus:outline-none focus:border-orange transition-colors"
+          >
+            <option value="">Not sure yet...</option>
+            <option>Marketing and lead generation</option>
+            <option>Operations or process improvement</option>
+            <option>Custom tools or integrations</option>
+            <option>CRM setup or cleanup</option>
+            <option>Something else</option>
+          </select>
+        </div>
+
+        <div>
+          <label for="modal-message" class="text-xs font-medium text-ink-mid uppercase tracking-wide block mb-1">Tell me more</label>
+          <textarea
+            id="modal-message"
+            name="message"
+            placeholder="What's the problem? Even a rough description is helpful — you don't need to have it figured out."
+            class="w-full bg-cream border border-cream-dark rounded-lg px-3 py-2.5 text-sm text-ink focus:outline-none focus:border-orange transition-colors resize-y"
+            style="min-height:100px;"
+          ></textarea>
+        </div>
+
+        <div>
+          <button
+            type="submit"
+            class="bg-orange text-cream font-medium text-sm px-6 py-2.5 rounded-lg hover:bg-orange/90 transition-colors"
+          >
+            Send it — it's free
+          </button>
+          <p class="text-xs text-ink-light mt-3 text-center">Typical response within 24 hours. Your plan is always free.</p>
+        </div>
+      </form>
+
+      <!-- Success state -->
+      <div id="contact-modal-success" class="hidden py-8 text-center">
+        <p class="font-serif text-xl text-ink">Thanks — I'll be in touch soon.</p>
+        <p class="text-sm text-ink-mid mt-2">Check your inbox within 24 hours.</p>
+      </div>
+
+    </div>
+  </div>
+</dialog>
+
+<script>
+  const modal = document.getElementById('contact-modal') as HTMLDialogElement;
+  const closeBtn = document.getElementById('contact-modal-close');
+  const form = document.getElementById('contact-modal-form') as HTMLFormElement;
+  const success = document.getElementById('contact-modal-success');
+
+  // Open on any element with data-modal="contact"
+  document.querySelectorAll('[data-modal="contact"]').forEach(trigger => {
+    trigger.addEventListener('click', () => modal.showModal());
+  });
+
+  // Close on X button
+  closeBtn?.addEventListener('click', () => modal.close());
+
+  // Close on backdrop click
+  modal.addEventListener('click', e => {
+    if (e.target === modal) modal.close();
+  });
+
+  // Reset form when modal reopens
+  modal.addEventListener('close', () => {
+    form.style.display = '';
+    success?.classList.add('hidden');
+    form.reset();
+  });
+
+  // Netlify submission
+  form.addEventListener('submit', e => {
+    e.preventDefault();
+    const data = new URLSearchParams(new FormData(form) as any);
+    fetch('/', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: data.toString(),
+    }).finally(() => {
+      form.style.display = 'none';
+      success?.classList.remove('hidden');
+    });
+  });
+</script>
