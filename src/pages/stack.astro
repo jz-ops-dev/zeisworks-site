@@ -1,15 +1,5 @@
 ---
-// Redirect /stack to /what-i-use
+// Permanent redirect handled by Netlify ([[redirects]] in netlify.toml).
+// This file kept so the Astro build doesn't 404 on /stack during local dev.
+return Astro.redirect('/what-i-use', 301);
 ---
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta http-equiv="refresh" content="0;url=/what-i-use" />
-    <link rel="canonical" href="https://zeisworks.com/what-i-use" />
-    <title>Redirecting...</title>
-  </head>
-  <body>
-    <p>This page has moved. <a href="/what-i-use">Go to What I Use</a>.</p>
-  </body>
-</html>
