@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="ZeisWorks is a one-operator consulting practice serving small businesses. Marketing, operations, and custom-built tools. No agency overhead, no team handoffs.">
-<title>zeisWorks — Modern small business consulting. Built by one person.</title>
+<title>zeisWorks — Small business growth. Handled by one person.</title>
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -1355,6 +1355,60 @@
     transition: color 0.2s;
   }
   .footer-links a:hover { color: rgba(255,255,255,0.85); }
+
+  /* ── Social proof ── */
+  .social-proof { background: var(--cream); }
+  .social-proof-bar {
+    border-top: 1px solid var(--cream-dark);
+    border-bottom: 1px solid var(--cream-dark);
+    background: rgba(242, 238, 228, 0.4);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.75rem 2rem;
+    padding: 1.5rem 2rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--ink-mid);
+  }
+  .social-proof-inner {
+    max-width: var(--max);
+    margin: 0 auto;
+    padding: 3rem 2rem;
+  }
+  .testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+  }
+  @media (max-width: 768px) {
+    .testimonials-grid { grid-template-columns: 1fr; }
+  }
+  .testimonial-card {
+    border-radius: 0.75rem;
+    border: 1px solid var(--cream-dark);
+    background: var(--cream);
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+  }
+  .testimonial-card--alt { background: var(--cream-dark); }
+  .testimonial-stars { color: var(--orange); font-size: 0.875rem; margin-bottom: 0.75rem; letter-spacing: 0.05em; }
+  .testimonial-quote {
+    font-family: 'Lora', Georgia, serif;
+    font-style: italic;
+    font-size: 0.875rem;
+    color: var(--ink-mid);
+    line-height: 1.7;
+    margin: 0;
+    flex: 1;
+  }
+  .testimonial-divider { border-top: 1px solid var(--cream-dark); margin: 1rem 0; }
+  .testimonial-name { font-weight: 500; color: var(--ink); font-size: 0.875rem; margin: 0; }
+  .testimonial-title { font-size: 0.75rem; color: var(--ink-light); margin: 0.125rem 0 0.5rem; }
+  .testimonial-chips { display: flex; flex-wrap: wrap; gap: 0.375rem; margin-top: 0.5rem; }
+  .testimonial-chip { font-size: 0.75rem; background: var(--cream-dark); color: var(--ink-mid); padding: 0.25rem 0.75rem; border-radius: 999px; }
+  .testimonial-card--alt .testimonial-chip { background: rgba(242, 238, 228, 0.65); }
 </style>
 </head>
 <body>
@@ -1377,16 +1431,61 @@
 <section class="hero">
   <div>
     <div id="heroContent">
-      <div class="hero-eyebrow-badge">
-        <span class="hero-eyebrow-dot"></span>
-        Marketing, operations, and custom tools &nbsp;·&nbsp; One operator, no agency overhead
-      </div>
       <h1>You built it.<br>I'll help you<br><em>grow it.</em></h1>
       <p class="hero-sub">Running a small business is hard enough. Figuring out Google, AI, and online marketing on top of it (while actually running your business) is a full-time job by itself. That’s mine. I keep up with what’s working so you don’t have to. Then I run it for you.</p>
       <div class="hero-actions">
         <a href="#contact" class="btn-primary">See how your business looks online, free, 5 minutes →</a>
-        <p class="hero-trust">No commitment required &nbsp;·&nbsp; Free first call &nbsp;·&nbsp; You own everything I build</p>
+        <p class="hero-trust">No commitment required &nbsp;·&nbsp; Free first call &nbsp;·&nbsp; Plain English, always</p>
         <p class="hero-why-free">Modern small business consulting. Built by one person.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SOCIAL PROOF -->
+<section class="social-proof">
+  <div class="social-proof-bar">
+    <span>&#9733;&#9733;&#9733;&#9733;&#9733;&nbsp; 5.0 on Upwork</span>
+    <span>Top Rated &nbsp;&middot;&nbsp; 100% Job Success</span>
+    <span>3 verified client reviews</span>
+    <span>Trusted by businesses across the US</span>
+  </div>
+  <div class="social-proof-inner">
+    <div class="testimonials-grid">
+      <div class="testimonial-card">
+        <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p class="testimonial-quote">&ldquo;I&rsquo;ve had the pleasure to work closely with Jack in numerous projects, roles, and challenges. All of which have exceeded my expectations as a company leader.&rdquo;</p>
+        <div class="testimonial-divider"></div>
+        <p class="testimonial-name">Alex Zemianek</p>
+        <p class="testimonial-title">Owner &amp; CEO, JZ Vacation Rentals</p>
+        <div class="testimonial-chips">
+          <span class="testimonial-chip">Long-term Partnership</span>
+          <span class="testimonial-chip">Exceeded Expectations</span>
+        </div>
+      </div>
+      <div class="testimonial-card">
+        <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p class="testimonial-quote">&ldquo;Jack was great at communicating, efficient, personable and dependable. He was easy to work with and a great asset to our team. We know he will be the first person we reach out to for similar projects in the future.&rdquo;</p>
+        <div class="testimonial-divider"></div>
+        <p class="testimonial-name">Verified Client</p>
+        <p class="testimonial-title">Upwork &middot; 5.0</p>
+        <div class="testimonial-chips">
+          <span class="testimonial-chip">Collaborative</span>
+          <span class="testimonial-chip">Clear Communicator</span>
+          <span class="testimonial-chip">Reliable</span>
+        </div>
+      </div>
+      <div class="testimonial-card testimonial-card--alt">
+        <div class="testimonial-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p class="testimonial-quote">&ldquo;Jack was amazing to work with, which is why he worked for us on a long-term basis. He is thorough, accurate, and timely. I highly recommend him for any sales or operations work.&rdquo;</p>
+        <div class="testimonial-divider"></div>
+        <p class="testimonial-name">Ray Updyke</p>
+        <p class="testimonial-title">Alpaca VC &middot; 254 hrs logged</p>
+        <div class="testimonial-chips">
+          <span class="testimonial-chip">Collaborative</span>
+          <span class="testimonial-chip">Detail Oriented</span>
+          <span class="testimonial-chip">Reliable</span>
+        </div>
       </div>
     </div>
   </div>
@@ -1397,7 +1496,7 @@
   <div class="pillars-inner">
     <div class="pillars-header">
       <p class="section-label">What I do</p>
-      <h2 class="section-title">Three connected services.<br>One operator.</h2>
+      <h2 class="section-title">Three things. One person.</h2>
     </div>
     <div class="pillars-grid">
       <article class="pillar-card reveal">
