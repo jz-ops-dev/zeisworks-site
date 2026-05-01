@@ -6,7 +6,8 @@ export function getStaticPaths() {
 }
 
 const { id } = Astro.params;
-const planUrl = plans[id];
+const growbotikPath = new URL(plans[id]).pathname;
+const planUrl = `/plan/view${growbotikPath}`;
 ---
 
 <!doctype html>
@@ -129,7 +130,7 @@ const planUrl = plans[id];
         </div>
         <h1>Your marketing plan is ready.</h1>
         <p>Click below to open your plan. It'll open in a new tab.</p>
-        <a href={planUrl} target="_blank" rel="noopener noreferrer" class="btn">
+        <a href={planUrl} class="btn">
           Open your plan
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
             <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
