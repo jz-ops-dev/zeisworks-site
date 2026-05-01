@@ -1,0 +1,94 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="Privacy Policy"
+  description="How zeisWorks collects, uses, and protects your information."
+  canonicalUrl="https://zeisworks.com/privacy"
+>
+  <div class="max-w-3xl mx-auto px-6 py-16">
+    <header class="mb-10">
+      <p class="text-xs uppercase tracking-widest text-ink-light mb-4" style="font-family:'DM Mono',monospace;">Legal</p>
+      <h1 class="font-serif text-3xl font-semibold text-ink mb-3 leading-snug">Privacy Policy</h1>
+      <p class="text-sm text-ink-light italic">Last updated: May 1, 2026</p>
+    </header>
+
+    <div class="prose-legal">
+      <p>ZeisWorks is a one-person consulting practice run by John Zeis out of Golden, Colorado. This policy explains what information I collect, how I use it, and who I share it with. I've tried to write it in plain English.</p>
+
+      <h2>What I collect</h2>
+      <p>When you fill out the contact form on this site, I receive your name, email address, business name, and whatever you type in the message field. I use that information to respond to your inquiry and, if we work together, to deliver the services we agreed on.</p>
+      <p>If you email me directly, I have whatever you included in that email.</p>
+      <p>The site uses analytics (Google Analytics or an equivalent privacy-friendly tool) to understand how people find and use the site. This includes pages visited, time on page, general location (city/region, not address), and device type. No personally identifying information is collected through analytics.</p>
+
+      <h2>What I don't collect</h2>
+      <p>I don't run advertising pixels, behavioral tracking, or retargeting scripts on this site. I don't collect payment information directly — if you pay for services, that goes through Stripe, which has its own privacy policy.</p>
+
+      <h2>How I use it</h2>
+      <p>Contact form submissions are used to respond to your inquiry and, if we work together, to manage the relationship. I don't add you to any mailing list without asking first.</p>
+      <p>Analytics data is used to understand what content is useful and how to improve the site. It's never sold or shared for advertising purposes.</p>
+
+      <h2>Who I share it with</h2>
+      <ul>
+        <li><strong>Netlify</strong> hosts this site and processes form submissions. Their privacy policy is at <a href="https://www.netlify.com/privacy/" target="_blank" rel="noopener noreferrer">netlify.com/privacy</a>.</li>
+        <li><strong>Google</strong> provides analytics. Their privacy policy is at <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">policies.google.com/privacy</a>.</li>
+        <li><strong>Stripe</strong> processes payments if applicable. Their privacy policy is at <a href="https://stripe.com/privacy" target="_blank" rel="noopener noreferrer">stripe.com/privacy</a>.</li>
+        <li><strong>Apollo.io</strong> is used for business contact research for outbound prospecting. If you're a business contact I've researched, Apollo's privacy policy is at <a href="https://www.apollo.io/privacy-policy" target="_blank" rel="noopener noreferrer">apollo.io/privacy-policy</a>.</li>
+      </ul>
+      <p>I don't sell your information. I don't share it with anyone not listed here except as required by law.</p>
+
+      <h2>Cookies</h2>
+      <p>The site uses cookies for analytics only. No advertising cookies. You can disable cookies in your browser settings — the site will still work.</p>
+
+      <h2>How long I keep it</h2>
+      <p>Contact form submissions and email records are kept as long as the business relationship is active, or three years from last contact, whichever is shorter. Analytics data is retained according to Google's standard retention settings.</p>
+
+      <h2>Your rights</h2>
+      <p>If you're a Colorado resident, the Colorado Privacy Act gives you the right to know what personal data I hold about you, to correct it, and to request deletion. To exercise any of these rights, email me at <a href="mailto:jack@zeisworks.com">jack@zeisworks.com</a>. I'll respond within 45 days.</p>
+      <p>If you're in the EU or UK, GDPR applies and you have similar rights. Same email.</p>
+
+      <h2>Contact</h2>
+      <p>Questions about this policy: <a href="mailto:jack@zeisworks.com">jack@zeisworks.com</a></p>
+    </div>
+  </div>
+</BaseLayout>
+
+<style>
+  .prose-legal {
+    color: #5A5650;
+    font-size: 0.9375rem;
+    line-height: 1.75;
+  }
+  .prose-legal p {
+    margin-bottom: 1rem;
+  }
+  .prose-legal h2 {
+    font-family: 'Lora', serif;
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: #1E1C18;
+    margin-top: 2.5rem;
+    margin-bottom: 0.75rem;
+  }
+  .prose-legal ul {
+    list-style: disc;
+    padding-left: 1.5rem;
+    margin-bottom: 1rem;
+  }
+  .prose-legal li {
+    margin-bottom: 0.5rem;
+  }
+  .prose-legal a {
+    color: #2D4A6B;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+  .prose-legal a:hover {
+    opacity: 0.8;
+  }
+  .prose-legal strong {
+    color: #1E1C18;
+    font-weight: 500;
+  }
+</style>
