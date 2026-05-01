@@ -1,0 +1,350 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const sections = [
+  { id: 'section-1', label: '1. Acceptance' },
+  { id: 'section-2', label: '2. Changes' },
+  { id: 'section-3', label: '3. Services and Materials' },
+  { id: 'section-4', label: '4. Accounts, Access, and Credentials' },
+  { id: 'section-5', label: '5. Subscriptions, Term, and Renewal' },
+  { id: 'section-6', label: '6. Payment and Billing' },
+  { id: 'section-7', label: '7. No Refunds' },
+  { id: 'section-8', label: '8. Cancellation and Termination' },
+  { id: 'section-9', label: '9. Electronic Communications' },
+  { id: 'section-10', label: '10. Privacy and Data Use' },
+  { id: 'section-11', label: '11. Service Data and AI Training License' },
+  { id: 'section-12', label: '12. Third-Party Platforms' },
+  { id: 'section-13', label: '13. Prohibited Use' },
+  { id: 'section-14', label: '14. Intellectual Property' },
+  { id: 'section-15', label: '15. Copyright and Infringement' },
+  { id: 'section-16', label: '16. Disclaimer of Warranties' },
+  { id: 'section-17', label: '17. Limitation of Liability' },
+  { id: 'section-18', label: '18. Indemnification' },
+  { id: 'section-19', label: '19. No Guarantee of Results' },
+  { id: 'section-20', label: '20. Accessibility Disclaimer' },
+  { id: 'section-21', label: '21. Local Laws and Compliance' },
+  { id: 'section-22', label: '22. Communications Compliance' },
+  { id: 'section-23', label: '23. Force Majeure' },
+  { id: 'section-24', label: '24. Service-Specific Terms' },
+  { id: 'section-25', label: '25. Dispute Resolution' },
+  { id: 'section-26', label: '26. Governing Law and Venue' },
+  { id: 'section-27', label: '27. Miscellaneous' },
+  { id: 'section-28', label: '28. Contact and Notices' },
+];
+---
+
+<BaseLayout
+  title="Terms &amp; Conditions"
+  description="The legal agreement between you and ZeisWorks governing all services."
+  canonicalUrl="https://zeisworks.com/terms"
+>
+  <div class="max-w-5xl mx-auto px-6 py-16">
+    <div class="lg:grid lg:grid-cols-[220px_1fr] lg:gap-16">
+
+      <!-- TOC sidebar (desktop only) -->
+      <aside class="hidden lg:block">
+        <div class="toc-sidebar">
+          <p class="toc-label">Contents</p>
+          <nav>
+            {sections.map(s => (
+              <a href={`#${s.id}`} class="toc-link" data-section={s.id}>{s.label}</a>
+            ))}
+          </nav>
+        </div>
+      </aside>
+
+      <!-- Main content -->
+      <article class="prose-legal min-w-0">
+        <header class="mb-10">
+          <p class="section-label">Legal</p>
+          <h1>Terms &amp; Conditions</h1>
+          <p class="updated">Last updated: May 1, 2026</p>
+          <p class="intro">These Terms &amp; Conditions (the "Terms," "Agreement," or "T&amp;C") are a binding legal agreement between <strong>John Zeis</strong>, a <strong>Colorado sole proprietorship</strong> doing business as <strong>ZeisWorks</strong> ("Provider," "we," "us," or "our"), and <strong>you</strong> ("Client," "you," or "your" — meaning any person or entity that purchases, subscribes to, accesses, uses, configures, or otherwise obtains the benefit of the Services, whether for its own use or on behalf of another business). By completing checkout, clicking "I agree," registering for an account, or accessing or using any part of the Services, Client agrees to these Terms. If Client does not agree, Client must not complete payment and must not use the Services. Provider may perform any portion of the Services directly or through qualified subcontractors, software vendors, technology partners, white-label fulfillment partners, and other service providers (collectively, "Service Providers"), and references to Provider's performance of the Services include performance by Service Providers acting on Provider's behalf.</p>
+        </header>
+
+        <div class="warning-block">
+          THESE TERMS CONTAIN A BINDING INDIVIDUAL ARBITRATION PROVISION, A CLASS ACTION WAIVER, AND A JURY-TRIAL WAIVER. PLEASE READ THE DISPUTE RESOLUTION SECTION BELOW. A LIMITED RIGHT TO OPT OUT IS AVAILABLE ONLY IF CLIENT STRICTLY FOLLOWS THE PROCEDURE DESCRIBED THERE.
+        </div>
+
+        <h2 id="section-1">1. Acceptance</h2>
+        <p>By purchasing, subscribing to, activating, accessing, or using any Provider services, products, subscriptions, programs, software, dashboards, widgets, hosted features, automations, AI tools, deliverables, managed services, or related support offerings (collectively, the "Services"), Client agrees to be bound by this Agreement. Client represents that Client is at least eighteen (18) years old and has full authority to bind Client and any entity on whose behalf Client is purchasing or using the Services, and that Client's use of the Services will at all times comply with this Agreement and with all applicable laws. Client further agrees that any person acting in connection with Client's use of the Services — including Client's employees, contractors, customers, end users, affiliates, or any other party for whom Client provides, resells, or enables access to the Services — shall be bound by this Agreement to the same extent as Client, and Client is solely responsible for any act or omission of any such person.</p>
+
+        <h2 id="section-2">2. Changes</h2>
+        <p>Provider may change the content, scope, features, delivery methods, subscriptions, pricing, support channels, and mix of Services at any time, and may revise these Terms at any time by posting an updated version on a Provider website, checkout page, member portal, or dashboard, or by sending notice to the email address associated with Client's account. Continued use of the Services after an update constitutes acceptance of the updated Terms. If Client does not accept an update, Client must stop using the Services and cancel in accordance with the cancellation provisions below.</p>
+
+        <h2 id="section-3">3. Services and Materials</h2>
+        <p>The Services may include, without limitation, search visibility services (including GEO, SEO, and "near me" optimization), paid advertising (including PPC and Google Local Service Ads), business listings and directory management, AI-enabled tools (including chatbots and voice agents), website-related services (including accessibility solutions), automation systems, reporting dashboards, integrations, and any other marketing, software, or technology-enabled services Provider offers from time to time. The specific Services included in Client's plan are those selected at checkout, on the applicable order or pricing page, or as otherwise agreed in writing, and where a Service has a corresponding service-specific section below, that section applies.</p>
+        <p>Subject to Client's compliance with these Terms, Provider grants Client a limited, personal, non-exclusive, non-transferable, non-sublicensable, revocable right to access and use the Services and the related content, software, widgets, scripts, dashboards, documentation, reports, templates, automations, workflows, and other materials Provider makes available (the "Materials") solely in connection with Client's use of the Services. Except as expressly permitted in this Agreement, Client may not modify, reproduce, distribute, publicly display, reverse engineer, decompile, create derivative works from, sublicense, lease, share access to, or otherwise exploit the Services or Materials, and any resale, rebrand, white-label, or intermediated use of the Services does not diminish Client's obligations under this Agreement. All timelines and delivery estimates are contingent on Client responsiveness, access provision, third-party approvals, platform conditions, and other external factors, and Provider is not responsible for delays caused by such factors.</p>
+        <p>Unless Client provides prior written notice to opt out, Provider may identify Client as a customer and use Client's name, logo, and general business identity in marketing materials, case studies, and promotional content.</p>
+
+        <h2 id="section-4">4. Accounts, Access, and Credentials</h2>
+        <p>Provider may approve, reject, suspend, or revoke any account or access request in its sole discretion. Usernames, passwords, API keys, tokens, and other credentials issued in connection with the Services are for Client's internal use only, are non-transferable, and Client is responsible for maintaining their confidentiality and for all activity occurring through them or through connected systems. Client is responsible for providing and maintaining all access necessary for Provider to perform the Services, including access to websites, hosting, DNS, analytics, call tracking, CRM, calendars, advertising platforms, Google Business Profile, Google Local Services, social accounts, directory profiles, source files, content systems, phone systems, and any other connected service. Delays or limitations caused by Client's failure to provide access may delay performance or reduce results, and Provider is not responsible for the consequences. Where access is provided to Provider on behalf of a third party, Client represents that it has full authority to grant that access and will indemnify Provider for any claim that the access was unauthorized.</p>
+
+        <h2 id="section-5">5. Subscriptions, Term, and Renewal</h2>
+        <p>Unless a service-specific section below states otherwise, the initial term of each Service is twelve (12) months, after which the Service continues on a month-to-month basis and renews automatically until canceled. Provider will provide at least thirty (30) days' prior notice of any non-renewal, discontinuation, or material change to a Service, delivered to the email address associated with Client's account; it is Client's responsibility to keep that email address current. Subscriptions and the rights associated with them are personal to Client and non-transferable unless Provider expressly agrees otherwise in writing. Upon discontinuation of a Service, Provider may delete databases, hosted assets, call logs, chatbot and voice-agent logs, reporting data, configuration records, and other information associated with that Service, except where retention is required by law or Provider elects to retain such data for operational, billing, evidentiary, backup, or compliance purposes.</p>
+
+        <h2 id="section-6">6. Payment and Billing</h2>
+        <p>All Services are billed on a recurring subscription basis unless otherwise stated. By submitting payment, Client authorizes Provider and its payment processing partners (which may include Stripe and other processors from time to time) to charge Client's selected payment method for all applicable fees, including setup fees, subscription fees, management fees, usage fees, overage fees, taxes, and any other amounts incurred in connection with the Services. Use of any payment processor is subject to that processor's own terms and privacy practices. Subscriptions automatically renew unless canceled with the required notice before the renewal date, and Provider may modify pricing with prior notice. All orders are subject to acceptance by Provider, and Provider may refuse or cancel any order in its sole discretion, including after acceptance.</p>
+        <p>Client agrees to pay all applicable taxes, levies, duties, and similar governmental assessments associated with the Services, excluding taxes based on Provider's net income. If Client does not pay on time, or if Provider or its payment processor cannot charge Client's payment method for any reason, Provider may suspend or terminate Services, pause campaigns, disable software features, revoke licenses, suspend support, cancel hosted features, and bill unpaid amounts by any lawful means. Amounts unpaid for more than thirty (30) calendar days from the invoice date are past due. If they remain unpaid fifteen (15) calendar days after notice of past-due status, Provider may charge interest at one percent (1%) per month until all amounts owing, including interest, are paid in full, and Client will reimburse Provider for reasonable costs of collection, including attorneys' fees and internal collection time at Provider's then-prevailing rate.</p>
+
+        <h2 id="section-7">7. No Refunds</h2>
+        <div class="warning-block">
+          ALL PURCHASES OF SUBSCRIPTIONS, SERVICES, SETUP FEES, MANAGEMENT FEES, LICENSES, IMPLEMENTATION FEES, SOFTWARE-ENABLED SERVICES, ACCESSIBILITY SERVICES, AI SERVICES, MARKETING SERVICES, AND ANY OTHER PRODUCTS OR SERVICES FROM PROVIDER ARE FINAL AND NON-REFUNDABLE.
+        </div>
+        <p>Provider may, in its sole discretion, decline any discretionary refund or credit where it reasonably determines the purchase was made with the intent of receiving the benefit of the Services and then seeking reimbursement afterward. Client agrees not to initiate a chargeback except where Client did not actually receive the Services ordered, and a wrongful chargeback is itself a breach of this Agreement for which Provider may immediately terminate, pursue collection of the disputed amount, and recover its costs.</p>
+
+        <h2 id="section-8">8. Cancellation and Termination</h2>
+        <p>Unless a service-specific section states otherwise, cancellation requires at least thirty (30) days' prior written notice before the next renewal, and Client will not receive a refund for amounts already paid and remains responsible for accrued charges, usage charges, outstanding fees, and any minimum-commitment amounts then due. Some Services include an initial minimum term and may not be canceled before that minimum term expires except as expressly allowed in the applicable service-specific section or by Provider in writing. Upon termination or cancellation, Provider may stop Services, revoke access, remove hosted elements, disable widgets, pause automations, remove campaign management, stop support, and disconnect integrations. Provider may terminate or suspend Services immediately for non-payment, abuse, legal risk, third-party platform restrictions, policy violations, unauthorized use, or any conduct Provider reasonably determines is inappropriate, unlawful, risky, or disruptive. Provisions that by their nature should survive termination — including payment, confidentiality, license restrictions, indemnification, disclaimers, limitations of liability, the AI-training license, dispute resolution, and accrued rights — will survive.</p>
+
+        <h2 id="section-9">9. Electronic Communications</h2>
+        <p>By purchasing or using the Services, Client consents to receive electronic communications from or on behalf of Provider, including service notices, onboarding communications, billing notices, support communications, marketing communications, and, where applicable, text messages and prerecorded or AI-assisted calls, at the email addresses, phone numbers, and contact endpoints Client provides. Client agrees that electronic communications satisfy any legal requirement that such communications be in writing. Client may opt out of marketing-related emails by following the opt-out instructions in the communication, but Provider may still send transactional, account, security, operational, or service-related communications. Client is responsible for obtaining any consents required under applicable communications laws from any recipient of communications sent, triggered, or delivered through the Services.</p>
+
+        <h2 id="section-10">10. Privacy and Data Use</h2>
+        <p>Provider may collect, receive, store, access, use, process, transmit, and share information necessary to provide and improve the Services, process payments, manage accounts, communicate with Client, maintain integrations, provide support, conduct analytics, train and improve models as described below, and fulfill operational, legal, and security purposes. Such information may include account details, business information, campaign data, website data, profile data, analytics data, technical data, usage data, IP addresses, device and browser information, communications, lead and call records, chatbot and voice-agent transcripts, and any other data reasonably related to the Services. Provider may disclose such information to affiliates, contractors, service providers, software and AI vendors, analytics providers, payment processors, publishers, directory networks, hosting providers, telecom providers, advertising platforms, and other third parties that help provide the Services, and data may be stored and processed in the United States or other jurisdictions where Provider, its affiliates, or its service providers operate. Where Provider publishes a standalone privacy policy, that policy supplements this section and controls as to its subject matter.</p>
+        <p>Client is solely responsible for ensuring that any personal data uploaded, connected, collected, transmitted, or otherwise made available through the Services complies with all applicable privacy laws — including GDPR, UK GDPR, CCPA/CPRA, other U.S. state privacy laws, PIPEDA, LGPD, and any applicable sectoral laws such as HIPAA or GLBA — and for publishing accurate privacy notices and obtaining any consents required. Provider is not a HIPAA business associate or GLBA service provider unless a signed separate addendum is in place. As between the parties, Client is the controller or "business" (and Provider the processor or "service provider") with respect to personal data made available through the Services, and Client will ensure that its upstream and downstream agreements include terms at least as protective of Provider as this Agreement.</p>
+
+        <h2 id="section-11">11. Service Data and AI Training License</h2>
+        <p>In the course of providing the Services, Provider generates, collects, and receives a variety of data — including configuration data, usage logs, performance metrics, chatbot and voice-agent transcripts, call recordings, audit records, model prompts and completions, test data, support communications, error logs, and similar operational data (collectively, "Service Data"). Client grants Provider a perpetual, irrevocable, worldwide, royalty-free, sublicensable license to use, reproduce, modify, aggregate, and otherwise process Service Data in de-identified and/or aggregated form for any lawful purpose, including to operate, secure, maintain, benchmark, debug, test, and improve the Services; to develop, train, fine-tune, evaluate, and improve Provider's and its vendors' software, machine-learning models, AI models, chatbots, voice agents, automations, and analytics; to generate industry benchmarks, reports, insights, and anonymized statistics; and to build new products and services. "De-identified" means data from which direct identifiers have been removed, masked, tokenized, or aggregated so that the data does not reasonably identify a specific individual or business. Client represents that it has all rights and authority necessary to grant this license on behalf of itself and any third party for whom it provides, resells, or enables access to the Services, and Client will indemnify Provider for any claim that it lacked such authority.</p>
+
+        <h2 id="section-12">12. Third-Party Platforms, Providers, and Links</h2>
+        <p>Many of the Services depend on, integrate with, or are delivered through third-party platforms, networks, publishers, software providers, telecom providers, and service providers — including Google, Meta, Microsoft, OpenAI, Anthropic, listings networks, payment processors, and telephony carriers ("Third-Party Providers"). Third-Party Providers have their own terms, policies, service levels, limits, and restrictions, and those terms also apply to the Services. Provider does not verify and is not responsible for the truthfulness, accuracy, quality, completeness, availability, policy changes, suspensions, or acts or omissions of any Third-Party Provider, and links or integrations to third-party sites are provided as a convenience without endorsement.</p>
+        <div class="warning-block">
+          PROVIDER WILL NOT, UNDER ANY CIRCUMSTANCES, BE RESPONSIBLE OR LIABLE, DIRECTLY OR INDIRECTLY, FOR ANY GOODS, SERVICES, INFORMATION, RESOURCES, CONTENT, DEALINGS, OR COMMUNICATIONS AVAILABLE ON OR THROUGH ANY THIRD-PARTY PROVIDER OR THIRD-PARTY SITE, OR FOR ANY HARM, DAMAGES, OR LOSS CAUSED OR ALLEGED TO BE CAUSED BY OR IN CONNECTION WITH CLIENT'S USE OF OR RELIANCE ON ANY THIRD-PARTY PROVIDER OR THIRD-PARTY SITE, INCLUDING ACCOUNT SUSPENSIONS, BANS, DELISTINGS, RANKING LOSSES, OR OTHER RESTRICTIONS IMPOSED BY ANY THIRD-PARTY PROVIDER, REGARDLESS OF CAUSE.
+        </div>
+
+        <h2 id="section-13">13. Prohibited Use</h2>
+        <p>Client agrees to act lawfully and in accordance with common standards of professional conduct, and agrees not to use the Services to: violate any law or regulation; infringe any intellectual property, privacy, or publicity right; defame, abuse, harass, stalk, threaten, or otherwise violate the legal rights of others; disseminate spam, unsolicited solicitations, pyramid schemes, chain letters, or similar communications; exploit minors or depict cruelty to animals; solicit or post sexually explicit content where prohibited; incite or facilitate illegal activity; introduce malware, spyware, or other harmful code; use automated scraping, load-generating, or other abusive tools; or otherwise take any action that imposes an unreasonable or disproportionate load on Provider's infrastructure. Client is responsible for ensuring that any content it uploads, publishes, transmits, configures, or causes to be sent through the Services is lawful, accurate, non-misleading, properly licensed, and compliant with all applicable platform policies. Provider may terminate or suspend Services, remove content, and cooperate with law enforcement where it deems appropriate.</p>
+
+        <h2 id="section-14">14. Intellectual Property</h2>
+        <p>Provider and its licensors retain all right, title, and interest in and to Provider's pre-existing intellectual property, software, systems, automations, processes, methods, templates, scripts, know-how, documentation, widgets, dashboards, code, service architecture, campaign methodologies, implementation methods, workflow designs, trade secrets, branding, and all related Materials (collectively, "Provider IP"). Except where a service-specific section below expressly grants ownership of a deliverable, nothing in this Agreement transfers any Provider IP or third-party IP to Client, and any incorporated Provider IP or third-party IP is licensed non-exclusively, non-transferably, and solely for use with the deliverable and subject to any applicable third-party restrictions. Any feedback, suggestion, or idea Client provides to Provider may be used by Provider without restriction or compensation, and Client assigns to Provider all right, title, and interest therein.</p>
+
+        <h2 id="section-15">15. Copyright and Infringement Notices</h2>
+        <p>If Client believes any material provided through the Services infringes its copyright or trademark rights, Client must send a written notice to <a href="mailto:jack@zeisworks.com">jack@zeisworks.com</a> containing (i) an authorized signature; (ii) identification of the work claimed to be infringed; (iii) identification of the allegedly infringing material; (iv) Client's contact information; (v) a good-faith statement that the use is not authorized; and (vi) a statement under penalty of perjury that the information is accurate and that the complaining party is authorized. Provider may remove or disable access to challenged material at its discretion.</p>
+
+        <h2 id="section-16">16. Disclaimer of Warranties</h2>
+        <div class="warning-block">
+          TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW, THE SERVICES, MATERIALS, SOFTWARE-ENABLED COMPONENTS, WIDGETS, AI FEATURES, AUTOMATIONS, REPORTS, LISTINGS, AND ALL RELATED CONTENT ARE PROVIDED "AS IS" AND "AS AVAILABLE," WITHOUT ANY WARRANTIES OF ANY KIND, EXPRESS, IMPLIED, OR STATUTORY. PROVIDER EXPRESSLY DISCLAIMS ALL IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, TITLE, NON-INFRINGEMENT, ACCURACY, COMPLETENESS, AND ANY WARRANTY THAT THE SERVICES WILL BE UNINTERRUPTED, ERROR-FREE, SECURE, OR WILL PRODUCE ANY SPECIFIC RESULT.
+        </div>
+        <p>Provider does not warrant that the Services will produce any specific ranking, lead volume, traffic level, revenue, cost per lead, return on ad spend, conversion rate, listing visibility, accessibility outcome, chatbot or voice-agent result, appointment outcome, or other business outcome. Actual results vary based on Client cooperation, website quality, business category, geography, competition, ad budget, industry demand, review profile, algorithm changes, policy changes, third-party platform actions, regulatory issues, and other factors outside Provider's control.</p>
+
+        <h2 id="section-17">17. Limitation of Liability</h2>
+        <div class="warning-block">
+          TO THE FULLEST EXTENT PERMITTED BY APPLICABLE LAW, PROVIDER SHALL NOT BE LIABLE FOR ANY INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL, EXEMPLARY, PUNITIVE, OR OTHER NON-DIRECT DAMAGES, INCLUDING LOSS OF DATA, LOST PROFITS, LOST REVENUE, LOST GOODWILL, LOST BUSINESS OPPORTUNITY, COST OF CAPITAL, DOWNTIME COSTS, OR SIMILAR DAMAGES, WHETHER ARISING IN CONTRACT, TORT, STATUTE, OR OTHERWISE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.
+        </div>
+        <p>Without limiting the foregoing, Provider shall not be liable for losses arising from or related to platform changes, algorithm updates, Google Business Profile suspensions, reverification requirements, website issues, hacks or security breaches not caused by Provider's gross negligence, third-party service interruptions, listing suppression issues, call routing failures, telephony outages, AI errors or hallucinations, advertising account issues, publisher behavior, directory changes, or other third-party acts or omissions.</p>
+        <p>Except where a service-specific section states a lower cap or a specific cap, Provider's total aggregate liability arising out of or relating to this Agreement or the Services shall not exceed the total amount actually paid by Client to Provider for the specific Service giving rise to the claim during the twelve (12) months preceding the event giving rise to the claim.</p>
+
+        <h2 id="section-18">18. Indemnification</h2>
+        <p>Client will defend, indemnify, and hold harmless Provider, its affiliates, officers, directors, employees, contractors, licensors, vendors, agents, resellers, and service providers from and against any and all claims, demands, damages, liabilities, costs, losses, expenses, judgments, settlements, and reasonable attorneys' fees arising out of or related to: (a) Client's use of the Services; (b) content, data, configurations, or materials provided or enabled by Client; (c) any communication sent, triggered, or delivered through the Services on Client's behalf; (d) Client's violation of any law or regulation; (e) Client's breach of this Agreement; (f) Client's infringement or misappropriation of any third-party right; (g) any claim brought by or through any customer, end user, lead, recipient, visitor, or other person for whom Client provides, resells, or enables access to the Services; and (h) Client's misuse of the Services.</p>
+        <p>No customer, end user, lead, recipient, visitor, or other downstream person or entity is a third-party beneficiary of this Agreement, and no such person has any right to enforce any provision of this Agreement against Provider.</p>
+
+        <h2 id="section-19">19. No Guarantee of Results</h2>
+        <p>Provider does not guarantee any specific search ranking, AI-answer visibility, advertising result, lead volume, traffic level, listing placement, review volume, conversion rate, legal or accessibility compliance result, phone-call outcome, appointment outcome, or any other commercial performance metric. Any intended outcome described in marketing materials, onboarding materials, proposals, or service descriptions is aspirational and is not a guarantee.</p>
+
+        <h2 id="section-20">20. Accessibility Disclaimer</h2>
+        <p>Where a Service relates to website accessibility, Client understands that accessibility depends on the underlying website, templates, third-party components, content, and ongoing changes made by Client or its vendors. Provider does not guarantee that any Service will cause or maintain any website to comply with any specific accessibility standard or law, including WCAG, Section 508, or the Americans with Disabilities Act, at any particular time or over time.</p>
+
+        <h2 id="section-21">21. Local Laws and Compliance</h2>
+        <p>Client is solely responsible for ensuring that its business, content, claims, licenses, insurance or bonding, disclosures, privacy notices, accessibility statements, and use of the Services comply with all applicable local, state, federal, and international laws, regulations, and industry rules. Provider does not provide legal advice.</p>
+
+        <h2 id="section-22">22. Communications Compliance</h2>
+        <p>Where Services enable outbound communications — including SMS, MMS, voice calls, prerecorded messages, AI-generated voice calls, chatbots, or email campaigns — Client is solely responsible for compliance with all applicable communications laws and platform rules, including the TCPA, CAN-SPAM Act, carrier A2P 10DLC rules, and any equivalent non-U.S. laws. Client is responsible for obtaining and maintaining express prior written consent where required, honoring opt-outs, and curating suppression lists.</p>
+
+        <h2 id="section-23">23. Force Majeure</h2>
+        <p>Neither party shall be liable for failure or delay in performance caused by circumstances beyond its reasonable control, including acts of God, fire, flood, earthquake, storm, pandemic, epidemic, terrorism, war, civil unrest, labor dispute, telecommunications failure, power failure, internet failure, cloud-provider outage, government action, platform outage, algorithm change, third-party service interruption, or cyberattack not resulting from the affected party's gross negligence.</p>
+
+        <h2 id="section-24">24. Service-Specific Terms</h2>
+
+        <h3 id="section-24-a">24.A. GEO (Generative Engine / AI Search Optimization) and Local SEO</h3>
+        <p>Provider may provide Local SEO and GEO services designed to improve visibility for relevant search terms in selected service areas and within AI-answer environments such as ChatGPT, Gemini, Copilot, Perplexity, and Grok. Unless a plan states otherwise, GEO services have an initial minimum term of three (3) months and continue month-to-month thereafter, with cancellation by thirty (30) days' written notice. No specific ranking result is guaranteed.</p>
+
+        <h3 id="section-24-b">24.B. SEO</h3>
+        <p>Provider may provide search engine optimization services using ethical white-hat methodologies. Any keyword package described during purchase governs the commercial terms. Unless a plan states otherwise, SEO services are intended to run for an initial term of twelve (12) months.</p>
+
+        <h3 id="section-24-c">24.C. PPC (Pay-Per-Click Advertising)</h3>
+        <p>Provider may provide PPC campaign setup, management, optimization, and reporting. Unless otherwise stated, PPC services are subject to a ninety (90)-day minimum commitment following setup and continue month-to-month thereafter. Client is solely responsible for the payment of the underlying ad spend and for platform policy compliance.</p>
+
+        <h3 id="section-24-d">24.D. Business Listings</h3>
+        <p>Provider may provide business listings, online knowledge management, publisher-sync, review, and content-distribution services. Publisher behavior, display, timing, and field availability are controlled by third parties. Provider does not guarantee listing accuracy, completeness, approval, or publication timing across directories.</p>
+
+        <h3 id="section-24-e">24.E. AI Chatbot</h3>
+        <p>Provider may provide AI chatbot creation and management services. Unless otherwise stated, chatbot services run for an initial twelve (12) month term and renew automatically, with either party able to cancel on thirty (30) days' prior notice.</p>
+        <div class="warning-block">
+          CLIENT ACKNOWLEDGES THAT CHATBOT SERVICES INCLUDE AI-GENERATED OUTPUTS THAT CAN BE INACCURATE, INCOMPLETE, OUTDATED, OR UNINTENDED. CLIENT IS SOLELY RESPONSIBLE FOR ALL CHATBOT SCRIPTS, KNOWLEDGE-BASE CONTENT, RESPONSES, AND PUBLIC-FACING DEPLOYMENT.
+        </div>
+
+        <h3 id="section-24-f">24.F. Website Accessibility</h3>
+        <p>Provider may provide a website accessibility solution consisting of an accessibility widget and related services. Client understands that the effectiveness of the solution depends in part on the underlying website structure. Client releases Provider from liability related to whether the website complies with any accessibility law or standard.</p>
+
+        <h3 id="section-24-g">24.G. LSA (Google Local Service Ads)</h3>
+        <p>Provider may provide Google Local Service Ads services. Approval into the LSA program is determined by Google and is not guaranteed. Lead quality, volume, and continued participation are controlled by Google and are not guaranteed by Provider.</p>
+
+        <h3 id="section-24-h">24.H. "Near Me" SEO</h3>
+        <p>Provider may provide Near Me Boost and Local SEO services. Unless a plan states otherwise, the Near Me service is month-to-month and can be canceled on thirty (30) days' notice. Provider does not guarantee any specific rankings, lead volume, traffic, or revenue.</p>
+
+        <h3 id="section-24-i">24.I. AI Voice Agent</h3>
+        <p>Provider may provide a Voice AI service under which Provider creates and maintains an AI voice agent for Client. Unless a plan states otherwise, the AI Voice Agent service runs for an initial three (3) month term and renews on a month-to-month basis, with cancellation on thirty (30) days' notice.</p>
+        <div class="warning-block">
+          MUCH LIKE A HUMAN PHONE REPRESENTATIVE, AN AI VOICE AGENT CAN MAKE MISTAKES. CLIENT IS SOLELY RESPONSIBLE FOR THE SCRIPTS, KNOWLEDGE INPUTS, AND OUTPUTS OF THE AI VOICE AGENT, AND FOR THE AGENT'S COMPLIANCE WITH APPLICABLE LAW, INCLUDING CALL-RECORDING, DISCLOSURE, AND TCPA RULES.
+        </div>
+
+        <h2 id="section-25">25. Dispute Resolution; Arbitration; Class Action Waiver</h2>
+        <p><strong>Informal Resolution.</strong> Before initiating arbitration, Client must first give Provider an opportunity to resolve the dispute by sending written notice to <a href="mailto:jack@zeisworks.com">jack@zeisworks.com</a>, including Client's name, address, a written description of the claim, and the specific relief sought. If Provider does not resolve the dispute within forty-five (45) days after receipt, either party may pursue arbitration.</p>
+        <p><strong>Binding Individual Arbitration.</strong> Any dispute shall be resolved exclusively and finally by binding arbitration on an individual basis before JAMS, administered under the JAMS Comprehensive Arbitration Rules &amp; Procedures. The seat and location of arbitration shall be Jefferson County, Colorado.</p>
+        <div class="warning-block">
+          CLASS ACTION WAIVER; JURY TRIAL WAIVER. TO THE FULLEST EXTENT PERMITTED BY LAW, NEITHER PARTY MAY PARTICIPATE AS A CLASS REPRESENTATIVE OR CLASS MEMBER IN ANY CLASS, CONSOLIDATED, OR REPRESENTATIVE PROCEEDING, AND BOTH PARTIES WAIVE THE RIGHT TO A JURY TRIAL.
+        </div>
+        <p><strong>30-Day Opt-Out.</strong> Client may opt out of the individual arbitration requirement by sending written notice to <a href="mailto:jack@zeisworks.com">jack@zeisworks.com</a> within thirty (30) days after first accepting this Agreement.</p>
+
+        <h2 id="section-26">26. Governing Law and Venue</h2>
+        <p>This Agreement shall be governed by the laws of the State of <strong>Colorado</strong>, without regard to conflict-of-laws principles. Except for disputes subject to arbitration, any disputes will be heard exclusively in the state or federal courts located in <strong>Jefferson County, Colorado</strong>.</p>
+
+        <h2 id="section-27">27. Miscellaneous</h2>
+        <p>This Agreement constitutes the entire agreement between Client and Provider with respect to the Services and supersedes prior oral or written communications on the same subject matter. Provider may assign this Agreement without consent; Client may not assign without Provider's prior written consent. The parties are independent contractors.</p>
+
+        <h2 id="section-28">28. Contact and Notices</h2>
+        <p>Legal notices required or permitted under this Agreement must be delivered by email to <a href="mailto:jack@zeisworks.com">jack@zeisworks.com</a> or by nationally recognized overnight courier to the business address designated by Provider.</p>
+        <p>Mailing address for legal notices: <strong>Golden, CO 80401</strong>.</p>
+      </article>
+    </div>
+  </div>
+</BaseLayout>
+
+<style>
+  /* TOC sidebar */
+  .toc-sidebar {
+    position: sticky;
+    top: 80px;
+    max-height: calc(100vh - 100px);
+    overflow-y: auto;
+    padding-right: 0.5rem;
+  }
+  .toc-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.625rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #9A9590;
+    margin-bottom: 0.75rem;
+  }
+  .toc-link {
+    display: block;
+    font-size: 0.75rem;
+    color: #9A9590;
+    text-decoration: none;
+    padding: 0.25rem 0;
+    border-left: 2px solid transparent;
+    padding-left: 0.75rem;
+    margin-left: -0.75rem;
+    line-height: 1.4;
+    transition: color 0.15s, border-color 0.15s;
+  }
+  .toc-link:hover {
+    color: #5A5650;
+  }
+  .toc-link.active {
+    color: #1E1C18;
+    border-left-color: #C85A20;
+  }
+
+  /* Article */
+  .prose-legal {
+    color: #5A5650;
+    font-size: 0.9375rem;
+    line-height: 1.75;
+  }
+  .section-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.625rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #9A9590;
+    margin-bottom: 1rem;
+  }
+  .prose-legal h1 {
+    font-family: 'Lora', serif;
+    font-size: 1.875rem;
+    font-weight: 600;
+    color: #1E1C18;
+    line-height: 1.25;
+    margin-bottom: 0.5rem;
+  }
+  .updated {
+    font-size: 0.875rem;
+    color: #9A9590;
+    font-style: italic;
+    margin-bottom: 1.5rem;
+  }
+  .intro {
+    margin-top: 1.5rem;
+    margin-bottom: 0;
+  }
+  .prose-legal h2 {
+    font-family: 'Lora', serif;
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: #1E1C18;
+    margin-top: 2.5rem;
+    margin-bottom: 0.75rem;
+    scroll-margin-top: 88px;
+  }
+  .prose-legal h3 {
+    font-family: 'Lora', serif;
+    font-size: 0.9375rem;
+    font-weight: 600;
+    color: #1E1C18;
+    margin-top: 1.75rem;
+    margin-bottom: 0.5rem;
+    scroll-margin-top: 88px;
+  }
+  .prose-legal p {
+    margin-bottom: 1rem;
+  }
+  .prose-legal a {
+    color: #2D4A6B;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+  .prose-legal a:hover {
+    opacity: 0.8;
+  }
+  .prose-legal strong {
+    color: #1E1C18;
+    font-weight: 500;
+  }
+
+  /* Warning blocks */
+  .warning-block {
+    background: #FFFBEB;
+    border-left: 3px solid #F59E0B;
+    border-radius: 0 6px 6px 0;
+    padding: 1rem 1.25rem;
+    font-size: 0.8125rem;
+    line-height: 1.6;
+    color: #78350F;
+    margin: 1.25rem 0;
+    font-weight: 500;
+  }
+</style>
+
+<script>
+  const links = document.querySelectorAll<HTMLAnchorElement>('.toc-link');
+  const headings = document.querySelectorAll<HTMLElement>('.prose-legal h2[id], .prose-legal h3[id]');
+
+  if (links.length && headings.length) {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const id = entry.target.getAttribute('id');
+            links.forEach((l) => l.classList.remove('active'));
+            const active = document.querySelector<HTMLAnchorElement>(`.toc-link[data-section="${id}"]`);
+            if (active) active.classList.add('active');
+          }
+        });
+      },
+      { rootMargin: '-80px 0px -60% 0px', threshold: 0 }
+    );
+    headings.forEach((h) => observer.observe(h));
+  }
+</script>

@@ -42,7 +42,7 @@ const resolvedOgImage = ogImage
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400&display=swap"
       rel="stylesheet"
     />
 
@@ -146,7 +146,14 @@ const resolvedOgImage = ogImage
           </span>
           <p class="mt-1">Modern small business consulting. Golden, CO.</p>
         </div>
-        <p class="shrink-0">&copy; {new Date().getFullYear()} Jack Zeis. All rights reserved.</p>
+        <div class="shrink-0 flex flex-col items-end gap-1.5">
+          <p>&copy; {new Date().getFullYear()} Jack Zeis. All rights reserved.</p>
+          <p class="flex gap-3 text-xs" style="font-family:'DM Mono',monospace;letter-spacing:0.04em;">
+            <a href="/terms" class="text-ink-light hover:text-ink-mid transition-colors">Terms</a>
+            <span class="text-ink-light" aria-hidden="true">·</span>
+            <a href="/privacy" class="text-ink-light hover:text-ink-mid transition-colors">Privacy</a>
+          </p>
+        </div>
       </div>
     </footer>
   </body>
