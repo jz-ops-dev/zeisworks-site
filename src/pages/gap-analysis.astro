@@ -16,11 +16,11 @@ const faqItems = [
   },
   {
     q: "What will I actually receive?",
-    a: "A written gap analysis showing your AI visibility score, which competitors are getting cited instead of you, where AI is pulling results from, and specific gaps with recommended fixes. If there's a clear path to improvement, I'll include a plan with options.",
+    a: "A written gap analysis showing how your business ranks in local search, which competitors are outranking you and why, where you have gaps in your online presence, and specific fixes with recommended priorities. If there's a clear path to improvement, I'll include a plan with options.",
   },
   {
     q: "Is this just SEO?",
-    a: "No. SEO is about Google rankings. This is about whether AI tools — ChatGPT, Perplexity, Google's AI summaries — recommend your business when customers ask. It's a different signal, and most businesses have no idea where they stand.",
+    a: "It includes SEO, but goes further. This covers your full local search presence — Google Business Profile, local rankings, directory citations, review signals, and how your site compares to competitors. Most businesses have gaps they don't know about.",
   },
   {
     q: "What happens after I get the results?",
@@ -31,8 +31,8 @@ const faqItems = [
 const deliverables = [
   {
     icon: "🔍",
-    title: "AI Visibility Score",
-    desc: "How your business performs when customers ask ChatGPT, Perplexity, and Google AI about your category. Benchmarked against competitors.",
+    title: "Local Search Visibility Score",
+    desc: "How your business ranks in Google local search for your category and service area. Benchmarked against your top 3–5 competitors.",
   },
   {
     icon: "⚔️",
@@ -41,8 +41,8 @@ const deliverables = [
   },
   {
     icon: "🗺️",
-    title: "Source Breakdown",
-    desc: "The specific websites AI is pulling from: review platforms, directories, news, and blogs. I'll show you which ones you're missing.",
+    title: "Citation & Directory Audit",
+    desc: "The specific directories, review platforms, and local listings that drive rankings. I'll show you which ones you're missing or have inconsistent information on.",
   },
   {
     icon: "⚠️",
@@ -102,7 +102,7 @@ const serviceJsonLd = {
     url: "https://zeisworks.com",
   },
   description:
-    "A free AI visibility audit. Submit your business info, and I run the analysis on your behalf — no call required. You receive a written report showing exactly where you stand in ChatGPT, Perplexity, and Google AI, plus a plan if there's a gap worth closing.",
+    "A free local search gap analysis. Submit your business info, and I run the analysis on your behalf — no call required. You receive a written report showing exactly where you stand in local search, how you compare to competitors, and a plan if there's a gap worth closing.",
   offers: {
     "@type": "Offer",
     price: "0",
@@ -112,10 +112,10 @@ const serviceJsonLd = {
 ---
 
 <BaseLayout
-  title="Free Marketing Gap Analysis"
-  description="Find out if AI is sending your customers to you — or your competitor. Submit your business info and I'll run the analysis. No call required. You get a written report showing exactly where you stand."
-  ogTitle="Free Marketing Gap Analysis | zeisWorks"
-  ogDescription="A free AI visibility audit. No call required. Submit your info and receive a written report showing where your business stands in ChatGPT, Perplexity, and Google AI."
+  title="Free Local Search Gap Analysis"
+  description="Find out if your competitors are outranking you in local search — and why. Submit your business info and I'll run the analysis. No call required. You get a written report showing exactly where you stand."
+  ogTitle="Free Local Search Gap Analysis | zeisWorks"
+  ogDescription="A free local search gap analysis. No call required. Submit your info and receive a written report showing where your business stands in Google, local search, and against your top competitors."
 >
   <Fragment slot="head">
     <script type="application/ld+json" set:html={JSON.stringify(faqJsonLd)} />
@@ -681,13 +681,13 @@ const serviceJsonLd = {
       <div class="ga-hero-inner">
         <p class="ga-eyebrow">Free · No call required · Results in 48 hours</p>
         <h1 class="ga-h1">
-          Find out if AI is sending your customers to you —<br class="hidden sm:block" />
-          or your <em>competitor.</em>
+          Find out why your competitors are showing up first —<br class="hidden sm:block" />
+          and what it takes to <em>outrank them.</em>
         </h1>
         <p class="ga-subhead">
-          Submit your business info. I run the analysis on your behalf — checking ChatGPT,
-          Perplexity, and Google AI — and send you a written report showing exactly where you
-          stand and what to fix first. No call required.
+          Submit your business info. I run a full local search analysis on your behalf — checking
+          Google rankings, your Business Profile, citations, and competitor gaps — and send you a
+          written report showing exactly where you stand and what to fix first. No call required.
         </p>
         <div class="ga-cta-group">
           <a href="#request" class="ga-btn-primary">Get my free analysis →</a>
@@ -722,7 +722,7 @@ const serviceJsonLd = {
           <div class="ga-step">
             <div class="ga-step-num">02</div>
             <h3>I run the analysis</h3>
-            <p>I run your business through real customer queries in ChatGPT, Perplexity, and Google AI. I identify gaps, map your competitors, and build your report.</p>
+            <p>I audit your local search presence — Google rankings, Business Profile completeness, citation consistency, review signals, and competitor positioning. I identify gaps and build your report.</p>
           </div>
           <div class="ga-step">
             <div class="ga-step-num">03</div>
@@ -772,12 +772,12 @@ const serviceJsonLd = {
           <div class="ga-sample-card">
             <p class="ga-sample-card-label">Part 1</p>
             <h3>Visibility Score & Competitor Benchmark</h3>
-            <p>A scored breakdown of how your business performs across AI channels — with direct comparison to 3–5 competitors in your category and market.</p>
+            <p>A scored breakdown of how your business ranks in local search — with direct comparison to 3–5 competitors in your category and market.</p>
           </div>
           <div class="ga-sample-card">
             <p class="ga-sample-card-label">Part 2</p>
             <h3>Gap Identification & Quick Wins</h3>
-            <p>Specific gaps found during the analysis — missing listings, weak profile fields, content that doesn't answer AI queries — plus fixes you can make yourself this week.</p>
+            <p>Specific gaps found during the analysis — missing listings, weak profile fields, content that doesn't match what customers are searching for — plus fixes you can make yourself this week.</p>
           </div>
           <div class="ga-sample-card">
             <p class="ga-sample-card-label">Part 3 (if applicable)</p>
@@ -838,8 +838,8 @@ const serviceJsonLd = {
           <h2>Hi, I'm Jack.</h2>
           <p>
             I run the analysis personally — not a junior analyst, not an automated tool.
-            I've spent years helping small businesses get found online through three different
-            shifts in how customers search. AI is the biggest one yet.
+            I've spent years helping small businesses get found online through every major
+            shift in how customers search — and the landscape keeps changing.
           </p>
           <p>
             When your report arrives, it reflects what I actually found when I ran your business
@@ -853,7 +853,7 @@ const serviceJsonLd = {
           <div class="ga-about-meta">
             <span class="ga-about-tag">Golden, CO</span>
             <span class="ga-about-tag">Marketing & Operations</span>
-            <span class="ga-about-tag">AI Visibility</span>
+            <span class="ga-about-tag">Local Search</span>
             <span class="ga-about-tag">5.0 on Upwork</span>
           </div>
         </div>
@@ -932,7 +932,7 @@ const serviceJsonLd = {
 
           <div class="ga-field">
             <label for="ga-concern">What's your biggest marketing concern right now? <span style="color: rgba(255,255,255,0.4); font-weight:400;">(optional)</span></label>
-            <textarea id="ga-concern" name="concern" placeholder="e.g. Not showing up when people search for my services on Google or ChatGPT." style="min-height:70px;"></textarea>
+            <textarea id="ga-concern" name="concern" placeholder="e.g. Not showing up when people search for my services on Google. Competitors are ranking above me." style="min-height:70px;"></textarea>
           </div>
 
           <div class="ga-field">
