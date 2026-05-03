@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="ZeisWorks is a one-operator consulting practice serving small businesses. Marketing, operations, and custom-built tools. No agency overhead, no team handoffs.">
-<title>zeisWorks — Small business growth. Handled by one person.</title>
+<meta name="description" content="More patients, bookings, and revenue for med spas, dental practices, event venues, and local service businesses. Free gap analysis — no call required. One person, direct line.">
+<title>zeisWorks — More patients, bookings &amp; revenue for local service businesses</title>
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -1558,6 +1558,165 @@
     .nav-hamburger { display: flex; }
     nav { position: relative; }
   }
+
+  /* =====================
+     WHO I WORK WITH (VERTICALS)
+  ===================== */
+  .verticals {
+    background: var(--cream-dark);
+    border-top: 1px solid #E8E3D8;
+    padding: 5rem 2rem;
+  }
+  .verticals-header {
+    max-width: 680px;
+    margin-bottom: 3rem;
+  }
+  .verticals-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.25rem;
+    margin-bottom: 3rem;
+  }
+  .vertical-card {
+    background: var(--cream);
+    border: 1px solid #E8E3D8;
+    border-radius: var(--radius-lg);
+    padding: 1.75rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    transition: border-color 0.2s, transform 0.2s;
+  }
+  .vertical-card:hover { border-color: var(--terra); transform: translateY(-2px); }
+  .vertical-icon { font-size: 1.5rem; line-height: 1; }
+  .vertical-name {
+    font-family: var(--font-serif);
+    font-size: 1.0625rem;
+    font-weight: 600;
+    color: var(--ink);
+    margin: 0;
+    line-height: 1.3;
+  }
+  .vertical-body {
+    font-size: 0.875rem;
+    color: var(--ink-mid);
+    line-height: 1.7;
+    margin: 0;
+    flex: 1;
+  }
+  .vertical-result {
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    color: var(--forest-mid);
+    background: var(--forest-light);
+    padding: 0.3rem 0.75rem;
+    border-radius: 99px;
+    align-self: flex-start;
+  }
+  .verticals-cta {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+  .verticals-cta-note {
+    font-size: 0.8125rem;
+    color: var(--ink-mid);
+  }
+  @media (max-width: 900px) {
+    .verticals-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 768px) {
+    .verticals-grid { grid-template-columns: 1fr; }
+    .verticals { padding: 3.5rem 1.25rem; }
+  }
+
+  /* =====================
+     PRICING SIGNAL
+  ===================== */
+  .pricing-signal {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+    flex-wrap: wrap;
+    background: var(--cream-dark);
+    border: 1px solid #E8E3D8;
+    border-radius: var(--radius-lg);
+    padding: 1.25rem 1.75rem;
+    margin-top: 1.75rem;
+  }
+  .pricing-signal-label {
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-light);
+    white-space: nowrap;
+  }
+  .pricing-signal-range {
+    font-family: var(--font-serif);
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--ink);
+    letter-spacing: -0.02em;
+    white-space: nowrap;
+  }
+  .pricing-signal-note {
+    font-size: 0.875rem;
+    color: var(--ink-mid);
+    line-height: 1.5;
+  }
+
+  /* =====================
+     OUTCOME PROOF STRIP
+  ===================== */
+  .outcomes-strip {
+    background: var(--forest);
+    padding: 3rem 2rem;
+  }
+  .outcomes-grid {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0;
+    flex-wrap: wrap;
+    max-width: var(--max);
+    margin: 0 auto;
+  }
+  .outcome-item {
+    flex: 1;
+    min-width: 160px;
+    text-align: center;
+    padding: 1rem 1.5rem;
+  }
+  .outcome-number {
+    font-family: var(--font-serif);
+    font-size: clamp(1.5rem, 2.5vw, 2rem);
+    font-weight: 600;
+    color: #fff;
+    letter-spacing: -0.02em;
+    margin-bottom: 0.375rem;
+    line-height: 1.1;
+  }
+  .outcome-label {
+    font-size: 0.8125rem;
+    color: rgba(255,255,255,0.6);
+    line-height: 1.5;
+    max-width: 180px;
+    margin: 0 auto;
+  }
+  .outcome-divider {
+    width: 1px;
+    height: 48px;
+    background: rgba(255,255,255,0.15);
+    flex-shrink: 0;
+  }
+  @media (max-width: 768px) {
+    .outcomes-grid { flex-direction: column; gap: 0.5rem; }
+    .outcome-divider { width: 40px; height: 1px; }
+    .outcome-item { padding: 0.75rem 1rem; }
+  }
 </style>
 </head>
 <body>
@@ -1568,10 +1727,10 @@
     <a href="/" class="nav-logo">zeisWorks<span class="logo-period">.</span></a>
     <ul class="nav-links">
       <li><a href="/#services">Services</a></li>
-      <li><a href="/guides/">Guides</a></li>
+      <li><a href="/guides/" style="position:relative;">Guides</a></li>
       <li><a href="/what-i-use">What I Use</a></li>
       <li><a href="/about">About</a></li>
-      <li><a href="#contact" class="nav-cta"><span class="availability-dot"></span>Free analysis</a></li>
+      <li><a href="/gap-analysis" class="nav-cta"><span class="availability-dot"></span>Free gap analysis</a></li>
     </ul>
     <button class="nav-hamburger" id="navToggle" aria-label="Open menu" aria-expanded="false">
       <span></span><span></span><span></span>
@@ -1584,7 +1743,7 @@
       <li><a href="/what-i-use" class="nav-mobile-link">What I Use</a></li>
       <li><a href="/about" class="nav-mobile-link">About</a></li>
     </ul>
-    <a href="#contact" class="nav-mobile-cta nav-mobile-link">Free analysis →</a>
+    <a href="/gap-analysis" class="nav-mobile-cta nav-mobile-link">Free gap analysis →</a>
   </div>
 </nav>
 
@@ -1592,11 +1751,12 @@
 <section class="hero">
   <div>
     <div id="heroContent">
-      <h1>You built it.<br>I'll help you<br><em>grow it.</em></h1>
-      <p class="hero-sub">Running a small business is hard enough. Figuring out Google, AI, and online marketing on top of it (while actually running your business) is a full-time job by itself. That’s mine. I keep up with what’s working so you don’t have to. Then I run it for you.</p>
+      <p class="hero-eyebrow">Med spas &nbsp;·&nbsp; Dental practices &nbsp;·&nbsp; Event venues &nbsp;·&nbsp; Local service businesses</p>
+      <h1>More patients.<br>More bookings.<br><em>More revenue.</em></h1>
+      <p class="hero-sub">I run the marketing, local SEO, and growth systems that bring high-value clients through your door — so you can stay focused on the work you’re actually good at. One person. Direct line. No agency overhead.</p>
       <div class="hero-actions">
-        <a href="#contact" class="btn-primary">See how your business looks online, free, 5 minutes →</a>
-        <p class="hero-trust">No commitment required &nbsp;·&nbsp; Free first call &nbsp;·&nbsp; Plain English, always</p>
+        <a href="/gap-analysis" class="btn-primary">Get your free gap analysis — no call required →</a>
+        <p class="hero-trust">Takes 5 minutes &nbsp;·&nbsp; I run the analysis &nbsp;·&nbsp; You get a specific plan</p>
         <p class="hero-why-free">Modern small business consulting. Built by one person.</p>
       </div>
     </div>
@@ -1650,9 +1810,10 @@
 <!-- SOCIAL PROOF -->
 <section class="social-proof">
   <div class="social-proof-bar">
-    <span>&#9733;&#9733;&#9733;&#9733;&#9733;&nbsp; 5.0 on Upwork</span>
-    <span>Top Rated &nbsp;&middot;&nbsp; 100% Job Success</span>
-    <span>Trusted by businesses across the US</span>
+    <span><strong>&#9733; 5.0</strong> on Upwork &nbsp;&middot;&nbsp; Top Rated</span>
+    <span>100% Job Success Score</span>
+    <span>Top-3 local rankings delivered in 90 days or less</span>
+    <span>Trusted by service businesses across the US</span>
   </div>
   <div class="social-proof-inner">
     <div class="testimonials-grid">
@@ -1695,6 +1856,33 @@
   </div>
 </section>
 
+<!-- OUTCOME PROOF STRIP -->
+<section class="outcomes-strip">
+  <div class="section-inner">
+    <div class="outcomes-grid">
+      <div class="outcome-item">
+        <div class="outcome-number">90 days</div>
+        <div class="outcome-label">to top-3 local placement in a competitive service area</div>
+      </div>
+      <div class="outcome-divider"></div>
+      <div class="outcome-item">
+        <div class="outcome-number">5.0 &#9733;</div>
+        <div class="outcome-label">Upwork rating &middot; 100% Job Success Score</div>
+      </div>
+      <div class="outcome-divider"></div>
+      <div class="outcome-item">
+        <div class="outcome-number">$0</div>
+        <div class="outcome-label">to find out if I can help &mdash; the gap analysis is always free</div>
+      </div>
+      <div class="outcome-divider"></div>
+      <div class="outcome-item">
+        <div class="outcome-number">1 person</div>
+        <div class="outcome-label">direct line, no handoffs, no account managers</div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- THREE PILLARS -->
 <section class="pillars" id="services">
   <div class="pillars-inner">
@@ -1721,6 +1909,47 @@
         <p class="pillar-body">The tools and processes that make growth repeatable. So it does not depend on you doing more.</p>
         <a href="/custom-tools" class="pillar-link">Learn more →</a>
       </article>
+    </div>
+  </div>
+</section>
+
+<!-- WHO I WORK WITH -->
+<section class="verticals" id="who-i-work-with">
+  <div class="section-inner">
+    <div class="verticals-header">
+      <p class="section-label">Who I work with</p>
+      <h2 class="section-title">Built for service businesses<br>that run on reputation.</h2>
+      <p class="section-body">I specialize in local service businesses where a single new client is worth hundreds — or thousands — of dollars. If your business lives and dies by local search, reviews, and referrals, this is built for you.</p>
+    </div>
+    <div class="verticals-grid">
+      <div class="vertical-card">
+        <div class="vertical-icon">&#128137;</div>
+        <h3 class="vertical-name">Med Spas &amp; Aesthetics</h3>
+        <p class="vertical-body">High-value services, competitive local markets, and clients who research before booking. Local SEO and reputation management move the needle fast.</p>
+        <div class="vertical-result">Top-3 Maps placement in 90 days</div>
+      </div>
+      <div class="vertical-card">
+        <div class="vertical-icon">&#129463;</div>
+        <h3 class="vertical-name">Dental Practices</h3>
+        <p class="vertical-body">New patient acquisition is the lifeblood of a growing practice. I optimize your Google presence so the right patients find you first.</p>
+        <div class="vertical-result">More new patient calls from organic search</div>
+      </div>
+      <div class="vertical-card">
+        <div class="vertical-icon">&#127751;</div>
+        <h3 class="vertical-name">Event Venues</h3>
+        <p class="vertical-body">Weddings, corporate events, and private parties — your clients are searching months in advance. I make sure you’re the first result they find.</p>
+        <div class="vertical-result">More inquiry form submissions</div>
+      </div>
+      <div class="vertical-card">
+        <div class="vertical-icon">&#127968;</div>
+        <h3 class="vertical-name">Home Services</h3>
+        <p class="vertical-body">HVAC, plumbing, landscaping, cleaning — high-frequency, high-competition local markets where showing up in the top 3 is everything.</p>
+        <div class="vertical-result">More calls from Google Maps</div>
+      </div>
+    </div>
+    <div class="verticals-cta">
+      <a href="/gap-analysis" class="btn-primary">See how your business stacks up →</a>
+      <p class="verticals-cta-note">Free analysis. No call required. Specific to your market.</p>
     </div>
   </div>
 </section>
@@ -1791,8 +2020,8 @@
     </div>
 
     <div class="problem-cta">
-      <a href="#contact" class="btn-on-dark">Free analysis →</a>
-      <p class="problem-cta-note">Free. No commitment. A specific plan in plain English.</p>
+      <a href="/gap-analysis" class="btn-on-dark">Get your free gap analysis →</a>
+      <p class="problem-cta-note">Free. No call required. A specific plan in plain English.</p>
     </div>
   </div>
 </section>
@@ -1867,6 +2096,12 @@
     <h2 class="section-title reveal reveal-d1">Simple pricing.<br><em>Zero risk to find out.</em></h2>
     <p class="section-body reveal reveal-d2" style="margin-top:0.5rem;">The first part (figuring out if I can help) costs nothing.</p>
 
+    <div class="pricing-signal reveal reveal-d3">
+      <span class="pricing-signal-label">Typical investment</span>
+      <span class="pricing-signal-range">$700 – $1,800 / month</span>
+      <span class="pricing-signal-note">Flat monthly retainer. No hourly billing. Price comes with the plan.</span>
+    </div>
+
     <div class="pricing-main" style="margin-top:2.5rem;">
       <div class="pricing-main-inner">
         <div class="pricing-rate-col">
@@ -1916,7 +2151,7 @@
         </div>
       </div>
       <div class="hiw-ctas">
-        <a href="#contact" class="btn-hiw-primary reveal reveal-d3">Free analysis →</a>
+        <a href="/gap-analysis" class="btn-hiw-primary reveal reveal-d3">Get your free gap analysis →</a>
         <a href="#contact" class="btn-hiw-ghost reveal reveal-d4">Talk to Jack →</a>
       </div>
     </div>
@@ -2114,6 +2349,7 @@
         <a href="/custom-tools">Custom Tools</a>
         <a href="/stack">Stack</a>
         <a href="/about">About</a>
+        <a href="/gap-analysis">Free Gap Analysis</a>
         <a href="/#contact">Contact</a>
       </div>
     </div>
@@ -2123,9 +2359,9 @@
 
 <!-- STICKY CTA -->
 <div class="sticky-cta" id="stickyCta">
-  <a href="#contact">
+  <a href="/gap-analysis">
     <svg viewBox="0 0 24 24" style="width:16px;height:16px;stroke:#fff;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
-    Tell me what you’re trying to fix
+    Get your free gap analysis
   </a>
 </div>
 
