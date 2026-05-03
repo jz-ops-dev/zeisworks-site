@@ -1,0 +1,169 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="Google Business Profile Optimization | zeisWorks"
+  description="Get your Google Business Profile fully optimized and ranking in the local 3-pack. More calls, more bookings, more walk-ins — from customers already searching for what you do."
+  ogTitle="Google Business Profile Optimization | zeisWorks"
+  ogDescription="Most local businesses are invisible on Google Maps because their Business Profile is incomplete or unoptimized. I fix that — and get you into the top 3 results where 70% of clicks go."
+>
+  <div class="max-w-3xl mx-auto px-6 py-16 space-y-16">
+
+    <!-- Header -->
+    <div>
+      <p class="text-sm font-medium text-orange uppercase tracking-widest mb-3">Local Search</p>
+      <h1 class="font-serif text-4xl font-semibold text-ink leading-tight">
+        Google Business Profile optimization
+      </h1>
+      <p class="mt-4 text-ink-mid text-lg leading-relaxed max-w-xl">
+        Your Google Business Profile is the single highest-leverage asset a local service business has. When it's fully optimized, you show up in the Maps 3-pack — the three results that get 70% of all local clicks. Most businesses aren't there. Here's how to get there.
+      </p>
+      <div class="mt-8 flex flex-wrap gap-3">
+        <a
+          href="/gap-analysis"
+          class="bg-terra text-white text-sm px-5 py-2.5 rounded-lg hover:bg-terra-dark transition-colors font-medium"
+        >
+          Get my free gap analysis →
+        </a>
+        <a
+          href="tel:+17206502447"
+          class="border border-navy text-navy text-sm px-5 py-2.5 rounded-lg hover:bg-navy/5 transition-colors font-medium"
+        >
+          Call (720) 650-2447
+        </a>
+      </div>
+    </div>
+
+    <!-- Why it matters -->
+    <section>
+      <h2 class="font-serif text-2xl font-semibold text-ink mb-4">Why this is the first thing to fix</h2>
+      <div class="space-y-4 text-ink-mid leading-relaxed">
+        <p>
+          When someone searches "med spa near me" or "best dentist in [city]," Google shows three local results before anything else — the Maps 3-pack. Those three spots capture the majority of clicks. Everything below them, including your website, gets a fraction of the traffic.
+        </p>
+        <p>
+          Getting into the 3-pack isn't about luck or spending money on ads. It's about having a complete, consistent, and well-optimized Google Business Profile — and most businesses don't. Incomplete profiles, inconsistent NAP data, missing categories, no review strategy, and zero post activity are all signals Google uses to rank you lower than competitors who've done the work.
+        </p>
+        <p>
+          The good news: this is fixable, and the results are measurable. More calls from the Maps listing, more direction requests, more website clicks — all trackable directly in your GBP dashboard.
+        </p>
+      </div>
+    </section>
+
+    <!-- What's included -->
+    <section>
+      <h2 class="font-serif text-2xl font-semibold text-ink mb-6">What GBP optimization includes</h2>
+      <ul class="space-y-4">
+        {[
+          { title: 'Full profile audit', body: 'I review every field in your profile against Google\'s ranking factors: business name, categories, service areas, hours, attributes, description, and photos. Most profiles have 10–15 fixable gaps.' },
+          { title: 'Category and keyword optimization', body: 'Primary and secondary category selection is one of the biggest ranking levers most businesses ignore. I identify the exact categories your top competitors are using and align yours accordingly.' },
+          { title: 'NAP consistency audit', body: 'Name, Address, Phone number inconsistencies across directories confuse Google and suppress your ranking. I audit and correct your citations across the top 50+ directories.' },
+          { title: 'Photo and content strategy', body: 'Profiles with 10+ photos get significantly more engagement. I set up a photo strategy and optimize your business description with the keywords your customers are actually searching.' },
+          { title: 'Review acquisition system', body: 'Reviews are a direct ranking signal. I set up a simple, repeatable process for requesting reviews from satisfied customers — without violating Google\'s policies.' },
+          { title: 'Google Posts setup', body: 'Regular posts signal to Google that your profile is active and relevant. I set up a posting cadence and template library you can maintain, or I can manage it on retainer.' },
+          { title: 'Ongoing rank tracking', body: 'I set up rank tracking so you can see exactly where you\'re showing up in the local pack across your service area — by keyword and by location.' },
+        ].map(item => (
+          <li class="flex gap-4 items-start">
+            <span class="mt-1.5 w-2 h-2 rounded-full bg-orange shrink-0"></span>
+            <div>
+              <strong class="text-ink font-medium">{item.title}.</strong>{' '}
+              <span class="text-ink-mid">{item.body}</span>
+            </div>
+          </li>
+        ))}
+      </ul>
+    </section>
+
+    <!-- Who it's for -->
+    <section>
+      <h2 class="font-serif text-2xl font-semibold text-ink mb-4">Who this is for</h2>
+      <p class="text-ink-mid leading-relaxed mb-4">
+        GBP optimization is the right starting point for any local service business that depends on customers finding them in their area. It's especially high-leverage for:
+      </p>
+      <div class="grid sm:grid-cols-2 gap-3">
+        {[
+          'Med spas and aesthetic practices',
+          'Dental and orthodontic practices',
+          'Event venues and wedding vendors',
+          'Home services (HVAC, plumbing, roofing)',
+          'Salons, spas, and wellness studios',
+          'Restaurants and food businesses',
+          'Chiropractors and physical therapists',
+          'Any business where "near me" searches matter',
+        ].map(sector => (
+          <div class="rounded-lg border border-cream-dark bg-cream p-4 text-sm text-ink-mid">{sector}</div>
+        ))}
+      </div>
+    </section>
+
+    <!-- Results -->
+    <section class="rounded-xl border border-cream-dark bg-cream-dark p-8">
+      <h2 class="font-serif text-xl font-semibold text-ink mb-6">What results look like</h2>
+      <ul class="space-y-4">
+        {[
+          { label: 'Top-3 local placement', body: 'Most clients see movement in the local pack within 30–60 days of a full optimization. Top-3 placement within 90 days is the target for competitive markets.' },
+          { label: 'More calls from Maps', body: 'GBP tracks calls, direction requests, and website clicks. These numbers go up when the profile is optimized — and they\'re directly attributable to the work.' },
+          { label: 'Outranking competitors who haven\'t done this', body: 'The bar is low. Most businesses in your category have incomplete profiles. A fully optimized profile with consistent citations and an active review strategy will outrank the majority of them.' },
+        ].map(item => (
+          <li class="flex gap-4 items-start">
+            <span class="mt-1 w-2 h-2 rounded-full bg-orange shrink-0"></span>
+            <div>
+              <strong class="text-ink font-medium">{item.label}.</strong>{' '}
+              <span class="text-ink-mid text-sm">{item.body}</span>
+            </div>
+          </li>
+        ))}
+      </ul>
+    </section>
+
+    <!-- Pricing signal -->
+    <section>
+      <h2 class="font-serif text-2xl font-semibold text-ink mb-4">How it's priced</h2>
+      <div class="space-y-3 text-ink-mid leading-relaxed">
+        <p>
+          GBP optimization is available as a one-time project or as part of an ongoing local SEO retainer. One-time setup covers the full audit, optimization, citation cleanup, and review system setup — handed off to you to maintain. Retainer work covers ongoing posts, review management, rank tracking, and monthly reporting.
+        </p>
+        <p>
+          Every engagement starts with the free gap analysis, which shows exactly where your profile stands and what the highest-leverage fixes are. You'll know what you're getting before any money changes hands.
+        </p>
+        <div class="mt-4 inline-flex items-center gap-3 bg-cream-dark border border-cream-dark rounded-lg px-5 py-3">
+          <span class="text-xs font-semibold uppercase tracking-widest text-ink-light">Typical range</span>
+          <span class="font-serif text-2xl font-semibold text-ink">$700 – $1,800 / mo</span>
+          <span class="text-xs text-ink-light">retainer · flat project pricing available</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <div class="rounded-xl border border-terra/20 bg-terra/5 p-8">
+      <p class="text-xs text-terra uppercase tracking-widest mb-2">Free · No call required</p>
+      <h3 class="font-serif text-xl font-semibold text-ink mb-2">Find out where you stand in 12 hours.</h3>
+      <p class="text-sm text-ink-mid mb-6 leading-relaxed">
+        Submit your business info and I'll run a full local search gap analysis — checking your GBP completeness, citation consistency, competitor rankings, and review signals. Written report delivered within 12 hours. No call required to receive it.
+      </p>
+      <div class="flex flex-wrap gap-3">
+        <a
+          href="/gap-analysis"
+          class="inline-block bg-terra text-white text-sm px-5 py-2.5 rounded-lg font-medium hover:bg-terra-dark transition-colors"
+        >
+          Get my free gap analysis →
+        </a>
+        <a
+          href="tel:+17206502447"
+          class="inline-block text-ink-mid text-sm px-5 py-2.5 font-medium hover:text-ink transition-colors"
+        >
+          Or call (720) 650-2447
+        </a>
+      </div>
+    </div>
+
+    <!-- Back -->
+    <p class="text-sm text-ink-light">
+      <a href="/marketing" class="hover:text-ink transition-colors">← Marketing execution</a>
+      &nbsp;·&nbsp;
+      <a href="/" class="hover:text-ink transition-colors">Back to home →</a>
+    </p>
+
+  </div>
+</BaseLayout>

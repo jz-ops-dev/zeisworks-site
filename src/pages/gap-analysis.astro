@@ -8,7 +8,7 @@ const faqItems = [
   },
   {
     q: "Do I have to get on a call?",
-    a: "No. You fill out a short form, and I run the analysis on your behalf — no call required. If the results look worth pursuing, you can choose to talk live or just move forward from the report.",
+    a: "No. You fill out a short form, and I run the analysis on your behalf — no call required. Results land in your inbox within 12 hours. If the results look worth pursuing, you can choose to talk live or just move forward from the report.",
   },
   {
     q: "What do I need to provide?",
@@ -679,7 +679,7 @@ const serviceJsonLd = {
     ══════════════════════════════════════ -->
     <section class="ga-hero" id="top">
       <div class="ga-hero-inner">
-        <p class="ga-eyebrow">Free · No call required · Results in 48 hours</p>
+        <p class="ga-eyebrow">Free · No call required · Results in 12 hours</p>
         <h1 class="ga-h1">
           Find out why your competitors are showing up first —<br class="hidden sm:block" />
           and what it takes to <em>outrank them.</em>
@@ -691,9 +691,9 @@ const serviceJsonLd = {
         </p>
         <div class="ga-cta-group">
           <a href="#request" class="ga-btn-primary">Get my free analysis →</a>
-          <a href="tel:+15550000000" class="ga-btn-phone">
+          <a href="tel:+17206502447" class="ga-btn-phone">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.41 2 2 0 0 1 3.6 1.24h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 9.4a16 16 0 0 0 6.29 6.29l1.76-1.76a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-            Prefer to call? (555) 000-0000
+            Prefer to call? (720) 650-2447
           </a>
         </div>
         <p class="ga-trust-strip">
@@ -727,7 +727,7 @@ const serviceJsonLd = {
           <div class="ga-step">
             <div class="ga-step-num">03</div>
             <h3>You receive the results</h3>
-            <p>Within 48 hours, a written gap analysis lands in your inbox. If there's a clear path to improvement, I'll include a plan with options. You decide what to do next.</p>
+            <p>Within 12 hours, a written gap analysis lands in your inbox. If there's a clear path to improvement, I'll include a plan with options. You decide what to do next.</p>
           </div>
         </div>
         <div class="ga-step-note">
@@ -883,7 +883,7 @@ const serviceJsonLd = {
     ══════════════════════════════════════ -->
     <section class="ga-form-section" id="request">
       <div class="ga-form-inner">
-        <p class="ga-form-label">Free · No call required · Results in 48 hours</p>
+        <p class="ga-form-label">Free · No call required · Results in 12 hours</p>
         <h2 class="ga-form-title">Request your free analysis.</h2>
         <p class="ga-form-body">
           Fill out the form below. I'll run the analysis and send you the results.
@@ -931,21 +931,35 @@ const serviceJsonLd = {
           </div>
 
           <div class="ga-field">
+            <label for="ga-how-found">How are customers currently finding you? <span aria-hidden="true">*</span></label>
+            <select id="ga-how-found" name="how_found" required>
+              <option value="" disabled selected>Select the best answer</option>
+              <option value="word-of-mouth">Mostly word of mouth / referrals</option>
+              <option value="google-search">Google search — but I want more</option>
+              <option value="google-maps">Google Maps / local pack</option>
+              <option value="social-media">Social media</option>
+              <option value="paid-ads">Paid ads (Google, Meta, etc.)</option>
+              <option value="not-sure">I'm not sure where leads come from</option>
+              <option value="not-enough">They're not — that's the problem</option>
+            </select>
+          </div>
+
+          <div class="ga-field">
             <label for="ga-concern">What's your biggest marketing concern right now? <span style="color: rgba(255,255,255,0.4); font-weight:400;">(optional)</span></label>
             <textarea id="ga-concern" name="concern" placeholder="e.g. Not showing up when people search for my services on Google. Competitors are ranking above me." style="min-height:70px;"></textarea>
           </div>
 
           <div class="ga-field">
             <label for="ga-phone">Phone number <span style="color: rgba(255,255,255,0.4); font-weight:400;">(optional — if you'd like me to be able to call)</span></label>
-            <input type="tel" id="ga-phone" name="phone" placeholder="(555) 000-0000" autocomplete="tel" />
+            <input type="tel" id="ga-phone" name="phone" placeholder="(720) 650-2447" autocomplete="tel" />
           </div>
 
           <button type="submit" class="ga-submit-btn">Send my analysis request →</button>
-          <p class="ga-form-disclaimer">Free. No credit card. No obligation. I'll send your results within 48 hours.</p>
+          <p class="ga-form-disclaimer">Free. No credit card. No obligation. I'll send your results within 12 hours.</p>
         </form>
 
-        <p class="ga-phone-alt">Prefer to talk first? Call <a href="tel:+15550000000">(555) 000-0000</a></p>
-        <p class="ga-scarcity">Limited to 8 analyses per week.</p>
+        <p class="ga-phone-alt">Prefer to talk first? Call <a href="tel:+17206502447">(720) 650-2447</a></p>
+        <p class="ga-scarcity">Results delivered within 12 hours.</p>
       </div>
     </section>
 
