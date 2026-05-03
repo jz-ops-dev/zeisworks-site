@@ -920,8 +920,8 @@ const serviceJsonLd = {
               <input type="text" id="ga-business" name="business_name" placeholder="Acme Plumbing Co." required />
             </div>
             <div class="ga-field">
-              <label for="ga-website">Business website <span aria-hidden="true">*</span></label>
-              <input type="url" id="ga-website" name="website" placeholder="https://yourbusiness.com" required autocomplete="url" />
+              <label for="ga-website">Business website <span style="color: rgba(255,255,255,0.4); font-weight:400;">(optional)</span></label>
+              <input type="text" id="ga-website" name="website" placeholder="yourbusiness.com" autocomplete="url" />
             </div>
           </div>
 
@@ -931,9 +931,9 @@ const serviceJsonLd = {
           </div>
 
           <div class="ga-field">
-            <label for="ga-how-found">How are customers currently finding you? <span aria-hidden="true">*</span></label>
-            <select id="ga-how-found" name="how_found" required>
-              <option value="" disabled selected>Select the best answer</option>
+            <label for="ga-how-found">How are customers currently finding you? <span style="color: rgba(255,255,255,0.4); font-weight:400;">(optional)</span></label>
+            <select id="ga-how-found" name="how_found">
+              <option value="" selected>Select the best answer</option>
               <option value="word-of-mouth">Mostly word of mouth / referrals</option>
               <option value="google-search">Google search — but I want more</option>
               <option value="google-maps">Google Maps / local pack</option>
