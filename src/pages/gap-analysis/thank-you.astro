@@ -147,6 +147,12 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
   .btn-ghost:hover { border-color: var(--terra); color: var(--terra); }
 </style>
 
+<script>
+  if (typeof fbq !== 'undefined') {
+    fbq('track', 'Lead');
+  }
+</script>
+
 <section class="ty-section">
   <div class="ty-inner">
     <div class="ty-icon">
