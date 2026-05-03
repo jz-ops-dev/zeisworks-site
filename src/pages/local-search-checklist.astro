@@ -4,9 +4,9 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
 <BaseLayout
   title="Free: Local Search Visibility Checklist | zeisWorks"
-  description="25 things every local service business should have locked down to rank in Google Maps and the local 3-pack. Free download — no email required."
+  description="25 things every local service business should have locked down to rank in Google Maps and the local 3-pack. Enter your email and I'll send it directly to your inbox."
   ogTitle="Free Local Search Checklist | zeisWorks"
-  ogDescription="25 things every local service business should have locked down to rank in Google Maps. Free download."
+  ogDescription="25 things every local service business should have locked down to rank in Google Maps. Enter your email and get it instantly."
 >
 
 <style>
@@ -92,6 +92,35 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     color: rgba(255,255,255,0.4);
     margin-top: 0.875rem;
   }
+  .cl-form { display: flex; flex-direction: column; gap: 0.75rem; }
+  .cl-form input {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border-radius: 0.5rem;
+    border: 1px solid rgba(255,255,255,0.2);
+    background: rgba(255,255,255,0.08);
+    color: #fff;
+    font-family: var(--font-sans);
+    font-size: 0.9375rem;
+    outline: none;
+    box-sizing: border-box;
+  }
+  .cl-form input::placeholder { color: rgba(255,255,255,0.4); }
+  .cl-form input:focus { border-color: rgba(255,255,255,0.5); background: rgba(255,255,255,0.12); }
+  .cl-form button {
+    width: 100%;
+    background: var(--terra);
+    color: #fff;
+    padding: 0.875rem 2rem;
+    border-radius: 0.625rem;
+    font-family: var(--font-sans);
+    font-size: 0.9375rem;
+    font-weight: 500;
+    border: none;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.15s;
+  }
+  .cl-form button:hover { background: var(--terra-dark, #c0622a); transform: translateY(-1px); }
 
   /* Preview section */
   .cl-preview {
@@ -199,20 +228,31 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 <!-- Hero -->
 <section class="cl-hero">
   <div class="cl-hero-inner">
-    <p class="cl-eyebrow">Free resource · No email required</p>
+    <p class="cl-eyebrow">Free resource · Delivered to your inbox</p>
     <h1 class="cl-h1">The Local Search<br><em>Visibility Checklist</em></h1>
     <p class="cl-subhead">
       25 things every local service business should have locked down to rank in Google Maps and the local 3-pack. Most businesses are missing at least 8 of them.
     </p>
 
     <div class="cl-download-box">
-      <p class="cl-download-label">Free PDF download</p>
+      <p class="cl-download-label">Free PDF — sent to your inbox</p>
       <p class="cl-download-title">Local Search Visibility Checklist</p>
-      <p class="cl-download-desc">25-point checklist covering GBP, reviews, citations, website basics, and competitive positioning. Instant download.</p>
-      <a href="/local-search-checklist.pdf" download="zeisworks-local-search-checklist.pdf" class="cl-btn-download">
-        Download the checklist (PDF) →
-      </a>
-      <p class="cl-note">No email required. Just the checklist.</p>
+      <p class="cl-download-desc">25-point checklist covering GBP, reviews, citations, website basics, and competitive positioning. Enter your email and I'll send it directly.</p>
+      <form
+        name="checklist-download"
+        method="POST"
+        action="/local-search-checklist/thank-you"
+        data-netlify="true"
+        netlify-honeypot="bot-field"
+        class="cl-form"
+      >
+        <input type="hidden" name="form-name" value="checklist-download" />
+        <input type="hidden" name="bot-field" />
+        <input type="text" name="name" placeholder="Your first name" required />
+        <input type="email" name="email" placeholder="Your email address" required />
+        <button type="submit">Send me the checklist →</button>
+      </form>
+      <p class="cl-note">No spam. Unsubscribe any time.</p>
     </div>
   </div>
 </section>
@@ -242,9 +282,10 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   </div>
 
   <div style="text-align:center;">
-    <a href="/local-search-checklist.pdf" download="zeisworks-local-search-checklist.pdf" class="cl-btn-analysis">
-      Download the checklist →
+    <a href="#top" class="cl-btn-analysis" onclick="window.scrollTo({top:0,behavior:'smooth'});return false;">
+      Get the checklist →
     </a>
+    <p style="font-size:0.8rem;color:var(--ink-light);margin-top:0.75rem;">Enter your email above and I'll send it directly.</p>
   </div>
 </section>
 
