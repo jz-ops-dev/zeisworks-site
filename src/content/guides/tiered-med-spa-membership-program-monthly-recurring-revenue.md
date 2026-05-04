@@ -3,6 +3,13 @@ title: "How to Build a Tiered Med Spa Membership Program"
 description: "Learn how to build a tiered med spa membership program at $99–$299/month that creates predictable MRR, retains clients, and reduces new-client dependence."
 publishDate: 2026-04-30
 readingTime: "9 min read"
+vertical: "med-spa"
+pillarUrl: "/med-spas/"
+keywords:
+  - "med spa membership program"
+  - "med spa MRR"
+  - "aesthetic practice membership"
+  - "tiered membership med spa"
 faq:
   - question: "What's a reasonable price for a med spa membership in 2026?"
     answer: "Most med spas successfully price entry-tier memberships between $99–$149/month and premium tiers between $249–$399/month. The right number depends on your service costs, local market, and what's included. Don't anchor to competitors who may have priced themselves into poor margins. Price for sustainability first."

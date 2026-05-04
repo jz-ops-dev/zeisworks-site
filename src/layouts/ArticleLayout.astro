@@ -17,6 +17,8 @@ interface Props {
   ogImage?: string;
   faq?: FaqItem[];
   slug: string;
+  pillarUrl?: string;
+  keywords?: string[];
 }
 
 const {
@@ -28,6 +30,8 @@ const {
   ogImage,
   faq,
   slug,
+  pillarUrl,
+  keywords,
 } = Astro.props;
 
 const siteUrl = 'https://zeisworks.com';
@@ -77,6 +81,7 @@ const articleJsonLd = {
     name: 'ZeisWorks',
     url: siteUrl,
   },
+  ...(keywords && keywords.length > 0 ? { keywords: keywords.join(', ') } : {}),
 };
 
 const breadcrumbJsonLd = {
@@ -185,6 +190,13 @@ const faqJsonLd =
           ))}
         </dl>
       </section>
+    )}
+
+    {pillarUrl && (
+      <div class="mt-10 p-5 bg-cream-dark rounded-xl flex items-center justify-between gap-4">
+        <p class="text-sm text-ink-mid">Want the full picture for your industry?</p>
+        <a href={pillarUrl} class="text-sm font-medium text-navy hover:underline shrink-0">See the full guide →</a>
+      </div>
     )}
 
     <CtaSoft />

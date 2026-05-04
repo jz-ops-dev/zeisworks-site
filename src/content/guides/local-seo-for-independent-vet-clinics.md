@@ -3,6 +3,13 @@ title: "Local SEO for Independent Vet Clinics: Outrank Corporate Chains"
 description: "Independent vet clinics are losing local search to corporate chains, not because of care quality, but marketing gaps. Here's how to fix that."
 publishDate: 2026-04-30
 readingTime: "8 min read"
+vertical: "vet-clinics"
+pillarUrl: "/independent-vets/"
+keywords:
+  - "vet clinic local SEO"
+  - "independent vet marketing"
+  - "veterinary practice SEO"
+  - "outrank Banfield local search"
 faq:
   - question: "How long does it take to see results from local SEO for a vet clinic?"
     answer: "Expect 3 to 6 months before you see meaningful movement in local rankings. It depends on how competitive your area is and how consistent your efforts are. Citation cleanup and Google Business Profile optimization tend to show results fastest. Organic content takes longer. Stay consistent. It compounds over time."

@@ -3,6 +3,13 @@ title: "How Med Spas Can Fill Open Injector Slots Without Discounting"
 description: "Open injector slots drain real revenue. Here's how med spas can fill appointments without discounting — using waitlists, reactivation, referrals, and bundles."
 publishDate: 2026-04-30
 readingTime: "9 min read"
+vertical: "med-spa"
+pillarUrl: "/med-spas/"
+keywords:
+  - "fill injector slots"
+  - "med spa appointment scheduling"
+  - "med spa waitlist"
+  - "injector schedule"
 faq:
   - question: "How long should our waitlist sequence run before we move on?"
     answer: "Keep it short. An SMS the moment a slot opens, a follow-up 30 minutes later if no confirmation, and a final message two hours out. After that, offer the slot to the next person. Clients who want last-minute appointments respond fast. If they haven't confirmed after two hours, they're probably not available."

@@ -10,6 +10,9 @@ const guides = defineCollection({
     updatedDate: z.coerce.date().optional(),
     readingTime: z.string(),
     ogImage: z.string().optional(),
+    vertical: z.string().optional(),
+    pillarUrl: z.string().optional(),
+    keywords: z.array(z.string()).optional(),
     faq: z
       .array(
         z.object({

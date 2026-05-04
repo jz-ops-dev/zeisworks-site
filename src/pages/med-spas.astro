@@ -1,0 +1,222 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const faqItems = [
+  {
+    q: "How long does it take to rank a med spa in the Google Maps 3-pack?",
+    a: "In most competitive markets, a fully optimized Google Business Profile combined with consistent citation building and a review acquisition strategy will produce top-3 Maps placement within 60–90 days. Highly competitive metro markets may take 90–120 days.",
+  },
+  {
+    q: "What's the most important ranking factor for med spa local SEO?",
+    a: "Google Business Profile completeness and review velocity are the two highest-leverage signals. A GBP with all service categories filled, consistent NAP data, and a steady stream of recent 5-star reviews will outrank a competitor with a better website but a neglected profile.",
+  },
+  {
+    q: "Should a med spa run Google Ads or Meta Ads for new client acquisition?",
+    a: "Both serve different purposes. Google Ads captures high-intent searches ('Botox near me') from people ready to book. Meta Ads build awareness and retarget website visitors who haven't yet converted. For most med spas, starting with Google Ads for immediate ROI and layering in Meta for retargeting is the right sequence.",
+  },
+  {
+    q: "How do I get more Google reviews for my med spa without violating Google's policies?",
+    a: "Ask at the point of peak satisfaction — right after a successful treatment. A simple text message with a direct review link sent within 2 hours of the appointment converts at 3–5x the rate of a follow-up email. Never offer incentives for reviews, as this violates Google's policies and can result in listing suspension.",
+  },
+  {
+    q: "What does a Marketing Gap Analysis include for a med spa?",
+    a: "The analysis covers your Google Business Profile completeness score, local search rankings for your core services (Botox, filler, laser, etc.) benchmarked against your top 3–5 competitors, citation consistency across key directories, review velocity compared to competitors, and a prioritized list of specific fixes with estimated impact.",
+  },
+];
+
+const faqJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqItems.map(({ q, a }) => ({
+    '@type': 'Question',
+    name: q,
+    acceptedAnswer: { '@type': 'Answer', text: a },
+  })),
+};
+
+const serviceJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  name: 'Med Spa Marketing & Local SEO',
+  provider: {
+    '@type': 'ProfessionalService',
+    name: 'ZeisWorks',
+    url: 'https://zeisworks.com',
+  },
+  description: 'Local SEO, Google Business Profile optimization, paid ads management, and reputation management for med spas and aesthetic practices.',
+  areaServed: { '@type': 'Country', name: 'United States' },
+  serviceType: 'Marketing Consulting',
+};
+---
+
+<BaseLayout
+  title="Med Spa Marketing & Local SEO"
+  description="Get your med spa into the Google Maps 3-pack and convert more high-value clients. Local SEO, GBP optimization, paid ads, and reputation management built specifically for aesthetic practices."
+  ogTitle="Med Spa Marketing & Local SEO | zeisWorks"
+  ogDescription="Top-3 local rankings, more Botox and filler bookings, and a review engine that runs itself. Built for independent med spas competing in crowded local markets."
+  canonicalUrl="https://zeisworks.com/med-spas/"
+>
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify(faqJsonLd)} />
+    <script type="application/ld+json" set:html={JSON.stringify(serviceJsonLd)} />
+  </Fragment>
+
+  <div class="max-w-3xl mx-auto px-6 py-16 space-y-20">
+
+    <!-- Header -->
+    <div>
+      <nav class="text-sm text-ink-mid mb-8" aria-label="Breadcrumb">
+        <ol class="flex items-center gap-2 flex-wrap">
+          <li><a href="/" class="hover:text-ink transition-colors">Home</a></li>
+          <li aria-hidden="true">/</li>
+          <li class="text-ink">Med Spas</li>
+        </ol>
+      </nav>
+      <p class="text-sm font-medium text-orange uppercase tracking-widest mb-3">Med Spas & Aesthetics</p>
+      <h1 class="font-serif text-4xl sm:text-5xl font-semibold text-ink leading-tight mb-6">
+        More bookings.<br class="hidden sm:block" /> More high-value clients.<br class="hidden sm:block" /> Less chasing.
+      </h1>
+      <p class="text-ink-mid text-lg leading-relaxed max-w-xl mb-8">
+        Your med spa's growth depends on showing up when someone searches "Botox near me" or "best med spa in [your city]." I build the local search presence, review engine, and conversion systems that make that happen — without agency overhead or a 12-month contract.
+      </p>
+      <div class="flex flex-wrap gap-3">
+        <a href="/gap-analysis" class="bg-navy text-cream text-sm px-5 py-2.5 rounded-lg hover:bg-navy/90 transition-colors font-medium">
+          Get a free Gap Analysis →
+        </a>
+        <a href="/guides/tiered-med-spa-membership-program-monthly-recurring-revenue/" class="border border-ink-light text-ink-mid text-sm px-5 py-2.5 rounded-lg hover:border-navy hover:text-navy transition-colors font-medium">
+          Read: Med Spa Membership Guide
+        </a>
+      </div>
+    </div>
+
+    <!-- Outcome strip -->
+    <div class="grid grid-cols-2 sm:grid-cols-4 gap-6 py-8 border-y border-cream-dark">
+      {[
+        { stat: '90 days', label: 'to top-3 Maps placement in competitive markets' },
+        { stat: '5.0 ★', label: 'Upwork rating · 100% Job Success Score' },
+        { stat: '$0', label: 'to find out if I can help — gap analysis is free' },
+        { stat: '1 person', label: 'direct line, no handoffs, no account managers' },
+      ].map(({ stat, label }) => (
+        <div>
+          <div class="font-serif text-2xl font-semibold text-ink mb-1">{stat}</div>
+          <div class="text-xs text-ink-mid leading-snug">{label}</div>
+        </div>
+      ))}
+    </div>
+
+    <!-- The problem -->
+    <section>
+      <p class="text-sm font-medium text-orange uppercase tracking-widest mb-3">The problem</p>
+      <h2 class="font-serif text-3xl font-semibold text-ink mb-5">Most med spas are invisible where it counts.</h2>
+      <div class="space-y-4 text-ink-mid leading-relaxed">
+        <p>
+          A potential client searches "lip filler [your city]" on Google. Three med spas appear in the Maps pack. Yours isn't one of them. She books with a competitor — not because they're better, but because they showed up and you didn't.
+        </p>
+        <p>
+          This happens because local search rankings aren't determined by how good your services are. They're determined by how well your Google Business Profile is optimized, how many recent reviews you have, how consistently your business information appears across the web, and how well your website signals relevance to Google's local algorithm.
+        </p>
+        <p>
+          Most med spas have gaps in all four areas. The good news: these gaps are fixable, and the fixes produce results quickly.
+        </p>
+      </div>
+    </section>
+
+    <!-- What's included -->
+    <section>
+      <p class="text-sm font-medium text-orange uppercase tracking-widest mb-3">What's included</p>
+      <h2 class="font-serif text-3xl font-semibold text-ink mb-8">Everything your med spa needs to dominate local search.</h2>
+      <div class="space-y-6">
+        {[
+          {
+            title: 'Google Business Profile Optimization',
+            body: 'A fully optimized GBP is the single highest-leverage action for local search visibility. I audit and rebuild your profile from the ground up — service categories, photos, Q&A, posts, and the specific fields that Google uses to rank you in the Maps pack.',
+          },
+          {
+            title: 'Review Acquisition System',
+            body: 'Review velocity (how often you get new reviews) is a top-3 local ranking signal. I build a simple, automated system that asks clients for a review at the right moment — right after a successful treatment — and routes them directly to your Google profile. No incentives, no policy violations.',
+          },
+          {
+            title: 'Local Citation Building',
+            body: 'Consistent NAP (Name, Address, Phone) data across 50+ directories tells Google your business is legitimate and well-established. I audit your existing citations, fix inconsistencies, and build the missing ones that your top competitors already have.',
+          },
+          {
+            title: 'On-Page Local SEO',
+            body: 'Your website needs to signal relevance for the specific services you offer in your specific market. I optimize your service pages, add location-specific content, and implement the technical markup (schema, structured data) that helps Google understand what you do and where you do it.',
+          },
+          {
+            title: 'Paid Ads Management (Meta & Google)',
+            body: 'Once your organic presence is solid, paid ads amplify it. I manage Meta and Google campaigns scoped to your budget — targeting people actively searching for your services and retargeting website visitors who didn\'t convert.',
+          },
+          {
+            title: 'Conversion Rate Optimization',
+            body: 'Getting found is step one. Converting that traffic into booked appointments is step two. I audit your booking flow, contact forms, and landing pages to remove friction and increase the percentage of visitors who actually reach out.',
+          },
+        ].map(({ title, body }) => (
+          <div class="flex gap-4 items-start">
+            <span class="mt-2 w-2 h-2 rounded-full bg-orange shrink-0"></span>
+            <div>
+              <h3 class="font-semibold text-ink mb-1">{title}</h3>
+              <p class="text-ink-mid text-sm leading-relaxed">{body}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- Who this is for -->
+    <section class="bg-cream-dark rounded-2xl p-8">
+      <p class="text-sm font-medium text-orange uppercase tracking-widest mb-3">Who this is for</p>
+      <h2 class="font-serif text-2xl font-semibold text-ink mb-5">Built for independent med spas that run on reputation.</h2>
+      <div class="space-y-3 text-ink-mid text-sm leading-relaxed">
+        <p>This is the right fit if you're an independent or small-group aesthetic practice — Botox, filler, laser, body contouring, or a full-service med spa — competing in a local market where a single new client is worth $500–$5,000+ over their lifetime.</p>
+        <p>You don't need a marketing department. You need someone who knows local search inside and out, can execute without hand-holding, and will tell you straight what's working and what isn't.</p>
+        <p>If you're a large multi-location chain or a franchise, this probably isn't the right fit. I work best with owner-operators who want a direct line to the person doing the work.</p>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section>
+      <p class="text-sm font-medium text-orange uppercase tracking-widest mb-3">Common questions</p>
+      <h2 class="font-serif text-3xl font-semibold text-ink mb-8">What med spa owners ask before getting started.</h2>
+      <div class="space-y-6">
+        {faqItems.map(({ q, a }) => (
+          <div class="border-b border-cream-dark pb-6">
+            <h3 class="font-semibold text-ink mb-2">{q}</h3>
+            <p class="text-ink-mid text-sm leading-relaxed">{a}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- Related guides -->
+    <section>
+      <p class="text-sm font-medium text-orange uppercase tracking-widest mb-3">Related guides</p>
+      <h2 class="font-serif text-2xl font-semibold text-ink mb-6">Free resources for med spa owners.</h2>
+      <div class="grid sm:grid-cols-2 gap-4">
+        <a href="/guides/tiered-med-spa-membership-program-monthly-recurring-revenue/" class="block p-5 bg-cream-dark rounded-xl hover:bg-cream border border-transparent hover:border-cream-dark transition-all">
+          <p class="text-xs font-semibold uppercase tracking-widest text-ink-light mb-2">Guide</p>
+          <h3 class="font-serif font-semibold text-ink leading-snug">How to Build a Tiered Med Spa Membership Program</h3>
+          <p class="text-ink-mid text-sm mt-2">Create predictable MRR at $99–$299/month and reduce new-client dependence.</p>
+        </a>
+        <a href="/guides/how-to-fill-injector-slots-without-discounting/" class="block p-5 bg-cream-dark rounded-xl hover:bg-cream border border-transparent hover:border-cream-dark transition-all">
+          <p class="text-xs font-semibold uppercase tracking-widest text-ink-light mb-2">Guide</p>
+          <h3 class="font-serif font-semibold text-ink leading-snug">How to Fill Injector Slots Without Discounting</h3>
+          <p class="text-ink-mid text-sm mt-2">Keep your schedule full without training clients to wait for a deal.</p>
+        </a>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="bg-navy text-cream rounded-2xl p-10 text-center">
+      <h2 class="font-serif text-3xl font-semibold mb-4">See exactly where your med spa is losing clients to competitors.</h2>
+      <p class="text-cream/75 mb-8 max-w-lg mx-auto leading-relaxed">
+        The free Gap Analysis shows how your local search presence compares to your top 3–5 competitors — with specific fixes and priorities. No call required. Results in your inbox within 12 hours.
+      </p>
+      <a href="/gap-analysis" class="inline-block bg-white text-ink font-medium px-8 py-3 rounded-lg hover:bg-cream transition-colors">
+        Get your free Gap Analysis →
+      </a>
+      <p class="text-cream/50 text-xs mt-4">Free. No call required. No obligation.</p>
+    </section>
+
+  </div>
+</BaseLayout>

@@ -3,6 +3,13 @@ title: "Lead Nurturing for Home Remodelers: How to Close the 3-6 Month Gap"
 description: "Learn how to nurture remodeling leads over a 3-6 month sales cycle using email sequences, CRM automation, GBP content, and schema markup that keeps you top-of-mind until they sign."
 publishDate: 2026-04-30
 readingTime: "9 min read"
+vertical: "home-services"
+pillarUrl: "/home-services/"
+keywords:
+  - "home remodeler lead nurturing"
+  - "remodeling CRM"
+  - "home services lead follow-up"
+  - "contractor lead conversion"
 faq:
   - question: "How long should I nurture a remodeling lead before giving up?"
     answer: "Nurture for at least six months before moving a lead to inactive. Kitchen, bathroom, and roofing projects routinely take that long from first inquiry to signed contract. Dropping contact at 30 days means you're quitting right when most homeowners are still deciding. Keep monthly touchpoints running until they book with you or explicitly tell you they went elsewhere."

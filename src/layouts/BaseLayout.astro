@@ -22,6 +22,47 @@ const canonical = canonicalUrl ?? new URL(Astro.url.pathname, siteUrl).href;
 const resolvedOgImage = ogImage
   ? new URL(ogImage, siteUrl).href
   : undefined;
+
+const localBusinessJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'ProfessionalService',
+  name: 'ZeisWorks',
+  url: siteUrl,
+  logo: `${siteUrl}/favicon.svg`,
+  description: 'Modern small business growth consulting — local SEO, paid ads, operations, and custom tools for service businesses.',
+  telephone: '+17206502447',
+  email: 'jack@zeisworks.com',
+  founder: {
+    '@type': 'Person',
+    name: 'Jack Zeis',
+    jobTitle: 'Small Business Growth Consultant',
+    url: siteUrl,
+  },
+  address: {
+    '@type': 'PostalAddress',
+    addressLocality: 'Golden',
+    addressRegion: 'CO',
+    addressCountry: 'US',
+  },
+  areaServed: {
+    '@type': 'Country',
+    name: 'United States',
+  },
+  sameAs: [
+    'https://www.upwork.com',
+  ],
+  hasOfferCatalog: {
+    '@type': 'OfferCatalog',
+    name: 'ZeisWorks Services',
+    itemListElement: [
+      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Local SEO & Google Business Profile Optimization' } },
+      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Paid Ads Management (Meta & Google)' } },
+      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Marketing Gap Analysis (Free)' } },
+      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Business Operations & Systems' } },
+      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Custom Tools & Automation' } },
+    ],
+  },
+};
 ---
 
 <!doctype html>
@@ -36,8 +77,15 @@ const resolvedOgImage = ogImage
     <meta property="og:type" content="website" />
     <meta property="og:url" content={canonical} />
     {resolvedOgImage && <meta property="og:image" content={resolvedOgImage} />}
+    <meta property="og:site_name" content="zeisWorks" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={ogTitle ?? title} />
+    <meta name="twitter:description" content={ogDescription ?? description} />
+    {resolvedOgImage && <meta name="twitter:image" content={resolvedOgImage} />}
 
     <link rel="canonical" href={canonical} />
+    <link rel="sitemap" type="application/xml" href="/sitemap-index.xml" />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -50,6 +98,7 @@ const resolvedOgImage = ogImage
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="icon" type="image/png" href="/favicon.png" />
 
+    <script type="application/ld+json" set:html={JSON.stringify(localBusinessJsonLd)} />
     <slot name="head" />
 
     <!-- Meta Pixel Base Code -->

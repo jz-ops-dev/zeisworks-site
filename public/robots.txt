@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+
+# Block thank-you pages from indexing
+Disallow: /gap-analysis/thank-you
+Disallow: /local-search-checklist/thank-you
+
+Sitemap: https://zeisworks.com/sitemap-index.xml
