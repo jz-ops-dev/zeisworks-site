@@ -98,4 +98,4 @@ I work directly with independent clinics on local SEO, no agency layers, no reta
 
 ---
 
-Jack Zeis runs ZeisWorks, a modern growth practice for independent service businesses and owner-operated companies. Based in Golden, Colorado. Find him on [LinkedIn](https://www.linkedin.com/in/jackzeis) or at [zeisworks.com](https://zeisworks.com).
+Jack Zeis runs ZeisWorks, a modern growth practice for independent service businesses and owner-operated companies. Based in Golden, Colorado. Find him at [zeisworks.com](https://zeisworks.com).

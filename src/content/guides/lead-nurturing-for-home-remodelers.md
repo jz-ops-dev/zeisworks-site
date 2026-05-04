@@ -170,4 +170,4 @@ If you're ready to stop losing slow-moving leads to contractors who are no more 
 
 ---
 
-Jack Zeis runs ZeisWorks, a modern growth practice for independent service businesses and owner-operated companies. Based in Golden, Colorado. Find him on [LinkedIn](https://www.linkedin.com/in/jackzeis) or at [zeisworks.com](https://zeisworks.com).
+Jack Zeis runs ZeisWorks, a modern growth practice for independent service businesses and owner-operated companies. Based in Golden, Colorado. Find him at [zeisworks.com](https://zeisworks.com).
