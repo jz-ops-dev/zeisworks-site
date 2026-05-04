@@ -20,18 +20,20 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         Marketing that runs and learns. Local SEO, paid ads, web optimization, and the systems that bring in the right leads. I handle the campaigns. You handle the calls.
       </p>
       <div class="mt-8 flex flex-wrap gap-3">
-        <a
-          href="/#contact"
-          class="bg-navy text-cream text-sm px-5 py-2.5 rounded-lg hover:bg-navy/90 transition-colors font-medium"
+        <button
+          type="button"
+          data-modal="gap-analysis"
+          class="bg-navy text-cream text-sm px-5 py-2.5 rounded-lg hover:bg-navy/90 transition-colors font-medium cursor-pointer border-0"
         >
           Free analysis
-        </a>
-        <a
-          href="/#contact"
-          class="border border-navy text-navy text-sm px-5 py-2.5 rounded-lg hover:bg-navy/5 transition-colors font-medium"
+        </button>
+        <button
+          type="button"
+          data-modal="gap-analysis"
+          class="border border-navy text-navy text-sm px-5 py-2.5 rounded-lg hover:bg-navy/5 transition-colors font-medium cursor-pointer"
         >
           Talk through your situation →
-        </a>
+        </button>
       </div>
     </div>
 
@@ -91,18 +93,20 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         The free 5-minute marketing analysis shows where leads are coming from, what's missing, and what's worth fixing. No commitment, no sales call.
       </p>
       <div class="flex flex-wrap gap-3">
-        <a
-          href="/#contact"
-          class="inline-block bg-navy text-cream text-sm px-5 py-2.5 rounded-lg font-medium hover:bg-navy/90 transition-colors"
+        <button
+          type="button"
+          data-modal="gap-analysis"
+          class="inline-block bg-navy text-cream text-sm px-5 py-2.5 rounded-lg font-medium hover:bg-navy/90 transition-colors cursor-pointer border-0"
         >
           Free analysis
-        </a>
-        <a
-          href="/#contact"
-          class="inline-block text-navy text-sm px-5 py-2.5 font-medium hover:underline"
+        </button>
+        <button
+          type="button"
+          data-modal="gap-analysis"
+          class="inline-block text-navy text-sm px-5 py-2.5 font-medium hover:underline cursor-pointer border-0 bg-transparent"
         >
           Or tell me what you're trying to fix →
-        </a>
+        </button>
       </div>
     </div>
 

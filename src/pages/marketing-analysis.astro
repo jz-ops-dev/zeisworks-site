@@ -81,12 +81,13 @@ const faqSchema = {
         One operator, accountable end to end. No account managers, no handoffs, no team that changes every six months.
       </p>
       <div class="mt-8 flex flex-wrap items-center gap-4">
-        <a
-          href="/#contact"
-          class="bg-navy text-cream text-sm px-5 py-2.5 rounded-lg hover:bg-navy/90 transition-colors font-medium"
+        <button
+          type="button"
+          data-modal="gap-analysis"
+          class="bg-navy text-cream text-sm px-5 py-2.5 rounded-lg hover:bg-navy/90 transition-colors font-medium cursor-pointer border-0"
         >
           Free analysis
-        </a>
+        </button>
         <button
           type="button"
           data-modal="contact"
@@ -250,12 +251,13 @@ const faqSchema = {
           </li>
         ))}
       </ul>
-      <a
-        href="/#contact"
-        class="inline-block bg-navy text-cream text-sm px-5 py-2.5 rounded-lg font-medium hover:bg-navy/90 transition-colors"
+      <button
+        type="button"
+        data-modal="gap-analysis"
+        class="inline-block bg-navy text-cream text-sm px-5 py-2.5 rounded-lg font-medium hover:bg-navy/90 transition-colors cursor-pointer border-0"
       >
         Free analysis
-      </a>
+      </button>
     </section>
 
     <!-- Author bio -->
