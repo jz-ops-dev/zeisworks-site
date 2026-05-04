@@ -1,0 +1,245 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="You Downloaded the Checklist. Here's the Next Step."
+  description="Knowing what to fix is only half the battle. Let me run the full analysis for you. 5 minutes to submit, results in 12 hours. Free."
+  ogTitle="Still Thinking? Let Me Run It For You. | zeisWorks"
+  ogDescription="You already know the checklist. Let me run the full competitor gap analysis on your business. Free. 5 minutes to submit, results in 12 hours."
+  ogImage="/og-still-thinking.png"
+>
+
+<style>
+  .st-page { font-size: 1.0625rem; line-height: 1.75; }
+
+  /* ── Hero ── */
+  .st-hero {
+    background: var(--cream-dark);
+    padding: 5rem 1.5rem 4.5rem;
+    border-bottom: 1px solid #e8e3d8;
+    text-align: center;
+  }
+  .st-hero-inner { max-width: 660px; margin: 0 auto; }
+  .st-eyebrow {
+    font-size: 0.75rem; font-weight: 600; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--orange); margin-bottom: 1.25rem;
+  }
+  .st-h1 {
+    font-family: var(--font-serif);
+    font-size: clamp(2rem, 4.5vw, 2.875rem);
+    font-weight: 700; line-height: 1.2; letter-spacing: -0.02em;
+    color: var(--ink); margin-bottom: 1.25rem;
+  }
+  .st-h1 em { color: var(--orange); font-style: italic; }
+  .st-subhead {
+    font-size: 1.0625rem; color: var(--ink-mid);
+    max-width: 540px; margin: 0 auto 2.5rem; line-height: 1.75;
+  }
+
+  /* ── Form card ── */
+  .st-form-card {
+    background: #fff;
+    border: 1px solid #e8e3d8;
+    border-radius: 1.25rem;
+    padding: 2.25rem 2rem;
+    max-width: 480px;
+    margin: 0 auto;
+    text-align: left;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.07);
+  }
+  .st-form-label { font-size: 0.7rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-light); margin-bottom: 1rem; }
+  .st-form-title { font-family: var(--font-serif); font-size: 1.25rem; font-weight: 600; color: var(--ink); margin-bottom: 0.375rem; }
+  .st-form-desc { font-size: 0.875rem; color: var(--ink-mid); margin-bottom: 1.5rem; line-height: 1.6; }
+  .st-field { margin-bottom: 1rem; }
+  .st-field label { display: block; font-size: 0.8125rem; font-weight: 500; color: var(--ink); margin-bottom: 0.375rem; }
+  .st-field input,
+  .st-field textarea {
+    width: 100%; padding: 0.625rem 0.875rem;
+    border: 1.5px solid #E0DBD0; border-radius: 0.5rem;
+    font-family: var(--font-sans); font-size: 0.9375rem; color: var(--ink);
+    background: var(--cream); transition: border-color 0.2s; box-sizing: border-box;
+  }
+  .st-field input:focus, .st-field textarea:focus { outline: none; border-color: var(--navy); }
+  .st-field textarea { resize: vertical; min-height: 80px; }
+  .st-btn-submit {
+    width: 100%; background: var(--orange); color: #fff;
+    padding: 0.875rem 1.5rem; border-radius: 0.625rem;
+    font-family: var(--font-sans); font-size: 1rem; font-weight: 500;
+    border: none; cursor: pointer;
+    transition: background 0.2s, transform 0.15s; margin-top: 0.5rem;
+  }
+  .st-btn-submit:hover { background: #a8481a; transform: translateY(-1px); }
+  .st-form-trust { font-size: 0.75rem; color: var(--ink-light); text-align: center; margin-top: 0.875rem; line-height: 1.5; }
+  .st-success { display: none; text-align: center; padding: 1.5rem 0; }
+  .st-success-icon {
+    width: 56px; height: 56px; background: var(--forest-light); border-radius: 50%;
+    display: flex; align-items: center; justify-content: center; margin: 0 auto 1.25rem;
+  }
+  .st-success-icon svg { width: 24px; height: 24px; stroke: var(--forest-mid); fill: none; stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; }
+  .st-success h2 { font-family: var(--font-serif); font-size: 1.375rem; font-weight: 600; color: var(--ink); margin-bottom: 0.5rem; }
+  .st-success p { font-size: 0.9rem; color: var(--ink-mid); line-height: 1.7; }
+
+  /* ── Objection busters ── */
+  .st-objections {
+    background: var(--cream);
+    padding: 4.5rem 1.5rem;
+    border-bottom: 1px solid #e8e3d8;
+  }
+  .st-objections-inner { max-width: 680px; margin: 0 auto; }
+  .st-objections-label { font-size: 0.75rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--orange); margin-bottom: 0.75rem; }
+  .st-objections-title { font-family: var(--font-serif); font-size: clamp(1.5rem, 3vw, 2rem); font-weight: 700; color: var(--ink); line-height: 1.25; letter-spacing: -0.02em; margin-bottom: 2rem; }
+  .st-obj-list { display: grid; gap: 1rem; }
+  .st-obj {
+    background: #fff; border: 1px solid #e8e3d8; border-radius: 0.875rem; padding: 1.25rem 1.5rem;
+    display: flex; gap: 1rem; align-items: flex-start;
+  }
+  .st-obj-q { font-size: 0.9375rem; font-weight: 600; color: var(--ink); margin-bottom: 0.375rem; }
+  .st-obj-a { font-size: 0.875rem; color: var(--ink-mid); line-height: 1.65; }
+  .st-obj-icon { font-size: 1.25rem; line-height: 1; margin-top: 0.125rem; flex-shrink: 0; }
+</style>
+
+<div class="st-page">
+
+  <!-- ── HERO ── -->
+  <section class="st-hero">
+    <div class="st-hero-inner">
+      <p class="st-eyebrow">Free · 5 minutes to submit · Results in 12 hours</p>
+      <h1 class="st-h1">You downloaded the checklist.<br><em>Here's the next step.</em></h1>
+      <p class="st-subhead">
+        Knowing what to look for is only half the battle. Let me run the full competitor analysis
+        on your specific business — and tell you exactly where the gaps are and what to fix first.
+      </p>
+
+      <!-- Form card -->
+      <div class="st-form-card">
+        <p class="st-form-label">Free gap analysis</p>
+        <p class="st-form-title">Submit your business. I'll do the rest.</p>
+        <p class="st-form-desc">5 minutes to fill out. Written results in your inbox within 12 hours.</p>
+
+        <!-- Netlify hidden detection form -->
+        <form name="campaign-retargeting" netlify netlify-honeypot="bot-field" hidden>
+          <input type="text" name="name" />
+          <input type="email" name="email" />
+          <input type="text" name="business_name" />
+          <input type="url" name="website" />
+          <textarea name="description"></textarea>
+        </form>
+
+        <!-- Visible form -->
+        <form
+          id="st-form"
+          name="campaign-retargeting"
+          method="POST"
+          data-netlify="true"
+          action="/campaign/competitor-gap/thank-you"
+        >
+          <input type="hidden" name="form-name" value="campaign-retargeting" />
+          <p style="display:none"><label>Don't fill this out: <input name="bot-field" /></label></p>
+          <input type="hidden" name="how_found" value="campaign-retargeting" />
+
+          <div class="st-field">
+            <label for="st-name">Your name</label>
+            <input type="text" id="st-name" name="name" placeholder="Jane Smith" required />
+          </div>
+          <div class="st-field">
+            <label for="st-email">Email address</label>
+            <input type="email" id="st-email" name="email" placeholder="jane@yourbusiness.com" required />
+          </div>
+          <div class="st-field">
+            <label for="st-biz">Business name</label>
+            <input type="text" id="st-biz" name="business_name" placeholder="Acme Plumbing Co." required />
+          </div>
+          <div class="st-field">
+            <label for="st-url">Website URL</label>
+            <input type="url" id="st-url" name="website" placeholder="https://yourbusiness.com" required />
+          </div>
+          <div class="st-field">
+            <label for="st-desc">What do you do and who are your customers?</label>
+            <textarea id="st-desc" name="description" placeholder="e.g. HVAC repair for homeowners in Denver, CO" required></textarea>
+          </div>
+
+          <button type="submit" class="st-btn-submit">Get my free analysis →</button>
+          <p class="st-form-trust">No sales call. No obligation. Just the analysis.</p>
+        </form>
+
+        <div class="st-success" id="st-success">
+          <div class="st-success-icon">
+            <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+          </div>
+          <h2>You're all set.</h2>
+          <p>Your analysis request is in. Results in your inbox within 12 hours.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── OBJECTION BUSTERS ── -->
+  <section class="st-objections">
+    <div class="st-objections-inner">
+      <p class="st-objections-label">Common questions</p>
+      <h2 class="st-objections-title">Still on the fence? Fair.</h2>
+      <div class="st-obj-list">
+        <div class="st-obj">
+          <span class="st-obj-icon">💰</span>
+          <div>
+            <p class="st-obj-q">Is this actually free?</p>
+            <p class="st-obj-a">Yes. No credit card, no trial, no catch. The analysis is free because it's how I demonstrate what I do. Most of what I find, you can act on yourself.</p>
+          </div>
+        </div>
+        <div class="st-obj">
+          <span class="st-obj-icon">📞</span>
+          <div>
+            <p class="st-obj-q">Do I have to get on a call?</p>
+            <p class="st-obj-a">No. You fill out the form, I run the analysis, results land in your inbox. If you want to talk after seeing the report, that option is there — but it's never required.</p>
+          </div>
+        </div>
+        <div class="st-obj">
+          <span class="st-obj-icon">⏱️</span>
+          <div>
+            <p class="st-obj-q">How long does it take?</p>
+            <p class="st-obj-a">The form takes about 5 minutes. The analysis takes me up to 12 hours. You don't need to do anything in between.</p>
+          </div>
+        </div>
+        <div class="st-obj">
+          <span class="st-obj-icon">📋</span>
+          <div>
+            <p class="st-obj-q">What's the difference between this and the checklist?</p>
+            <p class="st-obj-a">The checklist tells you what to look for in general. The gap analysis tells you specifically where your business stands, how you compare to your actual competitors, and what to fix first. It's personalized to your business.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<script>
+  const form = document.getElementById('st-form') as HTMLFormElement | null;
+  const success = document.getElementById('st-success');
+  if (form && success) {
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const data = new URLSearchParams(new FormData(form) as any);
+      try {
+        await fetch('/', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+          body: data.toString(),
+        });
+        form.style.display = 'none';
+        success.style.display = 'block';
+        if (typeof (window as any).fbq !== 'undefined') {
+          (window as any).fbq('track', 'Lead', { content_name: 'campaign-retargeting' });
+        }
+        setTimeout(() => {
+          window.location.href = '/campaign/competitor-gap/thank-you';
+        }, 1200);
+      } catch {
+        form.submit();
+      }
+    });
+  }
+</script>
+
+</BaseLayout>

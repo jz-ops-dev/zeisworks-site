@@ -1,0 +1,343 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="The 25 Things Every Local Business Needs to Rank on Google"
+  description="Are you missing the basics? Download the 25-point checklist used to audit local service businesses. Free — no email required."
+  ogTitle="Free: 25-Point Local Search Checklist | zeisWorks"
+  ogDescription="Download the 25-point checklist used to audit local service businesses. Free. No email required."
+  ogImage="/og-local-visibility.png"
+>
+
+<style>
+  /* ── Hero ── */
+  .lv-hero {
+    background: var(--forest);
+    padding: 5rem 1.5rem 4.5rem;
+    text-align: center;
+  }
+  .lv-hero-inner { max-width: 660px; margin: 0 auto; }
+  .lv-eyebrow {
+    font-size: 0.75rem; font-weight: 600; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--forest-light); margin-bottom: 1.25rem;
+  }
+  .lv-h1 {
+    font-family: var(--font-serif);
+    font-size: clamp(2rem, 4.5vw, 3rem);
+    font-weight: 700; line-height: 1.2; letter-spacing: -0.02em;
+    color: #fff; margin-bottom: 1.25rem;
+  }
+  .lv-h1 em { color: #a8d5c2; font-style: italic; }
+  .lv-subhead {
+    font-size: 1.0625rem; color: rgba(255,255,255,0.72);
+    max-width: 540px; margin: 0 auto 2.5rem; line-height: 1.75;
+  }
+
+  /* ── Download box ── */
+  .lv-download-box {
+    background: rgba(255,255,255,0.07);
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 1.25rem;
+    padding: 2.25rem 2rem;
+    max-width: 460px;
+    margin: 0 auto;
+  }
+  .lv-dl-label {
+    font-size: 0.7rem; font-weight: 600; letter-spacing: 0.1em;
+    text-transform: uppercase; color: rgba(255,255,255,0.45); margin-bottom: 1rem;
+  }
+  .lv-dl-title {
+    font-family: var(--font-serif); font-size: 1.25rem; font-weight: 600;
+    color: #fff; margin-bottom: 0.5rem;
+  }
+  .lv-dl-desc {
+    font-size: 0.875rem; color: rgba(255,255,255,0.6); margin-bottom: 1.5rem; line-height: 1.6;
+  }
+  .lv-btn-download {
+    display: block;
+    background: var(--orange); color: #fff;
+    padding: 0.875rem 1.5rem; border-radius: 0.625rem;
+    font-family: var(--font-sans); font-size: 1rem; font-weight: 500;
+    text-decoration: none; text-align: center;
+    transition: background 0.2s, transform 0.15s;
+    margin-bottom: 1rem;
+  }
+  .lv-btn-download:hover { background: #a8481a; transform: translateY(-1px); }
+  .lv-dl-trust {
+    font-size: 0.75rem; color: rgba(255,255,255,0.4); text-align: center; line-height: 1.5;
+  }
+
+  /* ── Opt-in form (email capture) ── */
+  .lv-optin-box {
+    background: rgba(255,255,255,0.07);
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 1.25rem;
+    padding: 2.25rem 2rem;
+    max-width: 460px;
+    margin: 1.5rem auto 0;
+  }
+  .lv-optin-label {
+    font-size: 0.7rem; font-weight: 600; letter-spacing: 0.1em;
+    text-transform: uppercase; color: rgba(255,255,255,0.45); margin-bottom: 0.875rem;
+  }
+  .lv-optin-title {
+    font-family: var(--font-serif); font-size: 1.125rem; font-weight: 600;
+    color: #fff; margin-bottom: 0.375rem;
+  }
+  .lv-optin-desc {
+    font-size: 0.875rem; color: rgba(255,255,255,0.6); margin-bottom: 1.25rem; line-height: 1.6;
+  }
+  .lv-optin-row { display: flex; gap: 0.625rem; }
+  .lv-optin-row input {
+    flex: 1;
+    padding: 0.625rem 0.875rem;
+    border: 1.5px solid rgba(255,255,255,0.2);
+    border-radius: 0.5rem;
+    font-family: var(--font-sans); font-size: 0.9375rem;
+    background: rgba(255,255,255,0.08); color: #fff;
+    transition: border-color 0.2s;
+  }
+  .lv-optin-row input::placeholder { color: rgba(255,255,255,0.35); }
+  .lv-optin-row input:focus { outline: none; border-color: rgba(255,255,255,0.5); }
+  .lv-optin-row button {
+    background: var(--navy); color: #fff;
+    padding: 0.625rem 1.125rem;
+    border-radius: 0.5rem;
+    font-family: var(--font-sans); font-size: 0.9rem; font-weight: 500;
+    border: none; cursor: pointer;
+    white-space: nowrap;
+    transition: background 0.2s;
+  }
+  .lv-optin-row button:hover { background: var(--terra-dark); }
+  .lv-optin-trust {
+    font-size: 0.75rem; color: rgba(255,255,255,0.35); margin-top: 0.75rem; line-height: 1.5;
+  }
+  .lv-optin-success { display: none; text-align: center; padding: 0.75rem 0; }
+  .lv-optin-success p { font-size: 0.9rem; color: rgba(255,255,255,0.8); line-height: 1.7; }
+
+  /* ── Preview section ── */
+  .lv-preview {
+    background: var(--cream);
+    padding: 4.5rem 1.5rem;
+    border-bottom: 1px solid #e8e3d8;
+  }
+  .lv-preview-inner { max-width: 680px; margin: 0 auto; }
+  .lv-preview-label {
+    font-size: 0.75rem; font-weight: 600; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--orange); margin-bottom: 0.75rem;
+  }
+  .lv-preview-title {
+    font-family: var(--font-serif); font-size: clamp(1.5rem, 3vw, 2rem);
+    font-weight: 700; color: var(--ink); line-height: 1.25;
+    letter-spacing: -0.02em; margin-bottom: 0.75rem;
+  }
+  .lv-preview-body {
+    font-size: 0.9375rem; color: var(--ink-mid); max-width: 560px; margin-bottom: 2.5rem; line-height: 1.75;
+  }
+  .lv-sections { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+  @media (max-width: 600px) { .lv-sections { grid-template-columns: 1fr; } }
+  .lv-section-card {
+    background: #fff; border: 1px solid #e8e3d8; border-radius: 0.875rem; padding: 1.25rem;
+  }
+  .lv-section-num {
+    font-family: var(--font-serif); font-size: 2rem; font-weight: 700;
+    color: #e8e3d8; line-height: 1; margin-bottom: 0.5rem;
+  }
+  .lv-section-title { font-size: 0.9375rem; font-weight: 600; color: var(--ink); margin-bottom: 0.375rem; }
+  .lv-section-desc { font-size: 0.8125rem; color: var(--ink-mid); line-height: 1.65; }
+
+  /* ── Bridge CTA (to gap analysis) ── */
+  .lv-bridge {
+    background: #f2ede4;
+    border-top: 1px solid #e8e3d8;
+    border-bottom: 1px solid #e8e3d8;
+    padding: 4rem 1.5rem;
+    text-align: center;
+  }
+  .lv-bridge-inner { max-width: 560px; margin: 0 auto; }
+  .lv-bridge-label {
+    font-size: 0.75rem; font-weight: 600; letter-spacing: 0.1em;
+    text-transform: uppercase; color: var(--orange); margin-bottom: 0.75rem;
+  }
+  .lv-bridge-title {
+    font-family: var(--font-serif); font-size: clamp(1.5rem, 3vw, 2rem);
+    font-weight: 700; color: var(--ink); line-height: 1.25;
+    letter-spacing: -0.02em; margin-bottom: 1rem;
+  }
+  .lv-bridge-body {
+    font-size: 0.9375rem; color: var(--ink-mid); margin-bottom: 2rem; line-height: 1.75;
+  }
+  .lv-bridge-btn {
+    background: var(--navy); color: #fff;
+    padding: 0.875rem 2rem; border-radius: 0.625rem;
+    font-family: var(--font-sans); font-size: 1rem; font-weight: 500;
+    text-decoration: none; display: inline-block;
+    transition: background 0.2s, transform 0.15s;
+  }
+  .lv-bridge-btn:hover { background: var(--terra-dark); transform: translateY(-1px); }
+  .lv-bridge-sub { font-size: 0.8125rem; color: var(--ink-light); margin-top: 0.875rem; }
+</style>
+
+<div>
+
+  <!-- ── HERO ── -->
+  <section class="lv-hero">
+    <div class="lv-hero-inner">
+      <p class="lv-eyebrow">Free resource · No email required</p>
+      <h1 class="lv-h1">The 25 things every local business<br>needs to <em>rank on Google</em></h1>
+      <p class="lv-subhead">
+        Are you missing the basics? Download the 25-point checklist used to audit local service businesses.
+        No email required — just the PDF.
+      </p>
+
+      <!-- Direct download box -->
+      <div class="lv-download-box">
+        <p class="lv-dl-label">Instant download</p>
+        <p class="lv-dl-title">Local Search Visibility Checklist</p>
+        <p class="lv-dl-desc">25 checkpoints across 5 categories. Takes 10 minutes to self-audit your business.</p>
+        <a
+          href="/local-search-checklist.pdf"
+          target="_blank"
+          rel="noopener"
+          class="lv-btn-download"
+          id="lv-download-btn"
+        >
+          Download the checklist (PDF) →
+        </a>
+        <p class="lv-dl-trust">Free. No signup. No strings.</p>
+      </div>
+
+      <!-- Optional email capture for retargeting -->
+      <div class="lv-optin-box">
+        <p class="lv-optin-label">Want the analysis instead?</p>
+        <p class="lv-optin-title">Get a personalized audit of your business</p>
+        <p class="lv-optin-desc">Enter your email and I'll send you a custom gap analysis — not just the checklist.</p>
+
+        <!-- Netlify hidden detection form -->
+        <form name="campaign-local-visibility-optin" netlify netlify-honeypot="bot-field" hidden>
+          <input type="email" name="email" />
+          <input type="text" name="how_found" />
+        </form>
+
+        <form
+          id="lv-optin-form"
+          name="campaign-local-visibility-optin"
+          method="POST"
+          data-netlify="true"
+          action="/campaign/local-visibility/thank-you"
+        >
+          <input type="hidden" name="form-name" value="campaign-local-visibility-optin" />
+          <p style="display:none"><label>Don't fill this out: <input name="bot-field" /></label></p>
+          <input type="hidden" name="how_found" value="campaign-local-visibility" />
+
+          <div class="lv-optin-row">
+            <input type="email" name="email" placeholder="your@email.com" required />
+            <button type="submit">Send it →</button>
+          </div>
+          <p class="lv-optin-trust">No spam. One email. That's it.</p>
+        </form>
+
+        <div class="lv-optin-success" id="lv-optin-success">
+          <p>Got it. I'll run the analysis and send it to your inbox within 12 hours.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── CHECKLIST PREVIEW ── -->
+  <section class="lv-preview">
+    <div class="lv-preview-inner">
+      <p class="lv-preview-label">What's inside</p>
+      <h2 class="lv-preview-title">25 checkpoints across 5 categories</h2>
+      <p class="lv-preview-body">
+        Most local businesses fail on the basics. This checklist covers the five areas that determine whether
+        Google shows your business to people searching for what you do — or shows your competitor instead.
+      </p>
+      <div class="lv-sections">
+        <div class="lv-section-card">
+          <p class="lv-section-num">01</p>
+          <p class="lv-section-title">Google Business Profile</p>
+          <p class="lv-section-desc">Category selection, service areas, hours, photos, Q&A, and the fields most businesses leave blank.</p>
+        </div>
+        <div class="lv-section-card">
+          <p class="lv-section-num">02</p>
+          <p class="lv-section-title">Citations & Directories</p>
+          <p class="lv-section-desc">The specific directories that drive local rankings — and how inconsistent NAP data silently kills visibility.</p>
+        </div>
+        <div class="lv-section-card">
+          <p class="lv-section-num">03</p>
+          <p class="lv-section-title">Reviews & Reputation</p>
+          <p class="lv-section-desc">Volume, recency, response rate, and the signals Google uses to rank businesses in the local pack.</p>
+        </div>
+        <div class="lv-section-card">
+          <p class="lv-section-num">04</p>
+          <p class="lv-section-title">Website Signals</p>
+          <p class="lv-section-desc">Local schema markup, service pages, page speed, and the on-page signals that confirm your location and category.</p>
+        </div>
+        <div class="lv-section-card" style="grid-column: span 2;">
+          <p class="lv-section-num">05</p>
+          <p class="lv-section-title">Competitive Positioning</p>
+          <p class="lv-section-desc">How to benchmark your presence against the businesses ranking above you — and identify the specific gaps worth closing first.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── BRIDGE TO GAP ANALYSIS ── -->
+  <section class="lv-bridge">
+    <div class="lv-bridge-inner">
+      <p class="lv-bridge-label">Ready for the next step?</p>
+      <h2 class="lv-bridge-title">Knowing what to fix is only half the battle.</h2>
+      <p class="lv-bridge-body">
+        You downloaded the checklist, but running the audit yourself takes time — and it's easy to miss things
+        that only show up in a competitive analysis. Let me run it for you. Takes 5 minutes to submit,
+        results in 12 hours. Free.
+      </p>
+      <a href="/campaign/competitor-gap" class="lv-bridge-btn">Get the free analysis →</a>
+      <p class="lv-bridge-sub">No call required. No obligation.</p>
+    </div>
+  </section>
+
+</div>
+
+<script>
+  // Track PDF download click
+  const dlBtn = document.getElementById('lv-download-btn');
+  if (dlBtn) {
+    dlBtn.addEventListener('click', () => {
+      if (typeof (window as any).fbq !== 'undefined') {
+        (window as any).fbq('trackCustom', 'ChecklistDownload', { content_name: 'campaign-local-visibility' });
+      }
+    });
+  }
+
+  // Email opt-in AJAX submit
+  const optinForm = document.getElementById('lv-optin-form') as HTMLFormElement | null;
+  const optinSuccess = document.getElementById('lv-optin-success');
+  if (optinForm && optinSuccess) {
+    optinForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const data = new URLSearchParams(new FormData(optinForm) as any);
+      try {
+        await fetch('/', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+          body: data.toString(),
+        });
+        optinForm.style.display = 'none';
+        optinSuccess.style.display = 'block';
+        if (typeof (window as any).fbq !== 'undefined') {
+          (window as any).fbq('track', 'Lead', { content_name: 'campaign-local-visibility-optin' });
+        }
+        setTimeout(() => {
+          window.location.href = '/campaign/local-visibility/thank-you';
+        }, 1200);
+      } catch {
+        optinForm.submit();
+      }
+    });
+  }
+</script>
+
+</BaseLayout>

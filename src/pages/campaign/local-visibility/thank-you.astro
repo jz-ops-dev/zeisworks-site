@@ -1,0 +1,107 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="Check your inbox — zeisWorks"
+  description="Your personalized gap analysis is on its way. In the meantime, download the checklist and start your self-audit."
+>
+
+<style>
+  .ty-section {
+    min-height: 70vh;
+    display: flex; align-items: center; justify-content: center;
+    padding: 5rem 2rem;
+    background: var(--forest);
+  }
+  .ty-inner { max-width: 600px; width: 100%; text-align: center; }
+  .ty-icon {
+    width: 64px; height: 64px;
+    background: rgba(255,255,255,0.1);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    margin: 0 auto 2rem;
+  }
+  .ty-icon svg { width: 28px; height: 28px; stroke: #a8d5c2; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+  .ty-label { font-size: 0.75rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--forest-light); margin-bottom: 1rem; }
+  .ty-title { font-family: var(--font-serif); font-size: clamp(1.75rem, 3vw, 2.5rem); font-weight: 600; color: #fff; line-height: 1.25; letter-spacing: -0.02em; margin-bottom: 1.25rem; }
+  .ty-body { font-size: 1rem; color: rgba(255,255,255,0.7); line-height: 1.8; margin-bottom: 2.5rem; }
+  .ty-actions { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-bottom: 2.5rem; }
+  .btn-primary {
+    background: var(--orange); color: #fff;
+    padding: 0.875rem 1.75rem; border-radius: 0.625rem;
+    font-family: var(--font-sans); font-size: 0.9375rem; font-weight: 500;
+    text-decoration: none; display: inline-block;
+    transition: background 0.2s, transform 0.15s;
+  }
+  .btn-primary:hover { background: #a8481a; transform: translateY(-1px); }
+  .btn-ghost {
+    color: rgba(255,255,255,0.65); font-size: 0.9375rem;
+    text-decoration: none; display: inline-flex; align-items: center; gap: 0.4rem;
+    padding: 0.875rem 1.5rem;
+    border: 1.5px solid rgba(255,255,255,0.2); border-radius: 0.625rem;
+    transition: border-color 0.2s, color 0.2s;
+  }
+  .btn-ghost:hover { border-color: rgba(255,255,255,0.5); color: #fff; }
+  .ty-upsell {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 1rem;
+    padding: 1.75rem;
+    text-align: left;
+  }
+  .ty-upsell-label { font-size: 0.7rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.4); margin-bottom: 0.875rem; }
+  .ty-upsell-title { font-family: var(--font-serif); font-size: 1.125rem; font-weight: 600; color: #fff; margin-bottom: 0.5rem; }
+  .ty-upsell-body { font-size: 0.875rem; color: rgba(255,255,255,0.65); line-height: 1.7; margin-bottom: 1.25rem; }
+  .ty-upsell-link {
+    display: inline-flex; align-items: center; gap: 0.375rem;
+    font-size: 0.9rem; font-weight: 500; color: var(--orange);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .ty-upsell-link:hover { color: #e8713a; }
+</style>
+
+<script>
+  if (typeof (window as any).fbq !== 'undefined') {
+    (window as any).fbq('trackCustom', 'ChecklistOptinComplete', { content_name: 'campaign-local-visibility' });
+  }
+</script>
+
+<section class="ty-section">
+  <div class="ty-inner">
+    <div class="ty-icon">
+      <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+    </div>
+
+    <p class="ty-label">You're in</p>
+    <h1 class="ty-title">Check your inbox.</h1>
+    <p class="ty-body">
+      Your personalized gap analysis is on its way. While you wait, grab the checklist and
+      start your self-audit — it takes about 10 minutes.
+    </p>
+
+    <div class="ty-actions">
+      <a href="/local-search-checklist.pdf" target="_blank" rel="noopener" class="btn-primary">
+        Download the checklist →
+      </a>
+      <a href="/" class="btn-ghost">Back to home</a>
+    </div>
+
+    <!-- Upsell bridge to full analysis -->
+    <div class="ty-upsell">
+      <p class="ty-upsell-label">Want more than the checklist?</p>
+      <p class="ty-upsell-title">Get the full competitor analysis</p>
+      <p class="ty-upsell-body">
+        The checklist tells you what to look for. The gap analysis tells you exactly where your
+        business stands against your top competitors — and what to fix first. Free. No call required.
+      </p>
+      <a href="/campaign/competitor-gap" class="ty-upsell-link">
+        Request the free analysis
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+</BaseLayout>
