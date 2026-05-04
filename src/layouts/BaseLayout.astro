@@ -1,4 +1,6 @@
 ---
+import GapAnalysisModal from '../components/GapAnalysisModal.astro';
+
 interface Props {
   title: string;
   description: string;
@@ -6,6 +8,7 @@ interface Props {
   ogDescription?: string;
   ogImage?: string;
   canonicalUrl?: string;
+  bodyPage?: string;
 }
 
 const {
@@ -15,6 +18,7 @@ const {
   ogDescription,
   ogImage,
   canonicalUrl,
+  bodyPage,
 } = Astro.props;
 
 const siteUrl = 'https://zeisworks.com';
@@ -152,7 +156,7 @@ const localBusinessJsonLd = {
       }
     </style>
   </head>
-  <body class="font-sans antialiased min-h-screen flex flex-col">
+  <body class="font-sans antialiased min-h-screen flex flex-col" data-page={bodyPage}>
     <header class="border-b border-cream-dark sticky top-0 bg-cream/95 backdrop-blur-sm z-10">
       <div class="max-w-3xl mx-auto px-6 py-4 flex items-center justify-between">
         <a
@@ -235,6 +239,20 @@ const localBusinessJsonLd = {
     <main class="flex-1">
       <slot />
     </main>
+
+    <!-- Global Gap Analysis Modal -->
+    <GapAnalysisModal />
+
+    <!-- Floating trigger button (hidden on gap-analysis page via CSS) -->
+    <button
+      id="ga-float-btn"
+      type="button"
+      data-modal="gap-analysis"
+      aria-label="Get your free gap analysis"
+    >
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      Free analysis
+    </button>
 
     <footer class="border-t border-cream-dark mt-24">
       <div
