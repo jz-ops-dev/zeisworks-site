@@ -354,7 +354,8 @@
 
     const data = new URLSearchParams(new FormData(form) as any);
     try {
-      await fetch('/', {
+      // Post to the current page path so Netlify's form handler can match the form definition
+      await fetch(window.location.pathname, {
         method: 'POST',
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
         body: data.toString(),

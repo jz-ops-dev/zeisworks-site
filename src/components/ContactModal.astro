@@ -139,7 +139,8 @@
   form.addEventListener('submit', e => {
     e.preventDefault();
     const data = new URLSearchParams(new FormData(form) as any);
-    fetch('/', {
+    // Post to the current page path so Netlify's form handler can match the form definition
+    fetch(window.location.pathname, {
       method: 'POST',
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
       body: data.toString(),
