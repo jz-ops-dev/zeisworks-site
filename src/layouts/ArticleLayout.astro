@@ -178,6 +178,22 @@ const faqJsonLd =
       <slot />
     </div>
 
+    <!-- Mid-article inline CTA: appears after content, before FAQ -->
+    <div class="my-12 p-6 rounded-xl border-l-4 border-orange bg-orange/5">
+      <p class="text-xs font-semibold uppercase tracking-widest text-orange mb-2">Free &nbsp;&middot;&nbsp; No call required &nbsp;&middot;&nbsp; Results in 12 hours</p>
+      <p class="font-serif text-lg font-semibold text-ink mb-2">See exactly where your business stands.</p>
+      <p class="text-sm text-ink-mid leading-relaxed mb-4">
+        The free gap analysis checks your Google rankings, Business Profile, local citations, and how you compare to your top competitors. You get a written report — no call, no obligation.
+      </p>
+      <button
+        type="button"
+        data-modal="gap-analysis"
+        class="inline-block bg-navy text-cream text-sm px-5 py-2.5 rounded-lg hover:bg-navy/90 transition-colors font-medium cursor-pointer border-0"
+      >
+        Get my free gap analysis →
+      </button>
+    </div>
+
     {faq && faq.length > 0 && (
       <section class="mt-16 pt-12 border-t border-cream-dark">
         <h2 class="font-serif text-2xl font-bold mb-8">Common questions</h2>

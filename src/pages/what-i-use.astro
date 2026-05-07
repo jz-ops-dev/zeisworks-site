@@ -157,6 +157,45 @@ const sections = [
             </div>
           ))}
         </div>
+
+        {/* Contextual CTA after Automation section */}
+        {section.id === 'ai' && (
+          <div class="mt-6 p-5 rounded-xl border border-orange/20 bg-orange/5 flex flex-col sm:flex-row sm:items-center gap-4">
+            <div class="flex-1">
+              <p class="text-sm font-semibold text-ink mb-1">Want this built for you?</p>
+              <p class="text-sm text-ink-mid leading-relaxed">n8n and Make are powerful, but the setup takes time. I build custom automation stacks for service businesses — workflows that run without you touching them.</p>
+            </div>
+            <a href="/operations" class="shrink-0 text-sm font-medium text-navy border border-navy/30 rounded-lg px-4 py-2 hover:bg-navy hover:text-cream transition-colors whitespace-nowrap">
+              See Operations →
+            </a>
+          </div>
+        )}
+
+        {/* Contextual CTA after CRM section */}
+        {section.id === 'crm' && (
+          <div class="mt-6 p-5 rounded-xl border border-orange/20 bg-orange/5 flex flex-col sm:flex-row sm:items-center gap-4">
+            <div class="flex-1">
+              <p class="text-sm font-semibold text-ink mb-1">Need a full prospecting-to-close system?</p>
+              <p class="text-sm text-ink-mid leading-relaxed">HubSpot, Apollo, and Clay are the stack — but getting them to talk to each other correctly is where most businesses get stuck. I set up the full pipeline and hand it off ready to run.</p>
+            </div>
+            <a href="/custom-tools" class="shrink-0 text-sm font-medium text-navy border border-navy/30 rounded-lg px-4 py-2 hover:bg-navy hover:text-cream transition-colors whitespace-nowrap">
+              See Custom Tools →
+            </a>
+          </div>
+        )}
+
+        {/* Contextual CTA after Marketing section */}
+        {section.id === 'marketing' && (
+          <div class="mt-6 p-5 rounded-xl border border-orange/20 bg-orange/5 flex flex-col sm:flex-row sm:items-center gap-4">
+            <div class="flex-1">
+              <p class="text-sm font-semibold text-ink mb-1">Don't have time to run outbound yourself?</p>
+              <p class="text-sm text-ink-mid leading-relaxed">Instantly is the infrastructure. I handle the strategy, sequences, and list building — so the leads come in without you managing the platform.</p>
+            </div>
+            <a href="/marketing" class="shrink-0 text-sm font-medium text-navy border border-navy/30 rounded-lg px-4 py-2 hover:bg-navy hover:text-cream transition-colors whitespace-nowrap">
+              See Marketing →
+            </a>
+          </div>
+        )}
       </section>
     ))}
 

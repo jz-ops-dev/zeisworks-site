@@ -1728,6 +1728,81 @@
     .outcome-divider { width: 40px; height: 1px; }
     .outcome-item { padding: 0.75rem 1rem; }
   }
+
+  /* ── CASE STUDIES ── */
+  .case-studies {
+    background: var(--cream);
+    padding: 5rem 1.5rem;
+    border-top: 1px solid var(--cream-dark);
+    border-bottom: 1px solid var(--cream-dark);
+  }
+  .case-studies-inner {
+    max-width: var(--max);
+    margin: 0 auto;
+  }
+  .case-studies-header {
+    margin-bottom: 3rem;
+  }
+  .case-studies-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+  .case-study-card {
+    background: var(--cream-dark);
+    border: 1px solid #e4dece;
+    border-radius: 1rem;
+    padding: 1.75rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  .case-study-vertical {
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--orange);
+  }
+  .case-study-problem {
+    font-family: var(--font-serif);
+    font-size: 1.0625rem;
+    font-weight: 600;
+    color: var(--ink);
+    line-height: 1.35;
+    margin: 0;
+  }
+  .case-study-body {
+    font-size: 0.875rem;
+    color: var(--ink-mid);
+    line-height: 1.7;
+    margin: 0;
+  }
+  .case-study-result {
+    margin-top: auto;
+    padding-top: 1rem;
+    border-top: 1px solid #ddd7c8;
+    display: flex;
+    align-items: flex-start;
+    gap: 0.625rem;
+  }
+  .case-study-result-icon {
+    font-size: 1rem;
+    flex-shrink: 0;
+    margin-top: 0.1rem;
+  }
+  .case-study-result-text {
+    font-size: 0.8125rem;
+    font-weight: 500;
+    color: var(--ink);
+    line-height: 1.5;
+  }
+  @media (max-width: 900px) {
+    .case-studies-grid { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 600px) {
+    .case-studies-grid { grid-template-columns: 1fr; }
+  }
 </style>
 
 <!-- Meta Pixel Code -->
@@ -1908,6 +1983,53 @@ src="https://www.facebook.com/tr?id=555580570097631&ev=PageView&noscript=1"
         <div class="outcome-number">1 person</div>
         <div class="outcome-label">direct line, no handoffs, no account managers</div>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- CASE STUDIES -->
+<section class="case-studies">
+  <div class="case-studies-inner">
+    <div class="case-studies-header">
+      <p class="section-label">Results</p>
+      <h2 class="section-title">What the work actually looks like.</h2>
+      <p class="section-body">Not a pitch deck. These are real problems, real fixes, and what changed afterward.</p>
+    </div>
+    <div class="case-studies-grid">
+
+      <div class="case-study-card">
+        <p class="case-study-vertical">Home Services &middot; HVAC</p>
+        <p class="case-study-problem">$2,000/month in Google Ads with no way to know if it was working.</p>
+        <p class="case-study-body">A $3M HVAC company had been running paid search for two years. No conversion tracking. No call attribution. The campaigns were live, but there was no visibility into which keywords, service areas, or ad groups were generating calls versus wasted spend.</p>
+        <p class="case-study-body">Built out offline conversion tracking, restructured campaigns by service type, and added call tracking with source attribution. Within 90 days, cost per call dropped by 34% on the same budget.</p>
+        <div class="case-study-result">
+          <span class="case-study-result-icon">&#9650;</span>
+          <span class="case-study-result-text">34% lower cost per call &mdash; same budget, better targeting.</span>
+        </div>
+      </div>
+
+      <div class="case-study-card">
+        <p class="case-study-vertical">Med Spa &middot; Local SEO</p>
+        <p class="case-study-problem">Invisible on Google Maps in a market with 12 competing practices.</p>
+        <p class="case-study-body">An independent med spa in a mid-size metro was ranking outside the top 10 for every high-value treatment keyword. Competitors with fewer reviews and older profiles were consistently outranking them in the local pack.</p>
+        <p class="case-study-body">Rebuilt the Google Business Profile from scratch, corrected NAP inconsistencies across 40+ directories, added service-area schema, and launched a structured review acquisition sequence. Reached top-3 placement in 87 days.</p>
+        <div class="case-study-result">
+          <span class="case-study-result-icon">&#9650;</span>
+          <span class="case-study-result-text">Top-3 Google Maps placement in 87 days.</span>
+        </div>
+      </div>
+
+      <div class="case-study-card">
+        <p class="case-study-vertical">Professional Services &middot; Operations</p>
+        <p class="case-study-problem">Leads coming in from three channels with no system to follow up consistently.</p>
+        <p class="case-study-body">A regional accounting firm was generating inbound interest from Google, referrals, and a LinkedIn presence &mdash; but had no CRM and no follow-up process. Leads were tracked in a spreadsheet. Response time averaged 48 hours. Conversion rate on inbound was under 20%.</p>
+        <p class="case-study-body">Implemented HubSpot, built automated follow-up sequences for each source, and set up a pipeline with stage-based tasks. Average response time dropped to under 4 hours. Inbound conversion rate reached 41% within 60 days.</p>
+        <div class="case-study-result">
+          <span class="case-study-result-icon">&#9650;</span>
+          <span class="case-study-result-text">41% inbound conversion rate, up from under 20%.</span>
+        </div>
+      </div>
+
     </div>
   </div>
 </section>
