@@ -1,0 +1,754 @@
+---
+/**
+ * Golden Boy Bin Co. — Lead Capture Page
+ * Route: zeisworks.com/book-gbbc
+ *
+ * Design: Bold Utility Poster — golden yellow + near-black charcoal
+ * Fonts: Barlow Condensed (headlines) + DM Sans (body, already loaded site-wide)
+ * Goal: Lead capture — call, schedule by trash day, or quote form
+ */
+const PHONE = "720-650-2447";
+const PHONE_HREF = "tel:+17206502447";
+const BEFORE_IMG = "https://d2xsxph8kpxj0f.cloudfront.net/310519663621760629/norKzhFStPLkG8yFiCszoJ/bin-dirty-v2_e9fd4fed-J5kGFKBpBQgZHLpMwJmCkP.webp";
+const AFTER_IMG  = "https://d2xsxph8kpxj0f.cloudfront.net/310519663621760629/norKzhFStPLkG8yFiCszoJ/bin-clean-v2-NW62uSSzf9ck5j2SGMLXqy.webp";
+const HERO_IMG   = "https://d2xsxph8kpxj0f.cloudfront.net/310519663621760629/norKzhFStPLkG8yFiCszoJ/hero-bg-4JyN4dH5ohZAnmxUpahFEZ.webp";
+
+const services = [
+  {
+    icon: "🗑️",
+    title: "Trash Can Cleaning",
+    desc: "Hot water + eco-friendly degreaser blasts out grime, bacteria, and odors. Done right after your pickup — using up to 80% less water than a garden hose.",
+    bullets: ["Done right after pickup", "Sanitizes & deodorizes", "One-time or monthly plans"],
+  },
+  {
+    icon: "💧",
+    title: "Small Power Washing",
+    desc: "Driveways, patios, sidewalks, fences. High-pressure cleaning that uses a fraction of the water of a hose. No job too small.",
+    bullets: ["Driveways & walkways", "Patios & decks", "Fences & exterior walls"],
+  },
+];
+
+const pricing = [
+  { label: "1 Trash Can",    price: "$25",      note: "One-time clean" },
+  { label: "2 Trash Cans",   price: "$40",      note: "One-time clean", highlight: true },
+  { label: "Monthly Plan",   price: "$20/mo",   note: "Per bin, billed monthly" },
+  { label: "Driveway Wash",  price: "From $75", note: "Up to 2-car driveway" },
+  { label: "Patio / Deck",   price: "From $60", note: "Up to 400 sq ft" },
+  { label: "Sidewalk / Path",price: "From $40", note: "Standard residential" },
+];
+
+const reviews = [
+  { name: "Sarah M.", hood: "Applewood",       stars: 5, quote: "My bins used to smell terrible all summer. Now they're spotless every month. Worth every penny." },
+  { name: "Dave K.",  hood: "Downtown Golden", stars: 5, quote: "Showed up on time, did a great job on my driveway. Hired him again for the patio. Highly recommend." },
+  { name: "Jen T.",   hood: "North Table Mesa",stars: 5, quote: "Love that he uses way less water than I would hosing them down myself. Clean bins and a clear conscience." },
+];
+
+const faq = [
+  { q: "Do I need to be home?",                       a: "Nope! As long as your bins are at the curb after pickup, we'll take care of everything and leave them clean at the end of your driveway. No need to be there." },
+  { q: "When exactly do you clean the bins?",         a: "We clean your bins the same day as your trash pickup, right after the truck comes through. Your bins go from the curb to spotless before you even get home from work." },
+  { q: "Is power washing actually water-efficient?",  a: "Yes — and it's one of our favorite things about this service. A pressure washer uses about 1.5–2 gallons per minute vs. a garden hose at 8–10 GPM. We clean a bin in under 2 minutes using roughly 3–5 gallons total. That's up to 80% less water than hosing it down yourself — which matters a lot here in Golden." },
+  { q: "What cleaning products do you use?",          a: "We use eco-friendly, biodegradable degreaser and hot water. Nothing harsh, nothing that'll harm your driveway, landscaping, or the local watershed." },
+  { q: "How often should I get my bins cleaned?",     a: "Monthly is ideal for most households — it keeps odors and bacteria from building up. We offer a monthly subscription at $20/bin that makes it completely hands-off." },
+  { q: "What if my bins are really bad?",             a: "No job is too gross — that's literally what we're here for. Heavily soiled bins may take an extra pass, but the price stays the same." },
+  { q: "Do you clean recycling and compost bins too?",a: "Absolutely. Any outdoor bin that needs cleaning — trash, recycling, compost — we handle it." },
+  { q: "What areas do you serve?",                    a: "We're based in Golden and serve the surrounding areas including Applewood, Lakewood, Arvada, and unincorporated Jefferson County. Not sure if you're in range? Just text us." },
+];
+---
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Golden Boy Bin Co. — Trash Can Cleaning & Power Washing in Golden, CO</title>
+  <meta name="description" content="Trash can cleaning and small power washing for Golden-area homeowners. Done right after pickup, using up to 80% less water than a garden hose. Call or text 720-650-2447." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800;900&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --gold: #F5B800;
+      --gold-dark: #C89500;
+      --ink: #1A1814;
+      --ink-mid: #4A4640;
+      --ink-light: #8A8680;
+      --cream: #F7F4EE;
+      --cream-dark: #EDE8DC;
+      --green-dark: #1E3A2E;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'DM Sans', system-ui, sans-serif; background: var(--cream); color: var(--ink); line-height: 1.6; }
+    h1,h2,h3,h4 { font-family: 'Barlow Condensed', sans-serif; font-weight: 900; text-transform: uppercase; line-height: 0.95; letter-spacing: 0.01em; }
+    .label { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 0.72rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--ink-light); }
+    .container { width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 1.25rem; }
+    @media(min-width:640px){ .container{ padding: 0 2rem; } }
+    @media(min-width:1024px){ .container{ padding: 0 2.5rem; } }
+
+    /* Buttons */
+    .btn-gold {
+      display: inline-flex; align-items: center; justify-content: center; gap: 0.4rem;
+      background: var(--gold); color: var(--ink); border: 3px solid var(--ink);
+      font-family: 'Barlow Condensed', sans-serif; font-weight: 900; font-size: 1rem;
+      text-transform: uppercase; letter-spacing: 0.06em; padding: 0.7rem 1.75rem;
+      cursor: pointer; text-decoration: none; transition: transform 120ms, box-shadow 120ms;
+    }
+    .btn-gold:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,0,0,0.18); }
+    .btn-gold:active { transform: scale(0.97); }
+    .btn-outline {
+      display: inline-flex; align-items: center; justify-content: center; gap: 0.4rem;
+      background: transparent; color: var(--gold); border: 3px solid var(--gold);
+      font-family: 'Barlow Condensed', sans-serif; font-weight: 900; font-size: 1rem;
+      text-transform: uppercase; letter-spacing: 0.06em; padding: 0.7rem 1.75rem;
+      cursor: pointer; text-decoration: none; transition: all 150ms;
+    }
+    .btn-outline:hover { background: var(--gold); color: var(--ink); }
+
+    /* Nav */
+    .gbbc-nav {
+      position: sticky; top: 0; z-index: 50;
+      background: var(--cream); border-bottom: 4px solid var(--gold);
+      box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+    }
+    .gbbc-nav .inner { display: flex; align-items: center; justify-content: space-between; padding: 0.75rem 0; }
+    .gbbc-logo { display: flex; align-items: center; gap: 0.6rem; text-decoration: none; }
+    .gbbc-logo-icon { background: var(--gold); width: 36px; height: 36px; display: flex; align-items: center; justify-content: center; border: 2px solid var(--ink); font-size: 1.1rem; flex-shrink: 0; }
+    .gbbc-logo-text { font-family: 'Barlow Condensed', sans-serif; font-weight: 900; font-size: 1.2rem; text-transform: uppercase; letter-spacing: 0.04em; color: var(--ink); }
+    .nav-links { display: flex; align-items: center; gap: 1.5rem; }
+    .nav-links a { color: var(--ink-mid); font-size: 0.88rem; font-weight: 500; text-decoration: none; transition: color 150ms; }
+    .nav-links a:hover { color: var(--gold-dark); }
+    @media(max-width:767px){ .nav-links { display: none; } }
+
+    /* Hero */
+    .hero {
+      position: relative; min-height: 92vh; display: flex; align-items: center;
+      background: var(--ink); overflow: hidden;
+    }
+    .hero-bg { position: absolute; inset: 0; background-image: url(var(--hero-img)); background-size: cover; background-position: center 40%; opacity: 0.32; }
+    .hero-overlay { position: absolute; inset: 0; background: linear-gradient(to right, rgba(26,24,20,0.97) 0%, rgba(26,24,20,0.72) 55%, rgba(26,24,20,0.3) 100%); }
+    .hero-content { position: relative; z-index: 1; padding: 4rem 0; max-width: 700px; }
+    .hero h1 { font-size: clamp(3.5rem, 9vw, 7rem); color: #fff; margin-bottom: 1.5rem; }
+    .hero h1 span { color: var(--gold); }
+    .hero p { font-size: clamp(1rem, 2.5vw, 1.2rem); color: rgba(255,255,255,0.78); max-width: 480px; line-height: 1.65; margin-bottom: 2.5rem; }
+    .hero-btns { display: flex; flex-wrap: wrap; gap: 1rem; margin-bottom: 2.5rem; }
+    .hero-trust { display: flex; flex-wrap: wrap; gap: 1.5rem; }
+    .hero-trust span { display: flex; align-items: center; gap: 0.4rem; color: rgba(255,255,255,0.75); font-size: 0.88rem; font-weight: 500; }
+    .hero-trust span::before { content: "✓"; color: var(--gold); font-weight: 700; }
+    .hero-location { display: flex; align-items: center; gap: 0.4rem; margin-bottom: 1.25rem; }
+    .hero-location span { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 0.72rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); }
+    .scroll-hint { position: absolute; bottom: 1.75rem; left: 50%; transform: translateX(-50%); color: var(--gold); opacity: 0.65; animation: bounce 2s infinite; font-size: 1.5rem; text-decoration: none; }
+    @keyframes bounce { 0%,100%{ transform: translateX(-50%) translateY(0); } 50%{ transform: translateX(-50%) translateY(8px); } }
+
+    /* Sections */
+    .section { padding: 5rem 0; }
+    .section-sm { padding: 3rem 0; }
+    .section-title { margin-bottom: 0.5rem; }
+    .section-h2 { font-size: clamp(2.5rem, 6vw, 4rem); margin-bottom: 1rem; }
+
+    /* Services */
+    .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; margin-top: 3rem; }
+    .service-card { border: 3px solid var(--ink); padding: 2.5rem; display: flex; flex-direction: column; transition: transform 200ms, box-shadow 200ms; }
+    .service-card:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(0,0,0,0.1); }
+    .service-icon { background: var(--gold); width: 56px; height: 56px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; border: 2px solid var(--ink); margin-bottom: 1.5rem; }
+    .service-card h3 { font-size: 1.75rem; margin-bottom: 1rem; }
+    .service-card p { color: var(--ink-mid); line-height: 1.65; margin-bottom: 1.5rem; flex-grow: 1; }
+    .check-list { list-style: none; margin-bottom: 2rem; }
+    .check-list li { display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.5rem; font-size: 0.9rem; font-weight: 500; }
+    .check-list li::before { content: "✓"; color: var(--gold); font-weight: 700; flex-shrink: 0; }
+
+    /* Water callout */
+    .water-callout { background: var(--green-dark); border-top: 4px solid var(--ink); border-bottom: 4px solid var(--ink); }
+    .water-inner { display: flex; flex-wrap: wrap; align-items: center; gap: 2rem; }
+    .water-icon { background: var(--gold); width: 64px; height: 64px; display: flex; align-items: center; justify-content: center; font-size: 1.75rem; border: 3px solid var(--ink); flex-shrink: 0; }
+    .water-text h3 { font-size: clamp(1.4rem, 3vw, 2rem); color: #fff; margin-bottom: 0.5rem; }
+    .water-text p { color: rgba(255,255,255,0.72); font-size: 0.95rem; line-height: 1.65; max-width: 560px; }
+
+    /* Before/After */
+    .ba-wrap { position: relative; width: 100%; max-width: 680px; margin: 0 auto; aspect-ratio: 4/3; overflow: hidden; border: 3px solid var(--ink); cursor: grab; user-select: none; }
+    .ba-wrap:active { cursor: grabbing; }
+    .ba-after { position: absolute; inset: 0; }
+    .ba-after img { width: 100%; height: 100%; object-fit: cover; object-position: center; display: block; }
+    .ba-before { position: absolute; inset: 0; overflow: hidden; }
+    .ba-before img { position: absolute; top: 0; left: 0; height: 100%; width: 680px; max-width: none; object-fit: cover; object-position: center; }
+    .ba-divider { position: absolute; top: 0; bottom: 0; width: 3px; background: var(--gold); transform: translateX(-50%); pointer-events: none; }
+    .ba-handle { position: absolute; top: 50%; width: 48px; height: 48px; border-radius: 50%; background: var(--gold); border: 3px solid var(--ink); display: flex; align-items: center; justify-content: center; transform: translate(-50%, -50%); pointer-events: none; box-shadow: 0 4px 16px rgba(0,0,0,0.28); font-size: 1rem; }
+    .ba-label { position: absolute; top: 14px; font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 0.75rem; letter-spacing: 0.14em; text-transform: uppercase; padding: 4px 10px; }
+    .ba-label-before { left: 14px; background: var(--ink); color: #fff; }
+    .ba-label-after  { right: 14px; background: var(--gold); color: var(--ink); }
+    .ba-hint { text-align: center; margin-top: 0.75rem; font-size: 0.82rem; color: var(--ink-light); }
+
+    /* Scheduler */
+    .scheduler-wrap { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 4rem; align-items: start; }
+    .scheduler-box { border: 3px solid var(--ink); background: #fff; overflow: hidden; }
+    .scheduler-step { padding: 1.75rem 2rem; }
+    .scheduler-step + .scheduler-step { border-top: 2px solid var(--cream-dark); }
+    .step-label { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 0.72rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--ink-light); margin-bottom: 0.75rem; }
+    .day-btns { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+    .day-btn { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 0.9rem; letter-spacing: 0.06em; text-transform: uppercase; padding: 0.45rem 1rem; border: 2px solid var(--ink); background: transparent; cursor: pointer; transition: all 150ms; }
+    .day-btn:hover, .day-btn.active { background: var(--gold); }
+    .cal-nav { display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem; }
+    .cal-month { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 1.05rem; text-transform: uppercase; letter-spacing: 0.06em; }
+    .cal-nav-btn { background: none; border: none; cursor: pointer; padding: 4px 8px; font-size: 1.1rem; color: var(--ink); }
+    .cal-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 2px; }
+    .cal-day-header { text-align: center; font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 0.68rem; letter-spacing: 0.1em; color: var(--ink-light); padding: 4px 0; }
+    .cal-cell { aspect-ratio: 1; display: flex; align-items: center; justify-content: center; font-size: 0.85rem; font-weight: 500; border: 2px solid transparent; border-radius: 2px; cursor: default; transition: all 120ms; }
+    .cal-cell.available { background: #FFF8E1; cursor: pointer; font-weight: 600; }
+    .cal-cell.available:hover { background: var(--gold); border-color: var(--ink); }
+    .cal-cell.selected { background: var(--gold); border-color: var(--ink); font-weight: 700; }
+    .cal-cell.past { color: #ccc; }
+    .cal-hint { font-size: 0.78rem; color: var(--ink-light); text-align: center; margin-top: 0.75rem; }
+    .scheduler-confirm { display: none; padding: 2.5rem; text-align: center; }
+    .scheduler-confirm.show { display: block; }
+    .confirm-icon { font-size: 3rem; margin-bottom: 1rem; }
+    .confirm-h { font-size: 1.75rem; margin-bottom: 0.75rem; }
+
+    /* Pricing */
+    .pricing-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1.25rem; margin-top: 3rem; }
+    .price-card { border: 2px solid rgba(255,255,255,0.12); background: rgba(255,255,255,0.06); padding: 2rem 1.25rem; text-align: center; transition: transform 200ms; }
+    .price-card:hover { transform: translateY(-4px); }
+    .price-card.highlight { border: 3px solid var(--gold); background: var(--gold); }
+    .price-label { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255,255,255,0.55); margin-bottom: 0.75rem; }
+    .price-card.highlight .price-label { color: var(--ink-mid); }
+    .price-amount { font-family: 'Barlow Condensed', sans-serif; font-weight: 900; font-size: 2.25rem; line-height: 1; color: #fff; margin-bottom: 0.4rem; }
+    .price-card.highlight .price-amount { color: var(--ink); }
+    .price-note { font-size: 0.8rem; color: rgba(255,255,255,0.45); }
+    .price-card.highlight .price-note { color: var(--ink-mid); }
+
+    /* Reviews */
+    .reviews-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.5rem; margin-top: 3rem; }
+    .review-card { background: var(--ink); padding: 2rem; border: 2px solid var(--ink); }
+    .stars { color: var(--gold); font-size: 1rem; margin-bottom: 1rem; letter-spacing: 0.1em; }
+    .review-quote { color: rgba(255,255,255,0.8); line-height: 1.65; font-style: italic; margin-bottom: 1.25rem; }
+    .review-name { font-weight: 600; color: #fff; font-size: 0.9rem; }
+    .review-hood { color: rgba(255,255,255,0.4); font-size: 0.78rem; }
+
+    /* FAQ */
+    .faq-wrap { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 4rem; align-items: start; }
+    .faq-list { }
+    .faq-item { border-bottom: 2px solid var(--cream-dark); }
+    .faq-btn { width: 100%; display: flex; align-items: center; justify-content: space-between; padding: 1.2rem 0; background: none; border: none; cursor: pointer; text-align: left; gap: 1rem; }
+    .faq-q { font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 1.1rem; text-transform: uppercase; color: var(--ink); }
+    .faq-chevron { flex-shrink: 0; color: var(--gold); font-size: 1.1rem; transition: transform 200ms; }
+    .faq-chevron.open { transform: rotate(180deg); }
+    .faq-body { overflow: hidden; max-height: 0; transition: max-height 300ms cubic-bezier(0.23,1,0.32,1); }
+    .faq-body.open { max-height: 300px; }
+    .faq-body p { color: var(--ink-mid); line-height: 1.7; padding-bottom: 1.2rem; font-size: 0.93rem; }
+
+    /* Quote form */
+    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1rem; }
+    @media(max-width:480px){ .form-grid { grid-template-columns: 1fr; } }
+    .form-label { display: block; font-size: 0.75rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 0.4rem; }
+    .form-input { width: 100%; padding: 0.75rem 1rem; border: 2px solid var(--cream-dark); background: var(--cream); font-size: 0.93rem; outline: none; transition: border-color 150ms; font-family: 'DM Sans', sans-serif; }
+    .form-input:focus { border-color: var(--gold); }
+    .form-mb { margin-bottom: 1rem; }
+    .form-box { border: 3px solid var(--ink); padding: 2.5rem; background: #fff; }
+    .form-success { display: none; text-align: center; padding: 3rem; }
+    .form-success.show { display: block; }
+
+    /* Footer */
+    .gbbc-footer { background: var(--ink); border-top: 4px solid var(--gold); padding: 2.5rem 0; }
+    .footer-inner { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 1rem; }
+    .footer-brand { display: flex; align-items: center; gap: 0.6rem; }
+    .footer-brand-icon { background: var(--gold); width: 30px; height: 30px; display: flex; align-items: center; justify-content: center; font-size: 0.9rem; }
+    .footer-brand-text { font-family: 'Barlow Condensed', sans-serif; font-weight: 900; font-size: 1.05rem; text-transform: uppercase; color: var(--gold); letter-spacing: 0.04em; }
+    .footer-copy { color: rgba(255,255,255,0.35); font-size: 0.8rem; }
+    .footer-phone { color: var(--gold); font-weight: 600; font-size: 0.9rem; text-decoration: none; }
+
+    /* Animate on scroll */
+    .aos { opacity: 0; transform: translateY(24px); transition: opacity 0.55s cubic-bezier(0.23,1,0.32,1), transform 0.55s cubic-bezier(0.23,1,0.32,1); }
+    .aos.visible { opacity: 1; transform: none; }
+    .aos-d1 { transition-delay: 80ms; }
+    .aos-d2 { transition-delay: 160ms; }
+    .aos-d3 { transition-delay: 240ms; }
+  </style>
+</head>
+
+<body>
+
+<!-- NAV -->
+<nav class="gbbc-nav">
+  <div class="container">
+    <div class="inner">
+      <a href="/book-gbbc" class="gbbc-logo">
+        <div class="gbbc-logo-icon">🗑️</div>
+        <span class="gbbc-logo-text">Golden Boy Bin Co.</span>
+      </a>
+      <nav class="nav-links">
+        <a href="#services">Services</a>
+        <a href="#results">Results</a>
+        <a href="#schedule">Schedule</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#faq">FAQ</a>
+        <a href={PHONE_HREF} class="btn-gold" style="padding:0.45rem 1.25rem;font-size:0.88rem;">📞 Call Now</a>
+      </nav>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" style={`--hero-img: url(${HERO_IMG})`}>
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="container">
+    <div class="hero-content">
+      <div class="hero-location">
+        <span>📍</span>
+        <span>Golden, Colorado</span>
+      </div>
+      <h1>Your Bins,<br /><span>Spotless.</span></h1>
+      <p>Trash can cleaning &amp; small power washing for Golden-area homeowners — done right after pickup, using up to 80% less water than a garden hose.</p>
+      <div class="hero-btns">
+        <a href="#schedule" class="btn-gold" style="font-size:1.2rem;padding:0.9rem 2.25rem;">Pick Your Trash Day</a>
+        <a href={PHONE_HREF} class="btn-outline" style="font-size:1.1rem;padding:0.9rem 2rem;">📞 Call / Text</a>
+      </div>
+      <div class="hero-trust">
+        <span>Local &amp; Insured</span>
+        <span>No Contracts</span>
+        <span>Water-Conscious</span>
+      </div>
+    </div>
+  </div>
+  <a href="#services" class="scroll-hint" aria-label="Scroll down">↓</a>
+</section>
+
+<!-- SERVICES -->
+<section id="services" class="section" style="background:#fff;border-top:4px solid var(--ink)">
+  <div class="container">
+    <div class="aos">
+      <p class="label section-title">What We Do</p>
+      <h2 class="section-h2">Two Services.<br />One Reliable Crew.</h2>
+    </div>
+    <div class="services-grid">
+      {services.map((s, i) => (
+        <div class={`service-card aos aos-d${i+1}`}>
+          <div class="service-icon">{s.icon}</div>
+          <h3>{s.title}</h3>
+          <p>{s.desc}</p>
+          <ul class="check-list">
+            {s.bullets.map(b => <li>{b}</li>)}
+          </ul>
+          <a href="#quote" class="btn-gold" style="width:100%;justify-content:center;">Get a Quote</a>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<!-- WATER CALLOUT -->
+<section class="water-callout section-sm">
+  <div class="container">
+    <div class="water-inner aos">
+      <div class="water-icon">🌿</div>
+      <div class="water-text">
+        <h3>Up to 80% Less Water Than a Garden Hose</h3>
+        <p>Our pressure washer runs at 1.5–2 gallons per minute. Your garden hose? 8–10 GPM. We clean a bin in under 2 minutes using just 3–5 gallons total. In Golden, where water conservation matters, that's not a small thing.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BEFORE / AFTER -->
+<section id="results" class="section" style="border-top:4px solid var(--ink)">
+  <div class="container">
+    <div class="aos">
+      <p class="label section-title">The Results</p>
+      <h2 class="section-h2">See the Difference.</h2>
+      <p style="color:var(--ink-mid);max-width:480px;line-height:1.65;margin-bottom:2.5rem;">Drag the slider to see what a Golden Boy clean actually looks like. Same bin. Same driveway. Night and day.</p>
+    </div>
+    <div class="aos">
+      <div class="ba-wrap" id="ba-slider">
+        <div class="ba-after"><img src={AFTER_IMG} alt="After cleaning" draggable="false" /></div>
+        <div class="ba-before" id="ba-before-panel"><img src={BEFORE_IMG} alt="Before cleaning" draggable="false" id="ba-before-img" /></div>
+        <div class="ba-divider" id="ba-divider"></div>
+        <div class="ba-handle" id="ba-handle">⇔</div>
+        <div class="ba-label ba-label-before" id="ba-lbl-before">Before</div>
+        <div class="ba-label ba-label-after"  id="ba-lbl-after">After</div>
+      </div>
+      <p class="ba-hint">⇔ Drag to compare</p>
+    </div>
+    <div class="aos" style="text-align:center;margin-top:2.5rem;">
+      <a href="#schedule" class="btn-gold" style="font-size:1.1rem;">Get This Result for Your Bins →</a>
+    </div>
+  </div>
+</section>
+
+<!-- SCHEDULER -->
+<section id="schedule" class="section" style="background:#fff;border-top:4px solid var(--ink)">
+  <div class="container">
+    <div class="scheduler-wrap">
+      <div class="aos">
+        <p class="label section-title">Schedule a Clean</p>
+        <h2 class="section-h2">Pick Your<br /><span style="color:var(--gold-dark)">Trash Day.</span></h2>
+        <p style="color:var(--ink-mid);line-height:1.7;max-width:400px;margin:1.25rem 0 1.5rem;">Tell us what day your trash gets picked up and we'll clean your bins right after the truck comes through — while they're already empty and at the curb. You don't even need to be home.</p>
+        <ul class="check-list" style="margin-bottom:0">
+          <li>Bins cleaned same day as pickup</li>
+          <li>No need to be home</li>
+          <li>Text confirmation sent to you</li>
+          <li>Monthly plans available</li>
+        </ul>
+      </div>
+      <div class="aos aos-d1">
+        <div class="scheduler-box" id="scheduler-box">
+          <!-- Step 1 -->
+          <div class="scheduler-step">
+            <p class="step-label">Step 1 — What day is your trash picked up?</p>
+            <div class="day-btns" id="day-btns">
+              {["Monday","Tuesday","Wednesday","Thursday","Friday"].map(d => (
+                <button class="day-btn" data-day={d}>{d}</button>
+              ))}
+            </div>
+          </div>
+          <!-- Step 2: Calendar (hidden until day selected) -->
+          <div class="scheduler-step" id="cal-section" style="display:none">
+            <p class="step-label">Step 2 — Pick your first clean date</p>
+            <div class="cal-nav">
+              <button class="cal-nav-btn" id="cal-prev">‹</button>
+              <span class="cal-month" id="cal-month-label"></span>
+              <button class="cal-nav-btn" id="cal-next">›</button>
+            </div>
+            <div class="cal-grid" id="cal-day-headers">
+              {["Su","Mo","Tu","We","Th","Fr","Sa"].map(d => (
+                <div class="cal-day-header">{d}</div>
+              ))}
+            </div>
+            <div class="cal-grid" id="cal-cells"></div>
+            <p class="cal-hint" id="cal-hint"></p>
+            <button class="btn-gold" id="cal-confirm" style="width:100%;margin-top:1.5rem;font-size:1.05rem;padding:0.85rem;opacity:0.4;cursor:default;" disabled>Select a date above</button>
+          </div>
+          <!-- Confirmation -->
+          <div class="scheduler-confirm" id="scheduler-confirm">
+            <div class="confirm-icon">✅</div>
+            <h3 class="confirm-h">You're On the List!</h3>
+            <p style="color:var(--ink-mid);line-height:1.65;margin-bottom:1.5rem;" id="confirm-msg"></p>
+            <a href={PHONE_HREF} class="btn-gold">📞 Confirm via Text</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section id="pricing" class="section" style="background:var(--ink);border-top:4px solid var(--ink)">
+  <div class="container">
+    <div class="aos">
+      <p class="label section-title" style="color:var(--gold)">Simple Pricing</p>
+      <h2 class="section-h2" style="color:#fff">No Surprises.</h2>
+      <p style="color:rgba(255,255,255,0.55);max-width:480px;line-height:1.6;margin-top:0.5rem;">Flat rates for most jobs. We'll always give you an exact price before we start.</p>
+    </div>
+    <div class="pricing-grid">
+      {pricing.map((p, i) => (
+        <div class={`price-card aos aos-d${(i%3)+1} ${p.highlight ? 'highlight' : ''}`}>
+          <p class="price-label">{p.label}</p>
+          <p class="price-amount">{p.price}</p>
+          <p class="price-note">{p.note}</p>
+        </div>
+      ))}
+    </div>
+    <div class="aos" style="text-align:center;margin-top:2rem;">
+      <p style="color:rgba(255,255,255,0.4);font-size:0.85rem;">
+        Larger jobs? <a href="#quote" style="color:var(--gold);font-weight:600;">Request a custom quote →</a>
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- REVIEWS -->
+<section class="section" style="background:var(--gold);border-top:4px solid var(--ink);border-bottom:4px solid var(--ink)">
+  <div class="container">
+    <div class="aos">
+      <p class="label section-title">What Neighbors Say</p>
+      <h2 class="section-h2">Golden Locals Love It.</h2>
+    </div>
+    <div class="reviews-grid">
+      {reviews.map((r, i) => (
+        <div class={`review-card aos aos-d${i+1}`}>
+          <div class="stars">{"★".repeat(r.stars)}</div>
+          <p class="review-quote">"{r.quote}"</p>
+          <p class="review-name">{r.name}</p>
+          <p class="review-hood">{r.hood}, Golden CO</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq" class="section" style="background:#fff;border-top:4px solid var(--ink)">
+  <div class="container">
+    <div class="faq-wrap">
+      <div class="aos">
+        <p class="label section-title">FAQ</p>
+        <h2 class="section-h2">Good<br />Questions.</h2>
+        <p style="color:var(--ink-mid);line-height:1.7;max-width:360px;margin:1.25rem 0 2rem;">Everything you want to know before booking. Still have questions? Just text us.</p>
+        <a href={PHONE_HREF} style="display:flex;align-items:center;gap:0.75rem;text-decoration:none;">
+          <div style="background:var(--gold);width:44px;height:44px;display:flex;align-items:center;justify-content:center;border:2px solid var(--ink);flex-shrink:0;font-size:1.1rem;">📞</div>
+          <div>
+            <p style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:1.3rem;">{PHONE}</p>
+            <p style="font-size:0.78rem;color:var(--ink-light);">Call or text anytime</p>
+          </div>
+        </a>
+      </div>
+      <div class="faq-list aos aos-d1">
+        {faq.map((item, i) => (
+          <div class="faq-item">
+            <button class="faq-btn" data-faq={i}>
+              <span class="faq-q">{item.q}</span>
+              <span class="faq-chevron" id={`faq-chevron-${i}`}>▼</span>
+            </button>
+            <div class="faq-body" id={`faq-body-${i}`}>
+              <p>{item.a}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- QUOTE FORM -->
+<section id="quote" class="section" style="border-top:4px solid var(--ink)">
+  <div class="container">
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:4rem;align-items:start;">
+      <div class="aos">
+        <p class="label section-title">Get a Free Quote</p>
+        <h2 class="section-h2">Ready for a<br /><span style="color:var(--gold-dark)">Fresh Start?</span></h2>
+        <p style="color:var(--ink-mid);line-height:1.65;margin:1.25rem 0 2rem;max-width:400px;">Fill out the form and we'll get back to you within a few hours. Or just call/text — we're local and easy to reach.</p>
+        <a href={PHONE_HREF} style="display:flex;align-items:center;gap:0.75rem;text-decoration:none;margin-bottom:1.5rem;">
+          <div style="background:var(--gold);width:48px;height:48px;display:flex;align-items:center;justify-content:center;border:2px solid var(--ink);flex-shrink:0;font-size:1.2rem;">📞</div>
+          <div>
+            <p style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:1.4rem;letter-spacing:0.02em;">{PHONE}</p>
+            <p style="font-size:0.8rem;color:var(--ink-light);">Call or text anytime</p>
+          </div>
+        </a>
+        <p style="font-size:0.88rem;color:var(--ink-mid);">📍 Serving Golden, Arvada, Lakewood &amp; surrounding areas</p>
+      </div>
+      <div class="aos aos-d1">
+        <div class="form-box" id="quote-form-wrap">
+          <form id="quote-form">
+            <div class="form-grid">
+              <div>
+                <label class="form-label" for="f-name">Name *</label>
+                <input class="form-input" id="f-name" name="name" type="text" required placeholder="Jane Smith" />
+              </div>
+              <div>
+                <label class="form-label" for="f-phone">Phone *</label>
+                <input class="form-input" id="f-phone" name="phone" type="tel" required placeholder="(720) 555-0100" />
+              </div>
+            </div>
+            <div class="form-mb">
+              <label class="form-label" for="f-email">Email</label>
+              <input class="form-input" id="f-email" name="email" type="email" placeholder="jane@email.com" />
+            </div>
+            <div class="form-mb">
+              <label class="form-label" for="f-service">Service Needed *</label>
+              <select class="form-input" id="f-service" name="service" required style="appearance:none;">
+                <option value="" disabled selected>Select a service…</option>
+                <option value="trash-can-cleaning">Trash Can Cleaning</option>
+                <option value="driveway-wash">Driveway Power Wash</option>
+                <option value="patio-deck">Patio / Deck Wash</option>
+                <option value="sidewalk">Sidewalk / Path</option>
+                <option value="other">Other / Not Sure</option>
+              </select>
+            </div>
+            <div class="form-mb">
+              <label class="form-label" for="f-msg">Message / Details</label>
+              <textarea class="form-input" id="f-msg" name="message" rows="3" placeholder="Address, number of bins, size of area, etc." style="resize:vertical;"></textarea>
+            </div>
+            <button type="submit" class="btn-gold" style="width:100%;font-size:1.15rem;padding:1rem;justify-content:center;">Send My Quote Request →</button>
+          </form>
+          <div class="form-success" id="form-success">
+            <div style="font-size:3rem;margin-bottom:1rem;">✅</div>
+            <h3 style="font-size:2rem;margin-bottom:1rem;">Got it!</h3>
+            <p style="color:var(--ink-mid);line-height:1.65;">Thanks for reaching out. We'll be in touch within a few hours to confirm your quote.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="gbbc-footer">
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <div class="footer-brand-icon">🗑️</div>
+        <span class="footer-brand-text">Golden Boy Bin Co.</span>
+      </div>
+      <p class="footer-copy">© {new Date().getFullYear()} Golden Boy Bin Co. · Golden, CO</p>
+      <a href={PHONE_HREF} class="footer-phone">{PHONE}</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+// ── Animate on scroll ──────────────────────────────────────────────────────
+const aosEls = document.querySelectorAll('.aos');
+const aosObs = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); aosObs.unobserve(e.target); } });
+}, { threshold: 0.12 });
+aosEls.forEach(el => aosObs.observe(el));
+
+// ── Before/After slider ────────────────────────────────────────────────────
+(function() {
+  const wrap = document.getElementById('ba-slider');
+  const beforePanel = document.getElementById('ba-before-panel');
+  const beforeImg = document.getElementById('ba-before-img');
+  const divider = document.getElementById('ba-divider');
+  const handle = document.getElementById('ba-handle');
+  const lblBefore = document.getElementById('ba-lbl-before');
+  const lblAfter = document.getElementById('ba-lbl-after');
+  if (!wrap) return;
+  let pos = 50, dragging = false;
+
+  function setPos(p) {
+    pos = Math.min(100, Math.max(0, p));
+    beforePanel.style.width = pos + '%';
+    beforeImg.style.width = wrap.offsetWidth + 'px';
+    divider.style.left = pos + '%';
+    handle.style.left = pos + '%';
+    lblBefore.style.opacity = pos > 15 ? '1' : '0';
+    lblAfter.style.opacity = pos < 85 ? '1' : '0';
+  }
+  function fromEvent(clientX) {
+    const rect = wrap.getBoundingClientRect();
+    setPos(((clientX - rect.left) / rect.width) * 100);
+  }
+  wrap.addEventListener('mousedown', e => { e.preventDefault(); dragging = true; });
+  wrap.addEventListener('touchstart', () => { dragging = true; }, { passive: true });
+  window.addEventListener('mousemove', e => { if (dragging) fromEvent(e.clientX); });
+  window.addEventListener('touchmove', e => { if (dragging) fromEvent(e.touches[0].clientX); }, { passive: true });
+  window.addEventListener('mouseup', () => { dragging = false; });
+  window.addEventListener('touchend', () => { dragging = false; });
+  window.addEventListener('resize', () => setPos(pos));
+  setPos(50);
+})();
+
+// ── Trash Day Scheduler ────────────────────────────────────────────────────
+(function() {
+  const MONTH_NAMES = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+  const today = new Date();
+  let selectedDay = null, selectedDate = null;
+  let calYear = today.getFullYear(), calMonth = today.getMonth();
+
+  const dayBtns = document.querySelectorAll('.day-btn');
+  const calSection = document.getElementById('cal-section');
+  const calMonthLabel = document.getElementById('cal-month-label');
+  const calCells = document.getElementById('cal-cells');
+  const calHint = document.getElementById('cal-hint');
+  const calConfirm = document.getElementById('cal-confirm');
+  const schedulerConfirm = document.getElementById('scheduler-confirm');
+  const confirmMsg = document.getElementById('confirm-msg');
+  const schedulerBox = document.getElementById('scheduler-box');
+
+  function getDayName(date) { return date.toLocaleDateString('en-US', { weekday: 'long' }); }
+  function getAvailableDates(dayName, year, month) {
+    const dates = [];
+    const daysInMonth = new Date(year, month + 1, 0).getDate();
+    for (let d = 1; d <= daysInMonth; d++) {
+      if (getDayName(new Date(year, month, d)) === dayName) dates.push(d);
+    }
+    return dates;
+  }
+  function isPast(d) { return new Date(calYear, calMonth, d) < new Date(today.getFullYear(), today.getMonth(), today.getDate()); }
+
+  function renderCal() {
+    if (!selectedDay) return;
+    calMonthLabel.textContent = MONTH_NAMES[calMonth] + ' ' + calYear;
+    calHint.textContent = 'Highlighted dates are your ' + selectedDay + ' pickup days';
+    const available = getAvailableDates(selectedDay, calYear, calMonth);
+    const firstDay = new Date(calYear, calMonth, 1).getDay();
+    const daysInMonth = new Date(calYear, calMonth + 1, 0).getDate();
+    calCells.innerHTML = '';
+    for (let i = 0; i < firstDay; i++) {
+      const el = document.createElement('div'); el.className = 'cal-cell'; calCells.appendChild(el);
+    }
+    for (let d = 1; d <= daysInMonth; d++) {
+      const el = document.createElement('div');
+      const avail = available.includes(d) && !isPast(d);
+      const sel = selectedDate === d;
+      el.className = 'cal-cell' + (avail ? ' available' : '') + (sel ? ' selected' : '') + (!avail && isPast(d) ? ' past' : '');
+      el.textContent = d;
+      if (avail) {
+        el.addEventListener('click', () => {
+          selectedDate = d;
+          renderCal();
+          calConfirm.textContent = 'Schedule Clean — ' + MONTH_NAMES[calMonth] + ' ' + d + ' →';
+          calConfirm.style.opacity = '1';
+          calConfirm.style.cursor = 'pointer';
+          calConfirm.disabled = false;
+        });
+      }
+      calCells.appendChild(el);
+    }
+  }
+
+  dayBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      dayBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      selectedDay = btn.dataset.day;
+      selectedDate = null;
+      calConfirm.textContent = 'Select a date above';
+      calConfirm.style.opacity = '0.4';
+      calConfirm.style.cursor = 'default';
+      calConfirm.disabled = true;
+      calSection.style.display = 'block';
+      renderCal();
+    });
+  });
+
+  document.getElementById('cal-prev').addEventListener('click', () => {
+    if (calMonth === 0) { calMonth = 11; calYear--; } else calMonth--;
+    selectedDate = null;
+    calConfirm.textContent = 'Select a date above';
+    calConfirm.style.opacity = '0.4';
+    calConfirm.disabled = true;
+    renderCal();
+  });
+  document.getElementById('cal-next').addEventListener('click', () => {
+    if (calMonth === 11) { calMonth = 0; calYear++; } else calMonth++;
+    selectedDate = null;
+    calConfirm.textContent = 'Select a date above';
+    calConfirm.style.opacity = '0.4';
+    calConfirm.disabled = true;
+    renderCal();
+  });
+
+  calConfirm.addEventListener('click', () => {
+    if (!selectedDate || !selectedDay) return;
+    const dateStr = MONTH_NAMES[calMonth] + ' ' + selectedDate + ', ' + calYear;
+    confirmMsg.innerHTML = "We'll clean your bins on <strong>" + dateStr + "</strong> — right after your <strong>" + selectedDay + "</strong> pickup. We'll confirm by text.";
+    schedulerBox.querySelectorAll('.scheduler-step').forEach(s => s.style.display = 'none');
+    schedulerConfirm.classList.add('show');
+  });
+})();
+
+// ── FAQ accordion ──────────────────────────────────────────────────────────
+document.querySelectorAll('.faq-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const idx = btn.dataset.faq;
+    const body = document.getElementById('faq-body-' + idx);
+    const chevron = document.getElementById('faq-chevron-' + idx);
+    const isOpen = body.classList.contains('open');
+    document.querySelectorAll('.faq-body').forEach(b => b.classList.remove('open'));
+    document.querySelectorAll('.faq-chevron').forEach(c => c.classList.remove('open'));
+    if (!isOpen) { body.classList.add('open'); chevron.classList.add('open'); }
+  });
+});
+
+// ── Quote form ─────────────────────────────────────────────────────────────
+document.getElementById('quote-form').addEventListener('submit', function(e) {
+  e.preventDefault();
+  const btn = this.querySelector('button[type=submit]');
+  btn.textContent = 'Sending…'; btn.disabled = true;
+  setTimeout(() => {
+    this.style.display = 'none';
+    document.getElementById('form-success').classList.add('show');
+  }, 800);
+});
+</script>
+
+</body>
+</html>
