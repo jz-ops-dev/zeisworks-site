@@ -573,14 +573,9 @@ const faqJsonLd = {
           what it's costing you, and the 12-month plan to fix it.
         </p>
         <div class="aa-cta-group">
-          <a
-            href="/ai-audit/start/"
-            target="_blank"
-            rel="noopener"
-            class="aa-btn-primary"
-          >
+          <button type="button" class="aa-btn-primary" id="hero-cta">
             Start the free audit →
-          </a>
+          </button>
           <a
             href="tel:+17206502447"
             class="aa-btn-phone"
@@ -801,14 +796,9 @@ const faqJsonLd = {
         <h2 class="aa-closing-title">Five minutes. Free report. No call.</h2>
         <p class="aa-closing-sub">Run the audit, get the plan, decide what to do next.</p>
         <div class="aa-closing-cta-group">
-          <a
-            href="/ai-audit/start/"
-            target="_blank"
-            rel="noopener"
-            class="aa-btn-closing"
-          >
+          <button type="button" class="aa-btn-closing" id="closing-cta">
             Start the audit →
-          </a>
+          </button>
         </div>
         <p class="aa-closing-phone">
           Or call
@@ -845,6 +835,21 @@ const faqJsonLd = {
       }
     });
   });
+
+  // ── Audit popup ──
+  function openAudit() {
+    const w = 800, h = 700;
+    const left = Math.round(window.screenX + (window.outerWidth - w) / 2);
+    const top = Math.round(window.screenY + (window.outerHeight - h) / 2);
+    window.open(
+      'https://app.mplannerpro.com/ab3e6ce00d/chat?pg=ff84446e91',
+      'zw-audit',
+      `width=${w},height=${h},left=${left},top=${top},resizable=yes,scrollbars=yes`
+    );
+  }
+
+  document.getElementById('hero-cta')?.addEventListener('click', openAudit);
+  document.getElementById('closing-cta')?.addEventListener('click', openAudit);
 
   // ── Chat platform event hooks ──
   // Wire these callbacks to the white-label platform's JS API once configured.
