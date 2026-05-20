@@ -482,6 +482,278 @@ const faqJsonLd = {
         margin: 0;
       }
 
+      /* ── WHAT YOU'LL LEARN ── */
+      .aa-learn-list {
+        list-style: none;
+        padding: 0;
+        margin: 2rem 0 0;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 0.75rem 2rem;
+      }
+      @media (max-width: 640px) {
+        .aa-learn-list { grid-template-columns: 1fr; }
+      }
+      .aa-learn-list li {
+        display: flex;
+        align-items: flex-start;
+        gap: 0.625rem;
+        font-size: 0.9375rem;
+        color: theme('colors.ink-mid');
+        line-height: 1.55;
+      }
+      .aa-learn-list li::before {
+        content: '→';
+        color: theme('colors.orange');
+        font-weight: 600;
+        flex-shrink: 0;
+        margin-top: 0.05em;
+      }
+
+      /* ── AI VISIBILITY SCORE ── */
+      .aa-score-section {
+        background: #f2ede4;
+        border-top: 1px solid #e8e3d8;
+        border-bottom: 1px solid #e8e3d8;
+      }
+      .aa-score-card {
+        margin-top: 2rem;
+        background: #fff;
+        border: 1px solid #e8e3d8;
+        border-radius: 0.875rem;
+        overflow: hidden;
+      }
+      .aa-score-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 1.5rem 1.75rem 1.25rem;
+        border-bottom: 1px solid #e8e3d8;
+        gap: 1rem;
+      }
+      .aa-score-label {
+        font-size: 0.7rem;
+        font-weight: 600;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: theme('colors.orange');
+        margin-bottom: 0.25rem;
+      }
+      .aa-score-biz {
+        font-family: theme('fontFamily.serif');
+        font-size: 1rem;
+        font-weight: 600;
+        color: theme('colors.ink');
+        margin: 0;
+      }
+      .aa-score-num-wrap {
+        display: flex;
+        align-items: baseline;
+        gap: 0.125rem;
+        flex-shrink: 0;
+      }
+      .aa-score-num {
+        font-family: theme('fontFamily.serif');
+        font-size: 2.75rem;
+        font-weight: 700;
+        color: #c47c1a;
+        line-height: 1;
+      }
+      .aa-score-denom {
+        font-size: 1rem;
+        color: theme('colors.ink-light');
+        font-weight: 500;
+      }
+      .aa-score-bar-wrap {
+        padding: 0 1.75rem;
+        margin: 1.25rem 0;
+      }
+      .aa-score-bar-track {
+        height: 8px;
+        background: #f2ede4;
+        border-radius: 999px;
+        overflow: hidden;
+      }
+      .aa-score-bar-fill {
+        height: 100%;
+        width: 42%;
+        background: linear-gradient(90deg, #e8a020, #c47c1a);
+        border-radius: 999px;
+      }
+      .aa-score-metrics {
+        padding: 0 1.75rem 1.5rem;
+        display: flex;
+        flex-direction: column;
+        gap: 0.75rem;
+      }
+      .aa-score-row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+        font-size: 0.875rem;
+      }
+      .aa-score-row-label {
+        color: theme('colors.ink-mid');
+      }
+      .aa-pill {
+        font-size: 0.7rem;
+        font-weight: 600;
+        letter-spacing: 0.04em;
+        padding: 0.2rem 0.75rem;
+        border-radius: 999px;
+        flex-shrink: 0;
+      }
+      .aa-pill-bad { background: #fde8e8; color: #c0392b; }
+      .aa-pill-warn { background: #fef3e2; color: #a85e10; }
+      .aa-score-disclaimer {
+        font-size: 0.75rem;
+        color: theme('colors.ink-light');
+        text-align: center;
+        padding: 0.875rem 1.75rem;
+        border-top: 1px solid #f2ede4;
+        margin: 0;
+        font-style: italic;
+      }
+
+      /* ── SCREENSHOT FINDINGS ── */
+      .aa-screenshots-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1rem;
+        margin-top: 2.5rem;
+      }
+      @media (max-width: 700px) {
+        .aa-screenshots-grid { grid-template-columns: 1fr; }
+      }
+      .aa-screenshot-card {
+        border: 1px solid #e8e3d8;
+        border-radius: 0.875rem;
+        overflow: hidden;
+        background: #fff;
+      }
+      .aa-screenshot-tag {
+        font-size: 0.7rem;
+        font-weight: 600;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: theme('colors.ink-mid');
+        padding: 0.625rem 1rem;
+        border-bottom: 1px solid #e8e3d8;
+        background: #f2ede4;
+      }
+      .aa-screenshot-img {
+        height: 180px;
+        background: #f7f5f0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .aa-screenshot-placeholder {
+        font-size: 0.8125rem;
+        color: theme('colors.ink-light');
+        text-align: center;
+        padding: 1rem;
+      }
+      .aa-screenshot-caption {
+        font-size: 0.8125rem;
+        color: theme('colors.ink-mid');
+        line-height: 1.6;
+        padding: 0.875rem 1rem;
+        margin: 0;
+        border-top: 1px solid #f2ede4;
+      }
+
+      /* ── EXIT INTENT OVERLAY ── */
+      .aa-exit-overlay {
+        position: fixed;
+        inset: 0;
+        background: rgba(30, 28, 24, 0.55);
+        z-index: 100;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 1.5rem;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.2s;
+      }
+      .aa-exit-overlay.is-visible {
+        opacity: 1;
+        pointer-events: all;
+      }
+      .aa-exit-modal {
+        background: #fff;
+        border-radius: 1rem;
+        padding: 2.5rem 2rem;
+        max-width: 420px;
+        width: 100%;
+        text-align: center;
+        box-shadow: 0 20px 60px rgba(30, 28, 24, 0.18);
+        position: relative;
+      }
+      .aa-exit-close {
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+        background: none;
+        border: none;
+        cursor: pointer;
+        color: theme('colors.ink-light');
+        font-size: 1.25rem;
+        line-height: 1;
+        padding: 0.25rem;
+      }
+      .aa-exit-close:hover { color: theme('colors.ink'); }
+      .aa-exit-eyebrow {
+        font-size: 0.7rem;
+        font-weight: 600;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: theme('colors.orange');
+        margin-bottom: 0.75rem;
+      }
+      .aa-exit-heading {
+        font-family: theme('fontFamily.serif');
+        font-size: 1.375rem;
+        font-weight: 700;
+        color: theme('colors.ink');
+        line-height: 1.3;
+        margin-bottom: 0.75rem;
+      }
+      .aa-exit-body {
+        font-size: 0.875rem;
+        color: theme('colors.ink-mid');
+        line-height: 1.7;
+        margin-bottom: 1.5rem;
+      }
+      .aa-exit-btn {
+        display: block;
+        width: 100%;
+        background: theme('colors.navy');
+        color: #fff;
+        border: none;
+        padding: 0.875rem 1.5rem;
+        border-radius: 0.625rem;
+        font-size: 0.9375rem;
+        font-weight: 500;
+        cursor: pointer;
+        font-family: inherit;
+        transition: background 0.2s;
+        margin-bottom: 0.75rem;
+      }
+      .aa-exit-btn:hover { background: #1e3350; }
+      .aa-exit-dismiss {
+        font-size: 0.8125rem;
+        color: theme('colors.ink-light');
+        text-decoration: none;
+        cursor: pointer;
+        background: none;
+        border: none;
+        font-family: inherit;
+      }
+      .aa-exit-dismiss:hover { color: theme('colors.ink-mid'); }
+
       /* ── HOOKS ── */
       .aa-hooks { border-top: 1px solid #e8e3d8; }
       .aa-hooks-grid {
@@ -641,6 +913,24 @@ const faqJsonLd = {
     </div>
 
     <!-- ══════════════════════════════════════
+         SECTION 2B — WHAT YOU'LL LEARN
+    ══════════════════════════════════════ -->
+    <section class="aa-section" style="padding-bottom: 2rem;">
+      <div class="aa-section-inner">
+        <p class="aa-section-label">What the audit covers</p>
+        <h2 class="aa-section-title">What you'll learn in 5 minutes.</h2>
+        <ul class="aa-learn-list">
+          <li>Whether AI tools like ChatGPT, Gemini, and Perplexity mention your business</li>
+          <li>Which competitors dominate AI-generated recommendations in your category</li>
+          <li>Missing authority signals that keep you out of AI answers</li>
+          <li>Citation gaps across directories, review platforms, and the web</li>
+          <li>Content weaknesses that hurt your discoverability</li>
+          <li>GEO and LLMO opportunities specific to your Colorado market</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════
          SECTION 3 — THE AUDIT (CHAT EMBED)
     ══════════════════════════════════════ -->
     <section class="aa-section aa-audit-section" id="audit">
@@ -707,6 +997,96 @@ const faqJsonLd = {
           ))}
         </div>
         <p class="aa-deliverables-note">All three, free. No call required to receive them.</p>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════
+         SECTION 4B — AI VISIBILITY SCORE
+    ══════════════════════════════════════ -->
+    <section class="aa-section aa-score-section">
+      <div class="aa-section-inner">
+        <p class="aa-section-label">Sample output</p>
+        <h2 class="aa-section-title">Here's what your score looks like.</h2>
+        <p class="aa-section-body">
+          Based on a real Colorado service business. Your results reflect your specific market,
+          category, and current presence.
+        </p>
+        <div class="aa-score-card">
+          <div class="aa-score-header">
+            <div>
+              <p class="aa-score-label">AI Visibility Score</p>
+              <p class="aa-score-biz">Sample Colorado Service Business</p>
+            </div>
+            <div class="aa-score-num-wrap">
+              <span class="aa-score-num">42</span>
+              <span class="aa-score-denom">/100</span>
+            </div>
+          </div>
+          <div class="aa-score-bar-wrap">
+            <div class="aa-score-bar-track">
+              <div class="aa-score-bar-fill"></div>
+            </div>
+          </div>
+          <div class="aa-score-metrics">
+            <div class="aa-score-row">
+              <span class="aa-score-row-label">ChatGPT visibility</span>
+              <span class="aa-pill aa-pill-warn">42 / 100</span>
+            </div>
+            <div class="aa-score-row">
+              <span class="aa-score-row-label">Citation authority</span>
+              <span class="aa-pill aa-pill-bad">Low</span>
+            </div>
+            <div class="aa-score-row">
+              <span class="aa-score-row-label">AI recommendation frequency</span>
+              <span class="aa-pill aa-pill-warn">Weak</span>
+            </div>
+            <div class="aa-score-row">
+              <span class="aa-score-row-label">Google AI Overview presence</span>
+              <span class="aa-pill aa-pill-bad">Not detected</span>
+            </div>
+          </div>
+          <p class="aa-score-disclaimer">Sample from a real audit. Your score is calculated from your actual business data.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════
+         SECTION 4C — SCREENSHOT FINDINGS
+    ══════════════════════════════════════ -->
+    <section class="aa-section">
+      <div class="aa-section-inner">
+        <p class="aa-section-label">Visual evidence</p>
+        <h2 class="aa-section-title">See exactly where you're missing.</h2>
+        <p class="aa-section-body">
+          Your audit includes screenshots of actual AI outputs for your category and market —
+          so you can see which businesses are being recommended instead of you, and why.
+        </p>
+        <div class="aa-screenshots-grid">
+          <div class="aa-screenshot-card">
+            <p class="aa-screenshot-tag">ChatGPT</p>
+            <!-- TODO: Replace placeholder with a real anonymized ChatGPT screenshot -->
+            <div class="aa-screenshot-img">
+              <p class="aa-screenshot-placeholder">ChatGPT output<br/>for your category</p>
+            </div>
+            <p class="aa-screenshot-caption">Who ChatGPT recommends when someone asks for your service in your area — and whether you appear.</p>
+          </div>
+          <div class="aa-screenshot-card">
+            <p class="aa-screenshot-tag">Perplexity</p>
+            <!-- TODO: Replace placeholder with a real anonymized Perplexity screenshot -->
+            <div class="aa-screenshot-img">
+              <p class="aa-screenshot-placeholder">Perplexity output<br/>with source citations</p>
+            </div>
+            <p class="aa-screenshot-caption">Perplexity's sourced recommendations and the citation sources driving them.</p>
+          </div>
+          <div class="aa-screenshot-card">
+            <p class="aa-screenshot-tag">Gemini</p>
+            <!-- TODO: Replace placeholder with a real anonymized Gemini screenshot -->
+            <div class="aa-screenshot-img">
+              <p class="aa-screenshot-placeholder">Gemini output<br/>for your category</p>
+            </div>
+            <p class="aa-screenshot-caption">Google's AI answer for your category and where your business stands relative to what Gemini surfaces.</p>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -869,6 +1249,25 @@ const faqJsonLd = {
     </section>
 
   </div>
+
+  <!-- ══════════════════════════════════════
+       EXIT INTENT OVERLAY
+  ══════════════════════════════════════ -->
+  <div id="aa-exit-overlay" class="aa-exit-overlay" role="dialog" aria-modal="true" aria-labelledby="aa-exit-heading">
+    <div class="aa-exit-modal">
+      <button class="aa-exit-close" id="aa-exit-close" aria-label="Close">✕</button>
+      <p class="aa-exit-eyebrow">Free download</p>
+      <h2 class="aa-exit-heading" id="aa-exit-heading">Before you go — grab the checklist.</h2>
+      <p class="aa-exit-body">
+        The Local Search Visibility Checklist covers 25 factors that determine whether you show up
+        in local search — or your competitor does. Free, straight to your inbox.
+      </p>
+      <button type="button" class="aa-exit-btn" id="aa-exit-checklist-btn">
+        Send me the free checklist →
+      </button>
+      <button type="button" class="aa-exit-dismiss" id="aa-exit-dismiss">No thanks, I'll skip it</button>
+    </div>
+  </div>
 </BaseLayout>
 
 <script>
@@ -911,6 +1310,54 @@ const faqJsonLd = {
 
   document.getElementById('hero-cta')?.addEventListener('click', openAudit);
   document.getElementById('closing-cta')?.addEventListener('click', openAudit);
+
+  // ── Exit intent ──
+  (function () {
+    const STORAGE_KEY = 'zw_exit_shown';
+    if (sessionStorage.getItem(STORAGE_KEY)) return;
+
+    const overlay = document.getElementById('aa-exit-overlay');
+    const closeBtn = document.getElementById('aa-exit-close');
+    const dismissBtn = document.getElementById('aa-exit-dismiss');
+    const checklistBtn = document.getElementById('aa-exit-checklist-btn');
+    if (!overlay) return;
+
+    function showOverlay() {
+      if (sessionStorage.getItem(STORAGE_KEY)) return;
+      sessionStorage.setItem(STORAGE_KEY, '1');
+      overlay.classList.add('is-visible');
+      closeBtn?.focus();
+    }
+
+    function hideOverlay() {
+      overlay.classList.remove('is-visible');
+    }
+
+    // Desktop: mouse leaves viewport through the top
+    document.addEventListener('mouseleave', (e) => {
+      if (e.clientY <= 0) showOverlay();
+    });
+
+    // Mobile: fire after 45s of inactivity as fallback
+    const mobileTimer = setTimeout(showOverlay, 45000);
+    document.addEventListener('touchstart', () => {
+      clearTimeout(mobileTimer);
+    }, { once: true });
+
+    closeBtn?.addEventListener('click', hideOverlay);
+    dismissBtn?.addEventListener('click', hideOverlay);
+    overlay.addEventListener('click', (e) => {
+      if (e.target === overlay) hideOverlay();
+    });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') hideOverlay();
+    });
+
+    checklistBtn?.addEventListener('click', () => {
+      hideOverlay();
+      window.location.href = '/local-search-checklist/';
+    });
+  })();
 
   // ── Chat platform event hooks ──
   // Wire these callbacks to the white-label platform's JS API once configured.
