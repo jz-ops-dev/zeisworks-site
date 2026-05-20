@@ -85,13 +85,25 @@ const faqJsonLd = {
 
     <script type="application/ld+json" set:html={JSON.stringify(faqJsonLd)} />
 
-    <!--
-      OpenAI Ads conversion pixel
-      TODO: Replace with script from OpenAI Ads Manager dashboard.
-      Verify in OpenAI's pixel testing tool before campaigns go live.
-      Fire the conversion event on ai_audit_chat_complete (wired below in page script).
-    -->
-    <!-- <script>/* OpenAI Ads pixel goes here */</script> -->
+    <!-- OpenAI Ads pixel -->
+    <script>
+      !function(w, d, s, u) {
+        if (w.oaiq) return;
+        var q = function() { q.q.push(arguments); };
+        q.q = [];
+        w.oaiq = q;
+        var j = d.createElement(s);
+        j.async = 1;
+        j.src = u;
+        var f = d.getElementsByTagName(s)[0];
+        f.parentNode.insertBefore(j, f);
+      }(window, document, "script", "https://bzrcdn.openai.com/sdk/oaiq.min.js");
+
+      oaiq("init", {
+        pixelId: "RRQqeHMx2HbAnFHRxWWxQM",
+        debug: true
+      });
+    </script>
 
     <style>
       .aa-page { font-size: 1.0625rem; line-height: 1.75; }
@@ -1306,6 +1318,13 @@ const faqJsonLd = {
       'zw-audit',
       `width=${w},height=${h},left=${left},top=${top},resizable=yes,scrollbars=yes`
     );
+    if (typeof oaiq !== 'undefined') {
+      oaiq("measure", "registration_completed", {
+        type: "customer_action",
+        amount: 0,
+        currency: "USD"
+      });
+    }
   }
 
   document.getElementById('hero-cta')?.addEventListener('click', openAudit);
