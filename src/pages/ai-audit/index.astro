@@ -573,9 +573,14 @@ const faqJsonLd = {
           what it's costing you, and the 12-month plan to fix it.
         </p>
         <div class="aa-cta-group">
-          <button type="button" class="aa-btn-primary" id="hero-cta">
+          <a
+            href="/ai-audit/start/"
+            target="_blank"
+            rel="noopener"
+            class="aa-btn-primary"
+          >
             Start the free audit →
-          </button>
+          </a>
           <a
             href="tel:+17206502447"
             class="aa-btn-phone"
@@ -796,9 +801,14 @@ const faqJsonLd = {
         <h2 class="aa-closing-title">Five minutes. Free report. No call.</h2>
         <p class="aa-closing-sub">Run the audit, get the plan, decide what to do next.</p>
         <div class="aa-closing-cta-group">
-          <button type="button" class="aa-btn-closing" id="closing-cta">
+          <a
+            href="/ai-audit/start/"
+            target="_blank"
+            rel="noopener"
+            class="aa-btn-closing"
+          >
             Start the audit →
-          </button>
+          </a>
         </div>
         <p class="aa-closing-phone">
           Or call
@@ -835,45 +845,6 @@ const faqJsonLd = {
       }
     });
   });
-
-  // ── Smooth scroll to #audit and focus chat input ──
-  function scrollToAudit() {
-    const section = document.getElementById('audit');
-    if (!section) return;
-    section.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    setTimeout(() => {
-      const container = document.getElementById('audit-chat-container');
-      if (!container) return;
-      const focusable = container.querySelector<HTMLElement>(
-        'input, textarea, button, [tabindex="0"]'
-      );
-      if (focusable) focusable.focus();
-    }, 650);
-  }
-
-  document.getElementById('hero-cta')?.addEventListener('click', scrollToAudit);
-  document.getElementById('closing-cta')?.addEventListener('click', scrollToAudit);
-
-  // ── Lazy-load chat embed script on scroll into view ──
-  // Replace the src and callback with the actual platform embed details.
-  // Remove data-embed-pending from the container once the embed is installed.
-  const chatContainer = document.getElementById('audit-chat-container');
-  if (chatContainer?.dataset.embedPending) {
-    const observer = new IntersectionObserver(
-      (entries, obs) => {
-        if (entries[0].isIntersecting) {
-          obs.disconnect();
-          // TODO: inject platform embed script here, e.g.:
-          // const s = document.createElement('script');
-          // s.src = 'https://platform.example.com/embed.js';
-          // s.dataset.agencyId = 'zeisworks';
-          // document.body.appendChild(s);
-        }
-      },
-      { rootMargin: '200px' }
-    );
-    observer.observe(chatContainer);
-  }
 
   // ── Chat platform event hooks ──
   // Wire these callbacks to the white-label platform's JS API once configured.
