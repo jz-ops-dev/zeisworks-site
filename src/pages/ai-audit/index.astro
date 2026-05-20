@@ -482,6 +482,38 @@ const faqJsonLd = {
         margin: 0;
       }
 
+      /* ── HOOKS ── */
+      .aa-hooks { border-top: 1px solid #e8e3d8; }
+      .aa-hooks-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem;
+        margin-top: 2.5rem;
+      }
+      @media (max-width: 640px) {
+        .aa-hooks-grid { grid-template-columns: 1fr; }
+      }
+      .aa-hook-card {
+        background: #fff;
+        border: 1px solid #e8e3d8;
+        border-radius: 0.875rem;
+        padding: 1.5rem;
+      }
+      .aa-hook-title {
+        font-family: theme('fontFamily.serif');
+        font-size: 1rem;
+        font-weight: 600;
+        color: theme('colors.ink');
+        margin-bottom: 0.5rem;
+        line-height: 1.3;
+      }
+      .aa-hook-desc {
+        font-size: 0.875rem;
+        color: theme('colors.ink-mid');
+        line-height: 1.65;
+        margin: 0;
+      }
+
       /* ── CLOSING CTA ── */
       .aa-closing {
         background: theme('colors.forest');
@@ -565,7 +597,7 @@ const faqJsonLd = {
     ══════════════════════════════════════ -->
     <section class="aa-hero" id="top">
       <div class="aa-hero-inner">
-        <p class="aa-eyebrow">Free local search audit</p>
+        <p class="aa-eyebrow">Free local search audit · Colorado businesses</p>
         <h1 class="aa-h1">Get found where your customers are looking.</h1>
         <p class="aa-subhead">
           Someone just searched for a business like yours and didn't find you. We'll show you
@@ -692,10 +724,39 @@ const faqJsonLd = {
             projections and the cost to execute. You keep the plan regardless of what you decide.
           </p>
           <p>
-            If the numbers make sense, we can talk about running it together. If they don't,
-            you've spent five minutes and walked away with a clear picture of exactly where
-            you stand — and what it would take to change it.
+            ZeisWorks is built specifically for Colorado businesses. We know the local market,
+            the competition, and what it actually takes to stand out here. If the numbers make
+            sense, we can talk about running it together. If they don't, you've spent five
+            minutes and walked away with a clear picture of exactly where you stand.
           </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════
+         SECTION 5B — HOW ZEISWORKS WORKS
+    ══════════════════════════════════════ -->
+    <section class="aa-section aa-hooks">
+      <div class="aa-section-inner">
+        <p class="aa-section-label">How it works with us</p>
+        <h2 class="aa-section-title">What you get when you work with ZeisWorks.</h2>
+        <div class="aa-hooks-grid">
+          <div class="aa-hook-card">
+            <p class="aa-hook-title">A human in the loop</p>
+            <p class="aa-hook-desc">You get direct access to Jack — not a project manager, not a ticketing system. If you want to talk through the plan or ask a question, you can.</p>
+          </div>
+          <div class="aa-hook-card">
+            <p class="aa-hook-title">Monthly reports, no matter what</p>
+            <p class="aa-hook-desc">Progress updates and campaign summaries in your inbox every month. You always know exactly where things stand — even if nothing needs your attention.</p>
+          </div>
+          <div class="aa-hook-card">
+            <p class="aa-hook-title">Revenue-driven, not just numbers</p>
+            <p class="aa-hook-desc">We measure pipeline and new clients, not impressions and rankings. If a metric doesn't connect to revenue, it doesn't make it into your report.</p>
+          </div>
+          <div class="aa-hook-card">
+            <p class="aa-hook-title">Plans that move the bottom line</p>
+            <p class="aa-hook-desc">Every recommendation is tied to a revenue outcome. If it doesn't drive new business, it's not in the plan.</p>
+          </div>
         </div>
       </div>
     </section>
@@ -749,8 +810,9 @@ const faqJsonLd = {
         <div class="aa-about-body">
           <h2>Hi, I'm Jack.</h2>
           <p>
-            AI marketing strategist based in Golden, Colorado. I help local businesses figure
-            out where they're losing visibility — and build the systems to take it back.
+            AI marketing strategist based in Golden, Colorado. I work exclusively with Colorado
+            businesses — which means I know your market, your competitors, and what actually
+            moves the needle here.
           </p>
           <p>
             I built ZeisWorks because most businesses I talked to were paying for marketing
