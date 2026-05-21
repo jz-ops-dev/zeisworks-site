@@ -33,7 +33,7 @@ const localBusinessJsonLd = {
   name: 'ZeisWorks',
   url: siteUrl,
   logo: `${siteUrl}/favicon.svg`,
-  description: 'Modern small business growth consulting — local SEO, paid ads, operations, and custom tools for service businesses.',
+  description: 'Small business growth consulting for Golden, Colorado. Local SEO, paid ads, operations, and custom tools for Front Range service businesses.',
   telephone: '+17206502447',
   email: 'jack@zeisworks.com',
   founder: {
@@ -48,10 +48,15 @@ const localBusinessJsonLd = {
     addressRegion: 'CO',
     addressCountry: 'US',
   },
-  areaServed: {
-    '@type': 'Country',
-    name: 'United States',
-  },
+  areaServed: [
+    { '@type': 'City', name: 'Golden', addressRegion: 'CO' },
+    { '@type': 'City', name: 'Denver', addressRegion: 'CO' },
+    { '@type': 'City', name: 'Arvada', addressRegion: 'CO' },
+    { '@type': 'City', name: 'Lakewood', addressRegion: 'CO' },
+    { '@type': 'City', name: 'Wheat Ridge', addressRegion: 'CO' },
+    { '@type': 'City', name: 'Littleton', addressRegion: 'CO' },
+    { '@type': 'City', name: 'Boulder', addressRegion: 'CO' },
+  ],
   sameAs: [
     'https://www.upwork.com',
   ],
