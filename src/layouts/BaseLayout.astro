@@ -159,6 +159,84 @@ const localBusinessJsonLd = {
         --font-sans: 'DM Sans', system-ui, sans-serif;
         --font-mono: 'DM Mono', monospace;
       }
+
+      /* ─── Animation system ──────────────────────────────────────────── */
+      @media (prefers-reduced-motion: no-preference) {
+
+        /* Hero: first content block — children stagger in on load */
+        .hz-hero > * {
+          opacity: 0;
+          animation: hz-up 0.65s cubic-bezier(0.16, 1, 0.3, 1) both;
+        }
+        .hz-hero > *:nth-child(1) { animation-delay:   0ms; }
+        .hz-hero > *:nth-child(2) { animation-delay: 100ms; }
+        .hz-hero > *:nth-child(3) { animation-delay: 190ms; }
+        .hz-hero > *:nth-child(4) { animation-delay: 280ms; }
+        .hz-hero > *:nth-child(5) { animation-delay: 350ms; }
+
+        /* Scroll-reveal: sections fade + rise into view */
+        .hz-reveal {
+          opacity: 0;
+          transform: translateY(30px);
+          transition: opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1),
+                      transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .hz-reveal.hz-in { opacity: 1; transform: none; }
+
+        /* Stagger: list / grid items inside a revealed section */
+        .hz-reveal .hz-item { opacity: 0; }
+        .hz-reveal.hz-in .hz-item {
+          animation: hz-up 0.5s cubic-bezier(0.16, 1, 0.3, 1) both;
+        }
+        .hz-reveal.hz-in .hz-item:nth-child(1) { animation-delay:  50ms; }
+        .hz-reveal.hz-in .hz-item:nth-child(2) { animation-delay: 115ms; }
+        .hz-reveal.hz-in .hz-item:nth-child(3) { animation-delay: 180ms; }
+        .hz-reveal.hz-in .hz-item:nth-child(4) { animation-delay: 245ms; }
+        .hz-reveal.hz-in .hz-item:nth-child(5) { animation-delay: 310ms; }
+        .hz-reveal.hz-in .hz-item:nth-child(n+6) { animation-delay: 360ms; }
+
+        @keyframes hz-up {
+          from { opacity: 0; transform: translateY(22px); }
+          to   { opacity: 1; transform: none; }
+        }
+
+        /* Card hover lift — applied to block-link cards */
+        .hz-card {
+          transition: transform 0.2s ease, box-shadow 0.2s ease !important;
+        }
+        .hz-card:hover {
+          transform: translateY(-4px) !important;
+          box-shadow: 0 14px 36px rgba(30, 28, 24, 0.11) !important;
+        }
+        .hz-card:active { transform: translateY(-1px) !important; }
+
+        /* Skill tags — subtle scale pop on hover */
+        .hz-tag {
+          transition: transform 0.15s ease, background-color 0.15s ease !important;
+          cursor: default;
+        }
+        .hz-tag:hover { transform: scale(1.05) !important; }
+
+        /* Floating button — spring bounce in after page settles */
+        #ga-float-btn {
+          opacity: 0;
+          animation: hz-float-in 0.55s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+          animation-delay: 1.6s;
+        }
+        @keyframes hz-float-in {
+          from { opacity: 0; transform: translateY(28px) scale(0.85); }
+          to   { opacity: 1; transform: none; }
+        }
+
+        /* Nav logo — fade in */
+        header .font-serif { animation: hz-fade 0.4s ease both; }
+        header nav { animation: hz-fade 0.5s ease 0.1s both; }
+        @keyframes hz-fade {
+          from { opacity: 0; }
+          to   { opacity: 1; }
+        }
+      }
+      /* ──────────────────────────────────────────────────────────────── */
     </style>
   </head>
   <body class="font-sans antialiased min-h-screen flex flex-col" data-page={bodyPage}>
@@ -258,6 +336,47 @@ const localBusinessJsonLd = {
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
       Get in touch
     </button>
+
+    <script>
+      (function () {
+        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+        const wrap = document.querySelector('main .max-w-3xl');
+        if (!wrap) return;
+        const kids = Array.from(wrap.children);
+        if (!kids.length) return;
+
+        // First block → hero entrance (CSS nth-child handles sequencing)
+        kids[0].classList.add('hz-hero');
+
+        // Remaining blocks → scroll-reveal + stagger their items
+        kids.slice(1).forEach(el => {
+          el.classList.add('hz-reveal');
+          // Mark list items, grid children, and stacked block-links for stagger
+          el.querySelectorAll(
+            'ul > li, ol > li, .grid > div, .grid > a, .space-y-4 > a, .space-y-4 > div'
+          ).forEach(item => item.classList.add('hz-item'));
+        });
+
+        // Block-link cards (e.g., about page service pillars) get hover lift
+        document.querySelectorAll('a.block.rounded-xl').forEach(el => el.classList.add('hz-card'));
+
+        // Skill / tag chips get a micro pop
+        document.querySelectorAll('span.rounded-full').forEach(el => el.classList.add('hz-tag'));
+
+        // IntersectionObserver — reveal sections as they scroll into view
+        const io = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('hz-in');
+              io.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.07, rootMargin: '0px 0px -36px 0px' });
+
+        wrap.querySelectorAll('.hz-reveal').forEach(el => io.observe(el));
+      })();
+    </script>
 
     <footer class="border-t border-cream-dark mt-24">
       <div
