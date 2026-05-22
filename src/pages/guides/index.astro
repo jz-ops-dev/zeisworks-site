@@ -14,8 +14,6 @@ const clusters = [
     label: 'Med Spas & Aesthetics',
     title: 'Med Spa Growth',
     description: 'Membership programs, filling injector slots, and the local SEO that brings high-value clients through your door.',
-    pillarUrl: '/med-spas/',
-    pillarLabel: 'Med Spa Marketing Overview →',
     slugs: [
       'tiered-med-spa-membership-program-monthly-recurring-revenue',
       'how-to-fill-injector-slots-without-discounting',
@@ -26,8 +24,6 @@ const clusters = [
     label: 'Home Services',
     title: 'Home Services Growth',
     description: 'Lead nurturing and the systems that keep your schedule full without chasing every inquiry.',
-    pillarUrl: '/home-services/',
-    pillarLabel: 'Home Services Marketing Overview →',
     slugs: [
       'lead-nurturing-for-home-remodelers',
     ],
@@ -37,8 +33,6 @@ const clusters = [
     label: 'Independent Vet Clinics',
     title: 'Vet Clinic Growth',
     description: 'Outrank the corporate chains, build a review engine, and reactivate lapsed clients.',
-    pillarUrl: '/independent-vets/',
-    pillarLabel: 'Vet Clinic Marketing Overview →',
     slugs: [
       'local-seo-for-independent-vet-clinics',
     ],
@@ -82,9 +76,6 @@ const unclusteredGuides = sortedGuides.filter(g => !clusteredSlugs.includes(g.id
                 <h2 class="font-serif text-xl font-semibold text-ink">{cluster.title}</h2>
                 <p class="text-ink-mid text-sm mt-1 max-w-md">{cluster.description}</p>
               </div>
-              <a href={cluster.pillarUrl} class="hidden sm:block text-xs font-medium text-navy hover:underline shrink-0">
-                {cluster.pillarLabel}
-              </a>
             </div>
             <div class="divide-y divide-cream-dark">
               {clusterGuides.map((guide) => (
@@ -99,9 +90,6 @@ const unclusteredGuides = sortedGuides.filter(g => !clusteredSlugs.includes(g.id
                 </div>
               ))}
             </div>
-            <a href={cluster.pillarUrl} class="sm:hidden mt-4 inline-block text-xs font-medium text-navy hover:underline">
-              {cluster.pillarLabel}
-            </a>
           </section>
         );
       })}
@@ -137,7 +125,7 @@ const unclusteredGuides = sortedGuides.filter(g => !clusteredSlugs.includes(g.id
         The free Marketing Gap Analysis shows how your local search presence compares to your top competitors — with specific fixes and priorities. No call required.
       </p>
       <button type="button" data-modal="gap-analysis" class="inline-block bg-navy text-cream text-sm font-medium px-6 py-3 rounded-lg hover:bg-navy/90 transition-colors cursor-pointer border-0">
-        Get your free Gap Analysis →
+        Get in touch →
       </button>
     </div>
 
