@@ -6,3 +6,7 @@ dist/
 
 # dependencies
 node_modules/
+
+# Python cache
+__pycache__/
+*.pyc
