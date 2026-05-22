@@ -92,6 +92,7 @@
     --max: 1100px;
     --radius: 10px;
     --radius-lg: 18px;
+    --radius-full: 999px;
   }
 
   html { scroll-behavior: smooth; }
@@ -612,22 +613,9 @@
   }
   .faq-item:first-child,
   .faq-item:nth-child(2) { border-top: 1px solid var(--cream-dark); }
-  .faq-q {
-    font-family: var(--font-sans);
-    font-size: 0.9375rem;
-    font-weight: 600;
-    color: var(--ink);
-    margin-bottom: 0.5rem;
-    line-height: 1.4;
-  }
-  .faq-a {
-    font-family: var(--font-sans);
-    font-size: 0.9rem;
-    font-weight: 400;
-    color: var(--ink-mid);
-    line-height: 1.75;
-    margin: 0;
-  }
+  /* Old .faq-q — overridden by new accordion CSS below; reset margin only */
+  .faq-q { margin-bottom: 0; }
+  .faq-a { margin: 0; }
   .pricing-divider {
     width: 1px;
     background: rgba(255,255,255,0.12);
@@ -783,7 +771,8 @@
     background: var(--forest);
     text-align: center;
   }
-  .free-cta .section-label { color: rgba(255,255,255,0.45); }
+  /* free-cta is now cream — override the old dark-section text colors */
+  .free-cta .section-label { color: var(--orange); }
   .free-cta .section-title {
     color: #fff;
     margin-bottom: 1.25rem;
@@ -903,11 +892,11 @@
     100% { background-position: 0% 50%; }
   }
 
-  /* Hero load stagger */
-  .hero-eyebrow { animation: fadeUp 0.55s ease-out 0.05s both; }
-  .hero h1 { animation: fadeUp 0.6s ease-out 0.2s both; }
-  .hero-sub { animation: fadeUp 0.6s ease-out 0.35s both; }
-  .hero-actions { animation: fadeUp 0.6s ease-out 0.5s both; }
+  /* Hero load stagger — disabled; Motion JS handles entrance animations */
+  .hero-eyebrow { animation: none; }
+  .hero h1 { animation: none; }
+  .hero-sub { animation: none; }
+  .hero-actions { animation: none; }
 
   /* Animated gradient on dark sections */
   .problem {
@@ -1947,9 +1936,12 @@ src="https://www.facebook.com/tr?id=555580570097631&ev=PageView&noscript=1"
     width: 56px; height: 56px;
     border-color: var(--orange);
   }
+  @media (pointer: fine) {
+    body, a, button, [data-cursor-hover] { cursor: none; }
+  }
   @media (pointer: coarse) {
     .cursor-dot, .cursor-ring { display: none !important; }
-    * { cursor: auto !important; }
+    body, a, button, * { cursor: auto !important; }
   }
 
   /* Marquee */
@@ -2057,6 +2049,13 @@ src="https://www.facebook.com/tr?id=555580570097631&ev=PageView&noscript=1"
     font-weight: 600;
     letter-spacing: -0.025em;
     color: var(--ink);
+  }
+  /* Override old .hero h1 specificity (0,1,1) — this selector is (0,2,1) */
+  .hero h1.display-xl {
+    font-size: clamp(3rem, 9vw, 6.5rem);
+    line-height: 0.95;
+    letter-spacing: -0.025em;
+    margin-bottom: 0;
   }
   .display-xl em { color: var(--orange); font-style: italic; }
   .display-xl .word { display: inline-block; white-space: nowrap; }
@@ -2420,9 +2419,11 @@ src="https://www.facebook.com/tr?id=555580570097631&ev=PageView&noscript=1"
   /* Bento responsive */
   @media (max-width: 900px) {
     .bento { grid-template-columns: repeat(2, 1fr); }
+    .bento > * { grid-column: auto !important; grid-row: auto !important; }
   }
   @media (max-width: 500px) {
     .bento { grid-template-columns: 1fr; }
+    .bento > * { grid-column: auto !important; grid-row: auto !important; }
   }
 </style>
 </head>
@@ -3999,12 +4000,15 @@ function initLiveCounter() {
 }
 
 // 8. Hero spotlight (mouse-tracked radial)
-function initSpotlight(selector) {
+// The spotlight div has pointer-events:none, so we listen on its parent section
+function initSpotlight(spotlightSelector) {
   if (REDUCED) return;
-  const el = document.querySelector(selector);
+  const el = document.querySelector(spotlightSelector);
   if (!el) return;
-  el.addEventListener('mousemove', (e) => {
-    const r = el.getBoundingClientRect();
+  const container = el.closest('section') || el.parentElement;
+  if (!container) return;
+  container.addEventListener('mousemove', (e) => {
+    const r = container.getBoundingClientRect();
     el.style.setProperty('--mx', (e.clientX - r.left) + 'px');
     el.style.setProperty('--my', (e.clientY - r.top) + 'px');
   });
@@ -4095,11 +4099,10 @@ if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
     var seq = [];
     if (eyebrow) seq.push([eyebrow, { opacity: [0, 1], y: [12, 0] }, { duration: 0.4 }]);
     if (h1) {
-      h1.innerHTML = h1.textContent.trim().split(/\s+/)
-        .map(function(w) { return '<span style="display:inline-block;white-space:nowrap">' + w + '</span>'; })
-        .join(' ');
-      var words = Array.from(h1.querySelectorAll('span'));
-      if (words.length) seq.push([words, { opacity: [0, 1], y: [30, 0] }, {
+      // Use the existing .word spans already in the HTML (preserves .strike and <em>)
+      var words = Array.from(h1.querySelectorAll('.word'));
+      if (!words.length) words = [h1]; // fallback: animate the whole h1
+      seq.push([words, { opacity: [0, 1], y: [30, 0] }, {
         type: 'spring', bounce: 0.25, duration: 0.9,
         delay: stagger(0.06),
         at: eyebrow ? '-0.08' : '0',
@@ -4117,23 +4120,12 @@ if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
     if (seq.length) animate(seq);
   }
 
-  // SECTION SCROLL REVEALS
-  var sections = document.querySelectorAll('section:not(.hero):not(#ai-search-sim)');
+  // SECTION SCROLL REVEALS — opacity only at section level to avoid jarring scale on tall sections
+  var sections = document.querySelectorAll('section:not(.hero):not(#ai-search-sim):not(.pin-section)');
   sections.forEach(function(section) {
     inView(section, function({ target }) {
-      animate(target, { opacity: [0, 1], y: [40, 0], scale: [0.96, 1] }, {
-        type: 'spring', bounce: 0.2, duration: 0.8,
-      });
-      var items = Array.from(target.querySelectorAll(
-        '.proof-item, .case-study, .vertical-card, .pricing-tier, .faq-item, .problem-card'
-      ));
-      if (items.length > 1) {
-        animate(items, { opacity: [0, 1], y: [20, 0] }, {
-          type: 'spring', bounce: 0.3,
-          delay: stagger(0.08, { startDelay: 0.1 }),
-        });
-      }
-    }, { amount: 0.1 });
+      animate(target, { opacity: [0, 1] }, { duration: 0.6, ease: 'easeOut' });
+    }, { amount: 0.05 });
   });
 
   // BUTTON HOVER SPRINGS
