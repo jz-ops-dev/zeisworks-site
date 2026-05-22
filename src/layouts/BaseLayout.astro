@@ -138,6 +138,13 @@ const localBusinessJsonLd = {
     /></noscript>
     <!-- End Meta Pixel Base Code -->
 
+    <!-- FOUC prevention: hide animated elements before Motion script runs -->
+    <script is:inline>
+      if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        document.documentElement.classList.add('motion-ready');
+      }
+    </script>
+
     <style is:global>
       :root {
         --ink: #1E1C18;
@@ -160,83 +167,13 @@ const localBusinessJsonLd = {
         --font-mono: 'DM Mono', monospace;
       }
 
-      /* ─── Animation system ──────────────────────────────────────────── */
-      @media (prefers-reduced-motion: no-preference) {
-
-        /* Hero: first content block — children stagger in on load */
-        .hz-hero > * {
-          opacity: 0;
-          animation: hz-up 0.65s cubic-bezier(0.16, 1, 0.3, 1) both;
-        }
-        .hz-hero > *:nth-child(1) { animation-delay:   0ms; }
-        .hz-hero > *:nth-child(2) { animation-delay: 100ms; }
-        .hz-hero > *:nth-child(3) { animation-delay: 190ms; }
-        .hz-hero > *:nth-child(4) { animation-delay: 280ms; }
-        .hz-hero > *:nth-child(5) { animation-delay: 350ms; }
-
-        /* Scroll-reveal: sections fade + rise into view */
-        .hz-reveal {
-          opacity: 0;
-          transform: translateY(30px);
-          transition: opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1),
-                      transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-        .hz-reveal.hz-in { opacity: 1; transform: none; }
-
-        /* Stagger: list / grid items inside a revealed section */
-        .hz-reveal .hz-item { opacity: 0; }
-        .hz-reveal.hz-in .hz-item {
-          animation: hz-up 0.5s cubic-bezier(0.16, 1, 0.3, 1) both;
-        }
-        .hz-reveal.hz-in .hz-item:nth-child(1) { animation-delay:  50ms; }
-        .hz-reveal.hz-in .hz-item:nth-child(2) { animation-delay: 115ms; }
-        .hz-reveal.hz-in .hz-item:nth-child(3) { animation-delay: 180ms; }
-        .hz-reveal.hz-in .hz-item:nth-child(4) { animation-delay: 245ms; }
-        .hz-reveal.hz-in .hz-item:nth-child(5) { animation-delay: 310ms; }
-        .hz-reveal.hz-in .hz-item:nth-child(n+6) { animation-delay: 360ms; }
-
-        @keyframes hz-up {
-          from { opacity: 0; transform: translateY(22px); }
-          to   { opacity: 1; transform: none; }
-        }
-
-        /* Card hover lift — applied to block-link cards */
-        .hz-card {
-          transition: transform 0.2s ease, box-shadow 0.2s ease !important;
-        }
-        .hz-card:hover {
-          transform: translateY(-4px) !important;
-          box-shadow: 0 14px 36px rgba(30, 28, 24, 0.11) !important;
-        }
-        .hz-card:active { transform: translateY(-1px) !important; }
-
-        /* Skill tags — subtle scale pop on hover */
-        .hz-tag {
-          transition: transform 0.15s ease, background-color 0.15s ease !important;
-          cursor: default;
-        }
-        .hz-tag:hover { transform: scale(1.05) !important; }
-
-        /* Floating button — spring bounce in after page settles */
-        #ga-float-btn {
-          opacity: 0;
-          animation: hz-float-in 0.55s cubic-bezier(0.34, 1.56, 0.64, 1) both;
-          animation-delay: 1.6s;
-        }
-        @keyframes hz-float-in {
-          from { opacity: 0; transform: translateY(28px) scale(0.85); }
-          to   { opacity: 1; transform: none; }
-        }
-
-        /* Nav logo — fade in */
-        header .font-serif { animation: hz-fade 0.4s ease both; }
-        header nav { animation: hz-fade 0.5s ease 0.1s both; }
-        @keyframes hz-fade {
-          from { opacity: 0; }
-          to   { opacity: 1; }
-        }
+      /* Initial opacity:0 for Motion-animated elements — prevents FOUC */
+      .motion-ready header,
+      .motion-ready main .max-w-3xl > :first-child > *,
+      .motion-ready main .max-w-3xl > *:not(:first-child),
+      .motion-ready #ga-float-btn {
+        opacity: 0;
       }
-      /* ──────────────────────────────────────────────────────────────── */
     </style>
   </head>
   <body class="font-sans antialiased min-h-screen flex flex-col" data-page={bodyPage}>
@@ -338,44 +275,130 @@ const localBusinessJsonLd = {
     </button>
 
     <script>
-      (function () {
-        if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+      import { animate, inView, stagger } from 'motion';
 
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        // Remove FOUC class so content stays visible without animation
+        document.documentElement.classList.remove('motion-ready');
+      } else {
+
+        // ── NAV ────────────────────────────────────────────────────────────
+        animate(
+          'header',
+          { opacity: [0, 1], y: [-10, 0] },
+          { duration: 0.5, ease: 'easeOut' }
+        );
+
+        // ── HERO SEQUENCE ───────────────────────────────────────────────────
         const wrap = document.querySelector('main .max-w-3xl');
-        if (!wrap) return;
-        const kids = Array.from(wrap.children);
-        if (!kids.length) return;
+        if (wrap) {
+          const hero = wrap.children[0] as HTMLElement;
 
-        // First block → hero entrance (CSS nth-child handles sequencing)
-        kids[0].classList.add('hz-hero');
+          // Split h1 words into inline spans for word-by-word spring stagger
+          const h1 = hero?.querySelector('h1');
+          if (h1?.textContent) {
+            h1.innerHTML = h1.textContent.trim().split(/\s+/)
+              .map(w => `<span style="display:inline-block;white-space:nowrap">${w}</span>`)
+              .join(' ');
+          }
 
-        // Remaining blocks → scroll-reveal + stagger their items
-        kids.slice(1).forEach(el => {
-          el.classList.add('hz-reveal');
-          // Mark list items, grid children, and stacked block-links for stagger
-          el.querySelectorAll(
-            'ul > li, ol > li, .grid > div, .grid > a, .space-y-4 > a, .space-y-4 > div'
-          ).forEach(item => item.classList.add('hz-item'));
+          const eyebrow = hero?.querySelector('p') as HTMLElement | null;
+          const words   = h1 ? Array.from(h1.querySelectorAll('span')) : [];
+          const allP    = hero?.querySelectorAll('p');
+          const sub     = allP && allP.length > 1 ? allP[1] as HTMLElement : null;
+          const ctaDiv  = hero?.querySelector('div') as HTMLElement | null;
+
+          // Build the timeline sequence
+          type Seg = [Element | Element[], Record<string, unknown>, Record<string, unknown>?];
+          const seq: Seg[] = [];
+
+          if (eyebrow) seq.push([eyebrow, { opacity: [0, 1], y: [12, 0] }, { duration: 0.38 }]);
+          if (words.length) seq.push([words, { opacity: [0, 1], y: [30, 0] }, {
+            type: 'spring', bounce: 0.28, duration: 0.8,
+            delay: stagger(0.045),
+            at: eyebrow ? '-0.12' : '0',
+          }]);
+          if (sub) seq.push([sub, { opacity: [0, 1], y: [18, 0] }, {
+            duration: 0.5, ease: 'easeOut', at: '-0.45',
+          }]);
+          if (ctaDiv) seq.push([ctaDiv, { opacity: [0, 1], scale: [0.88, 1] }, {
+            type: 'spring', bounce: 0.5, duration: 0.65, at: '-0.28',
+          }]);
+
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
+          if (seq.length) animate(seq as any);
+
+          // ── SECTION SCROLL REVEALS ────────────────────────────────────────
+          Array.from(wrap.children).slice(1).forEach(section => {
+            inView(
+              section as HTMLElement,
+              ({ target }) => {
+                // Section container: spring up + slight scale correction
+                animate(target as HTMLElement, { opacity: [0, 1], y: [38, 0], scale: [0.97, 1] }, {
+                  type: 'spring', bounce: 0.2, duration: 0.85,
+                });
+
+                // Child items stagger in behind the container
+                const items = Array.from(target.querySelectorAll(
+                  'ul > li, ol > li, .grid > div, .grid > a, .space-y-4 > a, .space-y-4 > div'
+                ));
+                if (items.length > 1) {
+                  animate(items, { opacity: [0, 1], y: [22, 0] }, {
+                    type: 'spring', bounce: 0.3,
+                    delay: stagger(0.075, { startDelay: 0.1 }),
+                  });
+                }
+              },
+              { amount: 0.08 }
+            );
+          });
+        }
+
+        // ── CARD HOVER SPRINGS (about page pillars, etc.) ──────────────────
+        document.querySelectorAll<HTMLElement>('a.block.rounded-xl').forEach(card => {
+          card.addEventListener('mouseenter', () =>
+            animate(card, { y: -8, scale: 1.018 }, { type: 'spring', stiffness: 320, damping: 16 })
+          );
+          card.addEventListener('mouseleave', () =>
+            animate(card, { y: 0, scale: 1 }, { type: 'spring', stiffness: 320, damping: 28 })
+          );
         });
 
-        // Block-link cards (e.g., about page service pillars) get hover lift
-        document.querySelectorAll('a.block.rounded-xl').forEach(el => el.classList.add('hz-card'));
-
-        // Skill / tag chips get a micro pop
-        document.querySelectorAll('span.rounded-full').forEach(el => el.classList.add('hz-tag'));
-
-        // IntersectionObserver — reveal sections as they scroll into view
-        const io = new IntersectionObserver((entries) => {
-          entries.forEach(entry => {
-            if (entry.isIntersecting) {
-              entry.target.classList.add('hz-in');
-              io.unobserve(entry.target);
-            }
+        // ── MAGNETIC CTA BUTTONS ───────────────────────────────────────────
+        document.querySelectorAll<HTMLElement>('button[data-modal]').forEach(btn => {
+          btn.addEventListener('mousemove', (e: MouseEvent) => {
+            const r = btn.getBoundingClientRect();
+            const x = (e.clientX - r.left  - r.width  / 2) * 0.22;
+            const y = (e.clientY - r.top   - r.height / 2) * 0.22;
+            animate(btn, { x, y }, { type: 'spring', stiffness: 650, damping: 32, restDelta: 0.001 });
           });
-        }, { threshold: 0.07, rootMargin: '0px 0px -36px 0px' });
+          btn.addEventListener('mouseleave', () =>
+            animate(btn, { x: 0, y: 0 }, { type: 'spring', stiffness: 300, damping: 22 })
+          );
+        });
 
-        wrap.querySelectorAll('.hz-reveal').forEach(el => io.observe(el));
-      })();
+        // ── FLOAT BUTTON: overshoot spring in, then glow pulse ─────────────
+        const floatBtn = document.getElementById('ga-float-btn');
+        if (floatBtn) {
+          animate(
+            floatBtn,
+            { opacity: [0, 1], y: [40, 0], scale: [0.72, 1] },
+            { type: 'spring', duration: 0.8, bounce: 0.6, delay: 1.4 }
+          ).then(() => {
+            // Sustained glow pulse after it lands
+            animate(
+              floatBtn,
+              { boxShadow: [
+                '0 4px 20px rgba(200,90,32,0.45)',
+                '0 6px 52px rgba(200,90,32,0.9)',
+                '0 4px 20px rgba(200,90,32,0.45)',
+              ]},
+              { duration: 2.6, repeat: Infinity, ease: 'easeInOut' }
+            );
+          });
+        }
+
+      } // end prefers-reduced-motion check
     </script>
 
     <footer class="border-t border-cream-dark mt-24">
