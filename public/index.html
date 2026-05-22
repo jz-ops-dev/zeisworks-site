@@ -2583,156 +2583,370 @@ src="https://www.facebook.com/tr?id=555580570097631&ev=PageView&noscript=1"
   }
 </style>
 
-<!-- OUTCOME PROOF STRIP -->
-<section class="outcomes-strip">
-  <div class="section-inner">
-    <div class="outcomes-grid">
-      <div class="outcome-item">
-        <div class="outcome-number">90 days</div>
-        <div class="outcome-label">to top-3 local placement in a competitive service area</div>
-      </div>
-      <div class="outcome-divider"></div>
-      <div class="outcome-item">
-        <div class="outcome-number">5.0 &#9733;</div>
-        <div class="outcome-label">Upwork rating &middot; 100% Job Success Score</div>
-      </div>
-      <div class="outcome-divider"></div>
-      <div class="outcome-item">
-        <div class="outcome-number">$0</div>
-        <div class="outcome-label">to find out if I can help &mdash; the gap analysis is always free</div>
-      </div>
-      <div class="outcome-divider"></div>
-      <div class="outcome-item">
-        <div class="outcome-number">1 person</div>
-        <div class="outcome-label">direct line, no handoffs, no account managers</div>
-      </div>
-    </div>
-  </div>
-</section>
+<!-- TRANSITION: cream → dark navy -->
+<div class="sec-transition" style="background:var(--cream)">
+  <svg viewBox="0 0 1440 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <polygon points="0,0 1440,40 1440,80 0,80" fill="var(--navy-deep)"/>
+  </svg>
+</div>
 
-<!-- CASE STUDIES -->
-<section class="case-studies">
-  <div class="case-studies-inner">
-    <div class="case-studies-header">
-      <p class="section-label">Results</p>
-      <h2 class="section-title">What the work actually looks like.</h2>
-      <p class="section-body">Not a pitch deck. These are real problems, real fixes, and what changed afterward.</p>
+<!-- OUTCOMES BENTO (dark) -->
+<section class="dark-band" style="padding:5rem 2rem 6rem">
+  <div style="max-width:1200px;margin:0 auto">
+    <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:2.5rem;flex-wrap:wrap;gap:1rem">
+      <div>
+        <p class="section-label" style="color:rgba(165,180,252,.85)">By the numbers</p>
+        <h2 style="font-family:var(--font-serif);font-size:clamp(2rem,4vw,3rem);font-weight:600;line-height:1.1;color:var(--ink-on-dark);margin:.5rem 0 0;letter-spacing:-.02em">
+          The receipts.
+        </h2>
+      </div>
+      <p style="color:var(--mute-on-dark);font-size:.875rem;max-width:340px;margin:0">
+        Real outcomes from real engagements. Names withheld until clients green-light specifics.
+      </p>
     </div>
-    <div class="case-studies-grid">
 
-      <div class="case-study-card">
-        <p class="case-study-vertical">Home Services &middot; HVAC</p>
-        <p class="case-study-problem">$2,000/month in Google Ads with no way to know if it was working.</p>
-        <p class="case-study-body">A $3M HVAC company had been running paid search for two years. No conversion tracking. No call attribution. The campaigns were live, but there was no visibility into which keywords, service areas, or ad groups were generating calls versus wasted spend.</p>
-        <p class="case-study-body">Built out offline conversion tracking, restructured campaigns by service type, and added call tracking with source attribution. Within 90 days, cost per call dropped by 34% on the same budget.</p>
-        <div class="case-study-result">
-          <span class="case-study-result-icon">&#9650;</span>
-          <span class="case-study-result-text">34% lower cost per call &mdash; same budget, better targeting.</span>
+    <div class="bento">
+      <!-- Big tile: revenue -->
+      <div class="bento-tile" style="grid-column:span 3;grid-row:span 2;display:flex;flex-direction:column;justify-content:space-between">
+        <p style="font-family:'DM Mono',monospace;font-size:.72rem;letter-spacing:.1em;color:var(--mute-on-dark);text-transform:uppercase;margin:0">Tracked revenue impact</p>
+        <div>
+          <p class="ticker" style="font-size:clamp(3rem,6vw,5rem);color:var(--ink-on-dark);line-height:1;margin:0;font-weight:600;letter-spacing:-.03em">
+            $<span data-ticker="2.4" data-decimals="1">0</span>M+
+          </p>
+          <p style="margin:.5rem 0 0;color:var(--mute-on-dark);font-size:.9375rem;line-height:1.5;max-width:30ch">
+            Aggregate revenue attributed to ZeisWorks-built systems across active and past engagements.
+          </p>
         </div>
       </div>
 
-      <div class="case-study-card">
-        <p class="case-study-vertical">Med Spa &middot; Local SEO</p>
-        <p class="case-study-problem">Invisible on Google Maps in a market with 12 competing practices.</p>
-        <p class="case-study-body">An independent med spa in a mid-size metro was ranking outside the top 10 for every high-value treatment keyword. Competitors with fewer reviews and older profiles were consistently outranking them in the local pack.</p>
-        <p class="case-study-body">Rebuilt the Google Business Profile from scratch, corrected NAP inconsistencies across 40+ directories, added service-area schema, and launched a structured review acquisition sequence. Reached top-3 placement in 87 days.</p>
-        <div class="case-study-result">
-          <span class="case-study-result-icon">&#9650;</span>
-          <span class="case-study-result-text">Top-3 Google Maps placement in 87 days.</span>
+      <!-- Sparkline tile -->
+      <div class="bento-tile" style="grid-column:span 3;grid-row:span 2;display:flex;flex-direction:column;justify-content:space-between;position:relative">
+        <p style="font-family:'DM Mono',monospace;font-size:.72rem;letter-spacing:.1em;color:var(--mute-on-dark);text-transform:uppercase;margin:0">Local rank · 90-day arc</p>
+        <svg viewBox="0 0 280 100" preserveAspectRatio="none" style="width:100%;height:120px" aria-hidden="true">
+          <defs>
+            <linearGradient id="sparkGrad" x1="0" x2="0" y1="0" y2="1">
+              <stop offset="0%" stop-color="#C85A20" stop-opacity=".4"/>
+              <stop offset="100%" stop-color="#C85A20" stop-opacity="0"/>
+            </linearGradient>
+          </defs>
+          <path d="M0,82 L40,78 L80,72 L120,62 L160,50 L200,32 L240,18 L280,8" fill="none" stroke="#C85A20" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M0,82 L40,78 L80,72 L120,62 L160,50 L200,32 L240,18 L280,8 L280,100 L0,100 Z" fill="url(#sparkGrad)"/>
+          <circle cx="280" cy="8" r="4" fill="#C85A20"/>
+        </svg>
+        <div style="display:flex;justify-content:space-between;align-items:baseline">
+          <span style="color:var(--mute-on-dark);font-size:.8rem">Day 0 · rank #11</span>
+          <span style="color:var(--orange);font-size:.9rem;font-weight:600">Day 90 · rank #2</span>
         </div>
       </div>
 
-      <div class="case-study-card">
-        <p class="case-study-vertical">Professional Services &middot; Operations</p>
-        <p class="case-study-problem">Leads coming in from three channels with no system to follow up consistently.</p>
-        <p class="case-study-body">A regional accounting firm was generating inbound interest from Google, referrals, and a LinkedIn presence &mdash; but had no CRM and no follow-up process. Leads were tracked in a spreadsheet. Response time averaged 48 hours. Conversion rate on inbound was under 20%.</p>
-        <p class="case-study-body">Implemented HubSpot, built automated follow-up sequences for each source, and set up a pipeline with stage-based tasks. Average response time dropped to under 4 hours. Inbound conversion rate reached 41% within 60 days.</p>
-        <div class="case-study-result">
-          <span class="case-study-result-icon">&#9650;</span>
-          <span class="case-study-result-text">41% inbound conversion rate, up from under 20%.</span>
+      <!-- Quote tile -->
+      <div class="bento-tile" style="grid-column:span 4;display:flex;flex-direction:column;justify-content:space-between">
+        <p style="font-family:var(--font-serif);font-size:1.125rem;line-height:1.5;color:var(--ink-on-dark);margin:0;font-style:italic">
+          &ldquo;Exceeded my expectations as a company leader.&rdquo;
+        </p>
+        <p style="margin:1rem 0 0;font-family:'DM Mono',monospace;font-size:.7rem;letter-spacing:.1em;color:var(--mute-on-dark);text-transform:uppercase">
+          Alex Zemianek · JZ Vacation Rentals
+        </p>
+      </div>
+
+      <!-- Small: businesses -->
+      <div class="bento-tile" style="grid-column:span 2">
+        <p style="font-family:'DM Mono',monospace;font-size:.7rem;letter-spacing:.1em;color:var(--mute-on-dark);text-transform:uppercase;margin:0">Businesses helped</p>
+        <p class="ticker" style="font-size:2.75rem;color:var(--ink-on-dark);line-height:1;margin:.5rem 0 0;font-weight:600">
+          <span data-ticker="47">0</span>+
+        </p>
+      </div>
+
+      <!-- Small: days -->
+      <div class="bento-tile" style="grid-column:span 2">
+        <p style="font-family:'DM Mono',monospace;font-size:.7rem;letter-spacing:.1em;color:var(--mute-on-dark);text-transform:uppercase;margin:0">Avg time-to-result</p>
+        <p class="ticker" style="font-size:2.75rem;color:var(--ink-on-dark);line-height:1;margin:.5rem 0 0;font-weight:600">
+          <span data-ticker="90">0</span><span style="font-size:1.25rem;color:var(--mute-on-dark);font-weight:400;letter-spacing:0"> days</span>
+        </p>
+      </div>
+
+      <!-- One person -->
+      <div class="bento-tile" style="grid-column:span 2">
+        <p style="font-family:'DM Mono',monospace;font-size:.7rem;letter-spacing:.1em;color:var(--mute-on-dark);text-transform:uppercase;margin:0">Direct line</p>
+        <p class="ticker" style="font-size:2.75rem;color:var(--ink-on-dark);line-height:1;margin:.5rem 0 0;font-weight:600">
+          1<span style="font-size:1.25rem;color:var(--mute-on-dark);font-weight:400">&nbsp;person</span>
+        </p>
+        <p style="margin:.5rem 0 0;color:var(--mute-on-dark);font-size:.8125rem;line-height:1.5">No handoffs, no account managers, no agency overhead.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CASE STUDIES — Horizontal scroll-pin (dark) -->
+<section class="dark-band pin-section" id="caseStudiesPin" style="padding:0">
+  <div class="pin-sticky">
+    <div style="position:absolute;top:3rem;left:4rem;right:4rem;z-index:2;display:flex;justify-content:space-between;align-items:baseline;color:var(--ink-on-dark)" class="pin-header">
+      <div>
+        <p class="section-label" style="color:rgba(165,180,252,.85)">Case studies</p>
+        <h2 style="font-family:var(--font-serif);font-size:clamp(1.75rem,3.5vw,2.5rem);font-weight:600;color:var(--ink-on-dark);line-height:1.1;margin:.5rem 0 0;letter-spacing:-.02em">
+          The work, not the pitch deck.
+        </h2>
+      </div>
+      <p style="color:var(--mute-on-dark);font-size:.8rem;font-family:'DM Mono',monospace;letter-spacing:.1em;text-transform:uppercase;margin:0" class="pin-hint">
+        Scroll →
+      </p>
+    </div>
+
+    <div class="pin-track" style="padding-top:9rem">
+      <div class="pin-card">
+        <div style="font-family:var(--font-serif);font-size:5rem;color:var(--orange);line-height:1;font-weight:600">01</div>
+        <p style="font-family:'DM Mono',monospace;font-size:.72rem;letter-spacing:.12em;color:var(--mute-on-dark);text-transform:uppercase;margin:1rem 0 .5rem">Home Services · HVAC</p>
+        <h3 style="font-family:var(--font-serif);font-size:1.75rem;font-weight:600;color:var(--ink-on-dark);margin:0 0 1.5rem;line-height:1.2">$2,000/month in Google Ads with no way to know if it was working.</h3>
+        <p style="color:var(--mute-on-dark);line-height:1.7;margin:0 0 1rem;font-size:.9375rem">A $3M HVAC company had been running paid search for two years. No conversion tracking, no call attribution. Campaigns were live, but there was no visibility into which keywords or service areas were generating calls.</p>
+        <p style="color:var(--mute-on-dark);line-height:1.7;margin:0 0 1.5rem;font-size:.9375rem">Built offline conversion tracking, restructured by service type, added call tracking with source attribution.</p>
+        <div style="display:flex;align-items:baseline;gap:1rem;border-top:1px solid var(--hair-on-dark);padding-top:1.25rem">
+          <div>
+            <p style="font-family:'DM Mono',monospace;font-size:.7rem;letter-spacing:.1em;color:var(--mute-on-dark);text-transform:uppercase;margin:0">Cost-per-call</p>
+            <p class="ticker" style="font-size:2.5rem;color:var(--orange);line-height:1;margin:.25rem 0 0;font-weight:600">−<span data-ticker="34">0</span>%</p>
+          </div>
+          <p style="color:var(--ink-on-dark);font-size:.9rem;margin:0 0 0 .5rem;align-self:end;padding-bottom:.35rem">same budget, 90 days</p>
         </div>
       </div>
 
+      <div class="pin-card">
+        <div style="font-family:var(--font-serif);font-size:5rem;color:var(--orange);line-height:1;font-weight:600">02</div>
+        <p style="font-family:'DM Mono',monospace;font-size:.72rem;letter-spacing:.12em;color:var(--mute-on-dark);text-transform:uppercase;margin:1rem 0 .5rem">Med Spa · Local SEO</p>
+        <h3 style="font-family:var(--font-serif);font-size:1.75rem;font-weight:600;color:var(--ink-on-dark);margin:0 0 1.5rem;line-height:1.2">Invisible on Google Maps in a market with 12 competing practices.</h3>
+        <p style="color:var(--mute-on-dark);line-height:1.7;margin:0 0 1rem;font-size:.9375rem">An independent med spa ranking outside the top 10 for every high-value treatment keyword. Competitors with fewer reviews were consistently outranking them.</p>
+        <p style="color:var(--mute-on-dark);line-height:1.7;margin:0 0 1.5rem;font-size:.9375rem">Rebuilt GBP from scratch, corrected NAP across 40+ directories, added service-area schema, launched a review acquisition sequence.</p>
+        <div style="display:flex;align-items:baseline;gap:1rem;border-top:1px solid var(--hair-on-dark);padding-top:1.25rem">
+          <div>
+            <p style="font-family:'DM Mono',monospace;font-size:.7rem;letter-spacing:.1em;color:var(--mute-on-dark);text-transform:uppercase;margin:0">Local pack rank</p>
+            <p class="ticker" style="font-size:2.5rem;color:var(--orange);line-height:1;margin:.25rem 0 0;font-weight:600">Top-<span data-ticker="3">0</span></p>
+          </div>
+          <p style="color:var(--ink-on-dark);font-size:.9rem;margin:0 0 0 .5rem;align-self:end;padding-bottom:.35rem">in 87 days</p>
+        </div>
+      </div>
+
+      <div class="pin-card">
+        <div style="font-family:var(--font-serif);font-size:5rem;color:var(--orange);line-height:1;font-weight:600">03</div>
+        <p style="font-family:'DM Mono',monospace;font-size:.72rem;letter-spacing:.12em;color:var(--mute-on-dark);text-transform:uppercase;margin:1rem 0 .5rem">Professional Services · Ops</p>
+        <h3 style="font-family:var(--font-serif);font-size:1.75rem;font-weight:600;color:var(--ink-on-dark);margin:0 0 1.5rem;line-height:1.2">Leads from three channels, no system to follow up consistently.</h3>
+        <p style="color:var(--mute-on-dark);line-height:1.7;margin:0 0 1rem;font-size:.9375rem">A regional accounting firm with inbound from Google, referrals, and LinkedIn. No CRM, no follow-up process. 48-hour response time. Sub-20% conversion.</p>
+        <p style="color:var(--mute-on-dark);line-height:1.7;margin:0 0 1.5rem;font-size:.9375rem">Implemented HubSpot, built automated sequences for each source, set up a pipeline with stage-based tasks.</p>
+        <div style="display:flex;align-items:baseline;gap:1rem;border-top:1px solid var(--hair-on-dark);padding-top:1.25rem">
+          <div>
+            <p style="font-family:'DM Mono',monospace;font-size:.7rem;letter-spacing:.1em;color:var(--mute-on-dark);text-transform:uppercase;margin:0">Inbound conversion</p>
+            <p class="ticker" style="font-size:2.5rem;color:var(--orange);line-height:1;margin:.25rem 0 0;font-weight:600"><span data-ticker="41">0</span>%</p>
+          </div>
+          <p style="color:var(--ink-on-dark);font-size:.9rem;margin:0 0 0 .5rem;align-self:end;padding-bottom:.35rem">up from &lt;20%</p>
+        </div>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- THREE PILLARS -->
-<section class="pillars" id="services">
-  <div class="pillars-inner">
-    <div class="pillars-header">
-      <p class="section-label">What I do</p>
-      <h2 class="section-title">Three things. One person.</h2>
-    </div>
-    <div class="pillars-grid">
-      <article class="pillar-card reveal">
-        <p class="pillar-number">01</p>
-        <h3 class="pillar-name">Get found</h3>
-        <p class="pillar-body">How your business shows up on Google, in local search, and in the places your customers are already looking.</p>
-        <a href="/marketing" class="pillar-link">Learn more →</a>
+<!-- THREE PILLARS — interactive tilt cards (dark) -->
+<section class="dark-band" id="services" style="padding:6rem 2rem">
+  <div style="max-width:1100px;margin:0 auto">
+    <p class="section-label" style="color:rgba(165,180,252,.85)">What I do</p>
+    <h2 style="font-family:var(--font-serif);font-size:clamp(2rem,4vw,3rem);font-weight:600;line-height:1.1;color:var(--ink-on-dark);margin:.5rem 0 3rem;letter-spacing:-.02em">
+      Three things. <em style="color:var(--orange);font-style:italic">One person.</em>
+    </h2>
+
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem" class="pillars-grid-new">
+      <article class="pillar-tilt tilt-card" data-cursor-hover>
+        <div class="tilt-inner">
+          <p class="num">01</p>
+          <h3>Get found</h3>
+          <p>How your business shows up on Google, in local search, and in the places your customers are already looking.</p>
+          <div class="pillar-expand">
+            <ul>
+              <li>Google Business Profile optimization</li>
+              <li>Local SEO and citation cleanup</li>
+              <li>Review acquisition + reputation</li>
+              <li>Paid search and conversion tracking</li>
+            </ul>
+          </div>
+          <p style="margin-top:1.25rem;font-size:.8rem;color:var(--mute-on-dark);font-family:'DM Mono',monospace;letter-spacing:.1em;text-transform:uppercase">Click to expand · <a href="/marketing" style="color:var(--orange);text-decoration:none">Learn more →</a></p>
+        </div>
       </article>
-      <article class="pillar-card reveal reveal-d1">
-        <p class="pillar-number">02</p>
-        <h3 class="pillar-name">Turn attention into leads</h3>
-        <p class="pillar-body">Getting found is step one. Converting that attention into calls, bookings, and revenue is step two. Most businesses stop at step one.</p>
-        <a href="/operations" class="pillar-link">Learn more →</a>
+      <article class="pillar-tilt tilt-card" data-cursor-hover>
+        <div class="tilt-inner">
+          <p class="num">02</p>
+          <h3>Turn attention into leads</h3>
+          <p>Getting found is step one. Converting that attention into calls, bookings, and revenue is step two. Most stop at one.</p>
+          <div class="pillar-expand">
+            <ul>
+              <li>CRM setup and cleanup</li>
+              <li>Process automation</li>
+              <li>Workflow design</li>
+              <li>Reporting and dashboards</li>
+            </ul>
+          </div>
+          <p style="margin-top:1.25rem;font-size:.8rem;color:var(--mute-on-dark);font-family:'DM Mono',monospace;letter-spacing:.1em;text-transform:uppercase">Click to expand · <a href="/operations" style="color:var(--orange);text-decoration:none">Learn more →</a></p>
+        </div>
       </article>
-      <article class="pillar-card reveal reveal-d2">
-        <p class="pillar-number">03</p>
-        <h3 class="pillar-name">Build systems that stick</h3>
-        <p class="pillar-body">The tools and processes that make growth repeatable. So it does not depend on you doing more.</p>
-        <a href="/custom-tools" class="pillar-link">Learn more →</a>
+      <article class="pillar-tilt tilt-card" data-cursor-hover>
+        <div class="tilt-inner">
+          <p class="num">03</p>
+          <h3>Build systems that stick</h3>
+          <p>The tools and processes that make growth repeatable. So it doesn't depend on you doing more.</p>
+          <div class="pillar-expand">
+            <ul>
+              <li>Custom integrations</li>
+              <li>Internal apps and dashboards</li>
+              <li>Intelligent automations</li>
+              <li>Data pipelines and ETL</li>
+            </ul>
+          </div>
+          <p style="margin-top:1.25rem;font-size:.8rem;color:var(--mute-on-dark);font-family:'DM Mono',monospace;letter-spacing:.1em;text-transform:uppercase">Click to expand · <a href="/custom-tools" style="color:var(--orange);text-decoration:none">Learn more →</a></p>
+        </div>
       </article>
     </div>
   </div>
 </section>
 
-<!-- WHO I WORK WITH -->
-<section class="verticals" id="who-i-work-with">
-  <div class="section-inner">
-    <div class="verticals-header">
-      <p class="section-label">Who I work with</p>
-      <h2 class="section-title">Built for service businesses<br>that run on reputation.</h2>
-      <p class="section-body">I specialize in local service businesses where a single new client is worth hundreds — or thousands — of dollars. If your business lives and dies by local search, reviews, and referrals, this is built for you.</p>
+<!-- VERTICALS — flip cards (dark) -->
+<section class="dark-band" id="who-i-work-with" style="padding:6rem 2rem">
+  <div style="max-width:1100px;margin:0 auto">
+    <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:2.5rem;flex-wrap:wrap;gap:1rem">
+      <div>
+        <p class="section-label" style="color:rgba(165,180,252,.85)">Who I work with</p>
+        <h2 style="font-family:var(--font-serif);font-size:clamp(2rem,4vw,3rem);font-weight:600;line-height:1.1;color:var(--ink-on-dark);margin:.5rem 0 0;letter-spacing:-.02em">
+          Built for businesses<br>that run on reputation.
+        </h2>
+      </div>
+      <p style="color:var(--mute-on-dark);font-size:.875rem;max-width:340px;margin:0">
+        Hover any card to see what changes after 90 days. Service businesses where a single new client is worth hundreds — or thousands — of dollars.
+      </p>
     </div>
-    <div class="verticals-grid">
-      <div class="vertical-card">
-        <div class="vertical-icon">&#128137;</div>
-        <h3 class="vertical-name">Med Spas &amp; Aesthetics</h3>
-        <p class="vertical-body">High-value services, competitive local markets, and clients who research before booking. Local SEO and reputation management move the needle fast.</p>
-        <div class="vertical-result">Top-3 Maps placement in 90 days</div>
+
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem" class="verticals-grid-new">
+      <div class="flip-card" data-cursor-hover>
+        <div class="flip-inner">
+          <div class="flip-face">
+            <div>
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--orange)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.29 1.51 4.04 3 5.5l7 7Z"/></svg>
+              <h3 style="font-family:var(--font-serif);font-size:1.25rem;font-weight:600;color:var(--ink-on-dark);margin:.75rem 0 .5rem">Med Spas &amp; Aesthetics</h3>
+              <p style="color:var(--mute-on-dark);font-size:.875rem;line-height:1.6;margin:0">High-value services, competitive markets, clients who research before booking.</p>
+            </div>
+          </div>
+          <div class="flip-face flip-back">
+            <div>
+              <p style="font-family:'DM Mono',monospace;font-size:.72rem;letter-spacing:.1em;color:var(--mute-on-dark);text-transform:uppercase;margin:0">What changes</p>
+              <p style="font-family:var(--font-serif);font-size:1.4rem;color:var(--ink-on-dark);line-height:1.2;margin:.5rem 0 0;font-weight:500">Top-3 Maps placement in 90 days.</p>
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="vertical-card">
-        <div class="vertical-icon">&#129463;</div>
-        <h3 class="vertical-name">Dental Practices</h3>
-        <p class="vertical-body">New client acquisition is the lifeblood of a growing practice. I optimize your Google presence so the right people find you first.</p>
-        <div class="vertical-result">More new patient calls from organic search</div>
+
+      <div class="flip-card" data-cursor-hover>
+        <div class="flip-inner">
+          <div class="flip-face">
+            <div>
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--orange)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2v6m0 0 4-4m-4 4L8 4M5 22a3 3 0 0 1-3-3v-7a3 3 0 0 1 3-3h14a3 3 0 0 1 3 3v7a3 3 0 0 1-3 3Z"/></svg>
+              <h3 style="font-family:var(--font-serif);font-size:1.25rem;font-weight:600;color:var(--ink-on-dark);margin:.75rem 0 .5rem">Dental Practices</h3>
+              <p style="color:var(--mute-on-dark);font-size:.875rem;line-height:1.6;margin:0">New patient acquisition is the lifeblood of a growing practice.</p>
+            </div>
+          </div>
+          <div class="flip-face flip-back">
+            <div>
+              <p style="font-family:'DM Mono',monospace;font-size:.72rem;letter-spacing:.1em;color:var(--mute-on-dark);text-transform:uppercase;margin:0">What changes</p>
+              <p style="font-family:var(--font-serif);font-size:1.4rem;color:var(--ink-on-dark);line-height:1.2;margin:.5rem 0 0;font-weight:500">More new-patient calls from organic.</p>
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="vertical-card">
-        <div class="vertical-icon">&#127751;</div>
-        <h3 class="vertical-name">Event Venues</h3>
-        <p class="vertical-body">Weddings, corporate events, and private parties — your clients are searching months in advance. I make sure you’re the first result they find.</p>
-        <div class="vertical-result">More inquiry form submissions</div>
+
+      <div class="flip-card" data-cursor-hover>
+        <div class="flip-inner">
+          <div class="flip-face">
+            <div>
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--orange)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg>
+              <h3 style="font-family:var(--font-serif);font-size:1.25rem;font-weight:600;color:var(--ink-on-dark);margin:.75rem 0 .5rem">Event Venues</h3>
+              <p style="color:var(--mute-on-dark);font-size:.875rem;line-height:1.6;margin:0">Weddings, corporate events, parties. Clients search months in advance.</p>
+            </div>
+          </div>
+          <div class="flip-face flip-back">
+            <div>
+              <p style="font-family:'DM Mono',monospace;font-size:.72rem;letter-spacing:.1em;color:var(--mute-on-dark);text-transform:uppercase;margin:0">What changes</p>
+              <p style="font-family:var(--font-serif);font-size:1.4rem;color:var(--ink-on-dark);line-height:1.2;margin:.5rem 0 0;font-weight:500">More inquiry form submissions.</p>
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="vertical-card">
-        <div class="vertical-icon">&#127968;</div>
-        <h3 class="vertical-name">Home Services</h3>
-        <p class="vertical-body">HVAC, plumbing, landscaping, cleaning — high-frequency, high-competition local markets where showing up in the top 3 is everything.</p>
-        <div class="vertical-result">More calls from Google Maps</div>
+
+      <div class="flip-card" data-cursor-hover>
+        <div class="flip-inner">
+          <div class="flip-face">
+            <div>
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--orange)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 11l9-8 9 8M5 10v10h14V10"/></svg>
+              <h3 style="font-family:var(--font-serif);font-size:1.25rem;font-weight:600;color:var(--ink-on-dark);margin:.75rem 0 .5rem">Home Services</h3>
+              <p style="color:var(--mute-on-dark);font-size:.875rem;line-height:1.6;margin:0">HVAC, plumbing, landscaping. High-frequency local markets.</p>
+            </div>
+          </div>
+          <div class="flip-face flip-back">
+            <div>
+              <p style="font-family:'DM Mono',monospace;font-size:.72rem;letter-spacing:.1em;color:var(--mute-on-dark);text-transform:uppercase;margin:0">What changes</p>
+              <p style="font-family:var(--font-serif);font-size:1.4rem;color:var(--ink-on-dark);line-height:1.2;margin:.5rem 0 0;font-weight:500">More calls from Google Maps.</p>
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="vertical-card">
-        <div class="vertical-icon">&#128062;</div>
-        <h3 class="vertical-name">Independent Vet Clinics</h3>
-        <p class="vertical-body">Independent practices competing against corporate chains need every local search advantage they can get. I level the playing field with better rankings and a stronger online presence.</p>
-        <div class="vertical-result">Outrank the corporate chains in your area</div>
+
+      <div class="flip-card" data-cursor-hover>
+        <div class="flip-inner">
+          <div class="flip-face">
+            <div>
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--orange)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 5c-2 1-3 3-3 5s1 4 3 5M14 5c2 1 3 3 3 5s-1 4-3 5M12 3v18"/></svg>
+              <h3 style="font-family:var(--font-serif);font-size:1.25rem;font-weight:600;color:var(--ink-on-dark);margin:.75rem 0 .5rem">Independent Vets</h3>
+              <p style="color:var(--mute-on-dark);font-size:.875rem;line-height:1.6;margin:0">Competing against corporate chains? Every local search advantage matters.</p>
+            </div>
+          </div>
+          <div class="flip-face flip-back">
+            <div>
+              <p style="font-family:'DM Mono',monospace;font-size:.72rem;letter-spacing:.1em;color:var(--mute-on-dark);text-transform:uppercase;margin:0">What changes</p>
+              <p style="font-family:var(--font-serif);font-size:1.4rem;color:var(--ink-on-dark);line-height:1.2;margin:.5rem 0 0;font-weight:500">Outrank the chains in your area.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="flip-card" data-cursor-hover>
+        <div class="flip-inner">
+          <div class="flip-face">
+            <div>
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--orange)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 10h18M8 4v16"/></svg>
+              <h3 style="font-family:var(--font-serif);font-size:1.25rem;font-weight:600;color:var(--ink-on-dark);margin:.75rem 0 .5rem">Professional Services</h3>
+              <p style="color:var(--mute-on-dark);font-size:.875rem;line-height:1.6;margin:0">Accountants, lawyers, advisors. Inbound that converts and operations that scale.</p>
+            </div>
+          </div>
+          <div class="flip-face flip-back">
+            <div>
+              <p style="font-family:'DM Mono',monospace;font-size:.72rem;letter-spacing:.1em;color:var(--mute-on-dark);text-transform:uppercase;margin:0">What changes</p>
+              <p style="font-family:var(--font-serif);font-size:1.4rem;color:var(--ink-on-dark);line-height:1.2;margin:.5rem 0 0;font-weight:500">Inbound that doesn't fall through the cracks.</p>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-    <div class="verticals-cta">
-      <button type="button" onclick="openGaModal()" class="btn-primary" style="cursor:pointer;border:0;font-family:inherit;">See how your business stacks up →</button>
-      <p class="verticals-cta-note">Free analysis. No call required. Specific to your market.</p>
+
+    <div style="text-align:center;margin-top:3rem">
+      <button type="button" onclick="openGaModal()" class="btn-primary magnetic" style="cursor:pointer;border:0;font-family:inherit;background:var(--orange);font-size:1rem;padding:1rem 2rem">
+        See how your business stacks up →
+      </button>
+      <p style="margin-top:.875rem;font-family:'DM Mono',monospace;font-size:.7rem;letter-spacing:.08em;color:var(--mute-on-dark);text-transform:uppercase">
+        Free analysis · No call required · Specific to your market
+      </p>
     </div>
   </div>
 </section>
+
+<style>
+  @media (max-width: 900px) {
+    .pillars-grid-new, .verticals-grid-new { grid-template-columns: 1fr 1fr !important; }
+  }
+  @media (max-width: 600px) {
+    .pillars-grid-new, .verticals-grid-new { grid-template-columns: 1fr !important; }
+    .pin-header { left: 1.5rem !important; right: 1.5rem !important; top: 1.5rem !important; }
+  }
+</style>
 
 <!-- AI SEARCH VISIBILITY SIMULATOR -->
 <style>
@@ -2756,7 +2970,10 @@ src="https://www.facebook.com/tr?id=555580570097631&ev=PageView&noscript=1"
   <div class="section-inner" style="position:relative;z-index:1">
 
     <div style="text-align:center;margin-bottom:2.75rem">
-      <p class="section-label" style="color:rgba(165,180,252,.8)">The new battleground</p>
+      <p class="section-label" style="color:rgba(165,180,252,.8);display:inline-flex;align-items:center;gap:.5rem;justify-content:center">
+        <span style="display:inline-block;width:7px;height:7px;border-radius:50%;background:#ef4444;animation:aisimPulse 1.4s ease-in-out infinite"></span>
+        LIVE DEMO &middot; UPDATING IN REAL TIME
+      </p>
       <h2 style="font-family:var(--serif);font-size:clamp(1.7rem,3.8vw,2.6rem);font-weight:600;color:#f5f0e8;line-height:1.22;margin:.625rem 0 1rem">
         When someone asks AI where to find you,<br>what does it say?
       </h2>
@@ -2980,75 +3197,83 @@ src="https://www.facebook.com/tr?id=555580570097631&ev=PageView&noscript=1"
 })();
 </script>
 
-<!-- BRAND PROMISE -->
-<!-- SOUND FAMILIAR / WHO THIS IS FOR -->
-<section class="problem" id="problem">
-  <div class="section-inner">
-    <div class="problem-header">
-      <p class="section-label">Sound familiar?</p>
-      <h2 class="section-title" style="color:#fff;">You’ve built something real.<br>Parts of it haven’t kept up.</h2>
-          </div>
+<!-- PROBLEM — Forest band, typewriter quotes -->
+<section class="forest-band" id="problem" style="padding:6rem 2rem 7rem">
+  <div style="max-width:900px;margin:0 auto">
+    <p class="section-label" style="color:rgba(216,234,228,.85)">Sound familiar?</p>
+    <h2 style="font-family:var(--font-serif);font-size:clamp(2rem,4.5vw,3.25rem);font-weight:600;line-height:1.1;color:var(--ink-on-dark);margin:.5rem 0 3.5rem;letter-spacing:-.02em">
+      You've built something real.<br><em style="color:var(--orange);font-style:italic">Parts of it haven't kept up.</em>
+    </h2>
 
-    <div class="problem-cards">
-
-      <article class="problem-card">
-        <p class="problem-quote">“I’m getting some leads but I have no idea where they’re actually coming from.”</p>
-        <div class="problem-resolution">
-          <p class="problem-resolution-label">What that turned into</p>
-          <p class="problem-resolution-headline">A dashboard showing exactly which channels are producing calls and bookings, updated weekly.</p>
-          <div class="problem-resolution-tags">
-            <span class="problem-tag">Local SEO</span>
-            <span class="problem-tag">Paid Ads</span>
-            <span class="problem-tag">Tracking</span>
-          </div>
+    <div class="problem-slide">
+      <p class="quote" data-typewriter data-type="I'm getting some leads but I have no idea where they're actually coming from.">I'm getting some leads but I have no idea where they're actually coming from.</p>
+      <div class="resolution">
+        <p class="res-label">What that turned into</p>
+        <p style="margin:0 0 0;color:var(--ink-on-dark);font-size:1.0625rem;line-height:1.6;font-family:var(--font-serif)">A dashboard showing exactly which channels are producing calls and bookings, updated weekly.</p>
+        <div class="tags">
+          <span>Local SEO</span><span>Paid Ads</span><span>Tracking</span>
         </div>
-      </article>
-
-      <article class="problem-card">
-        <p class="problem-quote">“We tried an agency. We got a report every month and nothing else.”</p>
-        <div class="problem-resolution">
-          <p class="problem-resolution-label">What that turned into</p>
-          <p class="problem-resolution-headline">A running campaign with someone accountable for the numbers, not just the slides.</p>
-          <div class="problem-resolution-tags">
-            <span class="problem-tag">Done-for-You</span>
-            <span class="problem-tag">Direct Line</span>
-            <span class="problem-tag">No Handoffs</span>
-          </div>
-        </div>
-      </article>
-
-      <article class="problem-card">
-        <p class="problem-quote">“My Google Business Profile hasn’t been touched in over a year.”</p>
-        <div class="problem-resolution">
-          <p class="problem-resolution-label">What that turned into</p>
-          <p class="problem-resolution-headline">Top-three local placement in a competitive service area within 90 days.</p>
-          <div class="problem-resolution-tags">
-            <span class="problem-tag">Google Business Profile</span>
-            <span class="problem-tag">Local SEO</span>
-            <span class="problem-tag">Reviews</span>
-          </div>
-        </div>
-      </article>
-
-      <article class="problem-card">
-        <p class="problem-quote">“I know there’s a better way to do this. I just don’t have time to figure out what it is.”</p>
-        <div class="problem-resolution">
-          <p class="problem-resolution-label">What that turned into</p>
-          <p class="problem-resolution-headline">A 12-month growth plan with a specific number attached, built in one week.</p>
-          <div class="problem-resolution-tags">
-            <span class="problem-tag">Growth Plan</span>
-            <span class="problem-tag">Free Analysis</span>
-            <span class="problem-tag">No Commitment</span>
-          </div>
-        </div>
-      </article>
-
+      </div>
     </div>
 
-    <div class="problem-cta">
-      <button type="button" onclick="openGaModal()" class="btn-on-dark" style="cursor:pointer;border:0;font-family:inherit;">Get your free gap analysis →</button>
-      <p class="problem-cta-note">Free. No call required. A specific plan in plain English.</p>
+    <div class="problem-slide">
+      <p class="quote" data-typewriter data-type="We tried an agency. We got a report every month and nothing else.">We tried an agency. We got a report every month and nothing else.</p>
+      <div class="resolution">
+        <p class="res-label">What that turned into</p>
+        <p style="margin:0 0 0;color:var(--ink-on-dark);font-size:1.0625rem;line-height:1.6;font-family:var(--font-serif)">A running campaign with someone accountable for the numbers, not just the slides.</p>
+        <div class="tags">
+          <span>Done-for-you</span><span>Direct line</span><span>No handoffs</span>
+        </div>
+      </div>
     </div>
+
+    <div class="problem-slide">
+      <p class="quote" data-typewriter data-type="My Google Business Profile hasn't been touched in over a year.">My Google Business Profile hasn't been touched in over a year.</p>
+      <div class="resolution">
+        <p class="res-label">What that turned into</p>
+        <p style="margin:0 0 0;color:var(--ink-on-dark);font-size:1.0625rem;line-height:1.6;font-family:var(--font-serif)">Top-three local placement in a competitive service area within 90 days.</p>
+        <div class="tags">
+          <span>GBP</span><span>Local SEO</span><span>Reviews</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="problem-slide">
+      <p class="quote" data-typewriter data-type="I know there's a better way to do this. I just don't have time to figure out what it is.">I know there's a better way to do this. I just don't have time to figure out what it is.</p>
+      <div class="resolution">
+        <p class="res-label">What that turned into</p>
+        <p style="margin:0 0 0;color:var(--ink-on-dark);font-size:1.0625rem;line-height:1.6;font-family:var(--font-serif)">A 12-month growth plan with a specific number attached, built in one week.</p>
+        <div class="tags">
+          <span>Growth plan</span><span>Free analysis</span><span>No commitment</span>
+        </div>
+      </div>
+    </div>
+
+    <div style="margin-top:4rem;text-align:center">
+      <button type="button" onclick="openGaModal()" class="btn-primary magnetic" style="cursor:pointer;border:0;font-family:inherit;background:var(--orange);font-size:1rem;padding:1rem 2rem">
+        Get the free gap analysis →
+      </button>
+      <p style="margin-top:1rem;font-family:'DM Mono',monospace;font-size:.72rem;letter-spacing:.08em;color:var(--mute-on-dark);text-transform:uppercase">
+        Free · No call required · Plain English
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- TRANSITION: forest → cream -->
+<div class="sec-transition" style="background:var(--forest-deep)">
+  <svg viewBox="0 0 1440 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <polygon points="0,40 1440,0 1440,80 0,80" fill="var(--cream)"/>
+  </svg>
+</div>
+
+<!-- BAND-LINE: Re-entering cream -->
+<section style="background:var(--cream);padding:4rem 2rem;text-align:center">
+  <div style="max-width:880px;margin:0 auto">
+    <p class="section-label" style="color:var(--orange)">Working with me</p>
+    <p style="font-family:var(--font-serif);font-size:clamp(1.75rem,3.5vw,2.75rem);font-weight:500;line-height:1.2;color:var(--ink);margin:.75rem 0 0;letter-spacing:-.015em">
+      Here's what working with me <em style="color:var(--orange);font-style:italic">actually</em> looks like.
+    </p>
   </div>
 </section>
 
