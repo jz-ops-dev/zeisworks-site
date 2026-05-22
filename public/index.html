@@ -2160,6 +2160,252 @@ src="https://www.facebook.com/tr?id=555580570097631&ev=PageView&noscript=1"
   </div>
 </section>
 
+<!-- AI SEARCH VISIBILITY SIMULATOR -->
+<style>
+  @keyframes aisimBlink{0%,100%{opacity:1}50%{opacity:0}}
+  @keyframes aisimPulse{0%,100%{opacity:1}50%{opacity:0.25}}
+  @keyframes aisimDot{0%,80%,100%{opacity:0;transform:translateY(0)}40%{opacity:1;transform:translateY(-4px)}}
+  @keyframes aisimSlideUp{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+  @keyframes aisimGlow{0%,100%{box-shadow:0 0 0 0 rgba(99,102,241,0.0)}50%{box-shadow:0 0 32px 4px rgba(99,102,241,0.18)}}
+  .aisim-dot{display:inline-block;width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,0.35);animation:aisimDot 1.3s ease-in-out infinite}
+  .aisim-dot:nth-child(2){animation-delay:.2s}
+  .aisim-dot:nth-child(3){animation-delay:.4s}
+  .aisim-user-bubble{align-self:flex-end;background:#4f46e5;color:#fff;padding:9px 14px;border-radius:14px 14px 3px 14px;font-size:.875rem;max-width:82%;line-height:1.5;animation:aisimSlideUp .25s ease}
+  .aisim-ai-bubble{align-self:flex-start;background:#1e293b;color:rgba(255,255,255,.88);padding:13px 16px;border-radius:14px 14px 14px 3px;font-size:.875rem;line-height:1.7;max-width:90%;border:1px solid rgba(255,255,255,.07);animation:aisimSlideUp .25s ease}
+  .aisim-ai-bubble strong{color:#fff;font-weight:600}
+  .aisim-ai-bubble em{color:rgba(255,255,255,.4);font-style:normal}
+  #aisim-tab-0,#aisim-tab-1,#aisim-tab-2{transition:color .2s,border-color .2s,background .2s}
+</style>
+
+<section id="ai-search-sim" style="background:#070d1a;padding:5rem 0 4.5rem;position:relative;overflow:hidden">
+  <div style="position:absolute;top:-60px;left:50%;transform:translateX(-50%);width:700px;height:320px;background:radial-gradient(ellipse at center,rgba(99,102,241,.09) 0%,transparent 68%);pointer-events:none;z-index:0"></div>
+  <div class="section-inner" style="position:relative;z-index:1">
+
+    <div style="text-align:center;margin-bottom:2.75rem">
+      <p class="section-label" style="color:rgba(165,180,252,.8)">The new battleground</p>
+      <h2 style="font-family:var(--serif);font-size:clamp(1.7rem,3.8vw,2.6rem);font-weight:600;color:#f5f0e8;line-height:1.22;margin:.625rem 0 1rem">
+        When someone asks AI where to find you,<br>what does it say?
+      </h2>
+      <p style="color:rgba(245,240,232,.5);font-size:1.0625rem;max-width:450px;margin:0 auto;line-height:1.6">
+        Your next client is asking ChatGPT, Perplexity, or Gemini right now. Watch what they find.
+      </p>
+    </div>
+
+    <!-- Browser window -->
+    <div id="aisim-window" style="max-width:660px;margin:0 auto;background:#0f172a;border-radius:14px;border:1px solid rgba(255,255,255,.08);box-shadow:0 32px 80px rgba(0,0,0,.65),0 0 0 1px rgba(255,255,255,.03);overflow:hidden">
+
+      <!-- Browser chrome -->
+      <div style="background:#1e293b;padding:10px 16px;display:flex;align-items:center;gap:12px;border-bottom:1px solid rgba(255,255,255,.06)">
+        <div style="display:flex;gap:6px;flex-shrink:0">
+          <div style="width:12px;height:12px;border-radius:50%;background:#ff5f57"></div>
+          <div style="width:12px;height:12px;border-radius:50%;background:#febc2e"></div>
+          <div style="width:12px;height:12px;border-radius:50%;background:#28c840"></div>
+        </div>
+        <div id="aisim-url" style="flex:1;background:#0f172a;border-radius:6px;padding:5px 12px;font-size:.75rem;font-family:'DM Mono',monospace;color:rgba(255,255,255,.35);border:1px solid rgba(255,255,255,.06)">chat.openai.com</div>
+      </div>
+
+      <!-- Platform tabs -->
+      <div style="display:flex;background:#0c1528;border-bottom:1px solid rgba(255,255,255,.06)">
+        <button id="aisim-tab-0" onclick="aiSimTab(0)" style="flex:1;padding:9px 6px;font-size:.8rem;font-weight:500;color:rgba(255,255,255,.9);background:#0f172a;border:0;border-right:1px solid rgba(255,255,255,.06);border-bottom:2px solid #6366f1;cursor:pointer;font-family:inherit">ChatGPT</button>
+        <button id="aisim-tab-1" onclick="aiSimTab(1)" style="flex:1;padding:9px 6px;font-size:.8rem;font-weight:500;color:rgba(255,255,255,.32);background:transparent;border:0;border-right:1px solid rgba(255,255,255,.06);border-bottom:2px solid transparent;cursor:pointer;font-family:inherit">Perplexity</button>
+        <button id="aisim-tab-2" onclick="aiSimTab(2)" style="flex:1;padding:9px 6px;font-size:.8rem;font-weight:500;color:rgba(255,255,255,.32);background:transparent;border:0;border-bottom:2px solid transparent;cursor:pointer;font-family:inherit">Gemini</button>
+      </div>
+
+      <!-- Messages -->
+      <div id="aisim-messages" style="min-height:200px;max-height:290px;padding:18px 20px;overflow-y:auto;display:flex;flex-direction:column;gap:10px;scroll-behavior:smooth"></div>
+
+      <!-- Input bar -->
+      <div style="padding:11px 14px;background:#1e293b;border-top:1px solid rgba(255,255,255,.06);display:flex;align-items:center;gap:10px">
+        <div id="aisim-input" style="flex:1;background:#0f172a;border:1px solid rgba(255,255,255,.1);border-radius:8px;padding:9px 13px;font-size:.875rem;color:rgba(255,255,255,.8);font-family:inherit;min-height:38px;display:flex;align-items:center">
+          <span id="aisim-query"></span><span id="aisim-cur" style="display:inline-block;width:2px;height:1.1em;background:rgba(255,255,255,.7);margin-left:1px;animation:aisimBlink .85s step-end infinite;vertical-align:text-bottom"></span>
+        </div>
+        <div style="width:34px;height:34px;border-radius:8px;background:#4f46e5;display:flex;align-items:center;justify-content:center;color:#fff;font-size:.9rem;flex-shrink:0;font-weight:700">↑</div>
+      </div>
+    </div>
+
+    <!-- Not-found verdict (slides in below window) -->
+    <div id="aisim-verdict" style="max-width:660px;margin:0 auto;overflow:hidden;max-height:0;transition:max-height .55s cubic-bezier(.4,0,.2,1),margin-top .55s ease">
+      <div style="background:linear-gradient(135deg,rgba(220,38,38,.1),rgba(234,88,12,.09));border:1px solid rgba(220,38,38,.28);border-top:0;border-radius:0 0 12px 12px;padding:15px 20px;display:flex;align-items:center;gap:14px">
+        <div style="width:30px;height:30px;border-radius:50%;background:rgba(239,68,68,.15);border:1px solid rgba(239,68,68,.35);display:flex;align-items:center;justify-content:center;flex-shrink:0;color:#f87171;font-weight:700;font-size:.9rem">✕</div>
+        <div style="flex:1">
+          <p style="margin:0;font-weight:600;color:#f5f0e8;font-size:.9375rem">Your business isn't in this result.</p>
+          <p id="aisim-verdict-sub" style="margin:.2rem 0 0;color:rgba(245,240,232,.45);font-size:.8rem">This search runs dozens of times a day. Your competitors are getting those calls.</p>
+        </div>
+        <div style="flex-shrink:0;font-size:.7rem;font-weight:700;color:#ef4444;text-transform:uppercase;letter-spacing:.1em;animation:aisimPulse 1.5s ease-in-out infinite">● LIVE</div>
+      </div>
+    </div>
+
+    <!-- CTA -->
+    <div id="aisim-cta" style="text-align:center;margin-top:2.5rem;opacity:0;transform:translateY(14px);transition:opacity .6s ease,transform .6s ease">
+      <p style="color:rgba(245,240,232,.5);font-size:.9375rem;margin-bottom:1.25rem;line-height:1.6">
+        <strong style="color:#f5f0e8">This is the gap.</strong> The businesses that show up in AI answers get the first call. The rest don't know they're missing it.
+      </p>
+      <button type="button" onclick="openGaModal()" class="btn-primary" style="cursor:pointer;border:0;font-family:inherit">Find out if you're showing up →</button>
+    </div>
+
+  </div>
+</section>
+
+<script>
+(function(){
+  var PLATFORMS=[
+    {name:'ChatGPT',url:'chat.openai.com',accent:'#6366f1'},
+    {name:'Perplexity',url:'perplexity.ai',accent:'#20b8cd'},
+    {name:'Gemini',url:'gemini.google.com',accent:'#4285f4'}
+  ];
+  var SCENARIOS=[
+    {p:0,q:'best HVAC company in Golden CO',lines:[
+      '<strong>Front Range Heating & Cooling</strong> — Highly rated for residential and commercial work. Serves Golden, Lakewood, and the western suburbs. 4.9★ on Google (210+ reviews).',
+      '<strong>Altitude Climate Systems</strong> — Specializes in high-efficiency installations and heat pumps. Strong reputation throughout Jefferson County.',
+      '<strong>Mountain Air Services</strong> — Local to Golden. Known for fast emergency response on furnace calls.',
+      '<strong>Summit HVAC & Plumbing</strong> — Solid reviews for seasonal tune-ups and new system quotes.',
+      '<em>Tip: Verify current ratings on Google Maps before contacting. Availability varies by season.</em>'
+    ]},
+    {p:1,q:'landscaping company Golden Colorado reviews',lines:[
+      '<strong>Rocky Mountain Landscaping</strong> (4.8★ · 147 reviews) — Full-service design and seasonal maintenance. Highest-rated in Jefferson County for residential projects.',
+      '<strong>Green Summit Landscapes</strong> — Specializes in xeriscape and drought-resistant native plantings. Popular across Golden and Morrison.',
+      '<strong>Peak View Outdoor</strong> — Irrigation systems, lawn programs, and seasonal cleanup along the Front Range corridor.',
+      '<em>Sources: Google Maps, Yelp, Nextdoor Golden community posts</em>'
+    ]},
+    {p:2,q:'who does plumbing in the Front Range area',lines:[
+      '🔧 <strong>Clear Creek Plumbing</strong> — Based in Golden, CO. Emergency service 24/7. Consistently strong Google ratings from local homeowners.',
+      '🔧 <strong>Summit Plumbing & Drain</strong> — Serving Jefferson County. Specializes in bathroom remodels and water heater replacements.',
+      '🔧 <strong>Front Range Water Works</strong> — Commercial and residential. Covers the Lakewood–Golden–Arvada corridor.',
+      '<em>Recommendation: Get at least two quotes. Response times vary significantly by company.</em>'
+    ]}
+  ];
+
+  var cur=0,busy=false,autoT=null,live=false;
+
+  window.aiSimTab=function(idx){
+    if(busy)return;
+    var si=SCENARIOS.findIndex(function(s){return s.p===idx;});
+    cur=si>=0?si:idx%SCENARIOS.length;
+    clearTimeout(autoT);
+    busy=false;
+    runScenario();
+  };
+
+  function setTab(pi){
+    var acc=PLATFORMS[pi].accent;
+    document.getElementById('aisim-url').textContent=PLATFORMS[pi].url;
+    [0,1,2].forEach(function(i){
+      var t=document.getElementById('aisim-tab-'+i);
+      if(i===pi){t.style.borderBottom='2px solid '+acc;t.style.color='rgba(255,255,255,.9)';t.style.background='#0f172a';}
+      else{t.style.borderBottom='2px solid transparent';t.style.color='rgba(255,255,255,.32)';t.style.background='transparent';}
+    });
+  }
+
+  function msgs(){return document.getElementById('aisim-messages');}
+  function clearMsgs(){msgs().innerHTML='';document.getElementById('aisim-query').textContent='';}
+
+  function showVerdict(){
+    var v=document.getElementById('aisim-verdict');
+    v.style.maxHeight='120px';v.style.marginTop='-1px';
+  }
+  function hideVerdict(){
+    var v=document.getElementById('aisim-verdict');
+    v.style.maxHeight='0';v.style.marginTop='0';
+  }
+
+  function addEl(el){var m=msgs();m.appendChild(el);m.scrollTop=m.scrollHeight;}
+
+  function streamLines(container,lines,onDone){
+    var li=0;
+    function nextLine(){
+      if(li>=lines.length){if(onDone)onDone();return;}
+      var p=document.createElement('p');
+      p.style.cssText='margin:0 0 6px;padding:0;min-height:1.2em';
+      container.appendChild(p);
+      var m=msgs();m.scrollTop=m.scrollHeight;
+      var html=lines[li++];
+      var plain=html.replace(/<[^>]+>/g,'');
+      var ci=0;
+      function tick(){
+        if(ci>=plain.length){
+          p.innerHTML=html;m.scrollTop=m.scrollHeight;
+          setTimeout(nextLine,90+Math.random()*60);return;
+        }
+        var add=Math.floor(Math.random()*5)+3;
+        ci=Math.min(ci+add,plain.length);
+        p.textContent=plain.slice(0,ci);
+        m.scrollTop=m.scrollHeight;
+        setTimeout(tick,12+Math.random()*18);
+      }
+      setTimeout(tick,80);
+    }
+    nextLine();
+  }
+
+  function runScenario(){
+    if(busy)return;
+    busy=true;
+    var s=SCENARIOS[cur];
+    clearMsgs();hideVerdict();
+    setTab(s.p);
+
+    // 1) type query
+    var qEl=document.getElementById('aisim-query');
+    var qi=0;
+    function typeQ(){
+      if(qi<s.q.length){qEl.textContent+=s.q[qi++];setTimeout(typeQ,42+Math.random()*30);}
+      else setTimeout(send,550);
+    }
+
+    // 2) send → user bubble + dots
+    function send(){
+      var ub=document.createElement('div');
+      ub.className='aisim-user-bubble';ub.textContent=s.q;
+      addEl(ub);qEl.textContent='';
+      setTimeout(dots,280);
+    }
+
+    // 3) typing indicator
+    function dots(){
+      var d=document.createElement('div');
+      d.className='aisim-ai-bubble';d.id='aisim-dots-el';
+      d.style.padding='10px 14px';
+      d.innerHTML='<span class="aisim-dot"></span><span class="aisim-dot"></span><span class="aisim-dot"></span>';
+      addEl(d);setTimeout(respond,1150);
+    }
+
+    // 4) stream response
+    function respond(){
+      var d=document.getElementById('aisim-dots-el');
+      if(d)d.remove();
+      var ab=document.createElement('div');
+      ab.className='aisim-ai-bubble';addEl(ab);
+      streamLines(ab,s.lines,function(){
+        // 5) show verdict
+        setTimeout(function(){
+          showVerdict();
+          // 6) reveal CTA once (first time only)
+          var cta=document.getElementById('aisim-cta');
+          if(cta.style.opacity==='0'){
+            setTimeout(function(){cta.style.opacity='1';cta.style.transform='translateY(0)';},400);
+          }
+          // 7) auto-advance
+          autoT=setTimeout(function(){
+            cur=(cur+1)%SCENARIOS.length;busy=false;runScenario();
+          },4800);
+        },350);
+      });
+    }
+
+    typeQ();
+  }
+
+  // Trigger on scroll-into-view
+  var sec=document.getElementById('ai-search-sim');
+  if(sec&&'IntersectionObserver'in window){
+    var ob=new IntersectionObserver(function(entries){
+      if(entries[0].isIntersecting&&!live){live=true;ob.disconnect();setTimeout(runScenario,400);}
+    },{threshold:.25});
+    ob.observe(sec);
+  }
+})();
+</script>
+
 <!-- BRAND PROMISE -->
 <!-- SOUND FAMILIAR / WHO THIS IS FOR -->
 <section class="problem" id="problem">
