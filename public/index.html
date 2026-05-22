@@ -1870,6 +1870,31 @@ fbq('track', 'PageView');
 src="https://www.facebook.com/tr?id=555580570097631&ev=PageView&noscript=1"
 /></noscript>
 <!-- End Meta Pixel Code -->
+<script>
+  if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    document.documentElement.classList.add('motion-ready');
+  }
+</script>
+<style>
+  .motion-ready nav,
+  .motion-ready .hero-eyebrow,
+  .motion-ready .hero h1,
+  .motion-ready .hero-sub,
+  .motion-ready .hero-actions,
+  .motion-ready .hero-visual,
+  .motion-ready .proof-label,
+  .motion-ready .proof-item,
+  .motion-ready .section-label,
+  .motion-ready .section-title,
+  .motion-ready .section-inner > *:not(:first-child),
+  .motion-ready .card,
+  .motion-ready .case-study,
+  .motion-ready .pricing-tier,
+  .motion-ready button[onclick*="openGaModal"],
+  .motion-ready #ga-float-btn,
+  .motion-ready #aisim-window,
+  .motion-ready #aisim-cta { opacity: 0; }
+</style>
 </head>
 <body>
 
@@ -3024,6 +3049,123 @@ src="https://www.facebook.com/tr?id=555580570097631&ev=PageView&noscript=1"
       });
     });
   })();
+</script>
+
+<script type="module">
+import { animate, inView, stagger } from 'https://cdn.jsdelivr.net/npm/motion@11.15.0/+esm';
+
+if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+  document.documentElement.classList.remove('motion-ready');
+} else {
+  // Remove opacity: 0 rules once Motion starts
+  document.documentElement.classList.remove('motion-ready');
+
+  // NAV
+  animate('nav', { opacity: [0, 1], y: [-12, 0] }, { duration: 0.5, ease: 'easeOut' });
+
+  // HERO section entrance
+  var hero = document.querySelector('.hero');
+  if (hero) {
+    var eyebrow = hero.querySelector('.hero-eyebrow');
+    var h1 = hero.querySelector('h1');
+    var sub = hero.querySelector('.hero-sub');
+    var actions = hero.querySelector('.hero-actions');
+    var visual = hero.querySelector('.hero-visual');
+
+    var seq = [];
+    if (eyebrow) seq.push([eyebrow, { opacity: [0, 1], y: [12, 0] }, { duration: 0.4 }]);
+    if (h1) {
+      h1.innerHTML = h1.textContent.trim().split(/\s+/)
+        .map(function(w) { return '<span style="display:inline-block;white-space:nowrap">' + w + '</span>'; })
+        .join(' ');
+      var words = Array.from(h1.querySelectorAll('span'));
+      if (words.length) seq.push([words, { opacity: [0, 1], y: [30, 0] }, {
+        type: 'spring', bounce: 0.25, duration: 0.9,
+        delay: stagger(0.06),
+        at: eyebrow ? '-0.08' : '0',
+      }]);
+    }
+    if (sub) seq.push([sub, { opacity: [0, 1], y: [18, 0] }, {
+      duration: 0.5, ease: 'easeOut', at: '-0.4',
+    }]);
+    if (actions) seq.push([actions, { opacity: [0, 1], scale: [0.9, 1] }, {
+      type: 'spring', bounce: 0.4, duration: 0.65, at: '-0.2',
+    }]);
+    if (visual) seq.push([visual, { opacity: [0, 1], x: [40, 0] }, {
+      duration: 0.6, ease: 'easeOut', at: '-0.35',
+    }]);
+    if (seq.length) animate(seq);
+  }
+
+  // SECTION SCROLL REVEALS
+  var sections = document.querySelectorAll('section:not(.hero):not(#ai-search-sim)');
+  sections.forEach(function(section) {
+    inView(section, function({ target }) {
+      animate(target, { opacity: [0, 1], y: [40, 0], scale: [0.96, 1] }, {
+        type: 'spring', bounce: 0.2, duration: 0.8,
+      });
+      var items = Array.from(target.querySelectorAll(
+        '.proof-item, .case-study, .vertical-card, .pricing-tier, .faq-item, .problem-card'
+      ));
+      if (items.length > 1) {
+        animate(items, { opacity: [0, 1], y: [20, 0] }, {
+          type: 'spring', bounce: 0.3,
+          delay: stagger(0.08, { startDelay: 0.1 }),
+        });
+      }
+    }, { amount: 0.1 });
+  });
+
+  // BUTTON HOVER SPRINGS
+  document.querySelectorAll('button, a.btn-primary, a.btn-secondary').forEach(function(btn) {
+    btn.addEventListener('mouseenter', function() {
+      animate(this, { scale: 1.05, y: -2 }, { type: 'spring', stiffness: 350, damping: 20 });
+    });
+    btn.addEventListener('mouseleave', function() {
+      animate(this, { scale: 1, y: 0 }, { type: 'spring', stiffness: 300, damping: 25 });
+    });
+  });
+
+  // MAGNETIC CTA BUTTONS
+  document.querySelectorAll('button[onclick*="openGaModal"]').forEach(function(btn) {
+    btn.addEventListener('mousemove', function(e) {
+      var r = this.getBoundingClientRect();
+      var x = (e.clientX - r.left - r.width / 2) * 0.2;
+      var y = (e.clientY - r.top - r.height / 2) * 0.2;
+      animate(this, { x: x, y: y }, { type: 'spring', stiffness: 700, damping: 30, restDelta: 0.001 });
+    });
+    btn.addEventListener('mouseleave', function() {
+      animate(this, { x: 0, y: 0 }, { type: 'spring', stiffness: 300, damping: 22 });
+    });
+  });
+
+  // FLOAT BUTTON: overshoot spring + glow pulse
+  var floatBtn = document.getElementById('ga-float-btn');
+  if (floatBtn) {
+    animate(floatBtn, { opacity: [0, 1], y: [50, 0], scale: [0.6, 1] }, {
+      type: 'spring', duration: 0.9, bounce: 0.65, delay: 1.5
+    }).then(function() {
+      animate(floatBtn,
+        { boxShadow: [
+          '0 4px 20px rgba(45,74,107,0.3)',
+          '0 8px 60px rgba(45,74,107,0.7)',
+          '0 4px 20px rgba(45,74,107,0.3)',
+        ]},
+        { duration: 2.8, repeat: Infinity, ease: 'easeInOut' }
+      );
+    });
+  }
+
+  // AI SIMULATOR entrance
+  var aiSim = document.getElementById('aisim-window');
+  if (aiSim) {
+    inView(aiSim, function({ target }) {
+      animate(target, { opacity: [0, 1], y: [30, 0] }, {
+        type: 'spring', bounce: 0.25, duration: 0.85,
+      });
+    }, { amount: 0.15 });
+  }
+}
 </script>
 
 </body>
