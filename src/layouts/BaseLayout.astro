@@ -167,10 +167,8 @@ const localBusinessJsonLd = {
         --font-mono: 'DM Mono', monospace;
       }
 
-      /* Initial opacity:0 for Motion-animated elements — prevents FOUC */
+      /* FOUC prevention: only hide hero elements that Motion will animate */
       .motion-ready header,
-      .motion-ready main .max-w-3xl > :first-child > *,
-      .motion-ready main .max-w-3xl > *:not(:first-child),
       .motion-ready #ga-float-btn {
         opacity: 0;
       }
