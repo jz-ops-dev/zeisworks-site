@@ -1393,3 +1393,20 @@ const faqJsonLd = {
   //     },
   //   };
 </script>
+
+<!-- AI Audit: track StartGapAnalysis when hero CTA is clicked -->
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    var btn = document.getElementById('hero-cta');
+    if (btn) {
+      btn.addEventListener('click', function() {
+        if (typeof fbq === 'function') {
+          fbq('trackCustom', 'StartGapAnalysis', {
+            content_name: 'ai-audit',
+            content_category: 'zeisworks_form',
+          });
+        }
+      });
+    }
+  });
+</script>
