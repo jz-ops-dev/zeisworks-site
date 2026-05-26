@@ -4,9 +4,9 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
 <BaseLayout
   title="About"
-  description="Jack Zeis runs ZeisWorks from Golden, Colorado — a one-person growth practice for independent service businesses. AI-powered marketing plans, hands-on execution."
+  description="Jack Zeis runs ZeisWorks from Golden, Colorado — a one-person growth practice for independent service businesses. 10+ years building real systems. No agency."
   ogTitle="About | zeisWorks"
-  ogDescription="Jack Zeis runs ZeisWorks from Golden, CO. One person. No agency. AI-powered marketing plans supervised by a real person. Helping independent service businesses get more clients."
+  ogDescription="Jack Zeis runs ZeisWorks from Golden, CO. One person. No agency. 10+ years building marketing and operations systems for service businesses. Making real tools accessible."
 >
   <div class="max-w-3xl mx-auto px-6 py-16 space-y-16">
 
@@ -18,33 +18,33 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       </h1>
     </div>
 
-    <!-- Bio section -->
+    <!-- Bio -->
     <section class="space-y-5 text-ink-mid leading-relaxed">
       <p>
-        I grew up around a small business. Watched my dad do everything right and still lose sleep over the same question: how do I keep up?
+        I spent 10 years building sales and marketing systems for organizations with real budgets — CRM builds, lead generation pipelines, process automation, custom integrations. The kind of work that moves revenue.
       </p>
       <p>
-        Not with competitors. With technology. With the way customers find businesses now. With what good marketing actually looks like in 2026.
+        I grew up around small business. Watched good owners struggle — not because they were bad at what they do, but because the tools and systems that help businesses grow were built for companies with bigger teams and bigger budgets. The gap between what was available and what was accessible was real.
       </p>
       <p>
-        I spent the years since learning exactly that. Building sales and marketing systems for organizations with real budgets, then watching those same tools become accessible to anyone who knows how to run them.
+        The tools exist now. AI, automation, custom development — it's all more accessible than it's been. But most independent service businesses still don't have someone who knows how to run them. That's the gap ZeisWorks fills.
       </p>
       <p>
-        ZeisWorks is the answer to the question my dad never had a good answer to. One person. No agency. Just someone who knows what works and will tell you straight.
+        One person. No agency. Just someone who's done this work at scale and will tell you straight what's worth doing and what isn't.
       </p>
       <p class="text-ink font-medium pt-2">
         Jack Zeis runs ZeisWorks, a modern growth practice for independent service businesses. Based in Golden, Colorado.
       </p>
     </section>
 
-    <!-- Three pillars -->
+    <!-- What I do -->
     <section>
-      <h2 class="font-serif text-2xl font-semibold text-ink mb-6">Three connected services</h2>
+      <h2 class="font-serif text-2xl font-semibold text-ink mb-6">What I do</h2>
       <div class="space-y-4">
         {[
-          { num: '01', name: 'Get found', href: '/marketing', desc: 'How your business shows up on Google, in local search, and in the places your customers are already looking.' },
-          { num: '02', name: 'Turn attention into leads', href: '/operations', desc: 'Getting found is step one. Converting that attention into calls, bookings, and revenue is step two. Most businesses stop at step one.' },
-          { num: '03', name: 'Build systems that stick', href: '/custom-tools', desc: 'The tools and processes that make growth repeatable. So it does not depend on you doing more.' },
+          { num: '01', name: 'Get found', href: '/marketing', desc: 'Local SEO, paid ads, lead generation — the systems that bring high-value clients to your door.' },
+          { num: '02', name: 'Turn attention into leads', href: '/operations', desc: 'CRM setup, conversion optimization, follow-up workflows — so leads don\'t fall through the cracks.' },
+          { num: '03', name: 'Build systems that stick', href: '/custom-tools', desc: 'Process automation, custom integrations, reporting — the tools that make growth repeatable.' },
         ].map(p => (
           <a href={p.href} class="block rounded-xl border border-cream-dark bg-cream p-6 hover:border-navy/30 transition-colors group">
             <p class="text-xs text-orange font-medium uppercase tracking-widest mb-1">{p.num}</p>
@@ -55,13 +55,26 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       </div>
     </section>
 
-    <!-- Trust elements -->
+    <!-- Background -->
+    <section>
+      <h2 class="font-serif text-2xl font-semibold text-ink mb-4">Background</h2>
+      <div class="space-y-3 text-ink-mid leading-relaxed">
+        <p>Ten years across healthcare, professional services, trades, real estate, and finance. The work spans CRM builds (HubSpot, Salesforce), Python automation, custom workflows (n8n, Zapier), web development, paid campaign management, and data infrastructure. The common thread is helping independent businesses do more with less friction.</p>
+        <div class="flex flex-wrap gap-2 mt-4">
+          {['HubSpot', 'Salesforce', 'Python', 'n8n', 'Zapier', 'Google Ads', 'Meta Ads', 'SQL', 'Google Business Profile', 'Ahrefs', 'Astro'].map(skill => (
+            <span class="text-xs bg-cream-dark text-ink-mid px-3 py-1 rounded-full border border-cream-dark">{skill}</span>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- How ZeisWorks works -->
     <section class="rounded-xl border border-cream-dark bg-cream-dark p-8">
-      <h2 class="font-serif text-xl font-semibold text-ink mb-6">How ZeisWorks works</h2>
+      <h2 class="font-serif text-xl font-semibold text-ink mb-6">How it works</h2>
       <ul class="space-y-4">
         {[
           { label: 'No retainer required', body: 'Work can be project-based or ongoing. You don\'t commit to anything until you see the scope and the price.' },
-          { label: 'Free first call', body: 'The first conversation is always free. So is the plan. You only pay if you decide to work together.' },
+          { label: 'Free first analysis', body: 'The first look is always free. Tell me what\'s broken — I\'ll come back with a specific plan at no charge.' },
           { label: 'No lock-in', body: 'Everything built is yours. Documented and handed off so it runs without depending on ZeisWorks.' },
           { label: 'Plain English on everything', body: 'No jargon, no vague deliverables. You get clear explanations of what\'s being built and why.' },
         ].map(item => (
@@ -76,22 +89,9 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       </ul>
     </section>
 
-    <!-- Background -->
-    <section>
-      <h2 class="font-serif text-2xl font-semibold text-ink mb-4">Background</h2>
-      <div class="space-y-3 text-ink-mid leading-relaxed">
-        <p>Six years building sales and marketing systems for organizations across healthcare, professional services, trades, real estate, and finance. The work spans CRM builds, Python automation, custom workflows, web development, marketing campaign management, and data infrastructure. The common thread is helping small teams do more with less friction.</p>
-        <div class="flex flex-wrap gap-2 mt-4">
-          {['HubSpot', 'Python', 'n8n', 'Zapier', 'Google Ads', 'Meta Ads', 'Astro', 'SQL', 'Google Business Profile', 'Ahrefs'].map(skill => (
-            <span class="text-xs bg-cream-dark text-ink-mid px-3 py-1 rounded-full border border-cream-dark">{skill}</span>
-          ))}
-        </div>
-      </div>
-    </section>
-
-    <!-- Contact CTA -->
+    <!-- CTA -->
     <div class="rounded-xl border border-navy/20 bg-navy/5 p-8">
-      <h3 class="font-serif text-xl font-semibold text-ink mb-2">Free first call. No obligation.</h3>
+      <h3 class="font-serif text-xl font-semibold text-ink mb-2">Free first analysis. No obligation.</h3>
       <p class="text-sm text-ink-mid mb-6 leading-relaxed">
         Tell me what you're trying to fix. I'll come back with a plain-English plan: what I'd do, how long it takes, what it costs. No charge for any of that.
       </p>
