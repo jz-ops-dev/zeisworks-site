@@ -8,7 +8,7 @@ const faqItems = [
   },
   {
     q: "How do you actually project revenue?",
-    a: "Our AI engine analyzes 500+ data points per firm: current marketing, market size, competition, conversion infrastructure, niche economics, and historical performance from comparable campaigns. Projections come from real comparable data, not template assumptions. The methodology is in the report.",
+    a: "Our AI engine analyzes 500+ data points per firm: current marketing, market size, competition, how well your website and Google profile convert visitors, niche economics, and historical performance from comparable campaigns. Projections come from real comparable data, not template assumptions. The methodology is in the report.",
   },
   {
     q: "What does this actually cost after the audit?",
@@ -72,10 +72,10 @@ const faqJsonLd = {
 ---
 
 <BaseLayout
-  title="Free 12-Month Marketing Plan — AI-Powered, Human-Supervised"
-  description="Answer 8 questions about your business. Get a free AI-generated 12-month marketing plan with revenue projections, channel breakdown, and monthly budget. No call required."
-  ogTitle="Free 12-Month Marketing Plan | zeisWorks"
-  ogDescription="AI-powered marketing plans supervised by a real person. Answer 8 questions, get a free 12-month plan with revenue projections. No call required."
+  title="Free Local Search & AI Audit for Colorado Businesses | ZeisWorks"
+  description="Find out if ChatGPT, Google AI, and Maps recommend your competitors instead of you. Free 5-minute audit with a 12-month revenue plan. No call required."
+  ogTitle="Free Local Search & AI Audit for Colorado Businesses | ZeisWorks"
+  ogDescription="Find out if ChatGPT, Google AI, and Maps recommend your competitors instead of you. Free 5-minute audit with a 12-month revenue plan. No call required."
   canonicalUrl="https://zeisworks.com/ai-audit/"
   bodyPage="ai-audit"
 >
@@ -186,6 +186,25 @@ const faqJsonLd = {
         font-size: 0.8125rem;
         color: theme('colors.ink-light');
         margin-top: 0.25rem;
+      }
+
+      /* ── BENEFIT BAR ── */
+      .aa-benefit-bar {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 0.25rem 1.25rem;
+        font-size: 0.8125rem;
+        font-weight: 500;
+        color: theme('colors.ink-mid');
+        margin: 0 auto 1.75rem;
+        padding: 0;
+        list-style: none;
+      }
+      .aa-benefit-bar li::before {
+        content: "✓ ";
+        color: theme('colors.orange');
+        font-weight: 700;
       }
 
       /* ── TRUST STRIP ── */
@@ -879,15 +898,20 @@ const faqJsonLd = {
     <section class="aa-hero" id="top">
       <div class="aa-hero-inner">
         <p class="aa-eyebrow">Free local search audit · Colorado businesses</p>
-        <h1 class="aa-h1">Get found where your customers are looking.</h1>
+        <h1 class="aa-h1">See whether ChatGPT, Google AI, and Maps are recommending your competitors instead of you.</h1>
         <p class="aa-subhead">
-          Someone just searched for a business like yours and didn't find you. We'll show you
-          exactly where you're invisible — in Google, Maps, and AI search — what it's costing
-          you in revenue, and give you a 12-month plan to fix it.
+          Free local search and AI visibility audit for Colorado roofers, HVAC companies,
+          plumbers, remodelers, and service firms. Find out exactly where you're invisible —
+          and get a 12-month revenue plan to fix it.
         </p>
+        <ul class="aa-benefit-bar" aria-label="Audit benefits">
+          <li>5-minute audit</li>
+          <li>No call required</li>
+          <li>Free 12-month revenue plan</li>
+        </ul>
         <div class="aa-cta-group">
           <button type="button" class="aa-btn-primary" id="hero-cta">
-            Start the free audit →
+            Start My Free 5-Minute Audit
           </button>
           <a
             href="tel:+17206502447"
@@ -900,7 +924,6 @@ const faqJsonLd = {
             Prefer to call? (720) 650-2447
           </a>
         </div>
-        <p class="aa-hero-note">5 minutes. No call required. No retainer.</p>
       </div>
     </section>
 
@@ -919,6 +942,10 @@ const faqJsonLd = {
       <span role="listitem">
         <span aria-hidden="true">✓</span> Free 12-month plan, no retainer
       </span>
+      <span class="aa-trust-sep" aria-hidden="true">·</span>
+      <span role="listitem">
+        <span aria-hidden="true">✓</span> Jack personally reviews every audit · limited spots per week
+      </span>
     </div>
 
     <!-- ══════════════════════════════════════
@@ -926,15 +953,33 @@ const faqJsonLd = {
     ══════════════════════════════════════ -->
     <section class="aa-section" style="padding-bottom: 2rem;">
       <div class="aa-section-inner">
-        <p class="aa-section-label">What the audit covers</p>
+        <p class="aa-section-label">What you'll see in 5 minutes</p>
         <h2 class="aa-section-title">What you'll learn in 5 minutes.</h2>
         <ul class="aa-learn-list">
-          <li>Whether AI tools like ChatGPT, Gemini, and Perplexity mention your business</li>
-          <li>Which competitors dominate AI-generated recommendations in your category</li>
-          <li>Missing authority signals that keep you out of AI answers</li>
-          <li>Citation gaps across directories, review platforms, and the web</li>
-          <li>Content weaknesses that hurt your discoverability</li>
-          <li>GEO and LLMO opportunities specific to your Colorado market</li>
+          <li>Whether ChatGPT, Gemini, and Perplexity recommend your competitors instead of you — with screenshots of actual AI responses for your trade and area.</li>
+          <li>Where you appear (and don't) in Google Search, Maps, and key directories — so you see the exact gaps costing you calls.</li>
+          <li>Which competitors dominate AI-generated recommendations in your trade and service area, and why.</li>
+          <li>What a new client should cost to acquire in your market, based on real benchmarks — not guesses.</li>
+          <li>A 12-month revenue plan with projected monthly revenue, client volume, and budget required to hit your goal.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════
+         SECTION 2C — WHAT IT TAKES FROM YOU
+    ══════════════════════════════════════ -->
+    <section class="aa-section" style="padding-top: 0; padding-bottom: 2.5rem;">
+      <div class="aa-section-inner">
+        <p class="aa-section-label">How it works</p>
+        <h2 class="aa-section-title">What the audit asks you</h2>
+        <p class="aa-section-body" style="margin-bottom: 1.25rem;">
+          We'll ask about your trade, service area, website, revenue goal, current lead volume,
+          and a few visibility questions. Takes about 5 minutes in the browser — no prep needed.
+        </p>
+        <ul class="aa-learn-list">
+          <li>Answer questions in the browser (about 5 minutes).</li>
+          <li>We run the audit and send your report by email.</li>
+          <li>No sales call required unless you ask for one.</li>
         </ul>
       </div>
     </section>
@@ -947,9 +992,10 @@ const faqJsonLd = {
         <p class="aa-section-label">Free audit</p>
         <h2 class="aa-section-title">The 5-minute audit</h2>
         <p class="aa-section-body">
-          We map your AI search visibility, review profile, conversion infrastructure, and
-          competitive position against your revenue goal. You get a 12-month plan with monthly
-          revenue projections and the cost to execute it.
+          We map your AI search visibility, review profile, how well your website and Google
+          profile turn visitors into calls and bookings, and competitive position against your
+          revenue goal. You get a 12-month plan with monthly revenue projections and the cost
+          to execute it.
         </p>
 
         <!--
@@ -1017,8 +1063,9 @@ const faqJsonLd = {
         <p class="aa-section-label">Sample output</p>
         <h2 class="aa-section-title">Here's what your score looks like.</h2>
         <p class="aa-section-body">
-          Based on a real Colorado service business. Your results reflect your specific market,
-          category, and current presence.
+          Sample from a real Colorado service business. This Denver HVAC company was invisible
+          in 8 of 10 AI searches. Your results reflect your specific trade, market, and current
+          presence.
         </p>
         <div class="aa-score-card">
           <div class="aa-score-header">
@@ -1244,7 +1291,7 @@ const faqJsonLd = {
         <p class="aa-closing-sub">Run the audit, get the plan, decide what to do next.</p>
         <div class="aa-closing-cta-group">
           <button type="button" class="aa-btn-closing" id="closing-cta">
-            Start the audit →
+            Start My Free 5-Minute Audit
           </button>
         </div>
         <p class="aa-closing-phone">
