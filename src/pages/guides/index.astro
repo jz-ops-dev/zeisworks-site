@@ -10,30 +10,14 @@ const sortedGuides = allGuides.sort(
 
 const clusters = [
   {
-    id: 'med-spa',
-    label: 'Med Spas & Aesthetics',
-    title: 'Med Spa Growth',
-    description: 'Membership programs, filling injector slots, and the local SEO that brings high-value clients through your door.',
+    id: 'marketing',
+    label: 'Marketing & Growth',
+    title: 'Get Found by the Right Customers',
+    description: 'Local SEO, lead generation, and the marketing systems that fill your calendar — without agency retainers or discounting your way to empty chairs.',
     slugs: [
       'tiered-med-spa-membership-program-monthly-recurring-revenue',
       'how-to-fill-injector-slots-without-discounting',
-    ],
-  },
-  {
-    id: 'home-services',
-    label: 'Home Services',
-    title: 'Home Services Growth',
-    description: 'Lead nurturing and the systems that keep your schedule full without chasing every inquiry.',
-    slugs: [
       'lead-nurturing-for-home-remodelers',
-    ],
-  },
-  {
-    id: 'vet-clinics',
-    label: 'Independent Vet Clinics',
-    title: 'Vet Clinic Growth',
-    description: 'Outrank the corporate chains, build a review engine, and reactivate lapsed clients.',
-    slugs: [
       'local-seo-for-independent-vet-clinics',
     ],
   },
@@ -45,9 +29,9 @@ const unclusteredGuides = sortedGuides.filter(g => !clusteredSlugs.includes(g.id
 
 <BaseLayout
   title="Guides"
-  description="Plain-English breakdowns of what's actually working in small business marketing, operations, and growth. Written from real experience, not agency talking points."
+  description="Free guides on local SEO, lead generation, operations, and growth systems for service businesses. Written by someone who actually does the work."
   ogTitle="Guides | zeisWorks"
-  ogDescription="Free guides on local SEO, lead generation, and growth systems for service businesses. Written by someone who actually does the work."
+  ogDescription="Free guides on local SEO, lead generation, operations, and growth systems for service businesses. Written by someone who actually does the work."
   canonicalUrl="https://zeisworks.com/guides/"
 >
   <div class="max-w-3xl mx-auto px-6 py-16">
@@ -56,10 +40,10 @@ const unclusteredGuides = sortedGuides.filter(g => !clusteredSlugs.includes(g.id
         Guides
       </p>
       <h1 class="font-serif text-3xl font-semibold text-ink mb-3 leading-snug">
-        Plain-English breakdowns of what's actually working.
+        What's actually working for service businesses right now.
       </h1>
       <p class="text-ink-mid leading-relaxed max-w-xl text-sm">
-        No agency talking points. No theory. These are the tactics and systems that move the needle for real service businesses — written from direct experience.
+        No agency playbooks. No theory. These are the tactics and systems I use with real clients — local SEO, lead nurturing, operations, and the tools that make growth repeatable.
       </p>
     </header>
 
@@ -116,6 +100,51 @@ const unclusteredGuides = sortedGuides.filter(g => !clusteredSlugs.includes(g.id
         </div>
       </section>
     )}
+
+    <!-- Additional Resources -->
+    <section class="mb-16">
+      <div class="mb-6 pb-3 border-b border-cream-dark">
+        <p class="text-xs font-semibold uppercase tracking-widest text-orange mb-1">Resources</p>
+        <h2 class="font-serif text-xl font-semibold text-ink">Beyond the blog</h2>
+      </div>
+      <div class="grid sm:grid-cols-2 gap-4">
+        <a href="/geo-guide" class="block rounded-xl border border-cream-dark bg-cream p-6 hover:border-orange/50 transition-colors group">
+          <p class="text-xs text-orange font-medium uppercase tracking-widest mb-2">Free PDF</p>
+          <h3 class="font-serif font-semibold text-ink text-lg mb-1 group-hover:text-orange transition-colors">The Independent Practice Guide to GEO</h3>
+          <p class="text-sm text-ink-mid">How to get recommended by ChatGPT, Google AI Overviews, and modern search engines — before corporate chains take the top spots.</p>
+        </a>
+        <a href="/websites" class="block rounded-xl border border-cream-dark bg-cream p-6 hover:border-orange/50 transition-colors group">
+          <p class="text-xs text-orange font-medium uppercase tracking-widest mb-2">Service</p>
+          <h3 class="font-serif font-semibold text-ink text-lg mb-1 group-hover:text-orange transition-colors">$100 Website Builds</h3>
+          <p class="text-sm text-ink-mid">Professional, mobile-optimized websites for service businesses. $100 one-time, delivered in 5 days. No monthly fees.</p>
+        </a>
+      </div>
+    </section>
+
+    <!-- About / Bio -->
+    <section class="mb-16 rounded-xl border border-cream-dark bg-cream p-8">
+      <div class="flex items-start gap-6">
+        <img src="/jack.jpg" alt="Jack Zeis" class="w-16 h-16 rounded-full object-cover shrink-0 border-2 border-cream-dark" />
+        <div>
+          <p class="text-xs font-semibold uppercase tracking-widest text-orange mb-2">About the author</p>
+          <p class="text-ink-mid leading-relaxed text-sm mb-3">
+            I grew up around a small business. Watched my dad do everything right and still lose sleep over the same question: <em class="text-ink">how do I keep up?</em>
+          </p>
+          <p class="text-ink-mid leading-relaxed text-sm mb-3">
+            Not with competitors. With technology. With the way customers find businesses now. With what good marketing actually looks like in 2026.
+          </p>
+          <p class="text-ink-mid leading-relaxed text-sm mb-3">
+            I spent the years since learning exactly that. Building sales and marketing systems for organizations with real budgets, then watching those same tools become accessible to anyone who knows how to run them.
+          </p>
+          <p class="text-ink-mid leading-relaxed text-sm mb-3">
+            ZeisWorks is the answer to the question my dad never had a good answer to. One person. No agency. Just someone who knows what works and will tell you straight.
+          </p>
+          <p class="text-ink font-medium text-sm pt-1">
+            Jack Zeis runs ZeisWorks, a modern growth practice for independent service businesses. Based in Golden, Colorado.
+          </p>
+        </div>
+      </div>
+    </section>
 
     <!-- CTA -->
     <div class="mt-4 p-8 bg-cream-dark rounded-2xl text-center">
