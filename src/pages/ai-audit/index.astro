@@ -1359,6 +1359,21 @@ const faqJsonLd = {
       'zw-audit',
       `width=${w},height=${h},left=${left},top=${top},resizable=yes,scrollbars=yes`
     );
+    // GA4 lead event — mark 'audit_popup_open' as a conversion in GA4 console
+    if (typeof gtag !== 'undefined') {
+      gtag('event', 'generate_lead', {
+        event_category: 'ai_audit',
+        event_label: 'audit_popup_open',
+      });
+    }
+    // Meta Pixel
+    if (typeof fbq === 'function') {
+      fbq('trackCustom', 'StartGapAnalysis', {
+        content_name: 'ai-audit',
+        content_category: 'zeisworks_form',
+      });
+    }
+    // OpenAI Ads pixel
     if (typeof oaiq !== 'undefined') {
       oaiq("measure", "registration_completed", {
         type: "customer_action",
@@ -1441,19 +1456,3 @@ const faqJsonLd = {
   //   };
 </script>
 
-<!-- AI Audit: track StartGapAnalysis when hero CTA is clicked -->
-<script>
-  document.addEventListener('DOMContentLoaded', function() {
-    var btn = document.getElementById('hero-cta');
-    if (btn) {
-      btn.addEventListener('click', function() {
-        if (typeof fbq === 'function') {
-          fbq('trackCustom', 'StartGapAnalysis', {
-            content_name: 'ai-audit',
-            content_category: 'zeisworks_form',
-          });
-        }
-      });
-    }
-  });
-</script>
