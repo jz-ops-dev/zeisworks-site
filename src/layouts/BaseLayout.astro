@@ -138,6 +138,52 @@ const localBusinessJsonLd = {
     /></noscript>
     <!-- End Meta Pixel Base Code -->
 
+    <!-- Lead tracking: fire fbq event on every form submission -->
+    <script>
+      (function() {
+        var LEAD_FORMS = [
+          'gap-analysis',
+          'gap-analysis-modal',
+          'checklist-download',
+          'website-application',
+        ];
+
+        // Hook Netlify AJAX forms (modal + any JS-intercepted submits)
+        document.addEventListener('submit', function(e) {
+          var form = e.target;
+          if (!form || !form.tagName || form.tagName !== 'FORM') return;
+          var name = form.getAttribute('name') || '';
+          if (LEAD_FORMS.indexOf(name) !== -1 && typeof fbq === 'function') {
+            fbq('track', 'Lead', {
+              content_name: name,
+              content_category: 'zeisworks_form',
+            });
+          }
+        }, true); // capture phase so we fire before Netlify's handler
+
+        // Also hook the modal's fetch-based submit (which calls preventDefault)
+        // The modal form uses the same name 'gap-analysis-modal' so the
+        // capture-phase listener above catches it — but as a fallback we
+        // also patch the modal's success handler directly.
+        var _openGaModal = window.openGaModal;
+        // The modal script runs after this, so we use DOMContentLoaded to
+        // attach to the modal form's custom success flow.
+        document.addEventListener('DOMContentLoaded', function() {
+          var modalForm = document.getElementById('ga-modal-form');
+          if (!modalForm) return;
+          modalForm.addEventListener('submit', function handler(e) {
+            if (typeof fbq === 'function') {
+              fbq('track', 'Lead', {
+                content_name: 'gap-analysis-modal',
+                content_category: 'zeisworks_form',
+              });
+            }
+          }, true);
+        });
+      })();
+    </script>
+    <!-- End Meta Pixel Base Code -->
+
     <!-- FOUC prevention: hide animated elements before Motion script runs -->
     <script is:inline>
       if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
