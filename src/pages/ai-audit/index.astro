@@ -1406,6 +1406,20 @@ const faqJsonLd = {
             content_category: 'zeisworks_form',
           });
         }
+        // MNTN Conversion Pixel
+        (function(){var x=null,p,q,m,
+          o="67035",
+          conversion_type="Lead",
+          order_id="",
+          order_amt="",
+          b="",c="",k="",g="",j="",u="";
+          try{p=top.document.referer!==""?encodeURIComponent(top.document.referrer.substring(0,2048)):""}catch(n){p=document.referrer!==null?document.referrer.toString().substring(0,2048):""}
+          try{m=parent.location.href!==""?encodeURIComponent(parent.location.href.toString().substring(0,2048)):""}catch(z){try{m!==null?encodeURIComponent(m.toString().substring(0,2048)):""}catch(h){m=""}}
+          var A,y=document.createElement("script"),w=null,v=document.getElementsByTagName("script"),t=Number(v.length)-1,r=document.getElementsByTagName("script")[t];
+          if(typeof A==="undefined"){A=Math.floor(Math.random()*1e17)}
+          w="https://dx.mountain.com/spx?conv=1&shaid="+o+"&tdr="+p+"&plh="+m+"&cb="+A+"&shoid="+order_id+"&shoamt="+order_amt+"&type="+conversion_type+"&shocur="+c+"&shopid="+k+"&shoq="+g+"&shoup="+j+"&shpil="+u+b;
+          y.type="text/javascript";y.src=w;r.parentNode.insertBefore(y,r)
+        })();
       });
     }
   });
