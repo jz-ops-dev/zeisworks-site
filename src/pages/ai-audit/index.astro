@@ -60,20 +60,6 @@ const testimonials = [
   },
 ];
 
-const industries = [
-  "HVAC & Plumbing",
-  "Dental & Med Spa",
-  "Home Remodeling",
-  "Roofing & Exteriors",
-  "Attorneys & Law Firms",
-  "Personal Trainers & Gyms",
-  "Chiropractic & PT",
-  "Accounting & Financial",
-  "Landscaping",
-  "Auto Services",
-  "Therapists & Counselors",
-  "Cleaning Services",
-];
 
 const faqJsonLd = {
   "@context": "https://schema.org",
@@ -231,24 +217,12 @@ const faqJsonLd = {
         border-top: 1px solid rgba(255,255,255,0.06);
         border-bottom: 1px solid rgba(255,255,255,0.06);
         padding: 0.875rem 1.5rem;
-        overflow: hidden;
+        text-align: center;
       }
       .aa-industry-inner {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 0.5rem 1.25rem;
-      }
-      .aa-industry-tag {
-        font-size: 0.75rem;
-        font-weight: 500;
+        font-size: 0.8125rem;
         color: rgba(255,255,255,0.4);
-        letter-spacing: 0.04em;
-        white-space: nowrap;
-      }
-      .aa-industry-tag::before {
-        content: '✓ ';
-        color: #6366f1;
+        letter-spacing: 0.02em;
       }
 
       /* ── TRUST STRIP ── */
@@ -548,7 +522,7 @@ const faqJsonLd = {
         <span class="aa-eyebrow">Free AI Visibility Audit · <span id="aa-eyebrow-location">Service &amp; Professional Businesses</span></span>
         <h1 class="aa-h1">
           Your customers are asking AI<br>
-          who to call.<br>
+          who to call<span id="aa-h1-location"></span>.<br>
           <em>Are you on the list?</em>
         </h1>
         <p class="aa-subhead">
@@ -559,10 +533,7 @@ const faqJsonLd = {
           <button type="button" class="aa-btn-primary" id="hero-cta">
             Find out now — it's free →
           </button>
-          <a href="tel:+17206502447" class="aa-btn-phone" aria-label="Call (720) 650-2447">
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.41 2 2 0 0 1 3.6 1.24h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 9.4a16 16 0 0 0 6.29 6.29l1.76-1.76a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-            Prefer to call? (720) 650-2447
-          </a>
+
         </div>
         <p class="aa-hero-note">5 minutes. No call required. No retainer.</p>
       </div>
@@ -572,9 +543,7 @@ const faqJsonLd = {
          INDUSTRY STRIP
     ══════════════════════════════════════ -->
     <div class="aa-industry-strip">
-      <div class="aa-industry-inner">
-        {industries.map(i => <span class="aa-industry-tag">{i}</span>)}
-      </div>
+      <div class="aa-industry-inner">If you have a service business with customers and a website, we can help.</div>
     </div>
 
     <!-- ══════════════════════════════════════
@@ -796,7 +765,38 @@ const faqJsonLd = {
     </section>
 
     <!-- ══════════════════════════════════════
-         SECTION 8 — FAQ
+         SECTION 8 — BEFORE / AFTER
+    ══════════════════════════════════════ -->
+    <section class="aa-section aa-ba">
+      <div class="aa-section-inner">
+        <h2 class="aa-section-title">What changes when AI can find you.</h2>
+        <div class="aa-ba-grid">
+          <div class="aa-ba-card aa-ba-before">
+            <p class="aa-ba-label">Before</p>
+            <ul class="aa-ba-list">
+              <li>Running $2,000+/month in ads just to keep the phone ringing</li>
+              <li>No customer has ever said "ChatGPT recommended you"</li>
+              <li>Your agency sends a report; you're not sure what it means for revenue</li>
+              <li>Competitors you've never heard of keep coming up when you Google yourself</li>
+              <li>No clear answer to "what does it cost us to acquire a new client?"</li>
+            </ul>
+          </div>
+          <div class="aa-ba-card aa-ba-after">
+            <p class="aa-ba-label">After</p>
+            <ul class="aa-ba-list">
+              <li>Showing up in AI recommendations without running ads for it</li>
+              <li>Inbound leads from ChatGPT, Gemini, and Perplexity searches</li>
+              <li>Clear attribution — which channels drive actual booked clients</li>
+              <li>Month-by-month pipeline that's predictable and growing</li>
+              <li>AI working as a referral engine instead of working against you</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════
+         SECTION 9 — FAQ
     ══════════════════════════════════════ -->
     <section class="aa-section">
       <div class="aa-section-inner">
@@ -945,7 +945,7 @@ const faqJsonLd = {
 (function () {
   const CITY_KEY = 'zw_city';
   const TOAST_KEY = 'zw_toasts';
-  const MAX_TOASTS = 4;
+  const MAX_TOASTS = 8;
 
   const entries = [
     { icon: '🌡', label: 'HVAC company' },
@@ -960,6 +960,14 @@ const faqJsonLd = {
     { icon: '🩺', label: 'chiropractic office' },
     { icon: '🧹', label: 'cleaning service' },
     { icon: '🏗', label: 'home remodeler' },
+    { icon: '🔑', label: 'real estate agent' },
+    { icon: '🐾', label: 'pet groomer' },
+    { icon: '💇', label: 'hair salon' },
+    { icon: '🏋️', label: 'fitness studio' },
+    { icon: '🖥️', label: 'IT support company' },
+    { icon: '🛁', label: 'bathroom remodeler' },
+    { icon: '🌲', label: 'tree service' },
+    { icon: '🐕', label: 'dog trainer' },
   ];
 
   const actions = [
@@ -1030,14 +1038,14 @@ const faqJsonLd = {
   }
 
   function scheduleToasts(city) {
-    // First toast: 7–12s after load
-    const first = 7000 + Math.random() * 5000;
+    // First toast: 3–6s after load
+    const first = 3000 + Math.random() * 3000;
     setTimeout(function fire() {
       showToast(city);
       const shown = parseInt(sessionStorage.getItem(TOAST_KEY) || '0');
       if (shown < MAX_TOASTS) {
-        // Subsequent toasts: 18–35s apart
-        setTimeout(fire, 18000 + Math.random() * 17000);
+        // Subsequent toasts: 8–15s apart
+        setTimeout(fire, 8000 + Math.random() * 7000);
       }
     }, first);
   }
@@ -1062,6 +1070,10 @@ const faqJsonLd = {
     // Inject city into hero eyebrow
     const eyebrow = document.getElementById('aa-eyebrow-location');
     if (eyebrow) eyebrow.textContent = city + ' Service Businesses';
+
+    // Inject city into h1
+    const h1loc = document.getElementById('aa-h1-location');
+    if (h1loc) h1loc.textContent = ' in ' + city;
 
     // Inject city into subhead
     const subloc = document.getElementById('aa-subhead-location');
