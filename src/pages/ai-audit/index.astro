@@ -12,7 +12,7 @@ const faqItems = [
   },
   {
     q: "What does this actually cost after the audit?",
-    a: "The audit and plan are free. If you decide to run the plan with us, monthly investment scales with your revenue goal and market position — typically $2,500 to $5,000 per month. The full cost is in the plan you receive, before any commitment.",
+    a: "The audit and plan are free. If you decide to run the plan with us, your investment scales with your revenue goal and market position. The full cost is in the plan you receive, before any commitment.",
   },
   {
     q: "I already have a marketing agency. Why should I run this?",
@@ -26,16 +26,16 @@ const faqItems = [
 
 const deliverables = [
   {
-    title: "Twelve-month revenue plan",
-    desc: "Month-by-month roadmap with revenue projections, client volume targets, and the marketing budget required to hit them. Based on your specific market, niche, and current position. Not pulled from a template.",
+    title: "Marketing gap analysis",
+    desc: "A side-by-side comparison of your current marketing performance against your true potential — organic, paid, conversions, and funnel ROI. Shows exactly where revenue is leaking and why.",
   },
   {
-    title: "AI search visibility audit",
-    desc: "Where your business appears, and where it doesn't, when prospects search Google, Maps, ChatGPT, and Gemini for what you offer. Side-by-side with the businesses showing up instead of you.",
+    title: "12-month predictive revenue plan",
+    desc: "Month-by-month projections with exact revenue targets, client volume, cost to acquire a new client, and total budget required. Based on your specific market and revenue goal — not a template.",
   },
   {
-    title: "Customer acquisition cost projection",
-    desc: "What a new client actually costs to acquire in your market given your current positioning. So you can compare what you're spending now against what it should cost.",
+    title: "Done-for-you execution roadmap",
+    desc: "The complete plan to run it — so you can focus on your business while the system handles client acquisition. Every tactic tied to a revenue outcome, with projected ROI per channel.",
   },
 ];
 
@@ -60,6 +60,21 @@ const testimonials = [
   },
 ];
 
+const industries = [
+  "HVAC & Plumbing",
+  "Dental & Med Spa",
+  "Home Remodeling",
+  "Roofing & Exteriors",
+  "Attorneys & Law Firms",
+  "Personal Trainers & Gyms",
+  "Chiropractic & PT",
+  "Accounting & Financial",
+  "Landscaping",
+  "Auto Services",
+  "Therapists & Counselors",
+  "Cleaning Services",
+];
+
 const faqJsonLd = {
   "@context": "https://schema.org",
   "@type": "FAQPage",
@@ -72,10 +87,10 @@ const faqJsonLd = {
 ---
 
 <BaseLayout
-  title="Free 12-Month Marketing Plan — AI-Powered, Human-Supervised"
-  description="Answer 8 questions about your business. Get a free AI-generated 12-month marketing plan with revenue projections, channel breakdown, and monthly budget. No call required."
-  ogTitle="Free 12-Month Marketing Plan | zeisWorks"
-  ogDescription="AI-powered marketing plans supervised by a real person. Answer 8 questions, get a free 12-month plan with revenue projections. No call required."
+  title="Is Your Service Business Invisible to AI Search? Free Audit"
+  description="When customers ask ChatGPT, Gemini, or Google AI who to call for your service — are you showing up? Find out in 5 minutes. Free AI visibility audit + 12-month revenue plan."
+  ogTitle="Your Customers Are Asking AI Who to Call. Are You on the List?"
+  ogDescription="Free AI search visibility audit for service businesses. See exactly where you're invisible, what it's costing you, and get a 12-month plan to fix it. No call required."
   canonicalUrl="https://zeisworks.com/ai-audit/"
   bodyPage="ai-audit"
 >
@@ -107,37 +122,58 @@ const faqJsonLd = {
 
       /* ── HERO ── */
       .aa-hero {
-        background: var(--cream);
-        padding: 5rem 1.5rem 4rem;
-        border-bottom: 1px solid #e8e3d8;
+        background: #1a1f2e;
+        padding: 5.5rem 1.5rem 5rem;
+        position: relative;
+        overflow: hidden;
+      }
+      .aa-hero::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(99,102,241,0.18) 0%, transparent 70%);
+        pointer-events: none;
       }
       .aa-hero-inner {
-        max-width: 720px;
+        max-width: 760px;
         margin: 0 auto;
         text-align: center;
+        position: relative;
+        z-index: 1;
       }
       .aa-eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
         font-size: 0.75rem;
         font-weight: 600;
         letter-spacing: 0.1em;
         text-transform: uppercase;
-        color: theme('colors.orange');
-        margin-bottom: 1.25rem;
+        color: #a5b4fc;
+        margin-bottom: 1.5rem;
+        background: rgba(99,102,241,0.12);
+        border: 1px solid rgba(99,102,241,0.25);
+        padding: 0.35rem 0.875rem;
+        border-radius: 999px;
       }
       .aa-h1 {
         font-family: theme('fontFamily.serif');
-        font-size: clamp(2rem, 4.5vw, 3rem);
+        font-size: clamp(2.1rem, 5vw, 3.25rem);
         font-weight: 700;
-        line-height: 1.2;
-        letter-spacing: -0.02em;
-        color: theme('colors.ink');
-        margin-bottom: 1.25rem;
+        line-height: 1.15;
+        letter-spacing: -0.025em;
+        color: #fff;
+        margin-bottom: 1.375rem;
+      }
+      .aa-h1 em {
+        font-style: normal;
+        color: #a5b4fc;
       }
       .aa-subhead {
         font-size: 1.125rem;
-        color: theme('colors.ink-mid');
-        max-width: 600px;
-        margin: 0 auto 2.25rem;
+        color: rgba(255,255,255,0.7);
+        max-width: 620px;
+        margin: 0 auto 2.5rem;
         line-height: 1.75;
       }
       .aa-cta-group {
@@ -146,46 +182,73 @@ const faqJsonLd = {
         gap: 0.875rem;
         justify-content: center;
         align-items: center;
-        margin-bottom: 1rem;
+        margin-bottom: 1.25rem;
       }
       .aa-btn-primary {
-        background: theme('colors.navy');
+        background: #6366f1;
         color: #fff;
-        padding: 0.875rem 2rem;
+        padding: 1rem 2.25rem;
         border-radius: 0.625rem;
-        font-size: 1rem;
-        font-weight: 500;
+        font-size: 1.0625rem;
+        font-weight: 600;
         text-decoration: none;
-        transition: background 0.2s, transform 0.15s;
+        transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
         display: inline-block;
         border: none;
         cursor: pointer;
         font-family: inherit;
+        box-shadow: 0 4px 24px rgba(99,102,241,0.35);
       }
       .aa-btn-primary:hover {
-        background: #1e3350;
-        transform: translateY(-1px);
+        background: #4f46e5;
+        transform: translateY(-2px);
+        box-shadow: 0 8px 32px rgba(99,102,241,0.45);
       }
       .aa-btn-primary:focus-visible {
-        outline: 2px solid theme('colors.navy');
+        outline: 2px solid #a5b4fc;
         outline-offset: 3px;
       }
       .aa-btn-phone {
         display: inline-flex;
         align-items: center;
         gap: 0.4rem;
-        color: theme('colors.ink-mid');
+        color: rgba(255,255,255,0.5);
         font-size: 0.9375rem;
         font-weight: 500;
         text-decoration: none;
         transition: color 0.2s;
       }
-      .aa-btn-phone:hover { color: theme('colors.ink'); }
-      .aa-btn-phone:focus-visible { outline: 2px solid theme('colors.navy'); outline-offset: 2px; border-radius: 2px; }
+      .aa-btn-phone:hover { color: rgba(255,255,255,0.8); }
       .aa-hero-note {
         font-size: 0.8125rem;
-        color: theme('colors.ink-light');
-        margin-top: 0.25rem;
+        color: rgba(255,255,255,0.35);
+        margin-top: 0.375rem;
+      }
+
+      /* ── INDUSTRY TICKER ── */
+      .aa-industry-strip {
+        background: #13161f;
+        border-top: 1px solid rgba(255,255,255,0.06);
+        border-bottom: 1px solid rgba(255,255,255,0.06);
+        padding: 0.875rem 1.5rem;
+        overflow: hidden;
+      }
+      .aa-industry-inner {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 0.5rem 1.25rem;
+      }
+      .aa-industry-tag {
+        font-size: 0.75rem;
+        font-weight: 500;
+        color: rgba(255,255,255,0.4);
+        letter-spacing: 0.04em;
+        white-space: nowrap;
+      }
+      .aa-industry-tag::before {
+        content: '✓ ';
+        color: #6366f1;
       }
 
       /* ── TRUST STRIP ── */
@@ -194,26 +257,19 @@ const faqJsonLd = {
         flex-wrap: wrap;
         align-items: center;
         justify-content: center;
-        gap: 0.375rem 0.75rem;
+        gap: 0.375rem 1.25rem;
         padding: 0.875rem 1.5rem;
-        background: rgba(242, 238, 228, 0.5);
+        background: var(--cream);
         border-bottom: 1px solid #e8e3d8;
         font-size: 0.8125rem;
         font-weight: 500;
         color: theme('colors.ink-mid');
       }
-      .aa-trust-sep {
-        color: theme('colors.ink-light');
-      }
+      .aa-trust-sep { color: theme('colors.ink-light'); }
 
       /* ── SECTION BASE ── */
-      .aa-section {
-        padding: 4.5rem 1.5rem;
-      }
-      .aa-section-inner {
-        max-width: 720px;
-        margin: 0 auto;
-      }
+      .aa-section { padding: 4.5rem 1.5rem; }
+      .aa-section-inner { max-width: 720px; margin: 0 auto; }
       .aa-section-label {
         font-size: 0.75rem;
         font-weight: 600;
@@ -234,8 +290,47 @@ const faqJsonLd = {
       .aa-section-body {
         color: theme('colors.ink-mid');
         line-height: 1.8;
-        max-width: 560px;
+        max-width: 580px;
         margin-bottom: 2rem;
+      }
+
+      /* ── PAIN SECTION ── */
+      .aa-pain {
+        background: #f7f5f0;
+        border-top: 1px solid #e8e3d8;
+        border-bottom: 1px solid #e8e3d8;
+      }
+      .aa-pain-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem;
+        margin-top: 2rem;
+      }
+      @media (max-width: 600px) { .aa-pain-grid { grid-template-columns: 1fr; } }
+      .aa-pain-card {
+        background: #fff;
+        border: 1px solid #e8e3d8;
+        border-radius: 0.875rem;
+        padding: 1.5rem;
+      }
+      .aa-pain-icon {
+        font-size: 1.5rem;
+        margin-bottom: 0.625rem;
+        display: block;
+      }
+      .aa-pain-title {
+        font-family: theme('fontFamily.serif');
+        font-size: 1rem;
+        font-weight: 600;
+        color: theme('colors.ink');
+        margin-bottom: 0.375rem;
+        line-height: 1.3;
+      }
+      .aa-pain-desc {
+        font-size: 0.875rem;
+        color: theme('colors.ink-mid');
+        line-height: 1.65;
+        margin: 0;
       }
 
       /* ── CHAT EMBED ── */
@@ -253,28 +348,6 @@ const faqJsonLd = {
         background: #fff;
         min-height: 480px;
       }
-      /* Placeholder shown until embed is installed */
-      .aa-chat-placeholder {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        min-height: 480px;
-        padding: 2rem;
-        text-align: center;
-        gap: 0.75rem;
-        color: theme('colors.ink-light');
-        font-size: 0.875rem;
-        background: repeating-linear-gradient(
-          45deg,
-          transparent,
-          transparent 10px,
-          rgba(200, 195, 185, 0.1) 10px,
-          rgba(200, 195, 185, 0.1) 20px
-        );
-      }
-      .aa-chat-placeholder p { margin: 0; }
-      .aa-chat-placeholder strong { color: theme('colors.ink-mid'); display: block; margin-top: 0.5rem; }
 
       /* ── DELIVERABLES ── */
       .aa-deliverables-grid {
@@ -283,9 +356,7 @@ const faqJsonLd = {
         gap: 1rem;
         margin-top: 2.5rem;
       }
-      @media (max-width: 640px) {
-        .aa-deliverables-grid { grid-template-columns: 1fr; }
-      }
+      @media (max-width: 640px) { .aa-deliverables-grid { grid-template-columns: 1fr; } }
       .aa-deliverable-card {
         background: #f2ede4;
         border: 1px solid #e8e3d8;
@@ -322,201 +393,6 @@ const faqJsonLd = {
         font-size: 0.875rem;
         font-weight: 500;
         color: theme('colors.ink-mid');
-      }
-
-      /* ── NOT FOR EVERYONE ── */
-      .aa-nfe {
-        background: #f2ede4;
-        border-top: 1px solid #e8e3d8;
-        border-bottom: 1px solid #e8e3d8;
-      }
-      .aa-nfe-body p {
-        font-size: 0.9375rem;
-        color: theme('colors.ink-mid');
-        line-height: 1.8;
-        margin-bottom: 0.875rem;
-      }
-      .aa-nfe-body p:last-child { margin-bottom: 0; }
-
-      /* ── PROOF BAR ── */
-      .aa-proof-bar {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 0.5rem 1.5rem;
-        padding: 1rem 1.5rem;
-        background: rgba(242, 238, 228, 0.5);
-        border-top: 1px solid #e8e3d8;
-        border-bottom: 1px solid #e8e3d8;
-        font-size: 0.8125rem;
-        font-weight: 500;
-        color: theme('colors.ink-mid');
-        text-align: center;
-      }
-
-      /* ── TESTIMONIALS ── */
-      .aa-testimonials-grid {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 1rem;
-        margin-top: 2.5rem;
-      }
-      @media (max-width: 700px) {
-        .aa-testimonials-grid { grid-template-columns: 1fr; }
-      }
-      .aa-tcard {
-        background: #fff;
-        border: 1px solid #e8e3d8;
-        border-radius: 0.875rem;
-        padding: 1.5rem;
-        display: flex;
-        flex-direction: column;
-      }
-      .aa-tcard-stars {
-        color: theme('colors.orange');
-        font-size: 0.875rem;
-        letter-spacing: 0.05em;
-        margin-bottom: 0.875rem;
-      }
-      .aa-tcard-quote {
-        font-family: theme('fontFamily.serif');
-        font-style: italic;
-        font-size: 0.9375rem;
-        color: theme('colors.ink');
-        line-height: 1.75;
-        flex: 1;
-        margin: 0;
-      }
-      .aa-tcard-divider {
-        border-top: 1px solid #e8e3d8;
-        margin: 1rem 0;
-      }
-      .aa-tcard-name {
-        font-weight: 600;
-        color: theme('colors.ink');
-        font-size: 0.875rem;
-        margin: 0;
-      }
-      .aa-tcard-title {
-        font-size: 0.75rem;
-        color: theme('colors.ink-light');
-        margin: 0.125rem 0 0.5rem;
-      }
-      .aa-tcard-chips {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 0.375rem;
-      }
-      .aa-chip {
-        font-size: 0.7rem;
-        background: #f2ede4;
-        color: theme('colors.ink-mid');
-        padding: 0.2rem 0.625rem;
-        border-radius: 999px;
-      }
-
-      /* ── ABOUT ── */
-      .aa-about {
-        background: #f2ede4;
-        border-top: 1px solid #e8e3d8;
-      }
-      .aa-about-inner {
-        max-width: 720px;
-        margin: 0 auto;
-        display: grid;
-        grid-template-columns: 200px 1fr;
-        gap: 3rem;
-        align-items: start;
-      }
-      @media (max-width: 640px) {
-        .aa-about-inner { grid-template-columns: 1fr; gap: 1.75rem; }
-      }
-      .aa-about-photo {
-        width: 100%;
-        aspect-ratio: 1 / 1;
-        border-radius: 0.875rem;
-        object-fit: cover;
-        border: 1px solid #e8e3d8;
-      }
-      .aa-about-body h2 {
-        font-family: theme('fontFamily.serif');
-        font-size: 1.5rem;
-        font-weight: 700;
-        color: theme('colors.ink');
-        margin-bottom: 1rem;
-        line-height: 1.3;
-      }
-      .aa-about-body p {
-        font-size: 0.9375rem;
-        color: theme('colors.ink-mid');
-        line-height: 1.8;
-        margin-bottom: 0.875rem;
-      }
-      .aa-about-body p:last-child { margin-bottom: 0; }
-      .aa-about-meta {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 0.5rem;
-        margin-top: 1.25rem;
-      }
-      .aa-about-tag {
-        font-size: 0.75rem;
-        background: theme('colors.cream');
-        border: 1px solid #e8e3d8;
-        color: theme('colors.ink-mid');
-        padding: 0.25rem 0.75rem;
-        border-radius: 999px;
-      }
-
-      /* ── FAQ ── */
-      .aa-faq-list {
-        margin-top: 2.5rem;
-        border-top: 1px solid #e8e3d8;
-      }
-      .aa-faq-item {
-        padding: 1.375rem 0;
-        border-bottom: 1px solid #e8e3d8;
-      }
-      .aa-faq-q {
-        font-size: 0.9375rem;
-        font-weight: 600;
-        color: theme('colors.ink');
-        margin-bottom: 0.5rem;
-        line-height: 1.4;
-      }
-      .aa-faq-a {
-        font-size: 0.9rem;
-        color: theme('colors.ink-mid');
-        line-height: 1.75;
-        margin: 0;
-      }
-
-      /* ── WHAT YOU'LL LEARN ── */
-      .aa-learn-list {
-        list-style: none;
-        padding: 0;
-        margin: 2rem 0 0;
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 0.75rem 2rem;
-      }
-      @media (max-width: 640px) {
-        .aa-learn-list { grid-template-columns: 1fr; }
-      }
-      .aa-learn-list li {
-        display: flex;
-        align-items: flex-start;
-        gap: 0.625rem;
-        font-size: 0.9375rem;
-        color: theme('colors.ink-mid');
-        line-height: 1.55;
-      }
-      .aa-learn-list li::before {
-        content: '→';
-        color: theme('colors.orange');
-        font-weight: 600;
-        flex-shrink: 0;
-        margin-top: 0.05em;
       }
 
       /* ── AI VISIBILITY SCORE ── */
@@ -568,335 +444,152 @@ const faqJsonLd = {
         color: #c47c1a;
         line-height: 1;
       }
-      .aa-score-denom {
-        font-size: 1rem;
-        color: theme('colors.ink-light');
-        font-weight: 500;
-      }
-      .aa-score-bar-wrap {
-        padding: 0 1.75rem;
-        margin: 1.25rem 0;
-      }
-      .aa-score-bar-track {
-        height: 8px;
-        background: #f2ede4;
-        border-radius: 999px;
-        overflow: hidden;
-      }
-      .aa-score-bar-fill {
-        height: 100%;
-        width: 42%;
-        background: linear-gradient(90deg, #e8a020, #c47c1a);
-        border-radius: 999px;
-      }
-      .aa-score-metrics {
-        padding: 0 1.75rem 1.5rem;
-        display: flex;
-        flex-direction: column;
-        gap: 0.75rem;
-      }
-      .aa-score-row {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        gap: 1rem;
-        font-size: 0.875rem;
-      }
-      .aa-score-row-label {
-        color: theme('colors.ink-mid');
-      }
-      .aa-pill {
-        font-size: 0.7rem;
-        font-weight: 600;
-        letter-spacing: 0.04em;
-        padding: 0.2rem 0.75rem;
-        border-radius: 999px;
-        flex-shrink: 0;
-      }
+      .aa-score-denom { font-size: 1rem; color: theme('colors.ink-light'); font-weight: 500; }
+      .aa-score-bar-wrap { padding: 0 1.75rem; margin: 1.25rem 0; }
+      .aa-score-bar-track { height: 8px; background: #f2ede4; border-radius: 999px; overflow: hidden; }
+      .aa-score-bar-fill { height: 100%; width: 42%; background: linear-gradient(90deg, #e8a020, #c47c1a); border-radius: 999px; }
+      .aa-score-metrics { padding: 0 1.75rem 1.5rem; display: flex; flex-direction: column; gap: 0.75rem; }
+      .aa-score-row { display: flex; align-items: center; justify-content: space-between; gap: 1rem; font-size: 0.875rem; }
+      .aa-score-row-label { color: theme('colors.ink-mid'); }
+      .aa-pill { font-size: 0.7rem; font-weight: 600; letter-spacing: 0.04em; padding: 0.2rem 0.75rem; border-radius: 999px; flex-shrink: 0; }
       .aa-pill-bad { background: #fde8e8; color: #c0392b; }
       .aa-pill-warn { background: #fef3e2; color: #a85e10; }
-      .aa-score-disclaimer {
-        font-size: 0.75rem;
-        color: theme('colors.ink-light');
-        text-align: center;
-        padding: 0.875rem 1.75rem;
-        border-top: 1px solid #f2ede4;
-        margin: 0;
-        font-style: italic;
-      }
+      .aa-score-disclaimer { font-size: 0.75rem; color: theme('colors.ink-light'); text-align: center; padding: 0.875rem 1.75rem; border-top: 1px solid #f2ede4; margin: 0; font-style: italic; }
 
       /* ── SCREENSHOT FINDINGS ── */
-      .aa-screenshots-grid {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 1rem;
-        margin-top: 2.5rem;
-      }
-      @media (max-width: 700px) {
-        .aa-screenshots-grid { grid-template-columns: 1fr; }
-      }
-      .aa-screenshot-card {
-        border: 1px solid #e8e3d8;
-        border-radius: 0.875rem;
-        overflow: hidden;
-        background: #fff;
-      }
-      .aa-screenshot-tag {
-        font-size: 0.7rem;
-        font-weight: 600;
-        letter-spacing: 0.08em;
-        text-transform: uppercase;
-        color: theme('colors.ink-mid');
-        padding: 0.625rem 1rem;
-        border-bottom: 1px solid #e8e3d8;
-        background: #f2ede4;
-      }
-      .aa-screenshot-img {
-        height: 180px;
-        background: #f7f5f0;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-      }
-      .aa-screenshot-placeholder {
-        font-size: 0.8125rem;
-        color: theme('colors.ink-light');
-        text-align: center;
-        padding: 1rem;
-      }
-      .aa-screenshot-caption {
-        font-size: 0.8125rem;
-        color: theme('colors.ink-mid');
-        line-height: 1.6;
-        padding: 0.875rem 1rem;
-        margin: 0;
-        border-top: 1px solid #f2ede4;
-      }
+      .aa-screenshots-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-top: 2.5rem; }
+      @media (max-width: 700px) { .aa-screenshots-grid { grid-template-columns: 1fr; } }
+      .aa-screenshot-card { border: 1px solid #e8e3d8; border-radius: 0.875rem; overflow: hidden; background: #fff; }
+      .aa-screenshot-tag { font-size: 0.7rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: theme('colors.ink-mid'); padding: 0.625rem 1rem; border-bottom: 1px solid #e8e3d8; background: #f2ede4; }
+      .aa-screenshot-img { height: 180px; background: #f7f5f0; display: flex; align-items: center; justify-content: center; }
+      .aa-screenshot-caption { font-size: 0.8125rem; color: theme('colors.ink-mid'); line-height: 1.6; padding: 0.875rem 1rem; margin: 0; border-top: 1px solid #f2ede4; }
 
-      /* ── EXIT INTENT OVERLAY ── */
-      .aa-exit-overlay {
-        position: fixed;
-        inset: 0;
-        background: rgba(30, 28, 24, 0.55);
-        z-index: 100;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        padding: 1.5rem;
-        opacity: 0;
-        pointer-events: none;
-        transition: opacity 0.2s;
-      }
-      .aa-exit-overlay.is-visible {
-        opacity: 1;
-        pointer-events: all;
-      }
-      .aa-exit-modal {
-        background: #fff;
-        border-radius: 1rem;
-        padding: 2.5rem 2rem;
-        max-width: 420px;
-        width: 100%;
-        text-align: center;
-        box-shadow: 0 20px 60px rgba(30, 28, 24, 0.18);
-        position: relative;
-      }
-      .aa-exit-close {
-        position: absolute;
-        top: 1rem;
-        right: 1rem;
-        background: none;
-        border: none;
-        cursor: pointer;
-        color: theme('colors.ink-light');
-        font-size: 1.25rem;
-        line-height: 1;
-        padding: 0.25rem;
-      }
-      .aa-exit-close:hover { color: theme('colors.ink'); }
-      .aa-exit-eyebrow {
-        font-size: 0.7rem;
-        font-weight: 600;
-        letter-spacing: 0.1em;
-        text-transform: uppercase;
-        color: theme('colors.orange');
-        margin-bottom: 0.75rem;
-      }
-      .aa-exit-heading {
-        font-family: theme('fontFamily.serif');
-        font-size: 1.375rem;
-        font-weight: 700;
-        color: theme('colors.ink');
-        line-height: 1.3;
-        margin-bottom: 0.75rem;
-      }
-      .aa-exit-body {
-        font-size: 0.875rem;
-        color: theme('colors.ink-mid');
-        line-height: 1.7;
-        margin-bottom: 1.5rem;
-      }
-      .aa-exit-btn {
-        display: block;
-        width: 100%;
-        background: theme('colors.navy');
-        color: #fff;
-        border: none;
-        padding: 0.875rem 1.5rem;
-        border-radius: 0.625rem;
-        font-size: 0.9375rem;
-        font-weight: 500;
-        cursor: pointer;
-        font-family: inherit;
-        transition: background 0.2s;
-        margin-bottom: 0.75rem;
-      }
-      .aa-exit-btn:hover { background: #1e3350; }
-      .aa-exit-dismiss {
-        font-size: 0.8125rem;
-        color: theme('colors.ink-light');
-        text-decoration: none;
-        cursor: pointer;
-        background: none;
-        border: none;
-        font-family: inherit;
-      }
-      .aa-exit-dismiss:hover { color: theme('colors.ink-mid'); }
+      /* ── WHAT YOU'LL LEARN ── */
+      .aa-learn-list { list-style: none; padding: 0; margin: 2rem 0 0; display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem 2rem; }
+      @media (max-width: 640px) { .aa-learn-list { grid-template-columns: 1fr; } }
+      .aa-learn-list li { display: flex; align-items: flex-start; gap: 0.625rem; font-size: 0.9375rem; color: theme('colors.ink-mid'); line-height: 1.55; }
+      .aa-learn-list li::before { content: '→'; color: theme('colors.orange'); font-weight: 600; flex-shrink: 0; margin-top: 0.05em; }
+
+      /* ── NOT FOR EVERYONE ── */
+      .aa-nfe { background: #f2ede4; border-top: 1px solid #e8e3d8; border-bottom: 1px solid #e8e3d8; }
+      .aa-nfe-body p { font-size: 0.9375rem; color: theme('colors.ink-mid'); line-height: 1.8; margin-bottom: 0.875rem; }
+      .aa-nfe-body p:last-child { margin-bottom: 0; }
+
+      /* ── PROOF BAR ── */
+      .aa-proof-bar { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.5rem 1.5rem; padding: 1rem 1.5rem; background: rgba(242,238,228,0.5); border-top: 1px solid #e8e3d8; border-bottom: 1px solid #e8e3d8; font-size: 0.8125rem; font-weight: 500; color: theme('colors.ink-mid'); text-align: center; }
+
+      /* ── TESTIMONIALS ── */
+      .aa-testimonials-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-top: 2.5rem; }
+      @media (max-width: 700px) { .aa-testimonials-grid { grid-template-columns: 1fr; } }
+      .aa-tcard { background: #fff; border: 1px solid #e8e3d8; border-radius: 0.875rem; padding: 1.5rem; display: flex; flex-direction: column; }
+      .aa-tcard-stars { color: theme('colors.orange'); font-size: 0.875rem; letter-spacing: 0.05em; margin-bottom: 0.875rem; }
+      .aa-tcard-quote { font-family: theme('fontFamily.serif'); font-style: italic; font-size: 0.9375rem; color: theme('colors.ink'); line-height: 1.75; flex: 1; margin: 0; }
+      .aa-tcard-divider { border-top: 1px solid #e8e3d8; margin: 1rem 0; }
+      .aa-tcard-name { font-weight: 600; color: theme('colors.ink'); font-size: 0.875rem; margin: 0; }
+      .aa-tcard-title { font-size: 0.75rem; color: theme('colors.ink-light'); margin: 0.125rem 0 0.5rem; }
+      .aa-tcard-chips { display: flex; flex-wrap: wrap; gap: 0.375rem; }
+      .aa-chip { font-size: 0.7rem; background: #f2ede4; color: theme('colors.ink-mid'); padding: 0.2rem 0.625rem; border-radius: 999px; }
+
+      /* ── ABOUT ── */
+      .aa-about { background: #f2ede4; border-top: 1px solid #e8e3d8; }
+      .aa-about-inner { max-width: 720px; margin: 0 auto; display: grid; grid-template-columns: 200px 1fr; gap: 3rem; align-items: start; }
+      @media (max-width: 640px) { .aa-about-inner { grid-template-columns: 1fr; gap: 1.75rem; } }
+      .aa-about-photo { width: 100%; aspect-ratio: 1/1; border-radius: 0.875rem; object-fit: cover; border: 1px solid #e8e3d8; }
+      .aa-about-body h2 { font-family: theme('fontFamily.serif'); font-size: 1.5rem; font-weight: 700; color: theme('colors.ink'); margin-bottom: 1rem; line-height: 1.3; }
+      .aa-about-body p { font-size: 0.9375rem; color: theme('colors.ink-mid'); line-height: 1.8; margin-bottom: 0.875rem; }
+      .aa-about-body p:last-child { margin-bottom: 0; }
+      .aa-about-meta { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1.25rem; }
+      .aa-about-tag { font-size: 0.75rem; background: theme('colors.cream'); border: 1px solid #e8e3d8; color: theme('colors.ink-mid'); padding: 0.25rem 0.75rem; border-radius: 999px; }
+
+      /* ── FAQ ── */
+      .aa-faq-list { margin-top: 2.5rem; border-top: 1px solid #e8e3d8; }
+      .aa-faq-item { padding: 1.375rem 0; border-bottom: 1px solid #e8e3d8; }
+      .aa-faq-q { font-size: 0.9375rem; font-weight: 600; color: theme('colors.ink'); margin-bottom: 0.5rem; line-height: 1.4; }
+      .aa-faq-a { font-size: 0.9rem; color: theme('colors.ink-mid'); line-height: 1.75; margin: 0; }
 
       /* ── HOOKS ── */
       .aa-hooks { border-top: 1px solid #e8e3d8; }
-      .aa-hooks-grid {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 1rem;
-        margin-top: 2.5rem;
+      .aa-hooks-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 2.5rem; }
+      @media (max-width: 640px) { .aa-hooks-grid { grid-template-columns: 1fr; } }
+      .aa-hook-card { background: #fff; border: 1px solid #e8e3d8; border-radius: 0.875rem; padding: 1.5rem; }
+      .aa-hook-title { font-family: theme('fontFamily.serif'); font-size: 1rem; font-weight: 600; color: theme('colors.ink'); margin-bottom: 0.5rem; line-height: 1.3; }
+      .aa-hook-desc { font-size: 0.875rem; color: theme('colors.ink-mid'); line-height: 1.65; margin: 0; }
+
+      /* ── MID-PAGE CTA BAND ── */
+      .aa-midcta {
+        background: #1a1f2e;
+        padding: 3.5rem 1.5rem;
+        text-align: center;
       }
-      @media (max-width: 640px) {
-        .aa-hooks-grid { grid-template-columns: 1fr; }
-      }
-      .aa-hook-card {
-        background: #fff;
-        border: 1px solid #e8e3d8;
-        border-radius: 0.875rem;
-        padding: 1.5rem;
-      }
-      .aa-hook-title {
+      .aa-midcta-title {
         font-family: theme('fontFamily.serif');
-        font-size: 1rem;
-        font-weight: 600;
-        color: theme('colors.ink');
-        margin-bottom: 0.5rem;
-        line-height: 1.3;
+        font-size: clamp(1.5rem, 3vw, 2rem);
+        font-weight: 700;
+        color: #fff;
+        margin-bottom: 0.75rem;
+        line-height: 1.25;
       }
-      .aa-hook-desc {
-        font-size: 0.875rem;
-        color: theme('colors.ink-mid');
-        line-height: 1.65;
-        margin: 0;
+      .aa-midcta-sub {
+        font-size: 1rem;
+        color: rgba(255,255,255,0.6);
+        margin-bottom: 1.75rem;
+        line-height: 1.7;
       }
 
       /* ── CLOSING CTA ── */
-      .aa-closing {
-        background: theme('colors.forest');
-        padding: 5rem 1.5rem;
-      }
-      .aa-closing-inner {
-        max-width: 640px;
-        margin: 0 auto;
-        text-align: center;
-      }
-      .aa-closing-label {
-        font-size: 0.75rem;
-        font-weight: 600;
-        letter-spacing: 0.1em;
-        text-transform: uppercase;
-        color: rgba(255, 255, 255, 0.45);
-        margin-bottom: 1rem;
-      }
-      .aa-closing-title {
-        font-family: theme('fontFamily.serif');
-        font-size: clamp(1.75rem, 3.5vw, 2.5rem);
-        font-weight: 700;
-        color: #fff;
-        line-height: 1.2;
-        letter-spacing: -0.02em;
-        margin-bottom: 0.875rem;
-      }
-      .aa-closing-sub {
-        font-size: 1rem;
-        color: rgba(255, 255, 255, 0.65);
-        line-height: 1.75;
-        margin-bottom: 2rem;
-      }
-      .aa-closing-cta-group {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 0.875rem;
-        justify-content: center;
-        align-items: center;
-      }
-      .aa-btn-closing {
-        background: theme('colors.orange');
-        color: #fff;
-        padding: 0.875rem 2rem;
-        border-radius: 0.625rem;
-        font-size: 1rem;
-        font-weight: 500;
-        transition: background 0.2s, transform 0.15s;
-        border: none;
-        cursor: pointer;
-        font-family: inherit;
-      }
-      .aa-btn-closing:hover {
-        background: #a8511f;
-        transform: translateY(-1px);
-      }
-      .aa-btn-closing:focus-visible {
-        outline: 2px solid #fff;
-        outline-offset: 3px;
-      }
-      .aa-closing-phone {
-        margin-top: 1.25rem;
-        font-size: 0.875rem;
-        color: rgba(255, 255, 255, 0.45);
-      }
-      .aa-closing-phone a {
-        color: rgba(255, 255, 255, 0.65);
-        font-weight: 500;
-        text-decoration: none;
-        transition: color 0.2s;
-      }
+      .aa-closing { background: #1a1f2e; padding: 5.5rem 1.5rem; position: relative; overflow: hidden; }
+      .aa-closing::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 70% 50% at 50% 100%, rgba(99,102,241,0.2) 0%, transparent 70%); pointer-events: none; }
+      .aa-closing-inner { max-width: 640px; margin: 0 auto; text-align: center; position: relative; z-index: 1; }
+      .aa-closing-label { font-size: 0.75rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.35); margin-bottom: 1rem; }
+      .aa-closing-title { font-family: theme('fontFamily.serif'); font-size: clamp(1.875rem, 3.5vw, 2.625rem); font-weight: 700; color: #fff; line-height: 1.2; letter-spacing: -0.02em; margin-bottom: 0.875rem; }
+      .aa-closing-sub { font-size: 1rem; color: rgba(255,255,255,0.6); line-height: 1.75; margin-bottom: 2.25rem; }
+      .aa-closing-cta-group { display: flex; flex-wrap: wrap; gap: 0.875rem; justify-content: center; align-items: center; }
+      .aa-btn-closing { background: #6366f1; color: #fff; padding: 1rem 2.25rem; border-radius: 0.625rem; font-size: 1.0625rem; font-weight: 600; transition: background 0.2s, transform 0.15s, box-shadow 0.2s; border: none; cursor: pointer; font-family: inherit; box-shadow: 0 4px 24px rgba(99,102,241,0.35); }
+      .aa-btn-closing:hover { background: #4f46e5; transform: translateY(-2px); box-shadow: 0 8px 32px rgba(99,102,241,0.45); }
+      .aa-btn-closing:focus-visible { outline: 2px solid #a5b4fc; outline-offset: 3px; }
+      .aa-closing-phone { margin-top: 1.25rem; font-size: 0.875rem; color: rgba(255,255,255,0.35); }
+      .aa-closing-phone a { color: rgba(255,255,255,0.55); font-weight: 500; text-decoration: none; transition: color 0.2s; }
       .aa-closing-phone a:hover { color: #fff; }
-      .aa-closing-phone a:focus-visible { outline: 2px solid #fff; outline-offset: 2px; border-radius: 2px; }
+
+      /* ── EXIT INTENT OVERLAY ── */
+      .aa-exit-overlay { position: fixed; inset: 0; background: rgba(30,28,24,0.55); z-index: 100; display: flex; align-items: center; justify-content: center; padding: 1.5rem; opacity: 0; pointer-events: none; transition: opacity 0.2s; }
+      .aa-exit-overlay.is-visible { opacity: 1; pointer-events: all; }
+      .aa-exit-modal { background: #fff; border-radius: 1rem; padding: 2.5rem 2rem; max-width: 420px; width: 100%; text-align: center; box-shadow: 0 20px 60px rgba(30,28,24,0.18); position: relative; }
+      .aa-exit-close { position: absolute; top: 1rem; right: 1rem; background: none; border: none; cursor: pointer; color: theme('colors.ink-light'); font-size: 1.25rem; line-height: 1; padding: 0.25rem; }
+      .aa-exit-close:hover { color: theme('colors.ink'); }
+      .aa-exit-eyebrow { font-size: 0.7rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: theme('colors.orange'); margin-bottom: 0.75rem; }
+      .aa-exit-heading { font-family: theme('fontFamily.serif'); font-size: 1.375rem; font-weight: 700; color: theme('colors.ink'); line-height: 1.3; margin-bottom: 0.75rem; }
+      .aa-exit-body { font-size: 0.875rem; color: theme('colors.ink-mid'); line-height: 1.7; margin-bottom: 1.5rem; }
+      .aa-exit-btn { display: block; width: 100%; background: theme('colors.navy'); color: #fff; border: none; padding: 0.875rem 1.5rem; border-radius: 0.625rem; font-size: 0.9375rem; font-weight: 500; cursor: pointer; font-family: inherit; transition: background 0.2s; margin-bottom: 0.75rem; }
+      .aa-exit-btn:hover { background: #1e3350; }
+      .aa-exit-dismiss { font-size: 0.8125rem; color: theme('colors.ink-light'); text-decoration: none; cursor: pointer; background: none; border: none; font-family: inherit; }
+      .aa-exit-dismiss:hover { color: theme('colors.ink-mid'); }
     </style>
   </Fragment>
 
   <div class="aa-page">
 
     <!-- ══════════════════════════════════════
-         SECTION 1 — HERO
+         SECTION 1 — HERO (dark, high-contrast)
     ══════════════════════════════════════ -->
     <section class="aa-hero" id="top">
       <div class="aa-hero-inner">
-        <p class="aa-eyebrow">Free local search audit · Colorado businesses</p>
-        <h1 class="aa-h1">Get found where your customers are looking.</h1>
+        <span class="aa-eyebrow">Free AI Visibility Audit · Service &amp; Professional Businesses</span>
+        <h1 class="aa-h1">
+          Your customers are asking AI<br>
+          who to call.<br>
+          <em>Are you on the list?</em>
+        </h1>
         <p class="aa-subhead">
-          Someone just searched for a business like yours and didn't find you. We'll show you
-          exactly where you're invisible — in Google, Maps, and AI search — what it's costing
-          you in revenue, and give you a 12-month plan to fix it.
+          ChatGPT, Gemini, and Google AI now recommend local service businesses directly to buyers.
+          Find out in 5 minutes whether you're showing up — or handing every search to a competitor.
         </p>
         <div class="aa-cta-group">
           <button type="button" class="aa-btn-primary" id="hero-cta">
-            Start the free audit →
+            See where you stand — it's free →
           </button>
-          <a
-            href="tel:+17206502447"
-            class="aa-btn-phone"
-            aria-label="Call (720) 650-2447"
-          >
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.41 2 2 0 0 1 3.6 1.24h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 9.4a16 16 0 0 0 6.29 6.29l1.76-1.76a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
-            </svg>
+          <a href="tel:+17206502447" class="aa-btn-phone" aria-label="Call (720) 650-2447">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.41 2 2 0 0 1 3.6 1.24h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.91 9.4a16 16 0 0 0 6.29 6.29l1.76-1.76a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
             Prefer to call? (720) 650-2447
           </a>
         </div>
@@ -905,97 +598,126 @@ const faqJsonLd = {
     </section>
 
     <!-- ══════════════════════════════════════
-         SECTION 2 — TRUST STRIP
+         INDUSTRY STRIP
     ══════════════════════════════════════ -->
-    <div class="aa-trust-strip" role="list">
-      <span role="listitem">
-        <span aria-hidden="true">✓</span> Based in Golden, CO
-      </span>
-      <span class="aa-trust-sep" aria-hidden="true">·</span>
-      <span role="listitem">
-        <span aria-hidden="true">✓</span> 5.0 on Upwork · 100% Job Success
-      </span>
-      <span class="aa-trust-sep" aria-hidden="true">·</span>
-      <span role="listitem">
-        <span aria-hidden="true">✓</span> Free 12-month plan, no retainer
-      </span>
+    <div class="aa-industry-strip">
+      <div class="aa-industry-inner">
+        {industries.map(i => <span class="aa-industry-tag">{i}</span>)}
+      </div>
     </div>
 
     <!-- ══════════════════════════════════════
-         SECTION 2B — WHAT YOU'LL LEARN
+         TRUST STRIP
     ══════════════════════════════════════ -->
-    <section class="aa-section" style="padding-bottom: 2rem;">
-      <div class="aa-section-inner">
-        <p class="aa-section-label">What the audit covers</p>
-        <h2 class="aa-section-title">What you'll learn in 5 minutes.</h2>
-        <ul class="aa-learn-list">
-          <li>Whether AI tools like ChatGPT, Gemini, and Perplexity mention your business</li>
-          <li>Which competitors dominate AI-generated recommendations in your category</li>
-          <li>Missing authority signals that keep you out of AI answers</li>
-          <li>Citation gaps across directories, review platforms, and the web</li>
-          <li>Content weaknesses that hurt your discoverability</li>
-          <li>GEO and LLMO opportunities specific to your Colorado market</li>
-        </ul>
-      </div>
-    </section>
+    <div class="aa-trust-strip" role="list">
+      <span role="listitem"><span aria-hidden="true">✓</span> 5.0 on Upwork · 100% Job Success</span>
+      <span class="aa-trust-sep" aria-hidden="true">·</span>
+      <span role="listitem"><span aria-hidden="true">✓</span> Free 12-month revenue plan included</span>
+      <span class="aa-trust-sep" aria-hidden="true">·</span>
+      <span role="listitem"><span aria-hidden="true">✓</span> No call required to receive it</span>
+    </div>
 
     <!-- ══════════════════════════════════════
-         SECTION 3 — THE AUDIT (CHAT EMBED)
+         SECTION 2 — THE PROBLEM (pain cards)
     ══════════════════════════════════════ -->
-    <section class="aa-section aa-audit-section" id="audit">
+    <section class="aa-section aa-pain">
       <div class="aa-section-inner">
-        <p class="aa-section-label">Free audit</p>
-        <h2 class="aa-section-title">The 5-minute audit</h2>
+        <p class="aa-section-label">The shift that's already happening</p>
+        <h2 class="aa-section-title">AI is the new word-of-mouth. Most service businesses don't know where they stand.</h2>
         <p class="aa-section-body">
-          We map your AI search visibility, review profile, conversion infrastructure, and
-          competitive position against your revenue goal. You get a 12-month plan with monthly
-          revenue projections and the cost to execute it.
+          When someone asks ChatGPT "who's the best HVAC company near me?", "which attorney handles DUIs in my city?", or "find me a personal trainer who works with runners" — AI gives them a specific answer. That answer is built from signals most businesses have never optimized for.
         </p>
-
-        <!--
-          CHAT EMBED — Replace the placeholder below with the white-label platform's
-          embed snippet from the agency admin dashboard.
-
-          Requirements before going live (spec section 5):
-          - No third-party branding visible at any point in the chat flow
-          - Avatar replaced with ZW logo or generic AI icon
-          - All loading screens free of platform branding
-          - Footer links inside chat do not link to the underlying platform
-          - "Powered by" / attribution strings removed or replaced with "ZeisWorks"
-          - Full white-label confirmed by completing the chat in a clean browser
-            on both desktop and mobile
-
-          If white-labeling cannot be confirmed, redirect paid traffic to
-          /gap-analysis/ instead of shipping this placeholder.
-
-          Lazy-load the embed script if the platform supports it:
-          use the IntersectionObserver in the page <script> below to inject
-          the script tag only when this section scrolls into view.
-        -->
-        <div
-          id="audit-chat-container"
-          class="aa-chat-container"
-          role="region"
-          aria-label="AI audit video"
-        >
-          <iframe
-            src="https://drive.google.com/file/d/13c0IGxcmy-nyjlWozb2RVvbSIUMAF-iv/preview"
-            title="ZeisWorks AI Audit"
-            style="border:none;display:block;width:100%;height:480px;"
-            allow="autoplay"
-            loading="lazy"
-          ></iframe>
+        <div class="aa-pain-grid">
+          <div class="aa-pain-card">
+            <span class="aa-pain-icon">🔍</span>
+            <p class="aa-pain-title">You're invisible in AI search</p>
+            <p class="aa-pain-desc">ChatGPT, Gemini, and Perplexity are recommending your competitors to buyers who are ready to book — without you ever knowing.</p>
+          </div>
+          <div class="aa-pain-card">
+            <span class="aa-pain-icon">📉</span>
+            <p class="aa-pain-title">Traditional SEO isn't enough</p>
+            <p class="aa-pain-desc">Ranking on Google page one no longer guarantees you appear in AI-generated answers. The signals are different — and most businesses are missing them.</p>
+          </div>
+          <div class="aa-pain-card">
+            <span class="aa-pain-icon">💸</span>
+            <p class="aa-pain-title">You're paying to acquire customers AI is giving away</p>
+            <p class="aa-pain-desc">Every lead you buy through ads is a lead that could have come organically through AI recommendations — if your visibility signals were in place.</p>
+          </div>
+          <div class="aa-pain-card">
+            <span class="aa-pain-icon">🏆</span>
+            <p class="aa-pain-title">One competitor is winning all the AI recommendations</p>
+            <p class="aa-pain-desc">In most local service categories, a single business dominates AI answers. That business isn't necessarily the best — it's the most visible to AI.</p>
+          </div>
         </div>
       </div>
     </section>
 
     <!-- ══════════════════════════════════════
-         SECTION 4 — WHAT YOU'LL ACTUALLY GET
+         SECTION 3 — WHAT YOU'LL LEARN
+    ══════════════════════════════════════ -->
+    <section class="aa-section" style="padding-bottom: 2rem;">
+      <div class="aa-section-inner">
+        <p class="aa-section-label">Free audit</p>
+        <h2 class="aa-section-title">What you'll know in 5 minutes.</h2>
+        <ul class="aa-learn-list">
+          <li>Whether ChatGPT, Gemini, and Perplexity mention your business</li>
+          <li>Which competitor is dominating AI recommendations in your category</li>
+          <li>The specific authority signals you're missing</li>
+          <li>Citation and directory gaps that keep you out of AI answers</li>
+          <li>Content weaknesses hurting your AI discoverability</li>
+          <li>Exactly what it would cost to fix it — and what it's worth</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════
+         SECTION 4 — THE AUDIT (CHAT EMBED)
+    ══════════════════════════════════════ -->
+    <section class="aa-section aa-audit-section" id="audit">
+      <div class="aa-section-inner">
+        <p class="aa-section-label">Free audit</p>
+        <h2 class="aa-section-title">The 5-minute gap analysis</h2>
+        <p class="aa-section-body">
+          Chat with the system for a few minutes. It maps your AI visibility, organic and paid performance,
+          conversion funnel, and competitive position — then produces exact revenue projections, cost
+          breakdowns, and a 12-month client acquisition plan. No sales call required to get it.
+        </p>
+
+        <!-- Optional explainer video -->
+        <div style="margin-bottom: 1.5rem;">
+          <p style="font-size:0.8125rem;font-weight:600;color:var(--ink-mid,#5A5650);margin-bottom:0.625rem;letter-spacing:0.03em;">
+            OPTIONAL: 3-min overview of how the system works
+          </p>
+          <div style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;border-radius:0.75rem;border:1px solid #e8e3d8;background:#f2ede4;">
+            <iframe
+              src="https://drive.google.com/file/d/13c0IGxcmy-nyjlWozb2RVvbSIUMAF-iv/preview"
+              title="ZeisWorks Precision Marketing System — How It Works"
+              style="position:absolute;top:0;left:0;width:100%;height:100%;border:none;"
+              allow="autoplay"
+              loading="lazy"
+            ></iframe>
+          </div>
+          <p style="font-size:0.8rem;color:var(--ink-light,#9A9590);margin-top:0.5rem;font-style:italic;">
+            You don't need to watch to start the audit — jump straight in below.
+          </p>
+        </div>
+
+        <!-- Audit CTA -->
+        <div style="text-align:center;padding:2rem 1.5rem;background:#fff;border:1px solid #e8e3d8;border-radius:0.875rem;">
+          <p style="font-family:var(--font-serif,serif);font-size:1.125rem;font-weight:600;color:#1E1C18;margin-bottom:0.5rem;line-height:1.35;">Ready? Chat with the system now.</p>
+          <p style="font-size:0.875rem;color:#5A5650;margin-bottom:1.25rem;">5 minutes. Free report. No call required.</p>
+          <button type="button" class="aa-btn-primary" id="audit-inline-cta" style="font-size:1rem;padding:0.875rem 2rem;">Start my free gap analysis →</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════
+         SECTION 5 — WHAT YOU'LL ACTUALLY GET
     ══════════════════════════════════════ -->
     <section class="aa-section">
       <div class="aa-section-inner">
         <p class="aa-section-label">What's included</p>
-        <h2 class="aa-section-title">What you'll actually get</h2>
+        <h2 class="aa-section-title">Three deliverables. Zero cost.</h2>
         <div class="aa-deliverables-grid">
           {deliverables.map((d, i) => (
             <div class="aa-deliverable-card">
@@ -1010,21 +732,21 @@ const faqJsonLd = {
     </section>
 
     <!-- ══════════════════════════════════════
-         SECTION 4B — AI VISIBILITY SCORE
+         SECTION 5B — AI VISIBILITY SCORE
     ══════════════════════════════════════ -->
     <section class="aa-section aa-score-section">
       <div class="aa-section-inner">
         <p class="aa-section-label">Sample output</p>
         <h2 class="aa-section-title">Here's what your score looks like.</h2>
         <p class="aa-section-body">
-          Based on a real Colorado service business. Your results reflect your specific market,
+          Based on a real service business. Your results reflect your specific market,
           category, and current presence.
         </p>
         <div class="aa-score-card">
           <div class="aa-score-header">
             <div>
               <p class="aa-score-label">AI Visibility Score</p>
-              <p class="aa-score-biz">Sample Colorado Service Business</p>
+              <p class="aa-score-biz">Sample Home Service Business</p>
             </div>
             <div class="aa-score-num-wrap">
               <span class="aa-score-num">42</span>
@@ -1060,7 +782,7 @@ const faqJsonLd = {
     </section>
 
     <!-- ══════════════════════════════════════
-         SECTION 4C — SCREENSHOT FINDINGS
+         SECTION 5C — SCREENSHOT FINDINGS
     ══════════════════════════════════════ -->
     <section class="aa-section">
       <div class="aa-section-inner">
@@ -1074,21 +796,21 @@ const faqJsonLd = {
           <div class="aa-screenshot-card">
             <p class="aa-screenshot-tag">ChatGPT</p>
             <div class="aa-screenshot-img">
-              <img src="https://d8j0ntlcm91z4.cloudfront.net/user_3DeAnv7319KERKyd0NalGCBqQG8/hf_20260522_035319_2fa03246-cda2-4d84-bd23-5776f564f6db.png" alt="ChatGPT recommending local HVAC businesses in Colorado" style="width:100%;height:100%;object-fit:cover;display:block;" loading="lazy" />
+              <img src="https://d8j0ntlcm91z4.cloudfront.net/user_3DeAnv7319KERKyd0NalGCBqQG8/hf_20260522_035319_2fa03246-cda2-4d84-bd23-5776f564f6db.png" alt="ChatGPT recommending local HVAC businesses" style="width:100%;height:100%;object-fit:cover;display:block;" loading="lazy" />
             </div>
-            <p class="aa-screenshot-caption">Who ChatGPT recommends when someone asks for your service in your area — and whether you appear.</p>
+            <p class="aa-screenshot-caption">Who ChatGPT recommends when someone asks for your service — and whether you appear.</p>
           </div>
           <div class="aa-screenshot-card">
             <p class="aa-screenshot-tag">Perplexity</p>
             <div class="aa-screenshot-img">
-              <img src="https://d8j0ntlcm91z4.cloudfront.net/user_3DeAnv7319KERKyd0NalGCBqQG8/hf_20260522_035324_abfb581f-32ec-4367-8dfd-9fa8f17eb2f9.png" alt="Perplexity AI showing sourced local business recommendations with citations" style="width:100%;height:100%;object-fit:cover;display:block;" loading="lazy" />
+              <img src="https://d8j0ntlcm91z4.cloudfront.net/user_3DeAnv7319KERKyd0NalGCBqQG8/hf_20260522_035324_abfb581f-32ec-4367-8dfd-9fa8f17eb2f9.png" alt="Perplexity AI showing sourced local business recommendations" style="width:100%;height:100%;object-fit:cover;display:block;" loading="lazy" />
             </div>
             <p class="aa-screenshot-caption">Perplexity's sourced recommendations and the citation sources driving them.</p>
           </div>
           <div class="aa-screenshot-card">
             <p class="aa-screenshot-tag">Gemini</p>
             <div class="aa-screenshot-img">
-              <img src="https://d8j0ntlcm91z4.cloudfront.net/user_3DeAnv7319KERKyd0NalGCBqQG8/hf_20260522_035335_554e25ea-392c-42dc-b78e-3ef6a90aa217.png" alt="Google Gemini AI response listing local roofing contractors in Jefferson County Colorado" style="width:100%;height:100%;object-fit:cover;display:block;" loading="lazy" />
+              <img src="https://d8j0ntlcm91z4.cloudfront.net/user_3DeAnv7319KERKyd0NalGCBqQG8/hf_20260522_035335_554e25ea-392c-42dc-b78e-3ef6a90aa217.png" alt="Google Gemini AI response listing local service businesses" style="width:100%;height:100%;object-fit:cover;display:block;" loading="lazy" />
             </div>
             <p class="aa-screenshot-caption">Google's AI answer for your category and where your business stands relative to what Gemini surfaces.</p>
           </div>
@@ -1097,7 +819,20 @@ const faqJsonLd = {
     </section>
 
     <!-- ══════════════════════════════════════
-         SECTION 5 — BUILT FOR FIRMS
+         MID-PAGE CTA BAND
+    ══════════════════════════════════════ -->
+    <section class="aa-midcta">
+      <div style="max-width:600px;margin:0 auto;">
+        <p class="aa-midcta-title">Find out where you stand — before your competitor does.</p>
+        <p class="aa-midcta-sub">Free audit. 5 minutes. No call required.</p>
+        <button type="button" class="aa-btn-closing" id="midpage-cta">
+          Run my free audit →
+        </button>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════
+         SECTION 6 — HOW THIS IS DIFFERENT
     ══════════════════════════════════════ -->
     <section class="aa-section aa-nfe">
       <div class="aa-section-inner">
@@ -1110,17 +845,16 @@ const faqJsonLd = {
             projections and the cost to execute. You keep the plan regardless of what you decide.
           </p>
           <p>
-            ZeisWorks is built specifically for Colorado businesses. We know the local market,
-            the competition, and what it actually takes to stand out here. If the numbers make
-            sense, we can talk about running it together. If they don't, you've spent five
-            minutes and walked away with a clear picture of exactly where you stand.
+            If the numbers make sense, we can talk about running it together. If they don't,
+            you've spent five minutes and walked away with a clear picture of exactly where
+            you stand — and what it would take to change it.
           </p>
         </div>
       </div>
     </section>
 
     <!-- ══════════════════════════════════════
-         SECTION 5B — HOW ZEISWORKS WORKS
+         SECTION 6B — HOW ZEISWORKS WORKS
     ══════════════════════════════════════ -->
     <section class="aa-section aa-hooks">
       <div class="aa-section-inner">
@@ -1148,7 +882,7 @@ const faqJsonLd = {
     </section>
 
     <!-- ══════════════════════════════════════
-         SECTION 6 — TESTIMONIALS
+         SECTION 7 — TESTIMONIALS
     ══════════════════════════════════════ -->
     <section class="aa-section" style="padding-top: 0;">
       <div class="aa-proof-bar">
@@ -1179,7 +913,7 @@ const faqJsonLd = {
     </section>
 
     <!-- ══════════════════════════════════════
-         SECTION 7 — RUN BY JACK ZEIS
+         SECTION 8 — ABOUT JACK
     ══════════════════════════════════════ -->
     <section class="aa-section aa-about">
       <div class="aa-about-inner">
@@ -1196,19 +930,18 @@ const faqJsonLd = {
         <div class="aa-about-body">
           <h2>Hi, I'm Jack.</h2>
           <p>
-            AI marketing strategist based in Golden, Colorado. I work exclusively with Colorado
-            businesses — which means I know your market, your competitors, and what actually
-            moves the needle here.
+            AI marketing strategist for service businesses. I built ZeisWorks because most
+            business owners I talked to were paying for marketing that measured the wrong things —
+            while their competitors quietly captured every AI recommendation in their market.
           </p>
           <p>
-            I built ZeisWorks because most businesses I talked to were paying for marketing
-            that measured the wrong things. The audit you're about to run is the same diagnostic
-            I'd run if you hired me directly. If the plan makes sense, we can talk about running
-            it together. If not, you keep the report.
+            The audit you're about to run is the same diagnostic I'd run if you hired me
+            directly. If the plan makes sense, we can talk about running it together.
+            If not, you keep the report.
           </p>
           <div class="aa-about-meta">
-            <span class="aa-about-tag">Golden, CO</span>
             <span class="aa-about-tag">AI Marketing</span>
+            <span class="aa-about-tag">Service Businesses</span>
             <span class="aa-about-tag">Local Search</span>
             <span class="aa-about-tag">5.0 on Upwork</span>
           </div>
@@ -1217,7 +950,7 @@ const faqJsonLd = {
     </section>
 
     <!-- ══════════════════════════════════════
-         SECTION 8 — COMMON QUESTIONS
+         SECTION 9 — FAQ
     ══════════════════════════════════════ -->
     <section class="aa-section">
       <div class="aa-section-inner">
@@ -1235,21 +968,20 @@ const faqJsonLd = {
     </section>
 
     <!-- ══════════════════════════════════════
-         SECTION 9 — CLOSING CTA
+         SECTION 10 — CLOSING CTA
     ══════════════════════════════════════ -->
     <section class="aa-closing">
       <div class="aa-closing-inner">
         <p class="aa-closing-label">Free · No call required · 12-month revenue plan included</p>
-        <h2 class="aa-closing-title">Five minutes. Free report. No call.</h2>
-        <p class="aa-closing-sub">Run the audit, get the plan, decide what to do next.</p>
+        <h2 class="aa-closing-title">Five minutes to find out what you're missing.</h2>
+        <p class="aa-closing-sub">Run the audit, get the plan, decide what to do next. No commitment, no pitch call.</p>
         <div class="aa-closing-cta-group">
           <button type="button" class="aa-btn-closing" id="closing-cta">
-            Start the audit →
+            Start my free audit →
           </button>
         </div>
         <p class="aa-closing-phone">
-          Or call
-          <a href="tel:+17206502447" aria-label="Call (720) 650-2447">(720) 650-2447</a>
+          Or call <a href="tel:+17206502447" aria-label="Call (720) 650-2447">(720) 650-2447</a>
         </p>
       </div>
     </section>
@@ -1266,7 +998,7 @@ const faqJsonLd = {
       <h2 class="aa-exit-heading" id="aa-exit-heading">Before you go — grab the checklist.</h2>
       <p class="aa-exit-body">
         The Local Search Visibility Checklist covers 25 factors that determine whether you show up
-        in local search — or your competitor does. Free, straight to your inbox.
+        in AI search — or your competitor does. Free, straight to your inbox.
       </p>
       <button type="button" class="aa-exit-btn" id="aa-exit-checklist-btn">
         Send me the free checklist →
@@ -1277,28 +1009,22 @@ const faqJsonLd = {
 </BaseLayout>
 
 <script>
-  // ── UTM capture: preserve query params for CRM pass-through ──
+  // ── UTM capture ──
   (function () {
     const params = new URLSearchParams(window.location.search);
     const keys = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term'];
     const utm: Record<string, string> = {};
     keys.forEach(k => { const v = params.get(k); if (v) utm[k] = v; });
-    if (Object.keys(utm).length) {
-      sessionStorage.setItem('zw_utm', JSON.stringify(utm));
-    }
+    if (Object.keys(utm).length) sessionStorage.setItem('zw_utm', JSON.stringify(utm));
   })();
 
   // ── GA4: page view ──
-  if (typeof gtag !== 'undefined') {
-    gtag('event', 'ai_audit_page_view');
-  }
+  if (typeof gtag !== 'undefined') gtag('event', 'ai_audit_page_view');
 
   // ── GA4: phone click ──
   document.querySelectorAll<HTMLAnchorElement>('a[href^="tel:"]').forEach(el => {
     el.addEventListener('click', () => {
-      if (typeof gtag !== 'undefined') {
-        gtag('event', 'ai_audit_phone_click');
-      }
+      if (typeof gtag !== 'undefined') gtag('event', 'ai_audit_phone_click');
     });
   });
 
@@ -1313,22 +1039,19 @@ const faqJsonLd = {
       `width=${w},height=${h},left=${left},top=${top},resizable=yes,scrollbars=yes`
     );
     if (typeof oaiq !== 'undefined') {
-      oaiq("measure", "registration_completed", {
-        type: "customer_action",
-        amount: 0,
-        currency: "USD"
-      });
+      oaiq("measure", "registration_completed", { type: "customer_action", amount: 0, currency: "USD" });
     }
   }
 
   document.getElementById('hero-cta')?.addEventListener('click', openAudit);
+  document.getElementById('midpage-cta')?.addEventListener('click', openAudit);
   document.getElementById('closing-cta')?.addEventListener('click', openAudit);
+  document.getElementById('audit-inline-cta')?.addEventListener('click', openAudit);
 
   // ── Exit intent ──
   (function () {
     const STORAGE_KEY = 'zw_exit_shown';
     if (sessionStorage.getItem(STORAGE_KEY)) return;
-
     const overlay = document.getElementById('aa-exit-overlay');
     const closeBtn = document.getElementById('aa-exit-close');
     const dismissBtn = document.getElementById('aa-exit-dismiss');
@@ -1341,72 +1064,35 @@ const faqJsonLd = {
       overlay.classList.add('is-visible');
       closeBtn?.focus();
     }
+    function hideOverlay() { overlay.classList.remove('is-visible'); }
 
-    function hideOverlay() {
-      overlay.classList.remove('is-visible');
-    }
-
-    // Desktop: mouse leaves viewport through the top
-    document.addEventListener('mouseleave', (e) => {
-      if (e.clientY <= 0) showOverlay();
-    });
-
-    // Mobile: fire after 45s of inactivity as fallback
+    document.addEventListener('mouseleave', (e) => { if (e.clientY <= 0) showOverlay(); });
     const mobileTimer = setTimeout(showOverlay, 45000);
-    document.addEventListener('touchstart', () => {
-      clearTimeout(mobileTimer);
-    }, { once: true });
+    document.addEventListener('touchstart', () => clearTimeout(mobileTimer), { once: true });
 
     closeBtn?.addEventListener('click', hideOverlay);
     dismissBtn?.addEventListener('click', hideOverlay);
-    overlay.addEventListener('click', (e) => {
-      if (e.target === overlay) hideOverlay();
-    });
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') hideOverlay();
-    });
-
-    checklistBtn?.addEventListener('click', () => {
-      hideOverlay();
-      window.location.href = '/local-search-checklist/';
-    });
+    overlay.addEventListener('click', (e) => { if (e.target === overlay) hideOverlay(); });
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') hideOverlay(); });
+    checklistBtn?.addEventListener('click', () => { hideOverlay(); window.location.href = '/local-search-checklist/'; });
   })();
-
-  // ── Chat platform event hooks ──
-  // Wire these callbacks to the white-label platform's JS API once configured.
-  // The platform should expose a callback or custom DOM event for start/complete.
-  //
-  // Example shape (replace with actual platform API):
-  //
-  //   window.ZWChat = {
-  //     onStart() {
-  //       gtag('event', 'ai_audit_chat_start');
-  //     },
-  //     onComplete() {
-  //       gtag('event', 'ai_audit_chat_complete');
-  //       // Fire OpenAI Ads conversion event:
-  //       // openaiPixel('track', 'AuditComplete');
-  //
-  //       // Pass UTM data to CRM via platform API:
-  //       const utm = JSON.parse(sessionStorage.getItem('zw_utm') ?? '{}');
-  //       // platformChatAPI.setMetadata(utm);
-  //     },
-  //   };
 </script>
 
-<!-- AI Audit: track StartGapAnalysis when hero CTA is clicked -->
+<!-- Meta Pixel: track StartGapAnalysis on CTA clicks -->
 <script>
   document.addEventListener('DOMContentLoaded', function() {
-    var btn = document.getElementById('hero-cta');
-    if (btn) {
-      btn.addEventListener('click', function() {
-        if (typeof fbq === 'function') {
-          fbq('trackCustom', 'StartGapAnalysis', {
-            content_name: 'ai-audit',
-            content_category: 'zeisworks_form',
-          });
-        }
-      });
-    }
+    ['hero-cta', 'midpage-cta', 'closing-cta', 'audit-inline-cta'].forEach(function(id) {
+      var btn = document.getElementById(id);
+      if (btn) {
+        btn.addEventListener('click', function() {
+          if (typeof fbq === 'function') {
+            fbq('trackCustom', 'StartGapAnalysis', {
+              content_name: 'ai-audit',
+              content_category: 'zeisworks_form',
+            });
+          }
+        });
+      }
+    });
   });
 </script>
