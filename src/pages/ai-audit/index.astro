@@ -517,11 +517,10 @@ const faqJsonLd = {
 
       /* ── ACTIVITY TOASTS ── */
       .aa-toast-container { position: fixed; bottom: 1.5rem; left: 1.5rem; z-index: 60; display: flex; flex-direction: column; gap: 0.625rem; pointer-events: none; }
-      .aa-toast { background: #fff; border: 1px solid #e8e3d8; border-radius: 0.875rem; padding: 0.875rem 1rem; display: flex; align-items: center; gap: 0.75rem; box-shadow: 0 4px 20px rgba(30,28,24,0.1); max-width: 270px; pointer-events: all; transform: translateY(1rem); opacity: 0; transition: transform 0.4s cubic-bezier(0.34,1.4,0.64,1), opacity 0.3s; }
-      .aa-toast.is-visible { transform: translateY(0); opacity: 1; }
-      .aa-toast-icon { width: 34px; height: 34px; border-radius: 50%; background: #f2ede4; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 1rem; line-height: 1; }
-      .aa-toast-text { font-size: 0.8rem; color: theme('colors.ink'); line-height: 1.4; margin: 0; }
-      .aa-toast-time { font-size: 0.6875rem; color: theme('colors.ink-light'); margin-top: 0.2rem; }
+      @keyframes toast-in { from { transform: translateY(2rem); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+      @keyframes toast-out { from { transform: translateY(0); opacity: 1; } to { transform: translateY(1rem); opacity: 0; } }
+      .aa-toast { animation: toast-in 0.4s cubic-bezier(0.22,1,0.36,1) forwards; }
+      .aa-toast.is-leaving { animation: toast-out 0.3s ease-in forwards; }
 
       /* ── EXIT INTENT OVERLAY ── */
       .aa-exit-overlay { position: fixed; inset: 0; background: rgba(30,28,24,0.55); z-index: 100; display: flex; align-items: center; justify-content: center; padding: 1.5rem; opacity: 0; pointer-events: none; transition: opacity 0.2s; }
@@ -595,8 +594,11 @@ const faqJsonLd = {
     <section class="aa-section aa-audit-section" id="audit">
       <div class="aa-section-inner">
         <h2 class="aa-section-title">The 5-minute marketing gap analysis</h2>
-        <p class="aa-section-body" style="margin-bottom:0.75rem;">
-          Answer a few questions about your business — including what you actually want to make. The analysis is built around your revenue goal, not loose projections on increased site traffic. It looks at your website, Google Business profile, the areas you serve, your services, how often inquiries convert, and how quickly you follow up. From getting found to getting paid, it covers the full funnel. Here's what three recent analyses produced:
+        <p class="aa-section-body" style="margin-bottom:0.375rem;">
+          Answer a few questions — including what you actually want to make. The analysis is built around your revenue goal, not projections on traffic.
+        </p>
+        <p style="font-size:0.875rem;color:#9A9590;margin-bottom:1.5rem;line-height:1.6;">
+          Draws from your website, Google Business profile, areas served, services offered, how often inquiries convert, and how quickly you follow up. From getting found to getting paid — the full funnel.
         </p>
 
         <div class="aa-examples-grid">
@@ -981,22 +983,49 @@ const faqJsonLd = {
     const action = rand(actions);
 
     const toast = document.createElement('div');
-    toast.className = 'aa-toast';
     toast.setAttribute('role', 'status');
-    toast.innerHTML =
-      `<span class="aa-toast-icon" aria-hidden="true">${entry.icon}</span>` +
-      `<div>` +
-        `<p class="aa-toast-text">A ${entry.label} in ${city} ${action}</p>` +
-        `<p class="aa-toast-time">just now</p>` +
-      `</div>`;
+    toast.className = 'aa-toast';
+    // Inline all visual styles so Astro scoping never interferes
+    toast.style.cssText = [
+      'background:#ffffff',
+      'border:1px solid #e8e3d8',
+      'border-radius:0.875rem',
+      'padding:0.875rem 1rem',
+      'display:flex',
+      'align-items:center',
+      'gap:0.75rem',
+      'box-shadow:0 4px 12px rgba(30,28,24,0.08),0 12px 32px rgba(30,28,24,0.12)',
+      'max-width:272px',
+      'pointer-events:all',
+      'will-change:transform,opacity',
+    ].join(';');
 
+    const icon = document.createElement('span');
+    icon.setAttribute('aria-hidden', 'true');
+    icon.style.cssText = 'width:34px;height:34px;border-radius:50%;background:#f2ede4;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:1rem;line-height:1';
+    icon.textContent = entry.icon;
+
+    const body = document.createElement('div');
+
+    const text = document.createElement('p');
+    text.style.cssText = 'font-size:0.8rem;color:#1E1C18;line-height:1.4;margin:0';
+    text.textContent = `A ${entry.label} in ${city} ${action}`;
+
+    const time = document.createElement('p');
+    time.style.cssText = 'font-size:0.6875rem;color:#9A9590;margin:0.2rem 0 0';
+    time.textContent = 'just now';
+
+    body.appendChild(text);
+    body.appendChild(time);
+    toast.appendChild(icon);
+    toast.appendChild(body);
     container.appendChild(toast);
-    requestAnimationFrame(() => requestAnimationFrame(() => toast.classList.add('is-visible')));
+
     sessionStorage.setItem(TOAST_KEY, String(shown + 1));
 
     setTimeout(() => {
-      toast.classList.remove('is-visible');
-      setTimeout(() => toast.remove(), 400);
+      toast.classList.add('is-leaving');
+      setTimeout(() => toast.remove(), 320);
     }, 5000);
   }
 
