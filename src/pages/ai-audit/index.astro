@@ -290,7 +290,6 @@ const faqJsonLd = {
       .aa-examples-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin: 1.75rem 0 2rem; }
       @media (max-width: 640px) { .aa-examples-grid { grid-template-columns: 1fr; } }
       .aa-example-card { background: #fff; border: 1px solid #e8e3d8; border-radius: 0.875rem; padding: 1.25rem 1.5rem; }
-      .aa-example-industry { font-size: 0.75rem; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; color: theme('colors.ink-light'); margin-bottom: 1rem; }
       .aa-example-roi { display: flex; align-items: center; gap: 0.625rem; margin-bottom: 1rem; }
       .aa-example-roi-block { display: flex; flex-direction: column; gap: 0.125rem; }
       .aa-example-roi-num { font-family: theme('fontFamily.serif'); font-size: 1.625rem; font-weight: 700; line-height: 1; }
@@ -602,7 +601,6 @@ const faqJsonLd = {
 
         <div class="aa-examples-grid">
           <div class="aa-example-card">
-            <p class="aa-example-industry">Plumbing</p>
             <div class="aa-example-roi">
               <div class="aa-example-roi-block">
                 <span class="aa-example-roi-num current">1.4x</span>
@@ -617,7 +615,20 @@ const faqJsonLd = {
             <p class="aa-example-target">Revenue target: <strong>+$10,000/mo</strong></p>
           </div>
           <div class="aa-example-card">
-            <p class="aa-example-industry">Auto Detailing</p>
+            <div class="aa-example-roi">
+              <div class="aa-example-roi-block">
+                <span class="aa-example-roi-num current">5.4x</span>
+                <span class="aa-example-roi-label">Current ROI</span>
+              </div>
+              <span class="aa-example-arrow">→</span>
+              <div class="aa-example-roi-block">
+                <span class="aa-example-roi-num projected">10.6x</span>
+                <span class="aa-example-roi-label">Projected ROI</span>
+              </div>
+            </div>
+            <p class="aa-example-target">Revenue target: <strong>+$10,000/mo</strong></p>
+          </div>
+          <div class="aa-example-card">
             <div class="aa-example-roi">
               <div class="aa-example-roi-block">
                 <span class="aa-example-roi-num current">16.9x</span>
@@ -630,21 +641,6 @@ const faqJsonLd = {
               </div>
             </div>
             <p class="aa-example-target">Revenue target: <strong>+$25,000/mo</strong></p>
-          </div>
-          <div class="aa-example-card">
-            <p class="aa-example-industry">Med Spa</p>
-            <div class="aa-example-roi">
-              <div class="aa-example-roi-block">
-                <span class="aa-example-roi-num current">22.7x</span>
-                <span class="aa-example-roi-label">Current ROI</span>
-              </div>
-              <span class="aa-example-arrow">→</span>
-              <div class="aa-example-roi-block">
-                <span class="aa-example-roi-num projected">53.2x</span>
-                <span class="aa-example-roi-label">Projected ROI</span>
-              </div>
-            </div>
-            <p class="aa-example-target">Revenue target: <strong>+$20,000/mo</strong></p>
           </div>
         </div>
 
