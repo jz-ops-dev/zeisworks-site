@@ -548,7 +548,7 @@ const faqJsonLd = {
         <span class="aa-eyebrow">Free AI Visibility Audit · <span id="aa-eyebrow-location">Service &amp; Professional Businesses</span></span>
         <h1 class="aa-h1">
           Your customers are asking AI<br>
-          who to call.<br>
+          who to call<span id="aa-h1-location"></span>.<br>
           <em>Are you on the list?</em>
         </h1>
         <p class="aa-subhead">
@@ -1062,6 +1062,10 @@ const faqJsonLd = {
     // Inject city into hero eyebrow
     const eyebrow = document.getElementById('aa-eyebrow-location');
     if (eyebrow) eyebrow.textContent = city + ' Service Businesses';
+
+    // Inject city into h1
+    const h1loc = document.getElementById('aa-h1-location');
+    if (h1loc) h1loc.textContent = ' in ' + city;
 
     // Inject city into subhead
     const subloc = document.getElementById('aa-subhead-location');
