@@ -516,6 +516,14 @@ const faqJsonLd = {
       body[data-page="ai-audit"] header { display: none !important; }
       body[data-page="ai-audit"] #ga-float-btn { display: flex !important; }
 
+      /* ── ACTIVITY TOASTS ── */
+      .aa-toast-container { position: fixed; bottom: 1.5rem; left: 1.5rem; z-index: 60; display: flex; flex-direction: column; gap: 0.625rem; pointer-events: none; }
+      .aa-toast { background: #fff; border: 1px solid #e8e3d8; border-radius: 0.875rem; padding: 0.875rem 1rem; display: flex; align-items: center; gap: 0.75rem; box-shadow: 0 4px 20px rgba(30,28,24,0.1); max-width: 270px; pointer-events: all; transform: translateY(1rem); opacity: 0; transition: transform 0.4s cubic-bezier(0.34,1.4,0.64,1), opacity 0.3s; }
+      .aa-toast.is-visible { transform: translateY(0); opacity: 1; }
+      .aa-toast-icon { width: 34px; height: 34px; border-radius: 50%; background: #f2ede4; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 1rem; line-height: 1; }
+      .aa-toast-text { font-size: 0.8rem; color: theme('colors.ink'); line-height: 1.4; margin: 0; }
+      .aa-toast-time { font-size: 0.6875rem; color: theme('colors.ink-light'); margin-top: 0.2rem; }
+
       /* ── EXIT INTENT OVERLAY ── */
       .aa-exit-overlay { position: fixed; inset: 0; background: rgba(30,28,24,0.55); z-index: 100; display: flex; align-items: center; justify-content: center; padding: 1.5rem; opacity: 0; pointer-events: none; transition: opacity 0.2s; }
       .aa-exit-overlay.is-visible { opacity: 1; pointer-events: all; }
@@ -539,7 +547,7 @@ const faqJsonLd = {
     ══════════════════════════════════════ -->
     <section class="aa-hero" id="top">
       <div class="aa-hero-inner">
-        <span class="aa-eyebrow">Free AI Visibility Audit · Service &amp; Professional Businesses</span>
+        <span class="aa-eyebrow">Free AI Visibility Audit · <span id="aa-eyebrow-location">Service &amp; Professional Businesses</span></span>
         <h1 class="aa-h1">
           Your customers are asking AI<br>
           who to call.<br>
@@ -547,7 +555,7 @@ const faqJsonLd = {
         </h1>
         <p class="aa-subhead">
           ChatGPT, Gemini, and Google AI now recommend local service businesses directly to buyers.
-          Find out in 5 minutes whether you're showing up — or handing every search to a competitor.
+          Find out in 5 minutes whether you're showing up<span id="aa-subhead-location"></span> — or handing every search to a competitor.
         </p>
         <div class="aa-cta-group">
           <button type="button" class="aa-btn-primary" id="hero-cta">
@@ -826,6 +834,9 @@ const faqJsonLd = {
 
   </div>
 
+  <!-- Activity toasts -->
+  <div id="aa-toast-container" class="aa-toast-container" aria-live="polite" aria-atomic="false"></div>
+
   <!-- ══════════════════════════════════════
        EXIT INTENT OVERLAY
   ══════════════════════════════════════ -->
@@ -929,6 +940,111 @@ const faqJsonLd = {
     document.addEventListener('keydown', (e) => { if (e.key === 'Escape') hideOverlay(); });
     checklistBtn?.addEventListener('click', () => { hideOverlay(); window.location.href = '/local-search-checklist/'; });
   })();
+</script>
+
+<!-- Geo-personalization + competitor activity toasts -->
+<script>
+(function () {
+  const CITY_KEY = 'zw_city';
+  const TOAST_KEY = 'zw_toasts';
+  const MAX_TOASTS = 4;
+
+  const entries = [
+    { icon: '🌡', label: 'HVAC company' },
+    { icon: '🔧', label: 'plumber' },
+    { icon: '🦷', label: 'dental practice' },
+    { icon: '🏠', label: 'roofing contractor' },
+    { icon: '⚖️', label: 'personal injury attorney' },
+    { icon: '✨', label: 'med spa' },
+    { icon: '🚗', label: 'auto detailer' },
+    { icon: '🌿', label: 'landscaping company' },
+    { icon: '💪', label: 'personal trainer' },
+    { icon: '🩺', label: 'chiropractic office' },
+    { icon: '🧹', label: 'cleaning service' },
+    { icon: '🏗', label: 'home remodeler' },
+  ];
+
+  const actions = [
+    'just ran their gap analysis',
+    'is reviewing their revenue plan',
+    'just found their AI visibility score',
+    'just completed their audit',
+    'is looking at their 12-month plan',
+  ];
+
+  function rand(arr) { return arr[Math.floor(Math.random() * arr.length)]; }
+
+  function showToast(city) {
+    const shown = parseInt(sessionStorage.getItem(TOAST_KEY) || '0');
+    if (shown >= MAX_TOASTS) return;
+
+    const container = document.getElementById('aa-toast-container');
+    if (!container) return;
+
+    const entry = rand(entries);
+    const action = rand(actions);
+
+    const toast = document.createElement('div');
+    toast.className = 'aa-toast';
+    toast.setAttribute('role', 'status');
+    toast.innerHTML =
+      `<span class="aa-toast-icon" aria-hidden="true">${entry.icon}</span>` +
+      `<div>` +
+        `<p class="aa-toast-text">A ${entry.label} in ${city} ${action}</p>` +
+        `<p class="aa-toast-time">just now</p>` +
+      `</div>`;
+
+    container.appendChild(toast);
+    requestAnimationFrame(() => requestAnimationFrame(() => toast.classList.add('is-visible')));
+    sessionStorage.setItem(TOAST_KEY, String(shown + 1));
+
+    setTimeout(() => {
+      toast.classList.remove('is-visible');
+      setTimeout(() => toast.remove(), 400);
+    }, 5000);
+  }
+
+  function scheduleToasts(city) {
+    // First toast: 7–12s after load
+    const first = 7000 + Math.random() * 5000;
+    setTimeout(function fire() {
+      showToast(city);
+      const shown = parseInt(sessionStorage.getItem(TOAST_KEY) || '0');
+      if (shown < MAX_TOASTS) {
+        // Subsequent toasts: 18–35s apart
+        setTimeout(fire, 18000 + Math.random() * 17000);
+      }
+    }, first);
+  }
+
+  async function getCity() {
+    const cached = sessionStorage.getItem(CITY_KEY);
+    if (cached) return cached;
+    try {
+      const res = await fetch('https://ipapi.co/json/');
+      const data = await res.json();
+      const city = data.city || '';
+      if (city) sessionStorage.setItem(CITY_KEY, city);
+      return city;
+    } catch {
+      return '';
+    }
+  }
+
+  getCity().then(function (city) {
+    if (!city) return;
+
+    // Inject city into hero eyebrow
+    const eyebrow = document.getElementById('aa-eyebrow-location');
+    if (eyebrow) eyebrow.textContent = city + ' Service Businesses';
+
+    // Inject city into subhead
+    const subloc = document.getElementById('aa-subhead-location');
+    if (subloc) subloc.textContent = ' in ' + city;
+
+    scheduleToasts(city);
+  });
+})();
 </script>
 
 <!-- Meta Pixel: track StartGapAnalysis on CTA clicks -->
