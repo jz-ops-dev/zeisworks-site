@@ -489,8 +489,7 @@ const faqJsonLd = {
       body[data-page="ai-audit"] header { display: none !important; }
       body[data-page="ai-audit"] #ga-float-btn { display: flex !important; }
 
-      /* ── ACTIVITY TOASTS ── */
-      .aa-toast-container { position: fixed; bottom: 1.5rem; left: 1.5rem; z-index: 60; display: flex; flex-direction: column; gap: 0.625rem; pointer-events: none; }
+
 
       /* ── EXIT INTENT OVERLAY ── */
       .aa-exit-overlay { position: fixed; inset: 0; background: rgba(30,28,24,0.55); z-index: 100; display: flex; align-items: center; justify-content: center; padding: 1.5rem; opacity: 0; pointer-events: none; transition: opacity 0.2s; }
@@ -828,9 +827,6 @@ const faqJsonLd = {
 
   </div>
 
-  <!-- Activity toasts -->
-  <div id="aa-toast-container" class="aa-toast-container" aria-live="polite" aria-atomic="false"></div>
-
   <!-- ══════════════════════════════════════
        EXIT INTENT OVERLAY
   ══════════════════════════════════════ -->
@@ -936,112 +932,10 @@ const faqJsonLd = {
   })();
 </script>
 
-<!-- Geo-personalization + competitor activity toasts -->
+<!-- Geo-personalization -->
 <script>
 (function () {
   const CITY_KEY = 'zw_city';
-  const TOAST_KEY = 'zw_toasts';
-  const MAX_TOASTS = 8;
-
-  const entries = [
-    { icon: '🌡', label: 'HVAC company' },
-    { icon: '🔧', label: 'plumber' },
-    { icon: '🦷', label: 'dental practice' },
-    { icon: '🏠', label: 'roofing contractor' },
-    { icon: '⚖️', label: 'personal injury attorney' },
-    { icon: '✨', label: 'med spa' },
-    { icon: '🚗', label: 'auto detailer' },
-    { icon: '🌿', label: 'landscaping company' },
-    { icon: '💪', label: 'personal trainer' },
-    { icon: '🩺', label: 'chiropractic office' },
-    { icon: '🧹', label: 'cleaning service' },
-    { icon: '🏗', label: 'home remodeler' },
-    { icon: '🔑', label: 'real estate agent' },
-    { icon: '🐾', label: 'pet groomer' },
-    { icon: '💇', label: 'hair salon' },
-    { icon: '🏋️', label: 'fitness studio' },
-    { icon: '🖥️', label: 'IT support company' },
-    { icon: '🛁', label: 'bathroom remodeler' },
-    { icon: '🌲', label: 'tree service' },
-    { icon: '🐕', label: 'dog trainer' },
-  ];
-
-  const actions = [
-    'may be checking their AI visibility',
-    'could be looking at their revenue gaps',
-    'might be finding out where they show up',
-    'is likely researching their competition',
-    'may already know what you don\'t',
-  ];
-
-  function rand(arr) { return arr[Math.floor(Math.random() * arr.length)]; }
-
-  function showToast(city) {
-    const shown = parseInt(sessionStorage.getItem(TOAST_KEY) || '0');
-    if (shown >= MAX_TOASTS) return;
-
-    const container = document.getElementById('aa-toast-container');
-    if (!container) return;
-
-    const entry = rand(entries);
-    const action = rand(actions);
-
-    const toast = document.createElement('div');
-    toast.setAttribute('role', 'status');
-    toast.className = 'aa-toast';
-    // Inline all visual styles so Astro scoping never interferes
-    toast.style.cssText = [
-      'background:#ffffff',
-      'border:1px solid #e8e3d8',
-      'border-radius:0.875rem',
-      'padding:0.875rem 1rem',
-      'display:flex',
-      'align-items:center',
-      'gap:0.75rem',
-      'box-shadow:0 4px 12px rgba(30,28,24,0.08),0 12px 32px rgba(30,28,24,0.12)',
-      'max-width:272px',
-      'pointer-events:all',
-      'will-change:transform,opacity',
-    ].join(';');
-
-    const icon = document.createElement('span');
-    icon.setAttribute('aria-hidden', 'true');
-    icon.style.cssText = 'width:34px;height:34px;border-radius:50%;background:#f2ede4;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:1rem;line-height:1';
-    icon.textContent = entry.icon;
-
-    const body = document.createElement('div');
-
-    const text = document.createElement('p');
-    text.style.cssText = 'font-size:0.8rem;color:#1E1C18;line-height:1.4;margin:0';
-    text.textContent = `A ${entry.label} in ${city} ${action}`;
-
-    const time = document.createElement('p');
-    time.style.cssText = 'font-size:0.6875rem;color:#9A9590;margin:0.2rem 0 0';
-    time.textContent = 'just now';
-
-    body.appendChild(text);
-    body.appendChild(time);
-    toast.appendChild(icon);
-    toast.appendChild(body);
-    container.appendChild(toast);
-
-    sessionStorage.setItem(TOAST_KEY, String(shown + 1));
-
-    setTimeout(() => toast.remove(), 5000);
-  }
-
-  function scheduleToasts(city) {
-    // First toast: 3–6s after load
-    const first = 3000 + Math.random() * 3000;
-    setTimeout(function fire() {
-      showToast(city);
-      const shown = parseInt(sessionStorage.getItem(TOAST_KEY) || '0');
-      if (shown < MAX_TOASTS) {
-        // Subsequent toasts: 8–15s apart
-        setTimeout(fire, 8000 + Math.random() * 7000);
-      }
-    }, first);
-  }
 
   async function getCity() {
     const cached = sessionStorage.getItem(CITY_KEY);
@@ -1071,8 +965,6 @@ const faqJsonLd = {
     // Inject city into subhead
     const subloc = document.getElementById('aa-subhead-location');
     if (subloc) subloc.textContent = ' in ' + city;
-
-    scheduleToasts(city);
   });
 })();
 </script>
