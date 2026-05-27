@@ -270,14 +270,6 @@ const faqJsonLd = {
       /* ── SECTION BASE ── */
       .aa-section { padding: 4.5rem 1.5rem; }
       .aa-section-inner { max-width: 720px; margin: 0 auto; }
-      .aa-section-label {
-        font-size: 0.75rem;
-        font-weight: 600;
-        letter-spacing: 0.1em;
-        text-transform: uppercase;
-        color: theme('colors.orange');
-        margin-bottom: 0.75rem;
-      }
       .aa-section-title {
         font-family: theme('fontFamily.serif');
         font-size: clamp(1.5rem, 3vw, 2.125rem);
@@ -313,11 +305,6 @@ const faqJsonLd = {
         border-radius: 0.875rem;
         padding: 1.5rem;
       }
-      .aa-pain-icon {
-        font-size: 1.5rem;
-        margin-bottom: 0.625rem;
-        display: block;
-      }
       .aa-pain-title {
         font-family: theme('fontFamily.serif');
         font-size: 1rem;
@@ -333,20 +320,29 @@ const faqJsonLd = {
         margin: 0;
       }
 
+      /* ── VIDEO ── */
+      .aa-video-wrap {
+        margin: 2rem 0 1.75rem;
+        border-radius: 0.875rem;
+        overflow: hidden;
+        border: 1px solid #e8e3d8;
+        background: #1a1f2e;
+        position: relative;
+        padding-bottom: 56.25%;
+        height: 0;
+      }
+      .aa-video-wrap iframe {
+        position: absolute;
+        top: 0; left: 0;
+        width: 100%; height: 100%;
+        border: none;
+      }
+
       /* ── CHAT EMBED ── */
       .aa-audit-section {
         background: #f2ede4;
         border-top: 1px solid #e8e3d8;
         border-bottom: 1px solid #e8e3d8;
-      }
-      .aa-chat-container {
-        max-width: 720px;
-        margin: 2rem auto 0;
-        border-radius: 0.75rem;
-        overflow: hidden;
-        border: 1px solid #e8e3d8;
-        background: #fff;
-        min-height: 480px;
       }
 
       /* ── DELIVERABLES ── */
@@ -365,14 +361,6 @@ const faqJsonLd = {
         display: flex;
         flex-direction: column;
         gap: 0.5rem;
-      }
-      .aa-deliverable-num {
-        font-size: 0.7rem;
-        font-weight: 600;
-        letter-spacing: 0.08em;
-        text-transform: uppercase;
-        color: theme('colors.orange');
-        margin-bottom: 0.125rem;
       }
       .aa-deliverable-title {
         font-family: theme('fontFamily.serif');
@@ -470,10 +458,28 @@ const faqJsonLd = {
       .aa-learn-list li { display: flex; align-items: flex-start; gap: 0.625rem; font-size: 0.9375rem; color: theme('colors.ink-mid'); line-height: 1.55; }
       .aa-learn-list li::before { content: '→'; color: theme('colors.orange'); font-weight: 600; flex-shrink: 0; margin-top: 0.05em; }
 
-      /* ── NOT FOR EVERYONE ── */
-      .aa-nfe { background: #f2ede4; border-top: 1px solid #e8e3d8; border-bottom: 1px solid #e8e3d8; }
-      .aa-nfe-body p { font-size: 0.9375rem; color: theme('colors.ink-mid'); line-height: 1.8; margin-bottom: 0.875rem; }
-      .aa-nfe-body p:last-child { margin-bottom: 0; }
+      /* ── BEFORE / AFTER ── */
+      .aa-ba { background: #f2ede4; border-top: 1px solid #e8e3d8; border-bottom: 1px solid #e8e3d8; }
+      .aa-ba-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; margin-top: 2rem; }
+      @media (max-width: 620px) { .aa-ba-grid { grid-template-columns: 1fr; } }
+      .aa-ba-card { border-radius: 0.875rem; padding: 1.75rem; }
+      .aa-ba-before { background: #1a1f2e; }
+      .aa-ba-after { background: #fff; border: 1px solid #e8e3d8; }
+      .aa-ba-label {
+        font-size: 0.7rem;
+        font-weight: 700;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        margin-bottom: 1.25rem;
+      }
+      .aa-ba-before .aa-ba-label { color: rgba(255,255,255,0.35); }
+      .aa-ba-after .aa-ba-label { color: theme('colors.orange'); }
+      .aa-ba-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 0.875rem; }
+      .aa-ba-list li { display: flex; align-items: flex-start; gap: 0.75rem; font-size: 0.9rem; line-height: 1.55; }
+      .aa-ba-before .aa-ba-list li { color: rgba(255,255,255,0.65); }
+      .aa-ba-after .aa-ba-list li { color: theme('colors.ink-mid'); }
+      .aa-ba-before .aa-ba-list li::before { content: '✕'; color: rgba(255,255,255,0.25); font-size: 0.8rem; flex-shrink: 0; margin-top: 0.15em; }
+      .aa-ba-after .aa-ba-list li::before { content: '✓'; color: #6366f1; font-weight: 700; font-size: 0.85rem; flex-shrink: 0; margin-top: 0.1em; }
 
       /* ── PROOF BAR ── */
       .aa-proof-bar { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.5rem 1.5rem; padding: 1rem 1.5rem; background: rgba(242,238,228,0.5); border-top: 1px solid #e8e3d8; border-bottom: 1px solid #e8e3d8; font-size: 0.8125rem; font-weight: 500; color: theme('colors.ink-mid'); text-align: center; }
@@ -490,30 +496,11 @@ const faqJsonLd = {
       .aa-tcard-chips { display: flex; flex-wrap: wrap; gap: 0.375rem; }
       .aa-chip { font-size: 0.7rem; background: #f2ede4; color: theme('colors.ink-mid'); padding: 0.2rem 0.625rem; border-radius: 999px; }
 
-      /* ── ABOUT ── */
-      .aa-about { background: #f2ede4; border-top: 1px solid #e8e3d8; }
-      .aa-about-inner { max-width: 720px; margin: 0 auto; display: grid; grid-template-columns: 200px 1fr; gap: 3rem; align-items: start; }
-      @media (max-width: 640px) { .aa-about-inner { grid-template-columns: 1fr; gap: 1.75rem; } }
-      .aa-about-photo { width: 100%; aspect-ratio: 1/1; border-radius: 0.875rem; object-fit: cover; border: 1px solid #e8e3d8; }
-      .aa-about-body h2 { font-family: theme('fontFamily.serif'); font-size: 1.5rem; font-weight: 700; color: theme('colors.ink'); margin-bottom: 1rem; line-height: 1.3; }
-      .aa-about-body p { font-size: 0.9375rem; color: theme('colors.ink-mid'); line-height: 1.8; margin-bottom: 0.875rem; }
-      .aa-about-body p:last-child { margin-bottom: 0; }
-      .aa-about-meta { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1.25rem; }
-      .aa-about-tag { font-size: 0.75rem; background: theme('colors.cream'); border: 1px solid #e8e3d8; color: theme('colors.ink-mid'); padding: 0.25rem 0.75rem; border-radius: 999px; }
-
       /* ── FAQ ── */
       .aa-faq-list { margin-top: 2.5rem; border-top: 1px solid #e8e3d8; }
       .aa-faq-item { padding: 1.375rem 0; border-bottom: 1px solid #e8e3d8; }
       .aa-faq-q { font-size: 0.9375rem; font-weight: 600; color: theme('colors.ink'); margin-bottom: 0.5rem; line-height: 1.4; }
       .aa-faq-a { font-size: 0.9rem; color: theme('colors.ink-mid'); line-height: 1.75; margin: 0; }
-
-      /* ── HOOKS ── */
-      .aa-hooks { border-top: 1px solid #e8e3d8; }
-      .aa-hooks-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 2.5rem; }
-      @media (max-width: 640px) { .aa-hooks-grid { grid-template-columns: 1fr; } }
-      .aa-hook-card { background: #fff; border: 1px solid #e8e3d8; border-radius: 0.875rem; padding: 1.5rem; }
-      .aa-hook-title { font-family: theme('fontFamily.serif'); font-size: 1rem; font-weight: 600; color: theme('colors.ink'); margin-bottom: 0.5rem; line-height: 1.3; }
-      .aa-hook-desc { font-size: 0.875rem; color: theme('colors.ink-mid'); line-height: 1.65; margin: 0; }
 
       /* ── MID-PAGE CTA BAND ── */
       .aa-midcta {
@@ -540,7 +527,6 @@ const faqJsonLd = {
       .aa-closing { background: #1a1f2e; padding: 5.5rem 1.5rem; position: relative; overflow: hidden; }
       .aa-closing::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 70% 50% at 50% 100%, rgba(99,102,241,0.2) 0%, transparent 70%); pointer-events: none; }
       .aa-closing-inner { max-width: 640px; margin: 0 auto; text-align: center; position: relative; z-index: 1; }
-      .aa-closing-label { font-size: 0.75rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.35); margin-bottom: 1rem; }
       .aa-closing-title { font-family: theme('fontFamily.serif'); font-size: clamp(1.875rem, 3.5vw, 2.625rem); font-weight: 700; color: #fff; line-height: 1.2; letter-spacing: -0.02em; margin-bottom: 0.875rem; }
       .aa-closing-sub { font-size: 1rem; color: rgba(255,255,255,0.6); line-height: 1.75; margin-bottom: 2.25rem; }
       .aa-closing-cta-group { display: flex; flex-wrap: wrap; gap: 0.875rem; justify-content: center; align-items: center; }
@@ -552,9 +538,7 @@ const faqJsonLd = {
       .aa-closing-phone a:hover { color: #fff; }
 
       /* ── HIDE GLOBAL HEADER & FLOAT BTN ON THIS PAGE ── */
-      /* Suppress the site nav — this is a paid landing page, no exit links */
       body[data-page="ai-audit"] header { display: none !important; }
-      /* Override the gap-analysis hide rule — we want the float btn here but wired to the audit */
       body[data-page="ai-audit"] #ga-float-btn { display: flex !important; }
 
       /* ── EXIT INTENT OVERLAY ── */
@@ -576,7 +560,7 @@ const faqJsonLd = {
   <div class="aa-page">
 
     <!-- ══════════════════════════════════════
-         SECTION 1 — HERO (dark, high-contrast)
+         SECTION 1 — HERO
     ══════════════════════════════════════ -->
     <section class="aa-hero" id="top">
       <div class="aa-hero-inner">
@@ -615,43 +599,38 @@ const faqJsonLd = {
     <!-- ══════════════════════════════════════
          TRUST STRIP
     ══════════════════════════════════════ -->
-    <div class="aa-trust-strip" role="list">
-      <span role="listitem"><span aria-hidden="true">✓</span> 5.0 on Upwork · 100% Job Success</span>
+    <div class="aa-trust-strip">
+      <span>5.0 on Upwork · 100% Job Success</span>
       <span class="aa-trust-sep" aria-hidden="true">·</span>
-      <span role="listitem"><span aria-hidden="true">✓</span> Free 12-month revenue plan included</span>
+      <span>Free 12-month revenue plan included</span>
       <span class="aa-trust-sep" aria-hidden="true">·</span>
-      <span role="listitem"><span aria-hidden="true">✓</span> No call required to receive it</span>
+      <span>No call required to receive it</span>
     </div>
 
     <!-- ══════════════════════════════════════
-         SECTION 2 — THE PROBLEM (pain cards)
+         SECTION 2 — THE PROBLEM
     ══════════════════════════════════════ -->
     <section class="aa-section aa-pain">
       <div class="aa-section-inner">
-        <p class="aa-section-label">The shift that's already happening</p>
         <h2 class="aa-section-title">AI is the new word-of-mouth. Most service businesses don't know where they stand.</h2>
         <p class="aa-section-body">
           When someone asks ChatGPT "who's the best HVAC company near me?", "which attorney handles DUIs in my city?", or "find me a personal trainer who works with runners" — AI gives them a specific answer. That answer is built from signals most businesses have never optimized for.
         </p>
         <div class="aa-pain-grid">
           <div class="aa-pain-card">
-            <span class="aa-pain-icon">🔍</span>
-            <p class="aa-pain-title">You're invisible in AI search</p>
+            <p class="aa-pain-title">Invisible in AI search</p>
             <p class="aa-pain-desc">ChatGPT, Gemini, and Perplexity are recommending your competitors to buyers who are ready to book — without you ever knowing.</p>
           </div>
           <div class="aa-pain-card">
-            <span class="aa-pain-icon">📉</span>
             <p class="aa-pain-title">Traditional SEO isn't enough</p>
             <p class="aa-pain-desc">Ranking on Google page one no longer guarantees you appear in AI-generated answers. The signals are different — and most businesses are missing them.</p>
           </div>
           <div class="aa-pain-card">
-            <span class="aa-pain-icon">💸</span>
-            <p class="aa-pain-title">You're paying to acquire customers AI is giving away</p>
+            <p class="aa-pain-title">Paying for leads AI gives away</p>
             <p class="aa-pain-desc">Every lead you buy through ads is a lead that could have come organically through AI recommendations — if your visibility signals were in place.</p>
           </div>
           <div class="aa-pain-card">
-            <span class="aa-pain-icon">🏆</span>
-            <p class="aa-pain-title">One competitor is winning all the AI recommendations</p>
+            <p class="aa-pain-title">One competitor captures everything</p>
             <p class="aa-pain-desc">In most local service categories, a single business dominates AI answers. That business isn't necessarily the best — it's the most visible to AI.</p>
           </div>
         </div>
@@ -663,8 +642,7 @@ const faqJsonLd = {
     ══════════════════════════════════════ -->
     <section class="aa-section" style="padding-bottom: 2rem;">
       <div class="aa-section-inner">
-        <p class="aa-section-label">Free audit</p>
-        <h2 class="aa-section-title">What you'll know in 5 minutes.</h2>
+        <h2 class="aa-section-title">What the audit covers.</h2>
         <ul class="aa-learn-list">
           <li>Whether ChatGPT, Gemini, and Perplexity mention your business</li>
           <li>Which competitor is dominating AI recommendations in your category</li>
@@ -677,17 +655,25 @@ const faqJsonLd = {
     </section>
 
     <!-- ══════════════════════════════════════
-         SECTION 4 — THE AUDIT (CHAT EMBED)
+         SECTION 4 — THE AUDIT (VIDEO + CTA)
     ══════════════════════════════════════ -->
     <section class="aa-section aa-audit-section" id="audit">
       <div class="aa-section-inner">
-        <p class="aa-section-label">Free audit</p>
         <h2 class="aa-section-title">The 5-minute gap analysis</h2>
         <p class="aa-section-body">
           Chat with the system for a few minutes. It maps your AI visibility, organic and paid performance,
           conversion funnel, and competitive position — then produces exact revenue projections, cost
           breakdowns, and a 12-month client acquisition plan. No sales call required to get it.
         </p>
+
+        <div class="aa-video-wrap">
+          <iframe
+            src="https://drive.google.com/file/d/13c0IGxcmy-nyjlWozb2RVvbSIUMAF-iv/preview"
+            title="ZeisWorks — How the AI Audit Works"
+            allow="autoplay"
+            loading="lazy"
+          ></iframe>
+        </div>
 
         <!-- Audit CTA -->
         <div style="text-align:center;padding:2rem 1.5rem;background:#fff;border:1px solid #e8e3d8;border-radius:0.875rem;">
@@ -699,16 +685,14 @@ const faqJsonLd = {
     </section>
 
     <!-- ══════════════════════════════════════
-         SECTION 5 — WHAT YOU'LL ACTUALLY GET
+         SECTION 5 — WHAT YOU GET
     ══════════════════════════════════════ -->
     <section class="aa-section">
       <div class="aa-section-inner">
-        <p class="aa-section-label">What's included</p>
-        <h2 class="aa-section-title">Three deliverables. Zero cost.</h2>
+        <h2 class="aa-section-title">What you get from the audit.</h2>
         <div class="aa-deliverables-grid">
-          {deliverables.map((d, i) => (
+          {deliverables.map((d) => (
             <div class="aa-deliverable-card">
-              <p class="aa-deliverable-num">0{i + 1}</p>
               <p class="aa-deliverable-title">{d.title}</p>
               <p class="aa-deliverable-desc">{d.desc}</p>
             </div>
@@ -723,8 +707,7 @@ const faqJsonLd = {
     ══════════════════════════════════════ -->
     <section class="aa-section aa-score-section">
       <div class="aa-section-inner">
-        <p class="aa-section-label">Sample output</p>
-        <h2 class="aa-section-title">Here's what your score looks like.</h2>
+        <h2 class="aa-section-title">What the output looks like.</h2>
         <p class="aa-section-body">
           Based on a real service business. Your results reflect your specific market,
           category, and current presence.
@@ -773,8 +756,7 @@ const faqJsonLd = {
     ══════════════════════════════════════ -->
     <section class="aa-section">
       <div class="aa-section-inner">
-        <p class="aa-section-label">Visual evidence</p>
-        <h2 class="aa-section-title">See exactly where you're missing.</h2>
+        <h2 class="aa-section-title">Where you show up — and where you don't.</h2>
         <p class="aa-section-body">
           Your audit includes screenshots of actual AI outputs for your category and market —
           so you can see which businesses are being recommended instead of you, and why.
@@ -821,10 +803,9 @@ const faqJsonLd = {
     <!-- ══════════════════════════════════════
          SECTION 6 — HOW THIS IS DIFFERENT
     ══════════════════════════════════════ -->
-    <section class="aa-section aa-nfe">
+    <section class="aa-section aa-nfe" style="background:#f2ede4;border-top:1px solid #e8e3d8;border-bottom:1px solid #e8e3d8;">
       <div class="aa-section-inner">
-        <p class="aa-section-label">How this is different</p>
-        <h2 class="aa-section-title">Built around revenue, not reports.</h2>
+        <h2 class="aa-section-title">How this is different.</h2>
         <div style="overflow-x:auto;margin-top:1.75rem;">
           <table style="width:100%;border-collapse:collapse;font-size:0.9rem;">
             <thead>
@@ -857,34 +838,6 @@ const faqJsonLd = {
     </section>
 
     <!-- ══════════════════════════════════════
-         SECTION 6B — HOW ZEISWORKS WORKS
-    ══════════════════════════════════════ -->
-    <section class="aa-section aa-hooks">
-      <div class="aa-section-inner">
-        <p class="aa-section-label">How it works with us</p>
-        <h2 class="aa-section-title">What you get when you work with ZeisWorks.</h2>
-        <div class="aa-hooks-grid">
-          <div class="aa-hook-card">
-            <p class="aa-hook-title">A human in the loop</p>
-            <p class="aa-hook-desc">You get direct access to Jack — not a project manager, not a ticketing system. If you want to talk through the plan or ask a question, you can.</p>
-          </div>
-          <div class="aa-hook-card">
-            <p class="aa-hook-title">Monthly reports, no matter what</p>
-            <p class="aa-hook-desc">Progress updates and campaign summaries in your inbox every month. You always know exactly where things stand — even if nothing needs your attention.</p>
-          </div>
-          <div class="aa-hook-card">
-            <p class="aa-hook-title">Revenue-driven, not just numbers</p>
-            <p class="aa-hook-desc">We measure pipeline and new clients, not impressions and rankings. If a metric doesn't connect to revenue, it doesn't make it into your report.</p>
-          </div>
-          <div class="aa-hook-card">
-            <p class="aa-hook-title">Plans that move the bottom line</p>
-            <p class="aa-hook-desc">Every recommendation is tied to a revenue outcome. If it doesn't drive new business, it's not in the plan.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ══════════════════════════════════════
          SECTION 7 — TESTIMONIALS
     ══════════════════════════════════════ -->
     <section class="aa-section" style="padding-top: 0;">
@@ -894,8 +847,7 @@ const faqJsonLd = {
         <span>Trusted by businesses across the US</span>
       </div>
       <div class="aa-section-inner" style="padding-top: 3rem;">
-        <p class="aa-section-label">What clients say</p>
-        <h2 class="aa-section-title">Real results from real businesses.</h2>
+        <h2 class="aa-section-title">What clients say.</h2>
         <div class="aa-testimonials-grid">
           {testimonials.map((t) => (
             <div class="aa-tcard">
@@ -916,37 +868,31 @@ const faqJsonLd = {
     </section>
 
     <!-- ══════════════════════════════════════
-         SECTION 8 — ABOUT JACK
+         SECTION 8 — BEFORE / AFTER
     ══════════════════════════════════════ -->
-    <section class="aa-section aa-about">
-      <div class="aa-about-inner">
-        <div>
-          <img
-            src="/jack.jpg"
-            alt="Jack Zeis, founder of ZeisWorks"
-            class="aa-about-photo"
-            width="200"
-            height="200"
-            loading="lazy"
-          />
-        </div>
-        <div class="aa-about-body">
-          <h2>Hi, I'm Jack.</h2>
-          <p>
-            AI marketing strategist for service businesses. I built ZeisWorks because most
-            business owners I talked to were paying for marketing that measured the wrong things —
-            while their competitors quietly captured every AI recommendation in their market.
-          </p>
-          <p>
-            The audit you're about to run is the same diagnostic I'd run if you hired me
-            directly. If the plan makes sense, we can talk about running it together.
-            If not, you keep the report.
-          </p>
-          <div class="aa-about-meta">
-            <span class="aa-about-tag">AI Marketing</span>
-            <span class="aa-about-tag">Service Businesses</span>
-            <span class="aa-about-tag">Local Search</span>
-            <span class="aa-about-tag">5.0 on Upwork</span>
+    <section class="aa-section aa-ba">
+      <div class="aa-section-inner">
+        <h2 class="aa-section-title">What changes when AI can find you.</h2>
+        <div class="aa-ba-grid">
+          <div class="aa-ba-card aa-ba-before">
+            <p class="aa-ba-label">Before</p>
+            <ul class="aa-ba-list">
+              <li>Paying $80–150 per lead through Google Ads</li>
+              <li>Not appearing in ChatGPT, Gemini, or Perplexity responses</li>
+              <li>One competitor showing up for every AI query in your market</li>
+              <li>Marketing reports full of impressions and clicks, no pipeline visibility</li>
+              <li>No idea which channels are actually driving booked clients</li>
+            </ul>
+          </div>
+          <div class="aa-ba-card aa-ba-after">
+            <p class="aa-ba-label">After</p>
+            <ul class="aa-ba-list">
+              <li>Showing up in AI recommendations without running ads for it</li>
+              <li>Inbound leads from ChatGPT, Gemini, and Perplexity searches</li>
+              <li>Clear attribution — which channels drive actual booked clients</li>
+              <li>Month-by-month pipeline that's predictable and growing</li>
+              <li>AI working as a referral engine instead of working against you</li>
+            </ul>
           </div>
         </div>
       </div>
@@ -957,8 +903,7 @@ const faqJsonLd = {
     ══════════════════════════════════════ -->
     <section class="aa-section">
       <div class="aa-section-inner">
-        <p class="aa-section-label">Common questions</p>
-        <h2 class="aa-section-title">Common questions</h2>
+        <h2 class="aa-section-title">Questions</h2>
         <dl class="aa-faq-list">
           {faqItems.map(({ q, a }) => (
             <div class="aa-faq-item">
@@ -975,7 +920,6 @@ const faqJsonLd = {
     ══════════════════════════════════════ -->
     <section class="aa-closing">
       <div class="aa-closing-inner">
-        <p class="aa-closing-label">Free · No call required · 12-month revenue plan included</p>
         <h2 class="aa-closing-title">Five minutes to find out what you're missing.</h2>
         <p class="aa-closing-sub">Run the audit, get the plan, decide what to do next. No commitment, no pitch call.</p>
         <div class="aa-closing-cta-group">
@@ -1055,10 +999,8 @@ const faqJsonLd = {
   // ── Wire floating button to audit (not the generic contact modal) ──
   const floatBtn = document.getElementById('ga-float-btn');
   if (floatBtn) {
-    // Remove the data-modal attribute so GapAnalysisModal doesn't intercept it
     floatBtn.removeAttribute('data-modal');
     floatBtn.setAttribute('aria-label', 'Start your free AI audit');
-    // Update label text
     const labelSpan = floatBtn.querySelector('span') || floatBtn.lastChild;
     if (floatBtn.childNodes.length) {
       floatBtn.childNodes.forEach(node => {
