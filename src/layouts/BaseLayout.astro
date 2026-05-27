@@ -218,6 +218,11 @@ const localBusinessJsonLd = {
       .motion-ready #ga-float-btn {
         opacity: 0;
       }
+
+      /* Paid landing page: suppress site nav to remove exit links */
+      body[data-page="ai-audit"] header {
+        display: none !important;
+      }
     </style>
   </head>
   <body class="font-sans antialiased min-h-screen flex flex-col" data-page={bodyPage}>
