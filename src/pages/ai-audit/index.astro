@@ -551,6 +551,12 @@ const faqJsonLd = {
       .aa-closing-phone a { color: rgba(255,255,255,0.55); font-weight: 500; text-decoration: none; transition: color 0.2s; }
       .aa-closing-phone a:hover { color: #fff; }
 
+      /* ── HIDE GLOBAL HEADER & FLOAT BTN ON THIS PAGE ── */
+      /* Suppress the site nav — this is a paid landing page, no exit links */
+      body[data-page="ai-audit"] header { display: none !important; }
+      /* Override the gap-analysis hide rule — we want the float btn here but wired to the audit */
+      body[data-page="ai-audit"] #ga-float-btn { display: flex !important; }
+
       /* ── EXIT INTENT OVERLAY ── */
       .aa-exit-overlay { position: fixed; inset: 0; background: rgba(30,28,24,0.55); z-index: 100; display: flex; align-items: center; justify-content: center; padding: 1.5rem; opacity: 0; pointer-events: none; transition: opacity 0.2s; }
       .aa-exit-overlay.is-visible { opacity: 1; pointer-events: all; }
@@ -689,13 +695,20 @@ const faqJsonLd = {
             OPTIONAL: 3-min overview of how the system works
           </p>
           <div style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;border-radius:0.75rem;border:1px solid #e8e3d8;background:#f2ede4;">
-            <iframe
-              src="https://drive.google.com/file/d/13c0IGxcmy-nyjlWozb2RVvbSIUMAF-iv/preview"
-              title="ZeisWorks Precision Marketing System — How It Works"
-              style="position:absolute;top:0;left:0;width:100%;height:100%;border:none;"
-              allow="autoplay"
-              loading="lazy"
-            ></iframe>
+            <a
+              href="https://drive.google.com/file/d/13c0IGxcmy-nyjlWozb2RVvbSIUMAF-iv/view"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Watch the 3-minute overview (opens in new tab)"
+              style="position:absolute;top:0;left:0;width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:#1a1f2e;text-decoration:none;"
+            >
+              <div style="display:flex;flex-direction:column;align-items:center;gap:0.875rem;">
+                <div style="width:64px;height:64px;background:rgba(99,102,241,0.9);border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 24px rgba(99,102,241,0.45);">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="white" aria-hidden="true"><polygon points="5,3 19,12 5,21"/></svg>
+                </div>
+                <span style="color:rgba(255,255,255,0.8);font-size:0.875rem;font-weight:500;">Watch 3-min overview</span>
+              </div>
+            </a>
           </div>
           <p style="font-size:0.8rem;color:var(--ink-light,#9A9590);margin-top:0.5rem;font-style:italic;">
             You don't need to watch to start the audit — jump straight in below.
@@ -838,17 +851,33 @@ const faqJsonLd = {
       <div class="aa-section-inner">
         <p class="aa-section-label">How this is different</p>
         <h2 class="aa-section-title">Built around revenue, not reports.</h2>
-        <div class="aa-nfe-body">
-          <p>
-            Most agencies audit your business and use the findings to pitch you a retainer.
-            This works differently. The analysis produces a 12-month revenue plan with specific
-            projections and the cost to execute. You keep the plan regardless of what you decide.
-          </p>
-          <p>
-            If the numbers make sense, we can talk about running it together. If they don't,
-            you've spent five minutes and walked away with a clear picture of exactly where
-            you stand — and what it would take to change it.
-          </p>
+        <div style="overflow-x:auto;margin-top:1.75rem;">
+          <table style="width:100%;border-collapse:collapse;font-size:0.9rem;">
+            <thead>
+              <tr style="background:#1a1f2e;color:#fff;">
+                <th style="padding:0.875rem 1.25rem;text-align:left;font-weight:600;border-radius:0.5rem 0 0 0;">Typical Agency</th>
+                <th style="padding:0.875rem 1.25rem;text-align:left;font-weight:600;color:#a5b4fc;border-radius:0 0.5rem 0 0;">ZeisWorks</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="border-bottom:1px solid #e8e3d8;">
+                <td style="padding:0.875rem 1.25rem;color:#5A5650;">Monthly retainer, no matter the results</td>
+                <td style="padding:0.875rem 1.25rem;font-weight:500;color:#1E1C18;">Free audit — you keep the plan regardless</td>
+              </tr>
+              <tr style="border-bottom:1px solid #e8e3d8;background:#faf8f3;">
+                <td style="padding:0.875rem 1.25rem;color:#5A5650;">Reports full of impressions &amp; clicks</td>
+                <td style="padding:0.875rem 1.25rem;font-weight:500;color:#1E1C18;">12-month revenue projections with exact numbers</td>
+              </tr>
+              <tr style="border-bottom:1px solid #e8e3d8;">
+                <td style="padding:0.875rem 1.25rem;color:#5A5650;">Audit used to pitch you a bigger package</td>
+                <td style="padding:0.875rem 1.25rem;font-weight:500;color:#1E1C18;">Findings are yours — no commitment required</td>
+              </tr>
+              <tr style="background:#faf8f3;">
+                <td style="padding:0.875rem 1.25rem;color:#5A5650;">Measures inputs (rankings, traffic)</td>
+                <td style="padding:0.875rem 1.25rem;font-weight:500;color:#1E1C18;">Measures pipeline and new clients acquired</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       </div>
     </section>
@@ -1047,6 +1076,22 @@ const faqJsonLd = {
   document.getElementById('midpage-cta')?.addEventListener('click', openAudit);
   document.getElementById('closing-cta')?.addEventListener('click', openAudit);
   document.getElementById('audit-inline-cta')?.addEventListener('click', openAudit);
+
+  // ── Wire floating button to audit (not the generic contact modal) ──
+  const floatBtn = document.getElementById('ga-float-btn');
+  if (floatBtn) {
+    // Remove the data-modal attribute so GapAnalysisModal doesn't intercept it
+    floatBtn.removeAttribute('data-modal');
+    floatBtn.setAttribute('aria-label', 'Start your free AI audit');
+    // Update label text
+    const labelSpan = floatBtn.querySelector('span') || floatBtn.lastChild;
+    if (floatBtn.childNodes.length) {
+      floatBtn.childNodes.forEach(node => {
+        if (node.nodeType === 3 && node.textContent?.trim()) node.textContent = ' Start free audit';
+      });
+    }
+    floatBtn.addEventListener('click', openAudit);
+  }
 
   // ── Exit intent ──
   (function () {
