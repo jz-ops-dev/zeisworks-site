@@ -222,8 +222,9 @@ const localBusinessJsonLd = {
         opacity: 0;
       }
 
-      /* Paid landing page: suppress site nav to remove exit links */
-      body[data-page="ai-audit"] header {
+      /* Paid landing pages: suppress site nav to remove exit links */
+      body[data-page="ai-audit"] header,
+      body[data-page="revenue-audit"] header {
         display: none !important;
       }
     </style>
