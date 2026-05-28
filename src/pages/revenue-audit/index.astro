@@ -1,0 +1,864 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const faqItems = [
+  {
+    q: "How is this different from other marketing agencies?",
+    a: "Most agencies sell services (PPC, SEO, etc.) and measure inputs (impressions, rankings). We sell revenue outcomes and measure pipeline. The 12-month plan you'll receive includes projected client volume and revenue per month, not just deliverables.",
+  },
+  {
+    q: "How do you actually project revenue?",
+    a: "The audit analyzes 500+ data points across your current marketing, market size, competition, conversion infrastructure, niche economics, and historical performance from comparable campaigns. Projections come from real comparable data, not template assumptions. The methodology is in the report.",
+  },
+  {
+    q: "Is there a contract if I hire you to execute?",
+    a: "No. Month-to-month. Cancel any time. The 12-month plan is yours to keep regardless.",
+  },
+  {
+    q: "Is this really self-run, or is there a person involved?",
+    a: "The audit runs in your browser. You get the report and plan without talking to anyone. A real person reviews the output before it lands in your inbox, and is available if you want to walk through the plan together. Optional, not required.",
+  },
+  {
+    q: "What does this actually cost after the audit?",
+    a: "The audit and plan are free. If you decide to run the plan with us, your investment scales with your revenue goal and market position. The full cost is in the plan you receive, before any commitment. Month-to-month, cancel any time.",
+  },
+  {
+    q: "I already have a marketing agency. Why should I run this?",
+    a: "Because your current agency's incentive is to sell you more services. Ours is to show you what's actually moving revenue. Run the audit, compare the findings against what your current agency reports. If they line up, keep your agency. If they don't, you have data for the conversation.",
+  },
+  {
+    q: "Do I have to get on a call?",
+    a: "No. The audit runs in the browser. You get the report and plan automatically. If you want to talk through the plan, that's optional.",
+  },
+];
+
+const deliverables = [
+  {
+    title: "Marketing gap analysis",
+    desc: "A side-by-side comparison of your current performance against your true potential: organic, paid, conversion, and funnel ROI. Shows exactly where revenue is leaking and why.",
+  },
+  {
+    title: "12-month predictive revenue plan",
+    desc: "Month-by-month projections with exact revenue targets, client volume, cost to acquire a new client, and total budget required. Based on your specific market and revenue goal, not a template.",
+  },
+  {
+    title: "Execution roadmap",
+    desc: "The complete plan to run it, with every tactic tied to a revenue outcome and projected ROI per channel. Run it yourself or hand it to us. Cancel any time.",
+  },
+];
+
+const testimonials = [
+  {
+    quote: "Jack was amazing to work with, which is why he worked for us on a long-term basis. He is thorough, accurate, and timely. I highly recommend him for any sales or operations work.",
+    name: "Ray Updyke",
+    title: "Alpaca VC · 254 hrs logged",
+    chips: ["Collaborative", "Detail Oriented", "Reliable"],
+  },
+  {
+    quote: "I've had the pleasure to work closely with Jack in numerous projects, roles, and challenges. All of which have exceeded my expectations as a company leader.",
+    name: "Alex Zemianek",
+    title: "Owner & CEO, JZ Vacation Rentals",
+    chips: ["Long-term Partnership", "Exceeded Expectations"],
+  },
+  {
+    quote: "Jack was great at communicating, efficient, personable and dependable. He was easy to work with and a great asset to our team. We know he will be the first person we reach out to for similar projects in the future.",
+    name: "Verified Client",
+    title: "Upwork · 5.0",
+    chips: ["Collaborative", "Clear Communicator", "Reliable"],
+  },
+];
+
+const faqJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faqItems.map(({ q, a }) => ({
+    "@type": "Question",
+    name: q,
+    acceptedAnswer: { "@type": "Answer", text: a },
+  })),
+};
+---
+
+<BaseLayout
+  title="Free 5-Minute Revenue Audit for Service Businesses | zeisWorks"
+  description="See where revenue is leaking and get a 12-month plan to fix it. Self-run audit, 5 minutes, no contract, cancel anytime. Real human in the loop. Free."
+  ogTitle="See Where Revenue Is Leaking. Get the 12-Month Plan to Fix It."
+  ogDescription="See where revenue is leaking and get a 12-month plan to fix it. Self-run audit, 5 minutes, no contract, cancel anytime. Real human in the loop. Free."
+  canonicalUrl="https://zeisworks.com/revenue-audit/"
+  bodyPage="revenue-audit"
+>
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify(faqJsonLd)} />
+
+    <!-- OpenAI Ads pixel -->
+    <script>
+      !function(w, d, s, u) {
+        if (w.oaiq) return;
+        var q = function() { q.q.push(arguments); };
+        q.q = [];
+        w.oaiq = q;
+        var j = d.createElement(s);
+        j.async = 1;
+        j.src = u;
+        var f = d.getElementsByTagName(s)[0];
+        f.parentNode.insertBefore(j, f);
+      }(window, document, "script", "https://bzrcdn.openai.com/sdk/oaiq.min.js");
+
+      oaiq("init", {
+        pixelId: "RRQqeHMx2HbAnFHRxWWxQM",
+        debug: true
+      });
+    </script>
+
+    <style>
+      .aa-page { font-size: 1.0625rem; line-height: 1.75; }
+
+      /* ── HERO ── */
+      .aa-hero {
+        background: #1a1f2e;
+        padding: 5.5rem 1.5rem 5rem;
+        position: relative;
+        overflow: hidden;
+      }
+      .aa-hero::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(99,102,241,0.18) 0%, transparent 70%);
+        pointer-events: none;
+      }
+      .aa-hero-inner {
+        max-width: 760px;
+        margin: 0 auto;
+        text-align: center;
+        position: relative;
+        z-index: 1;
+      }
+      .aa-eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        font-size: 0.75rem;
+        font-weight: 600;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: #a5b4fc;
+        margin-bottom: 1.5rem;
+        background: rgba(99,102,241,0.12);
+        border: 1px solid rgba(99,102,241,0.25);
+        padding: 0.35rem 0.875rem;
+        border-radius: 999px;
+      }
+      .aa-h1 {
+        font-family: theme('fontFamily.serif');
+        font-size: clamp(2.1rem, 5vw, 3.25rem);
+        font-weight: 700;
+        line-height: 1.15;
+        letter-spacing: -0.025em;
+        color: #fff;
+        margin-bottom: 1.375rem;
+      }
+      .aa-h1 em {
+        font-style: normal;
+        color: #a5b4fc;
+      }
+      .aa-subhead {
+        font-size: 1.125rem;
+        color: rgba(255,255,255,0.7);
+        max-width: 620px;
+        margin: 0 auto 2.5rem;
+        line-height: 1.75;
+      }
+      .aa-cta-group {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.875rem;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 1.25rem;
+      }
+      .aa-btn-primary {
+        background: #6366f1;
+        color: #fff;
+        padding: 1rem 2.25rem;
+        border-radius: 0.625rem;
+        font-size: 1.0625rem;
+        font-weight: 600;
+        text-decoration: none;
+        transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+        display: inline-block;
+        border: none;
+        cursor: pointer;
+        font-family: inherit;
+        box-shadow: 0 4px 24px rgba(99,102,241,0.35);
+      }
+      .aa-btn-primary:hover {
+        background: #4f46e5;
+        transform: translateY(-2px);
+        box-shadow: 0 8px 32px rgba(99,102,241,0.45);
+      }
+      .aa-btn-primary:focus-visible {
+        outline: 2px solid #a5b4fc;
+        outline-offset: 3px;
+      }
+      .aa-hero-note {
+        font-size: 0.8125rem;
+        color: rgba(255,255,255,0.35);
+        margin-top: 0.375rem;
+      }
+
+      /* ── INDUSTRY TICKER ── */
+      .aa-industry-strip {
+        background: #13161f;
+        border-top: 1px solid rgba(255,255,255,0.06);
+        border-bottom: 1px solid rgba(255,255,255,0.06);
+        padding: 0.875rem 1.5rem;
+        text-align: center;
+      }
+      .aa-industry-inner {
+        font-size: 0.8125rem;
+        color: rgba(255,255,255,0.4);
+        letter-spacing: 0.02em;
+      }
+
+      /* ── TRUST STRIP ── */
+      .aa-trust-strip {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+        gap: 0.375rem 1.25rem;
+        padding: 0.875rem 1.5rem;
+        background: var(--cream);
+        border-bottom: 1px solid #e8e3d8;
+        font-size: 0.8125rem;
+        font-weight: 500;
+        color: theme('colors.ink-mid');
+      }
+      .aa-trust-sep { color: theme('colors.ink-light'); }
+
+      /* ── SECTION BASE ── */
+      .aa-section { padding: 4.5rem 1.5rem; }
+      .aa-section-inner { max-width: 720px; margin: 0 auto; }
+      .aa-section-title {
+        font-family: theme('fontFamily.serif');
+        font-size: clamp(1.5rem, 3vw, 2.125rem);
+        font-weight: 700;
+        color: theme('colors.ink');
+        line-height: 1.25;
+        letter-spacing: -0.02em;
+        margin-bottom: 0.75rem;
+      }
+      .aa-section-body {
+        color: theme('colors.ink-mid');
+        line-height: 1.8;
+        max-width: 580px;
+        margin-bottom: 2rem;
+      }
+
+      /* ── EXAMPLE OUTPUT CARDS ── */
+      .aa-examples-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin: 1.75rem 0 2rem; }
+      @media (max-width: 640px) { .aa-examples-grid { grid-template-columns: 1fr; } }
+      .aa-example-card { background: #fff; border: 1px solid #e8e3d8; border-radius: 0.875rem; padding: 1.25rem 1.5rem; }
+      .aa-example-roi { display: flex; align-items: center; gap: 0.625rem; margin-bottom: 1rem; }
+      .aa-example-roi-block { display: flex; flex-direction: column; gap: 0.125rem; }
+      .aa-example-roi-num { font-family: theme('fontFamily.serif'); font-size: 1.625rem; font-weight: 700; line-height: 1; }
+      .aa-example-roi-num.current { color: theme('colors.ink-light'); }
+      .aa-example-roi-num.projected { color: #6366f1; }
+      .aa-example-roi-label { font-size: 0.6875rem; color: theme('colors.ink-light'); letter-spacing: 0.03em; }
+      .aa-example-arrow { color: #e8e3d8; font-size: 1.125rem; flex-shrink: 0; margin-top: -0.5rem; }
+      .aa-example-target { font-size: 0.8125rem; color: theme('colors.ink-mid'); border-top: 1px solid #f2ede4; padding-top: 0.75rem; }
+      .aa-example-target strong { color: theme('colors.ink'); font-weight: 600; }
+
+      /* ── VIDEO ── */
+      .aa-video-wrap {
+        margin: 2rem 0 1.75rem;
+        border-radius: 0.875rem;
+        overflow: hidden;
+        border: 1px solid #e8e3d8;
+        background: #1a1f2e;
+        position: relative;
+        padding-bottom: 56.25%;
+        height: 0;
+      }
+      .aa-video-wrap iframe {
+        position: absolute;
+        top: 0; left: 0;
+        width: 100%; height: 100%;
+        border: none;
+      }
+
+      /* ── AUDIT SECTION ── */
+      .aa-audit-section {
+        background: #f2ede4;
+        border-top: 1px solid #e8e3d8;
+        border-bottom: 1px solid #e8e3d8;
+      }
+
+      /* ── DELIVERABLES ── */
+      .aa-deliverables-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1rem;
+        margin-top: 2.5rem;
+      }
+      @media (max-width: 640px) { .aa-deliverables-grid { grid-template-columns: 1fr; } }
+      .aa-deliverable-card {
+        background: #f2ede4;
+        border: 1px solid #e8e3d8;
+        border-radius: 0.875rem;
+        padding: 1.5rem;
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+      .aa-deliverable-title {
+        font-family: theme('fontFamily.serif');
+        font-size: 1rem;
+        font-weight: 600;
+        color: theme('colors.ink');
+        line-height: 1.3;
+      }
+      .aa-deliverable-desc {
+        font-size: 0.875rem;
+        color: theme('colors.ink-mid');
+        line-height: 1.65;
+        margin: 0;
+      }
+      .aa-deliverables-note {
+        margin-top: 1.5rem;
+        text-align: center;
+        font-size: 0.875rem;
+        font-weight: 500;
+        color: theme('colors.ink-mid');
+      }
+
+      /* ── BEFORE / AFTER ── */
+      .aa-ba { background: #f2ede4; border-top: 1px solid #e8e3d8; border-bottom: 1px solid #e8e3d8; }
+      .aa-ba-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; margin-top: 2rem; }
+      @media (max-width: 620px) { .aa-ba-grid { grid-template-columns: 1fr; } }
+      .aa-ba-card { border-radius: 0.875rem; padding: 1.75rem; }
+      .aa-ba-before { background: #1a1f2e; }
+      .aa-ba-after { background: #fff; border: 1px solid #e8e3d8; }
+      .aa-ba-label {
+        font-size: 0.7rem;
+        font-weight: 700;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        margin-bottom: 1.25rem;
+      }
+      .aa-ba-before .aa-ba-label { color: rgba(255,255,255,0.35); }
+      .aa-ba-after .aa-ba-label { color: theme('colors.orange'); }
+      .aa-ba-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 0.875rem; }
+      .aa-ba-list li { display: flex; align-items: flex-start; gap: 0.75rem; font-size: 0.9rem; line-height: 1.55; }
+      .aa-ba-before .aa-ba-list li { color: rgba(255,255,255,0.65); }
+      .aa-ba-after .aa-ba-list li { color: theme('colors.ink-mid'); }
+      .aa-ba-before .aa-ba-list li::before { content: '✕'; color: rgba(255,255,255,0.25); font-size: 0.8rem; flex-shrink: 0; margin-top: 0.15em; }
+      .aa-ba-after .aa-ba-list li::before { content: '✓'; color: #6366f1; font-weight: 700; font-size: 0.85rem; flex-shrink: 0; margin-top: 0.1em; }
+
+      /* ── PROOF BAR ── */
+      .aa-proof-bar { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.5rem 1.5rem; padding: 1rem 1.5rem; background: rgba(242,238,228,0.5); border-top: 1px solid #e8e3d8; border-bottom: 1px solid #e8e3d8; font-size: 0.8125rem; font-weight: 500; color: theme('colors.ink-mid'); text-align: center; }
+
+      /* ── TESTIMONIALS ── */
+      .aa-testimonials-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-top: 2.5rem; }
+      @media (max-width: 700px) { .aa-testimonials-grid { grid-template-columns: 1fr; } }
+      .aa-tcard { background: #fff; border: 1px solid #e8e3d8; border-radius: 0.875rem; padding: 1.5rem; display: flex; flex-direction: column; }
+      .aa-tcard-stars { color: theme('colors.orange'); font-size: 0.875rem; letter-spacing: 0.05em; margin-bottom: 0.875rem; }
+      .aa-tcard-quote { font-family: theme('fontFamily.serif'); font-style: italic; font-size: 0.9375rem; color: theme('colors.ink'); line-height: 1.75; flex: 1; margin: 0; }
+      .aa-tcard-divider { border-top: 1px solid #e8e3d8; margin: 1rem 0; }
+      .aa-tcard-name { font-weight: 600; color: theme('colors.ink'); font-size: 0.875rem; margin: 0; }
+      .aa-tcard-title { font-size: 0.75rem; color: theme('colors.ink-light'); margin: 0.125rem 0 0.5rem; }
+      .aa-tcard-chips { display: flex; flex-wrap: wrap; gap: 0.375rem; }
+      .aa-chip { font-size: 0.7rem; background: #f2ede4; color: theme('colors.ink-mid'); padding: 0.2rem 0.625rem; border-radius: 999px; }
+
+      /* ── FAQ ── */
+      .aa-faq-list { margin-top: 2.5rem; border-top: 1px solid #e8e3d8; }
+      .aa-faq-item { padding: 1.375rem 0; border-bottom: 1px solid #e8e3d8; }
+      .aa-faq-q { font-size: 0.9375rem; font-weight: 600; color: theme('colors.ink'); margin-bottom: 0.5rem; line-height: 1.4; }
+      .aa-faq-a { font-size: 0.9rem; color: theme('colors.ink-mid'); line-height: 1.75; margin: 0; }
+
+      /* ── MID-PAGE CTA BAND ── */
+      .aa-midcta {
+        background: #1a1f2e;
+        padding: 3.5rem 1.5rem;
+        text-align: center;
+      }
+      .aa-midcta-title {
+        font-family: theme('fontFamily.serif');
+        font-size: clamp(1.5rem, 3vw, 2rem);
+        font-weight: 700;
+        color: #fff;
+        margin-bottom: 0.75rem;
+        line-height: 1.25;
+      }
+      .aa-midcta-sub {
+        font-size: 1rem;
+        color: rgba(255,255,255,0.6);
+        margin-bottom: 1.75rem;
+        line-height: 1.7;
+      }
+
+      /* ── CLOSING CTA ── */
+      .aa-closing { background: #1a1f2e; padding: 5.5rem 1.5rem; position: relative; overflow: hidden; }
+      .aa-closing::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 70% 50% at 50% 100%, rgba(99,102,241,0.2) 0%, transparent 70%); pointer-events: none; }
+      .aa-closing-inner { max-width: 640px; margin: 0 auto; text-align: center; position: relative; z-index: 1; }
+      .aa-closing-title { font-family: theme('fontFamily.serif'); font-size: clamp(1.875rem, 3.5vw, 2.625rem); font-weight: 700; color: #fff; line-height: 1.2; letter-spacing: -0.02em; margin-bottom: 0.875rem; }
+      .aa-closing-sub { font-size: 1rem; color: rgba(255,255,255,0.6); line-height: 1.75; margin-bottom: 2.25rem; }
+      .aa-closing-cta-group { display: flex; flex-wrap: wrap; gap: 0.875rem; justify-content: center; align-items: center; }
+      .aa-btn-closing { background: #6366f1; color: #fff; padding: 1rem 2.25rem; border-radius: 0.625rem; font-size: 1.0625rem; font-weight: 600; transition: background 0.2s, transform 0.15s, box-shadow 0.2s; border: none; cursor: pointer; font-family: inherit; box-shadow: 0 4px 24px rgba(99,102,241,0.35); }
+      .aa-btn-closing:hover { background: #4f46e5; transform: translateY(-2px); box-shadow: 0 8px 32px rgba(99,102,241,0.45); }
+      .aa-btn-closing:focus-visible { outline: 2px solid #a5b4fc; outline-offset: 3px; }
+      .aa-closing-phone { margin-top: 1.25rem; font-size: 0.875rem; color: rgba(255,255,255,0.35); }
+      .aa-closing-phone a { color: rgba(255,255,255,0.55); font-weight: 500; text-decoration: none; transition: color 0.2s; }
+      .aa-closing-phone a:hover { color: #fff; }
+
+      /* ── HIDE GLOBAL HEADER & SHOW FLOAT BTN ON THIS PAGE ── */
+      body[data-page="revenue-audit"] header { display: none !important; }
+      body[data-page="revenue-audit"] #ga-float-btn { display: flex !important; }
+
+      /* ── EXIT INTENT OVERLAY ── */
+      .aa-exit-overlay { position: fixed; inset: 0; background: rgba(30,28,24,0.55); z-index: 100; display: flex; align-items: center; justify-content: center; padding: 1.5rem; opacity: 0; pointer-events: none; transition: opacity 0.2s; }
+      .aa-exit-overlay.is-visible { opacity: 1; pointer-events: all; }
+      .aa-exit-modal { background: #fff; border-radius: 1rem; padding: 2.5rem 2rem; max-width: 420px; width: 100%; text-align: center; box-shadow: 0 20px 60px rgba(30,28,24,0.18); position: relative; }
+      .aa-exit-close { position: absolute; top: 1rem; right: 1rem; background: none; border: none; cursor: pointer; color: theme('colors.ink-light'); font-size: 1.25rem; line-height: 1; padding: 0.25rem; }
+      .aa-exit-close:hover { color: theme('colors.ink'); }
+      .aa-exit-heading { font-family: theme('fontFamily.serif'); font-size: 1.375rem; font-weight: 700; color: theme('colors.ink'); line-height: 1.3; margin-bottom: 0.75rem; }
+      .aa-exit-body { font-size: 0.875rem; color: theme('colors.ink-mid'); line-height: 1.7; margin-bottom: 1.5rem; }
+      .aa-exit-btn { display: block; width: 100%; background: #6366f1; color: #fff; border: none; padding: 0.875rem 1.5rem; border-radius: 0.625rem; font-size: 0.9375rem; font-weight: 500; cursor: pointer; font-family: inherit; transition: background 0.2s; margin-bottom: 0.75rem; box-shadow: 0 4px 20px rgba(99,102,241,0.35); }
+      .aa-exit-btn:hover { background: #4f46e5; }
+      .aa-exit-dismiss { font-size: 0.8125rem; color: theme('colors.ink-light'); text-decoration: none; cursor: pointer; background: none; border: none; font-family: inherit; }
+      .aa-exit-dismiss:hover { color: theme('colors.ink-mid'); }
+    </style>
+  </Fragment>
+
+  <div class="aa-page">
+
+    <!-- ══════════════════════════════════════
+         SECTION 1 — HERO
+    ══════════════════════════════════════ -->
+    <section class="aa-hero" id="top">
+      <div class="aa-hero-inner">
+        <span class="aa-eyebrow">Free Revenue Audit · <span id="aa-eyebrow-location">Service &amp; Professional Businesses</span></span>
+        <h1 class="aa-h1">
+          See where revenue is leaking.<br>
+          <em>Get the 12-month plan to fix it.</em>
+        </h1>
+        <p class="aa-subhead">
+          Run a 5-minute audit on your service business. Walk away with a gap analysis and a month-by-month revenue plan you keep, whether you hire us or not. No contract. Cancel anytime. Real human in the loop.
+        </p>
+        <div class="aa-cta-group">
+          <button type="button" class="aa-btn-primary" id="hero-cta">
+            Start my free audit →
+          </button>
+        </div>
+        <p class="aa-hero-note">5 minutes. No call required. No contract.</p>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════
+         INDUSTRY STRIP
+    ══════════════════════════════════════ -->
+    <div class="aa-industry-strip">
+      <div class="aa-industry-inner">If you have a service business with customers and a website, we can help.</div>
+    </div>
+
+    <!-- ══════════════════════════════════════
+         TRUST STRIP
+    ══════════════════════════════════════ -->
+    <div class="aa-trust-strip">
+      <span>Trusted by service businesses across the US</span>
+      <span class="aa-trust-sep" aria-hidden="true">·</span>
+      <span>Free 12-month revenue plan included</span>
+      <span class="aa-trust-sep" aria-hidden="true">·</span>
+      <span>Results in your browser</span>
+    </div>
+
+    <!-- ══════════════════════════════════════
+         SECTION 2 — THE AUDIT (VIDEO + CTA)
+    ══════════════════════════════════════ -->
+    <section class="aa-section aa-audit-section" id="audit">
+      <div class="aa-section-inner">
+        <h2 class="aa-section-title">The 5-minute marketing gap analysis</h2>
+        <p class="aa-section-body" style="margin-bottom:0.375rem;">
+          Answer a few questions, including what you actually want to make. The audit is built around your revenue goal, not projections on traffic.
+        </p>
+        <p style="font-size:0.875rem;color:#9A9590;margin-bottom:1.5rem;line-height:1.6;">
+          It pulls from your website, Google Business profile, areas served, services offered, how often inquiries convert, and how quickly you follow up. From getting found to getting paid, the full funnel.
+        </p>
+
+        <div class="aa-examples-grid">
+          <div class="aa-example-card">
+            <div class="aa-example-roi">
+              <div class="aa-example-roi-block">
+                <span class="aa-example-roi-num current">1.4x</span>
+                <span class="aa-example-roi-label">Current ROI</span>
+              </div>
+              <span class="aa-example-arrow">→</span>
+              <div class="aa-example-roi-block">
+                <span class="aa-example-roi-num projected">2.9x</span>
+                <span class="aa-example-roi-label">Projected ROI</span>
+              </div>
+            </div>
+            <p class="aa-example-target">Revenue target: <strong>+$10,000/mo</strong></p>
+          </div>
+          <div class="aa-example-card">
+            <div class="aa-example-roi">
+              <div class="aa-example-roi-block">
+                <span class="aa-example-roi-num current">5.4x</span>
+                <span class="aa-example-roi-label">Current ROI</span>
+              </div>
+              <span class="aa-example-arrow">→</span>
+              <div class="aa-example-roi-block">
+                <span class="aa-example-roi-num projected">10.6x</span>
+                <span class="aa-example-roi-label">Projected ROI</span>
+              </div>
+            </div>
+            <p class="aa-example-target">Revenue target: <strong>+$10,000/mo</strong></p>
+          </div>
+          <div class="aa-example-card">
+            <div class="aa-example-roi">
+              <div class="aa-example-roi-block">
+                <span class="aa-example-roi-num current">16.9x</span>
+                <span class="aa-example-roi-label">Current ROI</span>
+              </div>
+              <span class="aa-example-arrow">→</span>
+              <div class="aa-example-roi-block">
+                <span class="aa-example-roi-num projected">30.7x</span>
+                <span class="aa-example-roi-label">Projected ROI</span>
+              </div>
+            </div>
+            <p class="aa-example-target">Revenue target: <strong>+$25,000/mo</strong></p>
+          </div>
+        </div>
+
+        <!-- Audit CTA -->
+        <div style="text-align:center;padding:2rem 1.5rem;background:#fff;border:1px solid #e8e3d8;border-radius:0.875rem;margin-bottom:2rem;">
+          <button type="button" class="aa-btn-primary" id="audit-inline-cta" style="font-size:1rem;padding:0.875rem 2rem;">Start my free audit →</button>
+          <p style="font-size:0.8125rem;color:#9A9590;margin-top:0.875rem;margin-bottom:0;">Takes 5 minutes. Free. No contract.</p>
+        </div>
+
+        <!-- Video preview -->
+        <p style="font-size:0.8125rem;font-weight:600;color:#5A5650;margin-bottom:0.625rem;letter-spacing:0.03em;text-transform:uppercase;">Want to see what you'll get first? (3 min, not required)</p>
+        <div class="aa-video-wrap">
+          <iframe
+            src="https://drive.google.com/file/d/13c0IGxcmy-nyjlWozb2RVvbSIUMAF-iv/preview"
+            title="Sample audit output walkthrough"
+            allow="autoplay"
+            loading="lazy"
+          ></iframe>
+        </div>
+        <p style="font-size:0.8rem;color:#9A9590;margin-top:0.625rem;">A walkthrough of a real audit result — the gap analysis and revenue plan you'll receive.</p>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════
+         SECTION 3 — WHAT YOU GET
+    ══════════════════════════════════════ -->
+    <section class="aa-section">
+      <div class="aa-section-inner">
+        <h2 class="aa-section-title">What you get from the audit.</h2>
+        <div class="aa-deliverables-grid">
+          {deliverables.map((d) => (
+            <div class="aa-deliverable-card">
+              <p class="aa-deliverable-title">{d.title}</p>
+              <p class="aa-deliverable-desc">{d.desc}</p>
+            </div>
+          ))}
+        </div>
+        <p class="aa-deliverables-note">All three, free.</p>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════
+         SECTION 4 — BEFORE / AFTER
+    ══════════════════════════════════════ -->
+    <section class="aa-section aa-ba">
+      <div class="aa-section-inner">
+        <h2 class="aa-section-title">What changes when you have the plan.</h2>
+        <div class="aa-ba-grid">
+          <div class="aa-ba-card aa-ba-before">
+            <p class="aa-ba-label">Before</p>
+            <ul class="aa-ba-list">
+              <li>Spending money on ads with no clear ROI per channel</li>
+              <li>Reports full of impressions, clicks, and rankings, but no revenue answer</li>
+              <li>No clear number for what it costs you to acquire a new client</li>
+              <li>Competitors growing faster and you can't pinpoint why</li>
+              <li>Month-to-month pipeline feels like guesswork</li>
+            </ul>
+          </div>
+          <div class="aa-ba-card aa-ba-after">
+            <p class="aa-ba-label">After</p>
+            <ul class="aa-ba-list">
+              <li>Every channel has a projected ROI and a revenue target tied to it</li>
+              <li>Month-by-month pipeline with exact client volume and acquisition cost</li>
+              <li>Clear attribution: you know which channels drive booked clients</li>
+              <li>A plan you can run yourself, or hand to a team to execute</li>
+              <li>Cancel any time. The plan is yours either way.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════
+         CTA REINFORCER BLOCK
+    ══════════════════════════════════════ -->
+    <section class="aa-midcta">
+      <div style="max-width:600px;margin:0 auto;">
+        <p class="aa-midcta-title">Find your gaps before your competitor finds theirs.</p>
+        <p class="aa-midcta-sub">Free. 5 minutes. No contract.</p>
+        <button type="button" class="aa-btn-closing" id="midpage-cta">
+          Start my free audit →
+        </button>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════
+         SECTION 6 — HOW THIS IS DIFFERENT
+    ══════════════════════════════════════ -->
+    <section class="aa-section" style="background:#f2ede4;border-top:1px solid #e8e3d8;border-bottom:1px solid #e8e3d8;">
+      <div class="aa-section-inner">
+        <h2 class="aa-section-title">How this is different.</h2>
+        <div style="overflow-x:auto;margin-top:1.75rem;">
+          <table style="width:100%;border-collapse:collapse;font-size:0.9rem;">
+            <thead>
+              <tr style="background:#1a1f2e;color:#fff;">
+                <th style="padding:0.875rem 1.25rem;text-align:left;font-weight:600;border-radius:0.5rem 0 0 0;">Typical Agency</th>
+                <th style="padding:0.875rem 1.25rem;text-align:left;font-weight:600;color:#a5b4fc;border-radius:0 0.5rem 0 0;">ZeisWorks</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr style="border-bottom:1px solid #e8e3d8;">
+                <td style="padding:0.875rem 1.25rem;color:#5A5650;">Monthly retainer, locked in for 6 to 12 months</td>
+                <td style="padding:0.875rem 1.25rem;font-weight:500;color:#1E1C18;">Free audit. Cancel any time if you hire us to execute.</td>
+              </tr>
+              <tr style="border-bottom:1px solid #e8e3d8;background:#faf8f3;">
+                <td style="padding:0.875rem 1.25rem;color:#5A5650;">Reports full of impressions &amp; clicks</td>
+                <td style="padding:0.875rem 1.25rem;font-weight:500;color:#1E1C18;">12-month revenue projections with exact numbers</td>
+              </tr>
+              <tr style="border-bottom:1px solid #e8e3d8;">
+                <td style="padding:0.875rem 1.25rem;color:#5A5650;">Audit used to pitch you a bigger package</td>
+                <td style="padding:0.875rem 1.25rem;font-weight:500;color:#1E1C18;">Findings are yours, no commitment required</td>
+              </tr>
+              <tr style="background:#faf8f3;">
+                <td style="padding:0.875rem 1.25rem;color:#5A5650;">Measures inputs (rankings, traffic)</td>
+                <td style="padding:0.875rem 1.25rem;font-weight:500;color:#1E1C18;">Measures pipeline and new clients acquired</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════
+         SECTION 7 — TESTIMONIALS
+    ══════════════════════════════════════ -->
+    <section class="aa-section" style="padding-top: 0;">
+      <div class="aa-proof-bar">
+        <span>&#9733;&#9733;&#9733;&#9733;&#9733;&nbsp; 5.0 on Upwork</span>
+        <span>Top Rated &nbsp;·&nbsp; 100% Job Success</span>
+        <span>Trusted by businesses across the US</span>
+      </div>
+      <div class="aa-section-inner" style="padding-top: 3rem;">
+        <h2 class="aa-section-title">What clients say.</h2>
+        <div class="aa-testimonials-grid">
+          {testimonials.map((t) => (
+            <div class="aa-tcard">
+              <div class="aa-tcard-stars" aria-label="5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+              <p class="aa-tcard-quote">&ldquo;{t.quote}&rdquo;</p>
+              <div class="aa-tcard-divider" aria-hidden="true"></div>
+              <p class="aa-tcard-name">{t.name}</p>
+              <p class="aa-tcard-title">{t.title}</p>
+              <div class="aa-tcard-chips">
+                {t.chips.map((chip) => (
+                  <span class="aa-chip">{chip}</span>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════
+         SECTION 8 — FAQ
+    ══════════════════════════════════════ -->
+    <section class="aa-section" style="background:#f2ede4;border-top:1px solid #e8e3d8;border-bottom:1px solid #e8e3d8;">
+      <div class="aa-section-inner">
+        <h2 class="aa-section-title">Questions</h2>
+        <dl class="aa-faq-list">
+          {faqItems.map(({ q, a }) => (
+            <div class="aa-faq-item">
+              <dt class="aa-faq-q">{q}</dt>
+              <dd class="aa-faq-a">{a}</dd>
+            </div>
+          ))}
+        </dl>
+      </div>
+    </section>
+
+    <!-- ══════════════════════════════════════
+         SECTION 9 — CLOSING CTA
+    ══════════════════════════════════════ -->
+    <section class="aa-closing">
+      <div class="aa-closing-inner">
+        <h2 class="aa-closing-title">Five minutes to see what you're missing.</h2>
+        <p class="aa-closing-sub">Run the audit, get the plan, decide what to do next. No contract. No pitch call.</p>
+        <div class="aa-closing-cta-group">
+          <button type="button" class="aa-btn-closing" id="closing-cta">
+            Start my free audit →
+          </button>
+        </div>
+        <p class="aa-closing-phone">
+          Or call <a href="tel:+17206502447" aria-label="Call (720) 650-2447">(720) 650-2447</a>
+        </p>
+      </div>
+    </section>
+
+  </div>
+
+  <!-- ══════════════════════════════════════
+       EXIT INTENT OVERLAY
+  ══════════════════════════════════════ -->
+  <div id="aa-exit-overlay" class="aa-exit-overlay" role="dialog" aria-modal="true" aria-labelledby="aa-exit-heading">
+    <div class="aa-exit-modal">
+      <button class="aa-exit-close" id="aa-exit-close" aria-label="Close">✕</button>
+      <h2 class="aa-exit-heading" id="aa-exit-heading">Before you go, run the audit instead.</h2>
+      <p class="aa-exit-body">
+        Takes 5 minutes. You'll have the gap analysis and 12-month plan before you finish your coffee. Free. No contract.
+      </p>
+      <button type="button" class="aa-exit-btn" id="aa-exit-audit-btn">
+        Start my free audit →
+      </button>
+      <button type="button" class="aa-exit-dismiss" id="aa-exit-dismiss">No thanks</button>
+    </div>
+  </div>
+
+</BaseLayout>
+
+<script>
+  // ── UTM capture ──
+  (function () {
+    const params = new URLSearchParams(window.location.search);
+    const keys = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term'];
+    const utm: Record<string, string> = {};
+    keys.forEach(k => { const v = params.get(k); if (v) utm[k] = v; });
+    if (Object.keys(utm).length) sessionStorage.setItem('zw_utm', JSON.stringify(utm));
+  })();
+
+  // ── GA4: page view ──
+  if (typeof gtag !== 'undefined') gtag('event', 'revenue_audit_page_view');
+
+  // ── GA4: phone click ──
+  document.querySelectorAll<HTMLAnchorElement>('a[href^="tel:"]').forEach(el => {
+    el.addEventListener('click', () => {
+      if (typeof gtag !== 'undefined') gtag('event', 'revenue_audit_phone_click');
+    });
+  });
+
+  // ── Audit popup ──
+  function openAudit() {
+    const w = 800, h = 700;
+    const left = Math.round(window.screenX + (window.outerWidth - w) / 2);
+    const top = Math.round(window.screenY + (window.outerHeight - h) / 2);
+    window.open(
+      'https://app.mplannerpro.com/ab3e6ce00d/chat?pg=ff84446e91',
+      'zw-audit',
+      `width=${w},height=${h},left=${left},top=${top},resizable=yes,scrollbars=yes`
+    );
+    if (typeof oaiq !== 'undefined') {
+      oaiq("measure", "registration_completed", { type: "customer_action", amount: 0, currency: "USD" });
+    }
+  }
+
+  document.getElementById('hero-cta')?.addEventListener('click', openAudit);
+  document.getElementById('midpage-cta')?.addEventListener('click', openAudit);
+  document.getElementById('closing-cta')?.addEventListener('click', openAudit);
+  document.getElementById('audit-inline-cta')?.addEventListener('click', openAudit);
+
+  // ── Wire floating button to audit (not the generic contact modal) ──
+  const floatBtn = document.getElementById('ga-float-btn');
+  if (floatBtn) {
+    floatBtn.removeAttribute('data-modal');
+    floatBtn.setAttribute('aria-label', 'Start your free revenue audit');
+    floatBtn.childNodes.forEach(node => {
+      if (node.nodeType === 3 && node.textContent?.trim()) node.textContent = ' Start free audit';
+    });
+    floatBtn.addEventListener('click', openAudit);
+  }
+
+  // ── Exit intent ──
+  (function () {
+    const STORAGE_KEY = 'zw_exit_shown';
+    if (sessionStorage.getItem(STORAGE_KEY)) return;
+    const overlay = document.getElementById('aa-exit-overlay');
+    const closeBtn = document.getElementById('aa-exit-close');
+    const dismissBtn = document.getElementById('aa-exit-dismiss');
+    const auditBtn = document.getElementById('aa-exit-audit-btn');
+    if (!overlay) return;
+
+    function showOverlay() {
+      if (sessionStorage.getItem(STORAGE_KEY)) return;
+      sessionStorage.setItem(STORAGE_KEY, '1');
+      overlay.classList.add('is-visible');
+      closeBtn?.focus();
+    }
+    function hideOverlay() { overlay.classList.remove('is-visible'); }
+
+    document.addEventListener('mouseleave', (e) => { if (e.clientY <= 0) showOverlay(); });
+    const mobileTimer = setTimeout(showOverlay, 45000);
+    document.addEventListener('touchstart', () => clearTimeout(mobileTimer), { once: true });
+
+    closeBtn?.addEventListener('click', hideOverlay);
+    dismissBtn?.addEventListener('click', hideOverlay);
+    overlay.addEventListener('click', (e) => { if (e.target === overlay) hideOverlay(); });
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') hideOverlay(); });
+    auditBtn?.addEventListener('click', () => { hideOverlay(); openAudit(); });
+  })();
+</script>
+
+<!-- Geo-personalization -->
+<script>
+(function () {
+  const CITY_KEY = 'zw_city';
+
+  async function getCity() {
+    const cached = sessionStorage.getItem(CITY_KEY);
+    if (cached) return cached;
+    try {
+      const res = await fetch('https://ipapi.co/json/');
+      const data = await res.json();
+      const city = data.city || '';
+      if (city) sessionStorage.setItem(CITY_KEY, city);
+      return city;
+    } catch {
+      return '';
+    }
+  }
+
+  getCity().then(function (city) {
+    if (!city) return;
+    const eyebrow = document.getElementById('aa-eyebrow-location');
+    if (eyebrow) eyebrow.textContent = city + ' Service Businesses';
+  });
+})();
+</script>
+
+<!-- Meta Pixel: track StartGapAnalysis on CTA clicks -->
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    ['hero-cta', 'midpage-cta', 'closing-cta', 'audit-inline-cta'].forEach(function(id) {
+      var btn = document.getElementById(id);
+      if (btn) {
+        btn.addEventListener('click', function() {
+          if (typeof fbq === 'function') {
+            fbq('trackCustom', 'StartGapAnalysis', {
+              content_name: 'revenue-audit',
+              content_category: 'zeisworks_form',
+            });
+          }
+        });
+      }
+    });
+  });
+</script>

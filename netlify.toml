@@ -6,6 +6,16 @@
   NODE_VERSION = "20"
 
 [[redirects]]
+  from = "/ai-audit"
+  to = "/revenue-audit"
+  status = 301
+
+[[redirects]]
+  from = "/ai-audit/"
+  to = "/revenue-audit/"
+  status = 301
+
+[[redirects]]
   from = "/stack"
   to = "/what-i-use"
   status = 301
