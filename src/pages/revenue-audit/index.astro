@@ -438,7 +438,7 @@ const faqJsonLd = {
     ══════════════════════════════════════ -->
     <section class="aa-hero" id="top">
       <div class="aa-hero-inner">
-        <span class="aa-eyebrow">Free Revenue Audit · <span id="aa-eyebrow-location">Service &amp; Professional Businesses</span></span>
+        <span class="aa-eyebrow">Free Revenue Audit · <span id="aa-eyebrow-location">Water Damage &amp; Garage Door Operators</span></span>
         <h1 class="aa-h1">
           See where revenue is leaking.<br>
           <em>Get the 12-month plan to fix it.</em>
@@ -459,14 +459,14 @@ const faqJsonLd = {
          INDUSTRY STRIP
     ══════════════════════════════════════ -->
     <div class="aa-industry-strip">
-      <div class="aa-industry-inner">If you have a service business with customers and a website, we can help.</div>
+      <div class="aa-industry-inner">Built for water damage restoration and garage door operators doing $500K–$5M/year.</div>
     </div>
 
     <!-- ══════════════════════════════════════
          TRUST STRIP
     ══════════════════════════════════════ -->
     <div class="aa-trust-strip">
-      <span>Trusted by service businesses across the US</span>
+      <span>Built for water damage &amp; garage door operators</span>
       <span class="aa-trust-sep" aria-hidden="true">·</span>
       <span>Free 12-month revenue plan included</span>
       <span class="aa-trust-sep" aria-hidden="true">·</span>
@@ -624,7 +624,7 @@ const faqJsonLd = {
             <thead>
               <tr style="background:#1a1f2e;color:#fff;">
                 <th style="padding:0.875rem 1.25rem;text-align:left;font-weight:600;border-radius:0.5rem 0 0 0;">Typical Agency</th>
-                <th style="padding:0.875rem 1.25rem;text-align:left;font-weight:600;color:#a5b4fc;border-radius:0 0.5rem 0 0;">ZeisWorks</th>
+                <th style="padding:0.875rem 1.25rem;text-align:left;font-weight:600;color:#a5b4fc;border-radius:0 0.5rem 0 0;">Our approach</th>
               </tr>
             </thead>
             <tbody>
@@ -650,35 +650,7 @@ const faqJsonLd = {
       </div>
     </section>
 
-    <!-- ══════════════════════════════════════
-         SECTION 7 — TESTIMONIALS
-    ══════════════════════════════════════ -->
-    <section class="aa-section" style="padding-top: 0;">
-      <div class="aa-proof-bar">
-        <span>&#9733;&#9733;&#9733;&#9733;&#9733;&nbsp; 5.0 on Upwork</span>
-        <span>Top Rated &nbsp;·&nbsp; 100% Job Success</span>
-        <span>Trusted by businesses across the US</span>
-      </div>
-      <div class="aa-section-inner" style="padding-top: 3rem;">
-        <h2 class="aa-section-title">What clients say.</h2>
-        <div class="aa-testimonials-grid">
-          {testimonials.map((t) => (
-            <div class="aa-tcard">
-              <div class="aa-tcard-stars" aria-label="5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-              <p class="aa-tcard-quote">&ldquo;{t.quote}&rdquo;</p>
-              <div class="aa-tcard-divider" aria-hidden="true"></div>
-              <p class="aa-tcard-name">{t.name}</p>
-              <p class="aa-tcard-title">{t.title}</p>
-              <div class="aa-tcard-chips">
-                {t.chips.map((chip) => (
-                  <span class="aa-chip">{chip}</span>
-                ))}
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
+
 
     <!-- ══════════════════════════════════════
          SECTION 8 — FAQ
@@ -709,9 +681,7 @@ const faqJsonLd = {
             Start my free audit →
           </button>
         </div>
-        <p class="aa-closing-phone">
-          Or call <a href="tel:+17206502447" aria-label="Call (720) 650-2447">(720) 650-2447</a>
-        </p>
+
       </div>
     </section>
 
@@ -784,7 +754,13 @@ const faqJsonLd = {
     floatBtn.childNodes.forEach(node => {
       if (node.nodeType === 3 && node.textContent?.trim()) node.textContent = ' Start free audit';
     });
-    floatBtn.addEventListener('click', openAudit);
+    floatBtn.addEventListener('click', () => {
+      if (typeof fbq !== 'undefined') {
+        fbq('track', 'StartTrial', { content_name: 'revenue-audit', content_category: 'zeisworks_form' });
+        fbq('track', 'Lead', { content_name: 'revenue-audit', content_category: 'zeisworks_form' });
+      }
+      openAudit();
+    });
   }
 
   // ── Exit intent ──
@@ -813,7 +789,14 @@ const faqJsonLd = {
     dismissBtn?.addEventListener('click', hideOverlay);
     overlay.addEventListener('click', (e) => { if (e.target === overlay) hideOverlay(); });
     document.addEventListener('keydown', (e) => { if (e.key === 'Escape') hideOverlay(); });
-    auditBtn?.addEventListener('click', () => { hideOverlay(); openAudit(); });
+    auditBtn?.addEventListener('click', () => {
+      hideOverlay();
+      if (typeof fbq !== 'undefined') {
+        fbq('track', 'StartTrial', { content_name: 'revenue-audit', content_category: 'zeisworks_form' });
+        fbq('track', 'Lead', { content_name: 'revenue-audit', content_category: 'zeisworks_form' });
+      }
+      openAudit();
+    });
   })();
 </script>
 
@@ -844,7 +827,7 @@ const faqJsonLd = {
 })();
 </script>
 
-<!-- Meta Pixel: track StartGapAnalysis on CTA clicks -->
+<!-- Meta Pixel: track StartTrial + Lead on every audit CTA click -->
 <script>
   document.addEventListener('DOMContentLoaded', function() {
     ['hero-cta', 'midpage-cta', 'closing-cta', 'audit-inline-cta'].forEach(function(id) {
@@ -852,7 +835,11 @@ const faqJsonLd = {
       if (btn) {
         btn.addEventListener('click', function() {
           if (typeof fbq === 'function') {
-            fbq('trackCustom', 'StartGapAnalysis', {
+            fbq('track', 'StartTrial', {
+              content_name: 'revenue-audit',
+              content_category: 'zeisworks_form',
+            });
+            fbq('track', 'Lead', {
               content_name: 'revenue-audit',
               content_category: 'zeisworks_form',
             });
