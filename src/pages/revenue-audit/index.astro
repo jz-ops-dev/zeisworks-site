@@ -756,7 +756,7 @@ const faqJsonLd = {
     });
     floatBtn.addEventListener('click', () => {
       if (typeof fbq !== 'undefined') {
-        fbq('track', 'StartTrial', { content_name: 'revenue-audit', content_category: 'zeisworks_form' });
+        fbq('track', 'InitiateCheckout', { content_name: 'revenue-audit', content_category: 'zeisworks_form' });
         fbq('track', 'Lead', { content_name: 'revenue-audit', content_category: 'zeisworks_form' });
       }
       openAudit();
@@ -792,7 +792,7 @@ const faqJsonLd = {
     auditBtn?.addEventListener('click', () => {
       hideOverlay();
       if (typeof fbq !== 'undefined') {
-        fbq('track', 'StartTrial', { content_name: 'revenue-audit', content_category: 'zeisworks_form' });
+        fbq('track', 'InitiateCheckout', { content_name: 'revenue-audit', content_category: 'zeisworks_form' });
         fbq('track', 'Lead', { content_name: 'revenue-audit', content_category: 'zeisworks_form' });
       }
       openAudit();
@@ -835,7 +835,7 @@ const faqJsonLd = {
       if (btn) {
         btn.addEventListener('click', function() {
           if (typeof fbq === 'function') {
-            fbq('track', 'StartTrial', {
+            fbq('track', 'InitiateCheckout', {
               content_name: 'revenue-audit',
               content_category: 'zeisworks_form',
             });
