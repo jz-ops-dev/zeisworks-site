@@ -883,10 +883,6 @@ const faqJsonLd = {
     });
     oldFloatBtn.replaceWith(floatBtn);
     floatBtn.addEventListener('click', () => {
-      if (typeof fbq !== 'undefined') {
-        fbq('track', 'StartTrial', { content_name: 'revenue-audit', content_category: 'zeisworks_form' });
-        fbq('track', 'Lead', { content_name: 'revenue-audit', content_category: 'zeisworks_form' });
-      }
       openAudit();
     });
   }
@@ -919,10 +915,6 @@ const faqJsonLd = {
     document.addEventListener('keydown', (e) => { if (e.key === 'Escape') hideOverlay(); });
     auditBtn?.addEventListener('click', () => {
       hideOverlay();
-      if (typeof fbq !== 'undefined') {
-        fbq('track', 'StartTrial', { content_name: 'revenue-audit', content_category: 'zeisworks_form' });
-        fbq('track', 'Lead', { content_name: 'revenue-audit', content_category: 'zeisworks_form' });
-      }
       openAudit();
     });
   })();
@@ -955,25 +947,3 @@ const faqJsonLd = {
 })();
 </script>
 
-<!-- Meta Pixel: track StartTrial + Lead on every audit CTA click -->
-<script>
-  document.addEventListener('DOMContentLoaded', function() {
-    ['hero-cta', 'midpage-cta', 'closing-cta', 'audit-inline-cta'].forEach(function(id) {
-      var btn = document.getElementById(id);
-      if (btn) {
-        btn.addEventListener('click', function() {
-          if (typeof fbq === 'function') {
-            fbq('track', 'StartTrial', {
-              content_name: 'revenue-audit',
-              content_category: 'zeisworks_form',
-            });
-            fbq('track', 'Lead', {
-              content_name: 'revenue-audit',
-              content_category: 'zeisworks_form',
-            });
-          }
-        });
-      }
-    });
-  });
-</script>
