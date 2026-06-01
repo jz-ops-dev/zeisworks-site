@@ -42,7 +42,7 @@
       </button>
 
       <!-- Header -->
-      <div class="px-8 pt-8 pb-0 text-center">
+      <div id="gp-modal-header" class="px-8 pt-8 pb-0 text-center">
         <p class="gp-modal-eyebrow">
           Free &nbsp;·&nbsp; No call required &nbsp;·&nbsp; 5-minute audit
         </p>
@@ -339,6 +339,7 @@
   const closeBtn = document.getElementById('gp-modal-close');
   const form = document.getElementById('gp-modal-form') as HTMLFormElement | null;
   const success = document.getElementById('gp-modal-success');
+  const header = document.getElementById('gp-modal-header');
   const submitBtn = document.getElementById('gp-modal-submit') as HTMLButtonElement | null;
 
   function openGpModal() {
@@ -357,6 +358,7 @@
   modal?.addEventListener('close', () => {
     if (form) form.style.display = '';
     success?.classList.add('hidden');
+    header?.classList.remove('hidden');
     form?.reset();
     if (submitBtn) {
       submitBtn.disabled = false;
@@ -380,6 +382,7 @@
     } catch (_) {}
 
     if (form) form.style.display = 'none';
+    header?.classList.add('hidden');
     success?.classList.remove('hidden');
 
     if (typeof (window as any).gtag !== 'undefined') {
