@@ -44,7 +44,7 @@
       <!-- Header -->
       <div class="px-8 pt-8 pb-0 text-center">
         <p class="gp-modal-eyebrow">
-          Free &nbsp;·&nbsp; No call required &nbsp;·&nbsp; Growth plan in 12 hours
+          Free &nbsp;·&nbsp; No call required &nbsp;·&nbsp; 5-minute audit
         </p>
         <h2
           id="gp-modal-title"
@@ -196,20 +196,29 @@
             id="gp-modal-submit"
             class="gp-submit"
           >
-            Send my growth plan request →
+            Send me my audit link →
           </button>
           <p class="gp-disclaimer">
-            Free. No credit card. No obligation. Growth plan delivered within 12 hours.
+            Free. No credit card. No obligation.
           </p>
         </form>
 
         <!-- Success state -->
         <div id="gp-modal-success" class="hidden py-10 text-center">
           <div class="text-4xl mb-4" style="color:#a5b4fc;">✓</div>
-          <p class="font-serif text-xl font-semibold text-white mb-2">Request received.</p>
-          <p class="text-sm" style="color:rgba(255,255,255,0.6);">
-            I'll run your analysis and send your growth plan to your inbox within 12 hours.
+          <p class="font-serif text-xl font-semibold text-white mb-2">Check your email.</p>
+          <p class="text-sm mb-5" style="color:rgba(255,255,255,0.6);line-height:1.75;">
+            I just sent you the link to run your 5-minute revenue audit. Complete it to get your personalized gap analysis and 12-month growth plan.
           </p>
+          <a
+            href="https://app.mplannerpro.com/ab3e6ce00d/chat?pg=ff84446e91"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-block text-sm font-medium px-5 py-2.5 rounded-lg transition-colors"
+            style="background:rgba(99,102,241,0.2);color:#a5b4fc;border:1px solid rgba(99,102,241,0.35);"
+          >
+            Start the 5-minute audit now →
+          </a>
         </div>
       </div>
 
@@ -351,7 +360,7 @@
     form?.reset();
     if (submitBtn) {
       submitBtn.disabled = false;
-      submitBtn.textContent = 'Send my growth plan request →';
+      submitBtn.textContent = 'Send me my audit link →';
     }
   });
 
