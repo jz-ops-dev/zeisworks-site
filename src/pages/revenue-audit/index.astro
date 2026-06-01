@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import GrowthPlanModal from '../../components/GrowthPlanModal.astro';
 
 const faqItems = [
   {
@@ -16,7 +17,7 @@ const faqItems = [
   },
   {
     q: "Is this really self-run, or is there a person involved?",
-    a: "The audit runs in your browser. You get the report and plan without talking to anyone. A real person reviews the output before it lands in your inbox, and is available if you want to walk through the plan together. Optional, not required.",
+    a: "Fill out the form — takes 2 minutes. A real person builds the analysis and growth plan, and it lands in your inbox within 12 hours. If you want to walk through the plan together afterward, that's optional.",
   },
   {
     q: "What does this actually cost after the audit?",
@@ -28,7 +29,7 @@ const faqItems = [
   },
   {
     q: "Do I have to get on a call?",
-    a: "No. The audit runs in the browser. You get the report and plan automatically. If you want to talk through the plan, that's optional.",
+    a: "No. Fill out the form, and your growth plan is delivered to your inbox within 12 hours. If you want to talk through it, that's optional.",
   },
 ];
 
@@ -80,10 +81,10 @@ const faqJsonLd = {
 ---
 
 <BaseLayout
-  title="Free 5-Minute Revenue Audit for Service Businesses | zeisWorks"
-  description="See where revenue is leaking and get a 12-month plan to fix it. Self-run audit, 5 minutes, no contract, cancel anytime. Real human in the loop. Free."
-  ogTitle="See Where Revenue Is Leaking. Get the 12-Month Plan to Fix It."
-  ogDescription="See where revenue is leaking and get a 12-month plan to fix it. Self-run audit, 5 minutes, no contract, cancel anytime. Real human in the loop. Free."
+  title="Free Growth Plan for Service Businesses — Delivered in 12 Hours | zeisWorks"
+  description="Get a free 12-month growth plan for your service business — delivered to your inbox in 12 hours. No call required. Real human in the loop."
+  ogTitle="Get Your Free Growth Plan. Delivered in 12 Hours."
+  ogDescription="Get a free 12-month growth plan for your service business — delivered to your inbox in 12 hours. No call required. Real human in the loop."
   canonicalUrl="https://zeisworks.com/revenue-audit/"
   bodyPage="revenue-audit"
 >
@@ -438,20 +439,20 @@ const faqJsonLd = {
     ══════════════════════════════════════ -->
     <section class="aa-hero" id="top">
       <div class="aa-hero-inner">
-        <span class="aa-eyebrow">Free Revenue Audit · <span id="aa-eyebrow-location">Water Damage &amp; Garage Door Operators</span></span>
+        <span class="aa-eyebrow">Free Growth Plan · <span id="aa-eyebrow-location">Water Damage &amp; Garage Door Operators</span></span>
         <h1 class="aa-h1">
           See where revenue is leaking.<br>
-          <em>Get the 12-month plan to fix it.</em>
+          <em>Get your growth plan in 12 hours.</em>
         </h1>
         <p class="aa-subhead">
-          Run a 5-minute audit on your service business. Walk away with a gap analysis and a month-by-month revenue plan you keep, whether you hire us or not. No contract. Cancel anytime. Real human in the loop.
+          Tell me about your service business. I'll build a gap analysis and a month-by-month revenue plan and send it to your inbox within 12 hours — whether you hire me or not. No call required. No contract.
         </p>
         <div class="aa-cta-group">
           <button type="button" class="aa-btn-primary" id="hero-cta">
-            Start my free audit →
+            Get my free growth plan →
           </button>
         </div>
-        <p class="aa-hero-note">5 minutes. No call required. No contract.</p>
+        <p class="aa-hero-note">Free. No call required. No contract. Delivered in 12 hours.</p>
       </div>
     </section>
 
@@ -459,7 +460,7 @@ const faqJsonLd = {
          INDUSTRY STRIP
     ══════════════════════════════════════ -->
     <div class="aa-industry-strip">
-      <div class="aa-industry-inner">Built for water damage restoration and garage door operators doing $500K–$5M/year.</div>
+      <div class="aa-industry-inner">Built for water damage restoration and garage door operators doing $500K–$5M/year. Growth plan delivered in 12 hours.</div>
     </div>
 
     <!-- ══════════════════════════════════════
@@ -470,7 +471,7 @@ const faqJsonLd = {
       <span class="aa-trust-sep" aria-hidden="true">·</span>
       <span>Free 12-month revenue plan included</span>
       <span class="aa-trust-sep" aria-hidden="true">·</span>
-      <span>Results in your browser</span>
+      <span>Growth plan delivered in 12 hours</span>
     </div>
 
     <!-- ══════════════════════════════════════
@@ -478,12 +479,12 @@ const faqJsonLd = {
     ══════════════════════════════════════ -->
     <section class="aa-section aa-audit-section" id="audit">
       <div class="aa-section-inner">
-        <h2 class="aa-section-title">The 5-minute marketing gap analysis</h2>
+        <h2 class="aa-section-title">Your free growth plan — delivered in 12 hours</h2>
         <p class="aa-section-body" style="margin-bottom:0.375rem;">
-          Answer a few questions, including what you actually want to make. The audit is built around your revenue goal, not projections on traffic.
+          Fill out the form with your business details and revenue goal. I'll build the analysis around your specific numbers — not generic projections.
         </p>
         <p style="font-size:0.875rem;color:#9A9590;margin-bottom:1.5rem;line-height:1.6;">
-          It pulls from your website, Google Business profile, areas served, services offered, how often inquiries convert, and how quickly you follow up. From getting found to getting paid, the full funnel.
+          I look at your website, Google Business profile, areas served, services offered, how often inquiries convert, and how quickly you follow up. From getting found to getting paid, the full funnel.
         </p>
 
         <div class="aa-examples-grid">
@@ -533,8 +534,8 @@ const faqJsonLd = {
 
         <!-- Audit CTA -->
         <div style="text-align:center;padding:2rem 1.5rem;background:#fff;border:1px solid #e8e3d8;border-radius:0.875rem;margin-bottom:2rem;">
-          <button type="button" class="aa-btn-primary" id="audit-inline-cta" style="font-size:1rem;padding:0.875rem 2rem;">Start my free audit →</button>
-          <p style="font-size:0.8125rem;color:#9A9590;margin-top:0.875rem;margin-bottom:0;">Takes 5 minutes. Free. No contract.</p>
+          <button type="button" class="aa-btn-primary" id="audit-inline-cta" style="font-size:1rem;padding:0.875rem 2rem;">Get my free growth plan →</button>
+          <p style="font-size:0.8125rem;color:#9A9590;margin-top:0.875rem;margin-bottom:0;">Free. No call required. Plan delivered in 12 hours.</p>
         </div>
 
         <!-- Video preview -->
@@ -606,9 +607,9 @@ const faqJsonLd = {
     <section class="aa-midcta">
       <div style="max-width:600px;margin:0 auto;">
         <p class="aa-midcta-title">Find your gaps before your competitor finds theirs.</p>
-        <p class="aa-midcta-sub">Free. 5 minutes. No contract.</p>
+        <p class="aa-midcta-sub">Free. No call required. Growth plan in 12 hours.</p>
         <button type="button" class="aa-btn-closing" id="midpage-cta">
-          Start my free audit →
+          Get my free growth plan →
         </button>
       </div>
     </section>
@@ -674,11 +675,11 @@ const faqJsonLd = {
     ══════════════════════════════════════ -->
     <section class="aa-closing">
       <div class="aa-closing-inner">
-        <h2 class="aa-closing-title">Five minutes to see what you're missing.</h2>
-        <p class="aa-closing-sub">Run the audit, get the plan, decide what to do next. No contract. No pitch call.</p>
+        <h2 class="aa-closing-title">Your growth plan, delivered in 12 hours.</h2>
+        <p class="aa-closing-sub">Tell me about your business. I'll send you the gap analysis and month-by-month revenue plan. No contract. No pitch call.</p>
         <div class="aa-closing-cta-group">
           <button type="button" class="aa-btn-closing" id="closing-cta">
-            Start my free audit →
+            Get my free growth plan →
           </button>
         </div>
 
@@ -687,18 +688,20 @@ const faqJsonLd = {
 
   </div>
 
+  <GrowthPlanModal />
+
   <!-- ══════════════════════════════════════
        EXIT INTENT OVERLAY
   ══════════════════════════════════════ -->
   <div id="aa-exit-overlay" class="aa-exit-overlay" role="dialog" aria-modal="true" aria-labelledby="aa-exit-heading">
     <div class="aa-exit-modal">
       <button class="aa-exit-close" id="aa-exit-close" aria-label="Close">✕</button>
-      <h2 class="aa-exit-heading" id="aa-exit-heading">Before you go, run the audit instead.</h2>
+      <h2 class="aa-exit-heading" id="aa-exit-heading">Before you go — get the growth plan.</h2>
       <p class="aa-exit-body">
-        Takes 5 minutes. You'll have the gap analysis and 12-month plan before you finish your coffee. Free. No contract.
+        Takes 2 minutes to fill out. You'll have your gap analysis and 12-month growth plan in your inbox within 12 hours. Free. No contract.
       </p>
       <button type="button" class="aa-exit-btn" id="aa-exit-audit-btn">
-        Start my free audit →
+        Get my free growth plan →
       </button>
       <button type="button" class="aa-exit-dismiss" id="aa-exit-dismiss">No thanks</button>
     </div>
@@ -726,19 +729,9 @@ const faqJsonLd = {
     });
   });
 
-  // ── Audit popup ──
+  // ── Growth plan modal ──
   function openAudit() {
-    const w = 800, h = 700;
-    const left = Math.round(window.screenX + (window.outerWidth - w) / 2);
-    const top = Math.round(window.screenY + (window.outerHeight - h) / 2);
-    window.open(
-      'https://app.mplannerpro.com/ab3e6ce00d/chat?pg=ff84446e91',
-      'zw-audit',
-      `width=${w},height=${h},left=${left},top=${top},resizable=yes,scrollbars=yes`
-    );
-    if (typeof oaiq !== 'undefined') {
-      oaiq("measure", "registration_completed", { type: "customer_action", amount: 0, currency: "USD" });
-    }
+    if (typeof (window as any).openGpModal === 'function') (window as any).openGpModal();
   }
 
   document.getElementById('hero-cta')?.addEventListener('click', openAudit);
@@ -750,9 +743,9 @@ const faqJsonLd = {
   const floatBtn = document.getElementById('ga-float-btn');
   if (floatBtn) {
     floatBtn.removeAttribute('data-modal');
-    floatBtn.setAttribute('aria-label', 'Start your free revenue audit');
+    floatBtn.setAttribute('aria-label', 'Get your free growth plan');
     floatBtn.childNodes.forEach(node => {
-      if (node.nodeType === 3 && node.textContent?.trim()) node.textContent = ' Start free audit';
+      if (node.nodeType === 3 && node.textContent?.trim()) node.textContent = ' Get free growth plan';
     });
     floatBtn.addEventListener('click', () => {
       if (typeof fbq !== 'undefined') {
