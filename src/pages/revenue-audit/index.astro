@@ -114,6 +114,70 @@ const faqJsonLd = {
     <style>
       .aa-page { font-size: 1.0625rem; line-height: 1.75; }
 
+      /* ── ALERT TICKER ── */
+      .aa-ticker {
+        background: #2a1f0e;
+        border-bottom: 1px solid rgba(245,158,11,0.25);
+        overflow: hidden;
+        position: relative;
+        display: flex;
+        align-items: center;
+      }
+      .aa-ticker-flag {
+        flex-shrink: 0;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.45rem;
+        background: #f59e0b;
+        color: #1a1206;
+        font-size: 0.7rem;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        padding: 0.55rem 0.9rem;
+        z-index: 2;
+        white-space: nowrap;
+      }
+      .aa-ticker-pulse {
+        width: 7px;
+        height: 7px;
+        border-radius: 50%;
+        background: #1a1206;
+        animation: aa-pulse 1.4s ease-in-out infinite;
+      }
+      @keyframes aa-pulse {
+        0%, 100% { opacity: 1; transform: scale(1); }
+        50% { opacity: 0.35; transform: scale(0.7); }
+      }
+      .aa-ticker-viewport {
+        overflow: hidden;
+        flex: 1;
+        position: relative;
+      }
+      .aa-ticker-track {
+        display: inline-flex;
+        align-items: center;
+        white-space: nowrap;
+        will-change: transform;
+        animation: aa-marquee 32s linear infinite;
+      }
+      .aa-ticker-track span {
+        font-size: 0.8125rem;
+        font-weight: 500;
+        color: rgba(255,255,255,0.78);
+        padding: 0.55rem 0;
+        margin-right: 3.5rem;
+      }
+      .aa-ticker-track span strong { color: #fbbf24; font-weight: 600; }
+      @keyframes aa-marquee {
+        from { transform: translateX(0); }
+        to { transform: translateX(-50%); }
+      }
+      .aa-ticker:hover .aa-ticker-track { animation-play-state: paused; }
+      @media (prefers-reduced-motion: reduce) {
+        .aa-ticker-track { animation: none; padding-left: 1rem; }
+      }
+
       /* ── HERO ── */
       .aa-hero {
         background: #1a1f2e;
@@ -433,6 +497,21 @@ const faqJsonLd = {
   </Fragment>
 
   <div class="aa-page">
+
+    <!-- ══════════════════════════════════════
+         ALERT TICKER
+    ══════════════════════════════════════ -->
+    <div class="aa-ticker" role="alert" aria-label="Important update on Google Search changes">
+      <span class="aa-ticker-flag"><span class="aa-ticker-pulse" aria-hidden="true"></span>Heads up</span>
+      <div class="aa-ticker-viewport">
+        <div class="aa-ticker-track">
+          <span><strong>Google's AI Overviews &amp; AI Mode are now answering searches directly</strong> — local service businesses are seeing organic clicks drop as fewer people reach your site.</span>
+          <span>If your funnel still relies on old SEO, <strong>you're losing leads to competitors who've adapted.</strong> Find your gaps now.</span>
+          <span><strong>Google's AI Overviews &amp; AI Mode are now answering searches directly</strong> — local service businesses are seeing organic clicks drop as fewer people reach your site.</span>
+          <span>If your funnel still relies on old SEO, <strong>you're losing leads to competitors who've adapted.</strong> Find your gaps now.</span>
+        </div>
+      </div>
+    </div>
 
     <!-- ══════════════════════════════════════
          SECTION 1 — HERO
@@ -791,13 +870,18 @@ const faqJsonLd = {
   document.getElementById('audit-inline-cta')?.addEventListener('click', openAudit);
 
   // ── Wire floating button to audit (not the generic contact modal) ──
-  const floatBtn = document.getElementById('ga-float-btn');
-  if (floatBtn) {
+  // The global GapAnalysisModal binds a click listener to #ga-float-btn at load.
+  // Removing data-modal alone won't detach it, so clone the node to strip all
+  // existing listeners, then attach only the growth-plan handler.
+  const oldFloatBtn = document.getElementById('ga-float-btn');
+  if (oldFloatBtn) {
+    const floatBtn = oldFloatBtn.cloneNode(true) as HTMLElement;
     floatBtn.removeAttribute('data-modal');
     floatBtn.setAttribute('aria-label', 'Get your free growth plan');
     floatBtn.childNodes.forEach(node => {
       if (node.nodeType === 3 && node.textContent?.trim()) node.textContent = ' Get free growth plan';
     });
+    oldFloatBtn.replaceWith(floatBtn);
     floatBtn.addEventListener('click', () => {
       if (typeof fbq !== 'undefined') {
         fbq('track', 'StartTrial', { content_name: 'revenue-audit', content_category: 'zeisworks_form' });
