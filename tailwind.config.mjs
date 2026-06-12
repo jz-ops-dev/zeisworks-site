@@ -6,14 +6,19 @@ export default {
   theme: {
     extend: {
       colors: {
-        cream: '#FAF8F3',
-        'cream-dark': '#F0EAD9',
-        ink: '#1E1C18',
-        'ink-mid': '#5A5650',
-        'ink-light': '#9A9590',
-        forest: '#2C4A3E',
-        navy: '#2D4A6B',
-        orange: '#C85A20',
+        // Palette refresh: slate paper + deep navy authority + single orange
+        // conversion color. Legacy token names kept so guide/legal pages
+        // restyle without edits.
+        cream: '#F8FAFC',
+        'cream-dark': '#E2E8F0',
+        ink: '#0F172A',
+        'ink-mid': '#475569',
+        'ink-light': '#64748B',
+        forest: '#172554',
+        'navy-deep': '#172554',
+        navy: '#1E3A8A',
+        orange: '#C2410C',
+        'orange-bright': '#EA580C',
       },
       fontFamily: {
         serif: ['Lora', 'Georgia', 'serif'],
