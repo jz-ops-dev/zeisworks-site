@@ -66,6 +66,22 @@
   to = "/"
   status = 301
 
+# Old vertical pages still linked from guide articles (never built)
+[[redirects]]
+  from = "/med-spas"
+  to = "/"
+  status = 301
+
+[[redirects]]
+  from = "/independent-vets"
+  to = "/"
+  status = 301
+
+[[redirects]]
+  from = "/home-services"
+  to = "/"
+  status = 301
+
 # Legacy gated lead magnets (forms removed sitewide)
 [[redirects]]
   from = "/local-search-checklist"
