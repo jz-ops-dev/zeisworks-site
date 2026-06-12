@@ -1,0 +1,26 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { CALENDLY_URL } from '../config';
+
+// Quiet landing page for systems consulting referrals (handoff section 9).
+// Not linked from the main nav; footer only, under Pages. Legacy Salesforce
+// and service pages 301 here via netlify.toml.
+---
+
+<BaseLayout
+  title="Systems Consulting | ZeisWorks"
+  description="ZeisWorks takes a limited number of consulting engagements: Salesforce administration and development, CRM and marketing systems, and custom data work."
+>
+  <section class="max-w-3xl mx-auto px-6 pt-16 sm:pt-24 pb-16">
+    <h1 class="font-serif text-4xl sm:text-5xl font-semibold leading-tight tracking-tight mb-6">
+      Systems consulting.
+    </h1>
+    <p class="text-lg text-ink-mid leading-relaxed mb-10">
+      ZeisWorks also takes a limited number of consulting engagements: Salesforce administration and development, CRM and marketing systems, and custom data work. These are referral-based and scoped individually.
+    </p>
+    <a
+      href={CALENDLY_URL}
+      class="inline-block bg-navy text-cream font-medium text-base px-8 py-4 rounded-lg hover:bg-navy/90 transition-colors"
+    >Book 15 minutes</a>
+  </section>
+</BaseLayout>

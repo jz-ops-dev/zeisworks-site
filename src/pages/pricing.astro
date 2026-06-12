@@ -1,0 +1,120 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import AuditCta from '../components/AuditCta.astro';
+import { CALENDLY_URL } from '../config';
+
+const includes = [
+  'Your full gap analysis and 12-month plan, updated monthly',
+  'Done-for-you execution of everything in the plan',
+  'Every call and form tracked and reported, with call recordings',
+  'A weekly report you can read in two minutes',
+  'A real person reviewing your account and available when you need them',
+];
+
+const faq = [
+  {
+    q: 'Why is there a range?',
+    a: 'Because a restoration company in a competitive metro needs more than a tree service in a small market. The audit sizes the plan to your situation and shows the cost before you commit.',
+  },
+  {
+    q: "What if it doesn't work?",
+    a: 'The plan projects expected results month by month. If results lag, the plan changes. And you can cancel anytime, so we have to earn the next month, every month.',
+  },
+  {
+    q: 'Is ad spend included?',
+    a: 'No. Ad budget goes directly to Google or Meta in your own accounts. You own everything.',
+  },
+];
+---
+
+<BaseLayout
+  title="Pricing: Month to Month, No Contracts | ZeisWorks"
+  description="Plans start at $2,500/month, sized by your free audit. Month to month, cancel anytime, ad spend goes to the platforms not to us."
+>
+  <!-- Hero -->
+  <section class="max-w-3xl mx-auto px-6 pt-16 sm:pt-24 pb-10 text-center">
+    <h1 class="font-serif text-4xl sm:text-5xl font-semibold leading-tight tracking-tight mb-6">
+      Simple pricing. No contracts.
+    </h1>
+    <p class="text-lg text-ink-mid leading-relaxed max-w-2xl mx-auto">
+      Every engagement starts with the free audit. Your 12-month plan tells you exactly what we'd do and what it costs before you pay anything.
+    </p>
+  </section>
+
+  <!-- Single anchor pricing -->
+  <section class="max-w-3xl mx-auto px-6 pb-14">
+    <div class="bg-forest rounded-2xl p-8 sm:p-10 text-center">
+      <p class="font-serif text-3xl sm:text-4xl font-semibold text-white mb-4">
+        Plans start at $2,500/month.
+      </p>
+      <p class="text-white/70 leading-relaxed max-w-xl mx-auto mb-4">
+        Most plans land between $2,500 and $5,000/month depending on what your audit calls for: search visibility, reviews, website conversion, ads management, call handling, and tracking.
+      </p>
+      <p class="text-white/70 leading-relaxed max-w-xl mx-auto">
+        Month to month. Cancel anytime. No setup fees. Ad spend is separate and goes straight to the platforms, not to us.
+      </p>
+    </div>
+  </section>
+
+  <!-- What every plan includes -->
+  <section class="max-w-3xl mx-auto px-6 pb-14">
+    <h2 class="font-serif text-2xl sm:text-3xl font-semibold leading-tight mb-7">
+      What every plan includes
+    </h2>
+    <ul class="space-y-4">
+      {includes.map((item) => (
+        <li class="flex items-start gap-3 text-ink-mid leading-relaxed">
+          <svg
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="text-forest shrink-0 mt-0.5"
+            aria-hidden="true"
+          >
+            <path d="M20 6L9 17l-5-5" />
+          </svg>
+          <span>{item}</span>
+        </li>
+      ))}
+    </ul>
+  </section>
+
+  <!-- Two CTAs side by side -->
+  <section class="max-w-3xl mx-auto px-6 pb-16">
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+      <div class="text-center">
+        <AuditCta
+          location="mid"
+          class="block w-full bg-navy text-cream font-medium text-base px-6 py-4 rounded-lg hover:bg-navy/90 transition-colors"
+        />
+      </div>
+      <div class="text-center">
+        <a
+          href={CALENDLY_URL}
+          class="block w-full border border-navy text-navy font-medium text-base px-6 py-4 rounded-lg hover:bg-navy hover:text-cream transition-colors"
+        >Talk to a human first</a>
+        <p class="mt-2 text-xs text-ink-light">15 minutes, no pitch deck</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="bg-cream-dark/60 border-t border-cream-dark">
+    <div class="max-w-3xl mx-auto px-6 py-16">
+      <h2 class="font-serif text-2xl sm:text-3xl font-semibold leading-tight mb-8">Questions</h2>
+      <dl class="divide-y divide-cream-dark border-y border-cream-dark">
+        {faq.map(({ q, a }) => (
+          <div class="py-6">
+            <dt class="font-semibold text-ink mb-2">{q}</dt>
+            <dd class="text-sm text-ink-mid leading-relaxed">{a}</dd>
+          </div>
+        ))}
+      </dl>
+    </div>
+  </section>
+</BaseLayout>

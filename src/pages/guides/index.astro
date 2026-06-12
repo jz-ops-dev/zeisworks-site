@@ -1,5 +1,6 @@
 ---
 import { getCollection } from 'astro:content';
+import AuditCta from '../../components/AuditCta.astro';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import GuideCard from '../../components/GuideCard.astro';
 
@@ -13,7 +14,7 @@ const clusters = [
     id: 'marketing',
     label: 'Marketing & Growth',
     title: 'Get Found by the Right Customers',
-    description: 'Local SEO, lead generation, and the marketing systems that fill your calendar — without agency retainers or discounting your way to empty chairs.',
+    description: 'Local SEO, lead generation, and the marketing systems that fill your calendar, without agency retainers or discounting your way to empty chairs.',
     slugs: [
       'google-seo-changes-2025-2026-small-business-guide',
       'tiered-med-spa-membership-program-monthly-recurring-revenue',
@@ -29,9 +30,9 @@ const unclusteredGuides = sortedGuides.filter(g => !clusteredSlugs.includes(g.id
 ---
 
 <BaseLayout
-  title="Guides"
+  title="Guides | ZeisWorks"
   description="Free guides on local SEO, lead generation, operations, and growth systems for service businesses. Written by someone who actually does the work."
-  ogTitle="Guides | zeisWorks"
+  ogTitle="Guides | ZeisWorks"
   ogDescription="Free guides on local SEO, lead generation, operations, and growth systems for service businesses. Written by someone who actually does the work."
   canonicalUrl="https://zeisworks.com/guides/"
 >
@@ -44,7 +45,7 @@ const unclusteredGuides = sortedGuides.filter(g => !clusteredSlugs.includes(g.id
         What's actually working for service businesses right now.
       </h1>
       <p class="text-ink-mid leading-relaxed max-w-xl text-sm">
-        No agency playbooks. No theory. These are the tactics and systems I use with real clients — local SEO, lead nurturing, operations, and the tools that make growth repeatable.
+        No agency playbooks. No theory. These are the tactics and systems we use with real clients: local SEO, lead nurturing, operations, and the systems that make growth repeatable.
       </p>
     </header>
 
@@ -102,36 +103,17 @@ const unclusteredGuides = sortedGuides.filter(g => !clusteredSlugs.includes(g.id
       </section>
     )}
 
-    <!-- Additional Resources -->
-    <section class="mb-16">
-      <div class="mb-6 pb-3 border-b border-cream-dark">
-        <p class="text-xs font-semibold uppercase tracking-widest text-orange mb-1">Resources</p>
-        <h2 class="font-serif text-xl font-semibold text-ink">Beyond the blog</h2>
-      </div>
-      <div class="grid sm:grid-cols-2 gap-4">
-        <a href="/geo-guide" class="block rounded-xl border border-cream-dark bg-cream p-6 hover:border-orange/50 transition-colors group">
-          <p class="text-xs text-orange font-medium uppercase tracking-widest mb-2">Free PDF</p>
-          <h3 class="font-serif font-semibold text-ink text-lg mb-1 group-hover:text-orange transition-colors">The Independent Practice Guide to GEO</h3>
-          <p class="text-sm text-ink-mid">How to get recommended by ChatGPT, Google AI Overviews, and modern search engines — before corporate chains take the top spots.</p>
-        </a>
-        <a href="/websites" class="block rounded-xl border border-cream-dark bg-cream p-6 hover:border-orange/50 transition-colors group">
-          <p class="text-xs text-orange font-medium uppercase tracking-widest mb-2">Service</p>
-          <h3 class="font-serif font-semibold text-ink text-lg mb-1 group-hover:text-orange transition-colors">$100 Website Builds</h3>
-          <p class="text-sm text-ink-mid">Professional, mobile-optimized websites for service businesses. $100 one-time, delivered in 5 days. No monthly fees.</p>
-        </a>
-      </div>
-    </section>
-
     <!-- CTA -->
     <div class="mt-4 p-8 bg-cream-dark rounded-2xl text-center">
-      <p class="text-sm font-medium text-orange uppercase tracking-widest mb-3">Free Analysis</p>
+      <p class="text-sm font-medium text-orange uppercase tracking-widest mb-3">Free Revenue Audit</p>
       <h2 class="font-serif text-2xl font-semibold text-ink mb-4">Want to know exactly what's holding your business back?</h2>
       <p class="text-ink-mid text-sm leading-relaxed max-w-lg mx-auto mb-6">
-        The free Marketing Gap Analysis shows how your local search presence compares to your top competitors — with specific fixes and priorities. No call required.
+        Run the free 5-minute revenue audit. You get a gap analysis of your marketing and a 12-month plan to fix it. No call required. No contracts.
       </p>
-      <button type="button" data-modal="gap-analysis" class="inline-block bg-navy text-cream text-sm font-medium px-6 py-3 rounded-lg hover:bg-navy/90 transition-colors cursor-pointer border-0">
-        Get in touch →
-      </button>
+      <AuditCta
+        location="footer"
+        class="inline-block bg-navy text-cream text-sm font-medium px-6 py-3 rounded-lg hover:bg-navy/90 transition-colors"
+      />
     </div>
 
   </div>

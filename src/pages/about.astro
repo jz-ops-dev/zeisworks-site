@@ -1,106 +1,40 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import CtaBlock from '../components/CtaBlock.astro';
 ---
 
 <BaseLayout
-  title="About"
-  description="Jack Zeis runs ZeisWorks from Golden, Colorado — a one-person growth practice for independent service businesses. 10+ years building real systems. No agency."
-  ogTitle="About | zeisWorks"
-  ogDescription="Jack Zeis runs ZeisWorks from Golden, CO. One person. No agency. 10+ years building marketing and operations systems for service businesses. Making real tools accessible."
+  title="About ZeisWorks"
+  description="ZeisWorks is run by Jack Zeis in Golden, Colorado. The audit does the analysis, the team executes, and Jack reviews every plan personally."
+  businessSchema={true}
 >
-  <div class="max-w-3xl mx-auto px-6 py-16 space-y-16">
+  <section class="max-w-3xl mx-auto px-6 pt-16 sm:pt-24 pb-16">
+    <h1 class="font-serif text-4xl sm:text-5xl font-semibold leading-tight tracking-tight mb-10">
+      A real person owns your plan.
+    </h1>
 
-    <!-- Header -->
-    <div>
-      <p class="text-sm font-medium text-orange uppercase tracking-widest mb-3">About</p>
-      <h1 class="font-serif text-4xl font-semibold text-ink leading-tight">
-        Why this exists
-      </h1>
-    </div>
-
-    <!-- Bio -->
-    <section class="space-y-5 text-ink-mid leading-relaxed">
-      <p>
-        I spent 10 years building sales and marketing systems for organizations with real budgets — CRM builds, lead generation pipelines, process automation, custom integrations. The kind of work that moves revenue.
-      </p>
-      <p>
-        I grew up around small business. Watched good owners struggle — not because they were bad at what they do, but because the tools and systems that help businesses grow were built for companies with bigger teams and bigger budgets. The gap between what was available and what was accessible was real.
-      </p>
-      <p>
-        The tools exist now. AI, automation, custom development — it's all more accessible than it's been. But most independent service businesses still don't have someone who knows how to run them. That's the gap ZeisWorks fills.
-      </p>
-      <p>
-        One person. No agency. Just someone who's done this work at scale and will tell you straight what's worth doing and what isn't.
-      </p>
-      <p class="text-ink font-medium pt-2">
-        Jack Zeis runs ZeisWorks, a modern growth practice for independent service businesses. Based in Golden, Colorado.
-      </p>
-    </section>
-
-    <!-- What I do -->
-    <section>
-      <h2 class="font-serif text-2xl font-semibold text-ink mb-6">What I do</h2>
-      <div class="space-y-4">
-        {[
-          { num: '01', name: 'Get found', href: '/marketing', desc: 'Local SEO, paid ads, lead generation — the systems that bring high-value clients to your door.' },
-          { num: '02', name: 'Turn attention into leads', href: '/operations', desc: 'CRM setup, conversion optimization, follow-up workflows — so leads don\'t fall through the cracks.' },
-          { num: '03', name: 'Build systems that stick', href: '/custom-tools', desc: 'Process automation, custom integrations, reporting — the tools that make growth repeatable.' },
-        ].map(p => (
-          <a href={p.href} class="block rounded-xl border border-cream-dark bg-cream p-6 hover:border-navy/30 transition-colors group">
-            <p class="text-xs text-orange font-medium uppercase tracking-widest mb-1">{p.num}</p>
-            <h3 class="font-serif font-semibold text-ink text-lg mb-2 group-hover:text-navy transition-colors">{p.name}</h3>
-            <p class="text-sm text-ink-mid">{p.desc}</p>
-          </a>
-        ))}
-      </div>
-    </section>
-
-    <!-- Background -->
-    <section>
-      <h2 class="font-serif text-2xl font-semibold text-ink mb-4">Background</h2>
-      <div class="space-y-3 text-ink-mid leading-relaxed">
-        <p>Ten years across healthcare, professional services, trades, real estate, and finance. The work spans CRM builds (HubSpot, Salesforce), Python automation, custom workflows (n8n, Zapier), web development, paid campaign management, and data infrastructure. The common thread is helping independent businesses do more with less friction.</p>
-        <div class="flex flex-wrap gap-2 mt-4">
-          {['HubSpot', 'Salesforce', 'Python', 'n8n', 'Zapier', 'Google Ads', 'Meta Ads', 'SQL', 'Google Business Profile', 'Ahrefs', 'Astro'].map(skill => (
-            <span class="text-xs bg-cream-dark text-ink-mid px-3 py-1 rounded-full border border-cream-dark">{skill}</span>
-          ))}
-        </div>
-      </div>
-    </section>
-
-    <!-- How ZeisWorks works -->
-    <section class="rounded-xl border border-cream-dark bg-cream-dark p-8">
-      <h2 class="font-serif text-xl font-semibold text-ink mb-6">How it works</h2>
-      <ul class="space-y-4">
-        {[
-          { label: 'No retainer required', body: 'Work can be project-based or ongoing. You don\'t commit to anything until you see the scope and the price.' },
-          { label: 'Free first analysis', body: 'The first look is always free. Tell me what\'s broken — I\'ll come back with a specific plan at no charge.' },
-          { label: 'No lock-in', body: 'Everything built is yours. Documented and handed off so it runs without depending on ZeisWorks.' },
-          { label: 'Plain English on everything', body: 'No jargon, no vague deliverables. You get clear explanations of what\'s being built and why.' },
-        ].map(item => (
-          <li class="flex gap-4 items-start">
-            <span class="mt-1 w-2 h-2 rounded-full bg-orange shrink-0"></span>
-            <div>
-              <strong class="text-ink font-medium">{item.label}.</strong>{' '}
-              <span class="text-ink-mid text-sm">{item.body}</span>
-            </div>
-          </li>
-        ))}
-      </ul>
-    </section>
-
-    <!-- CTA -->
-    <div class="rounded-xl border border-navy/20 bg-navy/5 p-8">
-      <h3 class="font-serif text-xl font-semibold text-ink mb-2">Free first analysis. No obligation.</h3>
-      <p class="text-sm text-ink-mid mb-6 leading-relaxed">
-        Tell me what you're trying to fix. I'll come back with a plain-English plan: what I'd do, how long it takes, what it costs. No charge for any of that.
-      </p>
-      <div class="flex flex-wrap gap-3">
-        <button type="button" data-modal="gap-analysis" class="inline-block bg-navy text-cream text-sm px-5 py-2.5 rounded-lg font-medium hover:bg-navy/90 transition-colors cursor-pointer border-0">
-          Get in touch
-        </button>
+    <div class="flex flex-col sm:flex-row gap-8 items-start">
+      <img
+        src="/jack.jpg"
+        alt="Jack Zeis"
+        class="w-36 h-36 rounded-2xl object-cover border border-cream-dark shrink-0"
+        width="144"
+        height="144"
+        loading="eager"
+      />
+      <div class="space-y-5 text-ink-mid leading-relaxed text-[1.0625rem]">
+        <p>
+          ZeisWorks is run by Jack Zeis, a marketing and systems consultant based in Golden, Colorado. Jack has spent the last decade building revenue systems: search, ads, websites, CRMs, and the tracking that ties it all together, for businesses from local service companies to national firms.
+        </p>
+        <p>
+          Here's how we work. The audit does the analysis. The plan lays out the work. Our team executes it. And Jack reviews every plan and every account personally, so nothing ships on autopilot and nobody gets handed off to a stranger.
+        </p>
+        <p>
+          We keep it month to month on purpose. If the numbers don't justify the next month, you shouldn't pay for it. That's the deal.
+        </p>
       </div>
     </div>
+  </section>
 
-  </div>
+  <CtaBlock heading="Five minutes from now you'll know where the leaks are." />
 </BaseLayout>

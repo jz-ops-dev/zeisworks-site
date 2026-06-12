@@ -1,37 +1,9 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import GrowthPlanModal from '../../components/GrowthPlanModal.astro';
+import { GROWBOTIK_FUNNEL_URL } from '../../config';
+import { COMPACT_FAQ } from '../../data/faq';
 
-const faqItems = [
-  {
-    q: "How is this different from other marketing agencies?",
-    a: "Most agencies sell services (PPC, SEO, etc.) and measure inputs (impressions, rankings). We sell revenue outcomes and measure pipeline. The 12-month plan you'll receive includes projected client volume and revenue per month, not just deliverables.",
-  },
-  {
-    q: "How do you actually project revenue?",
-    a: "The audit analyzes 500+ data points across your current marketing, market size, competition, conversion infrastructure, niche economics, and historical performance from comparable campaigns. Projections come from real comparable data, not template assumptions. The methodology is in the report.",
-  },
-  {
-    q: "Is there a contract if I hire you to execute?",
-    a: "No. Month-to-month. Cancel any time. The 12-month plan is yours to keep regardless.",
-  },
-  {
-    q: "Is this really self-run, or is there a person involved?",
-    a: "Fill out the form to get your audit link. Complete the 5-minute audit in your browser and get your gap analysis and growth plan. If you want to walk through the plan together afterward, that's optional.",
-  },
-  {
-    q: "What does this actually cost after the audit?",
-    a: "The audit and plan are free. If you decide to run the plan with us, your investment scales with your revenue goal and market position. The full cost is in the plan you receive, before any commitment. Month-to-month, cancel any time.",
-  },
-  {
-    q: "I already have a marketing agency. Why should I run this?",
-    a: "Because your current agency's incentive is to sell you more services. Ours is to show you what's actually moving revenue. Run the audit, compare the findings against what your current agency reports. If they line up, keep your agency. If they don't, you have data for the conversation.",
-  },
-  {
-    q: "Do I have to get on a call?",
-    a: "No. Fill out the form, get your audit link, run the 5-minute audit in your browser. If you want to talk through the plan, that's optional.",
-  },
-];
+const faqItems = COMPACT_FAQ;
 
 const deliverables = [
   {
@@ -44,7 +16,7 @@ const deliverables = [
   },
   {
     title: "Execution roadmap",
-    desc: "The complete plan to run it, with every tactic tied to a revenue outcome and projected ROI per channel. Run it yourself or hand it to us. Cancel any time.",
+    desc: "The complete plan to run it, with every tactic tied to a revenue outcome and projected ROI per channel. Run it yourself or hand it to us. Cancel anytime.",
   },
 ];
 
@@ -81,10 +53,10 @@ const faqJsonLd = {
 ---
 
 <BaseLayout
-  title="Free 5-Minute Revenue Audit for Service Businesses | zeisWorks"
-  description="See where revenue is leaking and get a 12-month plan to fix it. Self-run audit, 5 minutes, no contract, cancel anytime. Real human in the loop. Free."
+  title="Free Revenue Audit: Gap Analysis + 12-Month Plan | ZeisWorks"
+  description="Run a free 5-minute revenue audit. Get a data-backed gap analysis and a month-by-month plan to fix the leaks. No call, no contracts."
   ogTitle="See Where Revenue Is Leaking. Get the 12-Month Plan to Fix It."
-  ogDescription="Run a 5-minute revenue audit on your service business. Get a personalized gap analysis and 12-month growth plan delivered to your inbox. Free. No call required. No contract."
+  ogDescription="Run a free 5-minute revenue audit on your service business. Get a personalized gap analysis and 12-month plan. Free. No call required. No contracts."
   canonicalUrl="https://zeisworks.com/revenue-audit/"
   bodyPage="revenue-audit"
 >
@@ -476,22 +448,8 @@ const faqJsonLd = {
       .aa-closing-phone a { color: rgba(255,255,255,0.55); font-weight: 500; text-decoration: none; transition: color 0.2s; }
       .aa-closing-phone a:hover { color: #fff; }
 
-      /* ── HIDE GLOBAL HEADER & SHOW FLOAT BTN ON THIS PAGE ── */
+      /* ── HIDE GLOBAL HEADER ON THIS PAGE (paid landing) ── */
       body[data-page="revenue-audit"] header { display: none !important; }
-      body[data-page="revenue-audit"] #ga-float-btn { display: flex !important; }
-
-      /* ── EXIT INTENT OVERLAY ── */
-      .aa-exit-overlay { position: fixed; inset: 0; background: rgba(30,28,24,0.55); z-index: 100; display: flex; align-items: center; justify-content: center; padding: 1.5rem; opacity: 0; pointer-events: none; transition: opacity 0.2s; }
-      .aa-exit-overlay.is-visible { opacity: 1; pointer-events: all; }
-      .aa-exit-modal { background: #fff; border-radius: 1rem; padding: 2.5rem 2rem; max-width: 420px; width: 100%; text-align: center; box-shadow: 0 20px 60px rgba(30,28,24,0.18); position: relative; }
-      .aa-exit-close { position: absolute; top: 1rem; right: 1rem; background: none; border: none; cursor: pointer; color: theme('colors.ink-light'); font-size: 1.25rem; line-height: 1; padding: 0.25rem; }
-      .aa-exit-close:hover { color: theme('colors.ink'); }
-      .aa-exit-heading { font-family: theme('fontFamily.serif'); font-size: 1.375rem; font-weight: 700; color: theme('colors.ink'); line-height: 1.3; margin-bottom: 0.75rem; }
-      .aa-exit-body { font-size: 0.875rem; color: theme('colors.ink-mid'); line-height: 1.7; margin-bottom: 1.5rem; }
-      .aa-exit-btn { display: block; width: 100%; background: #6366f1; color: #fff; border: none; padding: 0.875rem 1.5rem; border-radius: 0.625rem; font-size: 0.9375rem; font-weight: 500; cursor: pointer; font-family: inherit; transition: background 0.2s; margin-bottom: 0.75rem; box-shadow: 0 4px 20px rgba(99,102,241,0.35); }
-      .aa-exit-btn:hover { background: #4f46e5; }
-      .aa-exit-dismiss { font-size: 0.8125rem; color: theme('colors.ink-light'); text-decoration: none; cursor: pointer; background: none; border: none; font-family: inherit; }
-      .aa-exit-dismiss:hover { color: theme('colors.ink-mid'); }
     </style>
   </Fragment>
 
@@ -504,10 +462,10 @@ const faqJsonLd = {
       <span class="aa-ticker-flag"><span class="aa-ticker-pulse" aria-hidden="true"></span>Heads up</span>
       <div class="aa-ticker-viewport">
         <div class="aa-ticker-track">
-          <span><strong>Google's AI Overviews &amp; AI Mode are now answering searches directly</strong> — local service businesses are seeing organic clicks drop as fewer people reach your site.</span>
-          <span>If your funnel still relies on old SEO, <strong>you're losing leads to competitors who've adapted.</strong> Find your gaps now.</span>
-          <span><strong>Google's AI Overviews &amp; AI Mode are now answering searches directly</strong> — local service businesses are seeing organic clicks drop as fewer people reach your site.</span>
-          <span>If your funnel still relies on old SEO, <strong>you're losing leads to competitors who've adapted.</strong> Find your gaps now.</span>
+          <span><strong>Google now answers many searches right on the results page.</strong> Local service businesses are seeing organic clicks drop as fewer people reach your site.</span>
+          <span>If your marketing still relies on old SEO, <strong>you're losing leads to competitors who've adapted.</strong> Find your gaps now.</span>
+          <span><strong>Google now answers many searches right on the results page.</strong> Local service businesses are seeing organic clicks drop as fewer people reach your site.</span>
+          <span>If your marketing still relies on old SEO, <strong>you're losing leads to competitors who've adapted.</strong> Find your gaps now.</span>
         </div>
       </div>
     </div>
@@ -523,14 +481,14 @@ const faqJsonLd = {
           <em>Get the 12-month plan to fix it.</em>
         </h1>
         <p class="aa-subhead">
-          Run a 5-minute audit on your service business. Walk away with a gap analysis and a month-by-month revenue plan you keep, whether you hire us or not. No contract. Cancel anytime.
+          Run a 5-minute audit on your service business. Walk away with a gap analysis and a month-by-month revenue plan you keep, whether you hire us or not. No contracts. Cancel anytime.
         </p>
         <div class="aa-cta-group">
-          <button type="button" class="aa-btn-primary" id="hero-cta">
-            Start my free audit →
-          </button>
+          <a class="aa-btn-primary" href={GROWBOTIK_FUNNEL_URL} data-audit-cta data-cta-location="hero">
+            Start the free audit →
+          </a>
         </div>
-        <p class="aa-hero-note">5 minutes. No call required. No contract.</p>
+        <p class="aa-hero-note">Free. 5 minutes. No call required. No contracts.</p>
       </div>
     </section>
 
@@ -612,8 +570,8 @@ const faqJsonLd = {
 
         <!-- Audit CTA -->
         <div style="text-align:center;padding:2rem 1.5rem;background:#fff;border:1px solid #e8e3d8;border-radius:0.875rem;margin-bottom:2rem;">
-          <button type="button" class="aa-btn-primary" id="audit-inline-cta" style="font-size:1rem;padding:0.875rem 2rem;">Start my free audit →</button>
-          <p style="font-size:0.8125rem;color:#9A9590;margin-top:0.875rem;margin-bottom:0;">Takes 5 minutes. Free. No contract.</p>
+          <a class="aa-btn-primary" href={GROWBOTIK_FUNNEL_URL} data-audit-cta data-cta-location="mid" style="font-size:1rem;padding:0.875rem 2rem;">Start the free audit →</a>
+          <p style="font-size:0.8125rem;color:#9A9590;margin-top:0.875rem;margin-bottom:0;">Takes 5 minutes. Free. No contracts.</p>
         </div>
 
         <!-- Video preview -->
@@ -626,7 +584,7 @@ const faqJsonLd = {
             loading="lazy"
           ></iframe>
         </div>
-        <p style="font-size:0.8rem;color:#9A9590;margin-top:0.625rem;">A walkthrough of a real audit result — the gap analysis and revenue plan you'll receive.</p>
+        <p style="font-size:0.8rem;color:#9A9590;margin-top:0.625rem;">A walkthrough of a real audit result: the gap analysis and revenue plan you'll receive.</p>
       </div>
     </section>
 
@@ -672,7 +630,7 @@ const faqJsonLd = {
               <li>Month-by-month pipeline with exact client volume and acquisition cost</li>
               <li>Clear attribution: you know which channels drive booked clients</li>
               <li>A plan you can run yourself, or hand to a team to execute</li>
-              <li>Cancel any time. The plan is yours either way.</li>
+              <li>Cancel anytime. The plan is yours either way.</li>
             </ul>
           </div>
         </div>
@@ -685,10 +643,10 @@ const faqJsonLd = {
     <section class="aa-midcta">
       <div style="max-width:600px;margin:0 auto;">
         <p class="aa-midcta-title">Find your gaps before your competitor finds theirs.</p>
-        <p class="aa-midcta-sub">Free. 5 minutes. No contract.</p>
-        <button type="button" class="aa-btn-closing" id="midpage-cta">
-          Start my free audit →
-        </button>
+        <p class="aa-midcta-sub">Free. 5 minutes. No contracts.</p>
+        <a class="aa-btn-closing" href={GROWBOTIK_FUNNEL_URL} data-audit-cta data-cta-location="mid" style="display:inline-block;text-decoration:none;">
+          Start the free audit →
+        </a>
       </div>
     </section>
 
@@ -709,7 +667,7 @@ const faqJsonLd = {
             <tbody>
               <tr style="border-bottom:1px solid #e8e3d8;">
                 <td style="padding:0.875rem 1.25rem;color:#5A5650;">Monthly retainer, locked in for 6 to 12 months</td>
-                <td style="padding:0.875rem 1.25rem;font-weight:500;color:#1E1C18;">Free audit. Cancel any time if you hire us to execute.</td>
+                <td style="padding:0.875rem 1.25rem;font-weight:500;color:#1E1C18;">Free audit. Cancel anytime if you hire us to execute.</td>
               </tr>
               <tr style="border-bottom:1px solid #e8e3d8;background:#faf8f3;">
                 <td style="padding:0.875rem 1.25rem;color:#5A5650;">Reports full of impressions &amp; clicks</td>
@@ -805,11 +763,11 @@ const faqJsonLd = {
     <section class="aa-closing">
       <div class="aa-closing-inner">
         <h2 class="aa-closing-title">Five minutes to see what you're missing.</h2>
-        <p class="aa-closing-sub">Run the audit, get the plan, decide what to do next. No contract. No pitch call.</p>
+        <p class="aa-closing-sub">Run the audit, get the plan, decide what to do next. No contracts. No pitch call.</p>
         <div class="aa-closing-cta-group">
-          <button type="button" class="aa-btn-closing" id="closing-cta">
-            Start my free audit →
-          </button>
+          <a class="aa-btn-closing" href={GROWBOTIK_FUNNEL_URL} data-audit-cta data-cta-location="footer" style="display:inline-block;text-decoration:none;">
+            Start the free audit →
+          </a>
         </div>
 
       </div>
@@ -817,106 +775,14 @@ const faqJsonLd = {
 
   </div>
 
-  <GrowthPlanModal />
-
-  <!-- ══════════════════════════════════════
-       EXIT INTENT OVERLAY
-  ══════════════════════════════════════ -->
-  <div id="aa-exit-overlay" class="aa-exit-overlay" role="dialog" aria-modal="true" aria-labelledby="aa-exit-heading">
-    <div class="aa-exit-modal">
-      <button class="aa-exit-close" id="aa-exit-close" aria-label="Close">✕</button>
-      <h2 class="aa-exit-heading" id="aa-exit-heading">Before you go — get the growth plan.</h2>
-      <p class="aa-exit-body">
-        Takes 5 minutes. You'll have the gap analysis and 12-month plan before you finish your coffee. Free. No contract.
-      </p>
-      <button type="button" class="aa-exit-btn" id="aa-exit-audit-btn">
-        Get my free growth plan →
-      </button>
-      <button type="button" class="aa-exit-dismiss" id="aa-exit-dismiss">No thanks</button>
-    </div>
-  </div>
+  <!-- CTAs route directly to the audit funnel. Tracking, UTM passthrough,
+       and the sitewide exit-intent modal live in BaseLayout. -->
 
 </BaseLayout>
 
-<script>
-  // ── UTM capture ──
-  (function () {
-    const params = new URLSearchParams(window.location.search);
-    const keys = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term'];
-    const utm: Record<string, string> = {};
-    keys.forEach(k => { const v = params.get(k); if (v) utm[k] = v; });
-    if (Object.keys(utm).length) sessionStorage.setItem('zw_utm', JSON.stringify(utm));
-  })();
-
-  // ── GA4: page view ──
+<script is:inline>
+  // GA4: legacy page-level event, kept for reporting continuity
   if (typeof gtag !== 'undefined') gtag('event', 'revenue_audit_page_view');
-
-  // ── GA4: phone click ──
-  document.querySelectorAll<HTMLAnchorElement>('a[href^="tel:"]').forEach(el => {
-    el.addEventListener('click', () => {
-      if (typeof gtag !== 'undefined') gtag('event', 'revenue_audit_phone_click');
-    });
-  });
-
-  // ── Growth plan modal ──
-  function openAudit() {
-    if (typeof (window as any).openGpModal === 'function') (window as any).openGpModal();
-  }
-
-  document.getElementById('hero-cta')?.addEventListener('click', openAudit);
-  document.getElementById('midpage-cta')?.addEventListener('click', openAudit);
-  document.getElementById('closing-cta')?.addEventListener('click', openAudit);
-  document.getElementById('audit-inline-cta')?.addEventListener('click', openAudit);
-
-  // ── Wire floating button to audit (not the generic contact modal) ──
-  // The global GapAnalysisModal binds a click listener to #ga-float-btn at load.
-  // Removing data-modal alone won't detach it, so clone the node to strip all
-  // existing listeners, then attach only the growth-plan handler.
-  const oldFloatBtn = document.getElementById('ga-float-btn');
-  if (oldFloatBtn) {
-    const floatBtn = oldFloatBtn.cloneNode(true) as HTMLElement;
-    floatBtn.removeAttribute('data-modal');
-    floatBtn.setAttribute('aria-label', 'Get your free growth plan');
-    floatBtn.childNodes.forEach(node => {
-      if (node.nodeType === 3 && node.textContent?.trim()) node.textContent = ' Get free growth plan';
-    });
-    oldFloatBtn.replaceWith(floatBtn);
-    floatBtn.addEventListener('click', () => {
-      openAudit();
-    });
-  }
-
-  // ── Exit intent ──
-  (function () {
-    const STORAGE_KEY = 'zw_exit_shown';
-    if (sessionStorage.getItem(STORAGE_KEY)) return;
-    const overlay = document.getElementById('aa-exit-overlay');
-    const closeBtn = document.getElementById('aa-exit-close');
-    const dismissBtn = document.getElementById('aa-exit-dismiss');
-    const auditBtn = document.getElementById('aa-exit-audit-btn');
-    if (!overlay) return;
-
-    function showOverlay() {
-      if (sessionStorage.getItem(STORAGE_KEY)) return;
-      sessionStorage.setItem(STORAGE_KEY, '1');
-      overlay.classList.add('is-visible');
-      closeBtn?.focus();
-    }
-    function hideOverlay() { overlay.classList.remove('is-visible'); }
-
-    document.addEventListener('mouseleave', (e) => { if (e.clientY <= 0) showOverlay(); });
-    const mobileTimer = setTimeout(showOverlay, 45000);
-    document.addEventListener('touchstart', () => clearTimeout(mobileTimer), { once: true });
-
-    closeBtn?.addEventListener('click', hideOverlay);
-    dismissBtn?.addEventListener('click', hideOverlay);
-    overlay.addEventListener('click', (e) => { if (e.target === overlay) hideOverlay(); });
-    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') hideOverlay(); });
-    auditBtn?.addEventListener('click', () => {
-      hideOverlay();
-      openAudit();
-    });
-  })();
 </script>
 
 <!-- Geo-personalization -->

@@ -1,0 +1,21 @@
+---
+import { GROWBOTIK_FUNNEL_URL } from '../config';
+
+// The single conversion action on the site. Every instance routes to the
+// audit funnel in the same tab. The data attributes drive the global
+// AuditStart/audit_start tracking and UTM passthrough in BaseLayout.
+interface Props {
+  location: 'nav' | 'hero' | 'mid' | 'footer' | 'exit-modal';
+  label?: string;
+  class?: string;
+}
+
+const { location, label = 'Start the free audit', class: className = '' } = Astro.props;
+---
+
+<a
+  href={GROWBOTIK_FUNNEL_URL}
+  data-audit-cta
+  data-cta-location={location}
+  class={className}
+>{label}</a>

@@ -1,0 +1,24 @@
+---
+import AuditCta from './AuditCta.astro';
+
+// Closing CTA band (homepage section 6 pattern), reused across pages.
+interface Props {
+  heading: string;
+  smallText?: string;
+}
+
+const { heading, smallText = 'Free. No call. No contracts. Keep the plan.' } = Astro.props;
+---
+
+<section class="bg-forest">
+  <div class="max-w-3xl mx-auto px-6 py-16 sm:py-20 text-center">
+    <h2 class="font-serif text-3xl sm:text-4xl font-semibold text-white leading-tight mb-8">
+      {heading}
+    </h2>
+    <AuditCta
+      location="footer"
+      class="inline-block bg-orange text-white font-medium text-base px-8 py-4 rounded-lg hover:bg-orange/90 transition-colors"
+    />
+    <p class="mt-4 text-sm text-white/60">{smallText}</p>
+  </div>
+</section>

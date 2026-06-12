@@ -1,0 +1,77 @@
+---
+import AuditCta from './AuditCta.astro';
+
+// Sitewide exit-intent modal (handoff section 2.4). Desktop only, fires once
+// per session when the cursor exits the top of the viewport, and is
+// suppressed for the rest of the session once the visitor clicks any audit
+// CTA. No email capture.
+---
+
+<div
+  id="zw-exit-overlay"
+  class="fixed inset-0 z-[100] hidden items-center justify-center p-6 bg-ink/55"
+  role="dialog"
+  aria-modal="true"
+  aria-labelledby="zw-exit-heading"
+>
+  <div class="relative w-full max-w-md bg-white rounded-2xl shadow-2xl p-8 sm:p-10 text-center">
+    <button
+      id="zw-exit-close"
+      type="button"
+      aria-label="Close"
+      class="absolute top-4 right-4 text-ink-light hover:text-ink transition-colors text-xl leading-none p-1"
+    >&times;</button>
+    <h2 id="zw-exit-heading" class="font-serif text-2xl font-semibold text-ink leading-snug mb-3">
+      Leave with your gap analysis at least.
+    </h2>
+    <p class="text-sm text-ink-mid leading-relaxed mb-6">
+      It's free, takes 5 minutes, and shows you exactly where your business is losing leads.
+    </p>
+    <AuditCta
+      location="exit-modal"
+      class="block w-full bg-navy text-cream font-medium text-base px-6 py-3.5 rounded-lg hover:bg-navy/90 transition-colors mb-3"
+    />
+    <button
+      id="zw-exit-dismiss"
+      type="button"
+      class="text-sm text-ink-light hover:text-ink-mid transition-colors bg-transparent border-0 cursor-pointer"
+    >No thanks</button>
+  </div>
+</div>
+
+<script is:inline>
+  (function () {
+    // Desktop only: require a fine pointer with hover support.
+    if (!window.matchMedia('(hover: hover) and (pointer: fine)').matches) return;
+
+    var overlay = document.getElementById('zw-exit-overlay');
+    if (!overlay) return;
+
+    function alreadyShown() {
+      try { return sessionStorage.getItem('zw_exit_shown') === '1'; } catch (e) { return true; }
+    }
+    function ctaClicked() {
+      try { return sessionStorage.getItem('zw_cta_clicked') === '1'; } catch (e) { return false; }
+    }
+
+    function show() {
+      if (alreadyShown() || ctaClicked()) return;
+      try { sessionStorage.setItem('zw_exit_shown', '1'); } catch (e) {}
+      overlay.classList.remove('hidden');
+      overlay.classList.add('flex');
+    }
+    function hide() {
+      overlay.classList.add('hidden');
+      overlay.classList.remove('flex');
+    }
+
+    document.addEventListener('mouseleave', function (e) {
+      if (e.clientY <= 0) show();
+    });
+
+    document.getElementById('zw-exit-close').addEventListener('click', hide);
+    document.getElementById('zw-exit-dismiss').addEventListener('click', hide);
+    overlay.addEventListener('click', function (e) { if (e.target === overlay) hide(); });
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape') hide(); });
+  })();
+</script>

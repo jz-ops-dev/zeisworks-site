@@ -1,676 +1,203 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import AuditCta from '../components/AuditCta.astro';
+import CtaBlock from '../components/CtaBlock.astro';
+import { COMPACT_FAQ, AUDIT_STEPS } from '../data/faq';
+
+const fixes = [
+  {
+    title: 'Get found first.',
+    body: 'Show up in the map pack and search results when someone nearby needs you today.',
+    icon: 'M12 21s-7-5.5-7-11a7 7 0 1 1 14 0c0 5.5-7 11-7 11z M12 12.5a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5z',
+  },
+  {
+    title: 'Win the comparison.',
+    body: 'More reviews, better reviews, and a website that turns visitors into calls.',
+    icon: 'M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z',
+  },
+  {
+    title: 'Answer every call.',
+    body: 'Missed calls are lost jobs. We make sure every lead gets a response in minutes, not hours.',
+    icon: 'M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z',
+  },
+  {
+    title: 'Ads that pay for themselves.',
+    body: 'Search and social campaigns tracked to the actual job, not just the click.',
+    icon: 'M12 22a10 10 0 1 0 0-20 10 10 0 0 0 0 20z M12 18a6 6 0 1 0 0-12 6 6 0 0 0 0 12z M12 14a2 2 0 1 0 0-4 2 2 0 0 0 0 4z',
+  },
+  {
+    title: 'Know your numbers.',
+    body: 'Every call, form, and source tracked. You see exactly what your marketing returns.',
+    icon: 'M3 3v18h18 M7 16v-5 M12 16V8 M17 16v-8',
+  },
+  {
+    title: 'A plan that adapts.',
+    body: 'Monthly optimization based on what is working. If results lag, the plan changes.',
+    icon: 'M23 4v6h-6 M1 20v-6h6 M3.51 9a9 9 0 0 1 14.85-3.36L23 10 M1 14l4.64 4.36A9 9 0 0 0 20.49 15',
+  },
+];
+
+// OPEN ITEM (handoff section 3, homepage section 4): real anonymized
+// gap-analysis findings and client quotes from Jack. Layout ships hidden
+// until at least one real finding exists. Do not fabricate numbers.
+const proofFindings: { label: string; finding: string }[] = [];
 ---
 
 <BaseLayout
-  title="More clients for your business. Not more marketing busywork."
-  description="More high-value clients for your business — not more marketing busywork. Revenue-first marketing plans built for service businesses. Free analysis."
-  ogTitle="zeisWorks — More clients. Not more marketing busywork."
-  ogDescription="Revenue-first marketing for service businesses. Get more high-value clients — not just more website visits. Free analysis."
+  title="Free 5-Minute Revenue Audit for Local Service Businesses | ZeisWorks"
+  description="Find out exactly where your business is losing leads. Free gap analysis and 12-month revenue plan in 5 minutes. No call required, no contracts."
+  businessSchema={true}
 >
-
-<style>
-  /* ── HERO ── */
-  .hero {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 3.5rem;
-    align-items: center;
-    padding: 5rem 2rem 4rem;
-    max-width: 1100px;
-    margin: 0 auto;
-  }
-  .hero-eyebrow {
-    font-size: 0.8125rem;
-    font-weight: 500;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--terra);
-    margin-bottom: 1.25rem;
-  }
-  .hero h1 {
-    font-family: var(--font-serif);
-    font-size: clamp(2.25rem, 4vw, 3.25rem);
-    line-height: 1.2;
-    font-weight: 600;
-    color: var(--ink);
-    margin-bottom: 1.5rem;
-    letter-spacing: -0.02em;
-  }
-  .hero h1 em { color: var(--orange); font-style: italic; }
-  .hero-sub {
-    font-size: 1.0625rem;
-    color: var(--ink-mid);
-    line-height: 1.75;
-    margin-bottom: 2.5rem;
-    max-width: 480px;
-  }
-  .hero-actions {
-    display: flex;
-    gap: 1rem;
-    flex-wrap: wrap;
-    align-items: center;
-    margin-bottom: 2rem;
-  }
-  .btn-primary {
-    background: var(--terra);
-    color: #fff;
-    padding: 0.8rem 1.75rem;
-    border-radius: 10px;
-    font-size: 0.9375rem;
-    font-weight: 500;
-    text-decoration: none;
-    display: inline-block;
-    transition: background 0.2s, transform 0.15s;
-    border: none;
-    cursor: pointer;
-    font-family: inherit;
-  }
-  .btn-primary:hover { background: var(--terra-dark); transform: translateY(-1px); }
-  .btn-secondary {
-    color: var(--ink-mid);
-    font-size: 0.9375rem;
-    text-decoration: none;
-    display: inline-flex;
-    align-items: center;
-    gap: 0.4rem;
-    transition: color 0.2s;
-    padding: 0.8rem 0;
-  }
-  .btn-secondary:hover { color: var(--terra); }
-  .hero-trust {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem 1.5rem;
-    font-size: 0.8125rem;
-    color: var(--ink-light);
-  }
-  .hero-trust-item {
-    display: flex;
-    align-items: center;
-    gap: 0.35rem;
-  }
-  .hero-trust-dot {
-    width: 6px; height: 6px; min-width: 6px;
-    background: #4caf50;
-    border-radius: 50%;
-  }
-  .hero-visual {
-    background: var(--cream-dark);
-    border-radius: 18px;
-    padding: 1.75rem;
-    border: 1px solid #E8E3D8;
-  }
-  .hero-steps { display: flex; flex-direction: column; gap: 1.25rem; }
-  .hero-step { display: flex; gap: 1rem; align-items: flex-start; }
-  .hero-step-num {
-    font-family: var(--font-serif);
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: var(--orange);
-    min-width: 2rem;
-    line-height: 1.2;
-  }
-  .hero-step h4 { font-size: 0.9375rem; font-weight: 600; color: var(--ink); margin-bottom: 0.25rem; line-height: 1.35; }
-  .hero-step p { font-size: 0.8125rem; color: var(--ink-mid); line-height: 1.65; margin: 0; }
-
-  /* ── SECTION BASE ── */
-  .section { padding: 5rem 2rem; }
-  .section-inner { max-width: 1100px; margin: 0 auto; }
-  .section-label {
-    font-size: 0.75rem;
-    font-weight: 500;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--orange);
-    margin-bottom: 1rem;
-  }
-  .section-title {
-    font-family: var(--font-serif);
-    font-size: clamp(1.75rem, 3vw, 2.5rem);
-    font-weight: 600;
-    line-height: 1.25;
-    color: var(--ink);
-    letter-spacing: -0.02em;
-    margin-bottom: 1.25rem;
-  }
-  .section-body {
-    font-size: 1rem;
-    color: var(--ink-mid);
-    max-width: 600px;
-    line-height: 1.8;
-  }
-
-  /* ── PROBLEM ── */
-  .problem { background: var(--forest); }
-  .problem .section-label { color: var(--forest-light); }
-  .problem .section-title { color: #fff; }
-  .problem .section-body { color: rgba(255,255,255,0.7); }
-  .problem-cards {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1.25rem;
-    margin-top: 2.5rem;
-  }
-  .problem-card {
-    background: rgba(255,255,255,0.04);
-    border: 1px solid rgba(255,255,255,0.09);
-    border-radius: 18px;
-    padding: 1.75rem;
-  }
-  .problem-card p { font-size: 0.9375rem; color: rgba(255,255,255,0.8); line-height: 1.7; margin: 0; }
-  .problem-cta { margin-top: 2.5rem; text-align: center; }
-  .btn-on-dark {
-    display: inline-block;
-    background: #fff;
-    color: var(--ink);
-    padding: 0.85rem 1.75rem;
-    border-radius: 99px;
-    font-weight: 500;
-    text-decoration: none;
-    font-size: 0.95rem;
-    transition: transform 0.15s, background 0.15s;
-  }
-  .btn-on-dark:hover { background: var(--cream); transform: translateY(-1px); }
-
-  /* ── TWO PATHS ── */
-  .paths { background: var(--cream-dark); }
-  .paths-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 2rem;
-    margin-top: 2.5rem;
-  }
-  .path-card {
-    background: var(--cream);
-    border: 1px solid #E8E3D8;
-    border-radius: 18px;
-    padding: 2rem;
-    display: flex;
-    flex-direction: column;
-  }
-  .path-label {
-    font-size: 0.65rem;
-    font-weight: 600;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--orange);
-    margin-bottom: 0.75rem;
-  }
-  .path-card h3 {
-    font-family: var(--font-serif);
-    font-size: 1.25rem;
-    font-weight: 600;
-    color: var(--ink);
-    margin-bottom: 0.75rem;
-  }
-  .path-card p {
-    font-size: 0.9375rem;
-    color: var(--ink-mid);
-    line-height: 1.7;
-    flex: 1;
-    margin-bottom: 1.5rem;
-  }
-  .path-card .btn-primary { align-self: flex-start; }
-  .paths-note {
-    text-align: center;
-    margin-top: 2rem;
-    font-size: 0.875rem;
-    color: var(--ink-light);
-  }
-  .paths-note a { color: var(--terra); text-decoration: none; }
-  .paths-note a:hover { text-decoration: underline; }
-
-  /* ── PILLARS ── */
-  .pillars-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1.5rem;
-    margin-top: 2.5rem;
-  }
-  .pillar-card {
-    background: var(--cream-dark);
-    border: 1px solid #E8E3D8;
-    border-radius: 18px;
-    padding: 2rem;
-    text-decoration: none;
-    transition: border-color 0.2s, transform 0.15s;
-    display: block;
-  }
-  .pillar-card:hover {
-    border-color: var(--terra);
-    transform: translateY(-2px);
-  }
-  .pillar-num {
-    font-family: var(--font-mono);
-    font-size: 0.65rem;
-    font-weight: 600;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--orange);
-    margin-bottom: 0.75rem;
-  }
-  .pillar-card h3 {
-    font-family: var(--font-serif);
-    font-size: 1.125rem;
-    font-weight: 600;
-    color: var(--ink);
-    margin-bottom: 0.5rem;
-  }
-  .pillar-card p {
-    font-size: 0.875rem;
-    color: var(--ink-mid);
-    line-height: 1.65;
-    margin: 0;
-  }
-
-  /* ── VERTICALS ── */
-  .verticals { background: var(--cream-dark); }
-  .verticals-inner { max-width: 1100px; margin: 0 auto; text-align: center; }
-  .verticals-grid {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 0.75rem;
-    margin-top: 2rem;
-  }
-  .vertical-tag {
-    background: var(--cream);
-    border: 1px solid #E8E3D8;
-    border-radius: 99px;
-    padding: 0.5rem 1.25rem;
-    font-size: 0.875rem;
-    color: var(--ink-mid);
-  }
-  .verticals-sub {
-    margin-top: 1.5rem;
-    font-size: 0.9375rem;
-    color: var(--ink-mid);
-  }
-
-  /* ── PROOF ── */
-  .proof-bar {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 0.5rem 1.5rem;
-    padding: 1rem 1.5rem;
-    background: rgba(242, 238, 228, 0.5);
-    border-top: 1px solid #E8E3D8;
-    border-bottom: 1px solid #E8E3D8;
-    font-size: 0.8125rem;
-    font-weight: 500;
-    color: var(--ink-mid);
-    text-align: center;
-  }
-  .testimonials-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1.25rem;
-    margin-top: 2.5rem;
-  }
-  .tcard {
-    background: var(--cream);
-    border: 1px solid #E8E3D8;
-    border-radius: 18px;
-    padding: 1.75rem;
-    display: flex;
-    flex-direction: column;
-  }
-  .tcard-stars {
-    color: var(--orange);
-    font-size: 0.875rem;
-    letter-spacing: 0.05em;
-    margin-bottom: 1rem;
-  }
-  .tcard-quote {
-    font-family: var(--font-serif);
-    font-style: italic;
-    font-size: 0.9375rem;
-    color: var(--ink);
-    line-height: 1.75;
-    flex: 1;
-    margin: 0;
-  }
-  .tcard-divider {
-    border-top: 1px solid #E8E3D8;
-    margin: 1rem 0;
-  }
-  .tcard-name {
-    font-weight: 600;
-    color: var(--ink);
-    font-size: 0.875rem;
-    margin: 0;
-  }
-  .tcard-title {
-    font-size: 0.75rem;
-    color: var(--ink-light);
-    margin: 0.125rem 0 0.5rem;
-  }
-  .tcard-chips {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.375rem;
-  }
-  .chip {
-    font-size: 0.7rem;
-    background: var(--cream-dark);
-    color: var(--ink-mid);
-    padding: 0.2rem 0.625rem;
-    border-radius: 99px;
-  }
-
-  /* ── ABOUT COMPACT ── */
-  .about-compact {
-    display: grid;
-    grid-template-columns: auto 1fr;
-    gap: 2rem;
-    align-items: center;
-    margin-top: 2rem;
-  }
-  .about-compact-photo {
-    width: 80px;
-    height: 80px;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 2px solid #E8E3D8;
-  }
-  .about-compact-body p {
-    font-size: 1rem;
-    color: var(--ink-mid);
-    line-height: 1.8;
-    margin-bottom: 1rem;
-  }
-  .about-compact-body p:last-child { margin-bottom: 0; }
-  .about-compact-body a { color: var(--terra); text-decoration: none; }
-  .about-compact-body a:hover { text-decoration: underline; }
-
-  /* ── FINAL CTA ── */
-  .final-cta { background: var(--forest); text-align: center; }
-  .final-cta .section-title { color: #fff; }
-  .final-cta .section-body { color: rgba(255,255,255,0.7); margin: 0 auto 2rem; }
-  .final-cta-actions {
-    display: flex;
-    gap: 1rem;
-    justify-content: center;
-    flex-wrap: wrap;
-  }
-  .btn-on-forest {
-    display: inline-block;
-    background: var(--orange);
-    color: #fff;
-    padding: 0.85rem 1.75rem;
-    border-radius: 10px;
-    font-weight: 500;
-    text-decoration: none;
-    font-size: 0.95rem;
-    transition: background 0.2s, transform 0.15s;
-    border: none;
-    cursor: pointer;
-    font-family: inherit;
-  }
-  .btn-on-forest:hover { background: #a8461a; transform: translateY(-1px); }
-  .btn-on-forest-outline {
-    display: inline-block;
-    background: transparent;
-    color: #fff;
-    padding: 0.85rem 1.75rem;
-    border-radius: 10px;
-    font-weight: 500;
-    text-decoration: none;
-    font-size: 0.95rem;
-    border: 1px solid rgba(255,255,255,0.3);
-    transition: border-color 0.2s, background 0.2s;
-  }
-  .btn-on-forest-outline:hover { border-color: rgba(255,255,255,0.6); background: rgba(255,255,255,0.05); }
-
-  /* ── RESPONSIVE ── */
-  @media (max-width: 768px) {
-    .hero { grid-template-columns: 1fr; gap: 2rem; padding: 3rem 1.5rem 2.5rem; }
-    .problem-cards { grid-template-columns: 1fr; }
-    .paths-grid { grid-template-columns: 1fr; }
-    .pillars-grid { grid-template-columns: 1fr; }
-    .testimonials-grid { grid-template-columns: 1fr; }
-    .about-compact { grid-template-columns: 1fr; text-align: center; }
-    .about-compact-photo { margin: 0 auto; }
-  }
-</style>
-
-<!-- ══════════════════════════════════════
-     HERO
-══════════════════════════════════════ -->
-<section class="hero">
-  <div>
-    <p class="hero-eyebrow">Golden, CO — Marketing that actually works</p>
-    <h1>
-      More clients for your business.<br>
-      <em>Not more marketing busywork.</em>
-    </h1>
-    <p class="hero-sub">
-      Revenue-first marketing built for your business. More high-value clients — not more website visits, not more busywork.
-      Get a free growth analysis in 5 minutes, or talk to me directly if you need hands-on help.
+  <!-- ═══════════ HERO ═══════════ -->
+  <section class="max-w-3xl mx-auto px-6 pt-16 sm:pt-24 pb-12 text-center">
+    <p class="text-xs font-semibold uppercase tracking-widest text-orange mb-5">
+      For local service businesses doing $500K to $5M
     </p>
-    <div class="hero-actions">
-      <a href="/ai-audit/" class="btn-primary">Get your free analysis →</a>
-      <a href="/gap-analysis/" class="btn-secondary">Request a personal analysis →</a>
+    <h1 class="font-serif text-4xl sm:text-5xl font-semibold leading-tight tracking-tight mb-6">
+      Find out exactly where your business is losing leads.
+    </h1>
+    <p class="text-lg text-ink-mid leading-relaxed max-w-2xl mx-auto mb-8">
+      Run a free 5-minute revenue audit. You get a gap analysis of your marketing and a 12-month plan to fix it. No call required. No contracts.
+    </p>
+    <AuditCta
+      location="hero"
+      class="inline-block bg-navy text-cream font-medium text-base px-8 py-4 rounded-lg hover:bg-navy/90 transition-colors"
+    />
+    <p class="mt-3 text-sm text-ink-light">Free. 5 minutes. Keep the plan even if we never talk.</p>
+
+    <!-- Demo clip: poster frame, click to play -->
+    <div class="mt-12 relative aspect-video rounded-xl overflow-hidden border border-cream-dark bg-forest" id="zw-demo-video">
+      <button
+        id="zw-demo-play"
+        type="button"
+        class="absolute inset-0 w-full h-full group cursor-pointer"
+        aria-label="Play a short clip of the audit running on a demo company"
+      >
+        <img
+          src="/meta-ad-1.png"
+          alt="Preview of the revenue audit report"
+          class="w-full h-full object-cover"
+          width="1280"
+          height="720"
+        />
+        <span class="absolute inset-0 flex items-center justify-center bg-ink/30 group-hover:bg-ink/40 transition-colors">
+          <span class="flex items-center justify-center w-16 h-16 rounded-full bg-white shadow-lg">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" class="text-navy ml-1" aria-hidden="true">
+              <path d="M8 5v14l11-7z" />
+            </svg>
+          </span>
+        </span>
+      </button>
     </div>
-    <div class="hero-trust">
-      <span class="hero-trust-item"><span class="hero-trust-dot" aria-hidden="true"></span> 5.0 on Upwork</span>
-      <span class="hero-trust-item"><span class="hero-trust-dot" aria-hidden="true"></span> 100% Job Success</span>
-      <span class="hero-trust-item"><span class="hero-trust-dot" aria-hidden="true"></span> 876 hours billed</span>
-    </div>
-  </div>
-  <div>
-    <div class="hero-visual">
-      <div class="hero-steps">
-        <div class="hero-step">
-          <div class="hero-step-num">01</div>
-          <div>
-            <h4>Answer 8 questions about your business</h4>
-            <p>Revenue, industry, location, current marketing — takes 5 minutes.</p>
+    <p class="mt-3 text-xs text-ink-light">The audit running on a demo company. 3 minutes, not required.</p>
+  </section>
+
+  <script is:inline>
+    (function () {
+      var btn = document.getElementById('zw-demo-play');
+      var wrap = document.getElementById('zw-demo-video');
+      if (!btn || !wrap) return;
+      btn.addEventListener('click', function () {
+        var iframe = document.createElement('iframe');
+        iframe.src = 'https://drive.google.com/file/d/13c0IGxcmy-nyjlWozb2RVvbSIUMAF-iv/preview';
+        iframe.title = 'The revenue audit running on a demo company';
+        iframe.allow = 'autoplay';
+        iframe.className = 'absolute inset-0 w-full h-full border-0';
+        wrap.replaceChild(iframe, btn);
+      });
+    })();
+  </script>
+
+  <!-- ═══════════ HOW IT WORKS ═══════════ -->
+  <section id="how-it-works" class="bg-forest scroll-mt-20">
+    <div class="max-w-3xl mx-auto px-6 py-16 sm:py-20">
+      <h2 class="font-serif text-3xl sm:text-4xl font-semibold text-white leading-tight mb-10">
+        Three steps. Five minutes. Real numbers.
+      </h2>
+      <div class="space-y-8">
+        {AUDIT_STEPS.map((step, i) => (
+          <div class="flex gap-5 items-start">
+            <span class="font-serif text-2xl font-semibold text-orange shrink-0 leading-snug">{i + 1}</span>
+            <div>
+              <h3 class="font-semibold text-white mb-1">{`Step ${i + 1}: ${step.title}`}</h3>
+              <p class="text-white/70 leading-relaxed text-[0.9375rem]">{step.body}</p>
+            </div>
           </div>
+        ))}
+      </div>
+      <div class="mt-10">
+        <AuditCta
+          location="mid"
+          class="inline-block bg-orange text-white font-medium text-base px-7 py-3.5 rounded-lg hover:bg-orange/90 transition-colors"
+        />
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════ WHAT WE FIX ═══════════ -->
+  <section class="max-w-5xl mx-auto px-6 py-16 sm:py-20">
+    <h2 class="font-serif text-3xl sm:text-4xl font-semibold leading-tight mb-3">
+      We don't sell marketing. We close gaps.
+    </h2>
+    <p class="text-ink-mid mb-10 max-w-2xl">
+      Every plan is built from your audit. These are the levers we pull most often.
+    </p>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+      {fixes.map((fix) => (
+        <div class="bg-cream-dark/60 border border-cream-dark rounded-xl p-6">
+          <svg
+            width="26"
+            height="26"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1.8"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="text-navy mb-4"
+            aria-hidden="true"
+          >
+            <path d={fix.icon} />
+          </svg>
+          <h3 class="font-serif text-lg font-semibold text-ink mb-1.5">{fix.title}</h3>
+          <p class="text-sm text-ink-mid leading-relaxed">{fix.body}</p>
         </div>
-        <div class="hero-step">
-          <div class="hero-step-num">02</div>
-          <div>
-            <h4>Get a 12-month growth plan</h4>
-            <p>Revenue projections, channel breakdown, prioritized by what drives the highest-value clients.</p>
-          </div>
-        </div>
-        <div class="hero-step">
-          <div class="hero-step-num">03</div>
-          <div>
-            <h4>Execute it yourself — or we do it for you</h4>
-            <p>The plan is yours either way. If you want done-for-you execution, I can handle that too.</p>
-          </div>
-        </div>
-      </div>
+      ))}
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- ══════════════════════════════════════
-     PROBLEM
-══════════════════════════════════════ -->
-<section class="section problem">
-  <div class="section-inner">
-    <p class="section-label">Sound familiar?</p>
-    <h2 class="section-title">You've built something real.<br>Parts of it haven't kept up.</h2>
-    <p class="section-body">You're too big for DIY. Too smart for a $5,000/mo agency. But something's not working — and you can see it in the results.</p>
-    <div class="problem-cards">
-      <div class="problem-card">
-        <p>You're spending money on marketing but can't tell what's actually working. No clear cost per lead. No visibility into where clients come from.</p>
-      </div>
-      <div class="problem-card">
-        <p>Your CRM is a mess — or you don't have one. Leads fall through the cracks. Follow-up is inconsistent. Your team uses spreadsheets because the system is too slow.</p>
-      </div>
-      <div class="problem-card">
-        <p>Competitors are showing up above you on Google. You know you're better. But "better" doesn't rank — and your online presence hasn't kept up with your reputation.</p>
-      </div>
-      <div class="problem-card">
-        <p>Manual processes eat your team's time. Three people do work that automation could handle. Nobody's built the systems because everyone's too busy doing the work.</p>
-      </div>
-    </div>
-    <div class="problem-cta">
-      <a href="/gap-analysis/" class="btn-on-dark">See where your business stands →</a>
-    </div>
-  </div>
-</section>
-
-<!-- ══════════════════════════════════════
-     TWO PATHS
-══════════════════════════════════════ -->
-<section class="section paths">
-  <div class="section-inner">
-    <p class="section-label">Two ways in</p>
-    <h2 class="section-title">Same result: more revenue.</h2>
-    <p class="section-body">Start with a free analysis — self-serve or hands-on. Either way, you get a clear path to more high-value clients.</p>
-    <div class="paths-grid">
-      <div class="path-card">
-        <p class="path-label">Self-Serve</p>
-        <h3>Get your free growth plan</h3>
-        <p>Answer 8 questions about your business. Get a free 12-month growth plan — prioritized by revenue impact, with channel breakdown and monthly budget. No call required.</p>
-        <a href="/ai-audit/" class="btn-primary">Get your free analysis →</a>
-      </div>
-      <div class="path-card">
-        <p class="path-label">Hands-On</p>
-        <h3>Request a personal analysis</h3>
-        <p>Tell me what's broken. I'll run a personal analysis of your local search presence, competitors, and marketing gaps — and send you a written report with specific fixes. No call required.</p>
-        <a href="/gap-analysis/" class="btn-primary">Request your analysis →</a>
-      </div>
-    </div>
-    <p class="paths-note">Either way, if you want execution help, I can handle that too.</p>
-  </div>
-</section>
-
-<!-- ══════════════════════════════════════
-     PILLARS
-══════════════════════════════════════ -->
-<section class="section">
-  <div class="section-inner">
-    <p class="section-label">What the work looks like</p>
-    <h2 class="section-title">Three things. One person.</h2>
-    <p class="section-body">Marketing, operations, and custom tools — all from someone who actually does the work.</p>
-    <div class="pillars-grid">
-      <a href="/marketing" class="pillar-card">
-        <p class="pillar-num">01</p>
-        <h3>Get found</h3>
-        <p>Local SEO, Google Business Profile, paid ads, and the lead generation systems that bring in the right customers.</p>
-      </a>
-      <a href="/operations" class="pillar-card">
-        <p class="pillar-num">02</p>
-        <h3>Turn attention into leads</h3>
-        <p>CRM setup, conversion optimization, follow-up workflows — the systems that make sure leads don't fall through the cracks.</p>
-      </a>
-      <a href="/custom-tools" class="pillar-card">
-        <p class="pillar-num">03</p>
-        <h3>Build systems that stick</h3>
-        <p>Process automation, custom integrations, reporting dashboards — the tools that make growth repeatable without depending on you.</p>
-      </a>
-    </div>
-  </div>
-</section>
-
-<!-- ══════════════════════════════════════
-     VERTICALS
-══════════════════════════════════════ -->
-<section class="section verticals">
-  <div class="verticals-inner">
-    <p class="section-label">Who it's for</p>
-    <h2 class="section-title">Built for service businesses that run on reputation.</h2>
-    <div class="verticals-grid">
-      <span class="vertical-tag">Med Spas & Aesthetics</span>
-      <span class="vertical-tag">Dental Practices</span>
-      <span class="vertical-tag">Home Services</span>
-      <span class="vertical-tag">Independent Vet Clinics</span>
-      <span class="vertical-tag">Trades & Contractors</span>
-      <span class="vertical-tag">Professional Services</span>
-    </div>
-    <p class="verticals-sub">If your business depends on local customers and you don't have a dedicated marketing person, this is for you.</p>
-  </div>
-</section>
-
-<!-- ══════════════════════════════════════
-     SOCIAL PROOF
-══════════════════════════════════════ -->
-<section class="section" style="padding-top: 0;">
-  <div class="proof-bar">
-    <span>★ 5.0 on Upwork</span>
-    <span>Top Rated · 100% Job Success</span>
-    <span>Trusted by businesses across the US</span>
-  </div>
-  <div class="section-inner" style="padding-top: 3rem;">
-    <p class="section-label">What clients say</p>
-    <h2 class="section-title">Real results from real businesses.</h2>
-    <div class="testimonials-grid">
-      <div class="tcard">
-        <div class="tcard-stars" aria-label="5 stars">★★★★★</div>
-        <p class="tcard-quote">"I've had the pleasure to work closely with Jack in numerous projects, roles, and challenges. All of which have exceeded my expectations as a company leader."</p>
-        <div class="tcard-divider" aria-hidden="true"></div>
-        <p class="tcard-name">Alex Zemianek</p>
-        <p class="tcard-title">Owner & CEO, JZ Vacation Rentals</p>
-        <div class="tcard-chips">
-          <span class="chip">Long-term Partnership</span>
-          <span class="chip">Exceeded Expectations</span>
+  <!-- ═══════════ PROOF (renders only once real audit examples exist) ═══════════ -->
+  {proofFindings.length > 0 && (
+    <section class="bg-cream-dark/60 border-y border-cream-dark">
+      <div class="max-w-5xl mx-auto px-6 py-16 sm:py-20">
+        <h2 class="font-serif text-3xl sm:text-4xl font-semibold leading-tight mb-10">
+          The audit finds money. Here's what it looks like.
+        </h2>
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-5">
+          {proofFindings.map((p) => (
+            <div class="bg-cream border border-cream-dark rounded-xl p-6">
+              <p class="text-xs font-semibold uppercase tracking-widest text-orange mb-3">{p.label}</p>
+              <p class="text-sm text-ink-mid leading-relaxed">{p.finding}</p>
+            </div>
+          ))}
         </div>
       </div>
-      <div class="tcard">
-        <div class="tcard-stars" aria-label="5 stars">★★★★★</div>
-        <p class="tcard-quote">"Jack was great at communicating, efficient, personable and dependable. He was easy to work with and a great asset to our team."</p>
-        <div class="tcard-divider" aria-hidden="true"></div>
-        <p class="tcard-name">Verified Client</p>
-        <p class="tcard-title">Upwork · 5.0</p>
-        <div class="tcard-chips">
-          <span class="chip">Collaborative</span>
-          <span class="chip">Clear Communicator</span>
-          <span class="chip">Reliable</span>
+    </section>
+  )}
+
+  <!-- ═══════════ FAQ ═══════════ -->
+  <section class="max-w-3xl mx-auto px-6 py-16 sm:py-20">
+    <h2 class="font-serif text-3xl sm:text-4xl font-semibold leading-tight mb-10">Questions</h2>
+    <dl class="divide-y divide-cream-dark border-y border-cream-dark">
+      {COMPACT_FAQ.map(({ q, a }) => (
+        <div class="py-6">
+          <dt class="font-semibold text-ink mb-2">{q}</dt>
+          <dd class="text-sm text-ink-mid leading-relaxed">{a}</dd>
         </div>
-      </div>
-      <div class="tcard">
-        <div class="tcard-stars" aria-label="5 stars">★★★★★</div>
-        <p class="tcard-quote">"Jack was amazing to work with, which is why he worked for us on a long-term basis. He is thorough, accurate, and timely. I highly recommend him."</p>
-        <div class="tcard-divider" aria-hidden="true"></div>
-        <p class="tcard-name">Ray Updyke</p>
-        <p class="tcard-title">Alpaca VC · 254 hrs logged</p>
-        <div class="tcard-chips">
-          <span class="chip">Collaborative</span>
-          <span class="chip">Detail Oriented</span>
-          <span class="chip">Reliable</span>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+      ))}
+    </dl>
+  </section>
 
-<!-- ══════════════════════════════════════
-     ABOUT COMPACT
-══════════════════════════════════════ -->
-<section class="section" style="padding-top: 0;">
-  <div class="section-inner">
-    <p class="section-label">Who's behind it</p>
-    <h2 class="section-title">A real person, not an agency.</h2>
-    <div class="about-compact">
-      <img src="/jack.jpg" alt="Jack Zeis" class="about-compact-photo" width="80" height="80" loading="lazy" />
-      <div class="about-compact-body">
-        <p>I run ZeisWorks from Golden, CO. One person, no agency — just someone who builds real systems and will tell you straight. Six years of sales and marketing work across healthcare, professional services, trades, real estate, and finance.</p>
-        <p><a href="/about">Read more about me →</a></p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ══════════════════════════════════════
-     FINAL CTA
-══════════════════════════════════════ -->
-<section class="section final-cta">
-  <div class="section-inner">
-    <h2 class="section-title">Stop guessing. Start growing.</h2>
-    <p class="section-body">Get your free growth analysis — or tell me what you're trying to fix. Either way, you'll know exactly where your revenue is leaking.</p>
-    <div class="final-cta-actions">
-      <a href="/ai-audit/" class="btn-on-forest">Get your free analysis →</a>
-      <a href="/gap-analysis/" class="btn-on-forest-outline">Request a personal analysis →</a>
-    </div>
-  </div>
-</section>
-
+  <!-- ═══════════ CLOSING CTA ═══════════ -->
+  <CtaBlock heading="Five minutes from now you'll know where the leaks are." />
 </BaseLayout>

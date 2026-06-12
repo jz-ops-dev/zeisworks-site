@@ -1,5 +1,7 @@
 ---
-import GapAnalysisModal from '../components/GapAnalysisModal.astro';
+import AuditCta from '../components/AuditCta.astro';
+import ExitIntentModal from '../components/ExitIntentModal.astro';
+import { CALENDLY_URL } from '../config';
 
 interface Props {
   title: string;
@@ -9,6 +11,7 @@ interface Props {
   ogImage?: string;
   canonicalUrl?: string;
   bodyPage?: string;
+  businessSchema?: boolean;
 }
 
 const {
@@ -19,27 +22,28 @@ const {
   ogImage,
   canonicalUrl,
   bodyPage,
+  businessSchema = false,
 } = Astro.props;
 
 const siteUrl = 'https://zeisworks.com';
 const canonical = canonicalUrl ?? new URL(Astro.url.pathname, siteUrl).href;
-const resolvedOgImage = ogImage
-  ? new URL(ogImage, siteUrl).href
-  : undefined;
+const resolvedOgImage = ogImage ? new URL(ogImage, siteUrl).href : undefined;
 
+// LocalBusiness/ProfessionalService schema, rendered on the homepage and
+// about page only (handoff section 5, vertical page schema note).
 const localBusinessJsonLd = {
   '@context': 'https://schema.org',
   '@type': 'ProfessionalService',
   name: 'ZeisWorks',
   url: siteUrl,
   logo: `${siteUrl}/favicon.svg`,
-  description: 'Small business growth consulting for Golden, Colorado. Local SEO, paid ads, operations, and custom tools for Front Range service businesses.',
-  telephone: '+17206502447',
+  description:
+    'ZeisWorks runs free revenue audits for local service businesses: a gap analysis of your marketing and a 12-month plan to fix the leaks, with done-for-you execution.',
   email: 'jack@zeisworks.com',
   founder: {
     '@type': 'Person',
     name: 'Jack Zeis',
-    jobTitle: 'Small Business Growth Consultant',
+    jobTitle: 'Marketing and Systems Consultant',
     url: siteUrl,
   },
   address: {
@@ -48,30 +52,34 @@ const localBusinessJsonLd = {
     addressRegion: 'CO',
     addressCountry: 'US',
   },
-  areaServed: [
-    { '@type': 'City', name: 'Golden', addressRegion: 'CO' },
-    { '@type': 'City', name: 'Denver', addressRegion: 'CO' },
-    { '@type': 'City', name: 'Arvada', addressRegion: 'CO' },
-    { '@type': 'City', name: 'Lakewood', addressRegion: 'CO' },
-    { '@type': 'City', name: 'Wheat Ridge', addressRegion: 'CO' },
-    { '@type': 'City', name: 'Littleton', addressRegion: 'CO' },
-    { '@type': 'City', name: 'Boulder', addressRegion: 'CO' },
-  ],
-  sameAs: [
-    'https://www.upwork.com',
-  ],
+  parentOrganization: {
+    '@type': 'Organization',
+    name: 'High Range Living LLC',
+  },
   hasOfferCatalog: {
     '@type': 'OfferCatalog',
     name: 'ZeisWorks Services',
     itemListElement: [
-      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Local SEO & Google Business Profile Optimization' } },
-      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Paid Ads Management (Meta & Google)' } },
-      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Marketing Gap Analysis (Free)' } },
-      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Business Operations & Systems' } },
-      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Custom Tools & Automation' } },
+      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Free Revenue Audit and Gap Analysis' } },
+      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: '12-Month Revenue Plan' } },
+      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Done-For-You Marketing Execution' } },
+      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Systems Consulting' } },
     ],
   },
 };
+
+const navLinks = [
+  { label: 'How It Works', href: '/#how-it-works' },
+  { label: 'Results', href: '/results/' },
+  { label: 'Pricing', href: '/pricing/' },
+  { label: 'About', href: '/about/' },
+];
+
+const verticalLinks = [
+  { label: 'Water Damage Restoration', href: '/water-damage-marketing/' },
+  { label: 'Tree Services', href: '/tree-service-marketing/' },
+  { label: 'Wildfire Mitigation', href: '/wildfire-mitigation-marketing/' },
+];
 ---
 
 <!doctype html>
@@ -86,7 +94,7 @@ const localBusinessJsonLd = {
     <meta property="og:type" content="website" />
     <meta property="og:url" content={canonical} />
     {resolvedOgImage && <meta property="og:image" content={resolvedOgImage} />}
-    <meta property="og:site_name" content="zeisWorks" />
+    <meta property="og:site_name" content="ZeisWorks" />
 
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={ogTitle ?? title} />
@@ -103,28 +111,32 @@ const localBusinessJsonLd = {
       rel="stylesheet"
     />
 
-    <title>{title} | zeisWorks. Modern small business growth.</title>
+    <title>{title}</title>
+
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-F05WB9RWJT"></script>
-    <script>
+    <script is:inline>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
       gtag('config', 'G-F05WB9RWJT');
     </script>
+
     <link rel="icon" href="/favicon.ico" sizes="any" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="icon" type="image/png" sizes="256x256" href="/favicon.png" />
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
 
-    <script type="application/ld+json" set:html={JSON.stringify(localBusinessJsonLd)} />
+    {businessSchema && (
+      <script type="application/ld+json" set:html={JSON.stringify(localBusinessJsonLd)} />
+    )}
     <slot name="head" />
 
     <!-- ContentSquare UX Analytics -->
     <script src="https://t.contentsquare.net/uxa/2a5f9e9b31741.js" async></script>
 
     <!-- Meta Pixel Base Code -->
-    <script>
+    <script is:inline>
       !function(f,b,e,v,n,t,s)
       {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
       n.callMethod.apply(n,arguments):n.queue.push(arguments)};
@@ -141,59 +153,6 @@ const localBusinessJsonLd = {
     /></noscript>
     <!-- End Meta Pixel Base Code -->
 
-    <!-- Lead tracking: fire fbq event on every form submission -->
-    <script>
-      (function() {
-        var LEAD_FORMS = [
-          'gap-analysis',
-          'gap-analysis-modal',
-          'checklist-download',
-          'website-application',
-        ];
-
-        // Hook Netlify AJAX forms (modal + any JS-intercepted submits)
-        document.addEventListener('submit', function(e) {
-          var form = e.target;
-          if (!form || !form.tagName || form.tagName !== 'FORM') return;
-          var name = form.getAttribute('name') || '';
-          if (LEAD_FORMS.indexOf(name) !== -1 && typeof fbq === 'function') {
-            fbq('track', 'Lead', {
-              content_name: name,
-              content_category: 'zeisworks_form',
-            });
-          }
-        }, true); // capture phase so we fire before Netlify's handler
-
-        // Also hook the modal's fetch-based submit (which calls preventDefault)
-        // The modal form uses the same name 'gap-analysis-modal' so the
-        // capture-phase listener above catches it — but as a fallback we
-        // also patch the modal's success handler directly.
-        var _openGaModal = window.openGaModal;
-        // The modal script runs after this, so we use DOMContentLoaded to
-        // attach to the modal form's custom success flow.
-        document.addEventListener('DOMContentLoaded', function() {
-          var modalForm = document.getElementById('ga-modal-form');
-          if (!modalForm) return;
-          modalForm.addEventListener('submit', function handler(e) {
-            if (typeof fbq === 'function') {
-              fbq('track', 'Lead', {
-                content_name: 'gap-analysis-modal',
-                content_category: 'zeisworks_form',
-              });
-            }
-          }, true);
-        });
-      })();
-    </script>
-    <!-- End Meta Pixel Base Code -->
-
-    <!-- FOUC prevention: hide animated elements before Motion script runs -->
-    <script is:inline>
-      if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-        document.documentElement.classList.add('motion-ready');
-      }
-    </script>
-
     <style is:global>
       :root {
         --ink: #1E1C18;
@@ -201,37 +160,23 @@ const localBusinessJsonLd = {
         --ink-light: #9A9590;
         --cream: #FAF8F3;
         --cream-dark: #F0EAD9;
-        --terra: #2D4A6B;
-        --terra-light: #D6E0EC;
-        --terra-dark: #1E3350;
-        --orange: #C85A20;
-        --orange-light: #F2E0D5;
         --navy: #2D4A6B;
+        --orange: #C85A20;
         --forest: #2C4A3E;
-        --forest-mid: #3D6B5A;
-        --forest-light: #D8EAE4;
-        --forest-dark: #1C3029;
         --font-serif: 'Lora', Georgia, serif;
         --font-sans: 'DM Sans', system-ui, sans-serif;
         --font-mono: 'DM Mono', monospace;
       }
 
-      /* FOUC prevention: only hide hero elements that Motion will animate */
-      .motion-ready header,
-      .motion-ready #ga-float-btn {
-        opacity: 0;
-      }
-
-      /* Paid landing pages: suppress site nav to remove exit links */
-      body[data-page="ai-audit"] header,
+      /* Paid landing page: suppress site nav to remove exit links */
       body[data-page="revenue-audit"] header {
         display: none !important;
       }
     </style>
   </head>
   <body class="font-sans antialiased min-h-screen flex flex-col" data-page={bodyPage}>
-    <header class="border-b border-cream-dark sticky top-0 bg-cream/95 backdrop-blur-sm z-10">
-      <div class="max-w-3xl mx-auto px-6 py-4 flex items-center justify-between">
+    <header class="border-b border-cream-dark sticky top-0 bg-cream/95 backdrop-blur-sm z-50">
+      <div class="max-w-5xl mx-auto px-6 py-4 flex items-center justify-between gap-4">
         <a
           href="/"
           class="font-serif text-xl font-semibold text-ink hover:text-navy transition-colors"
@@ -239,240 +184,164 @@ const localBusinessJsonLd = {
           zeisWorks<span class="text-orange">.</span>
         </a>
         <!-- Desktop nav -->
-        <nav class="hidden sm:flex items-center gap-5 text-sm">
-          <a href="/#services" class="text-ink-mid hover:text-ink transition-colors">Services</a>
-          <a href="/guides/" class="text-ink-mid hover:text-ink transition-colors">Guides</a>
-          <a href="/what-i-use" class="text-ink-mid hover:text-ink transition-colors">What I Use</a>
-          <a href="/about" class="text-ink-mid hover:text-ink transition-colors">About</a>
-          <button type="button" data-modal="gap-analysis" class="bg-navy text-cream text-sm px-4 py-2 rounded-lg hover:bg-navy/90 transition-colors font-medium cursor-pointer border-0">
-            Get in touch
-          </button>
+        <nav class="hidden md:flex items-center gap-6 text-sm">
+          {navLinks.map(({ label, href }) => (
+            <a href={href} class="text-ink-mid hover:text-ink transition-colors">{label}</a>
+          ))}
+          <AuditCta
+            location="nav"
+            label="Start Free Audit"
+            class="bg-navy text-cream text-sm px-4 py-2 rounded-lg hover:bg-navy/90 transition-colors font-medium"
+          />
         </nav>
-        <!-- Mobile hamburger -->
-        <button
-          id="mobileMenuBtn"
-          class="sm:hidden flex flex-col justify-center gap-[5px] w-9 h-9 p-1 rounded-lg hover:bg-cream-dark transition-colors"
-          aria-label="Open menu"
-          aria-expanded="false"
-        >
-          <span class="block w-[22px] h-[2px] bg-ink rounded transition-transform duration-250 origin-center" id="hb1"></span>
-          <span class="block w-[22px] h-[2px] bg-ink rounded transition-opacity duration-200" id="hb2"></span>
-          <span class="block w-[22px] h-[2px] bg-ink rounded transition-transform duration-250 origin-center" id="hb3"></span>
-        </button>
+        <!-- Mobile: persistent CTA + hamburger -->
+        <div class="flex md:hidden items-center gap-3">
+          <AuditCta
+            location="nav"
+            label="Start Free Audit"
+            class="bg-navy text-cream text-sm px-3.5 py-2 rounded-lg hover:bg-navy/90 transition-colors font-medium whitespace-nowrap"
+          />
+          <button
+            id="mobileMenuBtn"
+            class="flex flex-col justify-center gap-[5px] w-9 h-9 p-1 rounded-lg hover:bg-cream-dark transition-colors"
+            aria-label="Open menu"
+            aria-expanded="false"
+          >
+            <span class="block w-[22px] h-[2px] bg-ink rounded"></span>
+            <span class="block w-[22px] h-[2px] bg-ink rounded"></span>
+            <span class="block w-[22px] h-[2px] bg-ink rounded"></span>
+          </button>
+        </div>
       </div>
       <!-- Mobile menu drawer -->
-      <div id="mobileMenu" class="hidden sm:hidden border-t border-cream-dark bg-cream px-6 pb-5 pt-4">
-        <nav class="flex flex-col gap-0">
-          <a href="/#services" class="mobile-nav-link py-3 border-b border-cream-dark text-ink-mid hover:text-ink transition-colors text-sm">Services</a>
-          <a href="/guides/" class="mobile-nav-link py-3 border-b border-cream-dark text-ink-mid hover:text-ink transition-colors text-sm">Guides</a>
-          <a href="/what-i-use" class="mobile-nav-link py-3 border-b border-cream-dark text-ink-mid hover:text-ink transition-colors text-sm">What I Use</a>
-          <a href="/about" class="mobile-nav-link py-3 border-b border-cream-dark text-ink-mid hover:text-ink transition-colors text-sm">About</a>
-          <button type="button" data-modal="gap-analysis" class="mobile-nav-link mt-4 block w-full text-center bg-navy text-cream text-sm px-4 py-3 rounded-lg hover:bg-navy/90 transition-colors font-medium cursor-pointer border-0">
-            Get in touch →
-          </button>
+      <div id="mobileMenu" class="hidden md:hidden border-t border-cream-dark bg-cream px-6 pb-5 pt-2">
+        <nav class="flex flex-col">
+          {navLinks.map(({ label, href }) => (
+            <a href={href} class="mobile-nav-link py-3 border-b border-cream-dark text-ink-mid hover:text-ink transition-colors text-sm">{label}</a>
+          ))}
         </nav>
       </div>
     </header>
 
-    <script>
-      const btn = document.getElementById('mobileMenuBtn');
-      const menu = document.getElementById('mobileMenu');
-      const hb1 = document.getElementById('hb1');
-      const hb2 = document.getElementById('hb2');
-      const hb3 = document.getElementById('hb3');
-      if (btn && menu) {
-        btn.addEventListener('click', () => {
-          const open = menu.classList.toggle('hidden');
+    <script is:inline>
+      (function () {
+        var btn = document.getElementById('mobileMenuBtn');
+        var menu = document.getElementById('mobileMenu');
+        if (!btn || !menu) return;
+        btn.addEventListener('click', function () {
+          var open = menu.classList.toggle('hidden');
           btn.setAttribute('aria-expanded', String(!open));
-          hb1.style.transform = open ? '' : 'translateY(7px) rotate(45deg)';
-          hb2.style.opacity = open ? '' : '0';
-          hb3.style.transform = open ? '' : 'translateY(-7px) rotate(-45deg)';
         });
-        menu.querySelectorAll('.mobile-nav-link').forEach(link => {
-          link.addEventListener('click', () => {
+        menu.querySelectorAll('.mobile-nav-link').forEach(function (link) {
+          link.addEventListener('click', function () {
             menu.classList.add('hidden');
             btn.setAttribute('aria-expanded', 'false');
-            hb1.style.transform = '';
-            hb2.style.opacity = '';
-            hb3.style.transform = '';
           });
         });
-        document.addEventListener('click', (e) => {
+        document.addEventListener('click', function (e) {
           if (!btn.contains(e.target) && !menu.contains(e.target)) {
             menu.classList.add('hidden');
             btn.setAttribute('aria-expanded', 'false');
-            hb1.style.transform = '';
-            hb2.style.opacity = '';
-            hb3.style.transform = '';
           }
         });
-      }
+      })();
     </script>
 
     <main class="flex-1">
       <slot />
     </main>
 
-    <!-- Global Gap Analysis Modal -->
-    <GapAnalysisModal />
-
-    <!-- Floating trigger button (hidden on gap-analysis page via CSS) -->
-    <button
-      id="ga-float-btn"
-      type="button"
-      data-modal="gap-analysis"
-      aria-label="Get your free gap analysis"
-    >
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-      Get in touch
-    </button>
-
-    <script>
-      import { animate, inView, stagger } from 'motion';
-
-      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-        // Remove FOUC class so content stays visible without animation
-        document.documentElement.classList.remove('motion-ready');
-      } else {
-
-        // ── NAV ────────────────────────────────────────────────────────────
-        animate(
-          'header',
-          { opacity: [0, 1], y: [-10, 0] },
-          { duration: 0.5, ease: 'easeOut' }
-        );
-
-        // ── HERO SEQUENCE ───────────────────────────────────────────────────
-        const wrap = document.querySelector('main .max-w-3xl');
-        if (wrap) {
-          const hero = wrap.children[0] as HTMLElement;
-
-          // Split h1 words into inline spans for word-by-word spring stagger
-          const h1 = hero?.querySelector('h1');
-          if (h1?.textContent) {
-            h1.innerHTML = h1.textContent.trim().split(/\s+/)
-              .map(w => `<span style="display:inline-block;white-space:nowrap">${w}</span>`)
-              .join(' ');
-          }
-
-          const eyebrow = hero?.querySelector('p') as HTMLElement | null;
-          const words   = h1 ? Array.from(h1.querySelectorAll('span')) : [];
-          const allP    = hero?.querySelectorAll('p');
-          const sub     = allP && allP.length > 1 ? allP[1] as HTMLElement : null;
-          const ctaDiv  = hero?.querySelector('div') as HTMLElement | null;
-
-          // Build the timeline sequence
-          type Seg = [Element | Element[], Record<string, unknown>, Record<string, unknown>?];
-          const seq: Seg[] = [];
-
-          if (eyebrow) seq.push([eyebrow, { opacity: [0, 1], y: [12, 0] }, { duration: 0.38 }]);
-          if (words.length) seq.push([words, { opacity: [0, 1], y: [30, 0] }, {
-            type: 'spring', bounce: 0.28, duration: 0.8,
-            delay: stagger(0.045),
-            at: eyebrow ? '-0.12' : '0',
-          }]);
-          if (sub) seq.push([sub, { opacity: [0, 1], y: [18, 0] }, {
-            duration: 0.5, ease: 'easeOut', at: '-0.45',
-          }]);
-          if (ctaDiv) seq.push([ctaDiv, { opacity: [0, 1], scale: [0.88, 1] }, {
-            type: 'spring', bounce: 0.5, duration: 0.65, at: '-0.28',
-          }]);
-
-          // eslint-disable-next-line @typescript-eslint/no-explicit-any
-          if (seq.length) animate(seq as any);
-
-          // ── SECTION SCROLL REVEALS ────────────────────────────────────────
-          Array.from(wrap.children).slice(1).forEach(section => {
-            inView(
-              section as HTMLElement,
-              ({ target }) => {
-                // Section container: spring up + slight scale correction
-                animate(target as HTMLElement, { opacity: [0, 1], y: [38, 0], scale: [0.97, 1] }, {
-                  type: 'spring', bounce: 0.2, duration: 0.85,
-                });
-
-                // Child items stagger in behind the container
-                const items = Array.from(target.querySelectorAll(
-                  'ul > li, ol > li, .grid > div, .grid > a, .space-y-4 > a, .space-y-4 > div'
-                ));
-                if (items.length > 1) {
-                  animate(items, { opacity: [0, 1], y: [22, 0] }, {
-                    type: 'spring', bounce: 0.3,
-                    delay: stagger(0.075, { startDelay: 0.1 }),
-                  });
-                }
-              },
-              { amount: 0.08 }
-            );
-          });
-        }
-
-        // ── CARD HOVER SPRINGS (about page pillars, etc.) ──────────────────
-        document.querySelectorAll<HTMLElement>('a.block.rounded-xl').forEach(card => {
-          card.addEventListener('mouseenter', () =>
-            animate(card, { y: -8, scale: 1.018 }, { type: 'spring', stiffness: 320, damping: 16 })
-          );
-          card.addEventListener('mouseleave', () =>
-            animate(card, { y: 0, scale: 1 }, { type: 'spring', stiffness: 320, damping: 28 })
-          );
-        });
-
-        // ── MAGNETIC CTA BUTTONS ───────────────────────────────────────────
-        document.querySelectorAll<HTMLElement>('button[data-modal]').forEach(btn => {
-          btn.addEventListener('mousemove', (e: MouseEvent) => {
-            const r = btn.getBoundingClientRect();
-            const x = (e.clientX - r.left  - r.width  / 2) * 0.22;
-            const y = (e.clientY - r.top   - r.height / 2) * 0.22;
-            animate(btn, { x, y }, { type: 'spring', stiffness: 650, damping: 32, restDelta: 0.001 });
-          });
-          btn.addEventListener('mouseleave', () =>
-            animate(btn, { x: 0, y: 0 }, { type: 'spring', stiffness: 300, damping: 22 })
-          );
-        });
-
-        // ── FLOAT BUTTON: overshoot spring in, then glow pulse ─────────────
-        const floatBtn = document.getElementById('ga-float-btn');
-        if (floatBtn) {
-          animate(
-            floatBtn,
-            { opacity: [0, 1], y: [40, 0], scale: [0.72, 1] },
-            { type: 'spring', duration: 0.8, bounce: 0.6, delay: 1.4 }
-          ).then(() => {
-            // Sustained glow pulse after it lands
-            animate(
-              floatBtn,
-              { boxShadow: [
-                '0 4px 20px rgba(200,90,32,0.45)',
-                '0 6px 52px rgba(200,90,32,0.9)',
-                '0 4px 20px rgba(200,90,32,0.45)',
-              ]},
-              { duration: 2.6, repeat: Infinity, ease: 'easeInOut' }
-            );
-          });
-        }
-
-      } // end prefers-reduced-motion check
-    </script>
-
     <footer class="border-t border-cream-dark mt-24">
-      <div
-        class="max-w-3xl mx-auto px-6 py-10 flex flex-col sm:flex-row justify-between items-start gap-4 text-sm text-ink-mid"
-      >
-        <div>
-          <span class="font-serif font-semibold text-ink">
-            zeisWorks<span class="text-orange">.</span>
-          </span>
-          <p class="mt-1">Revenue gap analysis for service businesses.</p>
+      <div class="max-w-5xl mx-auto px-6 py-12">
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-10">
+          <div>
+            <p class="font-serif font-semibold text-ink mb-3">Pages</p>
+            <ul class="space-y-2 text-sm text-ink-mid">
+              {navLinks.map(({ label, href }) => (
+                <li><a href={href} class="hover:text-ink transition-colors">{label}</a></li>
+              ))}
+              <li><a href="/consulting/" class="hover:text-ink transition-colors">Consulting</a></li>
+            </ul>
+          </div>
+          <div>
+            <p class="font-serif font-semibold text-ink mb-3">Verticals</p>
+            <ul class="space-y-2 text-sm text-ink-mid">
+              {verticalLinks.map(({ label, href }) => (
+                <li><a href={href} class="hover:text-ink transition-colors">{label}</a></li>
+              ))}
+            </ul>
+          </div>
+          <div>
+            <p class="font-serif font-semibold text-ink mb-3">Contact</p>
+            <p class="text-sm text-ink-mid leading-relaxed">
+              Prefer to talk first?
+              <a href={CALENDLY_URL} class="text-navy font-medium hover:underline">Book 15 minutes.</a>
+            </p>
+          </div>
         </div>
-        <div class="shrink-0 flex flex-col items-end gap-1.5">
-          <p>&copy; {new Date().getFullYear()} zeisWorks. All rights reserved.</p>
+        <div class="mt-10 pt-6 border-t border-cream-dark flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 text-sm text-ink-mid">
+          <p>&copy; {new Date().getFullYear()} ZeisWorks, a High Range Living LLC company.</p>
           <p class="flex gap-3 text-xs" style="font-family:'DM Mono',monospace;letter-spacing:0.04em;">
-            <a href="/terms" class="text-ink-light hover:text-ink-mid transition-colors">Terms</a>
-            <span class="text-ink-light" aria-hidden="true">·</span>
             <a href="/privacy" class="text-ink-light hover:text-ink-mid transition-colors">Privacy</a>
+            <span class="text-ink-light" aria-hidden="true">&middot;</span>
+            <a href="/terms" class="text-ink-light hover:text-ink-mid transition-colors">Terms</a>
           </p>
         </div>
       </div>
     </footer>
+
+    <ExitIntentModal />
+
+    <!-- Audit CTA tracking + UTM passthrough (handoff sections 2.3 and 2.5) -->
+    <script is:inline>
+      (function () {
+        var UTM_KEYS = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content'];
+
+        // Capture inbound UTM parameters and persist them for the session.
+        var stored = {};
+        try { stored = JSON.parse(sessionStorage.getItem('zw_utm') || '{}'); } catch (e) {}
+        var params = new URLSearchParams(window.location.search);
+        UTM_KEYS.forEach(function (k) {
+          var v = params.get(k);
+          if (v) stored[k] = v;
+        });
+        try { sessionStorage.setItem('zw_utm', JSON.stringify(stored)); } catch (e) {}
+
+        // Preserve UTMs on every outbound funnel link.
+        if (Object.keys(stored).length) {
+          document.querySelectorAll('a[data-audit-cta]').forEach(function (link) {
+            try {
+              var url = new URL(link.getAttribute('href'), window.location.origin);
+              UTM_KEYS.forEach(function (k) {
+                if (stored[k]) url.searchParams.set(k, stored[k]);
+              });
+              link.setAttribute('href', url.href);
+            } catch (e) {}
+          });
+        }
+
+        // Fire AuditStart (Meta) and audit_start (GA4) on any audit CTA click.
+        document.addEventListener('click', function (e) {
+          var link = e.target && e.target.closest ? e.target.closest('a[data-audit-cta]') : null;
+          if (!link) return;
+          var ctaLocation = link.getAttribute('data-cta-location') || 'unknown';
+          var pagePath = window.location.pathname;
+          try { sessionStorage.setItem('zw_cta_clicked', '1'); } catch (err) {}
+          if (typeof fbq === 'function') {
+            fbq('trackCustom', 'AuditStart', {
+              cta_location: ctaLocation,
+              page_path: pagePath,
+            });
+          }
+          if (typeof gtag === 'function') {
+            gtag('event', 'audit_start', {
+              cta_location: ctaLocation,
+              page_path: pagePath,
+              transport_type: 'beacon',
+            });
+          }
+        }, true);
+      })();
+    </script>
   </body>
 </html>

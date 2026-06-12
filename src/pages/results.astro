@@ -1,0 +1,94 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import CtaBlock from '../components/CtaBlock.astro';
+
+// Phase 1: anonymized gap-analysis findings.
+// OPEN ITEM (handoff section 6): Jack supplies findings from real audits.
+// Do not fabricate. The page ships with however many are real; the grid
+// renders only when at least one exists.
+//
+// Card format: { label: 'Vertical + metro', gap: '1-2 sentences, specific
+// numbers', fix: 'the fix the plan called for, 1 sentence' }
+const findings: { label: string; gap: string; fix: string }[] = [];
+
+// Phase 2 (post-client-data): full case studies per client. Layout is
+// templated below; populate once tracked client results exist.
+const caseStudies: {
+  client: string;
+  situation: string;
+  found: string;
+  changed: string;
+  numbers: string;
+}[] = [];
+---
+
+<BaseLayout
+  title="What the Revenue Audit Finds | ZeisWorks"
+  description="Real gap-analysis findings from local service businesses: missed calls, invisible rankings, and the plans that fixed them."
+>
+  <section class="max-w-3xl mx-auto px-6 pt-16 sm:pt-24 pb-14">
+    <h1 class="font-serif text-4xl sm:text-5xl font-semibold leading-tight tracking-tight mb-6">
+      What the audit finds.
+    </h1>
+    <p class="text-lg text-ink-mid leading-relaxed">
+      Every audit produces a gap analysis with real numbers. Here's a sample of what it uncovers, and what happened when companies acted on it.
+    </p>
+  </section>
+
+  {findings.length > 0 && (
+    <section class="max-w-5xl mx-auto px-6 pb-16">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+        {findings.map((f) => (
+          <div class="bg-cream-dark/60 border border-cream-dark rounded-xl p-6">
+            <p class="text-xs font-semibold uppercase tracking-widest text-orange mb-3">{f.label}</p>
+            <p class="text-sm text-ink-mid leading-relaxed mb-4">{f.gap}</p>
+            <p class="text-sm text-ink leading-relaxed">
+              <span class="font-semibold">The fix:</span> {f.fix}
+            </p>
+          </div>
+        ))}
+      </div>
+    </section>
+  )}
+
+  {caseStudies.length > 0 && (
+    <section class="max-w-3xl mx-auto px-6 pb-16">
+      <h2 class="font-serif text-2xl sm:text-3xl font-semibold leading-tight mb-8">Case studies</h2>
+      <div class="space-y-8">
+        {caseStudies.map((c) => (
+          <div class="border border-cream-dark rounded-xl p-7">
+            <p class="font-serif text-lg font-semibold text-ink mb-4">{c.client}</p>
+            <dl class="space-y-3 text-sm leading-relaxed">
+              <div>
+                <dt class="font-semibold text-ink">The situation</dt>
+                <dd class="text-ink-mid">{c.situation}</dd>
+              </div>
+              <div>
+                <dt class="font-semibold text-ink">What the audit found</dt>
+                <dd class="text-ink-mid">{c.found}</dd>
+              </div>
+              <div>
+                <dt class="font-semibold text-ink">What changed</dt>
+                <dd class="text-ink-mid">{c.changed}</dd>
+              </div>
+              <div>
+                <dt class="font-semibold text-ink">The numbers</dt>
+                <dd class="text-ink-mid">{c.numbers}</dd>
+              </div>
+            </dl>
+          </div>
+        ))}
+      </div>
+    </section>
+  )}
+
+  {findings.length === 0 && caseStudies.length === 0 && (
+    <section class="max-w-3xl mx-auto px-6 pb-16">
+      <p class="text-ink-mid leading-relaxed">
+        Run the audit and your own gap analysis becomes the first result you see. It takes 5 minutes and the findings are yours to keep.
+      </p>
+    </section>
+  )}
+
+  <CtaBlock heading="Five minutes from now you'll know where the leaks are." />
+</BaseLayout>

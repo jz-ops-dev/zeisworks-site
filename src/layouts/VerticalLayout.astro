@@ -1,0 +1,115 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import AuditCta from '../components/AuditCta.astro';
+import CtaBlock from '../components/CtaBlock.astro';
+import { AUDIT_STEPS } from '../data/faq';
+
+// Shared template for the three vertical conversion pages (handoff section 5).
+// Four scroll-depths: hero, vertical problem, compressed how-it-works,
+// FAQ + closing CTA. Every CTA routes to the funnel.
+interface FaqItem {
+  q: string;
+  a: string;
+}
+
+interface Problem {
+  title: string;
+  body: string;
+}
+
+interface Props {
+  title: string;
+  description: string;
+  eyebrow: string;
+  h1: string;
+  subhead: string;
+  problemH2: string;
+  problems: Problem[];
+  faq: FaqItem[];
+  closingH2: string;
+}
+
+const { title, description, eyebrow, h1, subhead, problemH2, problems, faq, closingH2 } = Astro.props;
+
+const faqJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faq.map(({ q, a }) => ({
+    '@type': 'Question',
+    name: q,
+    acceptedAnswer: { '@type': 'Answer', text: a },
+  })),
+};
+---
+
+<BaseLayout title={title} description={description}>
+  <Fragment slot="head">
+    <script type="application/ld+json" set:html={JSON.stringify(faqJsonLd)} />
+  </Fragment>
+
+  <!-- 1. Hero -->
+  <section class="max-w-3xl mx-auto px-6 pt-16 sm:pt-24 pb-14 text-center">
+    <p class="text-xs font-semibold uppercase tracking-widest text-orange mb-5">{eyebrow}</p>
+    <h1 class="font-serif text-4xl sm:text-5xl font-semibold leading-tight tracking-tight mb-6">{h1}</h1>
+    <p class="text-lg text-ink-mid leading-relaxed max-w-2xl mx-auto mb-8">{subhead}</p>
+    <AuditCta
+      location="hero"
+      class="inline-block bg-navy text-cream font-medium text-base px-8 py-4 rounded-lg hover:bg-navy/90 transition-colors"
+    />
+    <p class="mt-3 text-sm text-ink-light">Free. 5 minutes. No call required.</p>
+  </section>
+
+  <!-- 2. The vertical-specific problem -->
+  <section class="bg-forest">
+    <div class="max-w-3xl mx-auto px-6 py-16 sm:py-20">
+      <h2 class="font-serif text-3xl sm:text-4xl font-semibold text-white leading-tight mb-10">{problemH2}</h2>
+      <div class="space-y-6">
+        {problems.map((p) => (
+          <div class="bg-white/5 border border-white/10 rounded-xl p-6">
+            <h3 class="font-semibold text-white mb-1.5">{p.title}</h3>
+            <p class="text-white/70 leading-relaxed text-[0.9375rem]">{p.body}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- 3. How the audit works (compressed) -->
+  <section class="max-w-3xl mx-auto px-6 py-16 sm:py-20">
+    <h2 class="font-serif text-3xl sm:text-4xl font-semibold leading-tight mb-10">
+      Three steps. Five minutes. Real numbers.
+    </h2>
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
+      {AUDIT_STEPS.map((step, i) => (
+        <div>
+          <span class="font-serif text-2xl font-semibold text-orange block mb-2">{i + 1}</span>
+          <h3 class="font-semibold text-ink mb-1.5">{step.title}</h3>
+          <p class="text-sm text-ink-mid leading-relaxed">{step.body}</p>
+        </div>
+      ))}
+    </div>
+    <div class="mt-10">
+      <AuditCta
+        location="mid"
+        class="inline-block bg-navy text-cream font-medium text-base px-7 py-3.5 rounded-lg hover:bg-navy/90 transition-colors"
+      />
+    </div>
+  </section>
+
+  <!-- 4. Vertical FAQ + closing CTA -->
+  <section class="bg-cream-dark/60 border-t border-cream-dark">
+    <div class="max-w-3xl mx-auto px-6 py-16 sm:py-20">
+      <h2 class="font-serif text-3xl sm:text-4xl font-semibold leading-tight mb-10">Questions</h2>
+      <dl class="divide-y divide-cream-dark border-y border-cream-dark">
+        {faq.map(({ q, a }) => (
+          <div class="py-6">
+            <dt class="font-semibold text-ink mb-2">{q}</dt>
+            <dd class="text-sm text-ink-mid leading-relaxed">{a}</dd>
+          </div>
+        ))}
+      </dl>
+    </div>
+  </section>
+
+  <CtaBlock heading={closingH2} smallText="Free. 5 minutes. No call required." />
+</BaseLayout>

@@ -1,5 +1,6 @@
 ---
 import BaseLayout from './BaseLayout.astro';
+import AuditCta from '../components/AuditCta.astro';
 import AuthorBio from '../components/AuthorBio.astro';
 import CtaSoft from '../components/CtaSoft.astro';
 
@@ -180,18 +181,15 @@ const faqJsonLd =
 
     <!-- Mid-article inline CTA: appears after content, before FAQ -->
     <div class="my-12 p-6 rounded-xl border-l-4 border-orange bg-orange/5">
-      <p class="text-xs font-semibold uppercase tracking-widest text-orange mb-2">Free &nbsp;&middot;&nbsp; No call required &nbsp;&middot;&nbsp; Results in 12 hours</p>
+      <p class="text-xs font-semibold uppercase tracking-widest text-orange mb-2">Free &nbsp;&middot;&nbsp; 5 minutes &nbsp;&middot;&nbsp; No call required</p>
       <p class="font-serif text-lg font-semibold text-ink mb-2">See exactly where your business stands.</p>
       <p class="text-sm text-ink-mid leading-relaxed mb-4">
-        The free gap analysis checks your Google rankings, Business Profile, local citations, and how you compare to your top competitors. You get a written report — no call, no obligation.
+        The free revenue audit checks your visibility, reviews, website conversion, and response speed against the competitors taking your calls. You get a gap analysis and a 12-month plan. No call, no contracts.
       </p>
-      <button
-        type="button"
-        data-modal="gap-analysis"
-        class="inline-block bg-navy text-cream text-sm px-5 py-2.5 rounded-lg hover:bg-navy/90 transition-colors font-medium cursor-pointer border-0"
-      >
-        Get in touch →
-      </button>
+      <AuditCta
+        location="mid"
+        class="inline-block bg-navy text-cream text-sm px-5 py-2.5 rounded-lg hover:bg-navy/90 transition-colors font-medium"
+      />
     </div>
 
     {faq && faq.length > 0 && (

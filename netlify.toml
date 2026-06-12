@@ -5,17 +5,79 @@
 [build.environment]
   NODE_VERSION = "20"
 
+# ── Audit-first rebuild redirects (handoff section 2.6) ──
+
+# Old paid landing page
 [[redirects]]
   from = "/ai-audit"
-  to = "/revenue-audit"
-  status = 301
-
-[[redirects]]
-  from = "/ai-audit/"
   to = "/revenue-audit/"
   status = 301
 
 [[redirects]]
+  from = "/ai-audit/*"
+  to = "/revenue-audit/"
+  status = 301
+
+# Old gap analysis form page (covers /gap-analysis/thank-you too)
+[[redirects]]
+  from = "/gap-analysis"
+  to = "/revenue-audit/"
+  status = 301
+
+[[redirects]]
+  from = "/gap-analysis/*"
+  to = "/revenue-audit/"
+  status = 301
+
+# Legacy Salesforce/consulting and systems service pages
+[[redirects]]
+  from = "/operations"
+  to = "/consulting/"
+  status = 301
+
+[[redirects]]
+  from = "/custom-tools"
+  to = "/consulting/"
+  status = 301
+
+[[redirects]]
+  from = "/contact"
+  to = "/consulting/"
+  status = 301
+
+# Legacy services menu pages
+[[redirects]]
+  from = "/marketing"
+  to = "/"
+  status = 301
+
+[[redirects]]
+  from = "/websites"
+  to = "/"
+  status = 301
+
+[[redirects]]
+  from = "/what-i-use"
+  to = "/"
+  status = 301
+
+[[redirects]]
   from = "/stack"
-  to = "/what-i-use"
+  to = "/"
+  status = 301
+
+# Legacy gated lead magnets (forms removed sitewide)
+[[redirects]]
+  from = "/local-search-checklist"
+  to = "/"
+  status = 301
+
+[[redirects]]
+  from = "/local-search-checklist/*"
+  to = "/"
+  status = 301
+
+[[redirects]]
+  from = "/geo-guide"
+  to = "/"
   status = 301
