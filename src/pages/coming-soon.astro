@@ -1,0 +1,275 @@
+---
+// Pre-launch placeholder. Fully self-contained on purpose: it links to none
+// of the real site pages and uses inline (is:inline) styles/scripts so it has
+// zero /_astro asset dependencies. That lets netlify.toml force-redirect every
+// other route here while only the video + favicons need to pass through.
+// Reversal: delete this file and the "Pre-launch placeholder" block in
+// netlify.toml to restore the full site.
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex,nofollow" />
+    <title>ZeisWorks — Coming Soon</title>
+    <meta
+      name="description"
+      content="ZeisWorks is a marketing and systems studio run by Jack Zeis in Golden, Colorado. A new site is on the way — leave your email for first access."
+    />
+
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lora:wght@500;600&family=DM+Sans:wght@300;400;500&family=DM+Mono&display=swap"
+      rel="stylesheet"
+    />
+
+    <style is:inline>
+      :root {
+        --ink: #0f172a;
+        --ink-mid: #475569;
+        --ink-light: #64748b;
+        --cream: #f8fafc;
+        --cream-dark: #e2e8f0;
+        --navy: #1e3a8a;
+        --orange: #c2410c;
+        --orange-bright: #ea580c;
+      }
+      * { box-sizing: border-box; }
+      html, body { margin: 0; padding: 0; }
+      body {
+        background: var(--cream);
+        color: var(--ink);
+        font-family: "DM Sans", system-ui, sans-serif;
+        -webkit-font-smoothing: antialiased;
+        line-height: 1.6;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+      }
+      .wrap {
+        flex: 1;
+        width: 100%;
+        max-width: 640px;
+        margin: 0 auto;
+        padding: 56px 24px 40px;
+        display: flex;
+        flex-direction: column;
+      }
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin-bottom: 48px;
+      }
+      .brand svg { width: 36px; height: 36px; border-radius: 9px; }
+      .brand .name {
+        font-family: "Lora", Georgia, serif;
+        font-weight: 600;
+        font-size: 1.35rem;
+        letter-spacing: -0.01em;
+      }
+      .brand .name .dot { color: var(--orange-bright); }
+      .eyebrow {
+        font-family: "DM Mono", monospace;
+        font-size: 0.7rem;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: var(--orange);
+        margin: 0 0 14px;
+      }
+      h1 {
+        font-family: "Lora", Georgia, serif;
+        font-weight: 600;
+        font-size: clamp(2rem, 6vw, 2.85rem);
+        line-height: 1.1;
+        letter-spacing: -0.02em;
+        margin: 0 0 20px;
+      }
+      .lede {
+        font-size: 1.075rem;
+        color: var(--ink-mid);
+        margin: 0 0 14px;
+        max-width: 52ch;
+      }
+      .video {
+        margin: 32px 0;
+        border-radius: 16px;
+        overflow: hidden;
+        border: 1px solid var(--cream-dark);
+        box-shadow: 0 18px 40px -24px rgba(15, 23, 42, 0.35);
+        background: #000;
+        aspect-ratio: 16 / 9;
+      }
+      .video video { display: block; width: 100%; height: 100%; object-fit: cover; }
+      .capture { margin-top: 8px; }
+      .capture label {
+        display: block;
+        font-size: 0.95rem;
+        font-weight: 500;
+        color: var(--ink);
+        margin-bottom: 10px;
+      }
+      .field { display: flex; gap: 10px; flex-wrap: wrap; }
+      .field input[type="email"] {
+        flex: 1 1 220px;
+        min-width: 0;
+        padding: 13px 15px;
+        font: inherit;
+        font-size: 1rem;
+        color: var(--ink);
+        background: #fff;
+        border: 1px solid var(--cream-dark);
+        border-radius: 11px;
+        outline: none;
+        transition: border-color 0.15s, box-shadow 0.15s;
+      }
+      .field input[type="email"]:focus {
+        border-color: var(--navy);
+        box-shadow: 0 0 0 3px rgba(30, 58, 138, 0.12);
+      }
+      .field button {
+        flex: 0 0 auto;
+        padding: 13px 22px;
+        font: inherit;
+        font-size: 1rem;
+        font-weight: 600;
+        color: #fff;
+        background: var(--orange);
+        border: 0;
+        border-radius: 11px;
+        cursor: pointer;
+        transition: background 0.15s;
+      }
+      .field button:hover { background: var(--orange-bright); }
+      .field button:disabled { opacity: 0.6; cursor: default; }
+      .hp { position: absolute; left: -9999px; opacity: 0; }
+      .note { font-size: 0.82rem; color: var(--ink-light); margin-top: 12px; }
+      .success {
+        margin-top: 8px;
+        padding: 16px 18px;
+        background: #fff;
+        border: 1px solid var(--cream-dark);
+        border-radius: 12px;
+        font-size: 1rem;
+        color: var(--ink);
+      }
+      .success strong { color: var(--navy); }
+      .hidden { display: none; }
+      footer {
+        max-width: 640px;
+        margin: 0 auto;
+        width: 100%;
+        padding: 24px;
+        font-family: "DM Mono", monospace;
+        font-size: 0.72rem;
+        letter-spacing: 0.03em;
+        color: var(--ink-light);
+        border-top: 1px solid var(--cream-dark);
+      }
+    </style>
+  </head>
+  <body>
+    <main class="wrap">
+      <div class="brand">
+        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <rect width="100" height="100" rx="22" fill="#E04530" />
+          <rect x="15" y="15" width="20" height="20" rx="4" fill="#FAF8F3" />
+          <rect x="40" y="15" width="20" height="20" rx="4" fill="#FAF8F3" />
+          <rect x="65" y="15" width="20" height="20" rx="4" fill="#FAF8F3" />
+          <rect x="40" y="40" width="20" height="20" rx="4" fill="#FAF8F3" />
+          <rect x="15" y="65" width="20" height="20" rx="4" fill="#FAF8F3" />
+          <rect x="40" y="65" width="20" height="20" rx="4" fill="#FAF8F3" />
+          <rect x="65" y="65" width="20" height="20" rx="4" fill="#FAF8F3" />
+        </svg>
+        <span class="name">zeisWorks<span class="dot">.</span></span>
+      </div>
+
+      <p class="eyebrow">Coming soon</p>
+      <h1>Something new is on the way.</h1>
+      <p class="lede">
+        ZeisWorks is a marketing and systems studio run by Jack Zeis in Golden,
+        Colorado — revenue systems for local service businesses: search, ads,
+        websites, and the tracking that ties it all together.
+      </p>
+      <p class="lede">
+        We're rebuilding the site. Leave your email and we'll tell you the moment
+        it's live.
+      </p>
+
+      <div class="video">
+        <video autoplay muted loop playsinline preload="metadata">
+          <source src="/intro.mp4" type="video/mp4" />
+        </video>
+      </div>
+
+      <form
+        id="waitlist-form"
+        class="capture"
+        name="waitlist"
+        method="POST"
+        action="/coming-soon/"
+        data-netlify="true"
+        netlify-honeypot="bot-field"
+      >
+        <input type="hidden" name="form-name" value="waitlist" />
+        <p class="hp">
+          <label>Don't fill this out if you're human: <input name="bot-field" /></label>
+        </p>
+        <label for="email">Want first access?</label>
+        <div class="field">
+          <input
+            id="email"
+            type="email"
+            name="email"
+            placeholder="you@company.com"
+            autocomplete="email"
+            required
+          />
+          <button type="submit">Notify me</button>
+        </div>
+        <p class="note">No spam. One email, when we launch.</p>
+      </form>
+
+      <div id="waitlist-success" class="success hidden" role="status" aria-live="polite">
+        <strong>You're on the list.</strong> We'll be in touch when the new site goes live.
+      </div>
+    </main>
+
+    <footer>
+      &copy; {new Date().getFullYear()} ZeisWorks, a High Range Living LLC company &middot; Golden, CO
+    </footer>
+
+    <script is:inline>
+      (function () {
+        var form = document.getElementById("waitlist-form");
+        if (!form) return;
+        form.addEventListener("submit", function (e) {
+          e.preventDefault();
+          var btn = form.querySelector("button");
+          if (btn) { btn.disabled = true; btn.textContent = "Sending…"; }
+          var body = new URLSearchParams(new FormData(form)).toString();
+          fetch(form.getAttribute("action"), {
+            method: "POST",
+            headers: { "Content-Type": "application/x-www-form-urlencoded" },
+            body: body,
+          })
+            .then(function () {
+              form.classList.add("hidden");
+              document.getElementById("waitlist-success").classList.remove("hidden");
+            })
+            .catch(function () {
+              // Fall back to a normal submission so the email is never lost.
+              form.submit();
+            });
+        });
+      })();
+    </script>
+  </body>
+</html>

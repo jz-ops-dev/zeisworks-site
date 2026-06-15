@@ -97,3 +97,56 @@
   from = "/geo-guide"
   to = "/"
   status = 301
+
+# ── Pre-launch placeholder (site not public yet) ──
+# Force every route to the /coming-soon/ placeholder. All real pages stay in
+# the repo and the build; they're just unreachable until launch. To restore
+# the full site, delete this whole block (and src/pages/coming-soon.astro).
+# Rules are first-match-wins, so the passthroughs below must precede the
+# catch-all: they let the placeholder and the assets it needs serve directly
+# instead of being caught by the forced redirect.
+
+# Placeholder page itself (incl. its form POST target) serves normally.
+[[redirects]]
+  from = "/coming-soon"
+  to = "/coming-soon/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/coming-soon/*"
+  to = "/coming-soon/index.html"
+  status = 200
+
+# Assets the placeholder references. Astro's Tailwind integration injects a
+# bundled stylesheet into every page, so /_astro/* must serve normally too.
+[[redirects]]
+  from = "/_astro/*"
+  to = "/_astro/:splat"
+  status = 200
+
+[[redirects]]
+  from = "/intro.mp4"
+  to = "/intro.mp4"
+  status = 200
+
+[[redirects]]
+  from = "/favicon.ico"
+  to = "/favicon.ico"
+  status = 200
+
+[[redirects]]
+  from = "/favicon.svg"
+  to = "/favicon.svg"
+  status = 200
+
+[[redirects]]
+  from = "/apple-touch-icon.png"
+  to = "/apple-touch-icon.png"
+  status = 200
+
+# Everything else bounces to the placeholder.
+[[redirects]]
+  from = "/*"
+  to = "/coming-soon/"
+  status = 302
+  force = true
