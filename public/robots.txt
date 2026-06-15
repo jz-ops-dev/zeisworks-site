@@ -1,8 +1,14 @@
+# Pre-launch: the site is not public yet. Disallow all crawling until launch.
+# Reversal: restore the rules below (kept, commented) to reopen the site.
 User-agent: *
-Allow: /
+Disallow: /
 
-# Block thank-you pages from indexing
-Disallow: /gap-analysis/thank-you
-Disallow: /local-search-checklist/thank-you
-
-Sitemap: https://zeisworks.com/sitemap-index.xml
+# ── Restore at launch ──
+# User-agent: *
+# Allow: /
+#
+# # Block thank-you pages from indexing
+# Disallow: /gap-analysis/thank-you
+# Disallow: /local-search-checklist/thank-you
+#
+# Sitemap: https://zeisworks.com/sitemap-index.xml
