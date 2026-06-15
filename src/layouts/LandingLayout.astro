@@ -1,5 +1,6 @@
 ---
 import AuditCta from '../components/AuditCta.astro';
+import Logo from '../components/Logo.astro';
 
 // Dedicated layout for the single-page AI-readiness rebuild (dev prompt).
 // Kept separate from BaseLayout so the new cream/forest/teal brand, the
@@ -118,7 +119,7 @@ const orgJsonLd = {
         --zw-cream: #EDEAE0;
         --zw-ink: #1C1C1A;
         --zw-forest: #2D3B33;
-        --zw-teal: #2D5C45;
+        --zw-teal: #B5371A;
         --zw-card: #FFFFFF;
         --zw-border: rgba(28, 28, 26, 0.12);
         --zw-muted: #5F5F57;
@@ -137,7 +138,7 @@ const orgJsonLd = {
         text-rendering: optimizeLegibility;
       }
 
-      .zw-root ::selection { background: rgba(45, 92, 69, 0.18); }
+      .zw-root ::selection { background: rgba(181, 55, 26, 0.18); }
 
       /* Fluid type scale (section 3). */
       .zw-h1 {
@@ -214,8 +215,9 @@ const orgJsonLd = {
       class="fixed top-0 inset-x-0 z-50 transition-colors duration-300"
     >
       <div class="zw-wrap px-5 sm:px-8 h-16 flex items-center justify-between">
-        <a href="#top" class="font-serif text-2xl font-semibold tracking-tight text-zw-ink" aria-label="ZeisWorks home">
-          z<span class="text-zw-teal">W</span>
+        <a href="#top" class="flex items-center gap-2.5 group" aria-label="ZeisWorks home">
+          <Logo class="w-8 h-8 rounded-[7px]" />
+          <span class="font-serif text-xl font-semibold tracking-tight text-zw-ink">ZeisWorks</span>
         </a>
 
         <nav class="hidden md:flex items-center gap-8 text-sm font-medium" aria-label="Primary">
@@ -225,7 +227,7 @@ const orgJsonLd = {
           <AuditCta
             location="nav"
             label="Start an audit"
-            class="bg-zw-teal text-white text-sm font-semibold px-4 py-2 rounded-full hover:bg-zw-forest transition-colors"
+            class="bg-zw-teal text-white text-sm font-semibold px-4 py-2 rounded-full hover:bg-zw-rust transition-colors"
           />
         </nav>
 
@@ -255,7 +257,7 @@ const orgJsonLd = {
         <AuditCta
           location="nav"
           label="Start an audit"
-          class="zw-mobile-link mt-6 inline-block bg-zw-teal text-white font-semibold text-lg px-7 py-3.5 rounded-full hover:bg-zw-forest transition-colors"
+          class="zw-mobile-link mt-6 inline-block bg-zw-teal text-white font-semibold text-lg px-7 py-3.5 rounded-full hover:bg-zw-rust transition-colors"
         />
       </nav>
     </div>
@@ -266,8 +268,9 @@ const orgJsonLd = {
 
     <footer class="bg-zw-forest text-zw-cream">
       <div class="zw-wrap px-5 sm:px-8 py-12 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-6">
-        <a href="#top" class="font-serif text-2xl font-semibold tracking-tight" aria-label="ZeisWorks home">
-          z<span class="text-zw-teal" style="color:#7FB89A;">W</span>
+        <a href="#top" class="flex items-center gap-2.5" aria-label="ZeisWorks home">
+          <Logo class="w-8 h-8 rounded-[7px]" />
+          <span class="font-serif text-xl font-semibold tracking-tight">ZeisWorks</span>
         </a>
         <p class="text-sm text-zw-cream/70">
           <a href="mailto:jack@zeisworks.com" class="hover:text-white transition-colors">jack@zeisworks.com</a>
