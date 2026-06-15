@@ -27,39 +27,33 @@ const heroFiles = [
   { name: 'voice.md' },
 ];
 
-// ── The shift: three trend cards. Source URLs from dev prompt section 8. ──
+// ── The shift: two cards (the principle + the method). Source URLs from
+// dev prompt section 8. OKF was dropped in the v2 spec. ──
 const SRC = {
   karpathy: { href: '#', confirm: true },
-  okf: { href: 'https://cloud.google.com/blog/products/data-analytics/how-the-open-knowledge-format-can-improve-data-sharing', confirm: false },
   icm: { href: 'https://arxiv.org/abs/2603.16021', confirm: false },
 };
 
 const shiftCards = [
   {
-    tag: 'The pattern',
+    tag: 'The principle',
     title: 'The LLM wiki',
-    body: 'Andrej Karpathy described keeping business knowledge in plain markdown files that an AI reads directly. The idea spread fast because it just works.',
+    body: 'A leading AI researcher, Andrej Karpathy, showed that keeping your knowledge in plain, readable files the AI reads directly just works. The idea spread fast.',
     src: SRC.karpathy,
-  },
-  {
-    tag: 'The standard',
-    title: 'Open Knowledge Format',
-    body: 'In June 2026, Google published an open spec for packaging this knowledge so any tool or agent can consume it. A format, not another platform.',
-    src: SRC.okf,
   },
   {
     tag: 'The method',
     title: 'Interpretable Context Methodology',
-    body: 'Researchers formalized the workflow side: folder structure as architecture, so one agent reads the right files at the right step.',
+    body: 'Researchers turned that idea into a method: organize the files so the AI always reads the right ones for the task, and you can trace every answer back to a file.',
     src: SRC.icm,
   },
 ];
 
 const steps = [
   { n: '01', title: 'Audit', body: 'We look at how your business actually runs and where the knowledge lives today.' },
-  { n: '02', title: 'Structure', body: 'We write it down as clean, layered files. Stable reference knowledge in one place, working outputs in another.' },
-  { n: '03', title: 'Build', body: 'We put agents and automations on top, tested against your real cases, with a review gate before anything ships.' },
-  { n: '04', title: 'Hand off', body: 'You keep the whole thing. Readable, editable, portable. We can stay on retainer or step back.' },
+  { n: '02', title: 'Write it down', body: 'We write it down as clean, organized files. The things that rarely change in one place, the day-to-day work in another.' },
+  { n: '03', title: 'Build', body: 'We add the AI assistants and automations on top, tested on your real cases, with a person signing off before anything goes live.' },
+  { n: '04', title: 'Hand off', body: 'You keep the whole thing. Easy to read, easy to edit, and yours to take anywhere. We can stay on to help or step back.' },
 ];
 
 const layers = [
@@ -74,7 +68,7 @@ const modelChips = ['a current model', 'the next one', "whatever's best"];
 
 <LandingLayout
   title="ZeisWorks · Make your business readable to AI"
-  description="Companies are buying AI agents that fall flat, because the agent can't see how the business runs. ZeisWorks structures your knowledge into a clean, plain-text layer any AI can read, then builds the agents and pipelines on top of it."
+  description="Most AI falls flat because it can't see how your business actually runs, so it guesses. ZeisWorks writes your business down in plain language your team and your AI can both read, so when the AI is wrong you can see why and fix it."
 >
   <span id="top" aria-hidden="true"></span>
 
@@ -85,13 +79,13 @@ const modelChips = ['a current model', 'the next one', "whatever's best"];
         <!-- Copy -->
         <div class="text-center lg:text-left">
           <p class="zw-eyebrow mb-5">ZeisWorks</p>
-          <h1 class="zw-h1 mb-6">Your AI can't read your business yet.</h1>
+          <h1 class="zw-h1 mb-6">You're burning money on an AI that doesn't know your business, your process, or your people.</h1>
           <p class="text-zw-muted max-w-xl mx-auto lg:mx-0 mb-9">
-            Companies are buying AI agents that fall flat, because the agent can't see how the
-            business actually runs. The knowledge it needs is scattered across spreadsheets, CRM
-            fields, runbooks, and people's heads. We structure that knowledge into a clean,
-            plain-text layer any AI can read, then build the agents and pipelines that run on top
-            of it.
+            Most AI falls flat because it can't see how your business actually runs. The answers it
+            needs are scattered across spreadsheets, your customer records, half-written notes, and
+            people's heads, so it fills the gaps by guessing. We write your business down in plain
+            language your team and your AI can both read. Then, when the AI gets something wrong,
+            you can see exactly why and fix it, instead of throwing it out and starting over.
           </p>
           <div class="flex flex-col sm:flex-row gap-3 justify-center lg:justify-start">
             <AuditCta
@@ -141,16 +135,20 @@ const modelChips = ['a current model', 'the next one', "whatever's best"];
   <section id="the-problem" class="zw-anchor zw-section border-t border-zw-border">
     <div class="zw-wrap px-5 sm:px-8 max-w-[760px]">
       <p class="zw-eyebrow mb-4 zw-reveal">The problem</p>
-      <h2 class="zw-h2 mb-7 zw-reveal">Agents are easy. Context is the hard part.</h2>
+      <h2 class="zw-h2 mb-7 zw-reveal">Turning AI on is easy. Trusting it is the hard part.</h2>
       <div class="space-y-5 text-zw-muted zw-reveal">
         <p>
-          You can stand up an AI agent in an afternoon. Getting it to answer correctly about your
-          business is the real work. An agent that can't see your metric definitions, your data
-          model, or your process rules will guess, and it will guess wrong in ways that are
-          expensive to catch.
+          Anyone can switch on an AI tool today. Getting it to answer correctly about your business
+          is the real work. When the AI can't see how you actually define a customer, price a job,
+          or run a process, it guesses. And it guesses wrong in ways that are expensive to catch.
+        </p>
+        <p>
+          The worst part isn't the wrong answer. It's that you can't tell why it happened, so you
+          can't fix it. One bad answer and people quietly stop trusting the tool.
         </p>
         <p class="text-zw-ink font-medium">
-          The bottleneck was never the model. It's the knowledge you never wrote down.
+          The problem was never the AI. It's that what it needed to know was never written down
+          anywhere it could read.
         </p>
       </div>
     </div>
@@ -162,13 +160,13 @@ const modelChips = ['a current model', 'the next one', "whatever's best"];
       <p class="zw-eyebrow mb-4 zw-reveal">Why now</p>
       <h2 class="zw-h2 mb-6 max-w-[820px] zw-reveal">The fix is a pattern the industry is converging on.</h2>
       <p class="text-zw-muted max-w-[760px] mb-12 zw-reveal">
-        Instead of building one heavy custom agent per task, leading teams now build a durable
-        layer of structured, plain-text knowledge that any model can read. The knowledge lives in
-        plain files, version-controlled, readable by a person and an AI alike. You own it, and it
-        moves with you across tools and models.
+        Instead of paying to build a separate AI tool for every task, the smartest teams now do
+        something simpler. They write down how the business works in plain, readable files, the
+        same files the AI reads to answer. A person can check them, the AI follows them, and when
+        something's off you fix the file, not the whole system.
       </p>
 
-      <div class="grid md:grid-cols-3 gap-5">
+      <div class="grid md:grid-cols-2 gap-5 max-w-[820px]">
         {shiftCards.map((card) => (
           <article class="zw-card zw-reveal flex flex-col">
             <p class="zw-eyebrow text-[0.7rem] mb-3">{card.tag}</p>
@@ -209,30 +207,44 @@ const modelChips = ['a current model', 'the next one', "whatever's best"];
   <section id="what-we-build" class="zw-anchor zw-section bg-zw-forest text-zw-cream">
     <div class="zw-wrap px-5 sm:px-8">
       <p class="zw-eyebrow mb-4 zw-reveal" style="color:#8FCBAA;">What we build</p>
-      <h2 class="zw-h2 mb-12 max-w-[820px] zw-reveal text-zw-cream">We build the layer first, then the tools on top.</h2>
+      <h2 class="zw-h2 mb-12 max-w-[860px] zw-reveal text-zw-cream">We get your knowledge in order first, then build the tools that use it.</h2>
 
+      <!-- Two main offers carry the visual weight. -->
       <div class="grid md:grid-cols-2 gap-5">
         <article class="zw-card-dark zw-reveal">
-          <h3 class="zw-h3 mb-3 text-white">The context layer</h3>
+          <h3 class="zw-h3 mb-3 text-white">Your business, written down</h3>
           <p class="text-[0.95rem] leading-relaxed text-zw-cream/75">
-            We map your data, metrics, processes, and domain knowledge into a structured,
-            plain-text foundation. One source of truth your team and your AI can both read, instead
-            of knowledge trapped in dashboards and inboxes.
+            We write down how your business actually works: how you define things, price things, and
+            run things, all in plain files your team and your AI can both read. One place that holds
+            the real answers, instead of knowledge scattered across dashboards, inboxes, and
+            people's heads.
           </p>
         </article>
         <article class="zw-card-dark zw-reveal">
-          <h3 class="zw-h3 mb-3 text-white">Agents and pipelines</h3>
+          <h3 class="zw-h3 mb-3 text-white">The tools that run on it</h3>
           <p class="text-[0.95rem] leading-relaxed text-zw-cream/75">
-            We build the automations, agents, and data pipelines that run on the layer. Salesforce
-            and RevOps, prospecting, reporting, and the connective work in between. Built to a spec,
-            with a human review step where it counts.
+            Once your knowledge is in place, we build the AI assistants and automations that use it.
+            Sales and customer work, finding new customers, reporting, and the busywork in between.
+            Each one is tested on your real cases, with a person reviewing the work before anything
+            goes live where it counts.
           </p>
         </article>
       </div>
 
+      <!-- Secondary offer, deliberately subordinate: a single slim strip, not a
+           third equal column. Public copy is generic (Growbotik white-label). -->
+      <div class="zw-card-dark zw-reveal mt-5 sm:flex sm:items-baseline sm:gap-6 py-5">
+        <h3 class="text-base font-semibold text-white shrink-0 mb-2 sm:mb-0 sm:w-56">Done-for-you growth systems</h3>
+        <p class="text-sm leading-relaxed text-zw-cream/70">
+          For teams that want new customers coming in without hiring for it, we run the whole
+          outreach program for you, on top of the same knowledge. Campaigns, follow-up, and
+          reporting handled, and you own the results.
+        </p>
+      </div>
+
       <p class="mt-8 text-sm text-zw-cream/60 max-w-[760px] zw-reveal">
-        Everything we build is yours. Plain text, version-controlled, no lock-in. Change models or
-        tools next quarter without rebuilding from scratch.
+        Everything we build is yours to keep. It's all in plain writing you can read and edit, with
+        nothing locking you in. Switch tools or AI providers next year without starting over.
       </p>
     </div>
   </section>
@@ -241,7 +253,7 @@ const modelChips = ['a current model', 'the next one', "whatever's best"];
   <section id="how-it-works" class="zw-anchor zw-section border-b border-zw-border">
     <div class="zw-wrap px-5 sm:px-8">
       <p class="zw-eyebrow mb-4 zw-reveal">How it works</p>
-      <h2 class="zw-h2 mb-12 max-w-[760px] zw-reveal">Four steps. Plain text the whole way.</h2>
+      <h2 class="zw-h2 mb-12 max-w-[760px] zw-reveal">Four steps. Plain language the whole way.</h2>
 
       <div class="grid lg:grid-cols-[0.9fr_1.1fr] gap-12 lg:gap-16 items-start">
         <!-- Steps -->
@@ -268,7 +280,7 @@ const modelChips = ['a current model', 'the next one', "whatever's best"];
               </div>
             ))}
           </div>
-          <p class="mt-4 text-xs text-zw-muted text-center zw-mono">one agent, the right files at each step</p>
+          <p class="mt-4 text-xs text-zw-muted text-center zw-mono">the right files at the right step</p>
         </div>
       </div>
     </div>
@@ -280,11 +292,12 @@ const modelChips = ['a current model', 'the next one', "whatever's best"];
       <div class="grid lg:grid-cols-[1.05fr_0.95fr] gap-12 lg:gap-16 items-center">
         <div class="max-w-[620px]">
           <p class="zw-eyebrow mb-4 zw-reveal">Built to last</p>
-          <h2 class="zw-h2 mb-6 zw-reveal">Models change every few months. Your knowledge layer doesn't have to.</h2>
+          <h2 class="zw-h2 mb-6 zw-reveal">AI changes every few months. What you've written down doesn't have to.</h2>
           <p class="text-zw-muted zw-reveal">
-            A context layer written in plain text doesn't need a rebuild every time a new model
-            lands. The same files work with whatever model is best next quarter. That's the
-            difference between a tool you rent and an asset you own.
+            Because your knowledge lives in plain files and not buried inside one AI tool, you don't
+            rebuild every time something new comes out. The same files work with whatever AI is best
+            next year, and they cost less to run, since the AI only reads what it needs. That's the
+            difference between renting a tool and owning something that keeps working.
           </p>
         </div>
 
@@ -302,7 +315,7 @@ const modelChips = ['a current model', 'the next one', "whatever's best"];
                 <path d="M2 1h6l4 4v10H2V1z" stroke="currentColor" stroke-width="1.2"/>
                 <path d="M8 1v4h4" stroke="currentColor" stroke-width="1.2"/>
               </svg>
-              <span class="zw-mono text-sm font-medium">your context layer</span>
+              <span class="zw-mono text-sm font-medium">your business, written down</span>
             </div>
           </div>
         </div>
@@ -339,12 +352,15 @@ const modelChips = ['a current model', 'the next one', "whatever's best"];
       <p class="zw-eyebrow mb-4 zw-reveal" style="color:#8FCBAA;">Get started</p>
       <h2 class="zw-h2 mb-6 text-zw-cream zw-reveal">Start with a free revenue audit.</h2>
       <p class="text-zw-cream/75 mb-3 zw-reveal">
-        We look at where your knowledge is stuck and what an AI layer would actually change. No
-        cost, no obligation. If it's a fit, engagements run $2,500 a month, month to month.
+        We look at where your knowledge is stuck today and what AI could actually do for you once
+        it's written down. No cost, no obligation. If it's a fit, engagements run $2,500 a month,
+        month to month.
       </p>
       <p class="mb-9 zw-reveal">
         <span class="zw-confirm">CONFIRM</span>
-        <span class="text-xs text-zw-cream/55">price and terms before publishing.</span>
+        <span class="text-xs text-zw-cream/55">price and terms. The $2,500/mo historically maps to
+        the secondary growth offer; confirm the primary engagement price and which price (if any)
+        shows here.</span>
       </p>
       <AuditCta
         location="footer"
