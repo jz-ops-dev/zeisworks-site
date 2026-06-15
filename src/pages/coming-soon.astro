@@ -26,7 +26,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Lora:wght@500;600&family=DM+Sans:wght@300;400;500&family=DM+Mono&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,500;0,600;1,500;1,600&family=DM+Sans:wght@300;400;500&family=DM+Mono&display=swap"
       rel="stylesheet"
     />
 
@@ -40,6 +40,7 @@
         --navy: #1e3a8a;
         --orange: #c2410c;
         --orange-bright: #ea580c;
+        --ease: cubic-bezier(0.22, 1, 0.36, 1);
       }
       * { box-sizing: border-box; }
       html, body { margin: 0; padding: 0; }
@@ -100,25 +101,147 @@
         max-width: 56ch;
       }
       .lede + .lede { margin-top: 4px; }
-      .icm {
-        margin: 32px 0;
-        padding: 20px 22px;
+      /* ── ICM: three appeals → one method ── */
+      .appeals { margin: 32px 0; }
+      .appeals .eyebrow { margin: 0 0 12px; }
+      .appeals-intro {
+        font-size: 1rem;
+        line-height: 1.6;
+        color: var(--ink-mid);
+        margin: 0 0 24px;
+        max-width: 60ch;
+      }
+      .appeals-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 12px;
+        margin-bottom: 40px;
+      }
+      .appeal {
+        position: relative;
         background: #fff;
         border: 1px solid var(--cream-dark);
         border-left: 3px solid var(--orange);
         border-radius: 12px;
+        padding: 16px 16px 18px;
       }
-      .icm .eyebrow {
-        color: var(--ink-light);
-        margin: 0 0 10px;
+      .appeal .greek {
+        font-family: "Lora", Georgia, serif;
+        font-style: italic;
+        font-weight: 600;
+        font-size: 1.35rem;
+        line-height: 1.1;
+        color: var(--ink);
+        margin: 0 0 6px;
       }
-      .icm .eyebrow b { color: var(--orange); font-weight: 400; }
-      .icm p {
-        margin: 0;
-        font-size: 1rem;
-        line-height: 1.65;
+      .appeal .gloss {
+        font-size: 0.86rem;
+        line-height: 1.5;
         color: var(--ink-mid);
-        max-width: 60ch;
+        margin: 0;
+      }
+      .appeal .trace {
+        display: block;
+        height: 2px;
+        margin: 14px 0 10px;
+        border-radius: 2px;
+        background: linear-gradient(90deg, var(--orange), rgba(194, 65, 12, 0.25));
+        transform: scaleX(1);
+        transform-origin: left center;
+      }
+      .appeal .maps {
+        font-family: "DM Mono", monospace;
+        font-size: 0.72rem;
+        color: var(--orange);
+        margin: 0;
+      }
+      .appeal .maps::before { content: "→ "; opacity: 0.7; }
+      .appeal .connector {
+        position: absolute;
+        left: 50%;
+        bottom: -28px;
+        width: 2px;
+        height: 28px;
+        background: linear-gradient(rgba(194, 65, 12, 0.55), rgba(194, 65, 12, 0.2));
+        transform: translateX(-50%) scaleY(1);
+        transform-origin: top center;
+      }
+      .appeals-icm {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        flex-wrap: wrap;
+        border: 2px solid var(--orange);
+        background: rgba(194, 65, 12, 0.05);
+        border-radius: 12px;
+        padding: 14px 16px;
+      }
+      .appeals-icm .tag {
+        flex: none;
+        font-family: "DM Mono", monospace;
+        font-size: 0.74rem;
+        font-weight: 500;
+        letter-spacing: 0.04em;
+        color: var(--orange);
+        border: 1px solid rgba(194, 65, 12, 0.45);
+        border-radius: 6px;
+        padding: 3px 7px;
+      }
+      .appeals-icm .txt {
+        font-size: 0.92rem;
+        line-height: 1.5;
+        color: var(--ink-mid);
+      }
+      @media (min-width: 560px) {
+        .appeals-grid { grid-template-columns: repeat(3, 1fr); }
+      }
+      @media (max-width: 559px) {
+        .appeal .connector { display: none; }
+      }
+
+      /* Motion-on path. Armed by JS only when motion is allowed; the resting
+         state above stays fully revealed for no-JS / reduced-motion. */
+      .appeals.is-armed .appeal {
+        opacity: 0;
+        transform: translateY(14px);
+        transition: opacity 0.6s var(--ease), transform 0.6s var(--ease);
+        transition-delay: calc(var(--i) * 0.16s);
+      }
+      .appeals.is-armed.play .appeal { opacity: 1; transform: none; }
+      .appeals.is-armed .trace {
+        transform: scaleX(0);
+        transition: transform 0.7s var(--ease);
+        transition-delay: calc(var(--i) * 0.16s + 0.45s);
+      }
+      .appeals.is-armed.play .trace { transform: scaleX(1); }
+      .appeals.is-armed .maps {
+        opacity: 0;
+        transform: translateY(4px);
+        transition: opacity 0.5s var(--ease), transform 0.5s var(--ease);
+        transition-delay: calc(var(--i) * 0.16s + 0.9s);
+      }
+      .appeals.is-armed.play .maps { opacity: 1; transform: none; }
+      .appeals.is-armed .connector {
+        transform: translateX(-50%) scaleY(0);
+        transition: transform 0.5s var(--ease);
+        transition-delay: calc(var(--i) * 0.16s + 1.15s);
+      }
+      .appeals.is-armed.play .connector { transform: translateX(-50%) scaleY(1); }
+      .appeals.is-armed .appeals-icm {
+        opacity: 0;
+        transform: translateY(10px);
+        transition: opacity 0.6s var(--ease), transform 0.6s var(--ease);
+        transition-delay: 1.5s;
+      }
+      .appeals.is-armed.play .appeals-icm {
+        opacity: 1;
+        transform: none;
+        animation: icmLock 0.9s var(--ease) 1.7s both;
+      }
+      @keyframes icmLock {
+        0% { box-shadow: 0 0 0 0 rgba(194, 65, 12, 0); }
+        45% { box-shadow: 0 0 0 7px rgba(194, 65, 12, 0.12); }
+        100% { box-shadow: 0 0 0 0 rgba(194, 65, 12, 0); }
       }
       .video {
         margin: 32px 0;
@@ -230,15 +353,43 @@
         it's live.
       </p>
 
-      <section class="icm" aria-label="Interpretable Context Methodology">
-        <p class="eyebrow"><b>ICM</b> · Interpretable Context Methodology</p>
-        <p>
-          It's the method underneath everything we build: your business written
-          down as plain, readable files, organized so the AI always reads the
-          right one — and every answer traces back to a source you can see and
-          edit. That's the ethos. No black boxes, nothing on autopilot, and it's
-          yours to keep.
+      <section class="appeals" data-appeals aria-label="The three appeals behind Interpretable Context Methodology">
+        <p class="eyebrow">The method, in three appeals</p>
+        <p class="appeals-intro">
+          Three classical ways to be believed — ethos, pathos, logos — each built
+          into how the AI actually works. That's ICM: trust by structure, not
+          performance.
         </p>
+        <div class="appeals-grid">
+          <div class="appeal" style="--i:0">
+            <p class="greek">Ethos</p>
+            <p class="gloss">Credibility — authority that's sourced, not asserted.</p>
+            <span class="trace" aria-hidden="true"></span>
+            <p class="maps">Identity + traceability</p>
+            <span class="connector" aria-hidden="true"></span>
+          </div>
+          <div class="appeal" style="--i:1">
+            <p class="greek">Pathos</p>
+            <p class="gloss">The felt experience — confidence that's earned, not performed.</p>
+            <span class="trace" aria-hidden="true"></span>
+            <p class="maps">Working outputs</p>
+            <span class="connector" aria-hidden="true"></span>
+          </div>
+          <div class="appeal" style="--i:2">
+            <p class="greek">Logos</p>
+            <p class="gloss">Reason and evidence — logic you can inspect, not hidden.</p>
+            <span class="trace" aria-hidden="true"></span>
+            <p class="maps">Routing + reference</p>
+            <span class="connector" aria-hidden="true"></span>
+          </div>
+        </div>
+        <div class="appeals-icm">
+          <span class="tag">ICM</span>
+          <span class="txt">
+            Interpretable Context Methodology — every answer traces back to a file
+            you can read and edit.
+          </span>
+        </div>
       </section>
 
       <div class="video">
@@ -286,11 +437,28 @@
 
     <script is:inline>
       (function () {
+        var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
         // Respect reduced-motion: hold the intro on its first frame.
-        if (window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+        if (reduce) {
           var vid = document.querySelector(".video video");
           if (vid) { vid.removeAttribute("autoplay"); vid.removeAttribute("loop"); vid.pause(); }
         }
+
+        // ICM appeals: play the convergence once it scrolls into view.
+        var appeals = document.querySelector("[data-appeals]");
+        if (appeals && !reduce && "IntersectionObserver" in window) {
+          appeals.classList.add("is-armed");
+          var appealsObs = new IntersectionObserver(function (entries, obs) {
+            entries.forEach(function (entry) {
+              if (!entry.isIntersecting) return;
+              entry.target.classList.add("play");
+              obs.unobserve(entry.target);
+            });
+          }, { threshold: 0.25 });
+          appealsObs.observe(appeals);
+        }
+
         var form = document.getElementById("waitlist-form");
         if (!form) return;
         form.addEventListener("submit", function (e) {
