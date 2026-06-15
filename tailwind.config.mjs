@@ -19,10 +19,27 @@ export default {
         navy: '#1E3A8A',
         orange: '#C2410C',
         'orange-bright': '#EA580C',
+
+        // ── Single-page AI-readiness rebuild (dev prompt section 3). ──
+        // Scoped under the zw- prefix so the original brand palette can live
+        // on the homepage without restyling the guide/legal/vertical pages
+        // that still consume the legacy token names above.
+        'zw-cream': '#EDEAE0',
+        'zw-ink': '#1C1C1A',
+        'zw-forest': '#2D3B33',
+        'zw-teal': '#2D5C45',
+        'zw-card': '#FFFFFF',
+        'zw-border': 'rgba(28,28,26,0.12)',
+        // --muted darkened from the spec's 0.62 to a solid value that clears
+        // WCAG AA on the cream background (section 7).
+        'zw-muted': '#5F5F57',
       },
       fontFamily: {
         serif: ['Lora', 'Georgia', 'serif'],
         sans: ['"DM Sans"', 'system-ui', 'sans-serif'],
+        // Body/UI + mono accent for the single-page rebuild.
+        inter: ['Inter', 'system-ui', 'sans-serif'],
+        mono: ['"JetBrains Mono"', 'ui-monospace', 'SFMono-Regular', 'monospace'],
       },
       typography: ({ theme }) => ({
         zeisworks: {
