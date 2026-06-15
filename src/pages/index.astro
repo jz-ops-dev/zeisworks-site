@@ -241,6 +241,20 @@ const appeals = [
             Interpretable Context Methodology — every answer traces back to a file you can read and edit.
           </span>
         </div>
+
+        <p class="zw-appeals-sample-lead">One of those files, in production:</p>
+        <figure class="zw-appeals-sample zw-knowledge zw-mono" aria-label="A sample production file from the routing layer.">
+          <div class="zw-knowledge-bar">
+            <span class="zw-dot"></span><span class="zw-dot"></span><span class="zw-dot"></span>
+            <span class="ml-3 text-[0.72rem] text-zw-muted">routing.md</span>
+            <span class="zw-sample-tag">production layer</span>
+          </div>
+          <pre class="zw-knowledge-body"><span class="zw-kline"># the AI reads the right file for each question</span>
+pricing      → reference/pricing.md
+refund       → reference/refund-policy.md
+tone & voice → identity.md
+escalation   → working/handoffs.md</pre>
+        </figure>
       </div>
     </div>
   </section>
@@ -792,4 +806,32 @@ const appeals = [
     45% { box-shadow: 0 0 0 7px rgba(181, 55, 26, 0.12); }
     100% { box-shadow: 0 0 0 0 rgba(181, 55, 26, 0); }
   }
+
+  /* Sample production layer: the file the ICM plate points to. */
+  .zw-appeals-sample-lead {
+    font-size: 0.85rem;
+    color: var(--zw-muted);
+    margin: 1.4rem 0 0.6rem;
+  }
+  .zw-appeals-sample { margin: 0; max-width: 640px; }
+  .zw-sample-tag {
+    margin-left: auto;
+    font-family: 'JetBrains Mono', ui-monospace, monospace;
+    font-size: 0.6rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--zw-teal);
+    border: 1px solid rgba(181, 55, 26, 0.35);
+    border-radius: 5px;
+    padding: 2px 6px;
+  }
+  html.zw-anim .zw-appeals-sample,
+  html.zw-anim .zw-appeals-sample-lead {
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity 0.6s var(--zw-ease), transform 0.6s var(--zw-ease);
+    transition-delay: 2s;
+  }
+  html.zw-anim [data-anim="appeals"].zw-play .zw-appeals-sample,
+  html.zw-anim [data-anim="appeals"].zw-play .zw-appeals-sample-lead { opacity: 1; transform: none; }
 </style>
