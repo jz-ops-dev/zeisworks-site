@@ -27,7 +27,12 @@ export default {
         'zw-cream': '#EDEAE0',
         'zw-ink': '#1C1C1A',
         'zw-forest': '#2D3B33',
-        'zw-teal': '#2D5C45',
+        // Brand accent. The bright logo orange (#E04530) fails WCAG AA as
+        // text/buttons on cream, so the UI accent is a deeper shade of the
+        // same hue that clears 4.5:1 (white-on-button and accent-on-cream);
+        // the logo tile keeps the bright orange. zw-rust is the button hover.
+        'zw-teal': '#B5371A',
+        'zw-rust': '#8F2D15',
         'zw-card': '#FFFFFF',
         'zw-border': 'rgba(28,28,26,0.12)',
         // --muted darkened from the spec's 0.62 to a solid value that clears
