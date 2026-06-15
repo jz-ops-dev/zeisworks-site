@@ -1,0 +1,436 @@
+---
+import AuditCta from '../components/AuditCta.astro';
+
+// Dedicated layout for the single-page AI-readiness rebuild (dev prompt).
+// Kept separate from BaseLayout so the new cream/forest/teal brand, the
+// four-link anchor nav, and the minimal footer do not disturb the existing
+// guide, pricing, about, vertical, and legal pages.
+interface Props {
+  title: string;
+  description: string;
+  ogImage?: string;
+}
+
+const { title, description, ogImage } = Astro.props;
+
+const siteUrl = 'https://zeisworks.com';
+const canonical = new URL(Astro.url.pathname, siteUrl).href;
+const resolvedOgImage = ogImage ? new URL(ogImage, siteUrl).href : undefined;
+
+const navLinks = [
+  { label: 'The problem', href: '#the-problem' },
+  { label: 'What we build', href: '#what-we-build' },
+  { label: 'How it works', href: '#how-it-works' },
+];
+
+// Organization schema aligned to the AI-readiness positioning.
+const orgJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'ProfessionalService',
+  name: 'ZeisWorks',
+  url: siteUrl,
+  logo: `${siteUrl}/favicon.svg`,
+  description:
+    'ZeisWorks structures your business knowledge into a clean, plain-text context layer any AI can read, then builds the agents and pipelines that run on top of it.',
+  email: 'jack@zeisworks.com',
+  founder: {
+    '@type': 'Person',
+    name: 'Jack Zeis',
+    url: siteUrl,
+    sameAs: [
+      'https://www.linkedin.com/in/jack-zeis/',
+      'https://www.upwork.com/freelancers/~01ddd112c03a2e1428',
+    ],
+  },
+  parentOrganization: {
+    '@type': 'Organization',
+    name: 'High Range Living LLC',
+  },
+};
+---
+
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonical} />
+    {resolvedOgImage && <meta property="og:image" content={resolvedOgImage} />}
+    <meta property="og:site_name" content="ZeisWorks" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    {resolvedOgImage && <meta name="twitter:image" content={resolvedOgImage} />}
+
+    <link rel="canonical" href={canonical} />
+    <link rel="sitemap" type="application/xml" href="/sitemap-index.xml" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+
+    <title>{title}</title>
+
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/png" sizes="256x256" href="/favicon.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+
+    <script type="application/ld+json" set:html={JSON.stringify(orgJsonLd)} />
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-F05WB9RWJT"></script>
+    <script is:inline>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-F05WB9RWJT');
+    </script>
+
+    <!-- Meta Pixel Base Code -->
+    <script is:inline>
+      !function(f,b,e,v,n,t,s)
+      {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+      n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+      if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+      n.queue=[];t=b.createElement(e);t.async=!0;
+      t.src=v;s=b.getElementsByTagName(e)[0];
+      s.parentNode.insertBefore(t,s)}(window, document,'script',
+      'https://connect.facebook.net/en_US/fbevents.js');
+      fbq('init', '1416784273550486');
+      fbq('track', 'PageView');
+    </script>
+    <noscript><img height="1" width="1" style="display:none"
+      src="https://www.facebook.com/tr?id=1416784273550486&ev=PageView&noscript=1"
+    /></noscript>
+    <!-- End Meta Pixel Base Code -->
+
+    <style is:global>
+      :root {
+        --zw-cream: #EDEAE0;
+        --zw-ink: #1C1C1A;
+        --zw-forest: #2D3B33;
+        --zw-teal: #2D5C45;
+        --zw-card: #FFFFFF;
+        --zw-border: rgba(28, 28, 26, 0.12);
+        --zw-muted: #5F5F57;
+        --zw-ease: cubic-bezier(0.22, 1, 0.36, 1);
+      }
+
+      html { -webkit-text-size-adjust: 100%; }
+
+      body.zw-root {
+        background: var(--zw-cream);
+        color: var(--zw-ink);
+        font-family: 'Inter', system-ui, sans-serif;
+        font-size: 1.0625rem;
+        line-height: 1.7;
+        -webkit-font-smoothing: antialiased;
+        text-rendering: optimizeLegibility;
+      }
+
+      .zw-root ::selection { background: rgba(45, 92, 69, 0.18); }
+
+      /* Fluid type scale (section 3). */
+      .zw-h1 {
+        font-family: 'Lora', Georgia, serif;
+        font-weight: 600;
+        font-size: clamp(2.4rem, 6vw, 4.2rem);
+        line-height: 1.05;
+        letter-spacing: -0.01em;
+      }
+      .zw-h2 {
+        font-family: 'Lora', Georgia, serif;
+        font-weight: 600;
+        font-size: clamp(1.7rem, 3.5vw, 2.6rem);
+        line-height: 1.12;
+        letter-spacing: -0.01em;
+      }
+      .zw-h3 {
+        font-family: 'Inter', system-ui, sans-serif;
+        font-weight: 600;
+        font-size: 1.25rem;
+        line-height: 1.3;
+      }
+      .zw-eyebrow {
+        font-family: 'Inter', system-ui, sans-serif;
+        font-weight: 600;
+        font-size: 0.8rem;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--zw-teal);
+      }
+      .zw-section {
+        padding-top: clamp(4rem, 9vw, 8rem);
+        padding-bottom: clamp(4rem, 9vw, 8rem);
+      }
+      .zw-wrap { max-width: 1080px; margin-inline: auto; }
+      .zw-mono { font-family: 'JetBrains Mono', ui-monospace, monospace; }
+
+      /* Visible, keyboard-reachable focus in --teal (section 7). */
+      .zw-root a:focus-visible,
+      .zw-root button:focus-visible {
+        outline: 2px solid var(--zw-teal);
+        outline-offset: 3px;
+        border-radius: 4px;
+      }
+
+      /* Scroll-reveal baseline. Hidden state only applies when motion is OK
+         and JS has marked the document ready; otherwise content is visible. */
+      .zw-reveal { opacity: 1; transform: none; }
+      html.zw-anim .zw-reveal {
+        opacity: 0;
+        transform: translateY(18px);
+        transition: opacity 0.7s var(--zw-ease), transform 0.7s var(--zw-ease);
+        will-change: opacity, transform;
+      }
+      html.zw-anim .zw-reveal.zw-in { opacity: 1; transform: none; }
+
+      @media (prefers-reduced-motion: reduce) {
+        html { scroll-behavior: auto; }
+        .zw-root *, .zw-root *::before, .zw-root *::after {
+          animation-duration: 0.001ms !important;
+          animation-iteration-count: 1 !important;
+          transition-duration: 0.001ms !important;
+        }
+      }
+    </style>
+  </head>
+  <body class="zw-root min-h-screen flex flex-col">
+    <!-- Sentinel: when it scrolls out of view the nav gains its solid state. -->
+    <div id="zw-top-sentinel" aria-hidden="true" style="position:absolute;top:0;height:8px;width:1px;"></div>
+
+    <header
+      id="zw-nav"
+      class="fixed top-0 inset-x-0 z-50 transition-colors duration-300"
+    >
+      <div class="zw-wrap px-5 sm:px-8 h-16 flex items-center justify-between">
+        <a href="#top" class="font-serif text-2xl font-semibold tracking-tight text-zw-ink" aria-label="ZeisWorks home">
+          z<span class="text-zw-teal">W</span>
+        </a>
+
+        <nav class="hidden md:flex items-center gap-8 text-sm font-medium" aria-label="Primary">
+          {navLinks.map(({ label, href }) => (
+            <a href={href} class="text-zw-ink/75 hover:text-zw-teal transition-colors">{label}</a>
+          ))}
+          <AuditCta
+            location="nav"
+            label="Start an audit"
+            class="bg-zw-teal text-white text-sm font-semibold px-4 py-2 rounded-full hover:bg-zw-forest transition-colors"
+          />
+        </nav>
+
+        <button
+          id="zw-menu-btn"
+          class="md:hidden flex flex-col justify-center gap-[5px] w-10 h-10 -mr-2"
+          aria-label="Open menu"
+          aria-expanded="false"
+          aria-controls="zw-mobile-menu"
+        >
+          <span class="block w-6 h-[2px] bg-zw-ink rounded transition-transform"></span>
+          <span class="block w-6 h-[2px] bg-zw-ink rounded transition-opacity"></span>
+          <span class="block w-6 h-[2px] bg-zw-ink rounded transition-transform"></span>
+        </button>
+      </div>
+    </header>
+
+    <!-- Mobile full-height menu -->
+    <div
+      id="zw-mobile-menu"
+      class="fixed inset-0 z-40 bg-zw-cream flex-col justify-center px-8 hidden"
+    >
+      <nav class="flex flex-col gap-2 text-center" aria-label="Mobile">
+        {navLinks.map(({ label, href }) => (
+          <a href={href} class="zw-mobile-link font-serif text-3xl py-3 text-zw-ink hover:text-zw-teal transition-colors">{label}</a>
+        ))}
+        <AuditCta
+          location="nav"
+          label="Start an audit"
+          class="zw-mobile-link mt-6 inline-block bg-zw-teal text-white font-semibold text-lg px-7 py-3.5 rounded-full hover:bg-zw-forest transition-colors"
+        />
+      </nav>
+    </div>
+
+    <main class="flex-1">
+      <slot />
+    </main>
+
+    <footer class="bg-zw-forest text-zw-cream">
+      <div class="zw-wrap px-5 sm:px-8 py-12 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-6">
+        <a href="#top" class="font-serif text-2xl font-semibold tracking-tight" aria-label="ZeisWorks home">
+          z<span class="text-zw-teal" style="color:#7FB89A;">W</span>
+        </a>
+        <p class="text-sm text-zw-cream/70">
+          <a href="mailto:jack@zeisworks.com" class="hover:text-white transition-colors">jack@zeisworks.com</a>
+        </p>
+        <p class="text-xs text-zw-cream/50">
+          &copy; {new Date().getFullYear()} ZeisWorks, a High Range Living LLC company.
+        </p>
+      </div>
+    </footer>
+
+    <!-- Nav state, mobile menu, smooth-anchor offset, and the scroll-reveal /
+         animation controller. Vanilla JS to keep the JS budget small; every
+         motion path is gated behind prefers-reduced-motion. -->
+    <script is:inline>
+      (function () {
+        var reduce = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+        // ── Nav solid-on-scroll ──
+        var nav = document.getElementById('zw-nav');
+        var sentinel = document.getElementById('zw-top-sentinel');
+        if (nav && sentinel && 'IntersectionObserver' in window) {
+          var navObs = new IntersectionObserver(function (entries) {
+            var atTop = entries[0].isIntersecting;
+            nav.classList.toggle('zw-nav-solid', !atTop);
+          });
+          navObs.observe(sentinel);
+        } else if (nav) {
+          nav.classList.add('zw-nav-solid');
+        }
+
+        // ── Mobile menu ──
+        var btn = document.getElementById('zw-menu-btn');
+        var menu = document.getElementById('zw-mobile-menu');
+        function closeMenu() {
+          if (!menu || !btn) return;
+          menu.classList.add('hidden');
+          menu.classList.remove('flex');
+          btn.setAttribute('aria-expanded', 'false');
+          btn.classList.remove('zw-menu-open');
+          document.body.style.overflow = '';
+        }
+        if (btn && menu) {
+          btn.addEventListener('click', function () {
+            var isOpen = !menu.classList.contains('hidden');
+            if (isOpen) { closeMenu(); return; }
+            menu.classList.remove('hidden');
+            menu.classList.add('flex');
+            btn.setAttribute('aria-expanded', 'true');
+            btn.classList.add('zw-menu-open');
+            document.body.style.overflow = 'hidden';
+          });
+          menu.querySelectorAll('.zw-mobile-link').forEach(function (l) {
+            l.addEventListener('click', closeMenu);
+          });
+          document.addEventListener('keydown', function (e) {
+            if (e.key === 'Escape') closeMenu();
+          });
+        }
+
+        // ── Scroll-reveal + per-animation triggers ──
+        if (reduce.matches || !('IntersectionObserver' in window)) {
+          // Reduced motion / no IO: leave everything in its resting end state.
+          return;
+        }
+        document.documentElement.classList.add('zw-anim');
+
+        var revealObs = new IntersectionObserver(function (entries, obs) {
+          entries.forEach(function (entry) {
+            if (!entry.isIntersecting) return;
+            entry.target.classList.add('zw-in');
+            // Fire any named animation hook attached to this element.
+            var hook = entry.target.getAttribute('data-anim');
+            if (hook) entry.target.classList.add('zw-play');
+            obs.unobserve(entry.target);
+          });
+        }, { threshold: 0.2, rootMargin: '0px 0px -8% 0px' });
+
+        document.querySelectorAll('.zw-reveal, [data-anim]').forEach(function (el) {
+          revealObs.observe(el);
+        });
+
+        // ── Animation A (hero): play on load, not on scroll ──
+        var heroAnim = document.querySelector('[data-anim="hero"]');
+        if (heroAnim) {
+          requestAnimationFrame(function () {
+            requestAnimationFrame(function () { heroAnim.classList.add('zw-play'); });
+          });
+        }
+
+        // ── Animation D (why it lasts): cycle the model chip ──
+        var swap = document.querySelector('[data-anim="model-swap"]');
+        if (swap) {
+          var chips = swap.querySelectorAll('.zw-model-chip');
+          if (chips.length > 1) {
+            var i = 0;
+            var swapTimer = null;
+            var startSwap = function () {
+              if (swapTimer) return;
+              swapTimer = setInterval(function () {
+                chips[i].classList.remove('zw-chip-on');
+                i = (i + 1) % chips.length;
+                chips[i].classList.add('zw-chip-on');
+              }, 2500);
+            };
+            var swapObs = new IntersectionObserver(function (entries) {
+              entries.forEach(function (e) {
+                if (e.isIntersecting) startSwap();
+                else if (swapTimer) { clearInterval(swapTimer); swapTimer = null; }
+              });
+            }, { threshold: 0.3 });
+            swapObs.observe(swap);
+          }
+        }
+      })();
+    </script>
+
+    <!-- Audit CTA tracking + UTM passthrough (carried from the prior build). -->
+    <script is:inline>
+      (function () {
+        var UTM_KEYS = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content'];
+        var stored = {};
+        try { stored = JSON.parse(sessionStorage.getItem('zw_utm') || '{}'); } catch (e) {}
+        var params = new URLSearchParams(window.location.search);
+        UTM_KEYS.forEach(function (k) { var v = params.get(k); if (v) stored[k] = v; });
+        try { sessionStorage.setItem('zw_utm', JSON.stringify(stored)); } catch (e) {}
+
+        if (Object.keys(stored).length) {
+          document.querySelectorAll('a[data-audit-cta]').forEach(function (link) {
+            try {
+              var url = new URL(link.getAttribute('href'), window.location.origin);
+              UTM_KEYS.forEach(function (k) { if (stored[k]) url.searchParams.set(k, stored[k]); });
+              link.setAttribute('href', url.href);
+            } catch (e) {}
+          });
+        }
+
+        document.addEventListener('click', function (e) {
+          var link = e.target && e.target.closest ? e.target.closest('a[data-audit-cta]') : null;
+          if (!link) return;
+          var ctaLocation = link.getAttribute('data-cta-location') || 'unknown';
+          var pagePath = window.location.pathname;
+          try { sessionStorage.setItem('zw_cta_clicked', '1'); } catch (err) {}
+          if (typeof fbq === 'function') {
+            fbq('trackCustom', 'AuditStart', { cta_location: ctaLocation, page_path: pagePath });
+          }
+          if (typeof gtag === 'function') {
+            gtag('event', 'audit_start', { cta_location: ctaLocation, page_path: pagePath, transport_type: 'beacon' });
+          }
+        }, true);
+      })();
+    </script>
+  </body>
+</html>
+
+<style is:global>
+  /* Nav resting (transparent over hero) and solid (scrolled) states. */
+  #zw-nav { background: transparent; }
+  #zw-nav.zw-nav-solid {
+    background: rgba(237, 234, 224, 0.92);
+    backdrop-filter: saturate(140%) blur(8px);
+    border-bottom: 1px solid var(--zw-border);
+  }
+  /* Hamburger to X when the menu is open. */
+  #zw-menu-btn.zw-menu-open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  #zw-menu-btn.zw-menu-open span:nth-child(2) { opacity: 0; }
+  #zw-menu-btn.zw-menu-open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+</style>
