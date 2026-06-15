@@ -95,8 +95,28 @@
       .lede {
         font-size: 1.075rem;
         color: var(--ink-mid);
-        margin: 0 0 14px;
-        max-width: 52ch;
+        margin: 0 0 16px;
+        max-width: 56ch;
+      }
+      .icm {
+        margin: 32px 0;
+        padding: 20px 22px;
+        background: #fff;
+        border: 1px solid var(--cream-dark);
+        border-left: 3px solid var(--orange);
+        border-radius: 12px;
+      }
+      .icm .eyebrow {
+        color: var(--ink-light);
+        margin: 0 0 10px;
+      }
+      .icm .eyebrow b { color: var(--orange); font-weight: 400; }
+      .icm p {
+        margin: 0;
+        font-size: 1rem;
+        line-height: 1.65;
+        color: var(--ink-mid);
+        max-width: 60ch;
       }
       .video {
         margin: 32px 0;
@@ -164,14 +184,18 @@
       .hidden { display: none; }
       footer {
         max-width: 640px;
-        margin: 0 auto;
+        margin: 40px auto 0;
         width: 100%;
-        padding: 24px;
+        padding: 20px 24px 28px;
         font-family: "DM Mono", monospace;
         font-size: 0.72rem;
         letter-spacing: 0.03em;
         color: var(--ink-light);
         border-top: 1px solid var(--cream-dark);
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        * { transition: none !important; }
       }
     </style>
   </head>
@@ -202,6 +226,17 @@
         We're rebuilding the site. Leave your email and we'll tell you the moment
         it's live.
       </p>
+
+      <section class="icm" aria-label="Interpretable Context Methodology">
+        <p class="eyebrow"><b>ICM</b> · Interpretable Context Methodology</p>
+        <p>
+          It's the method underneath everything we build: your business written
+          down as plain, readable files, organized so the AI always reads the
+          right one — and every answer traces back to a source you can see and
+          edit. That's the ethos. No black boxes, nothing on autopilot, and it's
+          yours to keep.
+        </p>
+      </section>
 
       <div class="video">
         <video autoplay muted loop playsinline preload="metadata">
@@ -248,6 +283,11 @@
 
     <script is:inline>
       (function () {
+        // Respect reduced-motion: hold the intro on its first frame.
+        if (window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+          var vid = document.querySelector(".video video");
+          if (vid) { vid.removeAttribute("autoplay"); vid.removeAttribute("loop"); vid.pause(); }
+        }
         var form = document.getElementById("waitlist-form");
         if (!form) return;
         form.addEventListener("submit", function (e) {
