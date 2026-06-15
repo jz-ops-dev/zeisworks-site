@@ -184,9 +184,11 @@ const modelChips = ['a current model', 'the next one', "whatever's best"];
 
       <!-- Animation C: plain text, read by both -->
       <div class="mt-12 zw-reveal">
-        <div data-anim="bothread" class="zw-bothread mx-auto max-w-[640px] relative">
-          <span class="zw-bothread-label zw-bothread-label--l">your team reads this</span>
-          <span class="zw-bothread-label zw-bothread-label--r">your AI reads this</span>
+        <div data-anim="bothread" class="zw-bothread mx-auto max-w-[640px]">
+          <div class="zw-bothread-labels">
+            <span class="zw-bothread-label zw-bothread-label--l">your team reads this</span>
+            <span class="zw-bothread-label zw-bothread-label--r">your AI reads this</span>
+          </div>
           <div class="zw-knowledge zw-mono" role="img" aria-label="A plain-text knowledge file that both a person and an AI can read.">
             <div class="zw-knowledge-bar">
               <span class="zw-dot"></span><span class="zw-dot"></span><span class="zw-dot"></span>
@@ -535,7 +537,14 @@ const modelChips = ['a current model', 'the next one', "whatever's best"];
   }
 
   /* ───────── Animation C: plain text, read by both ───────── */
-  .zw-bothread { padding-top: 1.4rem; }
+  .zw-bothread-labels {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 1rem;
+    padding: 0 0.6rem;
+    margin-bottom: 0.55rem;
+  }
   .zw-knowledge {
     background: var(--zw-card);
     border: 1px solid var(--zw-border);
@@ -557,16 +566,12 @@ const modelChips = ['a current model', 'the next one', "whatever's best"];
   }
   .zw-kline:first-child { color: var(--zw-teal); }
   .zw-bothread-label {
-    position: absolute;
-    top: 0;
     font-size: 0.7rem;
     color: var(--zw-teal);
     font-weight: 600;
-    background: var(--zw-cream);
-    padding: 0 0.4rem;
+    line-height: 1.3;
   }
-  .zw-bothread-label--l { left: 4%; }
-  .zw-bothread-label--r { right: 4%; }
+  .zw-bothread-label--r { text-align: right; }
   html.zw-anim .zw-bothread-label { opacity: 0; transform: translateY(4px); transition: opacity 0.6s var(--zw-ease) 0.2s, transform 0.6s var(--zw-ease) 0.2s; }
   html.zw-anim .zw-bothread.zw-play .zw-bothread-label { opacity: 1; transform: none; }
   html.zw-anim .zw-bothread .zw-kline { opacity: 0; transition: opacity 0.5s var(--zw-ease); }
