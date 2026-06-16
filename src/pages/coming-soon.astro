@@ -318,6 +318,17 @@
         transition: opacity 0.9s var(--ease), transform 0.9s var(--ease), filter 0.9s var(--ease);
       }
       .intro video { width: 100%; height: 100%; object-fit: cover; }
+      /* Bottom scrim keeps the caption and skip control legible over any frame. */
+      .intro::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        height: 40%;
+        background: linear-gradient(to top, rgba(0, 0, 0, 0.38), transparent);
+        pointer-events: none;
+      }
       .intro.is-leaving {
         opacity: 0;
         transform: scale(1.06);
@@ -343,6 +354,39 @@
       .intro-skip:hover { background: rgba(255, 255, 255, 0.26); }
       .intro-skip:focus-visible { outline: 2px solid #fff; outline-offset: 3px; }
       body.intro-lock { overflow: hidden; }
+      .intro-caption {
+        position: absolute;
+        left: clamp(20px, 5vw, 48px);
+        bottom: clamp(20px, 6%, 48px);
+        max-width: 70%;
+        text-align: left;
+        color: #fff;
+        text-shadow: 0 1px 14px rgba(0, 0, 0, 0.3);
+        opacity: 0;
+        animation: introCaptionIn 0.9s var(--ease) 0.5s forwards;
+      }
+      .intro-caption .mark {
+        display: block;
+        font-family: "Lora", Georgia, serif;
+        font-weight: 600;
+        font-size: clamp(1.35rem, 4vw, 2rem);
+        letter-spacing: -0.01em;
+      }
+      .intro-caption .mark .dot { opacity: 0.8; }
+      .intro-caption .tag {
+        display: block;
+        margin-top: 7px;
+        font-family: "DM Mono", monospace;
+        font-size: clamp(0.6rem, 1.6vw, 0.72rem);
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        opacity: 0.85;
+      }
+      @keyframes introCaptionIn { to { opacity: 1; } }
+      @media (max-width: 520px) {
+        /* Sit the caption above the skip control so they never crowd. */
+        .intro-caption { bottom: 74px; max-width: 86%; }
+      }
       .capture { margin-top: 8px; }
       .capture label {
         display: block;
@@ -423,6 +467,10 @@
       <video id="zw-intro-video" muted playsinline preload="auto" autoplay>
         <source src="/intro.mp4" type="video/mp4" />
       </video>
+      <div class="intro-caption" aria-hidden="true">
+        <span class="mark">zeisWorks<span class="dot">.</span></span>
+        <span class="tag">Make your business readable to AI</span>
+      </div>
       <button type="button" id="zw-intro-skip" class="intro-skip">Skip intro</button>
     </div>
 
