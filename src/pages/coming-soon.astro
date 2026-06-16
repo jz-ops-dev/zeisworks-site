@@ -304,16 +304,45 @@
       }
       .appeals.is-armed.play .sample,
       .appeals.is-armed.play .sample-lead { opacity: 1; transform: none; }
-      .video {
-        margin: 32px 0;
-        border-radius: 16px;
-        overflow: hidden;
-        border: 1px solid var(--cream-dark);
-        box-shadow: 0 18px 40px -24px rgba(15, 23, 42, 0.35);
+      /* Fullscreen intro: plays once, then evaporates to reveal the page. */
+      .intro {
+        position: fixed;
+        inset: 0;
+        z-index: 1000;
         background: #000;
-        aspect-ratio: 16 / 9;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        opacity: 1;
+        will-change: opacity, transform, filter;
+        transition: opacity 0.9s var(--ease), transform 0.9s var(--ease), filter 0.9s var(--ease);
       }
-      .video video { display: block; width: 100%; height: 100%; object-fit: cover; }
+      .intro video { width: 100%; height: 100%; object-fit: cover; }
+      .intro.is-leaving {
+        opacity: 0;
+        transform: scale(1.06);
+        filter: blur(10px);
+        pointer-events: none;
+      }
+      .intro-skip {
+        position: absolute;
+        bottom: max(22px, env(safe-area-inset-bottom));
+        right: 22px;
+        font: inherit;
+        font-size: 0.8rem;
+        font-weight: 500;
+        color: #fff;
+        background: rgba(255, 255, 255, 0.14);
+        border: 1px solid rgba(255, 255, 255, 0.4);
+        border-radius: 999px;
+        padding: 9px 18px;
+        cursor: pointer;
+        backdrop-filter: blur(4px);
+        transition: background 0.15s;
+      }
+      .intro-skip:hover { background: rgba(255, 255, 255, 0.26); }
+      .intro-skip:focus-visible { outline: 2px solid #fff; outline-offset: 3px; }
+      body.intro-lock { overflow: hidden; }
       .capture { margin-top: 8px; }
       .capture label {
         display: block;
@@ -382,10 +411,21 @@
 
       @media (prefers-reduced-motion: reduce) {
         * { transition: none !important; }
+        /* No screen takeover: reveal the page directly. */
+        #zw-intro { display: none !important; }
       }
     </style>
+    <!-- Without JS the intro can't evaporate, so never let it cover the page. -->
+    <noscript><style>#zw-intro { display: none !important; }</style></noscript>
   </head>
   <body>
+    <div id="zw-intro" class="intro" aria-label="Intro">
+      <video id="zw-intro-video" muted playsinline preload="auto" autoplay>
+        <source src="/intro.mp4" type="video/mp4" />
+      </video>
+      <button type="button" id="zw-intro-skip" class="intro-skip">Skip intro</button>
+    </div>
+
     <main class="wrap">
       <div class="brand">
         <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
@@ -399,12 +439,6 @@
           <rect x="65" y="65" width="20" height="20" rx="4" fill="#FAF8F3" />
         </svg>
         <span class="name">zeisWorks<span class="dot">.</span></span>
-      </div>
-
-      <div class="video">
-        <video autoplay muted loop playsinline preload="metadata">
-          <source src="/intro.mp4" type="video/mp4" />
-        </video>
       </div>
 
       <p class="eyebrow">Coming soon</p>
@@ -516,10 +550,39 @@ escalation   → working/handoffs.md</pre>
       (function () {
         var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-        // Respect reduced-motion: hold the intro on its first frame.
-        if (reduce) {
-          var vid = document.querySelector(".video video");
-          if (vid) { vid.removeAttribute("autoplay"); vid.removeAttribute("loop"); vid.pause(); }
+        // Fullscreen intro: play the clip once, then evaporate to the page.
+        // Reduced-motion (and no-JS) skip the takeover via CSS above.
+        var intro = document.getElementById("zw-intro");
+        var introVideo = document.getElementById("zw-intro-video");
+        if (intro && introVideo && !reduce) {
+          document.body.classList.add("intro-lock");
+          var gone = false;
+          var evaporate = function () {
+            if (gone) return;
+            gone = true;
+            intro.classList.add("is-leaving");
+            var finish = function () {
+              intro.style.display = "none";
+              document.body.classList.remove("intro-lock");
+            };
+            intro.addEventListener("transitionend", finish, { once: true });
+            setTimeout(finish, 1200);
+            try { introVideo.pause(); } catch (e) {}
+          };
+          introVideo.addEventListener("ended", evaporate);
+          introVideo.addEventListener("error", evaporate);
+          var skip = document.getElementById("zw-intro-skip");
+          if (skip) skip.addEventListener("click", evaporate);
+          document.addEventListener("keydown", function (e) {
+            if (e.key === "Escape") evaporate();
+          });
+          var pp = introVideo.play();
+          if (pp && typeof pp.catch === "function") pp.catch(evaporate);
+          // Safety nets so a blocked or broken clip never traps the visitor.
+          setTimeout(function () { if (!gone && introVideo.currentTime === 0) evaporate(); }, 4000);
+          setTimeout(evaporate, 20000);
+        } else if (intro) {
+          intro.style.display = "none";
         }
 
         // ICM appeals: play the convergence once it scrolls into view.
