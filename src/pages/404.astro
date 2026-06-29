@@ -1,0 +1,32 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import AuditCta from '../components/AuditCta.astro';
+---
+
+<BaseLayout
+  title="Page not found · ZeisWorks"
+  description="That page doesn't exist or has moved. Head back home, or get started with ZeisWorks."
+>
+  <section class="max-w-2xl mx-auto px-6 py-24 sm:py-32 text-center">
+    <p class="font-mono text-sm uppercase tracking-widest text-orange mb-4">404</p>
+    <h1 class="font-serif text-4xl sm:text-5xl font-semibold text-ink mb-5">
+      This page walked out the door.
+    </h1>
+    <p class="text-ink-mid text-lg leading-relaxed mb-9 max-w-md mx-auto">
+      The page you're after doesn't exist, or it moved. A VIK would know exactly where it
+      went &mdash; let's get you back on track.
+    </p>
+    <div class="flex flex-col sm:flex-row gap-3 justify-center">
+      <AuditCta
+        location="hero"
+        class="inline-flex items-center justify-center bg-orange text-white font-semibold px-7 py-3.5 rounded-full hover:bg-orange-bright transition-colors"
+      />
+      <a
+        href="/"
+        class="inline-flex items-center justify-center px-7 py-3.5 rounded-full font-semibold text-ink border border-cream-dark hover:border-orange hover:text-orange transition-colors"
+      >
+        Back home
+      </a>
+    </div>
+  </section>
+</BaseLayout>
