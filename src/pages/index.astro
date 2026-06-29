@@ -54,7 +54,7 @@ const shiftCards = [
 ];
 
 const steps = [
-  { n: '01', title: 'Audit', body: 'We look at how your business actually runs and where the knowledge lives today.' },
+  { n: '01', title: 'Map', body: 'We look at how your business actually runs and where the knowledge lives today.' },
   { n: '02', title: 'Write it down', body: 'We write it down as clean, organized files. The things that rarely change in one place, the day-to-day work in another.' },
   { n: '03', title: 'Build', body: 'We add the AI assistants and automations on top, tested on your real cases, with a person signing off before anything goes live.' },
   { n: '04', title: 'Hand off', body: 'You keep the whole thing. Easy to read, easy to edit, and yours to take anywhere. We can stay on to help or step back.' },
@@ -149,7 +149,7 @@ const routes = [
       <div class="flex flex-col sm:flex-row gap-3">
         <AuditCta
           location="hero"
-          label="Start a free audit"
+          label="Book a call"
           class="inline-flex items-center justify-center gap-2 bg-zw-teal text-white font-semibold px-7 py-3.5 rounded-full hover:bg-zw-rust transition-colors"
         />
         <a
@@ -401,17 +401,6 @@ const routes = [
         </article>
       </div>
 
-      <!-- Secondary offer, deliberately subordinate: a single slim strip, not a
-           third equal column. Public copy is generic (Growbotik white-label). -->
-      <div class="zw-card-dark zw-reveal mt-5 sm:flex sm:items-baseline sm:gap-6 py-5">
-        <h3 class="text-base font-semibold text-white shrink-0 mb-2 sm:mb-0 sm:w-56">Done-for-you growth systems</h3>
-        <p class="text-sm leading-relaxed text-zw-cream/70">
-          For teams that want new customers coming in without hiring for it, we run the whole
-          outreach program for you, on top of the same knowledge. Campaigns, follow-up, and
-          reporting handled, and you own the results.
-        </p>
-      </div>
-
       <p class="mt-8 text-sm text-zw-cream/60 max-w-[760px] zw-reveal">
         Everything we build is yours to keep. It's all in plain writing you can read and edit, with
         nothing locking you in. Switch tools or AI providers next year without starting over.
@@ -520,29 +509,22 @@ const routes = [
   <section id="start" class="zw-anchor zw-section bg-zw-forest text-zw-cream">
     <div class="zw-wrap px-5 sm:px-8 max-w-[760px] text-center">
       <p class="zw-eyebrow mb-4 zw-reveal" style="color:#F0A184;">Get started</p>
-      <h2 class="zw-h2 mb-6 text-zw-cream zw-reveal">Start with a free revenue audit.</h2>
+      <h2 class="zw-h2 mb-6 text-zw-cream zw-reveal">Start with a free intro call.</h2>
       <p class="text-zw-cream/75 mb-3 zw-reveal">
-        We look at where your knowledge is stuck today and what AI could actually do for you once
-        it's written down. No cost, no obligation. If it's a fit, engagements run $2,500 a month,
-        month to month.
+        We'll talk through where your institutional knowledge is stuck today and what a VIK would
+        do about it. No cost, no obligation. If it's a fit, engagements run $2,500 a month, month
+        to month.
       </p>
       <p class="mb-9 zw-reveal">
         <span class="zw-confirm">CONFIRM</span>
-        <span class="text-xs text-zw-cream/55">price and terms. The $2,500/mo historically maps to
-        the secondary growth offer; confirm the primary engagement price and which price (if any)
-        shows here.</span>
+        <span class="text-xs text-zw-cream/55">price and terms &mdash; confirm the engagement
+        price shown here.</span>
       </p>
       <AuditCta
         location="footer"
-        label="Start a free revenue audit"
+        label="Book a call"
         class="inline-flex items-center justify-center bg-zw-cream text-zw-forest font-semibold px-8 py-4 rounded-full hover:bg-white transition-colors zw-reveal"
       />
-      <!--
-        Funnel: wired to the existing audit funnel via src/config.ts
-        (GROWBOTIK_FUNNEL_URL -> mplannerpro). The Growbotik affiliate link is
-        intentionally NOT used here. CONFIRM whether the funnel accepts prefill
-        query params before wiring any.
-      -->
     </div>
   </section>
 </LandingLayout>

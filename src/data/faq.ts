@@ -1,5 +1,5 @@
-// Compact objection-handling FAQ. Shared by the homepage and /revenue-audit so
-// the copy and the $2,500/month figure stay identical everywhere they appear.
+// Compact objection-handling FAQ. Shared across pages so the copy and the
+// $2,500/month figure stay identical everywhere they appear.
 export interface FaqItem {
   q: string;
   a: string;
@@ -8,15 +8,15 @@ export interface FaqItem {
 export const COMPACT_FAQ: FaqItem[] = [
   {
     q: 'Is this really free?',
-    a: 'Yes. The audit and the knowledge map are free, and you keep them either way. If you want us to build your VIK, that’s a monthly engagement you can cancel anytime.',
+    a: 'Yes. The intro call is free, and what we map out is yours to keep either way. If you want us to build your VIK, that’s a monthly engagement you can cancel anytime.',
   },
   {
-    q: 'Do I have to get on a call?',
-    a: 'No. The audit runs on its own in about 5 minutes. A call is optional, after you’ve seen your map.',
+    q: 'What happens on the call?',
+    a: 'It’s a quick intro call. We walk through where your institutional knowledge lives today and what a VIK would do about it. No obligation, no pitch deck.',
   },
   {
     q: 'What if we already document things?',
-    a: 'Run the audit anyway. Most teams find the real know-how still lives in a few people’s heads, not in the docs. The audit shows you exactly where that gap is.',
+    a: 'Book the call anyway. Most teams find the real know-how still lives in a few people’s heads, not in the docs. A quick call shows you exactly where that gap is.',
   },
   {
     q: 'Who actually does the work?',
@@ -28,18 +28,18 @@ export const COMPACT_FAQ: FaqItem[] = [
   },
 ];
 
-// The three audit steps, reused in compressed form on the vertical pages.
+// The three intro-call steps, reused in compressed form on the vertical pages.
 export const AUDIT_STEPS = [
   {
-    title: 'Answer a few questions.',
-    body: 'Tell us about your business: what you do, how the work actually gets done, and who holds what. Takes less time than a coffee order.',
+    title: 'Book a call.',
+    body: 'Grab a time that works. It’s a quick intro call: what you do, how the work actually gets done, and who holds what. No prep, no pitch deck.',
   },
   {
-    title: 'Get your knowledge map.',
-    body: 'We map where how-you-run lives today — in people’s heads, scattered across tools, half-written in docs — and how much of it would walk out the door if a key person left tomorrow.',
+    title: 'We map where your knowledge lives.',
+    body: 'Together we map where how-you-run lives today — in people’s heads, scattered across tools, half-written in docs — and how much of it would walk out the door if a key person left tomorrow.',
   },
   {
-    title: 'Get your VIK outline.',
-    body: 'A clear outline of the VIK we’d build: what gets written down, what it would do for you, and what it costs. A real person reviews it before you see it.',
+    title: 'You get your VIK outline.',
+    body: 'A clear outline of the VIK we’d build: what gets written down, what it would do for you, and what it costs. A real person walks you through it.',
   },
 ];

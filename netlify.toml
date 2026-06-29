@@ -5,28 +5,28 @@
 [build.environment]
   NODE_VERSION = "20"
 
-# ── Audit-first rebuild redirects (handoff section 2.6) ──
+# ── Legacy redirects ──
 
-# Old paid landing page
+# Retired paid landing pages now point home.
 [[redirects]]
   from = "/ai-audit"
-  to = "/revenue-audit/"
+  to = "/"
   status = 301
 
 [[redirects]]
   from = "/ai-audit/*"
-  to = "/revenue-audit/"
+  to = "/"
   status = 301
 
 # Old gap analysis form page (covers /gap-analysis/thank-you too)
 [[redirects]]
   from = "/gap-analysis"
-  to = "/revenue-audit/"
+  to = "/"
   status = 301
 
 [[redirects]]
   from = "/gap-analysis/*"
-  to = "/revenue-audit/"
+  to = "/"
   status = 301
 
 # Legacy Salesforce/consulting and systems service pages

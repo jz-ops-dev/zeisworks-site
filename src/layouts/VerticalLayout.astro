@@ -6,7 +6,7 @@ import { AUDIT_STEPS } from '../data/faq';
 
 // Shared template for the three vertical conversion pages (handoff section 5).
 // Four scroll-depths: hero, vertical problem, compressed how-it-works,
-// FAQ + closing CTA. Every CTA routes to the funnel.
+// FAQ + closing CTA. Every CTA books a free intro call.
 interface FaqItem {
   q: string;
   a: string;
@@ -62,7 +62,7 @@ const faqJsonLd = {
         location="hero"
         class="inline-block bg-orange text-white font-semibold text-lg px-9 py-4 rounded-lg hover:bg-orange-bright transition-colors shadow-lg shadow-orange/30"
       />
-      <p class="mt-4 text-sm text-white/50">Free. 5 minutes. No call required.</p>
+      <p class="mt-4 text-sm text-white/50">Free. Quick. No obligation.</p>
     </div>
   </section>
 
@@ -82,11 +82,11 @@ const faqJsonLd = {
     </div>
   </section>
 
-  <!-- 3. How the audit works (compressed) -->
+  <!-- 3. How the intro call works (compressed) -->
   <section class="max-w-3xl mx-auto px-6 py-16 sm:py-24">
     <p class="text-xs font-semibold uppercase tracking-widest text-orange mb-3">How it works</p>
     <h2 class="font-serif text-3xl sm:text-4xl font-semibold leading-tight mb-12">
-      Three steps. Five minutes. Real numbers.
+      Three steps. One quick call. A clear outline.
     </h2>
     <div class="grid grid-cols-1 sm:grid-cols-3 gap-8 sm:gap-6">
       {AUDIT_STEPS.map((step, i) => (
@@ -121,5 +121,5 @@ const faqJsonLd = {
     </div>
   </section>
 
-  <CtaBlock heading={closingH2} smallText="Free. 5 minutes. No call required." />
+  <CtaBlock heading={closingH2} smallText="Free. Quick. No obligation." />
 </BaseLayout>
