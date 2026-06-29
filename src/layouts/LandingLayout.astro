@@ -1,6 +1,7 @@
 ---
 import AuditCta from '../components/AuditCta.astro';
 import Logo from '../components/Logo.astro';
+import MotionScripts from '../components/MotionScripts.astro';
 
 // Dedicated layout for the single-page AI-readiness rebuild (dev prompt).
 // Kept separate from BaseLayout so the new cream/forest/teal brand, the
@@ -55,7 +56,7 @@ const orgJsonLd = {
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#123A31" />
+    <meta name="theme-color" content="#1D1D1F" />
     <meta name="description" content={description} />
 
     <meta property="og:title" content={title} />
@@ -117,18 +118,18 @@ const orgJsonLd = {
 
     <style is:global>
       :root {
-        /* Unified VIK palette (repointed from the old warm/teal homepage set). */
-        --zw-cream: #F8FAFC;
-        --zw-ink: #0F172A;
-        --zw-forest: #123A31;
-        --zw-forest-deep: #0C2620;
-        --zw-forest-darkest: #071A16;
-        --zw-teal: #C2410C;
-        --zw-rust: #9A330A;
+        /* Apple-inspired palette (achromatic neutrals + single brand-red accent). */
+        --zw-cream: #F5F5F7;
+        --zw-ink: #1D1D1F;
+        --zw-forest: #1D1D1F;
+        --zw-forest-deep: #141416;
+        --zw-forest-darkest: #000000;
+        --zw-teal: #E04530;
+        --zw-rust: #C2410C;
         --zw-rust-soft: #F0A184;
         --zw-card: #FFFFFF;
-        --zw-border: rgba(15, 23, 42, 0.10);
-        --zw-muted: #475569;
+        --zw-border: rgba(0, 0, 0, 0.10);
+        --zw-muted: #6E6E73;
         --zw-ease: cubic-bezier(0.22, 1, 0.36, 1);
       }
 
@@ -144,7 +145,7 @@ const orgJsonLd = {
         text-rendering: optimizeLegibility;
       }
 
-      .zw-root ::selection { background: rgba(194, 65, 12, 0.18); }
+      .zw-root ::selection { background: rgba(224, 69, 48, 0.18); }
 
       /* Fluid type scale (section 3). */
       .zw-h1 {
@@ -196,11 +197,15 @@ const orgJsonLd = {
       .zw-reveal { opacity: 1; transform: none; }
       html.zw-anim .zw-reveal {
         opacity: 0;
-        transform: translateY(18px);
-        transition: opacity 0.7s var(--zw-ease), transform 0.7s var(--zw-ease);
+        transform: translateY(22px);
+        filter: blur(8px);
+        transition:
+          opacity 0.85s var(--zw-ease),
+          transform 0.85s var(--zw-ease),
+          filter 0.85s var(--zw-ease);
         will-change: opacity, transform;
       }
-      html.zw-anim .zw-reveal.zw-in { opacity: 1; transform: none; }
+      html.zw-anim .zw-reveal.zw-in { opacity: 1; transform: none; filter: none; }
 
       @media (prefers-reduced-motion: reduce) {
         html { scroll-behavior: auto; }
@@ -286,6 +291,10 @@ const orgJsonLd = {
         </p>
       </div>
     </footer>
+
+    <!-- Premium-motion layer: magnetic CTAs + parallax. The homepage runs its
+         own zw-reveal scroll system, so opt out of the shared auto-reveal. -->
+    <MotionScripts reveal={false} />
 
     <!-- Nav state, mobile menu, smooth-anchor offset, and the scroll-reveal /
          animation controller. Vanilla JS to keep the JS budget small; every
@@ -435,7 +444,7 @@ const orgJsonLd = {
   /* Nav resting (transparent over hero) and solid (scrolled) states. */
   #zw-nav { background: transparent; }
   #zw-nav.zw-nav-solid {
-    background: rgba(248, 250, 252, 0.92);
+    background: rgba(245, 245, 247, 0.92);
     backdrop-filter: saturate(140%) blur(8px);
     border-bottom: 1px solid var(--zw-border);
   }

@@ -60,7 +60,7 @@ const faqJsonLd = {
       <p class="text-lg text-white/70 leading-relaxed max-w-2xl mx-auto mb-9">{subhead}</p>
       <AuditCta
         location="hero"
-        class="inline-block bg-orange text-white font-semibold text-lg px-9 py-4 rounded-lg hover:bg-orange-bright transition-colors shadow-lg shadow-orange/30"
+        class="inline-block bg-orange text-white font-semibold text-lg px-9 py-4 rounded-full hover:bg-orange-bright transition-colors"
       />
       <p class="mt-4 text-sm text-white/50">Free. Quick. No obligation.</p>
     </div>
@@ -91,7 +91,7 @@ const faqJsonLd = {
     <div class="grid grid-cols-1 sm:grid-cols-3 gap-8 sm:gap-6">
       {AUDIT_STEPS.map((step, i) => (
         <div>
-          <span class="flex items-center justify-center w-10 h-10 rounded-full bg-navy text-white font-serif font-semibold text-lg mb-4 shadow-sm">{i + 1}</span>
+          <span class="flex items-center justify-center w-10 h-10 rounded-full bg-navy text-white font-serif font-semibold text-lg mb-4">{i + 1}</span>
           <h3 class="font-semibold text-ink mb-1.5">{step.title}</h3>
           <p class="text-sm text-ink-mid leading-relaxed">{step.body}</p>
         </div>
@@ -100,7 +100,7 @@ const faqJsonLd = {
     <div class="mt-12">
       <AuditCta
         location="mid"
-        class="inline-block bg-orange text-white font-semibold text-base px-7 py-3.5 rounded-lg hover:bg-orange-bright transition-colors shadow-md shadow-orange/20"
+        class="inline-block bg-orange text-white font-semibold text-base px-7 py-3.5 rounded-full hover:bg-orange-bright transition-colors"
       />
     </div>
   </section>

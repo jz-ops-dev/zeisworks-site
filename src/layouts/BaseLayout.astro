@@ -1,6 +1,7 @@
 ---
 import AuditCta from '../components/AuditCta.astro';
 import ExitIntentModal from '../components/ExitIntentModal.astro';
+import MotionScripts from '../components/MotionScripts.astro';
 import { CALENDLY_URL } from '../config';
 
 interface Props {
@@ -91,7 +92,7 @@ const verticalLinks = [
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#F8FAFC" />
+    <meta name="theme-color" content="#F5F5F7" />
     <meta name="description" content={description} />
 
     <meta property="og:title" content={ogTitle ?? title} />
@@ -160,20 +161,21 @@ const verticalLinks = [
 
     <style is:global>
       :root {
-        --ink: #0F172A;
-        --ink-mid: #475569;
-        --ink-light: #64748B;
-        --cream: #F8FAFC;
-        --cream-dark: #E2E8F0;
-        /* Unified VIK palette — navy aliases repointed to forest green so
-           inline-styled pages reskin without per-file edits. */
-        --navy: #1B4D40;
-        --navy-deep: #0B221C;
-        --forest: #123A31;
-        --forest-deep: #0C2620;
-        --forest-darkest: #071A16;
-        --orange: #C2410C;
-        --orange-bright: #EA580C;
+        --ink: #1D1D1F;
+        --ink-mid: #6E6E73;
+        --ink-light: #86868B;
+        --cream: #F5F5F7;
+        --cream-dark: #E8E8ED;
+        /* Apple-inspired palette — navy/forest aliases repointed to the
+           brand-red accent + near-black dark stage so inline-styled pages reskin
+           without per-file edits. */
+        --navy: #C2410C;
+        --navy-deep: #1D1D1F;
+        --forest: #1D1D1F;
+        --forest-deep: #141416;
+        --forest-darkest: #000000;
+        --orange: #E04530;
+        --orange-bright: #C2410C;
         --rust-soft: #F0A184;
         --font-serif: 'Lora', Georgia, serif;
         --font-sans: 'DM Sans', system-ui, sans-serif;
@@ -199,7 +201,7 @@ const verticalLinks = [
           <AuditCta
             location="nav"
             label="Get started"
-            class="bg-orange text-white text-sm px-4 py-2 rounded-lg hover:bg-orange-bright transition-colors font-semibold shadow-sm"
+            class="bg-orange text-white text-sm px-4 py-2 rounded-full hover:bg-orange-bright transition-colors font-semibold"
           />
         </nav>
         <!-- Mobile: persistent CTA + hamburger -->
@@ -207,7 +209,7 @@ const verticalLinks = [
           <AuditCta
             location="nav"
             label="Get started"
-            class="bg-orange text-white text-sm px-3.5 py-2 rounded-lg hover:bg-orange-bright transition-colors font-semibold whitespace-nowrap shadow-sm"
+            class="bg-orange text-white text-sm px-3.5 py-2 rounded-full hover:bg-orange-bright transition-colors font-semibold whitespace-nowrap"
           />
           <button
             id="mobileMenuBtn"
@@ -299,6 +301,8 @@ const verticalLinks = [
     </footer>
 
     <ExitIntentModal />
+
+    <MotionScripts />
 
     <!-- Audit CTA tracking + UTM passthrough (handoff sections 2.3 and 2.5) -->
     <script is:inline>
