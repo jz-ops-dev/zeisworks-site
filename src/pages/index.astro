@@ -513,7 +513,7 @@ const routes = [
     flex-wrap: wrap;
     max-width: 640px;
     border: 2px solid var(--zw-teal);
-    background: rgba(194, 65, 12, 0.05);
+    background: rgba(224, 69, 48, 0.05);
     border-radius: 12px;
     padding: 14px 16px;
   }
@@ -523,7 +523,7 @@ const routes = [
     font-weight: 500;
     letter-spacing: 0.04em;
     color: var(--zw-teal);
-    border: 1px solid rgba(194, 65, 12, 0.45);
+    border: 1px solid rgba(224, 69, 48, 0.45);
     border-radius: 6px;
     padding: 3px 7px;
   }
@@ -552,8 +552,8 @@ const routes = [
     font-weight: 500;
     letter-spacing: 0.06em;
     color: #9A6200;
-    background: rgba(194, 65, 12, 0.10);
-    border: 1px dashed rgba(194, 65, 12, 0.45);
+    background: rgba(224, 69, 48, 0.10);
+    border: 1px dashed rgba(224, 69, 48, 0.45);
     border-radius: 5px;
     padding: 0.1em 0.45em;
     vertical-align: middle;
@@ -583,8 +583,8 @@ const routes = [
   }
   .zw-layer-last {
     opacity: 0.8;
-    border-left-color: rgba(181, 55, 26, 0.45);
-    background: rgba(181, 55, 26, 0.04);
+    border-left-color: rgba(224, 69, 48, 0.45);
+    background: rgba(224, 69, 48, 0.04);
   }
   .zw-scan { display: none; }
   html.zw-anim [data-anim="layers"] .zw-layer { opacity: 0.5; }
@@ -598,10 +598,10 @@ const routes = [
   }
   @keyframes zwLayerOn {
     0%, 100% { opacity: 0.5; border-left-color: transparent; background: var(--zw-card); }
-    40%, 60% { opacity: 1; border-left-color: var(--zw-teal); background: rgba(181, 55, 26, 0.07); }
+    40%, 60% { opacity: 1; border-left-color: var(--zw-teal); background: rgba(224, 69, 48, 0.07); }
   }
   @keyframes zwLayerLast {
-    to { opacity: 0.8; border-left-color: rgba(181, 55, 26, 0.45); background: rgba(181, 55, 26, 0.04); }
+    to { opacity: 0.8; border-left-color: rgba(224, 69, 48, 0.45); background: rgba(224, 69, 48, 0.04); }
   }
   /* Scan line sweeps across the active layer only. */
   html.zw-anim [data-anim="layers"].zw-play .zw-scan {
@@ -609,7 +609,7 @@ const routes = [
     position: absolute;
     top: 0; bottom: 0; left: 0;
     width: 45%;
-    background: linear-gradient(90deg, transparent, rgba(181, 55, 26, 0.16), transparent);
+    background: linear-gradient(90deg, transparent, rgba(224, 69, 48, 0.16), transparent);
     transform: translateX(-120%);
     animation: zwScan 1.1s linear calc(var(--i) * 0.45s) both;
   }
@@ -690,7 +690,7 @@ const routes = [
   .zw-model-chip.zw-chip-on { opacity: 1; transform: none; }
   .zw-swap-connector {
     width: 2px; height: 2.4rem;
-    background: linear-gradient(var(--zw-teal), rgba(181, 55, 26, 0.35));
+    background: linear-gradient(var(--zw-teal), rgba(224, 69, 48, 0.35));
   }
   .zw-swap-layer {
     width: 100%;
@@ -698,7 +698,7 @@ const routes = [
     padding: 1.1rem;
     border: 2px solid var(--zw-teal);
     border-radius: 12px;
-    background: rgba(181, 55, 26, 0.05);
+    background: rgba(224, 69, 48, 0.05);
     color: var(--zw-ink);
   }
 
@@ -741,7 +741,7 @@ const routes = [
     height: 2px;
     margin: 1rem 0 0.85rem;
     border-radius: 2px;
-    background: linear-gradient(90deg, var(--zw-teal), rgba(181, 55, 26, 0.25));
+    background: linear-gradient(90deg, var(--zw-teal), rgba(224, 69, 48, 0.25));
     transform: scaleX(1);
     transform-origin: left center;
   }
@@ -759,7 +759,7 @@ const routes = [
     bottom: -2rem;
     width: 2px;
     height: 2rem;
-    background: linear-gradient(rgba(181, 55, 26, 0.55), rgba(181, 55, 26, 0.2));
+    background: linear-gradient(rgba(224, 69, 48, 0.55), rgba(224, 69, 48, 0.2));
     transform: translateX(-50%) scaleY(1);
     transform-origin: top center;
   }
@@ -770,7 +770,7 @@ const routes = [
     gap: 0.85rem;
     flex-wrap: wrap;
     border: 2px solid var(--zw-teal);
-    background: rgba(181, 55, 26, 0.05);
+    background: rgba(224, 69, 48, 0.05);
     border-radius: 12px;
     padding: 1rem 1.2rem;
   }
@@ -780,7 +780,7 @@ const routes = [
     font-weight: 600;
     letter-spacing: 0.04em;
     color: var(--zw-teal);
-    border: 1px solid rgba(181, 55, 26, 0.45);
+    border: 1px solid rgba(224, 69, 48, 0.45);
     border-radius: 6px;
     padding: 0.15em 0.5em;
   }
@@ -830,9 +830,9 @@ const routes = [
     animation: zwIcmLock 0.9s var(--zw-ease) 1.7s both;
   }
   @keyframes zwIcmLock {
-    0% { box-shadow: 0 0 0 0 rgba(181, 55, 26, 0); }
-    45% { box-shadow: 0 0 0 7px rgba(181, 55, 26, 0.12); }
-    100% { box-shadow: 0 0 0 0 rgba(181, 55, 26, 0); }
+    0% { box-shadow: 0 0 0 0 rgba(224, 69, 48, 0); }
+    45% { box-shadow: 0 0 0 7px rgba(224, 69, 48, 0.12); }
+    100% { box-shadow: 0 0 0 0 rgba(224, 69, 48, 0); }
   }
 
   /* Sample production layer: the file the ICM plate points to. */
@@ -849,7 +849,7 @@ const routes = [
     text-transform: uppercase;
     letter-spacing: 0.1em;
     color: var(--zw-teal);
-    border: 1px solid rgba(181, 55, 26, 0.35);
+    border: 1px solid rgba(224, 69, 48, 0.35);
     border-radius: 5px;
     padding: 2px 6px;
     white-space: nowrap;
@@ -904,9 +904,9 @@ const routes = [
     cursor: pointer;
     transition: background 0.18s var(--zw-ease), border-color 0.18s var(--zw-ease);
   }
-  .zw-route:hover { background: rgba(181, 55, 26, 0.06); }
+  .zw-route:hover { background: rgba(224, 69, 48, 0.06); }
   .zw-route[aria-selected="true"] {
-    background: rgba(181, 55, 26, 0.09);
+    background: rgba(224, 69, 48, 0.09);
     border-left-color: var(--zw-teal);
   }
   .zw-route-key { font-weight: 500; }
