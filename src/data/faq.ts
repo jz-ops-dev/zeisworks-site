@@ -1,6 +1,5 @@
-// Compact objection-handling FAQ (handoff section 3, homepage section 5).
-// Shared by the homepage and /revenue-audit so the copy and the $2,500/month
-// figure stay identical everywhere they appear.
+// Compact objection-handling FAQ. Shared by the homepage and /revenue-audit so
+// the copy and the $2,500/month figure stay identical everywhere they appear.
 export interface FaqItem {
   q: string;
   a: string;
@@ -9,39 +8,38 @@ export interface FaqItem {
 export const COMPACT_FAQ: FaqItem[] = [
   {
     q: 'Is this really free?',
-    a: 'Yes. The audit and the 12-month plan are free. You keep them either way. If you want us to execute the plan, that’s a monthly engagement you can cancel anytime.',
+    a: 'Yes. The audit and the knowledge map are free, and you keep them either way. If you want us to build your VIK, that’s a monthly engagement you can cancel anytime.',
   },
   {
     q: 'Do I have to get on a call?',
-    a: 'No. The audit runs on its own in about 5 minutes. A call is optional, after you’ve seen your plan.',
+    a: 'No. The audit runs on its own in about 5 minutes. A call is optional, after you’ve seen your map.',
   },
   {
-    q: 'What if I already have a marketing company?',
-    a: 'Run the audit anyway. If your current company is doing great work, the audit will show it. If it isn’t, you’ll know exactly what to ask them for.',
+    q: 'What if we already document things?',
+    a: 'Run the audit anyway. Most teams find the real know-how still lives in a few people’s heads, not in the docs. The audit shows you exactly where that gap is.',
   },
   {
     q: 'Who actually does the work?',
-    a: 'ZeisWorks builds and runs your plan, and a real person reviews everything before it ships. You get one point of contact: us.',
+    a: 'ZeisWorks builds and runs your VIK, and a real person reviews everything before it ships. You get one point of contact: us.',
   },
   {
     q: 'What does it cost if I move forward?',
-    a: 'Plans start at $2,500/month depending on what your audit calls for. Month to month. Cancel anytime. Full details on the pricing page.',
+    a: 'Engagements start at $2,500/month depending on how much knowledge there is to capture. Month to month. Cancel anytime and you keep your VIK. Full details on the pricing page.',
   },
 ];
 
-// The three audit steps (homepage section 2), reused in compressed form on
-// the vertical pages.
+// The three audit steps, reused in compressed form on the vertical pages.
 export const AUDIT_STEPS = [
   {
     title: 'Answer a few questions.',
-    body: 'Tell us about your business: what you do, where you operate, what an average job is worth. Takes less time than a coffee order.',
+    body: 'Tell us about your business: what you do, how the work actually gets done, and who holds what. Takes less time than a coffee order.',
   },
   {
-    title: 'Get your gap analysis.',
-    body: 'We compare your visibility, reviews, website conversion, and response speed against the competitors actually taking your calls. You see exactly where the leaks are, backed by hard data.',
+    title: 'Get your knowledge map.',
+    body: 'We map where how-you-run lives today — in people’s heads, scattered across tools, half-written in docs — and how much of it would walk out the door if a key person left tomorrow.',
   },
   {
-    title: 'Get your 12-month plan.',
-    body: 'A month-by-month roadmap showing what to fix, what it costs, and what it should return. A real person reviews every plan before you see it.',
+    title: 'Get your VIK outline.',
+    body: 'A clear outline of the VIK we’d build: what gets written down, what it would do for you, and what it costs. A real person reviews it before you see it.',
   },
 ];

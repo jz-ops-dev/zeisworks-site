@@ -7,16 +7,16 @@ const faqItems = COMPACT_FAQ;
 
 const deliverables = [
   {
-    title: "Marketing gap analysis",
-    desc: "A side-by-side comparison of your current performance against your true potential: organic, paid, conversion, and funnel ROI. Shows exactly where revenue is leaking and why.",
+    title: "Knowledge map",
+    desc: "A clear picture of where the know-how that runs your business actually lives: which people hold it, which tools it's scattered across, and what only exists in someone's head. Shows exactly what's trapped and at risk.",
   },
   {
-    title: "12-month predictive revenue plan",
-    desc: "Month-by-month projections with exact revenue targets, client volume, cost to acquire a new client, and total budget required. Based on your specific market and revenue goal, not a template.",
+    title: "Risk and gap read",
+    desc: "Where you'd be stuck if a key person left tomorrow. The steps no one has written down, the answers only one person can give, and the work that quietly depends on memory instead of a system.",
   },
   {
-    title: "Execution roadmap",
-    desc: "The complete plan to run it, with every tactic tied to a revenue outcome and projected ROI per channel. Run it yourself or hand it to us. Cancel anytime.",
+    title: "What you'd own as a VIK",
+    desc: "A plain outline of the working system you'd walk away with: your institutional knowledge captured in a form you can read, edit, and query, that researches, drafts, and answers from it. Yours to keep.",
   },
 ];
 
@@ -53,10 +53,10 @@ const faqJsonLd = {
 ---
 
 <BaseLayout
-  title="Free Revenue Audit: Gap Analysis + 12-Month Plan | ZeisWorks"
-  description="Run a free 5-minute revenue audit. Get a data-backed gap analysis and a month-by-month plan to fix the leaks. No call, no contracts."
-  ogTitle="See Where Revenue Is Leaking. Get the 12-Month Plan to Fix It."
-  ogDescription="Run a free 5-minute revenue audit on your service business. Get a personalized gap analysis and 12-month plan. Free. No call required. No contracts."
+  title="Free Knowledge Audit: Map What's Trapped in People's Heads | ZeisWorks"
+  description="Run a free 5-minute knowledge audit. See where the know-how that runs your business is trapped, and what you'd own as a VIK. No call, no contracts."
+  ogTitle="See Where Your Business's Knowledge Is Trapped. Map What You'd Own."
+  ogDescription="Run a free 5-minute knowledge audit on your business. See where institutional knowledge is trapped and what you'd own as a VIK. Free. No call required. No contracts."
   canonicalUrl="https://zeisworks.com/revenue-audit/"
   bodyPage="revenue-audit"
 >
@@ -151,7 +151,7 @@ const faqJsonLd = {
 
       /* ── HERO ── */
       .aa-hero {
-        background: #172554;
+        background: #0B221C;
         padding: 5.5rem 1.5rem 5rem;
         position: relative;
         overflow: hidden;
@@ -160,7 +160,7 @@ const faqJsonLd = {
         content: '';
         position: absolute;
         inset: 0;
-        background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(59,130,246,0.28) 0%, transparent 70%);
+        background: radial-gradient(ellipse 90% 70% at 88% 0%, rgba(224,69,48,0.26) 0%, transparent 62%);
         pointer-events: none;
       }
       .aa-hero-inner {
@@ -178,10 +178,10 @@ const faqJsonLd = {
         font-weight: 600;
         letter-spacing: 0.1em;
         text-transform: uppercase;
-        color: #93C5FD;
+        color: #F0A184;
         margin-bottom: 1.5rem;
-        background: rgba(59,130,246,0.15);
-        border: 1px solid rgba(59,130,246,0.3);
+        background: rgba(194,65,12,0.14);
+        border: 1px solid rgba(194,65,12,0.35);
         padding: 0.35rem 0.875rem;
         border-radius: 999px;
       }
@@ -196,7 +196,7 @@ const faqJsonLd = {
       }
       .aa-h1 em {
         font-style: normal;
-        color: #93C5FD;
+        color: #F0A184;
       }
       .aa-subhead {
         font-size: 1.125rem;
@@ -234,7 +234,7 @@ const faqJsonLd = {
         box-shadow: 0 8px 32px rgba(234,88,12,0.45);
       }
       .aa-btn-primary:focus-visible {
-        outline: 2px solid #93C5FD;
+        outline: 2px solid #F0A184;
         outline-offset: 3px;
       }
       .aa-hero-note {
@@ -312,7 +312,7 @@ const faqJsonLd = {
         border-radius: 0.875rem;
         overflow: hidden;
         border: 1px solid #E2E8F0;
-        background: #172554;
+        background: #0B221C;
         position: relative;
         padding-bottom: 56.25%;
         height: 0;
@@ -374,7 +374,7 @@ const faqJsonLd = {
       .aa-ba-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; margin-top: 2rem; }
       @media (max-width: 620px) { .aa-ba-grid { grid-template-columns: 1fr; } }
       .aa-ba-card { border-radius: 0.875rem; padding: 1.75rem; }
-      .aa-ba-before { background: #172554; }
+      .aa-ba-before { background: #0B221C; }
       .aa-ba-after { background: #fff; border: 1px solid #E2E8F0; }
       .aa-ba-label {
         font-size: 0.7rem;
@@ -415,7 +415,7 @@ const faqJsonLd = {
 
       /* ── MID-PAGE CTA BAND ── */
       .aa-midcta {
-        background: #172554;
+        background: #0B221C;
         padding: 3.5rem 1.5rem;
         text-align: center;
       }
@@ -435,7 +435,7 @@ const faqJsonLd = {
       }
 
       /* ── CLOSING CTA ── */
-      .aa-closing { background: #172554; padding: 5.5rem 1.5rem; position: relative; overflow: hidden; }
+      .aa-closing { background: #0B221C; padding: 5.5rem 1.5rem; position: relative; overflow: hidden; }
       .aa-closing::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 70% 50% at 50% 100%, rgba(234,88,12,0.16) 0%, transparent 70%); pointer-events: none; }
       .aa-closing-inner { max-width: 640px; margin: 0 auto; text-align: center; position: relative; z-index: 1; }
       .aa-closing-title { font-family: theme('fontFamily.serif'); font-size: clamp(1.875rem, 3.5vw, 2.625rem); font-weight: 700; color: #fff; line-height: 1.2; letter-spacing: -0.02em; margin-bottom: 0.875rem; }
@@ -443,7 +443,7 @@ const faqJsonLd = {
       .aa-closing-cta-group { display: flex; flex-wrap: wrap; gap: 0.875rem; justify-content: center; align-items: center; }
       .aa-btn-closing { background: #C2410C; color: #fff; padding: 1rem 2.25rem; border-radius: 0.625rem; font-size: 1.0625rem; font-weight: 600; transition: background 0.2s, transform 0.15s, box-shadow 0.2s; border: none; cursor: pointer; font-family: inherit; box-shadow: 0 4px 24px rgba(234,88,12,0.35); }
       .aa-btn-closing:hover { background: #9A3412; transform: translateY(-2px); box-shadow: 0 8px 32px rgba(234,88,12,0.45); }
-      .aa-btn-closing:focus-visible { outline: 2px solid #93C5FD; outline-offset: 3px; }
+      .aa-btn-closing:focus-visible { outline: 2px solid #F0A184; outline-offset: 3px; }
       .aa-closing-phone { margin-top: 1.25rem; font-size: 0.875rem; color: rgba(255,255,255,0.35); }
       .aa-closing-phone a { color: rgba(255,255,255,0.55); font-weight: 500; text-decoration: none; transition: color 0.2s; }
       .aa-closing-phone a:hover { color: #fff; }
@@ -458,14 +458,14 @@ const faqJsonLd = {
     <!-- ══════════════════════════════════════
          ALERT TICKER
     ══════════════════════════════════════ -->
-    <div class="aa-ticker" role="alert" aria-label="Important update on Google Search changes">
+    <div class="aa-ticker" role="alert" aria-label="Important note on institutional knowledge risk">
       <span class="aa-ticker-flag"><span class="aa-ticker-pulse" aria-hidden="true"></span>Heads up</span>
       <div class="aa-ticker-viewport">
         <div class="aa-ticker-track">
-          <span><strong>Google now answers many searches right on the results page.</strong> Local service businesses are seeing organic clicks drop as fewer people reach your site.</span>
-          <span>If your marketing still relies on old SEO, <strong>you're losing leads to competitors who've adapted.</strong> Find your gaps now.</span>
-          <span><strong>Google now answers many searches right on the results page.</strong> Local service businesses are seeing organic clicks drop as fewer people reach your site.</span>
-          <span>If your marketing still relies on old SEO, <strong>you're losing leads to competitors who've adapted.</strong> Find your gaps now.</span>
+          <span><strong>Most of how your business runs lives in people's heads.</strong> When someone leaves, that knowledge walks out the door with them.</span>
+          <span>It's scattered across tools, inboxes, and memory, <strong>and no one can see the whole picture.</strong> Map where it's trapped now.</span>
+          <span><strong>Most of how your business runs lives in people's heads.</strong> When someone leaves, that knowledge walks out the door with them.</span>
+          <span>It's scattered across tools, inboxes, and memory, <strong>and no one can see the whole picture.</strong> Map where it's trapped now.</span>
         </div>
       </div>
     </div>
@@ -475,13 +475,13 @@ const faqJsonLd = {
     ══════════════════════════════════════ -->
     <section class="aa-hero" id="top">
       <div class="aa-hero-inner">
-        <span class="aa-eyebrow">Free Revenue Audit · <span id="aa-eyebrow-location">Water Damage &amp; Garage Door Operators</span></span>
+        <span class="aa-eyebrow">Free Knowledge Audit · <span id="aa-eyebrow-location">Owner-Led Businesses</span></span>
         <h1 class="aa-h1">
-          See where revenue is leaking.<br>
-          <em>Get the 12-month plan to fix it.</em>
+          Your business runs on knowledge no one wrote down.<br>
+          <em>See where it's trapped before it walks out the door.</em>
         </h1>
         <p class="aa-subhead">
-          Run a 5-minute audit on your service business. Walk away with a gap analysis and a month-by-month revenue plan you keep, whether you hire us or not. No contracts. Cancel anytime.
+          Run a 5-minute audit on your business. Walk away with a map of where your institutional knowledge lives, what's at risk, and what you'd own as a VIK: a living system you can read, edit, and put to work. No contracts. Cancel anytime.
         </p>
         <div class="aa-cta-group">
           <a class="aa-btn-primary" href={GROWBOTIK_FUNNEL_URL} data-audit-cta data-cta-location="hero">
@@ -496,16 +496,16 @@ const faqJsonLd = {
          INDUSTRY STRIP
     ══════════════════════════════════════ -->
     <div class="aa-industry-strip">
-      <div class="aa-industry-inner">Built for water damage restoration and garage door operators doing $500K–$5M/year.</div>
+      <div class="aa-industry-inner">Built for owner-led businesses where too much of how things run lives in a few people's heads.</div>
     </div>
 
     <!-- ══════════════════════════════════════
          TRUST STRIP
     ══════════════════════════════════════ -->
     <div class="aa-trust-strip">
-      <span>Built for water damage &amp; garage door operators</span>
+      <span>Built for owner-led businesses</span>
       <span class="aa-trust-sep" aria-hidden="true">·</span>
-      <span>Free 12-month revenue plan included</span>
+      <span>Free knowledge map included</span>
       <span class="aa-trust-sep" aria-hidden="true">·</span>
       <span>Results in your browser</span>
     </div>
@@ -515,56 +515,56 @@ const faqJsonLd = {
     ══════════════════════════════════════ -->
     <section class="aa-section aa-audit-section" id="audit">
       <div class="aa-section-inner">
-        <h2 class="aa-section-title">The 5-minute marketing gap analysis</h2>
+        <h2 class="aa-section-title">The 5-minute knowledge audit</h2>
         <p class="aa-section-body" style="margin-bottom:0.375rem;">
-          Answer a few questions, including what you actually want to make. The audit is built around your revenue goal, not projections on traffic.
+          Answer a few questions about how your business actually runs. The audit is built around the work only your people know how to do, not a generic checklist.
         </p>
         <p style="font-size:0.875rem;color:#64748B;margin-bottom:1.5rem;line-height:1.6;">
-          I look at your website, Google Business profile, areas served, services offered, how often inquiries convert, and how quickly you follow up. From getting found to getting paid, the full funnel.
+          I look at who holds the know-how, which tools it's scattered across, the steps no one has written down, and the answers only one person can give. From the work that depends on memory to the work that depends on a system.
         </p>
 
         <div class="aa-examples-grid">
           <div class="aa-example-card">
             <div class="aa-example-roi">
               <div class="aa-example-roi-block">
-                <span class="aa-example-roi-num current">1.4x</span>
-                <span class="aa-example-roi-label">Current ROI</span>
+                <span class="aa-example-roi-num current">In&nbsp;heads</span>
+                <span class="aa-example-roi-label">Today</span>
               </div>
               <span class="aa-example-arrow">→</span>
               <div class="aa-example-roi-block">
-                <span class="aa-example-roi-num projected">2.9x</span>
-                <span class="aa-example-roi-label">Projected ROI</span>
+                <span class="aa-example-roi-num projected">In&nbsp;a&nbsp;VIK</span>
+                <span class="aa-example-roi-label">After</span>
               </div>
             </div>
-            <p class="aa-example-target">Revenue target: <strong>+$10,000/mo</strong></p>
+            <p class="aa-example-target">How you handle a tricky job: <strong>written, queryable</strong></p>
           </div>
           <div class="aa-example-card">
             <div class="aa-example-roi">
               <div class="aa-example-roi-block">
-                <span class="aa-example-roi-num current">5.4x</span>
-                <span class="aa-example-roi-label">Current ROI</span>
+                <span class="aa-example-roi-num current">Scattered</span>
+                <span class="aa-example-roi-label">Today</span>
               </div>
               <span class="aa-example-arrow">→</span>
               <div class="aa-example-roi-block">
-                <span class="aa-example-roi-num projected">10.6x</span>
-                <span class="aa-example-roi-label">Projected ROI</span>
+                <span class="aa-example-roi-num projected">One&nbsp;place</span>
+                <span class="aa-example-roi-label">After</span>
               </div>
             </div>
-            <p class="aa-example-target">Revenue target: <strong>+$10,000/mo</strong></p>
+            <p class="aa-example-target">Your pricing and quoting rules: <strong>in one system</strong></p>
           </div>
           <div class="aa-example-card">
             <div class="aa-example-roi">
               <div class="aa-example-roi-block">
-                <span class="aa-example-roi-num current">16.9x</span>
-                <span class="aa-example-roi-label">Current ROI</span>
+                <span class="aa-example-roi-num current">One&nbsp;person</span>
+                <span class="aa-example-roi-label">Today</span>
               </div>
               <span class="aa-example-arrow">→</span>
               <div class="aa-example-roi-block">
-                <span class="aa-example-roi-num projected">30.7x</span>
-                <span class="aa-example-roi-label">Projected ROI</span>
+                <span class="aa-example-roi-num projected">Anyone</span>
+                <span class="aa-example-roi-label">After</span>
               </div>
             </div>
-            <p class="aa-example-target">Revenue target: <strong>+$25,000/mo</strong></p>
+            <p class="aa-example-target">The answers only one person gives: <strong>on demand</strong></p>
           </div>
         </div>
 
@@ -584,7 +584,7 @@ const faqJsonLd = {
             loading="lazy"
           ></iframe>
         </div>
-        <p style="font-size:0.8rem;color:#64748B;margin-top:0.625rem;">A walkthrough of a real audit result: the gap analysis and revenue plan you'll receive.</p>
+        <p style="font-size:0.8rem;color:#64748B;margin-top:0.625rem;">A walkthrough of a real audit result: the knowledge map and the VIK outline you'll receive.</p>
       </div>
     </section>
 
@@ -611,26 +611,26 @@ const faqJsonLd = {
     ══════════════════════════════════════ -->
     <section class="aa-section aa-ba">
       <div class="aa-section-inner">
-        <h2 class="aa-section-title">What changes when you have the plan.</h2>
+        <h2 class="aa-section-title">What changes when it's a VIK.</h2>
         <div class="aa-ba-grid">
           <div class="aa-ba-card aa-ba-before">
             <p class="aa-ba-label">Before</p>
             <ul class="aa-ba-list">
-              <li>Spending money on ads with no clear ROI per channel</li>
-              <li>Reports full of impressions, clicks, and rankings, but no revenue answer</li>
-              <li>No clear number for what it costs you to acquire a new client</li>
-              <li>Competitors growing faster and you can't pinpoint why</li>
-              <li>Month-to-month pipeline feels like guesswork</li>
+              <li>How the business runs lives in a few people's heads</li>
+              <li>Knowledge scattered across tools, inboxes, and memory</li>
+              <li>One person leaves and the work stalls until someone relearns it</li>
+              <li>The same questions get asked and answered over and over</li>
+              <li>New hires take months to figure out how things actually work</li>
             </ul>
           </div>
           <div class="aa-ba-card aa-ba-after">
             <p class="aa-ba-label">After</p>
             <ul class="aa-ba-list">
-              <li>Every channel has a projected ROI and a revenue target tied to it</li>
-              <li>Month-by-month pipeline with exact client volume and acquisition cost</li>
-              <li>Clear attribution: you know which channels drive booked clients</li>
-              <li>A plan you can run yourself, or hand to a team to execute</li>
-              <li>Cancel anytime. The plan is yours either way.</li>
+              <li>How the business runs is written down in one living system</li>
+              <li>You can read it, edit it, and query it in plain language</li>
+              <li>It does work with that knowledge: it researches, drafts, and answers</li>
+              <li>People leaving no longer means the knowledge leaves too</li>
+              <li>You own the VIK. It's yours either way.</li>
             </ul>
           </div>
         </div>
@@ -642,7 +642,7 @@ const faqJsonLd = {
     ══════════════════════════════════════ -->
     <section class="aa-midcta">
       <div style="max-width:600px;margin:0 auto;">
-        <p class="aa-midcta-title">Find your gaps before your competitor finds theirs.</p>
+        <p class="aa-midcta-title">Map where your knowledge is trapped before it walks out the door.</p>
         <p class="aa-midcta-sub">Free. 5 minutes. No contracts.</p>
         <a class="aa-btn-closing" href={GROWBOTIK_FUNNEL_URL} data-audit-cta data-cta-location="mid" style="display:inline-block;text-decoration:none;">
           Start the free audit →
@@ -659,27 +659,27 @@ const faqJsonLd = {
         <div style="overflow-x:auto;margin-top:1.75rem;">
           <table style="width:100%;border-collapse:collapse;font-size:0.9rem;">
             <thead>
-              <tr style="background:#172554;color:#fff;">
-                <th style="padding:0.875rem 1.25rem;text-align:left;font-weight:600;border-radius:0.5rem 0 0 0;">Typical Agency</th>
-                <th style="padding:0.875rem 1.25rem;text-align:left;font-weight:600;color:#93C5FD;border-radius:0 0.5rem 0 0;">Our approach</th>
+              <tr style="background:#0B221C;color:#fff;">
+                <th style="padding:0.875rem 1.25rem;text-align:left;font-weight:600;border-radius:0.5rem 0 0 0;">Typical Consultant</th>
+                <th style="padding:0.875rem 1.25rem;text-align:left;font-weight:600;color:#F0A184;border-radius:0 0.5rem 0 0;">Our approach</th>
               </tr>
             </thead>
             <tbody>
               <tr style="border-bottom:1px solid #E2E8F0;">
-                <td style="padding:0.875rem 1.25rem;color:#475569;">Monthly retainer, locked in for 6 to 12 months</td>
-                <td style="padding:0.875rem 1.25rem;font-weight:500;color:#0F172A;">Free audit. Cancel anytime if you hire us to execute.</td>
+                <td style="padding:0.875rem 1.25rem;color:#475569;">Hands you a slide deck and a diagram</td>
+                <td style="padding:0.875rem 1.25rem;font-weight:500;color:#0F172A;">Hands you a working system you own: a VIK</td>
               </tr>
               <tr style="border-bottom:1px solid #E2E8F0;background:#F8FAFC;">
-                <td style="padding:0.875rem 1.25rem;color:#475569;">Reports full of impressions &amp; clicks</td>
-                <td style="padding:0.875rem 1.25rem;font-weight:500;color:#0F172A;">12-month revenue projections with exact numbers</td>
+                <td style="padding:0.875rem 1.25rem;color:#475569;">Documents that go stale the day they're written</td>
+                <td style="padding:0.875rem 1.25rem;font-weight:500;color:#0F172A;">A living system you can read, edit, and query</td>
               </tr>
               <tr style="border-bottom:1px solid #E2E8F0;">
                 <td style="padding:0.875rem 1.25rem;color:#475569;">Audit used to pitch you a bigger package</td>
                 <td style="padding:0.875rem 1.25rem;font-weight:500;color:#0F172A;">Findings are yours, no commitment required</td>
               </tr>
               <tr style="background:#F8FAFC;">
-                <td style="padding:0.875rem 1.25rem;color:#475569;">Measures inputs (rankings, traffic)</td>
-                <td style="padding:0.875rem 1.25rem;font-weight:500;color:#0F172A;">Measures pipeline and new clients acquired</td>
+                <td style="padding:0.875rem 1.25rem;color:#475569;">Knowledge stays locked in people's heads</td>
+                <td style="padding:0.875rem 1.25rem;font-weight:500;color:#0F172A;">Knowledge captured in a system that does work with it</td>
               </tr>
             </tbody>
           </table>
@@ -762,8 +762,8 @@ const faqJsonLd = {
     ══════════════════════════════════════ -->
     <section class="aa-closing">
       <div class="aa-closing-inner">
-        <h2 class="aa-closing-title">Five minutes to see what you're missing.</h2>
-        <p class="aa-closing-sub">Run the audit, get the plan, decide what to do next. No contracts. No pitch call.</p>
+        <h2 class="aa-closing-title">Five minutes to see what's trapped in people's heads.</h2>
+        <p class="aa-closing-sub">Run the audit, get the map, decide what to do next. No contracts. No pitch call.</p>
         <div class="aa-closing-cta-group">
           <a class="aa-btn-closing" href={GROWBOTIK_FUNNEL_URL} data-audit-cta data-cta-location="footer" style="display:inline-block;text-decoration:none;">
             Start the free audit →
@@ -807,7 +807,7 @@ const faqJsonLd = {
   getCity().then(function (city) {
     if (!city) return;
     const eyebrow = document.getElementById('aa-eyebrow-location');
-    if (eyebrow) eyebrow.textContent = city + ' Service Businesses';
+    if (eyebrow) eyebrow.textContent = city + ' Owner-Led Businesses';
   });
 })();
 </script>

@@ -74,7 +74,7 @@ const orgJsonLd = {
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=DM+Sans:wght@300;400;500;600;700&family=DM+Mono:wght@400;500&display=swap"
       rel="stylesheet"
     />
 
@@ -116,13 +116,18 @@ const orgJsonLd = {
 
     <style is:global>
       :root {
-        --zw-cream: #EDEAE0;
-        --zw-ink: #1C1C1A;
-        --zw-forest: #2D3B33;
-        --zw-teal: #B5371A;
+        /* Unified VIK palette (repointed from the old warm/teal homepage set). */
+        --zw-cream: #F8FAFC;
+        --zw-ink: #0F172A;
+        --zw-forest: #123A31;
+        --zw-forest-deep: #0C2620;
+        --zw-forest-darkest: #071A16;
+        --zw-teal: #C2410C;
+        --zw-rust: #9A330A;
+        --zw-rust-soft: #F0A184;
         --zw-card: #FFFFFF;
-        --zw-border: rgba(28, 28, 26, 0.12);
-        --zw-muted: #5F5F57;
+        --zw-border: rgba(15, 23, 42, 0.10);
+        --zw-muted: #475569;
         --zw-ease: cubic-bezier(0.22, 1, 0.36, 1);
       }
 
@@ -131,14 +136,14 @@ const orgJsonLd = {
       body.zw-root {
         background: var(--zw-cream);
         color: var(--zw-ink);
-        font-family: 'Inter', system-ui, sans-serif;
+        font-family: 'DM Sans', system-ui, sans-serif;
         font-size: 1.0625rem;
         line-height: 1.7;
         -webkit-font-smoothing: antialiased;
         text-rendering: optimizeLegibility;
       }
 
-      .zw-root ::selection { background: rgba(181, 55, 26, 0.18); }
+      .zw-root ::selection { background: rgba(194, 65, 12, 0.18); }
 
       /* Fluid type scale (section 3). */
       .zw-h1 {
@@ -157,16 +162,16 @@ const orgJsonLd = {
         letter-spacing: -0.01em;
       }
       .zw-h3 {
-        font-family: 'Inter', system-ui, sans-serif;
+        font-family: 'DM Sans', system-ui, sans-serif;
         font-weight: 600;
         font-size: 1.25rem;
         line-height: 1.3;
       }
       .zw-eyebrow {
-        font-family: 'Inter', system-ui, sans-serif;
-        font-weight: 600;
-        font-size: 0.8rem;
-        letter-spacing: 0.12em;
+        font-family: 'DM Mono', ui-monospace, monospace;
+        font-weight: 500;
+        font-size: 0.75rem;
+        letter-spacing: 0.16em;
         text-transform: uppercase;
         color: var(--zw-teal);
       }
@@ -175,7 +180,7 @@ const orgJsonLd = {
         padding-bottom: clamp(4rem, 9vw, 8rem);
       }
       .zw-wrap { max-width: 1080px; margin-inline: auto; }
-      .zw-mono { font-family: 'JetBrains Mono', ui-monospace, monospace; }
+      .zw-mono { font-family: 'DM Mono', ui-monospace, monospace; }
 
       /* Visible, keyboard-reachable focus in --teal (section 7). */
       .zw-root a:focus-visible,
@@ -429,7 +434,7 @@ const orgJsonLd = {
   /* Nav resting (transparent over hero) and solid (scrolled) states. */
   #zw-nav { background: transparent; }
   #zw-nav.zw-nav-solid {
-    background: rgba(237, 234, 224, 0.92);
+    background: rgba(248, 250, 252, 0.92);
     backdrop-filter: saturate(140%) blur(8px);
     border-bottom: 1px solid var(--zw-border);
   }

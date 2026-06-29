@@ -1,6 +1,7 @@
 ---
 import LandingLayout from '../layouts/LandingLayout.astro';
 import AuditCta from '../components/AuditCta.astro';
+import VideoHero from '../components/VideoHero.astro';
 
 // ── Animation A (hero): scattered knowledge fragments that settle into a
 // clean stack of plain-text files. Authored positions (%/deg) and a fly-out
@@ -124,66 +125,59 @@ const routes = [
 ---
 
 <LandingLayout
-  title="ZeisWorks · Make your business readable to AI"
-  description="Most AI falls flat because it can't see how your business actually runs, so it guesses. ZeisWorks writes your business down in plain language your team and your AI can both read, so when the AI is wrong you can see why and fix it."
+  title="ZeisWorks · VIK — Visualized Institutional Knowledge"
+  description="Institutional knowledge lives in people's heads and walks out the door when they do. ZeisWorks builds your VIK — Visualized Institutional Knowledge: a living system that holds how your business runs and keeps working when your people move on."
+  ogImage="/og.png"
 >
   <span id="top" aria-hidden="true"></span>
 
-  <!-- ═══════════════════ HERO ═══════════════════ -->
-  <section class="relative zw-anchor pt-28 pb-16 sm:pt-32 sm:pb-24">
-    <div class="zw-wrap px-5 sm:px-8">
-      <div class="grid lg:grid-cols-[1.05fr_0.95fr] gap-12 lg:gap-16 items-center">
-        <!-- Copy -->
-        <div class="text-center lg:text-left">
-          <p class="zw-eyebrow mb-5">ZeisWorks</p>
-          <h1 class="zw-h1 mb-6">You're burning money on an AI that doesn't know your business, your process, or your people.</h1>
-          <p class="text-zw-muted max-w-md mx-auto lg:mx-0 mb-9 text-pretty">
-            Most AI can't see how your business actually runs, so it fills the gaps by guessing.
-            We write your business down in plain language your team and your AI can both read &mdash;
-            so when it's wrong, you can see why and fix it instead of starting over.
-          </p>
-          <div class="flex flex-col sm:flex-row gap-3 justify-center lg:justify-start">
-            <AuditCta
-              location="hero"
-              label="Start a free revenue audit"
-              class="inline-flex items-center justify-center bg-zw-teal text-white font-semibold px-7 py-3.5 rounded-full hover:bg-zw-rust transition-colors"
-            />
-            <a
-              href="#how-it-works"
-              class="inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full font-semibold text-zw-ink border border-zw-border hover:border-zw-teal hover:text-zw-teal transition-colors"
-            >
-              See how it works
-            </a>
-          </div>
-        </div>
+  <!-- ═══════════════════ HERO (VIK video) ═══════════════════ -->
+  <VideoHero>
+    <div class="max-w-[640px]">
+      <p class="zw-eyebrow mb-4" style="color: var(--zw-rust-soft);">Visualized Institutional Knowledge</p>
+      <h1
+        class="font-serif font-semibold text-white text-balance"
+        style="font-size: clamp(2.05rem, 6vw, 3.45rem); line-height: 1.08; letter-spacing: -0.02em; margin: 0 0 22px;"
+      >
+        Your institutional knowledge shouldn't <em style="color: var(--zw-rust-soft);">walk out the door.</em>
+      </h1>
+      <p class="text-white/85 mb-8" style="font-size: clamp(1.05rem, 1.9vw, 1.3rem); line-height: 1.55; max-width: 54ch;">
+        We build your <strong class="text-white font-semibold">VIK</strong> &mdash; Visualized
+        Institutional Knowledge: a living system that holds how your business actually runs, so it
+        stays when your people don't.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-3">
+        <AuditCta
+          location="hero"
+          label="Start a free audit"
+          class="inline-flex items-center justify-center gap-2 bg-zw-teal text-white font-semibold px-7 py-3.5 rounded-full hover:bg-zw-rust transition-colors"
+        />
+        <a
+          href="#vik"
+          class="inline-flex items-center justify-center px-7 py-3.5 rounded-full font-medium text-white border border-white/45 hover:bg-white/10 transition-colors"
+        >
+          What's a VIK?
+        </a>
+      </div>
+    </div>
+  </VideoHero>
 
-        <!-- Animation A: scatter assembling into plain written words -->
-        <div class="relative" aria-hidden="true">
-          <div data-anim="hero" class="zw-hero relative mx-auto w-full max-w-[440px] aspect-[4/5]">
-            <!-- Scattered fragments converge toward the page and fade -->
-            {heroChips.map((c) => (
-              <span
-                class="zw-hero-chip zw-mono"
-                style={`top:${c.top}%;left:${c.left}%;--r:${c.r}deg;--tx:${c.tx}px;--ty:${c.ty}px;`}
-              >{c.label}</span>
-            ))}
-            <!-- The fragments resolve into clean, readable lines -->
-            <div class="zw-hero-doc">
-              <div class="zw-doc-card">
-                <h2 class="zw-doc-title">
-                  {heroDocTitle.split(' ').map((w, i) => (
-                    <span class="zw-word" style={`--wi:${i};`}>{w}</span>
-                  ))}<span class="zw-cursor" aria-hidden="true"></span>
-                </h2>
-                <div class="zw-doc-lines">
-                  {heroDocLines.map((l, i) => (
-                    <p class="zw-doc-line" style={`--li:${i};`}>{l}</p>
-                  ))}
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+  <!-- ═══════════════════ VIK — WHAT YOU OWN ═══════════════════ -->
+  <section id="vik" class="zw-anchor zw-section">
+    <div class="zw-wrap px-5 sm:px-8 max-w-[820px]">
+      <p class="zw-eyebrow mb-4 zw-reveal">What you own</p>
+      <h2 class="zw-h2 mb-6 zw-reveal">VIK &mdash; Visualized Institutional Knowledge.</h2>
+      <p class="text-zw-muted max-w-[640px] mb-8 zw-reveal text-pretty">
+        Your VIK is the working system you keep when the engagement ends &mdash; not a slide, not a
+        diagram. It holds how your business actually runs and does work with it: it researches,
+        drafts, and answers, all from knowledge you can read and edit.
+      </p>
+      <div class="zw-vik-plate zw-reveal">
+        <span class="zw-vik-tag zw-mono">VIK</span>
+        <p class="zw-vik-thesis">
+          Tools depreciate. Context compounds. ICM is how we compound it.
+          <strong>VIK is what you own when we're done.</strong>
+        </p>
       </div>
     </div>
   </section>
@@ -556,6 +550,31 @@ const routes = [
 <style is:global>
   .zw-anchor { scroll-margin-top: 5rem; }
 
+  /* VIK "what you own" plate — mirrors the ICM plate to read as two layers. */
+  .zw-vik-plate {
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+    flex-wrap: wrap;
+    max-width: 640px;
+    border: 2px solid var(--zw-teal);
+    background: rgba(194, 65, 12, 0.05);
+    border-radius: 12px;
+    padding: 14px 16px;
+  }
+  .zw-vik-tag {
+    flex: none;
+    font-size: 0.74rem;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    color: var(--zw-teal);
+    border: 1px solid rgba(194, 65, 12, 0.45);
+    border-radius: 6px;
+    padding: 3px 7px;
+  }
+  .zw-vik-thesis { margin: 0; font-size: 0.95rem; line-height: 1.55; color: var(--zw-muted); }
+  .zw-vik-thesis strong { color: var(--zw-ink); font-weight: 600; }
+
   /* Card surfaces (section 3: radius 14px). */
   .zw-card {
     background: var(--zw-card);
@@ -573,7 +592,7 @@ const routes = [
   /* CONFIRM placeholder markers for Jack. */
   .zw-confirm {
     display: inline-block;
-    font-family: 'JetBrains Mono', ui-monospace, monospace;
+    font-family: 'DM Mono', ui-monospace, monospace;
     font-size: 0.7em;
     font-weight: 500;
     letter-spacing: 0.06em;
@@ -585,7 +604,7 @@ const routes = [
     vertical-align: middle;
   }
   .zw-confirm-inline {
-    font-family: 'JetBrains Mono', ui-monospace, monospace;
+    font-family: 'DM Mono', ui-monospace, monospace;
     font-size: 0.55em;
     color: #9A6200;
     margin-left: 0.25em;
@@ -958,7 +977,7 @@ const routes = [
   .zw-appeals-sample { margin: 0; max-width: 640px; }
   .zw-sample-tag {
     margin-left: auto;
-    font-family: 'JetBrains Mono', ui-monospace, monospace;
+    font-family: 'DM Mono', ui-monospace, monospace;
     font-size: 0.6rem;
     text-transform: uppercase;
     letter-spacing: 0.1em;

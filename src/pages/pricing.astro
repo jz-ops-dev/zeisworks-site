@@ -4,40 +4,40 @@ import AuditCta from '../components/AuditCta.astro';
 import { CALENDLY_URL } from '../config';
 
 const includes = [
-  'Your full gap analysis and 12-month plan, updated monthly',
-  'Done-for-you execution of everything in the plan',
-  'Every call and form tracked and reported, with call recordings',
-  'A weekly report you can read in two minutes',
-  'A real person reviewing your account and available when you need them',
+  'Your VIK built out and updated as your business changes: a living, queryable system that holds how your company actually runs',
+  'Done-for-you work performed with your VIK: research, drafts, and answers, all from knowledge you can read and edit',
+  'Every interaction traceable back to the source knowledge it came from',
+  'A short report you can read in two minutes',
+  'A real person who knows your VIK and is available when you need them',
 ];
 
 const faq = [
   {
     q: 'Why is there a range?',
-    a: 'Because a restoration company in a competitive metro needs more than a tree service in a small market. The audit sizes the plan to your situation and shows the cost before you commit.',
+    a: "Because the more your business runs on knowledge that only lives in people's heads, the more there is to capture and visualize. The audit sizes the work to your situation and shows the cost before you commit.",
   },
   {
     q: "What if it doesn't work?",
-    a: 'The plan projects expected results month by month. If results lag, the plan changes. And you can cancel anytime, so we have to earn the next month, every month.',
+    a: 'Your VIK is something you can open and read from day one, so progress is visible, not promised. If it is not holding up its end, the work changes. And you can cancel anytime, so we have to earn the next month, every month.',
   },
   {
-    q: 'Is ad spend included?',
-    a: 'No. Ad budget goes directly to Google or Meta in your own accounts. You own everything.',
+    q: 'Do I own it?',
+    a: 'Yes. Your VIK is yours: the knowledge, the system that runs on it, all of it. Cancel anytime and you keep it. You own everything.',
   },
 ];
 ---
 
 <BaseLayout
   title="Pricing: Month to Month, No Contracts | ZeisWorks"
-  description="Plans start at $2,500/month, sized by your free audit. Month to month, cancel anytime, ad spend goes to the platforms not to us."
+  description="Plans start at $2,500/month, sized by your free audit. You're paying to build and own your VIK: the working system that holds how your business runs. Month to month, cancel anytime."
 >
   <!-- Hero -->
   <section class="max-w-3xl mx-auto px-6 pt-16 sm:pt-24 pb-10 text-center">
     <h1 class="font-serif text-4xl sm:text-5xl font-semibold leading-tight tracking-tight mb-6">
-      Simple pricing. No contracts.
+      You're paying to build and own your VIK.
     </h1>
     <p class="text-lg text-ink-mid leading-relaxed max-w-2xl mx-auto">
-      Every engagement starts with the free audit. Your 12-month plan tells you exactly what we'd do and what it costs before you pay anything.
+      Every engagement starts with the free audit. It shows you the knowledge trapped in people's heads today and what it costs to turn it into a VIK you own, before you pay anything.
     </p>
   </section>
 
@@ -46,7 +46,7 @@ const faq = [
     <div class="relative bg-navy-deep rounded-2xl p-8 sm:p-10 text-center overflow-hidden">
       <div
         class="absolute inset-0 pointer-events-none"
-        style="background: radial-gradient(ellipse 70% 60% at 50% 0%, rgba(30,58,138,0.6) 0%, transparent 70%);"
+        style="background: radial-gradient(ellipse 90% 70% at 85% 0%, rgba(224,69,48,0.22) 0%, transparent 65%);"
         aria-hidden="true"
       ></div>
       <div class="relative">
@@ -54,10 +54,10 @@ const faq = [
         Plans start at $2,500/month.
       </p>
       <p class="text-white/70 leading-relaxed max-w-xl mx-auto mb-4">
-        Most plans land between $2,500 and $5,000/month depending on what your audit calls for: search visibility, reviews, website conversion, ads management, call handling, and tracking.
+        Most plans land between $2,500 and $5,000/month depending on how much of your business currently runs on knowledge nobody has written down: more to capture and visualize means more to build into your VIK.
       </p>
       <p class="text-white/70 leading-relaxed max-w-xl mx-auto">
-        Month to month. Cancel anytime. No setup fees. Ad spend is separate and goes straight to the platforms, not to us.
+        Month to month. Cancel anytime. No setup fees. The VIK is yours: cancel and you keep it.
       </p>
       </div>
     </div>
@@ -68,6 +68,9 @@ const faq = [
     <h2 class="font-serif text-2xl sm:text-3xl font-semibold leading-tight mb-7">
       What every plan includes
     </h2>
+    <p class="text-ink-mid leading-relaxed mb-7">
+      ICM is the method we use to capture how your business runs. Your VIK is what you end up owning: a living, queryable system that does work from knowledge you can read and edit.
+    </p>
     <ul class="space-y-4">
       {includes.map((item) => (
         <li class="flex items-start gap-3 text-ink-mid leading-relaxed">
