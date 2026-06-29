@@ -1,0 +1,91 @@
+---
+// Shared full-bleed video hero (unified VIK aesthetic).
+// The intro clip plays as a dimmed, looping texture behind a forest-green
+// gradient + scrim. If it can't autoplay (reduced-motion, no-JS, blocked, or
+// missing codec) the gradient hero stands on its own. Content goes in the
+// default slot; the page owns the eyebrow / headline / sub / CTAs so copy and
+// funnel wiring stay per-page.
+interface Props {
+  video?: string;
+  minHeight?: string;
+  /** 0–1 opacity the clip fades to once playing. */
+  videoOpacity?: number;
+  class?: string;
+}
+
+const {
+  video = '/intro.mp4',
+  minHeight = 'clamp(540px, 88vh, 880px)',
+  videoOpacity = 0.78,
+  class: className = '',
+} = Astro.props;
+---
+
+<section class={`vhero ${className}`} style={`--vhero-min:${minHeight};--vhero-op:${videoOpacity};`}>
+  <video class="vhero-video" muted loop playsinline preload="auto" aria-hidden="true">
+    <source src={video} type="video/mp4" />
+  </video>
+  <div class="vhero-scrim" aria-hidden="true"></div>
+  <div class="vhero-inner">
+    <slot />
+  </div>
+</section>
+
+<script is:inline>
+  (function () {
+    var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduce) return;
+    document.querySelectorAll('.vhero-video').forEach(function (v) {
+      v.addEventListener('playing', function () { v.classList.add('is-playing'); }, { once: true });
+      var p = v.play();
+      if (p && typeof p.catch === 'function') p.catch(function () {});
+    });
+  })();
+</script>
+
+<style>
+  .vhero {
+    position: relative;
+    isolation: isolate;
+    min-height: var(--vhero-min);
+    display: flex;
+    overflow: hidden;
+    color: #fff;
+    background:
+      radial-gradient(125% 90% at 88% 0%, rgba(224, 69, 48, 0.34), transparent 58%),
+      linear-gradient(158deg, #123a31 0%, #0c2620 55%, #071a16 100%);
+  }
+  .vhero-video {
+    position: absolute;
+    inset: 0;
+    z-index: -2;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    transition: opacity 1.2s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .vhero-video.is-playing { opacity: var(--vhero-op); }
+  /* Scrim weighted to the bottom-left, where the headline sits. */
+  .vhero-scrim {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background:
+      linear-gradient(to top, rgba(6, 18, 15, 0.94) 0%, rgba(6, 18, 15, 0.45) 48%, rgba(6, 18, 15, 0.28) 100%),
+      linear-gradient(to right, rgba(6, 18, 15, 0.62), transparent 62%);
+  }
+  .vhero-inner {
+    position: relative;
+    width: 100%;
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 7rem clamp(20px, 5vw, 56px) clamp(40px, 7vh, 76px);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .vhero-video { display: none; }
+  }
+</style>

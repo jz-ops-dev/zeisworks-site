@@ -6,45 +6,50 @@ export default {
   theme: {
     extend: {
       colors: {
-        // Palette refresh: slate paper + deep navy authority + single orange
-        // conversion color. Legacy token names kept so guide/legal pages
-        // restyle without edits.
+        // ── Unified VIK palette (whole-site redesign) ──
+        // One system across every layout: cream paper, forest-green depth,
+        // a single rust accent. Legacy token names (navy*, zw-*) are kept but
+        // REPOINTED to the unified hues, so existing utility classes restyle
+        // sitewide without per-file edits.
         cream: '#F8FAFC',
         'cream-dark': '#E2E8F0',
         ink: '#0F172A',
         'ink-mid': '#475569',
         'ink-light': '#64748B',
-        forest: '#172554',
-        'navy-deep': '#172554',
-        navy: '#1E3A8A',
+
+        // Rust accent (primary CTA / links). Clears WCAG AA on cream (~5:1).
+        rust: '#C2410C',
+        'rust-bright': '#EA580C',
+        'rust-soft': '#F0A184',
         orange: '#C2410C',
         'orange-bright': '#EA580C',
 
-        // ── Single-page AI-readiness rebuild (dev prompt section 3). ──
-        // Scoped under the zw- prefix so the original brand palette can live
-        // on the homepage without restyling the guide/legal/vertical pages
-        // that still consume the legacy token names above.
-        'zw-cream': '#EDEAE0',
-        'zw-ink': '#1C1C1A',
-        'zw-forest': '#2D3B33',
-        // Brand accent. The bright logo orange (#E04530) fails WCAG AA as
-        // text/buttons on cream, so the UI accent is a deeper shade of the
-        // same hue that clears 4.5:1 (white-on-button and accent-on-cream);
-        // the logo tile keeps the bright orange. zw-rust is the button hover.
-        'zw-teal': '#B5371A',
-        'zw-rust': '#8F2D15',
+        // Forest-green depth (dark sections, heroes, footers).
+        forest: '#123A31',
+        'forest-deep': '#0C2620',
+        'forest-darkest': '#071A16',
+        // Legacy navy aliases repointed to forest so existing
+        // bg-navy-deep heroes and text-navy links read as the new brand.
+        navy: '#1B4D40',
+        'navy-deep': '#0B221C',
+
+        // Legacy homepage (zw-*) tokens, repointed to the unified palette.
+        'zw-cream': '#F8FAFC',
+        'zw-ink': '#0F172A',
+        'zw-forest': '#123A31',
+        'zw-teal': '#C2410C',
+        'zw-rust': '#9A330A',
         'zw-card': '#FFFFFF',
-        'zw-border': 'rgba(28,28,26,0.12)',
-        // --muted darkened from the spec's 0.62 to a solid value that clears
-        // WCAG AA on the cream background (section 7).
-        'zw-muted': '#5F5F57',
+        'zw-border': 'rgba(15,23,42,0.10)',
+        'zw-muted': '#475569',
       },
       fontFamily: {
+        // One type system sitewide: Lora serif headings, DM Sans body,
+        // DM Mono accents. `inter` + `mono` repointed off Inter/JetBrains.
         serif: ['Lora', 'Georgia', 'serif'],
         sans: ['"DM Sans"', 'system-ui', 'sans-serif'],
-        // Body/UI + mono accent for the single-page rebuild.
-        inter: ['Inter', 'system-ui', 'sans-serif'],
-        mono: ['"JetBrains Mono"', 'ui-monospace', 'SFMono-Regular', 'monospace'],
+        inter: ['"DM Sans"', 'system-ui', 'sans-serif'],
+        mono: ['"DM Mono"', 'ui-monospace', 'SFMono-Regular', 'monospace'],
       },
       typography: ({ theme }) => ({
         zeisworks: {
