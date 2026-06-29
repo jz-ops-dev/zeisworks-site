@@ -1,0 +1,156 @@
+---
+// Shared premium-motion layer. Reduced-motion-gated, dependency-free.
+//   • Scroll reveals: blur + rise with Apple-style easing, auto-tagged per
+//     section so static template pages animate with zero markup changes.
+//   • Magnetic CTAs: primary pills drift toward the cursor (fine pointer only).
+//   • Parallax: elements marked [data-parallax] drift on scroll.
+// `reveal={false}` opts a page out of auto-reveal (e.g. the homepage, which
+// runs its own zw-reveal system) while keeping magnetic + parallax.
+interface Props {
+  reveal?: boolean;
+}
+const { reveal = true } = Astro.props;
+---
+
+<style is:global>
+  /* Apple-style ease-out-expo for every motion path here. */
+  html.motion-ready [data-reveal] {
+    opacity: 0;
+    transform: translateY(22px);
+    filter: blur(8px);
+    transition:
+      opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1),
+      transform 0.85s cubic-bezier(0.16, 1, 0.3, 1),
+      filter 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+    will-change: opacity, transform;
+  }
+  html.motion-ready [data-reveal].is-revealed {
+    opacity: 1;
+    transform: none;
+    filter: none;
+  }
+
+  /* Magnetic pills get a springy return + a touch of lift on hover. */
+  html.motion-ready [data-magnetic] {
+    transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  [data-parallax] { will-change: transform; }
+
+  @media (prefers-reduced-motion: reduce) {
+    html.motion-ready [data-reveal] {
+      opacity: 1 !important;
+      transform: none !important;
+      filter: none !important;
+      transition: none !important;
+    }
+    html.motion-ready [data-magnetic] { transition: none !important; }
+  }
+</style>
+
+<script is:inline define:vars={{ autoReveal: reveal }}>
+  (function () {
+    var reduce = window.matchMedia('(prefers-reduced-motion: reduce)');
+    if (reduce.matches || !('IntersectionObserver' in window)) return;
+
+    var fine = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+
+    // ── Scroll reveals ─────────────────────────────────────────────
+    function mark(el, i) {
+      if (el.hasAttribute('data-reveal') || el.closest('[data-no-reveal]')) return;
+      el.setAttribute('data-reveal', '');
+      // Stagger items within a section; cap so long lists don't lag.
+      el.style.transitionDelay = Math.min(i * 70, 420) + 'ms';
+    }
+
+    function tagSection(section) {
+      // Descend through single-child wrapper DIVs to the real content root.
+      var root = section;
+      while (
+        root.children.length === 1 &&
+        root.firstElementChild &&
+        root.firstElementChild.tagName === 'DIV'
+      ) {
+        root = root.firstElementChild;
+      }
+      var i = 0;
+      Array.prototype.forEach.call(root.children, function (child) {
+        if (child.getAttribute && child.getAttribute('aria-hidden') === 'true') return;
+        var cls = child.className && child.className.baseVal != null
+          ? child.className.baseVal
+          : (child.className || '');
+        // Stagger the cells of a grid individually for a nicer cascade.
+        if (typeof cls === 'string' && /\bgrid\b/.test(cls) && child.children.length > 1) {
+          Array.prototype.forEach.call(child.children, function (cell) {
+            mark(cell, i++);
+          });
+        } else {
+          mark(child, i++);
+        }
+      });
+    }
+
+    var revealObs = new IntersectionObserver(function (entries, obs) {
+      entries.forEach(function (entry) {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add('is-revealed');
+        obs.unobserve(entry.target);
+      });
+    }, { threshold: 0.15, rootMargin: '0px 0px -8% 0px' });
+
+    if (autoReveal) {
+      var main = document.querySelector('main') || document.body;
+      Array.prototype.forEach.call(main.querySelectorAll('section'), tagSection);
+    }
+    // Honour any hand-placed [data-reveal] hooks too.
+    document.documentElement.classList.add('motion-ready');
+    Array.prototype.forEach.call(
+      document.querySelectorAll('[data-reveal]'),
+      function (el) { revealObs.observe(el); }
+    );
+
+    // ── Magnetic CTAs ──────────────────────────────────────────────
+    if (fine) {
+      var STRENGTH = 0.3;
+      var pills = document.querySelectorAll('a[data-audit-cta], [data-magnetic]');
+      Array.prototype.forEach.call(pills, function (el) {
+        el.setAttribute('data-magnetic', '');
+        var CAP = 14; // px — keep wide/full-width pills from sliding too far.
+        var clamp = function (n) { return Math.max(-CAP, Math.min(CAP, n)); };
+        el.addEventListener('pointermove', function (e) {
+          var r = el.getBoundingClientRect();
+          var x = clamp((e.clientX - (r.left + r.width / 2)) * STRENGTH);
+          var y = clamp((e.clientY - (r.top + r.height / 2)) * STRENGTH);
+          el.style.transform = 'translate(' + x + 'px,' + y + 'px)';
+        });
+        el.addEventListener('pointerleave', function () {
+          el.style.transform = '';
+        });
+      });
+    }
+
+    // ── Parallax ───────────────────────────────────────────────────
+    var parallaxEls = document.querySelectorAll('[data-parallax]');
+    if (parallaxEls.length) {
+      var ticking = false;
+      var apply = function () {
+        var vh = window.innerHeight;
+        Array.prototype.forEach.call(parallaxEls, function (el) {
+          var speed = parseFloat(el.getAttribute('data-parallax')) || 0.12;
+          var r = el.getBoundingClientRect();
+          var offset = (r.top + r.height / 2 - vh / 2) * -speed;
+          el.style.transform = 'translate3d(0,' + offset.toFixed(1) + 'px,0)';
+        });
+        ticking = false;
+      };
+      var onScroll = function () {
+        if (ticking) return;
+        ticking = true;
+        window.requestAnimationFrame(apply);
+      };
+      window.addEventListener('scroll', onScroll, { passive: true });
+      window.addEventListener('resize', onScroll, { passive: true });
+      apply();
+    }
+  })();
+</script>

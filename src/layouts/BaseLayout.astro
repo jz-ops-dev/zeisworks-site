@@ -1,6 +1,7 @@
 ---
 import AuditCta from '../components/AuditCta.astro';
 import ExitIntentModal from '../components/ExitIntentModal.astro';
+import MotionScripts from '../components/MotionScripts.astro';
 import { CALENDLY_URL } from '../config';
 
 interface Props {
@@ -200,7 +201,7 @@ const verticalLinks = [
           <AuditCta
             location="nav"
             label="Get started"
-            class="bg-orange text-white text-sm px-4 py-2 rounded-lg hover:bg-orange-bright transition-colors font-semibold shadow-sm"
+            class="bg-orange text-white text-sm px-4 py-2 rounded-full hover:bg-orange-bright transition-colors font-semibold"
           />
         </nav>
         <!-- Mobile: persistent CTA + hamburger -->
@@ -208,7 +209,7 @@ const verticalLinks = [
           <AuditCta
             location="nav"
             label="Get started"
-            class="bg-orange text-white text-sm px-3.5 py-2 rounded-lg hover:bg-orange-bright transition-colors font-semibold whitespace-nowrap shadow-sm"
+            class="bg-orange text-white text-sm px-3.5 py-2 rounded-full hover:bg-orange-bright transition-colors font-semibold whitespace-nowrap"
           />
           <button
             id="mobileMenuBtn"
@@ -300,6 +301,8 @@ const verticalLinks = [
     </footer>
 
     <ExitIntentModal />
+
+    <MotionScripts />
 
     <!-- Audit CTA tracking + UTM passthrough (handoff sections 2.3 and 2.5) -->
     <script is:inline>

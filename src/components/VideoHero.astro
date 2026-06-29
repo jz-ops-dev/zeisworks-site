@@ -25,6 +25,7 @@ const {
   <video class="vhero-video" muted loop playsinline preload="auto" aria-hidden="true">
     <source src={video} type="video/mp4" />
   </video>
+  <div class="vhero-glow" data-parallax="0.18" aria-hidden="true"></div>
   <div class="vhero-scrim" aria-hidden="true"></div>
   <div class="vhero-inner">
     <slot />
@@ -66,6 +67,14 @@ const {
     transition: opacity 1.2s cubic-bezier(0.22, 1, 0.36, 1);
   }
   .vhero-video.is-playing { opacity: var(--vhero-op); }
+  /* Parallax red glow drifting over the base gradient for depth. */
+  .vhero-glow {
+    position: absolute;
+    inset: -15% 0;
+    z-index: -1;
+    pointer-events: none;
+    background: radial-gradient(60% 50% at 88% 8%, rgba(224, 69, 48, 0.30), transparent 60%);
+  }
   /* Scrim weighted to the bottom-left, where the headline sits. */
   .vhero-scrim {
     position: absolute;
