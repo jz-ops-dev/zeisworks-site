@@ -64,6 +64,8 @@
       }
       * { box-sizing: border-box; }
       html, body { margin: 0; padding: 0; }
+      html { scroll-behavior: smooth; }
+      #vik, #notify { scroll-margin-top: 28px; }
       body {
         background: var(--cream);
         color: var(--ink);
@@ -79,7 +81,7 @@
         width: 100%;
         max-width: 640px;
         margin: 0 auto;
-        padding: 56px 24px 40px;
+        padding: 52px 24px 48px;
         display: flex;
         flex-direction: column;
       }
@@ -123,7 +125,7 @@
       .lede + .lede { margin-top: 4px; }
 
       /* ── VIK: the named deliverable you own (leads; ICM sits underneath) ── */
-      .vik { margin: 28px 0 36px; }
+      .vik { margin: 0 0 52px; }
       .vik .eyebrow { margin: 0 0 12px; }
       .vik-h {
         font-family: "Lora", Georgia, serif;
@@ -172,7 +174,7 @@
       .vik-thesis strong { color: var(--ink); font-weight: 600; }
 
       /* ── ICM: three appeals → one method ── */
-      .appeals { margin: 32px 0; }
+      .appeals { margin: 0 0 44px; }
       .appeals .eyebrow { margin: 0 0 12px; }
       .appeals-intro {
         font-size: 1rem;
@@ -374,89 +376,97 @@
       }
       .appeals.is-armed.play .sample,
       .appeals.is-armed.play .sample-lead { opacity: 1; transform: none; }
-      /* Fullscreen intro: plays once, then evaporates to reveal the page. */
-      .intro {
-        position: fixed;
-        inset: 0;
-        z-index: 1000;
-        background: #000;
+      /* ── Hero: the intro clip now lives IN the page as a full-bleed banner ──
+         The clip plays as a dimmed, looping texture behind a brand gradient +
+         scrim. If it can't autoplay (reduced-motion, no-JS, blocked, or the
+         browser lacks the codec), the gradient hero stands on its own. */
+      .hero {
+        position: relative;
+        isolation: isolate;
+        min-height: clamp(500px, 80vh, 780px);
         display: flex;
-        align-items: center;
-        justify-content: center;
-        opacity: 1;
-        will-change: opacity, transform, filter;
-        transition: opacity 0.9s var(--ease), transform 0.9s var(--ease), filter 0.9s var(--ease);
-      }
-      .intro video { width: 100%; height: 100%; object-fit: cover; }
-      /* Bottom scrim keeps the caption and skip control legible over any frame. */
-      .intro::after {
-        content: "";
-        position: absolute;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        height: 40%;
-        background: linear-gradient(to top, rgba(0, 0, 0, 0.38), transparent);
-        pointer-events: none;
-      }
-      .intro.is-leaving {
-        opacity: 0;
-        transform: scale(1.06);
-        filter: blur(10px);
-        pointer-events: none;
-      }
-      .intro-skip {
-        position: absolute;
-        bottom: max(22px, env(safe-area-inset-bottom));
-        right: 22px;
-        font: inherit;
-        font-size: 0.8rem;
-        font-weight: 500;
+        overflow: hidden;
         color: #fff;
-        background: rgba(255, 255, 255, 0.14);
-        border: 1px solid rgba(255, 255, 255, 0.4);
-        border-radius: 999px;
-        padding: 9px 18px;
-        cursor: pointer;
-        backdrop-filter: blur(4px);
-        transition: background 0.15s;
+        background:
+          radial-gradient(125% 90% at 88% 0%, rgba(224, 69, 48, 0.34), transparent 58%),
+          linear-gradient(158deg, #123a31 0%, #0c2620 55%, #071a16 100%);
       }
-      .intro-skip:hover { background: rgba(255, 255, 255, 0.26); }
-      .intro-skip:focus-visible { outline: 2px solid #fff; outline-offset: 3px; }
-      body.intro-lock { overflow: hidden; }
-      .intro-caption {
+      .hero-video {
         position: absolute;
-        left: clamp(20px, 5vw, 48px);
-        bottom: clamp(20px, 6%, 48px);
-        max-width: 70%;
-        text-align: left;
-        color: #fff;
-        text-shadow: 0 1px 14px rgba(0, 0, 0, 0.3);
+        inset: 0;
+        z-index: -2;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
         opacity: 0;
-        animation: introCaptionIn 0.9s var(--ease) 0.5s forwards;
+        transition: opacity 1.2s var(--ease);
       }
-      .intro-caption .mark {
-        display: block;
+      .hero-video.is-playing { opacity: 0.78; }
+      /* Scrim weighted to the bottom-left, where the headline sits. */
+      .hero-scrim {
+        position: absolute;
+        inset: 0;
+        z-index: -1;
+        background:
+          linear-gradient(to top, rgba(6, 18, 15, 0.94) 0%, rgba(6, 18, 15, 0.45) 48%, rgba(6, 18, 15, 0.28) 100%),
+          linear-gradient(to right, rgba(6, 18, 15, 0.62), transparent 62%);
+      }
+      /* Same 640 column as the body below, so the hero headline and the VIK
+         section share one left edge — the whole page reads on one axis while
+         the gradient/video stay full-bleed. */
+      .hero-inner {
+        position: relative;
+        width: 100%;
+        max-width: 640px;
+        margin: 0 auto;
+        padding: 30px 24px clamp(40px, 7vh, 72px);
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        gap: 48px;
+      }
+      .brand--on-dark .name { color: #fff; }
+      .brand--on-dark .name .dot { color: #F0A184; }
+      .hero-copy { max-width: 100%; }
+      .eyebrow--accent { color: #F0A184; margin-bottom: 16px; }
+      .hero-h1 {
         font-family: "Lora", Georgia, serif;
         font-weight: 600;
-        font-size: clamp(1.35rem, 4vw, 2rem);
-        letter-spacing: -0.01em;
+        font-size: clamp(2.05rem, 6vw, 3.45rem);
+        line-height: 1.08;
+        letter-spacing: -0.02em;
+        margin: 0 0 22px;
+        color: #fff;
+        text-wrap: balance;
       }
-      .intro-caption .mark .dot { opacity: 0.8; }
-      .intro-caption .tag {
-        display: block;
-        margin-top: 7px;
-        font-family: "DM Mono", monospace;
-        font-size: clamp(0.6rem, 1.6vw, 0.72rem);
-        letter-spacing: 0.18em;
-        text-transform: uppercase;
-        opacity: 0.85;
+      .hero-h1 .accent { color: #F0A184; font-style: italic; }
+      .hero-sub {
+        font-size: clamp(1.05rem, 1.9vw, 1.3rem);
+        line-height: 1.55;
+        color: rgba(255, 255, 255, 0.86);
+        max-width: 54ch;
+        margin: 0 0 30px;
       }
-      @keyframes introCaptionIn { to { opacity: 1; } }
-      @media (max-width: 520px) {
-        /* Sit the caption above the skip control so they never crowd. */
-        .intro-caption { bottom: 74px; max-width: 86%; }
+      .hero-sub strong { color: #fff; font-weight: 600; }
+      .hero-actions { display: flex; flex-wrap: wrap; gap: 14px; }
+      .btn-primary, .btn-ghost {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 14px 26px;
+        font: inherit;
+        font-size: 1rem;
+        font-weight: 600;
+        border-radius: 999px;
+        text-decoration: none;
+        cursor: pointer;
+        transition: background 0.18s var(--ease), border-color 0.18s var(--ease), transform 0.18s var(--ease);
       }
+      .btn-primary { color: #fff; background: var(--orange); }
+      .btn-primary:hover { background: var(--orange-bright); transform: translateY(-1px); }
+      .btn-ghost { color: #fff; font-weight: 500; background: transparent; border: 1px solid rgba(255, 255, 255, 0.45); }
+      .btn-ghost:hover { background: rgba(255, 255, 255, 0.12); border-color: rgba(255, 255, 255, 0.7); }
+      .btn-primary:focus-visible, .btn-ghost:focus-visible { outline: 2px solid #fff; outline-offset: 3px; }
       .capture { margin-top: 8px; }
       .capture label {
         display: block;
@@ -529,57 +539,61 @@
 
       @media (prefers-reduced-motion: reduce) {
         * { transition: none !important; }
-        /* No screen takeover: reveal the page directly. */
-        #zw-intro { display: none !important; }
+        html { scroll-behavior: auto; }
+        /* Don't autoplay the hero clip; the gradient hero stands on its own. */
+        .hero-video { display: none; }
       }
     </style>
-    <!-- Without JS the intro can't evaporate, so never let it cover the page. -->
-    <noscript><style>#zw-intro { display: none !important; }</style></noscript>
   </head>
   <body>
-    <div id="zw-intro" class="intro" aria-label="Intro">
-      <video id="zw-intro-video" muted playsinline preload="auto" autoplay>
+    <header class="hero">
+      <video class="hero-video" id="zw-hero-video" muted loop playsinline preload="auto" aria-hidden="true">
         <source src="/intro.mp4" type="video/mp4" />
       </video>
-      <div class="intro-caption" aria-hidden="true">
-        <span class="mark">zeisWorks<span class="dot">.</span></span>
-        <span class="tag">Make your business readable to AI</span>
+      <div class="hero-scrim" aria-hidden="true"></div>
+      <div class="hero-inner">
+        <div class="brand brand--on-dark">
+          <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <rect width="100" height="100" rx="22" fill="#E04530" />
+            <rect x="15" y="15" width="20" height="20" rx="4" fill="#FAF8F3" />
+            <rect x="40" y="15" width="20" height="20" rx="4" fill="#FAF8F3" />
+            <rect x="65" y="15" width="20" height="20" rx="4" fill="#FAF8F3" />
+            <rect x="40" y="40" width="20" height="20" rx="4" fill="#FAF8F3" />
+            <rect x="15" y="65" width="20" height="20" rx="4" fill="#FAF8F3" />
+            <rect x="40" y="65" width="20" height="20" rx="4" fill="#FAF8F3" />
+            <rect x="65" y="65" width="20" height="20" rx="4" fill="#FAF8F3" />
+          </svg>
+          <span class="name">zeisWorks<span class="dot">.</span></span>
+        </div>
+
+        <div class="hero-copy">
+          <p class="eyebrow eyebrow--accent">ZeisWorks &middot; Coming soon</p>
+          <h1 class="hero-h1">
+            Your institutional knowledge shouldn't
+            <span class="accent">walk out the door.</span>
+          </h1>
+          <p class="hero-sub">
+            We build your <strong>VIK</strong> &mdash; Visualized Institutional
+            Knowledge: a living system that holds how your business actually runs,
+            so it stays when your people don't.
+          </p>
+          <div class="hero-actions">
+            <a class="btn-primary" href="#notify">Get first access &rarr;</a>
+            <a class="btn-ghost" href="#vik">What's a VIK?</a>
+          </div>
+        </div>
       </div>
-      <button type="button" id="zw-intro-skip" class="intro-skip">Skip intro</button>
-    </div>
+    </header>
 
     <main class="wrap">
-      <div class="brand">
-        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-          <rect width="100" height="100" rx="22" fill="#E04530" />
-          <rect x="15" y="15" width="20" height="20" rx="4" fill="#FAF8F3" />
-          <rect x="40" y="15" width="20" height="20" rx="4" fill="#FAF8F3" />
-          <rect x="65" y="15" width="20" height="20" rx="4" fill="#FAF8F3" />
-          <rect x="40" y="40" width="20" height="20" rx="4" fill="#FAF8F3" />
-          <rect x="15" y="65" width="20" height="20" rx="4" fill="#FAF8F3" />
-          <rect x="40" y="65" width="20" height="20" rx="4" fill="#FAF8F3" />
-          <rect x="65" y="65" width="20" height="20" rx="4" fill="#FAF8F3" />
-        </svg>
-        <span class="name">zeisWorks<span class="dot">.</span></span>
-      </div>
-
-      <p class="eyebrow">Coming soon</p>
-      <h1>Something new is on the way.</h1>
-      <p class="lede">
-        ZeisWorks is run by Jack Zeis in Golden, Colorado. We make your business
-        readable to AI — writing down how it actually runs in plain files your team
-        and your AI can both read, then building the assistants and automations on
-        top. When the AI is wrong, you can see why and fix it.
-      </p>
-
-      <section class="vik" aria-label="VIK — Visualized Institutional Knowledge, the deliverable you own">
+      <section class="vik" id="vik" aria-label="VIK — Visualized Institutional Knowledge, the deliverable you own">
         <p class="eyebrow">What you own</p>
         <h2 class="vik-h">VIK — Visualized Institutional Knowledge.</h2>
         <p class="vik-lede">
-          Institutional knowledge lives in people's heads. It walks out the door
-          when they do. Your VIK is what you own when it stays — a living,
-          queryable system that holds how your business runs and does work with
-          it. Not a slide. Not a diagram. A working system you keep.
+          Your VIK is the working system you keep when the engagement ends &mdash;
+          not a slide, not a diagram. It holds how your business actually runs and
+          does work with it: it researches, drafts, and answers, all from knowledge
+          you can read and edit.
         </p>
         <div class="vik-card">
           <span class="vik-tag">VIK</span>
@@ -645,8 +659,8 @@ escalation   → working/handoffs.md</pre>
         </figure>
       </section>
 
-      <p class="lede">
-        We're rebuilding the site around your VIK. Leave your email and we'll tell
+      <p class="lede" id="notify">
+        We're rebuilding the whole site around it. Leave your email and we'll tell
         you the moment it's live.
       </p>
 
@@ -691,39 +705,16 @@ escalation   → working/handoffs.md</pre>
       (function () {
         var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-        // Fullscreen intro: play the clip once, then evaporate to the page.
-        // Reduced-motion (and no-JS) skip the takeover via CSS above.
-        var intro = document.getElementById("zw-intro");
-        var introVideo = document.getElementById("zw-intro-video");
-        if (intro && introVideo && !reduce) {
-          document.body.classList.add("intro-lock");
-          var gone = false;
-          var evaporate = function () {
-            if (gone) return;
-            gone = true;
-            intro.classList.add("is-leaving");
-            var finish = function () {
-              intro.style.display = "none";
-              document.body.classList.remove("intro-lock");
-            };
-            intro.addEventListener("transitionend", finish, { once: true });
-            setTimeout(finish, 1200);
-            try { introVideo.pause(); } catch (e) {}
-          };
-          introVideo.addEventListener("ended", evaporate);
-          introVideo.addEventListener("error", evaporate);
-          var skip = document.getElementById("zw-intro-skip");
-          if (skip) skip.addEventListener("click", evaporate);
-          document.addEventListener("keydown", function (e) {
-            if (e.key === "Escape") evaporate();
-          });
-          var pp = introVideo.play();
-          if (pp && typeof pp.catch === "function") pp.catch(evaporate);
-          // Safety nets so a blocked or broken clip never traps the visitor.
-          setTimeout(function () { if (!gone && introVideo.currentTime === 0) evaporate(); }, 4000);
-          setTimeout(evaporate, 20000);
-        } else if (intro) {
-          intro.style.display = "none";
+        // Hero clip: loop quietly as a background texture. Fade it in only once
+        // it's actually playing, so a blocked/codec-less clip leaves the gradient
+        // hero untouched. Reduced-motion never starts it (CSS hides it too).
+        var heroVideo = document.getElementById("zw-hero-video");
+        if (heroVideo && !reduce) {
+          heroVideo.addEventListener("playing", function () {
+            heroVideo.classList.add("is-playing");
+          }, { once: true });
+          var hp = heroVideo.play();
+          if (hp && typeof hp.catch === "function") hp.catch(function () {});
         }
 
         // ICM appeals: play the convergence once it scrolls into view.
