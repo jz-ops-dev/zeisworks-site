@@ -12,7 +12,7 @@ export const COMPACT_FAQ: FaqItem[] = [
   },
   {
     q: 'What happens on the call?',
-    a: 'It’s a quick intro call. We walk through where your institutional knowledge lives today and what a VIK would do about it. No obligation, no pitch deck.',
+    a: 'It’s a quick intro call. We walk through where AI is guessing about your business today — and what a VIK would do about it. No obligation, no pitch deck.',
   },
   {
     q: 'What if we already document things?',
