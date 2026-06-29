@@ -3,33 +3,6 @@ import LandingLayout from '../layouts/LandingLayout.astro';
 import AuditCta from '../components/AuditCta.astro';
 import VideoHero from '../components/VideoHero.astro';
 
-// ── Animation A (hero): scattered knowledge fragments that settle into a
-// clean stack of plain-text files. Authored positions (%/deg) and a fly-out
-// vector per chip so each fragment drifts toward the stack and fades. ──
-const heroChips = [
-  { label: 'spreadsheet cell', top: 4,  left: 6,  r: -8,  tx: 60,  ty: 40 },
-  { label: 'chat bubble',      top: 2,  left: 58, r: 7,   tx: -40, ty: 60 },
-  { label: 'CRM record',       top: 20, left: 30, r: -4,  tx: 10,  ty: 30 },
-  { label: 'sticky note',      top: 16, left: 74, r: 10,  tx: -70, ty: 40 },
-  { label: 'email',            top: 34, left: 4,  r: 5,   tx: 70,  ty: 10 },
-  { label: 'person',           top: 30, left: 50, r: -9,  tx: -10, ty: 20 },
-  { label: 'runbook',          top: 46, left: 22, r: 6,   tx: 30,  ty: -10 },
-  { label: 'dashboard tile',   top: 44, left: 66, r: -7,  tx: -50, ty: 0 },
-  { label: 'metric',           top: 60, left: 8,  r: -5,  tx: 60,  ty: -30 },
-  { label: 'process step',     top: 64, left: 44, r: 8,   tx: 0,   ty: -40 },
-  { label: 'inbox thread',     top: 58, left: 72, r: -10, tx: -60, ty: -20 },
-  { label: 'note',             top: 78, left: 32, r: 4,   tx: 20,  ty: -60 },
-];
-
-// Animation A resting state: the scattered fragments assemble into a short
-// "written down" document. Plain-language business rules, not file names, so
-// the effect reads as chaos becoming clear words (per Jack's request).
-const heroDocTitle = 'Your business, written down';
-const heroDocLines = [
-  'A customer is anyone who bought in the last 12 months.',
-  'We price by the project, not the hour.',
-  'Every lead gets a reply within one business day.',
-];
 
 // ── The shift: two cards (the principle + the method). Source URLs from
 // dev prompt section 8. OKF was dropped in the v2 spec. ──
@@ -592,94 +565,6 @@ const routes = [
     margin-left: 0.25em;
     letter-spacing: 0.04em;
   }
-
-  /* ───────── Animation A: scatter assembling into plain words ───────── */
-  .zw-hero { color: var(--zw-ink); }
-  .zw-hero-chip {
-    position: absolute;
-    display: inline-block;
-    font-size: 0.66rem;
-    color: var(--zw-muted);
-    background: rgba(255, 255, 255, 0.7);
-    border: 1px solid var(--zw-border);
-    border-radius: 7px;
-    padding: 0.28rem 0.5rem;
-    white-space: nowrap;
-    opacity: 0;                /* end state: chips cleared */
-    transform: rotate(var(--r));
-    box-shadow: 0 1px 3px rgba(28, 28, 26, 0.05);
-  }
-  .zw-hero-doc {
-    position: absolute;
-    inset: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0 2%;
-  }
-  .zw-doc-card {
-    width: 100%;
-    background: var(--zw-card);
-    border: 1px solid var(--zw-border);
-    border-radius: 14px;
-    padding: 1.4rem 1.5rem;
-    box-shadow: 0 8px 30px rgba(28, 28, 26, 0.07);
-  }
-  .zw-doc-title {
-    font-family: 'Lora', Georgia, serif;
-    font-weight: 600;
-    font-size: 1.45rem;
-    line-height: 1.2;
-    color: var(--zw-ink);
-    margin-bottom: 1rem;
-  }
-  .zw-doc-lines { display: flex; flex-direction: column; gap: 0.6rem; }
-  .zw-doc-line {
-    font-size: 0.84rem;
-    line-height: 1.4;
-    color: var(--zw-muted);
-    padding-left: 0.7rem;
-    border-left: 3px solid var(--zw-teal);
-  }
-  .zw-cursor {
-    display: inline-block;
-    width: 8px; height: 1.05rem;
-    margin-left: 2px;
-    vertical-align: text-bottom;
-    background: var(--zw-teal); border-radius: 1px;
-    animation: zwBlink 1.1s step-end infinite;
-  }
-  @keyframes zwBlink { 0%, 50% { opacity: 1; } 51%, 100% { opacity: 0; } }
-
-  /* Motion-on path: chips appear, converge toward the page, and fade as the
-     words and lines assemble in. */
-  html.zw-anim .zw-hero-chip {
-    opacity: 1;
-    transition: opacity 0.9s var(--zw-ease), transform 1.1s var(--zw-ease);
-  }
-  html.zw-anim .zw-word,
-  html.zw-anim .zw-doc-line {
-    opacity: 0;
-    transform: translateY(8px);
-    transition: opacity 0.5s var(--zw-ease), transform 0.5s var(--zw-ease);
-  }
-  html.zw-anim .zw-word { transition-delay: calc(var(--wi) * 0.11s + 0.5s); }
-  html.zw-anim .zw-doc-line { transition-delay: calc(var(--li) * 0.18s + 1.1s); }
-  html.zw-anim .zw-cursor { opacity: 0; transition: opacity 0.3s 0.5s; }
-  html.zw-anim [data-anim="hero"].zw-play .zw-hero-chip {
-    opacity: 0;
-    transform: translate(var(--tx), var(--ty)) scale(0.55) rotate(0deg);
-  }
-  html.zw-anim [data-anim="hero"].zw-play .zw-word,
-  html.zw-anim [data-anim="hero"].zw-play .zw-doc-line {
-    opacity: 1;
-    transform: none;
-  }
-  html.zw-anim [data-anim="hero"].zw-play .zw-cursor { opacity: 1; }
-  .zw-word { display: inline-block; margin-right: 0.28em; }
-
-  /* Reduced motion: show the assembled document, no scatter, no blink. */
-  @media (prefers-reduced-motion: reduce) { .zw-cursor { animation: none; } }
 
   /* ───────── Animation B: layered context loading ───────── */
   .zw-layers { display: flex; flex-direction: column; gap: 0.6rem; }
