@@ -1,20 +1,18 @@
 ---
-import { CALENDLY_URL } from '../config';
-
-// The single conversion action on the site: book a free intro call. The data
-// attributes drive the global cta-click tracking and UTM passthrough in the
-// layouts.
+// The single conversion action on the site: open the interactive get-started
+// funnel at /start (which qualifies, captures, then books). The data
+// attributes drive the global cta-click tracking and UTM passthrough.
 interface Props {
   location: 'nav' | 'hero' | 'mid' | 'footer' | 'exit-modal';
   label?: string;
   class?: string;
 }
 
-const { location, label = 'Book a call', class: className = '' } = Astro.props;
+const { location, label = 'Get started', class: className = '' } = Astro.props;
 ---
 
 <a
-  href={CALENDLY_URL}
+  href="/start"
   data-audit-cta
   data-cta-location={location}
   class={className}
