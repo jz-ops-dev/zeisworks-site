@@ -144,6 +144,12 @@
   to = "/apple-touch-icon.png"
   status = 200
 
+# Social-share preview image referenced by the placeholder's og:/twitter: tags.
+[[redirects]]
+  from = "/og.png"
+  to = "/og.png"
+  status = 200
+
 # Everything else bounces to the placeholder.
 [[redirects]]
   from = "/*"

@@ -19,6 +19,26 @@
       content="ZeisWorks, run by Jack Zeis in Golden, Colorado, makes your business readable to AI. A new site is on the way — leave your email for first access."
     />
 
+    <!-- Social-share preview. Page is noindex, but links still get shared in
+         iMessage/Slack/LinkedIn — these give them a branded card. -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="ZeisWorks" />
+    <meta property="og:title" content="ZeisWorks — VIK: Visualized Institutional Knowledge" />
+    <meta
+      property="og:description"
+      content="Institutional knowledge lives in people's heads. VIK is what you own when it stays. A new ZeisWorks site is on the way — leave your email for first access."
+    />
+    <meta property="og:image" content="/og.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="ZeisWorks — VIK: Visualized Institutional Knowledge" />
+    <meta
+      name="twitter:description"
+      content="Institutional knowledge lives in people's heads. VIK is what you own when it stays."
+    />
+    <meta name="twitter:image" content="/og.png" />
+
     <link rel="icon" href="/favicon.ico" sizes="any" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
@@ -477,6 +497,10 @@
         transition: background 0.15s;
       }
       .field button:hover { background: var(--orange-bright); }
+      .field button:focus-visible {
+        outline: 2px solid var(--navy);
+        outline-offset: 2px;
+      }
       .field button:disabled { opacity: 0.6; cursor: default; }
       .hp { position: absolute; left: -9999px; opacity: 0; }
       .note { font-size: 0.82rem; color: var(--ink-light); margin-top: 12px; }
