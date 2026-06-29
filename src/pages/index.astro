@@ -1,7 +1,6 @@
 ---
 import LandingLayout from '../layouts/LandingLayout.astro';
 import AuditCta from '../components/AuditCta.astro';
-import VideoHero from '../components/VideoHero.astro';
 
 
 // ── The shift: two cards (the principle + the method). Source URLs from
@@ -104,36 +103,57 @@ const routes = [
 >
   <span id="top" aria-hidden="true"></span>
 
-  <!-- ═══════════════════ HERO (VIK video) ═══════════════════ -->
-  <VideoHero>
-    <div class="max-w-[640px]">
-      <p class="zw-eyebrow mb-4" style="color: var(--zw-rust-soft);">Visualized Institutional Knowledge</p>
-      <h1
-        class="font-serif font-semibold text-white text-balance"
-        style="font-size: clamp(2.05rem, 6vw, 3.45rem); line-height: 1.08; letter-spacing: -0.02em; margin: 0 0 22px;"
-      >
-        Your institutional knowledge shouldn't <em style="color: var(--zw-rust-soft);">walk out the door.</em>
-      </h1>
-      <p class="text-white/85 mb-8" style="font-size: clamp(1.05rem, 1.9vw, 1.3rem); line-height: 1.55; max-width: 54ch;">
-        We build your <strong class="text-white font-semibold">VIK</strong> &mdash; Visualized
-        Institutional Knowledge: a living system that holds how your business actually runs, so it
-        stays when your people don't.
-      </p>
-      <div class="flex flex-col sm:flex-row gap-3">
-        <AuditCta
-          location="hero"
-          label="Get started"
-          class="inline-flex items-center justify-center gap-2 bg-zw-teal text-white font-semibold px-7 py-3.5 rounded-full hover:bg-zw-rust transition-colors"
-        />
-        <a
-          href="#vik"
-          class="inline-flex items-center justify-center px-7 py-3.5 rounded-full font-medium text-white border border-white/45 hover:bg-white/10 transition-colors"
+  <!-- ═══════════════════ HERO (split: copy + VIK video) ═══════════════════ -->
+  <section class="zw-hero-split bg-zw-cream border-b border-zw-border">
+    <div class="zw-wrap px-5 sm:px-8 zw-hero-grid">
+      <div>
+        <p class="zw-eyebrow mb-4 zw-reveal" style="color: var(--zw-rust);">Visualized Institutional Knowledge</p>
+        <h1
+          class="font-serif font-semibold text-zw-ink text-balance zw-reveal"
+          style="font-size: clamp(2.1rem, 5.2vw, 3.5rem); line-height: 1.06; letter-spacing: -0.025em; margin: 0 0 20px;"
         >
-          What's a VIK?
-        </a>
+          Your institutional knowledge shouldn't <em style="color: var(--zw-teal);">walk out the door.</em>
+        </h1>
+        <p class="text-zw-muted mb-8 zw-reveal" style="font-size: clamp(1.05rem, 1.7vw, 1.25rem); line-height: 1.55; max-width: 52ch;">
+          We build your <strong class="text-zw-ink font-semibold">VIK</strong> &mdash; Visualized
+          Institutional Knowledge: a living system that holds how your business actually runs, so it
+          stays when your people don't.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-3 zw-reveal">
+          <AuditCta
+            location="hero"
+            label="Get started"
+            class="inline-flex items-center justify-center gap-2 bg-zw-teal text-white font-semibold px-7 py-3.5 rounded-full hover:bg-zw-rust transition-colors"
+          />
+          <a
+            href="#vik"
+            class="inline-flex items-center justify-center px-7 py-3.5 rounded-full font-medium text-zw-ink border border-zw-ink/15 hover:bg-zw-ink/[0.04] transition-colors"
+          >
+            What's a VIK?
+          </a>
+        </div>
+      </div>
+      <div class="zw-hero-media zw-reveal">
+        <div class="zw-hero-glow" data-parallax="0.1" aria-hidden="true"></div>
+        <div class="zw-hero-frame">
+          <video class="zw-hero-video" muted loop playsinline preload="auto" aria-hidden="true">
+            <source src="/intro.mp4" type="video/mp4" />
+          </video>
+        </div>
       </div>
     </div>
-  </VideoHero>
+  </section>
+
+  <script is:inline>
+    (function () {
+      if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+      document.querySelectorAll('.zw-hero-video').forEach(function (v) {
+        v.addEventListener('playing', function () { v.classList.add('is-playing'); }, { once: true });
+        var p = v.play();
+        if (p && typeof p.catch === 'function') p.catch(function () {});
+      });
+    })();
+  </script>
 
   <!-- ═══════════════════ VIK — WHAT YOU OWN ═══════════════════ -->
   <section id="vik" class="zw-anchor zw-section">
@@ -927,5 +947,49 @@ const routes = [
   @keyframes zwFileIn {
     from { opacity: 0; transform: translateY(6px); }
     to { opacity: 1; transform: none; }
+  }
+
+  /* ── Split hero: copy left, VIK video framed right ── */
+  .zw-hero-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: clamp(2.25rem, 5vw, 3.5rem);
+    align-items: center;
+    padding-top: clamp(6rem, 13vh, 9rem);
+    padding-bottom: clamp(3rem, 8vh, 5.5rem);
+  }
+  @media (min-width: 1024px) {
+    .zw-hero-grid { grid-template-columns: 1.05fr 0.95fr; }
+  }
+  .zw-hero-media { position: relative; }
+  /* One rationed red glow, contained to the media column. */
+  .zw-hero-glow {
+    position: absolute;
+    inset: -10% -6% -10% 2%;
+    z-index: 0;
+    pointer-events: none;
+    background: radial-gradient(58% 58% at 68% 28%, rgba(224, 69, 48, 0.30), transparent 70%);
+  }
+  .zw-hero-frame {
+    position: relative;
+    z-index: 1;
+    aspect-ratio: 4 / 3;
+    border-radius: 22px;
+    overflow: hidden;
+    border: 1px solid var(--zw-border);
+    background:
+      radial-gradient(120% 90% at 85% 8%, rgba(224, 69, 48, 0.20), transparent 55%),
+      linear-gradient(158deg, #1d1d1f 0%, #141416 60%, #000000 100%);
+  }
+  .zw-hero-video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    transition: opacity 1.2s var(--zw-ease);
+  }
+  .zw-hero-video.is-playing { opacity: 0.9; }
+  @media (prefers-reduced-motion: reduce) {
+    .zw-hero-video { display: none; }
   }
 </style>
