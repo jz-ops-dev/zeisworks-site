@@ -101,6 +101,56 @@
         max-width: 56ch;
       }
       .lede + .lede { margin-top: 4px; }
+
+      /* ── VIK: the named deliverable you own (leads; ICM sits underneath) ── */
+      .vik { margin: 28px 0 36px; }
+      .vik .eyebrow { margin: 0 0 12px; }
+      .vik-h {
+        font-family: "Lora", Georgia, serif;
+        font-weight: 600;
+        font-size: clamp(1.5rem, 4.5vw, 2rem);
+        line-height: 1.2;
+        letter-spacing: -0.01em;
+        margin: 0 0 16px;
+      }
+      .vik-lede {
+        font-size: 1rem;
+        line-height: 1.65;
+        color: var(--ink-mid);
+        margin: 0 0 20px;
+        max-width: 60ch;
+      }
+      /* The "you own this" plate deliberately rhymes with the ICM plate below:
+         two layers — the deliverable (VIK) and the method (ICM). */
+      .vik-card {
+        display: flex;
+        align-items: baseline;
+        gap: 12px;
+        flex-wrap: wrap;
+        border: 2px solid var(--orange);
+        background: rgba(194, 65, 12, 0.05);
+        border-radius: 12px;
+        padding: 14px 16px;
+      }
+      .vik-tag {
+        flex: none;
+        font-family: "DM Mono", monospace;
+        font-size: 0.74rem;
+        font-weight: 500;
+        letter-spacing: 0.04em;
+        color: var(--orange);
+        border: 1px solid rgba(194, 65, 12, 0.45);
+        border-radius: 6px;
+        padding: 3px 7px;
+      }
+      .vik-thesis {
+        margin: 0;
+        font-size: 0.92rem;
+        line-height: 1.55;
+        color: var(--ink-mid);
+      }
+      .vik-thesis strong { color: var(--ink); font-weight: 600; }
+
       /* ── ICM: three appeals → one method ── */
       .appeals { margin: 32px 0; }
       .appeals .eyebrow { margin: 0 0 12px; }
@@ -497,10 +547,24 @@
         and your AI can both read, then building the assistants and automations on
         top. When the AI is wrong, you can see why and fix it.
       </p>
-      <p class="lede">
-        We're rebuilding the site. Leave your email and we'll tell you the moment
-        it's live.
-      </p>
+
+      <section class="vik" aria-label="VIK — Visualized Institutional Knowledge, the deliverable you own">
+        <p class="eyebrow">What you own</p>
+        <h2 class="vik-h">VIK — Visualized Institutional Knowledge.</h2>
+        <p class="vik-lede">
+          Institutional knowledge lives in people's heads. It walks out the door
+          when they do. Your VIK is what you own when it stays — a living,
+          queryable system that holds how your business runs and does work with
+          it. Not a slide. Not a diagram. A working system you keep.
+        </p>
+        <div class="vik-card">
+          <span class="vik-tag">VIK</span>
+          <p class="vik-thesis">
+            Tools depreciate. Context compounds. ICM is how we compound it.
+            <strong>VIK is what you own when we're done.</strong>
+          </p>
+        </div>
+      </section>
 
       <section class="appeals" data-appeals aria-label="The three appeals behind Interpretable Context Methodology">
         <p class="eyebrow">The method, in three appeals</p>
@@ -556,6 +620,11 @@ tone & voice → identity.md
 escalation   → working/handoffs.md</pre>
         </figure>
       </section>
+
+      <p class="lede">
+        We're rebuilding the site around your VIK. Leave your email and we'll tell
+        you the moment it's live.
+      </p>
 
       <form
         id="waitlist-form"
