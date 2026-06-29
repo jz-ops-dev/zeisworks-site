@@ -88,6 +88,13 @@ const steps = [
           <input type="hidden" name="knowledge" data-answer="knowledge" />
           <input type="hidden" name="risk" data-answer="risk" />
           <input type="hidden" name="team" data-answer="team" />
+          <!-- Attribution, filled in by JS on load -->
+          <input type="hidden" name="utm_source" data-utm="utm_source" />
+          <input type="hidden" name="utm_medium" data-utm="utm_medium" />
+          <input type="hidden" name="utm_campaign" data-utm="utm_campaign" />
+          <input type="hidden" name="utm_content" data-utm="utm_content" />
+          <input type="hidden" name="referrer" data-utm="referrer" />
+          <input type="hidden" name="landing_path" data-utm="landing_path" />
 
           <label class="field">
             <span class="field-label">Your name</span>
@@ -125,7 +132,7 @@ const steps = [
     </div>
   </main>
 
-  <script is:inline define:vars={{ stepKeys: steps.map((s) => s.key), totalQuestions: steps.length }}>
+  <script is:inline define:vars={{ stepKeys: steps.map((s) => s.key), totalQuestions: steps.length, calendlyUrl: CALENDLY_URL }}>
     (function () {
       var root = document.querySelector('[data-funnel]');
       if (!root) return;
@@ -140,6 +147,8 @@ const steps = [
       var BOOK = totalQuestions + 1;
       var DONE = totalQuestions + 2;
       var answers = {};
+      var contact = {};
+      var attribution = {};
       var idx = 0;
 
       function track(event, params) {
@@ -211,7 +220,11 @@ const steps = [
           e.preventDefault();
           var btn = form.querySelector('[data-submit]');
           if (btn) { btn.disabled = true; btn.textContent = 'Sending…'; }
-          var body = new URLSearchParams(new FormData(form)).toString();
+          var fd = new FormData(form);
+          contact.name = (fd.get('name') || '').toString();
+          contact.email = (fd.get('email') || '').toString();
+          setBookHref();
+          var body = new URLSearchParams(fd).toString();
           track('lead_submit', {});
           fetch(form.getAttribute('action'), {
             method: 'POST',
@@ -236,6 +249,57 @@ const steps = [
         var opts = screens[idx].querySelectorAll('.option');
         if (opts[n - 1]) opts[n - 1].click();
       });
+
+      // ── Booking link: prefill name/email on a real scheduler, or pre-write
+      //    the email on the mailto fallback, from the answers we already have. ──
+      function buildBookHref(base) {
+        try {
+          if (/^https?:/i.test(base)) {
+            var u = new URL(base);
+            if (contact.name) u.searchParams.set('name', contact.name);
+            if (contact.email) u.searchParams.set('email', contact.email);
+            ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content'].forEach(function (k) {
+              if (attribution[k]) u.searchParams.set(k, attribution[k]);
+            });
+            return u.href;
+          }
+          if (/^mailto:/i.test(base)) {
+            var addr = base.replace(/^mailto:/i, '').split('?')[0];
+            var subject = 'Intro call about a VIK' + (contact.name ? ' — ' + contact.name : '');
+            var lines = ['Hi Jack,', '', "I'd like to book an intro call about building a VIK.", ''];
+            if (answers.business) lines.push('Business: ' + answers.business);
+            if (answers.knowledge) lines.push('Knowledge lives: ' + answers.knowledge);
+            if (answers.risk) lines.push('When a key person is out: ' + answers.risk);
+            if (answers.team) lines.push('Team size: ' + answers.team);
+            if (contact.name) { lines.push(''); lines.push('— ' + contact.name); }
+            return 'mailto:' + addr + '?subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(lines.join('\n'));
+          }
+        } catch (e) {}
+        return base;
+      }
+      function setBookHref() {
+        var btn = root.querySelector('[data-book]');
+        if (btn) btn.setAttribute('href', buildBookHref(calendlyUrl));
+      }
+
+      // ── Attribution: carry UTM + referrer into the lead (and the booking). ──
+      (function initAttribution() {
+        var params = new URLSearchParams(window.location.search);
+        var stored = {};
+        try { stored = JSON.parse(sessionStorage.getItem('zw_utm') || '{}'); } catch (e) {}
+        ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content'].forEach(function (k) {
+          var v = params.get(k) || stored[k] || '';
+          if (v) attribution[k] = v;
+        });
+        attribution.referrer = document.referrer || '';
+        attribution.landing_path = window.location.pathname + window.location.search;
+        if (form) {
+          form.querySelectorAll('[data-utm]').forEach(function (input) {
+            var k = input.getAttribute('data-utm');
+            if (attribution[k]) input.value = attribution[k];
+          });
+        }
+      })();
 
       track('funnel_start', {});
       setProgress();
