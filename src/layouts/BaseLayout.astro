@@ -38,7 +38,7 @@ const localBusinessJsonLd = {
   url: siteUrl,
   logo: `${siteUrl}/favicon.svg`,
   description:
-    'ZeisWorks runs free revenue audits for local service businesses: a gap analysis of your marketing and a 12-month plan to fix the leaks, with done-for-you execution.',
+    'ZeisWorks builds VIKs — Visualized Institutional Knowledge: living systems that hold how a business runs and do work with it, so the knowledge stays when key people leave.',
   email: 'jack@zeisworks.com',
   founder: {
     '@type': 'Person',
@@ -64,9 +64,9 @@ const localBusinessJsonLd = {
     '@type': 'OfferCatalog',
     name: 'ZeisWorks Services',
     itemListElement: [
-      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Free Revenue Audit and Gap Analysis' } },
-      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: '12-Month Revenue Plan' } },
-      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Done-For-You Marketing Execution' } },
+      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'VIK — Visualized Institutional Knowledge' } },
+      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Institutional Knowledge Capture' } },
+      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'AI Assistants and Automations' } },
       { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Systems Consulting' } },
     ],
   },
@@ -179,10 +179,6 @@ const verticalLinks = [
         --font-mono: 'DM Mono', monospace;
       }
 
-      /* Paid landing page: suppress site nav to remove exit links */
-      body[data-page="revenue-audit"] header {
-        display: none !important;
-      }
     </style>
   </head>
   <body class="font-sans antialiased min-h-screen flex flex-col" data-page={bodyPage}>
@@ -201,7 +197,7 @@ const verticalLinks = [
           ))}
           <AuditCta
             location="nav"
-            label="Start Free Audit"
+            label="Book a call"
             class="bg-orange text-white text-sm px-4 py-2 rounded-lg hover:bg-orange-bright transition-colors font-semibold shadow-sm"
           />
         </nav>
@@ -209,7 +205,7 @@ const verticalLinks = [
         <div class="flex md:hidden items-center gap-3">
           <AuditCta
             location="nav"
-            label="Start Free Audit"
+            label="Book a call"
             class="bg-orange text-white text-sm px-3.5 py-2 rounded-lg hover:bg-orange-bright transition-colors font-semibold whitespace-nowrap shadow-sm"
           />
           <button

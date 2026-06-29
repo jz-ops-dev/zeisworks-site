@@ -1,10 +1,9 @@
 ---
 import AuditCta from './AuditCta.astro';
 
-// Sitewide exit-intent modal (handoff section 2.4). Desktop only, fires once
-// per session when the cursor exits the top of the viewport, and is
-// suppressed for the rest of the session once the visitor clicks any audit
-// CTA. No email capture.
+// Sitewide exit-intent modal. Desktop only, fires once per session when the
+// cursor exits the top of the viewport, and is suppressed for the rest of the
+// session once the visitor clicks any CTA. No email capture.
 ---
 
 <div
@@ -22,10 +21,11 @@ import AuditCta from './AuditCta.astro';
       class="absolute top-4 right-4 text-ink-light hover:text-ink transition-colors text-xl leading-none p-1"
     >&times;</button>
     <h2 id="zw-exit-heading" class="font-serif text-2xl font-semibold text-ink leading-snug mb-3">
-      Leave with your gap analysis at least.
+      Before you go &mdash; let's talk.
     </h2>
     <p class="text-sm text-ink-mid leading-relaxed mb-6">
-      It's free, takes 5 minutes, and shows you exactly where your business is losing leads.
+      A free intro call. We'll show you where your institutional knowledge is trapped today and
+      what a VIK would do about it. No obligation.
     </p>
     <AuditCta
       location="exit-modal"
