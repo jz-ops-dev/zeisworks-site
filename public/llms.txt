@@ -1,0 +1,26 @@
+# ZeisWorks
+
+> ZeisWorks builds VIKs — Visualized Institutional Knowledge: a firm's operating knowledge written into plain files that its team and its AI both read. AI assistants and automations then run on those files, so every answer traces to a source and the knowledge survives staff turnover. Built for professional services firms of roughly 10–50 people. Engagements start with a free intro call, then a fixed-price one-week Knowledge Audit, then ongoing build-and-run at $2,500/month, month to month. Clients keep every file at every step.
+
+## What ZeisWorks does
+
+- Writes down how a firm defines, prices, and runs its work in plain, readable files
+- Builds AI assistants and automations that read those files to do real work: proposals, answers, reporting, onboarding
+- Every answer cites the file it came from; when something's wrong, you fix the file, not the whole system
+- Everything is portable — the same files work with whichever AI model is best next year
+
+## Who it's for
+
+- Consulting and advisory firms: https://zeisworks.com/for/consulting-firms
+- Agencies and studios: https://zeisworks.com/for/agencies
+- Other professional services firms where knowledge is the product
+
+## Key pages
+
+- [How it works](https://zeisworks.com/#how-it-works)
+- [Get started](https://zeisworks.com/start)
+
+## Contact
+
+- Email: jack@zeisworks.com
+- ZeisWorks is a High Range Living LLC company
