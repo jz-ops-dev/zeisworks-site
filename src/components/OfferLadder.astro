@@ -1,0 +1,88 @@
+---
+// The three-step offer ladder (copy deck §2). Copy lives here so the
+// homepage and the segment pages always show the same ladder.
+//
+// The Knowledge Audit price is AUDIT_PRICE in src/config.ts (decision D5):
+// null renders "fixed price" with no number.
+import { AUDIT_PRICE } from '../config';
+
+interface Props {
+  variant?: 'full' | 'condensed';
+  /** Where the condensed variant's button points. */
+  startHref?: string;
+}
+
+const { variant = 'full', startHref = '/start' } = Astro.props;
+
+const auditTerms = AUDIT_PRICE ? `${AUDIT_PRICE}, one week, fixed.` : 'Fixed price, one week.';
+const auditTermsShort = AUDIT_PRICE ? `${AUDIT_PRICE}, one week` : 'fixed price, one week';
+
+const steps = [
+  {
+    n: '01',
+    title: 'Intro call.',
+    terms: 'Free, 15 minutes.',
+    body: "Where your knowledge is stuck and whether a VIK would fix it. No deck, no pitch. If we're not the right fit, we'll tell you on the call.",
+  },
+  {
+    n: '02',
+    title: 'Knowledge Audit.',
+    terms: auditTerms,
+    body: "We map where your firm's knowledge actually lives, show you exactly where your AI is guessing, and hand you a working starter set of files. Yours to keep whether or not we go further.",
+  },
+  {
+    n: '03',
+    title: 'VIK build and run.',
+    terms: '$2,500 a month, month to month.',
+    body: 'We write the full system, build the assistants that run on it, and keep it current as your firm changes. Cancel any month. Keep every file.',
+  },
+];
+---
+
+{
+  variant === 'full' ? (
+    <div class="zw-ladder">
+      <ol class="grid md:grid-cols-3 gap-5">
+        {steps.map((s) => (
+          <li class="zw-card zw-reveal flex flex-col">
+            <span class="zw-mono text-zw-teal text-sm font-medium mb-3">{s.n}</span>
+            <h3 class="zw-h3 mb-1">
+              {s.title}{' '}<span class="font-normal text-zw-muted">{s.terms}</span>
+            </h3>
+            <p class="text-sm text-zw-muted leading-relaxed mt-2">{s.body}</p>
+          </li>
+        ))}
+      </ol>
+      <p class="mt-8 text-zw-ink font-medium zw-reveal">
+        A fraction of an ops hire &mdash; and the knowledge doesn't walk out the door.
+      </p>
+    </div>
+  ) : (
+    <div class="zw-ladder zw-ladder-condensed zw-reveal">
+      <p class="text-zw-muted">
+        <span class="text-zw-ink font-medium">Book a free intro call</span>
+        <span class="zw-ladder-arrow" aria-hidden="true">→</span>
+        <span class="text-zw-ink font-medium">Knowledge Audit</span> ({auditTermsShort})
+        <span class="zw-ladder-arrow" aria-hidden="true">→</span>
+        <span class="text-zw-ink font-medium">Build and run</span> ($2,500/mo)
+      </p>
+      <p class="mt-3 text-sm text-zw-muted">
+        Cancel any month. Keep every file at every step.
+      </p>
+      <a
+        href={startHref}
+        class="mt-6 inline-flex items-center justify-center bg-zw-teal text-white font-semibold px-7 py-3.5 rounded-full hover:bg-zw-rust transition-colors"
+      >
+        Start with the audit
+      </a>
+    </div>
+  )
+}
+
+<style is:global>
+  .zw-ladder-arrow {
+    font-family: 'DM Mono', ui-monospace, monospace;
+    color: var(--zw-teal);
+    margin: 0 0.5rem;
+  }
+</style>

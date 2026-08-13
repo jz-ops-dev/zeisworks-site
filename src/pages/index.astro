@@ -2,6 +2,7 @@
 import LandingLayout from '../layouts/LandingLayout.astro';
 import AuditCta from '../components/AuditCta.astro';
 import FileExplorer from '../components/FileExplorer.astro';
+import OfferLadder from '../components/OfferLadder.astro';
 
 
 // ── The shift: two cards (the principle + the method). Source URLs from
@@ -43,14 +44,6 @@ const layers = [
 ];
 
 const modelChips = ['a current model', 'the next one', "whatever's best"];
-
-// ── The three classical appeals, each mapped to what ICM makes the AI
-// actually do. Drives Animation E (three appeals converge into one method). ──
-const appeals = [
-  { greek: 'Ethos', gloss: 'Credibility — authority that’s sourced, not asserted.', maps: 'Identity + traceability' },
-  { greek: 'Pathos', gloss: 'The felt experience — confidence that’s earned, not performed.', maps: 'Working outputs' },
-  { greek: 'Logos', gloss: 'Reason and evidence — logic you can inspect, not hidden.', maps: 'Routing + reference' },
-];
 
 // ── Interactive routing layer: each rule in routing.md opens the file the AI
 // actually reads for that kind of question. File contents are illustrative
@@ -100,8 +93,8 @@ const routes = [
 ---
 
 <LandingLayout
-  title="ZeisWorks · AI that knows how your business runs — VIK"
-  description="Most AI doesn't know how your business actually runs, so it guesses. ZeisWorks builds your VIK — Visualized Institutional Knowledge: a living, queryable system that captures how your company operates, so AI can act on it without guessing — and so that knowledge stops walking out the door when your people do."
+  title="ZeisWorks · AI that answers like it works at your firm"
+  description="Your firm runs on what your people know — and your AI has never read a word of it. ZeisWorks writes how your firm actually works into plain files your team and your AI both read, so the guessing stops and the knowledge stays when people leave."
   ogImage="/og.png"
 >
   <span id="top" aria-hidden="true"></span>
@@ -110,30 +103,30 @@ const routes = [
   <section class="zw-hero-split bg-zw-cream border-b border-zw-border">
     <div class="zw-wrap px-5 sm:px-8 zw-hero-grid">
       <div>
-        <p class="zw-eyebrow mb-4 zw-reveal" style="color: var(--zw-rust);">Visualized Institutional Knowledge</p>
+        <p class="zw-eyebrow mb-4 zw-reveal" style="color: var(--zw-rust);">For firms that run on expertise</p>
         <h1
           class="font-serif font-semibold text-zw-ink text-balance zw-reveal"
           style="font-size: clamp(2.1rem, 5.2vw, 3.5rem); line-height: 1.06; letter-spacing: -0.025em; margin: 0 0 20px;"
         >
-          AI that actually knows <em style="color: var(--zw-teal);">how your business runs.</em>
+          Your firm runs on what your people know.
+          <em style="color: var(--zw-teal);">Your AI has never read a word of it.</em>
         </h1>
         <p class="text-zw-muted mb-8 zw-reveal" style="font-size: clamp(1.05rem, 1.7vw, 1.25rem); line-height: 1.55; max-width: 52ch;">
-          We build your <strong class="text-zw-ink font-semibold">VIK</strong> &mdash; Visualized
-          Institutional Knowledge: a living, queryable system that captures how your company really
-          operates, so AI can act on it without guessing &mdash; and so that knowledge stops walking
-          out the door when your people do.
+          So it guesses. Wrong numbers, generic drafts, confident answers nobody trusts. We write
+          how your firm actually works into plain files your team and your AI both read. The
+          guessing stops, and the knowledge stays when people leave.
         </p>
         <div class="flex flex-col sm:flex-row gap-3 zw-reveal">
           <AuditCta
             location="hero"
-            label="Get started"
+            label="Book a free intro call"
             class="inline-flex items-center justify-center gap-2 bg-zw-teal text-white font-semibold px-7 py-3.5 rounded-full hover:bg-zw-rust transition-colors"
           />
           <a
-            href="#vik"
+            href="#demo"
             class="inline-flex items-center justify-center px-7 py-3.5 rounded-full font-medium text-zw-ink border border-zw-ink/15 hover:bg-zw-ink/[0.04] transition-colors"
           >
-            What's a VIK?
+            See it working
           </a>
         </div>
       </div>
@@ -166,28 +159,18 @@ const routes = [
     })();
   </script>
 
-  <!-- ═══════════════════ VIK — WHAT YOU OWN ═══════════════════ -->
-  <section id="vik" class="zw-anchor zw-section">
-    <div class="zw-wrap px-5 sm:px-8 max-w-[820px]">
-      <p class="zw-eyebrow mb-4 zw-reveal">What you own</p>
-      <h2 class="zw-h2 mb-6 zw-reveal">VIK &mdash; Visualized Institutional Knowledge.</h2>
-      <p class="text-zw-muted max-w-[640px] mb-8 zw-reveal text-pretty">
-        Your VIK is the working system you keep when the engagement ends &mdash; not a slide, not a
-        diagram. It holds how your business actually runs and does work with it: it researches,
-        drafts, and answers, all from knowledge you can read and edit.
+  <!-- ═══════════════════ ANTI-POSITIONING STRIP ═══════════════════ -->
+  <section class="zw-strip bg-zw-forest text-zw-cream">
+    <div class="zw-wrap px-5 sm:px-8 text-center">
+      <p class="zw-strip-line zw-reveal">
+        We don't sell chatbots. We make the AI you already pay for answer like it works at
+        your firm.
       </p>
-      <div class="zw-vik-plate zw-reveal">
-        <span class="zw-vik-tag zw-mono">VIK</span>
-        <p class="zw-vik-thesis">
-          Tools depreciate. Context compounds. ICM is how we compound it.
-          <strong>VIK is what you own when we're done.</strong>
-        </p>
-      </div>
     </div>
   </section>
 
   <!-- ═══════════════════ THE PROBLEM ═══════════════════ -->
-  <section id="the-problem" class="zw-anchor zw-section border-t border-zw-border">
+  <section id="the-problem" class="zw-anchor zw-section">
     <div class="zw-wrap px-5 sm:px-8 max-w-[760px]">
       <p class="zw-eyebrow mb-4 zw-reveal">The problem</p>
       <h2 class="zw-h2 mb-7 zw-reveal">Turning AI on is easy. Trusting it is the hard part.</h2>
@@ -205,119 +188,106 @@ const routes = [
           The problem was never the AI. It's that what it needed to know was never written down
           anywhere it could read.
         </p>
+        <p>
+          The fix is simpler than another tool: write down how the business works in plain,
+          readable files &mdash; the same files the AI reads to answer. A person can check them,
+          the AI follows them, and when something's off you fix the file, not the whole system.
+        </p>
       </div>
     </div>
   </section>
 
-  <!-- ═══════════════════ THE SHIFT ═══════════════════ -->
-  <section id="the-shift" class="zw-anchor zw-section bg-white/40 border-y border-zw-border">
+  <!-- ═══════════════════ DEMO (centerpiece) ═══════════════════ -->
+  <section id="demo" class="zw-anchor zw-section bg-zw-forest text-zw-cream">
     <div class="zw-wrap px-5 sm:px-8">
-      <p class="zw-eyebrow mb-4 zw-reveal">Why now</p>
-      <h2 class="zw-h2 mb-6 max-w-[820px] zw-reveal">The fix is a pattern the industry is converging on.</h2>
-      <p class="text-zw-muted max-w-[760px] mb-12 zw-reveal">
-        Instead of paying to build a separate AI tool for every task, the smartest teams now do
-        something simpler. They write down how the business works in plain, readable files, the
-        same files the AI reads to answer. A person can check them, the AI follows them, and when
-        something's off you fix the file, not the whole system.
-      </p>
+      <p class="zw-eyebrow mb-4 zw-reveal" style="color:#F0A184;">See it working</p>
+      <h2 class="zw-h2 mb-6 max-w-[820px] zw-reveal text-zw-cream">
+        Every answer traces back to a file you can read and edit. Try it.
+      </h2>
 
-      <div class="grid md:grid-cols-2 gap-5 max-w-[820px]">
+      <FileExplorer routes={routes} instanceId="home" theme="dark" />
+      <!-- CO-002 item D mounts the live query box + suggested questions in
+           FileExplorer's named "query" slot; this section needs no rework. -->
+
+      <!-- Where this comes from: the two sources behind the method. -->
+      <div class="grid md:grid-cols-2 gap-5 max-w-[840px] mt-12">
         {shiftCards.map((card) => (
-          <article class="zw-card zw-reveal flex flex-col">
-            <p class="zw-eyebrow text-[0.7rem] mb-3">{card.tag}</p>
-            <h3 class="zw-h3 mb-3">{card.title}</h3>
-            <p class="text-sm text-zw-muted leading-relaxed flex-1">{card.body}</p>
+          <article class="zw-card-dark zw-card-dark-compact zw-reveal flex flex-col">
+            <p class="zw-eyebrow text-[0.7rem] mb-3" style="color:#F0A184;">{card.tag}</p>
+            <h3 class="zw-h3 mb-3 text-white">{card.title}</h3>
+            <p class="text-sm leading-relaxed text-zw-cream/75 flex-1">{card.body}</p>
             {card.src.href && (
               <p class="mt-4">
                 <a
                   href={card.src.href}
                   target="_blank"
                   rel="noopener"
-                  class="text-sm font-medium text-zw-teal hover:underline"
+                  class="text-sm font-medium hover:underline"
+                  style="color:#F0A184;"
                 >[source]</a>
               </p>
             )}
           </article>
         ))}
       </div>
+    </div>
+  </section>
 
-      <!-- Animation C: plain text, read by both -->
-      <div class="mt-12 zw-reveal">
-        <div data-anim="bothread" class="zw-bothread mx-auto max-w-[640px]">
-          <div class="zw-bothread-labels">
-            <span class="zw-bothread-label zw-bothread-label--l">your team reads this</span>
-            <span class="zw-bothread-label zw-bothread-label--r">your AI reads this</span>
+  <!-- ═══════════════════ VIK — WHAT YOU OWN ═══════════════════ -->
+  <section id="vik" class="zw-anchor zw-section">
+    <div class="zw-wrap px-5 sm:px-8">
+      <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+        <div>
+          <p class="zw-eyebrow mb-4 zw-reveal">What you own</p>
+          <h2 class="zw-h2 mb-6 zw-reveal">VIK &mdash; Visualized Institutional Knowledge.</h2>
+          <p class="text-zw-muted max-w-[640px] mb-8 zw-reveal text-pretty">
+            Your VIK is the working system you keep when the engagement ends &mdash; not a slide, not a
+            diagram. It holds how your business actually runs and does work with it: it researches,
+            drafts, and answers, all from knowledge you can read and edit.
+          </p>
+          <div class="zw-vik-plate zw-reveal">
+            <span class="zw-vik-tag zw-mono">VIK</span>
+            <p class="zw-vik-thesis">
+              Tools depreciate. Context compounds. ICM is how we compound it.
+              <strong>VIK is what you own when we're done.</strong>
+            </p>
           </div>
-          <div class="zw-knowledge zw-mono" role="img" aria-label="A plain-text knowledge file that both a person and an AI can read.">
-            <div class="zw-knowledge-bar">
-              <span class="zw-dot"></span><span class="zw-dot"></span><span class="zw-dot"></span>
-              <span class="ml-3 text-[0.72rem] text-zw-muted">knowledge.md</span>
+        </div>
+
+        <!-- Animation C: plain text, read by both -->
+        <div class="zw-reveal">
+          <div data-anim="bothread" class="zw-bothread mx-auto max-w-[640px]">
+            <div class="zw-bothread-labels">
+              <span class="zw-bothread-label zw-bothread-label--l">your team reads this</span>
+              <span class="zw-bothread-label zw-bothread-label--r">your AI reads this</span>
             </div>
-            <pre class="zw-knowledge-body"><span class="zw-kline"># Refund policy</span>
+            <div class="zw-knowledge zw-mono" role="img" aria-label="A plain-text knowledge file that both a person and an AI can read.">
+              <div class="zw-knowledge-bar">
+                <span class="zw-dot"></span><span class="zw-dot"></span><span class="zw-dot"></span>
+                <span class="ml-3 text-[0.72rem] text-zw-muted">knowledge.md</span>
+              </div>
+              <pre class="zw-knowledge-body"><span class="zw-kline"># Refund policy</span>
 <span class="zw-kline">window: 30 days from delivery</span>
 <span class="zw-kline">exceptions: final-sale, custom orders</span></pre>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  </section>
 
-  <!-- ═══════════════════ THE THREE APPEALS → ICM ═══════════════════ -->
-  <section id="icm-appeals" class="zw-anchor zw-section">
-    <div class="zw-wrap px-5 sm:px-8">
-      <p class="zw-eyebrow mb-4 zw-reveal">The method, in three appeals</p>
-      <h2 class="zw-h2 mb-6 max-w-[820px] zw-reveal">Three ways to be believed. One method that earns all three.</h2>
-      <p class="text-zw-muted max-w-[760px] mb-12 zw-reveal">
-        Rhetoric has persuaded people for two thousand years with three appeals. Our Interpretable
-        Context Methodology turns each one into something the AI actually does — so trust is built
-        into the structure, not performed on top of it.
-      </p>
-
-      <!-- Animation E: the three appeals converge into one method (ICM) -->
-      <div data-anim="appeals" class="zw-appeals" aria-label="Ethos, pathos, and logos each map to a part of the Interpretable Context Methodology.">
-        <div class="zw-appeals-grid">
-          {appeals.map((a, i) => (
-            <div class="zw-appeal" style={`--i:${i};`}>
-              <p class="zw-appeal-greek">{a.greek}</p>
-              <p class="zw-appeal-gloss">{a.gloss}</p>
-              <span class="zw-appeal-trace" aria-hidden="true"></span>
-              <p class="zw-appeal-maps zw-mono">{a.maps}</p>
-              <span class="zw-appeal-connector" aria-hidden="true"></span>
-            </div>
-          ))}
-        </div>
-        <div class="zw-appeals-icm">
-          <span class="zw-appeals-icm-tag zw-mono">ICM</span>
-          <span class="zw-appeals-icm-text">
-            Interpretable Context Methodology — every answer traces back to a file you can read and edit.
-          </span>
-        </div>
-
-        <FileExplorer routes={routes} instanceId="home" />
-      </div>
-    </div>
-  </section>
-
-  <!-- ═══════════════════ WHAT WE BUILD ═══════════════════ -->
-  <section id="what-we-build" class="zw-anchor zw-section bg-zw-forest text-zw-cream">
-    <div class="zw-wrap px-5 sm:px-8">
-      <p class="zw-eyebrow mb-4 zw-reveal" style="color:#F0A184;">What we build</p>
-      <h2 class="zw-h2 mb-12 max-w-[860px] zw-reveal text-zw-cream">We get your knowledge in order first, then build the tools that use it.</h2>
-
-      <!-- Two main offers carry the visual weight. -->
-      <div class="grid md:grid-cols-2 gap-5">
-        <article class="zw-card-dark zw-reveal">
-          <h3 class="zw-h3 mb-3 text-white">Your business, written down</h3>
-          <p class="text-[0.95rem] leading-relaxed text-zw-cream/75">
+      <!-- What we build on it: the two offers, folded in from the old standalone section. -->
+      <div class="grid md:grid-cols-2 gap-5 mt-14">
+        <article class="zw-card zw-reveal">
+          <h3 class="zw-h3 mb-3">Your business, written down</h3>
+          <p class="text-sm text-zw-muted leading-relaxed">
             We write down how your business actually works: how you define things, price things, and
             run things, all in plain files your team and your AI can both read. One place that holds
             the real answers, instead of knowledge scattered across dashboards, inboxes, and
             people's heads.
           </p>
         </article>
-        <article class="zw-card-dark zw-reveal">
-          <h3 class="zw-h3 mb-3 text-white">The tools that run on it</h3>
-          <p class="text-[0.95rem] leading-relaxed text-zw-cream/75">
+        <article class="zw-card zw-reveal">
+          <h3 class="zw-h3 mb-3">The tools that run on it</h3>
+          <p class="text-sm text-zw-muted leading-relaxed">
             Once your knowledge is in place, we build the AI assistants and automations that use it.
             Sales and customer work, finding new customers, reporting, and the busywork in between.
             Each one is tested on your real cases, with a person reviewing the work before anything
@@ -325,8 +295,7 @@ const routes = [
           </p>
         </article>
       </div>
-
-      <p class="mt-8 text-sm text-zw-cream/60 max-w-[760px] zw-reveal">
+      <p class="mt-8 text-sm text-zw-muted max-w-[760px] zw-reveal">
         Everything we build is yours to keep. It's all in plain writing you can read and edit, with
         nothing locking you in. Switch tools or AI providers next year without starting over.
       </p>
@@ -407,19 +376,27 @@ const routes = [
     </div>
   </section>
 
-  <!-- ═══════════════════ START / PRICING + CTA ═══════════════════ -->
+  <!-- ═══════════════════ PRICING / OFFER LADDER ═══════════════════ -->
+  <section id="pricing" class="zw-anchor zw-section bg-white/40 border-y border-zw-border">
+    <div class="zw-wrap px-5 sm:px-8">
+      <p class="zw-eyebrow mb-4 zw-reveal">How to start</p>
+      <h2 class="zw-h2 mb-12 max-w-[760px] zw-reveal">Start small. Keep everything.</h2>
+      <OfferLadder variant="full" />
+    </div>
+  </section>
+
+  <!-- ═══════════════════ START / CTA ═══════════════════ -->
   <section id="start" class="zw-anchor zw-section bg-zw-forest text-zw-cream">
     <div class="zw-wrap px-5 sm:px-8 max-w-[760px] text-center">
       <p class="zw-eyebrow mb-4 zw-reveal" style="color:#F0A184;">Get started</p>
       <h2 class="zw-h2 mb-6 text-zw-cream zw-reveal">Start with a free intro call.</h2>
       <p class="text-zw-cream/75 mb-9 zw-reveal">
-        We'll talk through where your institutional knowledge is stuck today and what a VIK would
-        do about it. No cost, no obligation. If it's a fit, engagements run $2,500 a month, month
-        to month.
+        Fifteen minutes on where your knowledge is stuck and whether a VIK would fix it. No deck,
+        no pitch. If we're not the right fit, we'll tell you on the call.
       </p>
       <AuditCta
         location="footer"
-        label="Get started"
+        label="Book a free intro call"
         class="inline-flex items-center justify-center bg-zw-cream text-zw-forest font-semibold px-8 py-4 rounded-full hover:bg-white transition-colors zw-reveal"
       />
     </div>
@@ -585,138 +562,20 @@ const routes = [
     color: var(--zw-ink);
   }
 
-  /* ───────── Animation E: three appeals → one method (ICM) ───────── */
-  .zw-appeals { max-width: 820px; }
-  .zw-appeals-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 1rem;
-    margin-bottom: 3rem;
-  }
-  @media (min-width: 720px) {
-    .zw-appeals-grid { grid-template-columns: repeat(3, 1fr); gap: 1.1rem; }
-  }
-  .zw-appeal {
-    position: relative;
-    background: var(--zw-card);
-    border: 1px solid var(--zw-border);
-    border-left: 3px solid var(--zw-teal);
-    border-radius: 14px;
-    padding: 1.3rem 1.3rem 1.4rem;
-  }
-  .zw-appeal-greek {
+  /* ── Anti-positioning strip ── */
+  .zw-strip { padding-top: 2.25rem; padding-bottom: 2.25rem; }
+  .zw-strip-line {
     font-family: 'Lora', Georgia, serif;
-    font-style: italic;
-    font-weight: 600;
-    font-size: 1.5rem;
-    line-height: 1.1;
-    color: var(--zw-ink);
-    margin: 0 0 0.5rem;
-  }
-  .zw-appeal-gloss {
-    font-size: 0.9rem;
-    line-height: 1.5;
-    color: var(--zw-muted);
-    margin: 0;
-  }
-  .zw-appeal-trace {
-    display: block;
-    height: 2px;
-    margin: 1rem 0 0.85rem;
-    border-radius: 2px;
-    background: linear-gradient(90deg, var(--zw-teal), rgba(224, 69, 48, 0.25));
-    transform: scaleX(1);
-    transform-origin: left center;
-  }
-  .zw-appeal-maps {
-    font-size: 0.78rem;
     font-weight: 500;
-    letter-spacing: 0.01em;
-    color: var(--zw-teal);
-    margin: 0;
+    font-size: clamp(1.15rem, 2.2vw, 1.5rem);
+    line-height: 1.4;
+    text-wrap: balance;
+    max-width: 46ch;
+    margin-inline: auto;
   }
-  .zw-appeal-maps::before { content: '→ '; opacity: 0.7; }
-  .zw-appeal-connector {
-    position: absolute;
-    left: 50%;
-    bottom: -2rem;
-    width: 2px;
-    height: 2rem;
-    background: linear-gradient(rgba(224, 69, 48, 0.55), rgba(224, 69, 48, 0.2));
-    transform: translateX(-50%) scaleY(1);
-    transform-origin: top center;
-  }
-  @media (max-width: 719px) { .zw-appeal-connector { display: none; } }
-  .zw-appeals-icm {
-    display: flex;
-    align-items: center;
-    gap: 0.85rem;
-    flex-wrap: wrap;
-    border: 2px solid var(--zw-teal);
-    background: rgba(224, 69, 48, 0.05);
-    border-radius: 12px;
-    padding: 1rem 1.2rem;
-  }
-  .zw-appeals-icm-tag {
-    flex: none;
-    font-size: 0.82rem;
-    font-weight: 600;
-    letter-spacing: 0.04em;
-    color: var(--zw-teal);
-    border: 1px solid rgba(224, 69, 48, 0.45);
-    border-radius: 6px;
-    padding: 0.15em 0.5em;
-  }
-  .zw-appeals-icm-text { font-size: 0.95rem; line-height: 1.5; color: var(--zw-ink); }
 
-  /* Motion-on path for Animation E. Resting state (no JS / reduced motion)
-     leaves everything in its final, fully-revealed position above. */
-  html.zw-anim .zw-appeal {
-    opacity: 0;
-    transform: translateY(14px);
-    transition: opacity 0.6s var(--zw-ease), transform 0.6s var(--zw-ease);
-    transition-delay: calc(var(--i) * 0.16s);
-  }
-  html.zw-anim [data-anim="appeals"].zw-play .zw-appeal { opacity: 1; transform: none; }
-
-  html.zw-anim .zw-appeal-trace {
-    transform: scaleX(0);
-    transition: transform 0.7s var(--zw-ease);
-    transition-delay: calc(var(--i) * 0.16s + 0.45s);
-  }
-  html.zw-anim [data-anim="appeals"].zw-play .zw-appeal-trace { transform: scaleX(1); }
-
-  html.zw-anim .zw-appeal-maps {
-    opacity: 0;
-    transform: translateY(4px);
-    transition: opacity 0.5s var(--zw-ease), transform 0.5s var(--zw-ease);
-    transition-delay: calc(var(--i) * 0.16s + 0.9s);
-  }
-  html.zw-anim [data-anim="appeals"].zw-play .zw-appeal-maps { opacity: 1; transform: none; }
-
-  html.zw-anim .zw-appeal-connector {
-    transform: translateX(-50%) scaleY(0);
-    transition: transform 0.5s var(--zw-ease);
-    transition-delay: calc(var(--i) * 0.16s + 1.15s);
-  }
-  html.zw-anim [data-anim="appeals"].zw-play .zw-appeal-connector { transform: translateX(-50%) scaleY(1); }
-
-  html.zw-anim .zw-appeals-icm {
-    opacity: 0;
-    transform: translateY(10px);
-    transition: opacity 0.6s var(--zw-ease), transform 0.6s var(--zw-ease);
-    transition-delay: 1.5s;
-  }
-  html.zw-anim [data-anim="appeals"].zw-play .zw-appeals-icm {
-    opacity: 1;
-    transform: none;
-    animation: zwIcmLock 0.9s var(--zw-ease) 1.7s both;
-  }
-  @keyframes zwIcmLock {
-    0% { box-shadow: 0 0 0 0 rgba(224, 69, 48, 0); }
-    45% { box-shadow: 0 0 0 7px rgba(224, 69, 48, 0.12); }
-    100% { box-shadow: 0 0 0 0 rgba(224, 69, 48, 0); }
-  }
+  /* Compact variant for the source cards inside the demo band. */
+  .zw-card-dark-compact { padding: 1.3rem 1.3rem 1.4rem; }
 
   /* Explorer/router styles live in FileExplorer.astro (is:global). */
 
