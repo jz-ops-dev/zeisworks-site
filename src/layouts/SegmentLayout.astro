@@ -3,6 +3,7 @@
 // Data-only pages pass copy in; structure is: hero → what your VIK holds →
 // what runs on it → demo band → condensed offer ladder → CTA.
 import LandingLayout from './LandingLayout.astro';
+import AuditCta from '../components/AuditCta.astro';
 import FileExplorer from '../components/FileExplorer.astro';
 import type { Route } from '../components/FileExplorer.astro';
 import OfferLadder from '../components/OfferLadder.astro';
@@ -27,9 +28,11 @@ const { title, description, segment, eyebrow, h1, intro, holds, runs, routes, se
 const siteUrl = 'https://zeisworks.com';
 const startHref = `/start?segment=${segment}`;
 
+// All on-page anchors: a segment landing page should never send a visitor
+// away mid-scroll.
 const navLinks = [
+  { label: 'What you own', href: '#holds' },
   { label: 'See it working', href: '#demo' },
-  { label: 'How it works', href: '/#how-it-works' },
   { label: 'Pricing', href: '#pricing' },
 ];
 
@@ -64,11 +67,25 @@ const serviceJsonLd = {
       <div class="zw-lede space-y-5 zw-reveal">
         {intro.map((p) => <p set:html={p} />)}
       </div>
+      <div class="flex flex-col sm:flex-row gap-3 mt-8 zw-reveal">
+        <AuditCta
+          location="hero"
+          label="Book a free intro call"
+          href={startHref}
+          class="inline-flex items-center justify-center gap-2 bg-zw-teal text-white font-semibold px-7 py-3.5 rounded-full hover:bg-zw-rust transition-colors"
+        />
+        <a
+          href="#demo"
+          class="inline-flex items-center justify-center px-7 py-3.5 rounded-full font-medium text-zw-ink border border-zw-ink/15 hover:bg-zw-ink/[0.04] transition-colors"
+        >
+          See it working
+        </a>
+      </div>
     </div></div>
   </section>
 
   <!-- ═══════════════════ WHAT YOUR VIK HOLDS ═══════════════════ -->
-  <section class="zw-anchor zw-section">
+  <section id="holds" class="zw-anchor zw-section">
     <div class="zw-wrap px-5 sm:px-8"><div class="zw-measure">
       <p class="zw-eyebrow mb-4 zw-reveal">What you own</p>
       <h2 class="zw-h2 mb-8 zw-reveal">What your VIK holds</h2>

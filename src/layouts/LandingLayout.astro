@@ -303,17 +303,26 @@ const orgJsonLd = {
           />
         </nav>
 
-        <button
-          id="zw-menu-btn"
-          class="md:hidden flex flex-col justify-center gap-[5px] w-10 h-10 -mr-2"
-          aria-label="Open menu"
-          aria-expanded="false"
-          aria-controls="zw-mobile-menu"
-        >
-          <span class="block w-6 h-[2px] bg-zw-ink rounded transition-transform"></span>
-          <span class="block w-6 h-[2px] bg-zw-ink rounded transition-opacity"></span>
-          <span class="block w-6 h-[2px] bg-zw-ink rounded transition-transform"></span>
-        </button>
+        <!-- Mobile: keep a visible conversion action next to the hamburger —
+             previously the header had no CTA at all below md. -->
+        <div class="md:hidden flex items-center gap-2">
+          <AuditCta
+            location="nav"
+            label="Get started"
+            class="bg-zw-teal text-white text-sm font-semibold px-3.5 py-1.5 rounded-full hover:bg-zw-rust transition-colors"
+          />
+          <button
+            id="zw-menu-btn"
+            class="flex flex-col justify-center gap-[5px] w-10 h-10 -mr-2"
+            aria-label="Open menu"
+            aria-expanded="false"
+            aria-controls="zw-mobile-menu"
+          >
+            <span class="block w-6 h-[2px] bg-zw-ink rounded transition-transform"></span>
+            <span class="block w-6 h-[2px] bg-zw-ink rounded transition-opacity"></span>
+            <span class="block w-6 h-[2px] bg-zw-ink rounded transition-transform"></span>
+          </button>
+        </div>
       </div>
     </header>
 
