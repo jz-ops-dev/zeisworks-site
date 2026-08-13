@@ -1,7 +1,11 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
+// Pricing on the current shell, built around the offer ladder — the single
+// source of truth for the offer (OfferLadder.astro). The old page taught a
+// two-step engagement with a "$2,500–$5,000/month" range that existed
+// nowhere else on the site.
+import LandingLayout from '../layouts/LandingLayout.astro';
 import AuditCta from '../components/AuditCta.astro';
-import { CALENDLY_URL } from '../config';
+import OfferLadder from '../components/OfferLadder.astro';
 
 const includes = [
   'Your VIK built out and updated as your business changes: a living, queryable system that holds how your company actually runs',
@@ -13,10 +17,6 @@ const includes = [
 
 const faq = [
   {
-    q: 'Why is there a range?',
-    a: "Because the more your business runs on knowledge that only lives in people's heads, the more there is to capture and visualize. A quick intro call sizes the work to your situation and shows the cost before you commit.",
-  },
-  {
     q: "What if it doesn't work?",
     a: 'Your VIK is something you can open and read from day one, so progress is visible, not promised. If it is not holding up its end, the work changes. And you can cancel anytime, so we have to earn the next month, every month.',
   },
@@ -25,106 +25,90 @@ const faq = [
     a: 'Yes. Your VIK is yours: the knowledge, the system that runs on it, all of it. Cancel anytime and you keep it. You own everything.',
   },
 ];
+
+const navLinks = [
+  { label: 'See it working', href: '/#demo' },
+  { label: 'How it works', href: '/#how-it-works' },
+  { label: 'Proof', href: '/results/' },
+  { label: 'About', href: '/about/' },
+];
 ---
 
-<BaseLayout
-  title="Pricing: Month to Month, No Contracts | ZeisWorks"
-  description="Plans start at $2,500/month, sized on a free intro call. You're paying to build and own your VIK: the working system that holds how your business runs. Month to month, cancel anytime."
+<LandingLayout
+  title="Pricing · Month to month, no contracts · ZeisWorks"
+  description="Start with a free intro call, then a fixed-price one-week Knowledge Audit, then build-and-run at $2,500 a month, month to month. Cancel any month. Keep every file at every step."
+  ogImage="/og.png"
+  navLinks={navLinks}
+  brandHref="/"
 >
-  <!-- Hero -->
-  <section class="max-w-3xl mx-auto px-6 pt-16 sm:pt-24 pb-10 text-center">
-    <h1 class="font-serif text-4xl sm:text-5xl font-semibold leading-tight tracking-tight mb-6">
-      You're paying to build and own your VIK.
-    </h1>
-    <p class="text-lg text-ink-mid leading-relaxed max-w-2xl mx-auto">
-      Every engagement starts with a free intro call. We'll show you what AI can't answer about your business today and what it costs to turn that into a VIK you own, before you pay anything.
-    </p>
-  </section>
-
-  <!-- Single anchor pricing -->
-  <section class="max-w-3xl mx-auto px-6 pb-14">
-    <div class="relative bg-navy-deep rounded-2xl p-8 sm:p-10 text-center overflow-hidden">
-      <div
-        class="absolute inset-0 pointer-events-none"
-        style="background: radial-gradient(ellipse 90% 70% at 85% 0%, rgba(224,69,48,0.22) 0%, transparent 65%);"
-        aria-hidden="true"
-      ></div>
-      <div class="relative">
-      <p class="font-serif text-3xl sm:text-4xl font-semibold text-white mb-4">
-        Plans start at $2,500/month.
-      </p>
-      <p class="text-white/70 leading-relaxed max-w-xl mx-auto mb-4">
-        Most plans land between $2,500 and $5,000/month depending on how much of your business currently runs on knowledge nobody has written down: more to capture and visualize means more to build into your VIK.
-      </p>
-      <p class="text-white/70 leading-relaxed max-w-xl mx-auto">
-        Month to month. Cancel anytime. No setup fees. The VIK is yours: cancel and you keep it.
-      </p>
+  <!-- ═══════════════════ HERO + LADDER ═══════════════════ -->
+  <section class="zw-section zw-hero-pad bg-zw-cream border-b border-zw-border">
+    <div class="zw-wrap px-5 sm:px-8">
+      <div class="zw-measure-wide">
+        <p class="zw-eyebrow mb-4 zw-reveal" style="color: var(--zw-rust);">Pricing</p>
+        <h1 class="zw-h1 text-zw-ink mb-6 zw-reveal">Start small. Keep everything.</h1>
+        <p class="zw-lede mb-8 zw-reveal">
+          Three steps, each one optional until you've seen the last. Month to month, no setup
+          fees, and everything we write is yours to keep at every step.
+        </p>
+      </div>
+      <div class="mt-6">
+        <OfferLadder variant="full" />
       </div>
     </div>
   </section>
 
-  <!-- What every plan includes -->
-  <section class="max-w-3xl mx-auto px-6 pb-14">
-    <h2 class="font-serif text-2xl sm:text-3xl font-semibold leading-tight mb-7">
-      What every plan includes
-    </h2>
-    <p class="text-ink-mid leading-relaxed mb-7">
-      ICM is the method we use to capture how your business runs. Your VIK is what you end up owning: a living, queryable system that does work from knowledge you can read and edit.
-    </p>
-    <ul class="space-y-4">
-      {includes.map((item) => (
-        <li class="flex items-start gap-3 text-ink-mid leading-relaxed">
-          <svg
-            width="20"
-            height="20"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2.5"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            class="text-navy shrink-0 mt-0.5"
-            aria-hidden="true"
-          >
-            <path d="M20 6L9 17l-5-5" />
-          </svg>
-          <span>{item}</span>
-        </li>
-      ))}
-    </ul>
+  <!-- ═══════════════════ WHAT BUILD-AND-RUN INCLUDES ═══════════════════ -->
+  <section class="zw-section">
+    <div class="zw-wrap px-5 sm:px-8"><div class="zw-measure">
+      <p class="zw-eyebrow mb-4 zw-reveal">Step 03, in full</p>
+      <h2 class="zw-h2 mb-8 zw-reveal">What build-and-run includes</h2>
+      <p class="text-zw-muted mb-12 zw-reveal">
+        We write down how your business works in plain, readable files &mdash; the same files the
+        AI reads to answer. Your VIK is what you end up owning: a living, queryable system that
+        does work from knowledge you can read and edit.
+      </p>
+      <ul class="space-y-6">
+        {includes.map((item) => (
+          <li class="zw-reveal flex gap-4">
+            <span class="zw-mono text-zw-teal text-sm pt-1 shrink-0" aria-hidden="true">→</span>
+            <p class="text-zw-muted">{item}</p>
+          </li>
+        ))}
+      </ul>
+    </div></div>
   </section>
 
-  <!-- Two CTAs side by side -->
-  <section class="max-w-3xl mx-auto px-6 pb-16">
-    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
-      <div class="text-center">
-        <AuditCta
-          location="mid"
-          class="block w-full bg-orange text-white font-semibold text-base px-6 py-4 rounded-full hover:bg-orange-bright transition-colors"
-        />
-      </div>
-      <div class="text-center">
-        <a
-          href={CALENDLY_URL}
-          class="block w-full border border-navy text-navy font-medium text-base px-6 py-4 rounded-lg hover:bg-navy hover:text-cream transition-colors"
-        >Talk to a human first</a>
-        <p class="mt-2 text-xs text-ink-light">15 minutes, no pitch deck</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- FAQ -->
-  <section class="bg-white border-t border-cream-dark">
-    <div class="max-w-3xl mx-auto px-6 py-16">
-      <h2 class="font-serif text-2xl sm:text-3xl font-semibold leading-tight mb-8">Questions</h2>
-      <dl class="divide-y divide-cream-dark border-y border-cream-dark">
+  <!-- ═══════════════════ FAQ ═══════════════════ -->
+  <section class="zw-section bg-white border-y border-zw-border">
+    <div class="zw-wrap px-5 sm:px-8"><div class="zw-measure">
+      <p class="zw-eyebrow mb-4 zw-reveal">Questions</p>
+      <h2 class="zw-h2 mb-8 zw-reveal">The two everyone asks.</h2>
+      <dl class="space-y-8">
         {faq.map(({ q, a }) => (
-          <div class="py-6">
-            <dt class="font-semibold text-ink mb-2">{q}</dt>
-            <dd class="text-sm text-ink-mid leading-relaxed">{a}</dd>
+          <div class="zw-reveal">
+            <dt class="font-semibold text-zw-ink mb-2">{q}</dt>
+            <dd class="text-sm text-zw-muted leading-relaxed">{a}</dd>
           </div>
         ))}
       </dl>
-    </div>
+    </div></div>
   </section>
-</BaseLayout>
+
+  <!-- ═══════════════════ CTA ═══════════════════ -->
+  <section class="zw-section bg-zw-forest text-zw-cream">
+    <div class="zw-wrap px-5 sm:px-8"><div class="zw-measure mx-auto text-center">
+      <p class="zw-eyebrow zw-eyebrow-dark mb-4 zw-reveal">Get started</p>
+      <h2 class="zw-h2 mb-6 text-zw-cream zw-reveal">Start with a free intro call.</h2>
+      <p class="text-zw-cream/75 mb-9 zw-reveal">
+        Fifteen minutes on where your knowledge is stuck and whether a VIK would fix it. No deck,
+        no pitch. If we're not the right fit, we'll tell you on the call.
+      </p>
+      <AuditCta
+        location="footer"
+        label="Book a free intro call"
+        class="inline-flex items-center justify-center bg-zw-cream text-zw-forest font-semibold px-8 py-4 rounded-full hover:bg-white transition-colors zw-reveal"
+      />
+    </div></div>
+  </section>
+</LandingLayout>
