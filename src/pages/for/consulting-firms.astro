@@ -1,0 +1,77 @@
+---
+// Segment landing page: consulting and advisory firms (CO-002 item A).
+// Copy is final per the copy deck §3; demo file contents are illustrative,
+// consulting-flavored placeholders pending Jack's sign-off.
+import SegmentLayout from '../../layouts/SegmentLayout.astro';
+
+const routes = [
+  {
+    key: 'scoping',
+    path: 'reference/playbooks/scoping.md',
+    lines: [
+      '# Scoping',
+      'Scope by deliverable, not by hours.',
+      'Every phase names an owner and an exit.',
+      'Out-of-scope asks route to a partner.',
+    ],
+  },
+  {
+    key: 'pricing',
+    path: 'reference/pricing.md',
+    lines: [
+      '# Pricing rules',
+      'A quote covers scope, staffing, timeline.',
+      'Quotes hold for 30 days.',
+      "Anything custom needs a partner's sign-off.",
+    ],
+  },
+  {
+    key: 'proposal voice',
+    path: 'identity.md',
+    lines: [
+      '# Proposal voice',
+      'Plain words. Short claims. Named proof.',
+      'Cite past work by engagement type.',
+      "Never promise a result we can't staff.",
+    ],
+  },
+  {
+    key: 'quality',
+    path: 'working/review.md',
+    lines: [
+      '# Quality standards',
+      '"Done" means partner-reviewed.',
+      'Every deliverable cites its sources.',
+      'Nothing leaves the building unreviewed.',
+    ],
+  },
+];
+---
+
+<SegmentLayout
+  title="ZeisWorks for consulting firms — AI that knows your methodology"
+  description="Your methodology is the product. We write it into plain files your team and your AI both read, so proposals, answers, and onboarding come from your playbook instead of guesses."
+  segment="consulting"
+  eyebrow="For consulting and advisory firms"
+  h1="Your methodology is the product. Right now it lives in four people's heads."
+  intro={[
+    "Somewhere in your firm there's a way you scope work, a way you price it, and a way you deliver it that took years to get right. Almost none of it is written down. It's in the partners' heads, in old decks, in the instincts of the two people everyone routes the hard questions to.",
+    "Then someone bought ChatGPT for the team, and the drafts it produces could have come from any firm on earth. That's not the AI failing. That's the AI working with what it was given: nothing.",
+    "And when a principal leaves, clients feel it within a quarter. A VIK doesn't replace the person. It keeps what they knew in the building.",
+  ]}
+  holds={[
+    { lead: 'Engagement playbooks.', body: 'How you scope, staff, and run each service line.' },
+    { lead: 'Pricing rules.', body: "What a quote covers, how long it holds, what needs a partner's sign-off." },
+    { lead: 'Proposal language and a past-work index.', body: "What you've done, for whom, in your words." },
+    { lead: "The firm's voice.", body: 'How you write to clients. What you never promise.' },
+    { lead: 'Quality standards.', body: 'What "done" looks like before it leaves the building.' },
+  ]}
+  runs={[
+    'Proposal drafts built from your frameworks and your past work, not internet boilerplate.',
+    'A straight answer to "how do we usually handle this" — with the file it came from.',
+    'Onboarding that gets a new analyst to firm-standard in weeks, not a year.',
+  ]}
+  routes={routes}
+  serviceName="ZeisWorks for consulting firms"
+  audienceName="Consulting and advisory firms"
+/>
