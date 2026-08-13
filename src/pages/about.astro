@@ -1,40 +1,71 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
-import CtaBlock from '../components/CtaBlock.astro';
+// About on the current shell. Bio copy and photo carried over verbatim;
+// the proof bar links the claims to a third-party-verifiable profile.
+import LandingLayout from '../layouts/LandingLayout.astro';
+import AuditCta from '../components/AuditCta.astro';
+import Testimonials from '../components/Testimonials.astro';
+
+const navLinks = [
+  { label: 'See it working', href: '/#demo' },
+  { label: 'How it works', href: '/#how-it-works' },
+  { label: 'Proof', href: '/results/' },
+  { label: 'Pricing', href: '/pricing/' },
+];
 ---
 
-<BaseLayout
+<LandingLayout
   title="About ZeisWorks"
   description="ZeisWorks is run by Jack Zeis in Golden, Colorado. Jack writes your business down into a system you own, and he owns your engagement personally."
-  businessSchema={true}
+  ogImage="/og.png"
+  navLinks={navLinks}
+  brandHref="/"
 >
-  <section class="max-w-3xl mx-auto px-6 pt-16 sm:pt-24 pb-16">
-    <h1 class="font-serif text-4xl sm:text-5xl font-semibold leading-tight tracking-tight mb-10">
-      A real person writes your business down.
-    </h1>
+  <!-- ═══════════════════ BIO ═══════════════════ -->
+  <section class="zw-section zw-hero-pad bg-zw-cream">
+    <div class="zw-wrap px-5 sm:px-8"><div class="zw-measure-wide">
+      <p class="zw-eyebrow mb-4 zw-reveal" style="color: var(--zw-rust);">About</p>
+      <h1 class="zw-h1 text-zw-ink mb-8 zw-reveal">A real person writes your business down.</h1>
 
-    <div class="flex flex-col sm:flex-row gap-8 items-start">
-      <img
-        src="/jack.jpg"
-        alt="Jack Zeis"
-        class="w-36 h-36 rounded-2xl object-cover border border-cream-dark shrink-0"
-        width="144"
-        height="144"
-        loading="eager"
-      />
-      <div class="space-y-5 text-ink-mid leading-relaxed text-[1.0625rem]">
-        <p>
-          ZeisWorks is run by Jack Zeis, a systems consultant based in Golden, Colorado. Jack has spent the last decade building the systems businesses run on: search, websites, CRMs, data, and the connective tissue between them, for companies from local service shops to national firms. The thread through all of it: a business should own how it works, not rent it.
-        </p>
-        <p>
-          Most of what makes a business run lives in a few people's heads. Jack writes that down into a VIK, a living system you own that holds how your business actually works and does work with it: it researches, drafts, and answers, from knowledge you can read and edit. Not a slide, not a diagram. A system that stays when a key person leaves.
-        </p>
-        <p>
-          Jack owns your engagement personally. No handoffs to a stranger, nothing on autopilot. And it stays month to month on purpose. If it isn't earning its keep, you shouldn't pay for the next month. That's the deal.
-        </p>
+      <div class="flex flex-col sm:flex-row gap-8 items-start zw-reveal">
+        <img
+          src="/jack.jpg"
+          alt="Jack Zeis"
+          class="w-36 h-36 rounded-2xl object-cover border border-zw-border shrink-0"
+          width="144"
+          height="144"
+          loading="eager"
+        />
+        <div class="space-y-6 text-zw-muted leading-relaxed">
+          <p>
+            ZeisWorks is run by Jack Zeis, a systems consultant based in Golden, Colorado. Jack has spent the last decade building the systems businesses run on: search, websites, CRMs, data, and the connective tissue between them, for companies from local service shops to national firms. The thread through all of it: a business should own how it works, not rent it.
+          </p>
+          <p>
+            Most of what makes a business run lives in a few people's heads. Jack writes that down into a VIK, a living system you own that holds how your business actually works and does work with it: it researches, drafts, and answers, from knowledge you can read and edit. Not a slide, not a diagram. A system that stays when a key person leaves.
+          </p>
+          <p>
+            Jack owns your engagement personally. No handoffs to a stranger, nothing on autopilot. And it stays month to month on purpose. If it isn't earning its keep, you shouldn't pay for the next month. That's the deal.
+          </p>
+        </div>
       </div>
-    </div>
+
+      <div class="mt-10 zw-reveal">
+        <Testimonials showCards={false} />
+      </div>
+    </div></div>
   </section>
 
-  <CtaBlock heading="One quick call from now, you'll know where AI is flying blind on your business." />
-</BaseLayout>
+  <!-- ═══════════════════ CTA ═══════════════════ -->
+  <section class="zw-section bg-zw-forest text-zw-cream">
+    <div class="zw-wrap px-5 sm:px-8"><div class="zw-measure mx-auto text-center">
+      <p class="zw-eyebrow zw-eyebrow-dark mb-4 zw-reveal">Get started</p>
+      <h2 class="zw-h2 mb-6 text-zw-cream zw-reveal">
+        One quick call from now, you'll know where AI is flying blind on your business.
+      </h2>
+      <AuditCta
+        location="footer"
+        label="Book a free intro call"
+        class="inline-flex items-center justify-center bg-zw-cream text-zw-forest font-semibold px-8 py-4 rounded-full hover:bg-white transition-colors zw-reveal"
+      />
+    </div></div>
+  </section>
+</LandingLayout>
