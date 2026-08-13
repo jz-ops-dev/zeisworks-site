@@ -4,7 +4,6 @@ description: "Learn how to nurture remodeling leads over a 3-6 month sales cycle
 publishDate: 2026-04-30
 readingTime: "9 min read"
 vertical: "home-services"
-pillarUrl: "/home-services/"
 keywords:
   - "home remodeler lead nurturing"
   - "remodeling CRM"
@@ -82,7 +81,7 @@ Delay stage (months 2-4): Go to monthly. One email per month. Share something us
 
 Decision stage (months 4-6): Increase to every two weeks. By now they're narrowing their list. This is when a direct email ("We still have a spot open in Q3 if timing works") can close the gap.
 
-If you want [lead generation and local SEO systems](/marketing) feeding this sequence consistently, the sequence only works if the front end is producing quality contacts to begin with.
+If you want lead generation and local SEO systems feeding this sequence consistently, the sequence only works if the front end is producing quality contacts to begin with.
 
 ### How do you use SMS and phone check-ins without feeling pushy?
 
@@ -124,7 +123,7 @@ The follow-up sequence above only works if you actually do it. A CRM makes sure 
 
 For most one- to three-crew remodeling operations, HubSpot's free tier or a contractor-specific tool like Jobber or BuilderTrend is enough. Salesforce is overkill unless you're running a multi-location operation with a dedicated sales team.
 
-The right CRM isn't the one with the most features. It's the one you'll actually use. If you want a full breakdown of [CRM setup and workflow automation for contractors](/operations), the setup matters more than the software. A badly configured HubSpot is worse than a simple spreadsheet with consistent habits.
+The right CRM isn't the one with the most features. It's the one you'll actually use. If you want a full breakdown of [CRM setup and workflow automation for contractors](/consulting/), the setup matters more than the software. A badly configured HubSpot is worse than a simple spreadsheet with consistent habits.
 
 ### How do you automate task reminders and lead stage tracking?
 
@@ -150,7 +149,7 @@ This isn't theoretical. FAQPage schema is already helping home services business
 
 AI-generated answers pull from structured data, trusted local sources, and well-organized content. That means your GBP, your schema markup, your reviews, and your on-page content all feed the same machine.
 
-The contractors who show up in AI Overviews aren't doing anything exotic. They have clean, well-structured websites, active GBP profiles, and content that answers real questions. If you want [custom lead tracking tools built for your business](/custom-tools) that connect these signals into one system, the infrastructure is straightforward. It just has to be built intentionally.
+The contractors who show up in AI Overviews aren't doing anything exotic. They have clean, well-structured websites, active GBP profiles, and content that answers real questions. If you want [custom lead tracking tools built for your business](/consulting/) that connect these signals into one system, the infrastructure is straightforward. It just has to be built intentionally.
 
 Start with your five most common customer questions. Get them on your site with proper schema. That's the entry point.
 
@@ -173,7 +172,7 @@ Most remodeling contractors don't lose jobs because they're bad at the work. The
 
 The 3-6 month window isn't a problem if you're willing to use it. A consistent email sequence, an active Google Business Profile, a CRM that flags stale leads, and schema markup that answers questions before the homeowner asks them. That's the whole system. None of it is complicated. It just has to run.
 
-If you're ready to stop losing slow-moving leads to contractors who are no more qualified than you, [the next step is a free conversation](/contact).
+If you're ready to stop losing slow-moving leads to contractors who are no more qualified than you, [the next step is a free conversation](/start).
 
 ---
 

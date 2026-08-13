@@ -4,7 +4,6 @@ description: "Independent vet clinics are losing local search to corporate chain
 publishDate: 2026-04-30
 readingTime: "8 min read"
 vertical: "vet-clinics"
-pillarUrl: "/independent-vets/"
 keywords:
   - "vet clinic local SEO"
   - "independent vet marketing"
@@ -77,7 +76,7 @@ Most vet practices define "lapsed" as a client who hasn't visited in 12 to 18 mo
 
 ### What reactivation sequence actually works?
 
-Three-touch sequence: Email 1: "We miss [Pet Name]. They're due for [specific service]." Personalized and specific beats every generic blast. Email 2, one week later if no response, include a limited-time offer, a free exam with a service, or a small discount on dental cleaning. Text 3, three days after Email 2, two sentences max: "Hi [Name], just following up. Reply YES and we'll get [Pet Name] booked in." Practices running this sequence consistently see a 10 to 15 percent reactivation rate with no paid spend. If you want to set this up inside a proper system, the [operations and CRM page at ZeisWorks](/operations) outlines how to wire it together.
+Three-touch sequence: Email 1: "We miss [Pet Name]. They're due for [specific service]." Personalized and specific beats every generic blast. Email 2, one week later if no response, include a limited-time offer, a free exam with a service, or a small discount on dental cleaning. Text 3, three days after Email 2, two sentences max: "Hi [Name], just following up. Reply YES and we'll get [Pet Name] booked in." Practices running this sequence consistently see a 10 to 15 percent reactivation rate with no paid spend. If you want to set this up inside a proper system, the [operations and CRM page at ZeisWorks](/consulting/) outlines how to wire it together.
 
 ### How do you track client acquisition cost by channel?
 
@@ -95,13 +94,13 @@ Several options fit independent practices well: Vetspire, EasyVet, and Covetrus 
 
 ### How do you optimize your website for local search?
 
-Your website isn't just a digital brochure. It's a local search asset that either pulls clients in or doesn't. Add location-specific pages if you serve multiple neighborhoods or towns, and include your practice's full name, address, and phone number in the footer of every page. Use your city name naturally in page titles, H1 headings, and service descriptions, not stuffed into every sentence. If this feels like a lot to manage alongside running a clinic, [local SEO services](/marketing) can handle the technical side. Get the basics right and your site starts working as a conversion tool, not just a placeholder.
+Your website isn't just a digital brochure. It's a local search asset that either pulls clients in or doesn't. Add location-specific pages if you serve multiple neighborhoods or towns, and include your practice's full name, address, and phone number in the footer of every page. Use your city name naturally in page titles, H1 headings, and service descriptions, not stuffed into every sentence. If this feels like a lot to manage alongside running a clinic, local SEO services can handle the technical side. Get the basics right and your site starts working as a conversion tool, not just a placeholder.
 
 ---
 
 Independent vet clinics don't lose local search because of care quality. They lose it because of visibility. The tactics in this guide (GBP optimization, review management, lapsed client reactivation, online booking, and on-page local SEO) don't need a marketing team or a big budget. They need consistency. The 36 percent of independent clinics operating without a marketing plan are ceding ground to chains that have simply done the basics. That's fixable. Pick one tactic from this article. Implement it this week. Then move to the next one.
 
-I work directly with independent clinics on local SEO, no agency layers, no retainers with vague deliverables. If you want a straight conversation about where your clinic stands and what to fix first, [book a free discovery call](/contact). No commitment, no pitch deck.
+I work directly with independent clinics on local SEO, no agency layers, no retainers with vague deliverables. If you want a straight conversation about where your clinic stands and what to fix first, [book a free discovery call](/start). No commitment, no pitch deck.
 
 ---
 
