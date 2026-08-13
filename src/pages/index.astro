@@ -100,7 +100,10 @@ const routes = [
   <span id="top" aria-hidden="true"></span>
 
   <!-- ═══════════════════ HERO (split: copy + VIK video) ═══════════════════ -->
-  <section class="zw-hero-split bg-zw-cream border-b border-zw-border">
+  <!-- overflow-x: clip contains the decorative glow's horizontal bleed
+       (it caused a 1px document overflow at narrow widths) without
+       clipping vertically or creating a scroll container. -->
+  <section class="zw-hero-split bg-zw-cream border-b border-zw-border" style="overflow-x: clip;">
     <div class="zw-wrap px-5 sm:px-8 zw-hero-grid">
       <div>
         <p class="zw-eyebrow mb-4 zw-reveal" style="color: var(--zw-rust);">For firms that run on expertise</p>
