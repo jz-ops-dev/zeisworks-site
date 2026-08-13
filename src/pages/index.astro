@@ -107,14 +107,11 @@ const routes = [
     <div class="zw-wrap px-5 sm:px-8 zw-hero-grid">
       <div>
         <p class="zw-eyebrow mb-4 zw-reveal" style="color: var(--zw-rust);">For firms that run on expertise</p>
-        <h1
-          class="font-serif font-semibold text-zw-ink text-balance zw-reveal"
-          style="font-size: clamp(2.1rem, 5.2vw, 3.5rem); line-height: 1.06; letter-spacing: -0.025em; margin: 0 0 20px;"
-        >
+        <h1 class="zw-h1 text-zw-ink mb-6 zw-reveal">
           Your firm runs on what your people know.
           <em style="color: var(--zw-teal);">Your AI has never read a word of it.</em>
         </h1>
-        <p class="text-zw-muted mb-8 zw-reveal" style="font-size: clamp(1.05rem, 1.7vw, 1.25rem); line-height: 1.55; max-width: 52ch;">
+        <p class="zw-lede mb-8 zw-reveal" style="max-width: 52ch;">
           So it guesses. Wrong numbers, generic drafts, confident answers nobody trusts. We write
           how your firm actually works into plain files your team and your AI both read. The
           guessing stops, and the knowledge stays when people leave.
@@ -176,8 +173,8 @@ const routes = [
   <section id="the-problem" class="zw-anchor zw-section">
     <div class="zw-wrap px-5 sm:px-8"><div class="zw-measure">
       <p class="zw-eyebrow mb-4 zw-reveal">The problem</p>
-      <h2 class="zw-h2 mb-7 zw-reveal">Turning AI on is easy. Trusting it is the hard part.</h2>
-      <div class="space-y-5 text-zw-muted zw-reveal">
+      <h2 class="zw-h2 mb-8 zw-reveal">Turning AI on is easy. Trusting it is the hard part.</h2>
+      <div class="space-y-6 text-zw-muted zw-reveal">
         <p>
           Anyone can switch on an AI tool today. Getting it to answer correctly about your business
           is the real work. When the AI can't see how you actually define a customer, price a job,
@@ -203,8 +200,8 @@ const routes = [
   <!-- ═══════════════════ DEMO (centerpiece) ═══════════════════ -->
   <section id="demo" class="zw-anchor zw-section bg-zw-forest text-zw-cream">
     <div class="zw-wrap px-5 sm:px-8">
-      <p class="zw-eyebrow mb-4 zw-reveal" style="color:#F0A184;">See it working</p>
-      <h2 class="zw-h2 mb-6 max-w-[820px] zw-reveal text-zw-cream">
+      <p class="zw-eyebrow zw-eyebrow-dark mb-4 zw-reveal">See it working</p>
+      <h2 class="zw-h2 mb-8 max-w-[820px] zw-reveal text-zw-cream">
         Every answer traces back to a file you can read and edit. Try it.
       </h2>
 
@@ -213,10 +210,10 @@ const routes = [
            FileExplorer's named "query" slot; this section needs no rework. -->
 
       <!-- Where this comes from: the two sources behind the method. -->
-      <div class="grid md:grid-cols-2 gap-5 max-w-[840px] mt-12">
+      <div class="grid md:grid-cols-2 gap-5 max-w-[840px] mt-14">
         {shiftCards.map((card) => (
           <article class="zw-card-dark zw-card-dark-compact zw-reveal flex flex-col">
-            <p class="zw-eyebrow text-[0.7rem] mb-3" style="color:#F0A184;">{card.tag}</p>
+            <p class="zw-eyebrow zw-eyebrow-dark text-[0.7rem] mb-3">{card.tag}</p>
             <h3 class="zw-h3 mb-3 text-white">{card.title}</h3>
             <p class="text-sm leading-relaxed text-zw-cream/75 flex-1">{card.body}</p>
             {card.src.href && (
@@ -226,7 +223,7 @@ const routes = [
                   target="_blank"
                   rel="noopener"
                   class="text-sm font-medium hover:underline"
-                  style="color:#F0A184;"
+                  style="color: var(--zw-rust-soft);"
                 >[source]</a>
               </p>
             )}
@@ -242,7 +239,7 @@ const routes = [
       <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
         <div>
           <p class="zw-eyebrow mb-4 zw-reveal">What you own</p>
-          <h2 class="zw-h2 mb-6 zw-reveal">VIK &mdash; Visualized Institutional Knowledge.</h2>
+          <h2 class="zw-h2 mb-8 zw-reveal">VIK &mdash; Visualized Institutional Knowledge.</h2>
           <p class="text-zw-muted max-w-[640px] mb-8 zw-reveal text-pretty">
             Your VIK is the working system you keep when the engagement ends &mdash; not a slide, not a
             diagram. It holds how your business actually runs and does work with it: it researches,
@@ -306,10 +303,10 @@ const routes = [
   </section>
 
   <!-- ═══════════════════ HOW IT WORKS ═══════════════════ -->
-  <section id="how-it-works" class="zw-anchor zw-section border-b border-zw-border">
+  <section id="how-it-works" class="zw-anchor zw-section bg-white border-y border-zw-border">
     <div class="zw-wrap px-5 sm:px-8">
       <p class="zw-eyebrow mb-4 zw-reveal">How it works</p>
-      <h2 class="zw-h2 mb-12 max-w-[760px] zw-reveal">Four steps. Plain language the whole way.</h2>
+      <h2 class="zw-h2 mb-8 max-w-[760px] zw-reveal">Four steps. Plain language the whole way.</h2>
 
       <div class="grid lg:grid-cols-[0.9fr_1.1fr] gap-12 lg:gap-16 items-start">
         <!-- Steps -->
@@ -348,7 +345,7 @@ const routes = [
       <div class="grid lg:grid-cols-[1.05fr_0.95fr] gap-12 lg:gap-16 items-center">
         <div class="max-w-[620px]">
           <p class="zw-eyebrow mb-4 zw-reveal">Built to last</p>
-          <h2 class="zw-h2 mb-6 zw-reveal">AI changes every few months. What you've written down doesn't have to.</h2>
+          <h2 class="zw-h2 mb-8 zw-reveal">AI changes every few months. What you've written down doesn't have to.</h2>
           <p class="text-zw-muted zw-reveal">
             Because your knowledge lives in plain files and not buried inside one AI tool, you don't
             rebuild every time something new comes out. The same files work with whatever AI is best
@@ -380,10 +377,10 @@ const routes = [
   </section>
 
   <!-- ═══════════════════ PRICING / OFFER LADDER ═══════════════════ -->
-  <section id="pricing" class="zw-anchor zw-section bg-white/40 border-y border-zw-border">
+  <section id="pricing" class="zw-anchor zw-section">
     <div class="zw-wrap px-5 sm:px-8">
       <p class="zw-eyebrow mb-4 zw-reveal">How to start</p>
-      <h2 class="zw-h2 mb-12 max-w-[760px] zw-reveal">Start small. Keep everything.</h2>
+      <h2 class="zw-h2 mb-8 max-w-[760px] zw-reveal">Start small. Keep everything.</h2>
       <OfferLadder variant="full" />
     </div>
   </section>
@@ -391,7 +388,7 @@ const routes = [
   <!-- ═══════════════════ START / CTA ═══════════════════ -->
   <section id="start" class="zw-anchor zw-section bg-zw-forest text-zw-cream">
     <div class="zw-wrap px-5 sm:px-8"><div class="zw-measure mx-auto text-center">
-      <p class="zw-eyebrow mb-4 zw-reveal" style="color:#F0A184;">Get started</p>
+      <p class="zw-eyebrow zw-eyebrow-dark mb-4 zw-reveal">Get started</p>
       <h2 class="zw-h2 mb-6 text-zw-cream zw-reveal">Start with a free intro call.</h2>
       <p class="text-zw-cream/75 mb-9 zw-reveal">
         Fifteen minutes on where your knowledge is stuck and whether a VIK would fix it. No deck,
@@ -560,8 +557,8 @@ const routes = [
     grid-template-columns: 1fr;
     gap: clamp(2.25rem, 5vw, 3.5rem);
     align-items: center;
-    padding-top: clamp(6rem, 13vh, 9rem);
-    padding-bottom: clamp(3rem, 8vh, 5.5rem);
+    padding-top: clamp(6.5rem, 12vw, 9.5rem);
+    padding-bottom: clamp(3rem, 6vw, 5rem);
   }
   @media (min-width: 1024px) {
     .zw-hero-grid { grid-template-columns: 1.05fr 0.95fr; }
@@ -583,7 +580,7 @@ const routes = [
     overflow: hidden;
     border: 1px solid var(--zw-border);
     /* Matches the video's own ground, so no state ever shows black. */
-    background: #E04530;
+    background: var(--zw-teal);
   }
   .zw-hero-poster {
     position: absolute;

@@ -161,9 +161,9 @@ const orgJsonLd = {
       .zw-h1 {
         font-family: 'Lora', Georgia, serif;
         font-weight: 600;
-        font-size: clamp(2.1rem, 4.6vw, 3.4rem);
-        line-height: 1.1;
-        letter-spacing: -0.01em;
+        font-size: clamp(2.1rem, 4.8vw, 3.5rem);
+        line-height: 1.08;
+        letter-spacing: -0.02em;
         text-wrap: balance;
       }
       .zw-h2 {
@@ -338,7 +338,7 @@ const orgJsonLd = {
       <slot />
     </main>
 
-    <footer class="bg-zw-forest text-zw-cream">
+    <footer class="bg-zw-forest text-zw-cream" style="border-top: 1px solid rgba(245, 245, 247, 0.14);">
       <div class="zw-wrap px-5 sm:px-8 py-12 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-6">
         <a href={brandHref} class="flex items-center gap-2.5" aria-label="ZeisWorks home">
           <Logo class="w-8 h-8 rounded-[7px]" />
