@@ -11,19 +11,27 @@ interface Props {
   title: string;
   description: string;
   ogImage?: string;
+  navLinks?: { label: string; href: string }[];
+  /** Brand/footer logo target; segment pages pass "/" since #top is homepage-only. */
+  brandHref?: string;
 }
 
-const { title, description, ogImage } = Astro.props;
+const {
+  title,
+  description,
+  ogImage,
+  navLinks = [
+    { label: 'The problem', href: '#the-problem' },
+    { label: 'See it working', href: '#demo' },
+    { label: 'How it works', href: '#how-it-works' },
+    { label: 'Pricing', href: '#pricing' },
+  ],
+  brandHref = '#top',
+} = Astro.props;
 
 const siteUrl = 'https://zeisworks.com';
 const canonical = new URL(Astro.url.pathname, siteUrl).href;
 const resolvedOgImage = ogImage ? new URL(ogImage, siteUrl).href : undefined;
-
-const navLinks = [
-  { label: 'The problem', href: '#the-problem' },
-  { label: 'What we build', href: '#what-we-build' },
-  { label: 'How it works', href: '#how-it-works' },
-];
 
 // Organization schema aligned to the AI-readiness positioning.
 const orgJsonLd = {
@@ -88,6 +96,8 @@ const orgJsonLd = {
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
 
     <script type="application/ld+json" set:html={JSON.stringify(orgJsonLd)} />
+
+    <slot name="head" />
 
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-F05WB9RWJT"></script>
@@ -226,7 +236,7 @@ const orgJsonLd = {
       class="fixed top-0 inset-x-0 z-50 transition-colors duration-300"
     >
       <div class="zw-wrap px-5 sm:px-8 h-16 flex items-center justify-between">
-        <a href="#top" class="flex items-center gap-2.5 group" aria-label="ZeisWorks home">
+        <a href={brandHref} class="flex items-center gap-2.5 group" aria-label="ZeisWorks home">
           <Logo class="w-8 h-8 rounded-[7px]" />
           <span class="font-serif text-xl font-semibold tracking-tight text-zw-ink">zeisWorks<span class="text-zw-teal">.</span></span>
         </a>
@@ -279,7 +289,7 @@ const orgJsonLd = {
 
     <footer class="bg-zw-forest text-zw-cream">
       <div class="zw-wrap px-5 sm:px-8 py-12 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-6">
-        <a href="#top" class="flex items-center gap-2.5" aria-label="ZeisWorks home">
+        <a href={brandHref} class="flex items-center gap-2.5" aria-label="ZeisWorks home">
           <Logo class="w-8 h-8 rounded-[7px]" />
           <span class="font-serif text-xl font-semibold tracking-tight">zeisWorks<span class="text-zw-teal">.</span></span>
         </a>

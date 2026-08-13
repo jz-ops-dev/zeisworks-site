@@ -1,0 +1,256 @@
+---
+// Interactive file explorer: a routing.md tablist that opens the file the AI
+// reads for each kind of question. Extracted from the homepage so segment
+// pages can render it with their own file content.
+//
+// The named `query` slot is the mount point for the live query box
+// (CO-002 item D) — it renders only when a parent provides it.
+export interface Route {
+  key: string;
+  path: string;
+  lines: string[];
+}
+
+interface Props {
+  routes: Route[];
+  /** Namespaces tab/panel ids so multiple instances can coexist. */
+  instanceId: string;
+  lead?: string;
+  comment?: string;
+  theme?: 'light' | 'dark';
+}
+
+const {
+  routes,
+  instanceId,
+  lead = 'Pick a question to open the file the AI reads:',
+  comment = '# the AI reads the right file for each question',
+  theme = 'light',
+} = Astro.props;
+---
+
+<div class="zw-explorer" data-theme={theme}>
+  <p class="zw-router-lead zw-reveal">{lead}</p>
+  <div class="zw-router zw-reveal" data-router>
+    <!-- The routing layer: each rule is a tab that opens its target file. -->
+    <figure class="zw-knowledge zw-mono zw-router-index">
+      <div class="zw-knowledge-bar">
+        <span class="zw-dot"></span><span class="zw-dot"></span><span class="zw-dot"></span>
+        <span class="ml-3 text-[0.72rem] zw-knowledge-name">routing.md</span>
+        <span class="zw-sample-tag">production layer</span>
+      </div>
+      <div class="zw-router-list" role="tablist" aria-label="Routing rules: choose a question type to open the file the AI reads">
+        <p class="zw-router-comment">{comment}</p>
+        {routes.map((r, i) => (
+          <button
+            type="button"
+            role="tab"
+            id={`zw-route-${instanceId}-${i}`}
+            class="zw-route"
+            aria-controls={`zw-file-${instanceId}-${i}`}
+            aria-selected={i === 0 ? 'true' : 'false'}
+            tabindex={i === 0 ? '0' : '-1'}
+            data-i={i}
+          >
+            <span class="zw-route-key">{r.key}</span>
+            <span class="zw-route-arrow" aria-hidden="true">→</span>
+            <span class="zw-route-path">{r.path}</span>
+          </button>
+        ))}
+      </div>
+    </figure>
+
+    <!-- The opened file: contents the AI reads for that question. -->
+    <div class="zw-router-files">
+      {routes.map((r, i) => (
+        <figure
+          class="zw-knowledge zw-mono zw-router-file"
+          id={`zw-file-${instanceId}-${i}`}
+          role="tabpanel"
+          aria-labelledby={`zw-route-${instanceId}-${i}`}
+          tabindex="0"
+          hidden={i !== 0}
+        >
+          <div class="zw-knowledge-bar">
+            <span class="zw-dot"></span><span class="zw-dot"></span><span class="zw-dot"></span>
+            <span class="ml-3 text-[0.72rem] zw-knowledge-name">{r.path}</span>
+            <span class="zw-sample-tag">the AI reads this</span>
+          </div>
+          <pre class="zw-knowledge-body">{r.lines.map((ln) => (<span class="zw-kline">{ln}</span>))}</pre>
+        </figure>
+      ))}
+    </div>
+  </div>
+  {Astro.slots.has('query') && (
+    <div class="zw-router-query">
+      <slot name="query" />
+    </div>
+  )}
+</div>
+
+<script is:inline>
+  (function () {
+    document.querySelectorAll('[data-router]').forEach(function (router) {
+      if (router.dataset.init) return;
+      router.dataset.init = '1';
+      var tabs = Array.prototype.slice.call(router.querySelectorAll('[role="tab"]'));
+      var panels = tabs.map(function (t) { return document.getElementById(t.getAttribute('aria-controls')); });
+      function select(idx, focus) {
+        tabs.forEach(function (t, i) {
+          var on = i === idx;
+          t.setAttribute('aria-selected', on ? 'true' : 'false');
+          t.tabIndex = on ? 0 : -1;
+          if (panels[i]) panels[i].hidden = !on;
+        });
+        if (focus && tabs[idx]) tabs[idx].focus();
+      }
+      tabs.forEach(function (t, i) {
+        t.addEventListener('click', function () { select(i); });
+        t.addEventListener('keydown', function (e) {
+          var n;
+          if (e.key === 'ArrowDown' || e.key === 'ArrowRight') n = (i + 1) % tabs.length;
+          else if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') n = (i - 1 + tabs.length) % tabs.length;
+          else if (e.key === 'Home') n = 0;
+          else if (e.key === 'End') n = tabs.length - 1;
+          else return;
+          e.preventDefault();
+          select(n, true);
+        });
+      });
+    });
+  })();
+</script>
+
+<style is:global>
+  /* ── File chrome (shared with the homepage knowledge.md animation) ── */
+  .zw-knowledge {
+    background: var(--zw-card);
+    border: 1px solid var(--zw-border);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: none;
+  }
+  .zw-knowledge-bar {
+    display: flex; align-items: center; gap: 0.3rem;
+    padding: 0.6rem 0.9rem;
+    border-bottom: 1px solid var(--zw-border);
+    background: rgba(28, 28, 26, 0.02);
+  }
+  .zw-knowledge-name { color: var(--zw-muted); }
+  .zw-dot { width: 9px; height: 9px; border-radius: 50%; background: var(--zw-border); }
+  .zw-knowledge-body {
+    margin: 0; padding: 1rem 1.1rem;
+    font-size: 0.82rem; line-height: 1.9; color: var(--zw-ink);
+    white-space: pre-wrap;
+  }
+  .zw-kline:first-child { color: var(--zw-teal); }
+
+  .zw-sample-tag {
+    margin-left: auto;
+    font-family: 'DM Mono', ui-monospace, monospace;
+    font-size: 0.6rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--zw-teal);
+    border: 1px solid rgba(224, 69, 48, 0.35);
+    border-radius: 5px;
+    padding: 2px 6px;
+    white-space: nowrap;
+  }
+
+  /* ── Explorer layout ── */
+  .zw-router-lead {
+    font-size: 0.85rem;
+    color: var(--zw-muted);
+    margin: 0 0 0.6rem;
+  }
+  .zw-router {
+    display: grid;
+    gap: 1rem;
+    max-width: 840px;
+    align-items: start;
+  }
+  @media (min-width: 768px) {
+    .zw-router { grid-template-columns: 1fr 1fr; }
+  }
+  .zw-router-index { margin: 0; }
+  .zw-router-list {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    padding: 0.7rem 0.6rem 0.8rem;
+  }
+  .zw-router-comment {
+    color: var(--zw-teal);
+    font-size: 0.8rem;
+    padding: 0.1rem 0.55rem 0.5rem;
+  }
+  .zw-route {
+    display: grid;
+    grid-template-columns: 8rem auto 1fr;
+    align-items: center;
+    gap: 0.5rem;
+    width: 100%;
+    text-align: left;
+    font: inherit;
+    font-size: 0.82rem;
+    color: var(--zw-ink);
+    background: transparent;
+    border: none;
+    border-left: 3px solid transparent;
+    border-radius: 7px;
+    padding: 0.45rem 0.55rem;
+    cursor: pointer;
+    transition: background 0.18s var(--zw-ease), border-color 0.18s var(--zw-ease);
+  }
+  .zw-route:hover { background: rgba(224, 69, 48, 0.06); }
+  .zw-route[aria-selected="true"] {
+    background: rgba(224, 69, 48, 0.09);
+    border-left-color: var(--zw-teal);
+  }
+  .zw-route-key { font-weight: 500; }
+  .zw-route-arrow { color: var(--zw-muted); align-self: start; }
+  .zw-route-path { color: var(--zw-muted); word-break: break-word; }
+  .zw-route[aria-selected="true"] .zw-route-path { color: var(--zw-teal); }
+  @media (max-width: 767px) {
+    .zw-route { grid-template-columns: 6.25rem auto 1fr; }
+  }
+
+  .zw-router-files { position: relative; }
+  .zw-router-file { margin: 0; }
+  .zw-router-file .zw-knowledge-body .zw-kline { display: block; }
+  .zw-router-file[hidden] { display: none; }
+  html.zw-anim .zw-router-file:not([hidden]) {
+    animation: zwFileIn 0.32s var(--zw-ease);
+  }
+  @keyframes zwFileIn {
+    from { opacity: 0; transform: translateY(6px); }
+    to { opacity: 1; transform: none; }
+  }
+
+  /* ── Dark theme (ink ground, e.g. the homepage demo band) ── */
+  .zw-explorer[data-theme="dark"] .zw-knowledge {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: rgba(255, 255, 255, 0.12);
+  }
+  .zw-explorer[data-theme="dark"] .zw-knowledge-bar {
+    border-bottom-color: rgba(255, 255, 255, 0.12);
+    background: rgba(255, 255, 255, 0.04);
+  }
+  .zw-explorer[data-theme="dark"] .zw-knowledge-name { color: rgba(245, 245, 247, 0.55); }
+  .zw-explorer[data-theme="dark"] .zw-dot { background: rgba(255, 255, 255, 0.18); }
+  .zw-explorer[data-theme="dark"] .zw-knowledge-body { color: var(--zw-cream); }
+  .zw-explorer[data-theme="dark"] .zw-route { color: var(--zw-cream); }
+  .zw-explorer[data-theme="dark"] .zw-route:hover { background: rgba(224, 69, 48, 0.14); }
+  .zw-explorer[data-theme="dark"] .zw-route[aria-selected="true"] { background: rgba(224, 69, 48, 0.20); }
+  .zw-explorer[data-theme="dark"] .zw-route-arrow,
+  .zw-explorer[data-theme="dark"] .zw-route-path { color: rgba(245, 245, 247, 0.55); }
+  .zw-explorer[data-theme="dark"] .zw-route[aria-selected="true"] .zw-route-path { color: #F0A184; }
+  .zw-explorer[data-theme="dark"] .zw-kline:first-child { color: #F0A184; }
+  .zw-explorer[data-theme="dark"] .zw-router-comment { color: #F0A184; }
+  .zw-explorer[data-theme="dark"] .zw-sample-tag {
+    color: #F0A184;
+    border-color: rgba(240, 161, 132, 0.45);
+  }
+  .zw-explorer[data-theme="dark"] .zw-router-lead { color: rgba(245, 245, 247, 0.65); }
+</style>

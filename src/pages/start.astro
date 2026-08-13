@@ -10,9 +10,14 @@ import { CALENDLY_URL } from '../config';
 // arrives fully qualified.
 const steps = [
   {
-    key: 'business',
-    q: 'What kind of business do you run?',
-    options: ['Local service business', 'Professional services', 'Agency or studio', 'Something else'],
+    key: 'segment',
+    q: 'What kind of firm are you?',
+    options: [
+      'Consulting or advisory',
+      'Agency or studio',
+      'Other professional services (legal, accounting, finance)',
+      'Something else',
+    ],
   },
   {
     key: 'knowledge',
@@ -84,7 +89,7 @@ const steps = [
             <label>Don't fill this out if you're human: <input name="bot-field" tabindex="-1" /></label>
           </p>
           <!-- Qualifying answers, filled in by JS before submit -->
-          <input type="hidden" name="business" data-answer="business" />
+          <input type="hidden" name="segment" data-answer="segment" />
           <input type="hidden" name="knowledge" data-answer="knowledge" />
           <input type="hidden" name="risk" data-answer="risk" />
           <input type="hidden" name="team" data-answer="team" />
@@ -258,6 +263,7 @@ const steps = [
             var u = new URL(base);
             if (contact.name) u.searchParams.set('name', contact.name);
             if (contact.email) u.searchParams.set('email', contact.email);
+            if (answers.segment) u.searchParams.set('segment', answers.segment);
             ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content'].forEach(function (k) {
               if (attribution[k]) u.searchParams.set(k, attribution[k]);
             });
@@ -267,7 +273,7 @@ const steps = [
             var addr = base.replace(/^mailto:/i, '').split('?')[0];
             var subject = 'Intro call about a VIK' + (contact.name ? ' — ' + contact.name : '');
             var lines = ['Hi Jack,', '', "I'd like to book an intro call about building a VIK.", ''];
-            if (answers.business) lines.push('Business: ' + answers.business);
+            if (answers.segment) lines.push('Firm type: ' + answers.segment);
             if (answers.knowledge) lines.push('Knowledge lives: ' + answers.knowledge);
             if (answers.risk) lines.push('When a key person is out: ' + answers.risk);
             if (answers.team) lines.push('Team size: ' + answers.team);
@@ -299,6 +305,23 @@ const steps = [
             if (attribution[k]) input.value = attribution[k];
           });
         }
+      })();
+
+      // ── Segment pages pre-answer Q1 via ?segment=…; the funnel starts at
+      //    Q2 and the back button still returns to Q1 to override. ──
+      (function initSegment() {
+        var map = {
+          consulting: 'Consulting or advisory',
+          agency: 'Agency or studio',
+          other: 'Other professional services (legal, accounting, finance)',
+        };
+        var seg = new URLSearchParams(window.location.search).get('segment');
+        var val = seg && map[seg.toLowerCase()];
+        if (!val) return;
+        answers.segment = val;
+        var hidden = form ? form.querySelector('[data-answer="segment"]') : null;
+        if (hidden) hidden.value = val;
+        show(1);
       })();
 
       track('funnel_start', {});

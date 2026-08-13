@@ -1,0 +1,75 @@
+---
+// Segment landing page: agencies and studios (CO-002 item A).
+// Copy is final per the copy deck §4; demo file contents are illustrative,
+// agency-flavored placeholders pending Jack's sign-off.
+import SegmentLayout from '../../layouts/SegmentLayout.astro';
+
+const routes = [
+  {
+    key: 'client voice',
+    path: 'clients/voice.md',
+    lines: [
+      '# Client voice',
+      'One context file per client.',
+      "Voice, do-and-don't, approval chain.",
+      'Drafts sound like the client, not us.',
+    ],
+  },
+  {
+    key: 'scope',
+    path: 'reference/scope.md',
+    lines: [
+      '# Scope guardrails',
+      'Two revision rounds are included.',
+      'More than that triggers a change order.',
+      'Scope changes are written, never verbal.',
+    ],
+  },
+  {
+    key: 'briefs',
+    path: 'reference/sops/briefs.md',
+    lines: [
+      '# Briefs',
+      'A brief states ask, audience, deadline.',
+      'No brief, no work.',
+      'Revisions cite the brief line they change.',
+    ],
+  },
+  {
+    key: 'handoffs',
+    path: 'working/handoffs.md',
+    lines: [
+      '# Handoffs',
+      'Every brief names the approver.',
+      'Bad news goes to the client by phone.',
+      'No launch without the checklist.',
+    ],
+  },
+];
+---
+
+<SegmentLayout
+  title="ZeisWorks for agencies — AI that writes in your client's voice"
+  description="Client context lives in Slack scrollback and account leads' heads. We write it into plain files, so AI drafts sound like the client and handoffs survive turnover."
+  segment="agency"
+  eyebrow="For agencies and studios"
+  h1="Every client has a voice. Your AI writes in nobody's."
+  intro={[
+    "An account lead leaves and takes three clients' worth of context with them. The preferences, the landmines, the way the CMO likes to be told bad news. The brand guidelines are a PDF nobody opens. The pricing guardrails are tribal knowledge, which is why scope keeps creeping.",
+    "So when your team drafts with AI, it comes out generic. Of course it does. The context it needed lives in Slack scrollback, and the AI has never seen any of it.",
+  ]}
+  holds={[
+    { lead: 'A context file per client.', body: 'Voice, do-and-don\'t, approval chain, history.' },
+    { lead: 'Your SOPs.', body: 'Briefs, handoffs, revisions, launch checklists.' },
+    { lead: 'Scope and pricing guardrails.', body: "What's included. What triggers a change order." },
+    { lead: 'Your own voice.', body: 'For pitches, POVs, and the work you send under your name.' },
+  ]}
+  runs={[
+    'First drafts that sound like the client. Each client.',
+    'Briefs and handoffs that match your SOP without anyone chasing.',
+    'A straight answer to "what did we actually promise them" — with the file cited.',
+  ]}
+  routes={routes}
+  serviceName="ZeisWorks for agencies"
+  audienceName="Agencies and studios"
+/>
