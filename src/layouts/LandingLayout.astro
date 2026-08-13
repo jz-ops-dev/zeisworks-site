@@ -2,6 +2,8 @@
 import AuditCta from '../components/AuditCta.astro';
 import Logo from '../components/Logo.astro';
 import MotionScripts from '../components/MotionScripts.astro';
+import { CALENDLY_URL } from '../config';
+import { FOOTER_GROUPS } from '../data/footer';
 
 // Dedicated layout for the single-page AI-readiness rebuild (dev prompt).
 // Kept separate from BaseLayout so the new cream/forest/teal brand, the
@@ -21,9 +23,9 @@ const {
   description,
   ogImage,
   navLinks = [
-    { label: 'The problem', href: '#the-problem' },
     { label: 'See it working', href: '#demo' },
     { label: 'How it works', href: '#how-it-works' },
+    { label: 'Proof', href: '#proof' },
     { label: 'Pricing', href: '#pricing' },
   ],
   brandHref = '#top',
@@ -348,17 +350,43 @@ const orgJsonLd = {
     </main>
 
     <footer class="bg-zw-forest text-zw-cream" style="border-top: 1px solid rgba(245, 245, 247, 0.14);">
-      <div class="zw-wrap px-5 sm:px-8 py-12 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-6">
-        <a href={brandHref} class="flex items-center gap-2.5" aria-label="ZeisWorks home">
-          <Logo class="w-8 h-8 rounded-[7px]" />
-          <span class="font-serif text-xl font-semibold tracking-tight">zeisWorks<span class="text-zw-teal">.</span></span>
-        </a>
-        <p class="text-sm text-zw-cream/70">
-          <a href="mailto:jack@zeisworks.com" class="hover:text-white transition-colors">jack@zeisworks.com</a>
-        </p>
-        <p class="text-xs text-zw-cream/50">
-          &copy; {new Date().getFullYear()} ZeisWorks, a High Range Living LLC company.
-        </p>
+      <div class="zw-wrap px-5 sm:px-8 py-14">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
+          <div>
+            <a href={brandHref} class="flex items-center gap-2.5" aria-label="ZeisWorks home">
+              <Logo class="w-8 h-8 rounded-[7px]" />
+              <span class="font-serif text-xl font-semibold tracking-tight">zeisWorks<span class="text-zw-teal">.</span></span>
+            </a>
+            <p class="mt-4 text-sm text-zw-cream/60 leading-relaxed max-w-[32ch]">
+              Your business, written down where your team and your AI both read it.
+            </p>
+          </div>
+          {FOOTER_GROUPS.map((group) => (
+            <div>
+              <p class="font-serif font-semibold mb-3">{group.heading}</p>
+              <ul class="space-y-2 text-sm text-zw-cream/70">
+                {group.links.map(({ label, href }) => (
+                  <li><a href={href} class="hover:text-white transition-colors">{label}</a></li>
+                ))}
+              </ul>
+            </div>
+          ))}
+          <div>
+            <p class="font-serif font-semibold mb-3">Contact</p>
+            <ul class="space-y-2 text-sm text-zw-cream/70">
+              <li><a href="mailto:jack@zeisworks.com" class="hover:text-white transition-colors">jack@zeisworks.com</a></li>
+              <li><a href={CALENDLY_URL} class="hover:text-white transition-colors">Book 15 minutes</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="mt-12 pt-6 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 text-xs text-zw-cream/50" style="border-top: 1px solid rgba(245, 245, 247, 0.12);">
+          <p>&copy; {new Date().getFullYear()} ZeisWorks, a High Range Living LLC company.</p>
+          <p class="flex gap-3 zw-mono">
+            <a href="/privacy" class="hover:text-zw-cream/80 transition-colors">Privacy</a>
+            <span aria-hidden="true">&middot;</span>
+            <a href="/terms" class="hover:text-zw-cream/80 transition-colors">Terms</a>
+          </p>
+        </div>
       </div>
     </footer>
 

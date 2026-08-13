@@ -198,6 +198,37 @@ const routes = [
     </div></div>
   </section>
 
+  <!-- ═══════════════════ WHO IT'S FOR ═══════════════════ -->
+  <section id="who" class="zw-anchor zw-section bg-white border-y border-zw-border">
+    <div class="zw-wrap px-5 sm:px-8">
+      <p class="zw-eyebrow mb-4 zw-reveal">Who it's for</p>
+      <h2 class="zw-h2 mb-8 zw-reveal">Built for firms where knowledge is the product.</h2>
+      <div class="grid md:grid-cols-2 gap-5">
+        <a href="/for/consulting-firms/" class="zw-card zw-card-link zw-reveal flex flex-col">
+          <h3 class="zw-h3 mb-3">Consulting and advisory firms</h3>
+          <p class="text-sm text-zw-muted leading-relaxed flex-1">
+            Your methodology is the product. We write it into plain files your team and your AI
+            both read, so proposals, answers, and onboarding come from your playbook instead of
+            guesses.
+          </p>
+          <p class="mt-4 text-sm font-medium text-zw-teal">ZeisWorks for consulting firms →</p>
+        </a>
+        <a href="/for/agencies/" class="zw-card zw-card-link zw-reveal flex flex-col">
+          <h3 class="zw-h3 mb-3">Agencies and studios</h3>
+          <p class="text-sm text-zw-muted leading-relaxed flex-1">
+            Client context lives in Slack scrollback and account leads' heads. We write it into
+            plain files, so AI drafts sound like the client and handoffs survive turnover.
+          </p>
+          <p class="mt-4 text-sm font-medium text-zw-teal">ZeisWorks for agencies →</p>
+        </a>
+      </div>
+      <p class="mt-8 text-sm text-zw-muted zw-reveal">
+        Another kind of professional services firm? The method is the same &mdash;
+        <a href="/start" class="font-medium text-zw-teal hover:underline">start here</a>.
+      </p>
+    </div>
+  </section>
+
   <!-- ═══════════════════ DEMO (centerpiece) ═══════════════════ -->
   <section id="demo" class="zw-anchor zw-section bg-zw-forest text-zw-cream">
     <div class="zw-wrap px-5 sm:px-8">
@@ -429,6 +460,16 @@ const routes = [
 <style is:global>
   /* .zw-anchor, .zw-card*, .zw-strip*, and the measure/lede/eyebrow-dark
      utilities live in LandingLayout's global block, next to .zw-wrap. */
+
+  /* Card-as-link (who-it's-for): whole card clickable, quiet hover. */
+  .zw-card-link {
+    text-decoration: none;
+    transition: border-color 0.18s var(--zw-ease), transform 0.18s var(--zw-ease);
+  }
+  .zw-card-link:hover {
+    border-color: rgba(224, 69, 48, 0.45);
+    transform: translateY(-2px);
+  }
 
   /* VIK "what you own" plate — mirrors the ICM plate to read as two layers. */
   .zw-vik-plate {

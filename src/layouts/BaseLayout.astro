@@ -3,6 +3,7 @@ import AuditCta from '../components/AuditCta.astro';
 import ExitIntentModal from '../components/ExitIntentModal.astro';
 import MotionScripts from '../components/MotionScripts.astro';
 import { CALENDLY_URL } from '../config';
+import { FOOTER_GROUPS } from '../data/footer';
 
 interface Props {
   title: string;
@@ -75,15 +76,9 @@ const localBusinessJsonLd = {
 
 const navLinks = [
   { label: 'How It Works', href: '/#how-it-works' },
-  { label: 'Results', href: '/results/' },
+  { label: 'Proof', href: '/results/' },
   { label: 'Pricing', href: '/pricing/' },
   { label: 'About', href: '/about/' },
-];
-
-const verticalLinks = [
-  { label: 'Water Damage Restoration', href: '/water-damage-marketing/' },
-  { label: 'Tree Services', href: '/tree-service-marketing/' },
-  { label: 'Wildfire Mitigation', href: '/wildfire-mitigation-marketing/' },
 ];
 ---
 
@@ -264,26 +259,22 @@ const verticalLinks = [
     <footer class="border-t border-cream-dark mt-24">
       <div class="max-w-5xl mx-auto px-6 py-12">
         <div class="grid grid-cols-1 sm:grid-cols-3 gap-10">
-          <div>
-            <p class="font-serif font-semibold text-ink mb-3">Pages</p>
-            <ul class="space-y-2 text-sm text-ink-mid">
-              {navLinks.map(({ label, href }) => (
-                <li><a href={href} class="hover:text-ink transition-colors">{label}</a></li>
-              ))}
-              <li><a href="/consulting/" class="hover:text-ink transition-colors">Consulting</a></li>
-            </ul>
-          </div>
-          <div>
-            <p class="font-serif font-semibold text-ink mb-3">Verticals</p>
-            <ul class="space-y-2 text-sm text-ink-mid">
-              {verticalLinks.map(({ label, href }) => (
-                <li><a href={href} class="hover:text-ink transition-colors">{label}</a></li>
-              ))}
-            </ul>
-          </div>
+          {FOOTER_GROUPS.map((group) => (
+            <div>
+              <p class="font-serif font-semibold text-ink mb-3">{group.heading}</p>
+              <ul class="space-y-2 text-sm text-ink-mid">
+                {group.links.map(({ label, href }) => (
+                  <li><a href={href} class="hover:text-ink transition-colors">{label}</a></li>
+                ))}
+              </ul>
+            </div>
+          ))}
           <div>
             <p class="font-serif font-semibold text-ink mb-3">Contact</p>
             <p class="text-sm text-ink-mid leading-relaxed">
+              <a href="mailto:jack@zeisworks.com" class="hover:text-ink transition-colors">jack@zeisworks.com</a>
+            </p>
+            <p class="text-sm text-ink-mid leading-relaxed mt-2">
               Prefer to talk first?
               <a href={CALENDLY_URL} class="text-navy font-medium hover:underline">Book 15 minutes.</a>
             </p>
