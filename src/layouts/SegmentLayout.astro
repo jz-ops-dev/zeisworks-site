@@ -58,18 +58,18 @@ const serviceJsonLd = {
 
   <!-- ═══════════════════ HERO ═══════════════════ -->
   <section class="zw-section bg-zw-cream border-b border-zw-border" style="padding-top: clamp(7rem, 12vw, 10rem);">
-    <div class="zw-wrap px-5 sm:px-8 max-w-[820px]">
+    <div class="zw-wrap px-5 sm:px-8"><div class="zw-measure-wide">
       <p class="zw-eyebrow mb-4 zw-reveal" style="color: var(--zw-rust);">{eyebrow}</p>
       <h1 class="zw-h1 text-zw-ink mb-7 zw-reveal">{h1}</h1>
       <div class="space-y-5 text-zw-muted zw-reveal" style="font-size: clamp(1.02rem, 1.5vw, 1.15rem); line-height: 1.65;">
         {intro.map((p) => <p set:html={p} />)}
       </div>
-    </div>
+    </div></div>
   </section>
 
   <!-- ═══════════════════ WHAT YOUR VIK HOLDS ═══════════════════ -->
   <section class="zw-anchor zw-section">
-    <div class="zw-wrap px-5 sm:px-8 max-w-[820px]">
+    <div class="zw-wrap px-5 sm:px-8"><div class="zw-measure">
       <h2 class="zw-h2 mb-10 zw-reveal">What your VIK holds</h2>
       <ul class="space-y-6">
         {holds.map((item) => (
@@ -81,12 +81,12 @@ const serviceJsonLd = {
           </li>
         ))}
       </ul>
-    </div>
+    </div></div>
   </section>
 
   <!-- ═══════════════════ WHAT RUNS ON IT ═══════════════════ -->
   <section class="zw-anchor zw-section bg-white/40 border-y border-zw-border">
-    <div class="zw-wrap px-5 sm:px-8 max-w-[820px]">
+    <div class="zw-wrap px-5 sm:px-8"><div class="zw-measure">
       <h2 class="zw-h2 mb-10 zw-reveal">What runs on it</h2>
       <ul class="space-y-6">
         {runs.map((item) => (
@@ -96,7 +96,7 @@ const serviceJsonLd = {
           </li>
         ))}
       </ul>
-    </div>
+    </div></div>
   </section>
 
   <!-- ═══════════════════ DEMO ═══════════════════ -->
@@ -113,10 +113,10 @@ const serviceJsonLd = {
 
   <!-- ═══════════════════ OFFER LADDER + CTA ═══════════════════ -->
   <section id="pricing" class="zw-anchor zw-section">
-    <div class="zw-wrap px-5 sm:px-8 max-w-[820px]">
+    <div class="zw-wrap px-5 sm:px-8"><div class="zw-measure">
       <p class="zw-eyebrow mb-4 zw-reveal">How to start</p>
       <h2 class="zw-h2 mb-8 zw-reveal">Start small. Keep everything.</h2>
       <OfferLadder variant="condensed" startHref={startHref} />
-    </div>
+    </div></div>
   </section>
 </LandingLayout>

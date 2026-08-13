@@ -193,6 +193,57 @@ const orgJsonLd = {
       }
       .zw-wrap { max-width: 1080px; margin-inline: auto; }
       .zw-mono { font-family: 'DM Mono', ui-monospace, monospace; }
+      .zw-anchor { scroll-margin-top: 5rem; }
+
+      /* Content measures. Rule: never put a max-w-* utility on the same
+         element as .zw-wrap — the utilities live in per-page CSS chunks whose
+         order against this file is not guaranteed, so the caps silently lose
+         the cascade. Wrap sections as:
+           <div class="zw-wrap px-5 sm:px-8"><div class="zw-measure">…</div></div>
+         These are defined HERE, next to .zw-wrap, so order can never flip. */
+      .zw-measure { max-width: 760px; }
+      .zw-measure-wide { max-width: 820px; }
+
+      /* Hero lede + shared hero top padding (one recipe for all heroes). */
+      .zw-lede {
+        font-size: clamp(1.05rem, 1.6vw, 1.2rem);
+        line-height: 1.6;
+        color: var(--zw-muted);
+      }
+      .zw-hero-pad { padding-top: clamp(6.5rem, 12vw, 9.5rem); }
+
+      /* Eyebrow variant for dark (forest) sections. */
+      .zw-eyebrow-dark { color: var(--zw-rust-soft); }
+
+      /* Card surfaces (radius 14px), shared across pages. */
+      .zw-card {
+        background: var(--zw-card);
+        border: 1px solid var(--zw-border);
+        border-radius: 14px;
+        padding: 1.6rem;
+      }
+      .zw-card-dark {
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        border-radius: 14px;
+        padding: 1.75rem;
+      }
+      .zw-card-dark-compact { padding: 1.3rem 1.3rem 1.4rem; }
+
+      /* Anti-positioning strip. */
+      .zw-strip {
+        padding-top: clamp(3rem, 6vw, 4.5rem);
+        padding-bottom: clamp(3rem, 6vw, 4.5rem);
+      }
+      .zw-strip-line {
+        font-family: 'Lora', Georgia, serif;
+        font-weight: 500;
+        font-size: clamp(1.2rem, 2.4vw, 1.6rem);
+        line-height: 1.4;
+        text-wrap: balance;
+        max-width: 46ch;
+        margin-inline: auto;
+      }
 
       /* Visible, keyboard-reachable focus in --teal (section 7). */
       .zw-root a:focus-visible,
