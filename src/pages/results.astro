@@ -1,94 +1,104 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
-import CtaBlock from '../components/CtaBlock.astro';
+// The Proof page: real reviews now, case studies as they land in
+// src/data/case-studies.ts (see that file for how to add one — no code
+// changes needed). No invented names, quotes, or numbers, ever.
+import LandingLayout from '../layouts/LandingLayout.astro';
+import AuditCta from '../components/AuditCta.astro';
+import Testimonials from '../components/Testimonials.astro';
+import { CASE_STUDIES } from '../data/case-studies';
 
-// Phase 1: anonymized knowledge-map findings from intro calls.
-// OPEN ITEM (handoff section 6): Jack supplies findings from real engagements.
-// Do not fabricate. The page ships with however many are real; the grid
-// renders only when at least one exists.
-//
-// Card format: { label: 'Vertical + metro', gap: '1-2 sentences on where the
-// knowledge was trapped', fix: 'what the VIK did about it, 1 sentence' }
-const findings: { label: string; gap: string; fix: string }[] = [];
-
-// Phase 2 (post-client-data): full case studies per client. Layout is
-// templated below; populate once tracked client results exist.
-const caseStudies: {
-  client: string;
-  situation: string;
-  found: string;
-  changed: string;
-  numbers: string;
-}[] = [];
+const navLinks = [
+  { label: 'See it working', href: '/#demo' },
+  { label: 'How it works', href: '/#how-it-works' },
+  { label: 'Pricing', href: '/pricing/' },
+  { label: 'About', href: '/about/' },
+];
 ---
 
-<BaseLayout
-  title="What an Owned VIK Looks Like | ZeisWorks"
-  description="What a quick intro call reveals about where AI is flying blind on your business today, and what it looks like once how-you-run becomes a VIK you own: a living system that researches, drafts, and answers."
+<LandingLayout
+  title="Proof · ZeisWorks"
+  description="Real client reviews, verified on Upwork, and case studies from real engagements. No invented names, quotes, or numbers."
+  ogImage="/og.png"
+  navLinks={navLinks}
+  brandHref="/"
 >
-  <section class="max-w-3xl mx-auto px-6 pt-16 sm:pt-24 pb-14">
-    <h1 class="font-serif text-4xl sm:text-5xl font-semibold leading-tight tracking-tight mb-6">
-      What an owned VIK looks like.
-    </h1>
-    <p class="text-lg text-ink-mid leading-relaxed">
-      Most of how a business runs lives in people's heads — so AI guesses, and the know-how walks out the door when they leave. A quick intro call shows you where AI is flying blind today. Here's what it looks like once how-you-run becomes a VIK you own: a living system that researches, drafts, and answers from knowledge you can read and edit.
-    </p>
+  <!-- ═══════════════════ HERO ═══════════════════ -->
+  <section class="zw-section zw-hero-pad bg-zw-cream border-b border-zw-border">
+    <div class="zw-wrap px-5 sm:px-8"><div class="zw-measure-wide">
+      <p class="zw-eyebrow mb-4 zw-reveal" style="color: var(--zw-rust);">Proof</p>
+      <h1 class="zw-h1 text-zw-ink mb-6 zw-reveal">Real reviews. Real work. Nothing invented.</h1>
+      <p class="zw-lede zw-reveal">
+        Every quote on this page is from a real client, published where it can be verified.
+        As engagements produce results we're allowed to share, they'll appear here too &mdash;
+        with the client's permission and numbers we can defend.
+      </p>
+    </div></div>
   </section>
 
-  {findings.length > 0 && (
-    <section class="max-w-5xl mx-auto px-6 pb-16">
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-        {findings.map((f) => (
-          <div class="bg-white border border-cream-dark rounded-2xl p-6">
-            <p class="text-xs font-semibold uppercase tracking-widest text-orange mb-3">{f.label}</p>
-            <p class="text-sm text-ink-mid leading-relaxed mb-4">{f.gap}</p>
-            <p class="text-sm text-ink leading-relaxed">
-              <span class="font-semibold">What the VIK did:</span> {f.fix}
-            </p>
-          </div>
-        ))}
-      </div>
+  <!-- ═══════════════════ REVIEWS ═══════════════════ -->
+  <section id="reviews" class="zw-anchor zw-section">
+    <div class="zw-wrap px-5 sm:px-8">
+      <p class="zw-eyebrow mb-4 zw-reveal">What clients say</p>
+      <h2 class="zw-h2 mb-8 zw-reveal">On the record.</h2>
+      <Testimonials tone="on-white" />
+    </div>
+  </section>
+
+  {CASE_STUDIES.length > 0 && (
+    <!-- ═══════════════════ CASE STUDIES ═══════════════════ -->
+    <section id="case-studies" class="zw-anchor zw-section bg-white border-y border-zw-border">
+      <div class="zw-wrap px-5 sm:px-8"><div class="zw-measure">
+        <p class="zw-eyebrow mb-4 zw-reveal">Case studies</p>
+        <h2 class="zw-h2 mb-8 zw-reveal">What actually changed.</h2>
+        <div class="space-y-8">
+          {CASE_STUDIES.map((c) => (
+            <article class="zw-card zw-reveal">
+              <h3 class="zw-h3 mb-1">{c.client}</h3>
+              {c.relationship === 'employer' && (
+                <p class="zw-mono text-xs text-zw-muted mb-3">(full-time role, not a client engagement)</p>
+              )}
+              <dl class="space-y-4 text-sm leading-relaxed mt-4">
+                <div>
+                  <dt class="font-semibold text-zw-ink">The situation</dt>
+                  <dd class="text-zw-muted">{c.situation}</dd>
+                </div>
+                <div>
+                  <dt class="font-semibold text-zw-ink">What we found</dt>
+                  <dd class="text-zw-muted">{c.found}</dd>
+                </div>
+                <div>
+                  <dt class="font-semibold text-zw-ink">What changed</dt>
+                  <dd class="text-zw-muted">{c.changed}</dd>
+                </div>
+                {c.numbers && (
+                  <div>
+                    <dt class="font-semibold text-zw-ink">The numbers</dt>
+                    <dd class="text-zw-muted">{c.numbers}</dd>
+                  </div>
+                )}
+              </dl>
+            </article>
+          ))}
+        </div>
+      </div></div>
     </section>
   )}
 
-  {caseStudies.length > 0 && (
-    <section class="max-w-3xl mx-auto px-6 pb-16">
-      <h2 class="font-serif text-2xl sm:text-3xl font-semibold leading-tight mb-8">Case studies</h2>
-      <div class="space-y-8">
-        {caseStudies.map((c) => (
-          <div class="border border-cream-dark rounded-xl p-7">
-            <p class="font-serif text-lg font-semibold text-ink mb-4">{c.client}</p>
-            <dl class="space-y-3 text-sm leading-relaxed">
-              <div>
-                <dt class="font-semibold text-ink">The situation</dt>
-                <dd class="text-ink-mid">{c.situation}</dd>
-              </div>
-              <div>
-                <dt class="font-semibold text-ink">What we found</dt>
-                <dd class="text-ink-mid">{c.found}</dd>
-              </div>
-              <div>
-                <dt class="font-semibold text-ink">What changed</dt>
-                <dd class="text-ink-mid">{c.changed}</dd>
-              </div>
-              <div>
-                <dt class="font-semibold text-ink">The numbers</dt>
-                <dd class="text-ink-mid">{c.numbers}</dd>
-              </div>
-            </dl>
-          </div>
-        ))}
-      </div>
-    </section>
-  )}
-
-  {findings.length === 0 && caseStudies.length === 0 && (
-    <section class="max-w-3xl mx-auto px-6 pb-16">
-      <p class="text-ink-mid leading-relaxed">
-        Book a quick intro call and the first thing you'll see is your own business: where the knowledge that keeps it running actually lives, and where that leaves AI guessing today. The call is free and what it surfaces is yours to keep.
+  <!-- ═══════════════════ CTA ═══════════════════ -->
+  <section class="zw-section bg-zw-forest text-zw-cream">
+    <div class="zw-wrap px-5 sm:px-8"><div class="zw-measure mx-auto text-center">
+      <p class="zw-eyebrow zw-eyebrow-dark mb-4 zw-reveal">Get started</p>
+      <h2 class="zw-h2 mb-6 text-zw-cream zw-reveal">See your own business first.</h2>
+      <p class="text-zw-cream/75 mb-9 zw-reveal">
+        Book a quick intro call and the first thing you'll see is your own firm: where the
+        knowledge that keeps it running actually lives, and where that leaves AI guessing today.
+        Free, and what it surfaces is yours to keep.
       </p>
-    </section>
-  )}
-
-  <CtaBlock heading="One quick call from now, you'll know what knowledge would walk out your door tomorrow." />
-</BaseLayout>
+      <AuditCta
+        location="footer"
+        label="Book a free intro call"
+        class="inline-flex items-center justify-center bg-zw-cream text-zw-forest font-semibold px-8 py-4 rounded-full hover:bg-white transition-colors zw-reveal"
+      />
+    </div></div>
+  </section>
+</LandingLayout>
