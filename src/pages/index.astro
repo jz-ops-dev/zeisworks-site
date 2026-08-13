@@ -3,6 +3,7 @@ import LandingLayout from '../layouts/LandingLayout.astro';
 import AuditCta from '../components/AuditCta.astro';
 import FileExplorer from '../components/FileExplorer.astro';
 import OfferLadder from '../components/OfferLadder.astro';
+import Testimonials from '../components/Testimonials.astro';
 
 
 // ── The shift: two cards (the principle + the method). Source URLs from
@@ -383,6 +384,18 @@ const routes = [
           </div>
         </div>
       </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════ PROOF ═══════════════════ -->
+  <section id="proof" class="zw-anchor zw-section bg-white border-y border-zw-border">
+    <div class="zw-wrap px-5 sm:px-8">
+      <p class="zw-eyebrow mb-4 zw-reveal">What clients say</p>
+      <h2 class="zw-h2 mb-8 zw-reveal">Real reviews from real work.</h2>
+      <Testimonials tone="on-cream" />
+      <p class="mt-8 text-sm text-zw-muted zw-reveal">
+        <a href="/results/" class="font-medium text-zw-teal hover:underline">More proof →</a>
+      </p>
     </div>
   </section>
 

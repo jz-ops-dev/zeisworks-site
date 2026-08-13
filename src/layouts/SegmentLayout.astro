@@ -7,6 +7,7 @@ import AuditCta from '../components/AuditCta.astro';
 import FileExplorer from '../components/FileExplorer.astro';
 import type { Route } from '../components/FileExplorer.astro';
 import OfferLadder from '../components/OfferLadder.astro';
+import Testimonials from '../components/Testimonials.astro';
 
 interface Props {
   title: string;
@@ -33,6 +34,7 @@ const startHref = `/start?segment=${segment}`;
 const navLinks = [
   { label: 'What you own', href: '#holds' },
   { label: 'See it working', href: '#demo' },
+  { label: 'Proof', href: '#proof' },
   { label: 'Pricing', href: '#pricing' },
 ];
 
@@ -130,8 +132,17 @@ const serviceJsonLd = {
     </div>
   </section>
 
+  <!-- ═══════════════════ PROOF ═══════════════════ -->
+  <section id="proof" class="zw-anchor zw-section">
+    <div class="zw-wrap px-5 sm:px-8">
+      <p class="zw-eyebrow mb-4 zw-reveal">What clients say</p>
+      <h2 class="zw-h2 mb-8 zw-reveal">Real reviews from real work.</h2>
+      <Testimonials tone="on-white" />
+    </div>
+  </section>
+
   <!-- ═══════════════════ OFFER LADDER + CTA ═══════════════════ -->
-  <section id="pricing" class="zw-anchor zw-section">
+  <section id="pricing" class="zw-anchor zw-section bg-white border-t border-zw-border">
     <div class="zw-wrap px-5 sm:px-8"><div class="zw-measure">
       <p class="zw-eyebrow mb-4 zw-reveal">How to start</p>
       <h2 class="zw-h2 mb-8 zw-reveal">Start small. Keep everything.</h2>
