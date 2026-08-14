@@ -1,0 +1,74 @@
+---
+// Industries directory (rebuild brief §18/§23): lists the live segment pages;
+// more industry pages land here as they ship.
+import LandingLayout from '../layouts/LandingLayout.astro';
+import AuditCta from '../components/AuditCta.astro';
+
+const navLinks = [
+  { label: 'How it works', href: '/#how-it-works' },
+  { label: 'Examples', href: '/#demo' },
+  { label: 'Pricing', href: '/pricing/' },
+  { label: 'About', href: '/about/' },
+];
+
+const industries = [
+  {
+    href: '/for/consulting-firms/',
+    title: 'Consulting and advisory firms',
+    body: 'Your methodology is the product. We write it into plain files your team and your AI both read, so proposals, answers, and onboarding come from your playbook instead of guesses.',
+    cta: 'ZeisWorks for consulting firms →',
+  },
+  {
+    href: '/for/agencies/',
+    title: 'Agencies and studios',
+    body: "Client context lives in Slack scrollback and account leads' heads. We write it into plain files, so AI drafts sound like the client and handoffs survive turnover.",
+    cta: 'ZeisWorks for agencies →',
+  },
+];
+---
+
+<LandingLayout
+  title="Industries · ZeisWorks"
+  description="ZeisWorks works best where the company runs on expertise: consulting firms, agencies, and other businesses whose judgment is the product. Industry pages for each."
+  ogImage="/og.png"
+  navLinks={navLinks}
+  brandHref="/"
+>
+  <section class="zw-section zw-hero-pad bg-zw-cream border-b border-zw-border">
+    <div class="zw-wrap px-5 sm:px-8"><div class="zw-measure-wide">
+      <p class="zw-eyebrow mb-4 zw-reveal" style="color: var(--zw-rust);">Industries</p>
+      <h1 class="zw-h1 text-zw-ink mb-6 zw-reveal">Built for companies that run on expertise.</h1>
+      <p class="zw-lede zw-reveal">
+        The method is the same everywhere: capture the judgment, structure it, build AI on top.
+        What changes by industry is which knowledge matters most. These pages get specific.
+      </p>
+    </div></div>
+  </section>
+
+  <section class="zw-anchor zw-section">
+    <div class="zw-wrap px-5 sm:px-8">
+      <div class="grid md:grid-cols-2 gap-5">
+        {industries.map((ind) => (
+          <a href={ind.href} class="zw-card zw-card-link zw-reveal flex flex-col">
+            <h2 class="zw-h3 mb-3">{ind.title}</h2>
+            <p class="text-sm text-zw-muted leading-relaxed flex-1">{ind.body}</p>
+            <p class="mt-4 text-sm font-medium text-zw-teal">{ind.cta}</p>
+          </a>
+        ))}
+      </div>
+      <p class="mt-10 text-sm text-zw-muted zw-reveal">
+        More industry pages are coming — contractors, restoration, accounting, and other
+        expertise-driven businesses. If yours isn't listed, the method still applies:
+        <a href="/start" class="font-medium text-zw-teal hover:underline">start here</a>.
+      </p>
+    </div>
+  </section>
+
+  <section class="zw-section bg-zw-forest text-zw-cream">
+    <div class="zw-wrap px-5 sm:px-8"><div class="zw-measure mx-auto text-center">
+      <p class="zw-eyebrow zw-eyebrow-dark mb-4 zw-reveal">Get started</p>
+      <h2 class="zw-h2 mb-9 text-zw-cream zw-reveal">See what your company knows.</h2>
+      <AuditCta location="footer" label="See what my company knows" class="inline-flex items-center justify-center bg-zw-cream text-zw-forest font-semibold px-8 py-4 rounded-full hover:bg-white transition-colors zw-reveal" />
+    </div></div>
+  </section>
+</LandingLayout>

@@ -5,6 +5,7 @@ export const FOOTER_GROUPS = [
   {
     heading: "Who it's for",
     links: [
+      { label: 'Industries', href: '/industries/' },
       { label: 'For consulting firms', href: '/for/consulting-firms/' },
       { label: 'For agencies', href: '/for/agencies/' },
       { label: 'Guides', href: '/guides/' },
