@@ -206,6 +206,27 @@ const orgJsonLd = {
       .zw-mono { font-family: 'DM Mono', ui-monospace, monospace; }
       .zw-anchor { scroll-margin-top: 5rem; }
 
+      /* Full-bleed hairline section rule: structure instead of background
+         swaps. (Own implementation of a section-divider idiom.) */
+      .zw-rule-t { position: relative; }
+      .zw-rule-t::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -100vw;
+        width: 200vw;
+        height: 1px;
+        background: var(--zw-border);
+      }
+
+      /* Small heading rung between h3 and h2, for card-group heads. */
+      .zw-h2-sm {
+        font-family: 'Lora', Georgia, serif;
+        font-weight: 600;
+        font-size: clamp(1.35rem, 2.2vw, 1.7rem);
+        line-height: 1.2;
+      }
+
       /* Content measures. Rule: never put a max-w-* utility on the same
          element as .zw-wrap — the utilities live in per-page CSS chunks whose
          order against this file is not guaranteed, so the caps silently lose
@@ -220,6 +241,7 @@ const orgJsonLd = {
         font-size: clamp(1.05rem, 1.6vw, 1.2rem);
         line-height: 1.6;
         color: var(--zw-muted);
+        text-wrap: pretty;
       }
       .zw-hero-pad { padding-top: clamp(6.5rem, 12vw, 9.5rem); }
 
@@ -230,13 +252,13 @@ const orgJsonLd = {
       .zw-card {
         background: var(--zw-card);
         border: 1px solid var(--zw-border);
-        border-radius: 14px;
+        border-radius: 12px;
         padding: 1.6rem;
       }
       .zw-card-dark {
         background: rgba(255, 255, 255, 0.05);
         border: 1px solid rgba(255, 255, 255, 0.12);
-        border-radius: 14px;
+        border-radius: 12px;
         padding: 1.75rem;
       }
       .zw-card-dark-compact { padding: 1.3rem 1.3rem 1.4rem; }
@@ -278,6 +300,10 @@ const orgJsonLd = {
         will-change: opacity, transform;
       }
       html.zw-anim .zw-reveal.zw-in { opacity: 1; transform: none; filter: none; }
+      /* Mobile: never hide content behind the reveal system. */
+      @media (max-width: 767px) {
+        html.zw-anim .zw-reveal { opacity: 1; transform: none; filter: none; transition: none; }
+      }
 
       @media (prefers-reduced-motion: reduce) {
         html { scroll-behavior: auto; }
@@ -551,9 +577,14 @@ const orgJsonLd = {
   /* Nav resting (transparent over hero) and solid (scrolled) states. */
   #zw-nav { background: transparent; }
   #zw-nav.zw-nav-solid {
-    background: rgba(245, 245, 247, 0.92);
-    backdrop-filter: saturate(140%) blur(8px);
+    background: rgba(245, 245, 247, 0.97);
     border-bottom: 1px solid var(--zw-border);
+  }
+  @media (min-width: 768px) {
+    #zw-nav.zw-nav-solid {
+      background: rgba(245, 245, 247, 0.92);
+      backdrop-filter: saturate(140%) blur(8px);
+    }
   }
   /* Hamburger to X when the menu is open. */
   #zw-menu-btn.zw-menu-open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }

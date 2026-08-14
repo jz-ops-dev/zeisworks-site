@@ -147,10 +147,11 @@ const notFit = ['You just need a simple chatbot', 'Your business processes are e
         <p class="zw-eyebrow mb-4 zw-reveal">Does this sound familiar?</p>
         <h2 class="zw-h2 mb-12 zw-reveal">The most valuable rules in the business are often the least accessible.</h2>
       </div>
-      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+      <!-- Hairline grid: parent bg shows through 1px gaps, no double borders. -->
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-px rounded-[12px] overflow-hidden border border-zw-border" style="background: var(--zw-border);">
         {problems.map((p) => (
-          <article class="zw-card zw-reveal">
-            <h3 class="zw-h3 mb-3">{p.title}</h3>
+          <article class="bg-white p-6 zw-reveal">
+            <h3 class="zw-h2-sm mb-3">{p.title}</h3>
             <p class="text-sm text-zw-muted leading-relaxed">{p.body}</p>
           </article>
         ))}
@@ -224,7 +225,7 @@ const notFit = ['You just need a simple chatbot', 'Your business processes are e
   </section>
 
   <!-- ═══════ BEFORE / AFTER ═══════ -->
-  <section class="zw-anchor zw-section">
+  <section class="zw-anchor zw-section zw-rule-t">
     <div class="zw-wrap px-5 sm:px-8">
       <div class="zw-measure">
         <p class="zw-eyebrow mb-4 zw-reveal">Before and after</p>
@@ -264,7 +265,7 @@ const notFit = ['You just need a simple chatbot', 'Your business processes are e
   </section>
 
   <!-- ═══════ OUTCOMES ═══════ -->
-  <section class="zw-anchor zw-section">
+  <section class="zw-anchor zw-section zw-rule-t">
     <div class="zw-wrap px-5 sm:px-8">
       <div class="zw-measure">
         <p class="zw-eyebrow mb-4 zw-reveal">What it unlocks</p>
@@ -357,7 +358,7 @@ const notFit = ['You just need a simple chatbot', 'Your business processes are e
   </section>
 
   <!-- ═══════ PRICING ═══════ -->
-  <section id="pricing" class="zw-anchor zw-section">
+  <section id="pricing" class="zw-anchor zw-section zw-rule-t">
     <div class="zw-wrap px-5 sm:px-8">
       <p class="zw-eyebrow mb-4 zw-reveal">Pricing</p>
       <h2 class="zw-h2 mb-8 max-w-[820px] zw-reveal">Build an AI knowledge asset for less than the cost of another hire.</h2>
