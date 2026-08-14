@@ -6,13 +6,15 @@ interface Props {
   location: 'nav' | 'hero' | 'mid' | 'footer' | 'exit-modal';
   label?: string;
   class?: string;
+  /** Funnel destination; segment pages pass /start?segment=… */
+  href?: string;
 }
 
-const { location, label = 'Get started', class: className = '' } = Astro.props;
+const { location, label = 'Get started', class: className = '', href = '/start' } = Astro.props;
 ---
 
 <a
-  href="/start"
+  href={href}
   data-audit-cta
   data-cta-location={location}
   class={className}

@@ -1,0 +1,179 @@
+---
+// Simulated query experience mounted in FileExplorer's "query" slot:
+// question → files highlight in the explorer → answer → source chips.
+// Static preset data, no backend; first preset is server-rendered open.
+import type { QueryPreset } from '../data/query-demo';
+
+interface Props {
+  presets: QueryPreset[];
+}
+const { presets } = Astro.props;
+---
+
+<div class="zw-qd" data-query-demo>
+  <p class="zw-qd-lead">Now ask it something.</p>
+  <div class="zw-qd-questions" role="group" aria-label="Example questions">
+    {presets.map((p, i) => (
+      <button type="button" class="zw-qd-q" data-qd-question={p.id} data-sequence={p.sequence.join('|')} aria-pressed={i === 0 ? 'true' : 'false'}>
+        {p.question}
+      </button>
+    ))}
+  </div>
+  <div class="zw-qd-answers" aria-live="polite">
+    {presets.map((p, i) => (
+      <div class="zw-qd-panel" data-qd-panel={p.id} hidden={i !== 0}>
+        <p class="zw-qd-label zw-mono">answer</p>
+        {p.answer.map((par) => <p class="zw-qd-text">{par}</p>)}
+        <p class="zw-qd-label zw-mono">sources</p>
+        <div class="zw-qd-sources">
+          {p.sources.map((s) => (
+            <button type="button" class="zw-qd-chip zw-mono" data-qd-source={s}>{s}</button>
+          ))}
+        </div>
+      </div>
+    ))}
+  </div>
+  <p class="zw-qd-beat">The answer didn't come from the internet. It came from your company.</p>
+  <p class="zw-qd-hint zw-mono">sample files, sample answers — the live version runs on yours</p>
+</div>
+
+<script is:inline>
+  (function () {
+    document.querySelectorAll('[data-query-demo]').forEach(function (qd) {
+      if (qd.dataset.init) return;
+      qd.dataset.init = '1';
+      var explorer = qd.closest('.zw-explorer');
+      if (!explorer) return;
+      var timers = [];
+      function tabFor(path) {
+        return explorer.querySelector('[role="tab"][data-path="' + path + '"]');
+      }
+      function track(action, id) {
+        try { if (typeof gtag === 'function') gtag('event', 'demo_interaction', { action: action, id: id, page_path: location.pathname }); } catch (e) {}
+        try { if (typeof fbq === 'function') fbq('trackCustom', 'DemoInteraction', { action: action, id: id }); } catch (e) {}
+      }
+      function clearTimers() { timers.forEach(clearTimeout); timers = []; }
+      qd.querySelectorAll('[data-qd-question]').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          clearTimers();
+          var id = btn.getAttribute('data-qd-question');
+          track('question', id);
+          qd.querySelectorAll('[data-qd-question]').forEach(function (b) {
+            b.setAttribute('aria-pressed', b === btn ? 'true' : 'false');
+          });
+          qd.querySelectorAll('[data-qd-panel]').forEach(function (p) { p.hidden = true; });
+          var panel = qd.querySelector('[data-qd-panel="' + id + '"]');
+          var seq = (btn.getAttribute('data-sequence') || '').split('|').filter(Boolean);
+          var animate = document.documentElement.classList.contains('zw-anim');
+          if (!animate) {
+            var last = tabFor(seq[seq.length - 1]);
+            if (last) last.click();
+            if (panel) panel.hidden = false;
+            return;
+          }
+          seq.forEach(function (path, i) {
+            timers.push(setTimeout(function () {
+              var tab = tabFor(path);
+              if (!tab) return;
+              tab.classList.remove('zw-qd-flash');
+              void tab.offsetWidth;
+              tab.classList.add('zw-qd-flash');
+              tab.click();
+            }, i * 420));
+          });
+          timers.push(setTimeout(function () {
+            if (panel) panel.hidden = false;
+          }, seq.length * 420 + 200));
+        });
+      });
+      qd.querySelectorAll('[data-qd-source]').forEach(function (chip) {
+        chip.addEventListener('click', function () {
+          var tab = tabFor(chip.getAttribute('data-qd-source'));
+          if (!tab) return;
+          track('source', chip.getAttribute('data-qd-source'));
+          tab.click();
+          try { tab.focus({ preventScroll: false }); } catch (e) { tab.focus(); }
+        });
+      });
+    });
+  })();
+</script>
+
+<style is:global>
+  .zw-qd { margin-top: 2.5rem; max-width: 840px; }
+  .zw-qd-lead { margin: 0 0 0.7rem; font-size: 0.85rem; color: var(--zw-muted); }
+  .zw-qd-questions { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+  .zw-qd-q {
+    font: inherit;
+    font-size: 0.85rem;
+    text-align: left;
+    color: var(--zw-ink);
+    background: var(--zw-card);
+    border: 1px solid transparent;
+    outline: 1px solid var(--zw-border);
+    outline-offset: 0;
+    border-radius: 999px;
+    padding: 0.45rem 0.9rem;
+    cursor: pointer;
+    transition: outline-color 0.18s var(--zw-ease), color 0.18s var(--zw-ease);
+  }
+  .zw-qd-q:hover { outline-color: rgba(224, 69, 48, 0.45); }
+  .zw-qd-q[aria-pressed="true"] { outline-color: var(--zw-teal); color: var(--zw-teal); }
+  .zw-qd-panel {
+    margin-top: 1rem;
+    border: 1px solid var(--zw-border);
+    border-radius: 12px;
+    background: var(--zw-card);
+    padding: 1.25rem 1.4rem;
+  }
+  html.zw-anim .zw-qd-panel:not([hidden]) { animation: zwFileIn 0.32s var(--zw-ease); }
+  .zw-qd-label {
+    font-size: 0.6rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--zw-teal);
+    margin: 0 0 0.4rem;
+  }
+  .zw-qd-text { margin: 0 0 0.6rem; font-size: 0.95rem; line-height: 1.6; color: var(--zw-ink); }
+  .zw-qd-text + .zw-qd-label { margin-top: 0.9rem; }
+  .zw-qd-sources { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+  .zw-qd-chip {
+    font-size: 0.72rem;
+    color: var(--zw-ink);
+    background: transparent;
+    border: 1px solid var(--zw-border);
+    border-radius: 6px;
+    padding: 0.25rem 0.55rem;
+    cursor: pointer;
+    transition: border-color 0.18s var(--zw-ease), color 0.18s var(--zw-ease);
+  }
+  .zw-qd-chip:hover { border-color: rgba(224, 69, 48, 0.45); color: var(--zw-teal); }
+  .zw-qd-beat { margin: 1.4rem 0 0; font-weight: 500; color: var(--zw-ink); }
+  .zw-qd-hint { margin: 0.4rem 0 0; font-size: 0.7rem; color: var(--zw-muted); }
+
+  @keyframes zwQdFlash {
+    0% { background: rgba(240, 161, 132, 0); }
+    35% { background: rgba(240, 161, 132, 0.28); }
+    100% { background: rgba(240, 161, 132, 0); }
+  }
+  .zw-qd-flash { animation: zwQdFlash 0.65s var(--zw-ease); }
+
+  /* Dark theme (inside the forest demo band). */
+  .zw-explorer[data-theme="dark"] .zw-qd-lead,
+  .zw-explorer[data-theme="dark"] .zw-qd-hint { color: rgba(245, 245, 247, 0.65); }
+  .zw-explorer[data-theme="dark"] .zw-qd-q {
+    color: var(--zw-cream);
+    background: rgba(255, 255, 255, 0.05);
+    outline-color: rgba(255, 255, 255, 0.16);
+  }
+  .zw-explorer[data-theme="dark"] .zw-qd-q[aria-pressed="true"] { outline-color: var(--zw-rust-soft); color: var(--zw-rust-soft); }
+  .zw-explorer[data-theme="dark"] .zw-qd-panel {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: rgba(255, 255, 255, 0.12);
+  }
+  .zw-explorer[data-theme="dark"] .zw-qd-label { color: var(--zw-rust-soft); }
+  .zw-explorer[data-theme="dark"] .zw-qd-text { color: var(--zw-cream); }
+  .zw-explorer[data-theme="dark"] .zw-qd-chip { color: var(--zw-cream); border-color: rgba(255, 255, 255, 0.16); }
+  .zw-explorer[data-theme="dark"] .zw-qd-chip:hover { color: var(--zw-rust-soft); border-color: rgba(240, 161, 132, 0.45); }
+  .zw-explorer[data-theme="dark"] .zw-qd-beat { color: var(--zw-cream); }
+</style>

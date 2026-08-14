@@ -1,163 +1,58 @@
 ---
 import LandingLayout from '../layouts/LandingLayout.astro';
 import AuditCta from '../components/AuditCta.astro';
+import FileExplorer from '../components/FileExplorer.astro';
+import QueryDemo from '../components/QueryDemo.astro';
 import OfferLadder from '../components/OfferLadder.astro';
+import Testimonials from '../components/Testimonials.astro';
+import { HOME_QUERY_PRESETS } from '../data/query-demo';
+import { CASE_STUDIES } from '../data/case-studies';
 
 const navLinks = [
   { label: 'Problem', href: '#the-problem' },
-  { label: 'How it works', href: '#how-it-works' },
   { label: 'Demo', href: '#demo' },
+  { label: 'How it works', href: '#how-it-works' },
   { label: 'Fit', href: '#fit' },
+  { label: 'Pricing', href: '#pricing' },
 ];
 
-const knowledgeInputs = [
-  'Owner judgment',
-  'Senior estimator',
-  'Pricing sheets',
-  'Slack threads',
-  'CRM notes',
-  'SOP',
-  'Email history',
-  'Sales playbook',
-  'Field notes',
-];
-
-const knowledgeFiles = [
-  'pricing.md',
-  'estimating.md',
-  'customers.md',
-  'escalation.md',
-  'brand-voice.md',
-  'policies.md',
-];
-
-const aiOutputs = [
-  'Answer with sources',
-  'Price with rules',
-  'Draft proposals',
-  'Train new hires',
-  'Research accounts',
-  'Qualify leads',
-  'Support customers',
-  'Guide operations',
-];
+const knowledgeInputs = ['Owner judgment', 'Senior estimator', 'Pricing sheets', 'Slack threads', 'CRM notes', 'SOP', 'Email history', 'Sales playbook', 'Field notes'];
+const knowledgeFiles = ['pricing.md', 'estimating.md', 'customers.md', 'escalation.md', 'brand-voice.md', 'policies.md'];
+const aiOutputs = ['Answer with sources', 'Price with rules', 'Draft proposals', 'Train new hires', 'Research accounts', 'Qualify leads', 'Support customers', 'Guide operations'];
 
 const problems = [
-  {
-    title: 'Everything runs through one person',
-    body: 'The owner, senior estimator, or operations lead keeps getting interrupted because the real answers live with them.',
-  },
-  {
-    title: 'Your AI gives plausible answers, not company answers',
-    body: "ChatGPT knows the internet. It does not know your pricing logic, escalation rules, customer red flags, or proposal standards.",
-  },
-  {
-    title: 'Training takes forever',
-    body: 'New employees learn through shadowing, repeated questions, and a long trail of small exceptions nobody has written down.',
-  },
-  {
-    title: 'Important rules are scattered everywhere',
-    body: "Some rules are in SOPs. Some are in spreadsheets. Some are in Slack. The decisive ones may only exist in someone's head.",
-  },
-  {
-    title: 'You have key-person risk',
-    body: 'When one experienced employee leaves, the company can lose the judgment behind years of pricing, sales, and operations decisions.',
-  },
-  {
-    title: "You want AI, but do not trust it",
-    body: 'The issue is rarely the model alone. It is that the model has not been taught how your company actually operates.',
-  },
+  { title: 'Everything runs through one person', body: 'The owner, senior estimator, or operations lead keeps getting interrupted because the real answers live with them.' },
+  { title: 'Your AI gives plausible answers, not company answers', body: "ChatGPT knows the internet. It does not know your pricing logic, escalation rules, customer red flags, or proposal standards." },
+  { title: 'Training takes forever', body: 'New employees learn through shadowing, repeated questions, and a long trail of small exceptions nobody has written down.' },
+  { title: 'Important rules are scattered everywhere', body: "Some rules are in SOPs. Some are in spreadsheets. Some are in Slack. The decisive ones may only exist in someone's head." },
+  { title: 'You have key-person risk', body: 'When one experienced employee leaves, the company can lose the judgment behind years of pricing, sales, and operations decisions.' },
+  { title: 'You want AI, but do not trust it', body: 'The issue is rarely the model alone. It is that the model has not been taught how your company actually operates.' },
 ];
 
-const demoQuestions = [
-  {
-    question: 'Can I give this customer a 15% discount?',
-    files: ['pricing.md', 'approval-rules.md'],
-    answer: 'No direct approval at the account-manager level. Discounts up to 10% are allowed. Discounts from 11-20% require sales manager approval and must preserve the minimum margin in pricing.md.',
-  },
-  {
-    question: 'Should we take this customer?',
-    files: ['customers.md', 'risk-signals.md'],
-    answer: 'Proceed only with prepaid terms or manager approval. This account matches two risk signals: urgent timeline and prior scope disputes.',
-  },
-  {
-    question: 'How should we price this job?',
-    files: ['estimating.md', 'pricing.md', 'exceptions.md'],
-    answer: 'Use standard project pricing, then add the access surcharge and complexity adjustment because the site has constrained entry and after-hours work.',
-  },
-  {
-    question: 'What happens when a customer requests a refund?',
-    files: ['policies.md', 'escalation.md'],
-    answer: 'Support can review refunds inside 30 days. Custom work and refunds above $500 require escalation before anyone commits to the customer.',
-  },
+// Sample company files behind the demo. Illustrative placeholders (labeled as
+// such in the UI); every demo answer derives from lines visible here.
+const routes = [
+  { key: 'pricing', path: 'reference/pricing.md', lines: ['# Pricing', 'We price by the project, not the hour.', 'A quote holds for 30 days.', 'Standard rates live in the rate table.'] },
+  { key: 'approvals', path: 'reference/approval-rules.md', lines: ['# Approval rules', 'Discounts to 10%: account manager.', 'Discounts 11–20%: sales manager.', 'Refunds past policy: owner sign-off.'] },
+  { key: 'customers', path: 'reference/customers.md', lines: ['# Customers', 'Good fit: repeat work, clear scope.', 'Red flags: urgent timeline, scope disputes.', 'Red-flag accounts: prepay or manager ok.'] },
+  { key: 'refunds', path: 'reference/refund-policy.md', lines: ['# Refund policy', 'window: 30 days from delivery', 'exceptions: final-sale, custom orders', 'after 30 days: store credit only'] },
+  { key: 'escalation', path: 'working/handoffs.md', lines: ['# Escalation', 'Loop in a human for money or complaints.', 'Tag the owner within one business day.', 'Never guess on legal or refunds.'] },
 ];
 
-const coreKnowledge = [
-  'Rules',
-  'Exceptions',
-  'Judgment',
-  'Processes',
-  'Pricing logic',
-  'Customer definitions',
-  'Escalation paths',
-  'Brand voice',
-  'Institutional memory',
-];
+const coreKnowledge = ['Rules', 'Exceptions', 'Judgment', 'Processes', 'Pricing logic', 'Customer definitions', 'Escalation paths', 'Brand voice', 'Institutional memory'];
 
-const beforeItems = [
-  'Senior employees answer the same questions repeatedly',
-  'Pricing knowledge is inconsistent',
-  'AI produces generic responses',
-  'SOPs go stale',
-  "Critical judgment exists only in people's heads",
-  'Automations break when exceptions occur',
-];
+const beforeItems = ['Senior employees answer the same questions repeatedly', 'Pricing knowledge is inconsistent', 'AI produces generic responses', 'SOPs go stale', "Critical judgment exists only in people's heads", 'Automations break when exceptions occur'];
+const afterItems = ['Employees can query company knowledge', 'AI follows real pricing logic', 'Answers reference actual company rules', 'Institutional knowledge is explicit', 'New hires have an internal knowledge system', 'Updates happen at the knowledge layer'];
 
-const afterItems = [
-  'Employees can query company knowledge',
-  'AI follows real pricing logic',
-  'Answers reference actual company rules',
-  'Institutional knowledge is explicit',
-  'New hires have an internal knowledge system',
-  'Updates happen at the knowledge layer',
-];
-
-const exampleCaptured = [
-  'Pricing logic and common exceptions',
-  'Customer qualification criteria',
-  'Proposal structure and approved language',
-  'Escalation rules for edge cases',
-  'Role-specific operating notes for new hires',
-];
-
-const exampleBuilt = [
-  'An internal question-answering system with source references',
-  'A pricing and scope reference for estimators',
-  'A proposal draft workflow using company language',
-  'A living file structure the team can review and update',
-];
+const exampleCaptured = ['Pricing logic and common exceptions', 'Customer qualification criteria', 'Proposal structure and approved language', 'Escalation rules for edge cases', 'Role-specific operating notes for new hires'];
+const exampleBuilt = ['An internal question-answering system with source references', 'A pricing and scope reference for estimators', 'A proposal draft workflow using company language', 'A living file structure the team can review and update'];
 
 const outcomes = [
-  {
-    title: 'Sales',
-    items: ['Lead qualification', 'Proposal drafting', 'Customer research', 'Follow-up', 'Pricing guidance'],
-  },
-  {
-    title: 'Operations',
-    items: ['Process Q&A', 'Escalation guidance', 'Internal support', 'Decision assistance', 'Workflow automation'],
-  },
-  {
-    title: 'Training',
-    items: ['New hire onboarding', 'Role-specific assistants', 'Process explanations', 'Internal knowledge search'],
-  },
-  {
-    title: 'Estimating',
-    items: ['Pricing guidance', 'Scope assistance', 'Historical context', 'Exception handling'],
-  },
-  {
-    title: 'Customer service',
-    items: ['Policy-aware responses', 'Escalation', 'Account context', 'Consistent answers'],
-  },
+  { title: 'Sales', items: ['Lead qualification', 'Proposal drafting', 'Customer research', 'Follow-up', 'Pricing guidance'] },
+  { title: 'Operations', items: ['Process Q&A', 'Escalation guidance', 'Internal support', 'Decision assistance', 'Workflow automation'] },
+  { title: 'Training', items: ['New hire onboarding', 'Role-specific assistants', 'Process explanations', 'Internal knowledge search'] },
+  { title: 'Estimating', items: ['Pricing guidance', 'Scope assistance', 'Historical context', 'Exception handling'] },
+  { title: 'Customer service', items: ['Policy-aware responses', 'Escalation', 'Account context', 'Consistent answers'] },
 ];
 
 const ownershipRows = [
@@ -170,45 +65,14 @@ const ownershipRows = [
 ];
 
 const processSteps = [
-  {
-    n: '01',
-    title: 'Map',
-    body: 'Identify where the important knowledge currently lives: people, documents, software, spreadsheets, and processes.',
-  },
-  {
-    n: '02',
-    title: 'Capture',
-    body: 'Interview the people who know how the business really operates, then document rules, exceptions, judgment, and decision logic.',
-  },
-  {
-    n: '03',
-    title: 'Build',
-    body: 'Turn that knowledge into useful AI systems: assistants, internal search, estimating tools, proposal workflows, and automations.',
-  },
-  {
-    n: '04',
-    title: 'Transfer',
-    body: 'Your company owns the knowledge, files, systems, and documentation. Continue if it creates value. Leave if it does not.',
-  },
+  { n: '01', title: 'Map', body: 'Identify where the important knowledge currently lives: people, documents, software, spreadsheets, and processes.' },
+  { n: '02', title: 'Capture', body: 'Interview the people who know how the business really operates, then document rules, exceptions, judgment, and decision logic.' },
+  { n: '03', title: 'Build', body: 'Turn that knowledge into useful AI systems: assistants, internal search, estimating tools, proposal workflows, and automations.' },
+  { n: '04', title: 'Transfer', body: 'Your company owns the knowledge, files, systems, and documentation. Continue if it creates value. Leave if it does not.' },
 ];
 
-const greatFit = [
-  'A few employees hold a disproportionate amount of important knowledge',
-  'Work involves judgment rather than simple checklists',
-  'You have meaningful exceptions and edge cases',
-  'Employees repeatedly ask the same internal questions',
-  'Training employees takes a long time',
-  'You want AI but do not trust generic output',
-  'Losing a senior employee would create serious problems',
-];
-
-const notFit = [
-  'You just need a simple chatbot',
-  'Your business processes are extremely standardized',
-  'Everything important is already documented and maintained',
-  'You only want AI because it is trendy',
-  'You expect AI to replace your team overnight',
-];
+const greatFit = ['A few employees hold a disproportionate amount of important knowledge', 'Work involves judgment rather than simple checklists', 'You have meaningful exceptions and edge cases', 'Employees repeatedly ask the same internal questions', 'Training employees takes a long time', 'You want AI but do not trust generic output', 'Losing a senior employee would create serious problems'];
+const notFit = ['You just need a simple chatbot', 'Your business processes are extremely standardized', 'Everything important is already documented and maintained', 'You only want AI because it is trendy', 'You expect AI to replace your team overnight'];
 ---
 
 <LandingLayout
@@ -220,1102 +84,395 @@ const notFit = [
 >
   <span id="top" aria-hidden="true"></span>
 
-  <section class="zw-hero bg-zw-cream border-b border-zw-border">
-    <div class="zw-wrap px-5 sm:px-8">
-      <div class="zw-hero-grid">
-        <div class="zw-hero-copy">
-          <p class="zw-eyebrow mb-4 zw-reveal">Institutional knowledge, made usable</p>
-          <h1 class="zw-h1 zw-reveal">
-            Your company already knows the answer. Your AI doesn't.
-          </h1>
-          <p class="zw-hero-lede zw-reveal">
-            The useful intelligence is already inside your people, documents, spreadsheets, and
-            daily decisions. ZeisWorks captures it, structures it, and turns it into AI systems
-            your team can actually trust.
-          </p>
-          <div class="zw-hero-actions zw-reveal">
-            <AuditCta
-              location="hero"
-              label="See what my company knows"
-              class="zw-btn zw-btn-primary"
-            />
-            <a href="#demo" class="zw-btn zw-btn-secondary">Watch the knowledge demo</a>
-          </div>
-          <p class="zw-proof-line zw-reveal">
-            Knowledge first. Automation second. Everything we build is yours to keep.
-          </p>
+  <!-- ═══════ HERO ═══════ -->
+  <section class="zw-hero-split zw-hero-pad bg-zw-cream border-b border-zw-border" style="overflow-x: clip; padding-bottom: clamp(3rem, 6vw, 5rem);">
+    <div class="zw-wrap px-5 sm:px-8 grid lg:grid-cols-[1fr_1.05fr] gap-12 lg:gap-14 items-center">
+      <div>
+        <p class="zw-eyebrow mb-4 zw-reveal" style="color: var(--zw-rust);">Institutional knowledge, made usable</p>
+        <h1 class="zw-h1 text-zw-ink mb-6 zw-reveal">
+          Your company already knows the answer.
+          <em style="color: var(--zw-teal);">Your AI doesn't.</em>
+        </h1>
+        <p class="zw-lede mb-8 zw-reveal" style="max-width: 52ch;">
+          ZeisWorks captures the pricing rules, processes, judgment, and expertise stuck inside
+          your team — then turns them into AI your entire company can actually use.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-3 zw-reveal">
+          <AuditCta location="hero" label="See what my company knows" class="inline-flex items-center justify-center gap-2 bg-zw-teal text-white font-semibold px-7 py-3.5 rounded-full hover:bg-zw-rust transition-colors" />
+          <a href="#demo" class="inline-flex items-center justify-center px-7 py-3.5 rounded-full font-medium text-zw-ink border border-zw-ink/15 hover:bg-zw-ink/[0.04] transition-colors">Watch the knowledge demo</a>
         </div>
-
-        <div class="zw-flow zw-reveal" data-anim="hero" aria-label="Company knowledge becoming structured AI infrastructure">
-          <div class="zw-flow-title">
-            <span>Company knowledge</span>
-            <strong>from scattered to usable</strong>
-          </div>
-          <div class="zw-flow-col">
-            <p>What your company knows</p>
-            <div class="zw-chip-cloud">
-              {knowledgeInputs.map((item) => <span>{item}</span>)}
+        <p class="mt-5 text-sm text-zw-muted zw-reveal">
+          You own the knowledge. You own the systems. No proprietary AI platform required.
+        </p>
+      </div>
+      <!-- Knowledge flow: scattered inputs → structured files → capabilities -->
+      <div class="zw-flow zw-reveal" data-anim="hero" aria-label="Scattered company knowledge becomes structured files, which power AI capabilities.">
+        <div>
+          <p class="zw-flow-label zw-mono">where it lives today</p>
+          <ul class="zw-flow-chips">{knowledgeInputs.map((x, i) => <li style={`--i:${i}`}>{x}</li>)}</ul>
+        </div>
+        <div class="zw-flow-link" aria-hidden="true"></div>
+        <div>
+          <p class="zw-flow-label zw-mono">structured, readable files</p>
+          <figure class="zw-knowledge zw-mono m-0">
+            <div class="zw-knowledge-bar">
+              <span class="zw-dot"></span><span class="zw-dot"></span><span class="zw-dot"></span>
+              <span class="ml-3 text-[0.72rem] zw-knowledge-name">your-company/</span>
             </div>
-          </div>
-          <div class="zw-flow-arrow" aria-hidden="true"></div>
-          <div class="zw-flow-col zw-flow-center">
-            <p>Your company's knowledge</p>
-            <div class="zw-file-stack">
-              {knowledgeFiles.map((file) => (
-                <span>
-                  <svg width="14" height="16" viewBox="0 0 14 16" fill="none" aria-hidden="true">
-                    <path d="M2 1h6l4 4v10H2V1z" stroke="currentColor" stroke-width="1.2" />
-                    <path d="M8 1v4h4" stroke="currentColor" stroke-width="1.2" />
-                  </svg>
-                  {file}
-                </span>
-              ))}
-            </div>
-          </div>
-          <div class="zw-flow-arrow" aria-hidden="true"></div>
-          <div class="zw-flow-col">
-            <p>What your AI can now do</p>
-            <div class="zw-chip-cloud zw-chip-cloud-tight">
-              {aiOutputs.map((item) => <span>{item}</span>)}
-            </div>
-          </div>
+            <ul class="zw-flow-files">{knowledgeFiles.map((f, i) => <li class="zw-kline" style={`--i:${i}`}>{f}</li>)}</ul>
+          </figure>
+        </div>
+        <div class="zw-flow-link" aria-hidden="true"></div>
+        <div>
+          <p class="zw-flow-label zw-mono">what your AI can now do</p>
+          <ul class="zw-flow-caps">{aiOutputs.map((x, i) => <li style={`--i:${i}`}>{x}</li>)}</ul>
         </div>
       </div>
     </div>
   </section>
 
+  <!-- ═══════ STRIP ═══════ -->
   <section class="zw-strip bg-zw-forest text-zw-cream">
-    <div class="zw-wrap px-5 sm:px-8">
+    <div class="zw-wrap px-5 sm:px-8 text-center">
       <p class="zw-strip-line zw-reveal">
         The problem with your AI probably isn't the AI. It's what the AI knows about your company.
       </p>
     </div>
   </section>
 
+  <!-- ═══════ PROBLEM ═══════ -->
   <section id="the-problem" class="zw-anchor zw-section">
     <div class="zw-wrap px-5 sm:px-8">
-      <div class="zw-section-head">
+      <div class="zw-measure">
         <p class="zw-eyebrow mb-4 zw-reveal">Does this sound familiar?</p>
-        <h2 class="zw-h2 zw-reveal">The most valuable rules in the business are often the least accessible.</h2>
+        <h2 class="zw-h2 mb-12 zw-reveal">The most valuable rules in the business are often the least accessible.</h2>
       </div>
-      <div class="zw-problem-grid">
-        {problems.map((problem) => (
-          <article class="zw-card zw-reveal">
-            <h3>{problem.title}</h3>
-            <p>{problem.body}</p>
+      <!-- Hairline grid: parent bg shows through 1px gaps, no double borders. -->
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-px rounded-[12px] overflow-hidden border border-zw-border" style="background: var(--zw-border);">
+        {problems.map((p) => (
+          <article class="bg-white p-6 zw-reveal">
+            <h3 class="zw-h2-sm mb-3">{p.title}</h3>
+            <p class="text-sm text-zw-muted leading-relaxed">{p.body}</p>
           </article>
         ))}
       </div>
     </div>
   </section>
 
+  <!-- ═══════ DEMO ═══════ -->
   <section id="demo" class="zw-anchor zw-section bg-zw-forest text-zw-cream">
     <div class="zw-wrap px-5 sm:px-8">
-      <div class="zw-section-head">
-        <p class="zw-eyebrow mb-4 zw-reveal" style="color:#F0A184;">See it working</p>
-        <h2 class="zw-h2 zw-reveal text-zw-cream">A trustworthy answer has a trail back to company knowledge.</h2>
+      <p class="zw-eyebrow zw-eyebrow-dark mb-4 zw-reveal">See it working</p>
+      <h2 class="zw-h2 mb-8 max-w-[820px] zw-reveal text-zw-cream">
+        A trustworthy answer has a trail back to company knowledge.
+      </h2>
+      <FileExplorer routes={routes} instanceId="home" theme="dark" lead="Sample company files — pick one to read it:">
+        <QueryDemo slot="query" presets={HOME_QUERY_PRESETS} />
+      </FileExplorer>
+      <div class="mt-14 flex flex-col sm:flex-row sm:items-center gap-5 zw-reveal">
+        <p class="text-zw-cream/85 font-medium m-0">Want this running on your files?</p>
+        <AuditCta location="mid" label="See what my company knows" class="inline-flex items-center justify-center bg-zw-cream text-zw-forest font-semibold px-7 py-3.5 rounded-full hover:bg-white transition-colors self-start" />
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════ CORE IDEA + VIK ═══════ -->
+  <section id="how-it-works" class="zw-anchor zw-section bg-white border-y border-zw-border">
+    <div class="zw-wrap px-5 sm:px-8">
+      <div class="zw-measure">
+        <p class="zw-eyebrow mb-4 zw-reveal">The core idea</p>
+        <h2 class="zw-h2 mb-8 zw-reveal">Before you automate the workflow, capture the judgment behind it.</h2>
+        <p class="text-zw-muted mb-8 zw-reveal">
+          Most AI projects start with the workflow. ZeisWorks starts with the knowledge behind the
+          workflow. That includes:
+        </p>
+        <ul class="zw-chiprow zw-reveal">{coreKnowledge.map((c) => <li>{c}</li>)}</ul>
       </div>
 
-      <div class="zw-demo zw-reveal" data-demo>
-        <div class="zw-demo-panel">
-          <p class="zw-demo-label">Employee question</p>
-          <p class="zw-demo-question" data-demo-question>{demoQuestions[0].question}</p>
-          <div class="zw-demo-presets" aria-label="Example questions">
-            {demoQuestions.map((item, i) => (
-              <button type="button" data-demo-preset={i} aria-pressed={i === 0 ? 'true' : 'false'}>
-                {item.question}
-              </button>
+      <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center mt-14">
+        <div>
+          <p class="zw-eyebrow mb-4 zw-reveal">What we build</p>
+          <h2 class="zw-h2 mb-8 zw-reveal">The finished knowledge system is your VIK.</h2>
+          <p class="text-zw-muted mb-6 zw-reveal">
+            <strong class="text-zw-ink font-semibold">Visualized Institutional Knowledge</strong> — a
+            structured, human-readable representation of how your business thinks and operates. It
+            becomes the source material behind your AI systems. And the client owns it.
+          </p>
+          <ol class="space-y-5 mt-8">
+            {processSteps.map((s) => (
+              <li class="zw-reveal flex gap-4">
+                <span class="zw-mono text-zw-teal text-sm font-medium pt-1 shrink-0">{s.n}</span>
+                <div>
+                  <h3 class="zw-h3 mb-1">{s.title}</h3>
+                  <p class="text-sm text-zw-muted leading-relaxed">{s.body}</p>
+                </div>
+              </li>
             ))}
-          </div>
+          </ol>
         </div>
-
-        <div class="zw-demo-rail" aria-hidden="true">
-          <span></span>
-          <span></span>
-          <span></span>
-        </div>
-
-        <div class="zw-demo-panel">
-          <p class="zw-demo-label">Company knowledge</p>
-          <div class="zw-demo-files" data-demo-files>
-            {demoQuestions[0].files.map((file) => <span>{file}</span>)}
-          </div>
-        </div>
-
-        <div class="zw-demo-rail" aria-hidden="true">
-          <span></span>
-          <span></span>
-          <span></span>
-        </div>
-
-        <div class="zw-demo-panel zw-demo-answer-panel">
-          <p class="zw-demo-label">Company AI</p>
-          <p class="zw-demo-answer" data-demo-answer>{demoQuestions[0].answer}</p>
-          <div>
-            <p class="zw-demo-label">Sources used</p>
-            <div class="zw-demo-sources" data-demo-sources>
-              {demoQuestions[0].files.map((file) => <span>{file}</span>)}
+        <div class="zw-reveal">
+          <figure class="zw-knowledge zw-mono m-0 max-w-[420px] mx-auto">
+            <div class="zw-knowledge-bar">
+              <span class="zw-dot"></span><span class="zw-dot"></span><span class="zw-dot"></span>
+              <span class="ml-3 text-[0.72rem] zw-knowledge-name">your-company/</span>
+              <span class="zw-sample-tag">yours to keep</span>
             </div>
-          </div>
+            <ul class="zw-flow-files">{knowledgeFiles.map((f) => <li class="zw-kline">{f}</li>)}</ul>
+          </figure>
         </div>
       </div>
-      <p class="zw-demo-note zw-reveal">
-        The point is not another chatbot. It is question -> company knowledge -> answer with sources.
+    </div>
+  </section>
+
+  <!-- ═══════ BEFORE / AFTER ═══════ -->
+  <section class="zw-anchor zw-section zw-rule-t">
+    <div class="zw-wrap px-5 sm:px-8">
+      <div class="zw-measure">
+        <p class="zw-eyebrow mb-4 zw-reveal">Before and after</p>
+        <h2 class="zw-h2 mb-12 zw-reveal">The same company, without the hidden bottleneck.</h2>
+      </div>
+      <div class="grid md:grid-cols-2 gap-5">
+        <div class="zw-card zw-compare-before zw-reveal">
+          <p class="zw-mono text-xs uppercase tracking-widest text-zw-muted mb-5">Before ZeisWorks</p>
+          <ul class="space-y-3">{beforeItems.map((x) => <li class="zw-compare-item-before text-sm text-zw-muted">{x}</li>)}</ul>
+        </div>
+        <div class="zw-card zw-reveal">
+          <p class="zw-mono text-xs uppercase tracking-widest text-zw-teal mb-5">After ZeisWorks</p>
+          <ul class="space-y-3">{afterItems.map((x) => <li class="zw-compare-item-after text-sm text-zw-ink">{x}</li>)}</ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════ EXAMPLE ENGAGEMENT ═══════ -->
+  <section class="zw-anchor zw-section bg-white border-y border-zw-border">
+    <div class="zw-wrap px-5 sm:px-8">
+      <div class="zw-measure">
+        <p class="zw-eyebrow mb-4 zw-reveal">What an engagement looks like</p>
+        <h2 class="zw-h2 mb-12 zw-reveal">From "ask the senior person" to a system the team can use.</h2>
+      </div>
+      <div class="grid md:grid-cols-2 gap-12">
+        <div class="zw-reveal">
+          <h3 class="zw-h3 mb-5">What gets captured</h3>
+          <ul class="space-y-4">{exampleCaptured.map((x) => <li class="flex gap-4"><span class="zw-mono text-zw-teal text-sm pt-0.5 shrink-0" aria-hidden="true">→</span><span class="text-sm text-zw-muted">{x}</span></li>)}</ul>
+        </div>
+        <div class="zw-reveal">
+          <h3 class="zw-h3 mb-5">What can be built</h3>
+          <ul class="space-y-4">{exampleBuilt.map((x) => <li class="flex gap-4"><span class="zw-mono text-zw-teal text-sm pt-0.5 shrink-0" aria-hidden="true">→</span><span class="text-sm text-zw-muted">{x}</span></li>)}</ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════ OUTCOMES ═══════ -->
+  <section class="zw-anchor zw-section zw-rule-t">
+    <div class="zw-wrap px-5 sm:px-8">
+      <div class="zw-measure">
+        <p class="zw-eyebrow mb-4 zw-reveal">What it unlocks</p>
+        <h2 class="zw-h2 mb-8 zw-reveal">Once the knowledge exists, the AI work gets easier.</h2>
+        <p class="text-zw-muted mb-12 zw-reveal">Possibilities the knowledge foundation enables — not a promise that every client gets every system.</p>
+      </div>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+        {outcomes.map((o) => (
+          <article class="zw-card zw-reveal">
+            <h3 class="zw-h3 mb-4">{o.title}</h3>
+            <ul class="space-y-2">{o.items.map((x) => <li class="text-sm text-zw-muted">{x}</li>)}</ul>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════ OWNERSHIP ═══════ -->
+  <section id="ownership" class="zw-anchor zw-section bg-zw-forest text-zw-cream">
+    <div class="zw-wrap px-5 sm:px-8">
+      <p class="zw-eyebrow zw-eyebrow-dark mb-4 zw-reveal">What you own</p>
+      <h2 class="zw-h2 mb-12 max-w-[820px] zw-reveal text-zw-cream">We don't want to own your AI. We want you to own it.</h2>
+      <div class="overflow-x-auto zw-reveal">
+        <table class="zw-owntable min-w-full">
+          <thead>
+            <tr>
+              <th scope="col">Typical AI implementation</th>
+              <th scope="col" class="zw-owntable-us">ZeisWorks</th>
+            </tr>
+          </thead>
+          <tbody>
+            {ownershipRows.map(([typical, zw]) => (
+              <tr>
+                <td>{typical}</td>
+                <td class="zw-owntable-us">{zw}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <p class="zw-mono text-xs mt-2 sm:hidden" style="color: rgba(245,245,247,0.5);">← swipe →</p>
+      <p class="mt-10 text-zw-cream/85 font-medium max-w-[640px] zw-reveal">
+        If ZeisWorks disappears tomorrow, the work we've done should still be useful to you.
       </p>
     </div>
   </section>
 
-  <section id="how-it-works" class="zw-anchor zw-section">
+  <!-- ═══════ FIT ═══════ -->
+  <section id="fit" class="zw-anchor zw-section">
     <div class="zw-wrap px-5 sm:px-8">
-      <div class="zw-core-grid">
-        <div>
-          <p class="zw-eyebrow mb-4 zw-reveal">The core idea</p>
-          <h2 class="zw-h2 mb-6 zw-reveal">Before you automate the workflow, capture the judgment behind it.</h2>
-          <p class="text-zw-muted zw-reveal">
-            Most AI projects start by asking, "What should we automate?" ZeisWorks starts one
-            level deeper: "What does the company need to know to do this correctly?" Once that
-            knowledge is explicit, it can power assistants, search, proposals, estimating, training,
-            and operations support.
-          </p>
+      <div class="zw-measure">
+        <p class="zw-eyebrow mb-4 zw-reveal">Who it's for</p>
+        <h2 class="zw-h2 mb-12 zw-reveal">ZeisWorks works best when your company runs on expertise.</h2>
+      </div>
+      <div class="grid md:grid-cols-2 gap-12">
+        <div class="zw-reveal">
+          <h3 class="zw-h3 mb-5">Great fit if</h3>
+          <ul class="space-y-4">{greatFit.map((x) => <li class="flex gap-4"><span class="zw-mono text-zw-teal text-sm pt-0.5 shrink-0" aria-hidden="true">→</span><span class="text-sm text-zw-muted">{x}</span></li>)}</ul>
         </div>
-        <div class="zw-knowledge-list zw-reveal">
-          {coreKnowledge.map((item) => <span>{item}</span>)}
+        <div class="zw-reveal">
+          <h3 class="zw-h3 mb-5">Probably not a fit if</h3>
+          <ul class="space-y-4">{notFit.map((x) => <li class="flex gap-4"><span class="zw-mono text-zw-muted text-sm pt-0.5 shrink-0" aria-hidden="true">·</span><span class="text-sm text-zw-muted">{x}</span></li>)}</ul>
         </div>
       </div>
-
-      <div class="zw-vik-block zw-reveal">
-        <div>
-          <p class="zw-eyebrow mb-4">What we build</p>
-          <h2 class="zw-h2 mb-5">The finished knowledge system is your VIK.</h2>
-          <p>
-            VIK means Visualized Institutional Knowledge: a structured, human-readable
-            representation of how your business thinks and operates. It becomes the source material
-            behind your AI systems.
-          </p>
-          <p class="zw-vik-own">Readable files. Traceable answers. Owned by your company.</p>
-        </div>
-        <div class="zw-vik-files" aria-label="Example VIK files">
-          {knowledgeFiles.map((file) => <span>{file}</span>)}
-        </div>
-      </div>
+      <p class="mt-12 text-sm text-zw-muted zw-reveal">
+        Industry-specific pages: <a href="/for/consulting-firms/" class="font-medium text-zw-teal hover:underline">consulting firms</a> ·
+        <a href="/for/agencies/" class="font-medium text-zw-teal hover:underline">agencies</a> ·
+        <a href="/industries/" class="font-medium text-zw-teal hover:underline">all industries →</a>
+      </p>
     </div>
   </section>
 
-  <section class="zw-section bg-white/45 border-y border-zw-border">
+  <!-- ═══════ PROOF ═══════ -->
+  <section id="proof" class="zw-anchor zw-section bg-white border-y border-zw-border">
     <div class="zw-wrap px-5 sm:px-8">
-      <div class="zw-section-head">
-        <p class="zw-eyebrow mb-4 zw-reveal">Before and after</p>
-        <h2 class="zw-h2 zw-reveal">The same company, without the hidden bottleneck.</h2>
-      </div>
-      <div class="zw-before-after">
-        <article class="zw-compare zw-compare-before zw-reveal">
-          <h3>Before ZeisWorks</h3>
-          <ul>
-            {beforeItems.map((item) => <li>{item}</li>)}
-          </ul>
-        </article>
-        <article class="zw-compare zw-compare-after zw-reveal">
-          <h3>After ZeisWorks</h3>
-          <ul>
-            {afterItems.map((item) => <li>{item}</li>)}
-          </ul>
-        </article>
-      </div>
+      <p class="zw-eyebrow mb-4 zw-reveal">What clients say</p>
+      <h2 class="zw-h2 mb-8 zw-reveal">Real reviews from real work.</h2>
+      <Testimonials tone="on-cream" />
+      {CASE_STUDIES.length > 0 && (
+        <a href="/results/#case-studies" class="zw-card zw-card-link zw-reveal mt-8 block max-w-[520px]">
+          <p class="zw-eyebrow text-[0.7rem] mb-3">Case study</p>
+          <h3 class="zw-h3 mb-2">{CASE_STUDIES[0].client}</h3>
+          <p class="text-sm font-medium text-zw-teal">Read the case study →</p>
+        </a>
+      )}
+      <p class="mt-8 text-sm text-zw-muted zw-reveal">
+        <a href="/results/" class="font-medium text-zw-teal hover:underline">More proof →</a>
+      </p>
     </div>
   </section>
 
-  <section class="zw-section">
+  <!-- ═══════ PRICING ═══════ -->
+  <section id="pricing" class="zw-anchor zw-section zw-rule-t">
     <div class="zw-wrap px-5 sm:px-8">
-      <div class="zw-example zw-reveal">
-        <div>
-          <p class="zw-eyebrow mb-4">Example engagement</p>
-          <h2 class="zw-h2 mb-5">From "ask the senior person" to a system the team can use.</h2>
-          <p>
-            For a founder-led service business, the most important operating knowledge is rarely in
-            one clean manual. It is spread across pricing decisions, proposal habits, edge-case
-            calls, and the judgment of experienced people. A ZeisWorks engagement turns that into a
-            working internal knowledge layer before building AI on top of it.
-          </p>
-        </div>
-        <div class="zw-example-lists">
-          <div>
-            <h3>What gets captured</h3>
-            <ul>
-              {exampleCaptured.map((item) => <li>{item}</li>)}
-            </ul>
-          </div>
-          <div>
-            <h3>What can be built</h3>
-            <ul>
-              {exampleBuilt.map((item) => <li>{item}</li>)}
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="zw-section bg-white/45 border-y border-zw-border">
-    <div class="zw-wrap px-5 sm:px-8">
-      <div class="zw-section-head">
-        <p class="zw-eyebrow mb-4 zw-reveal">Business outcomes</p>
-        <h2 class="zw-h2 zw-reveal">Once the knowledge exists, the AI work gets easier.</h2>
-        <p class="zw-head-copy zw-reveal">
-          The exact systems depend on the company. The foundation is the same: company-specific
-          knowledge that people and AI can both use.
-        </p>
-      </div>
-      <div class="zw-outcome-grid">
-        {outcomes.map((outcome) => (
-          <article class="zw-card zw-reveal">
-            <h3>{outcome.title}</h3>
-            <ul>
-              {outcome.items.map((item) => <li>{item}</li>)}
-            </ul>
-          </article>
-        ))}
-      </div>
-    </div>
-  </section>
-
-  <section class="zw-section bg-zw-forest text-zw-cream">
-    <div class="zw-wrap px-5 sm:px-8">
-      <div class="zw-ownership-grid">
-        <div>
-          <p class="zw-eyebrow mb-4 zw-reveal" style="color:#F0A184;">Ownership</p>
-          <h2 class="zw-h2 mb-6 zw-reveal text-zw-cream">We don't want to own your AI. We want you to own it.</h2>
-          <p class="text-zw-cream/75 zw-reveal">
-            Most implementations hide the real knowledge inside someone else's platform. ZeisWorks
-            keeps the knowledge readable, portable, and useful even if the tool stack changes.
-          </p>
-        </div>
-        <div class="zw-ownership-table zw-reveal">
-          <div class="zw-table-head">
-            <span>Typical AI implementation</span>
-            <span>ZeisWorks</span>
-          </div>
-          {ownershipRows.map(([typical, zeis]) => (
-            <div class="zw-table-row">
-              <span>{typical}</span>
-              <span>{zeis}</span>
-            </div>
-          ))}
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="zw-section">
-    <div class="zw-wrap px-5 sm:px-8">
-      <div class="zw-section-head">
-        <p class="zw-eyebrow mb-4 zw-reveal">Process</p>
-        <h2 class="zw-h2 zw-reveal">Four steps, no mystery box.</h2>
-      </div>
-      <ol class="zw-process">
-        {processSteps.map((step) => (
-          <li class="zw-reveal">
-            <span>{step.n}</span>
-            <h3>{step.title}</h3>
-            <p>{step.body}</p>
-          </li>
-        ))}
-      </ol>
-    </div>
-  </section>
-
-  <section id="fit" class="zw-anchor zw-section bg-white/45 border-y border-zw-border">
-    <div class="zw-wrap px-5 sm:px-8">
-      <div class="zw-section-head">
-        <p class="zw-eyebrow mb-4 zw-reveal">Who this is for</p>
-        <h2 class="zw-h2 zw-reveal">ZeisWorks works best when your company runs on expertise.</h2>
-      </div>
-      <div class="zw-fit-grid">
-        <article class="zw-card zw-reveal">
-          <h3>Great fit if:</h3>
-          <ul>
-            {greatFit.map((item) => <li>{item}</li>)}
-          </ul>
-        </article>
-        <article class="zw-card zw-reveal">
-          <h3>Probably not a fit if:</h3>
-          <ul>
-            {notFit.map((item) => <li>{item}</li>)}
-          </ul>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <section id="pricing" class="zw-anchor zw-section">
-    <div class="zw-wrap px-5 sm:px-8">
-      <div class="zw-section-head">
-        <p class="zw-eyebrow mb-4 zw-reveal">Pricing</p>
-        <h2 class="zw-h2 zw-reveal">Build an AI knowledge asset for less than the cost of another hire.</h2>
-        <p class="zw-head-copy zw-reveal">
-          Unlike a traditional retainer, the work accumulates. Every process captured becomes part
-          of an asset your company keeps.
-        </p>
-      </div>
+      <p class="zw-eyebrow mb-4 zw-reveal">Pricing</p>
+      <h2 class="zw-h2 mb-8 max-w-[820px] zw-reveal">Build an AI knowledge asset for less than the cost of another hire.</h2>
+      <p class="text-zw-muted mb-12 max-w-[640px] zw-reveal">
+        Unlike a traditional retainer, the work accumulates. Every process captured becomes part
+        of an asset your company keeps.
+      </p>
       <OfferLadder variant="full" />
     </div>
   </section>
 
-  <section id="start" class="zw-anchor zw-section bg-zw-forest text-zw-cream">
-    <div class="zw-wrap px-5 sm:px-8 zw-final-cta">
-      <p class="zw-eyebrow mb-4 zw-reveal" style="color:#F0A184;">Start here</p>
-      <h2 class="zw-h2 mb-6 zw-reveal text-zw-cream">Your company already has an AI advantage.</h2>
-      <p class="zw-reveal">It is what your best people know. Let's make it usable.</p>
-      <AuditCta
-        location="footer"
-        label="See what my company knows"
-        class="zw-btn zw-btn-light zw-reveal"
-      />
+  <!-- ═══════ FOUNDER ═══════ -->
+  <section class="zw-anchor bg-white border-y border-zw-border" style="padding-top: clamp(3rem, 6vw, 5rem); padding-bottom: clamp(3rem, 6vw, 5rem);">
+    <div class="zw-wrap px-5 sm:px-8 flex flex-col sm:flex-row gap-8 items-start">
+      <img src="/jack.jpg" alt="Jack Zeis" class="w-24 h-24 rounded-2xl object-cover border border-zw-border shrink-0" width="96" height="96" loading="lazy" />
+      <div>
+        <h2 class="zw-h3 mb-3">You won't be handed off to a junior implementation team.</h2>
+        <p class="text-sm text-zw-muted leading-relaxed max-w-[640px]">
+          ZeisWorks is run by Jack Zeis, a systems consultant in Golden, Colorado. He captures the
+          knowledge, designs the system, and owns your engagement personally — because a business
+          should own how it works, not rent it.
+          <a href="/about/" class="font-medium text-zw-teal hover:underline">More about Jack →</a>
+        </p>
+      </div>
     </div>
   </section>
 
-  <script is:inline define:vars={{ demoQuestions }}>
-    (function () {
-      var root = document.querySelector('[data-demo]');
-      if (!root) return;
-      var question = root.querySelector('[data-demo-question]');
-      var answer = root.querySelector('[data-demo-answer]');
-      var files = root.querySelector('[data-demo-files]');
-      var sources = root.querySelector('[data-demo-sources]');
-      var buttons = Array.prototype.slice.call(root.querySelectorAll('[data-demo-preset]'));
-
-      function render(index) {
-        var item = demoQuestions[index];
-        if (!item) return;
-        question.textContent = item.question;
-        answer.textContent = item.answer;
-        files.innerHTML = '';
-        sources.innerHTML = '';
-        item.files.forEach(function (file) {
-          var fileChip = document.createElement('span');
-          fileChip.textContent = file;
-          files.appendChild(fileChip);
-          var sourceChip = document.createElement('span');
-          sourceChip.textContent = file;
-          sources.appendChild(sourceChip);
-        });
-        buttons.forEach(function (button, i) {
-          button.setAttribute('aria-pressed', i === index ? 'true' : 'false');
-        });
-      }
-
-      buttons.forEach(function (button) {
-        button.addEventListener('click', function () {
-          render(Number(button.getAttribute('data-demo-preset')));
-        });
-      });
-    })();
-  </script>
+  <!-- ═══════ CTA ═══════ -->
+  <section id="start" class="zw-anchor zw-section bg-zw-forest text-zw-cream">
+    <div class="zw-wrap px-5 sm:px-8"><div class="zw-measure mx-auto text-center">
+      <p class="zw-eyebrow zw-eyebrow-dark mb-4 zw-reveal">Get started</p>
+      <h2 class="zw-h2 mb-6 text-zw-cream zw-reveal">Your company already has an AI advantage.</h2>
+      <p class="text-zw-cream/75 mb-9 zw-reveal">
+        It's what your people know. Let's make it usable.
+      </p>
+      <AuditCta location="footer" label="See what my company knows" class="inline-flex items-center justify-center bg-zw-cream text-zw-forest font-semibold px-8 py-4 rounded-full hover:bg-white transition-colors zw-reveal" />
+    </div></div>
+  </section>
 </LandingLayout>
 
 <style is:global>
-  .zw-anchor { scroll-margin-top: 5rem; }
-  .zw-section {
-    padding-top: clamp(3.4rem, 7vw, 5.8rem);
-    padding-bottom: clamp(3.4rem, 7vw, 5.8rem);
+  /* ── Knowledge flow (hero): inputs → files → capabilities ── */
+  .zw-flow { display: grid; gap: 1.1rem; align-items: center; }
+  @media (min-width: 640px) {
+    .zw-flow { grid-template-columns: 1fr 2rem 1.1fr 2rem 1fr; }
   }
-  .zw-h2 {
-    font-size: clamp(1.6rem, 2.7vw, 2.25rem);
-    line-height: 1.14;
-  }
-  .zw-eyebrow {
-    font-size: 0.68rem;
-    letter-spacing: 0.14em;
-  }
-  .zw-card {
-    background: var(--zw-card);
-    border: 1px solid var(--zw-border);
-    border-radius: 8px;
-    padding: 1.15rem;
-  }
-  .zw-card h3 {
-    font-size: 1rem;
-    line-height: 1.3;
-    font-weight: 700;
-    margin-bottom: 0.5rem;
-  }
-  .zw-card p,
-  .zw-card li {
-    color: var(--zw-muted);
-    font-size: 0.91rem;
-    line-height: 1.48;
-  }
-  .zw-card ul,
-  .zw-compare ul {
-    display: grid;
-    gap: 0.45rem;
-    margin: 0;
-    padding: 0;
-    list-style: none;
-  }
-  .zw-card li,
-  .zw-compare li {
-    position: relative;
-    padding-left: 1rem;
-  }
-  .zw-card li::before,
-  .zw-compare li::before {
-    content: "";
-    position: absolute;
-    left: 0;
-    top: 0.72em;
-    width: 5px;
-    height: 5px;
-    border-radius: 999px;
-    background: var(--zw-teal);
-  }
-  .zw-section-head {
-    max-width: 760px;
-    margin-bottom: clamp(1.6rem, 3.8vw, 2.65rem);
-  }
-  .zw-head-copy {
-    margin-top: 0.85rem;
-    max-width: 680px;
-    color: var(--zw-muted);
-    line-height: 1.55;
-  }
-  .zw-btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 3rem;
-    border-radius: 999px;
-    padding: 0.78rem 1.15rem;
-    font-weight: 700;
-    line-height: 1.2;
-    text-align: center;
-    transition: background 0.2s var(--zw-ease), color 0.2s var(--zw-ease), border-color 0.2s var(--zw-ease);
-  }
-  .zw-btn-primary {
-    background: var(--zw-teal);
-    color: white;
-  }
-  .zw-btn-primary:hover { background: var(--zw-rust); }
-  .zw-btn-secondary {
-    border: 1px solid rgba(29, 29, 31, 0.18);
-    color: var(--zw-ink);
-    background: transparent;
-  }
-  .zw-btn-secondary:hover { border-color: var(--zw-teal); color: var(--zw-teal); }
-  .zw-btn-light {
-    margin-top: 1.55rem;
-    background: var(--zw-cream);
-    color: var(--zw-forest);
-  }
-  .zw-btn-light:hover { background: white; }
-
-  .zw-hero {
-    padding-top: clamp(5.8rem, 11vh, 7.8rem);
-    padding-bottom: clamp(3.2rem, 6.5vw, 5rem);
-    background:
-      linear-gradient(180deg, rgba(255,255,255,0.55), rgba(245,245,247,0)),
-      var(--zw-cream);
-  }
-  .zw-hero-grid {
-    display: grid;
-    gap: clamp(2rem, 4.5vw, 3.2rem);
-    align-items: center;
-  }
-  @media (min-width: 1024px) {
-    .zw-hero-grid { grid-template-columns: 0.95fr 1.05fr; }
-  }
-  .zw-hero-copy .zw-h1 {
-    max-width: 16.5ch;
-    margin: 0;
-    font-size: clamp(2.45rem, 5.1vw, 4.05rem);
-    line-height: 1.03;
-  }
-  .zw-hero-lede {
-    max-width: 54ch;
-    margin: 1.1rem 0 0;
-    color: var(--zw-muted);
-    font-size: clamp(1rem, 1.35vw, 1.16rem);
-    line-height: 1.52;
-  }
-  .zw-hero-actions {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.75rem;
-    margin-top: 1.55rem;
-  }
-  .zw-proof-line {
-    margin-top: 0.95rem;
-    color: var(--zw-ink);
-    font-size: 0.88rem;
-    font-weight: 700;
-    max-width: 48ch;
-  }
-
-  .zw-flow {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 0.65rem;
-    padding: 0.85rem;
-    border: 1px solid var(--zw-border);
-    border-radius: 8px;
-    background:
-      linear-gradient(180deg, rgba(255,255,255,0.95), rgba(255,255,255,0.66)),
-      linear-gradient(90deg, transparent 0 49px, rgba(0,0,0,0.045) 50px),
-      linear-gradient(180deg, transparent 0 49px, rgba(0,0,0,0.035) 50px);
-    background-size: auto, 50px 50px, 50px 50px;
-  }
-  @media (min-width: 760px) {
-    .zw-flow {
-      grid-template-columns: 1fr 1.75rem 1.05fr 1.75rem 1fr;
-      align-items: stretch;
-    }
-  }
-  .zw-flow-title {
-    grid-column: 1 / -1;
-    display: flex;
-    justify-content: space-between;
-    gap: 0.85rem;
-    border-bottom: 1px solid var(--zw-border);
-    padding: 0 0 0.65rem;
-    color: var(--zw-muted);
-    font-family: 'DM Mono', ui-monospace, monospace;
-    font-size: 0.66rem;
-    line-height: 1.35;
-    text-transform: uppercase;
-    letter-spacing: 0.12em;
-  }
-  .zw-flow-title strong {
-    color: var(--zw-teal);
-    font-weight: 700;
-    text-align: right;
-  }
-  .zw-flow-col {
-    min-height: 12.75rem;
-    border: 1px solid var(--zw-border);
-    border-radius: 8px;
-    background: rgba(255,255,255,0.84);
-    padding: 0.85rem;
-  }
-  .zw-flow-col p {
-    margin: 0 0 0.65rem;
-    color: var(--zw-ink);
-    font-size: 0.68rem;
-    font-weight: 800;
-    text-transform: uppercase;
-    letter-spacing: 0.12em;
-  }
-  .zw-flow-center {
-    border-color: rgba(224, 69, 48, 0.38);
-    background: rgba(224, 69, 48, 0.055);
-  }
-  .zw-chip-cloud {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.42rem;
-  }
-  .zw-chip-cloud span,
-  .zw-file-stack span {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.34rem;
-    border: 1px solid var(--zw-border);
-    border-radius: 7px;
-    background: white;
-    padding: 0.38rem 0.48rem;
-    color: var(--zw-muted);
+  .zw-flow-label { font-size: 0.62rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--zw-muted); margin: 0 0 0.5rem; }
+  .zw-flow-chips { display: flex; flex-wrap: wrap; gap: 0.35rem; margin: 0; padding: 0; list-style: none; }
+  .zw-flow-chips li {
     font-size: 0.72rem;
-    line-height: 1.2;
+    color: var(--zw-muted);
+    border: 1px dashed var(--zw-border);
+    border-radius: 999px;
+    padding: 0.2rem 0.55rem;
   }
-  .zw-file-stack {
-    display: grid;
-    gap: 0.38rem;
+  .zw-flow-chips li:nth-child(odd) { transform: rotate(-1.1deg); }
+  .zw-flow-chips li:nth-child(3n) { transform: rotate(0.9deg); }
+  .zw-flow-files { margin: 0; padding: 0.8rem 1.1rem; list-style: none; font-size: 0.8rem; line-height: 1.9; color: var(--zw-ink); }
+  .zw-flow-caps { margin: 0; padding: 0; list-style: none; font-size: 0.78rem; color: var(--zw-ink); }
+  .zw-flow-caps li { padding: 0.18rem 0; }
+  .zw-flow-caps li::before { content: '→ '; color: var(--zw-teal); font-family: 'DM Mono', ui-monospace, monospace; }
+  .zw-flow-link { width: 100%; height: 2px; background: linear-gradient(90deg, var(--zw-border), var(--zw-teal)); border-radius: 1px; }
+  @media (max-width: 639px) {
+    .zw-flow-link { width: 2px; height: 2rem; margin-inline: auto; background: linear-gradient(var(--zw-border), var(--zw-teal)); }
   }
-  .zw-file-stack span {
-    color: var(--zw-ink);
-    font-family: 'DM Mono', ui-monospace, monospace;
-    justify-content: flex-start;
-  }
-  .zw-file-stack svg { color: var(--zw-teal); }
-  .zw-chip-cloud-tight span { font-size: 0.7rem; }
-  .zw-flow-arrow {
-    position: relative;
-    min-height: 1.5rem;
-  }
-  .zw-flow-arrow::before {
-    content: "";
-    position: absolute;
-    inset: 50% 0 auto;
-    height: 2px;
-    background: linear-gradient(90deg, rgba(224,69,48,0.15), rgba(224,69,48,0.85));
-  }
-  .zw-flow-arrow::after {
-    content: "";
-    position: absolute;
-    right: 0;
-    top: calc(50% - 5px);
-    width: 10px;
-    height: 10px;
-    border-top: 2px solid rgba(224,69,48,0.85);
-    border-right: 2px solid rgba(224,69,48,0.85);
-    transform: rotate(45deg);
-  }
-  @media (max-width: 759px) {
-    .zw-flow-arrow::before {
-      left: 50%;
-      top: 0;
-      bottom: 0;
-      width: 2px;
-      height: auto;
-      background: linear-gradient(180deg, rgba(224,69,48,0.15), rgba(224,69,48,0.85));
-    }
-    .zw-flow-arrow::after {
-      left: calc(50% - 5px);
-      right: auto;
-      top: auto;
-      bottom: 0;
-      transform: rotate(135deg);
-    }
-  }
-  html.zw-anim .zw-flow .zw-chip-cloud span,
-  html.zw-anim .zw-flow .zw-file-stack span {
+  html.zw-anim [data-anim="hero"] .zw-flow-chips li,
+  html.zw-anim [data-anim="hero"] .zw-flow-files li,
+  html.zw-anim [data-anim="hero"] .zw-flow-caps li {
     opacity: 0;
-    transform: translateY(7px);
+    transition: opacity 0.5s var(--zw-ease);
+    transition-delay: calc(var(--i, 0) * 70ms);
   }
-  html.zw-anim .zw-flow.zw-play .zw-chip-cloud span,
-  html.zw-anim .zw-flow.zw-play .zw-file-stack span {
-    animation: zwChipIn 0.45s var(--zw-ease) forwards;
-  }
-  html.zw-anim .zw-flow.zw-play .zw-chip-cloud span:nth-child(2),
-  html.zw-anim .zw-flow.zw-play .zw-file-stack span:nth-child(2) { animation-delay: 0.08s; }
-  html.zw-anim .zw-flow.zw-play .zw-chip-cloud span:nth-child(3),
-  html.zw-anim .zw-flow.zw-play .zw-file-stack span:nth-child(3) { animation-delay: 0.16s; }
-  html.zw-anim .zw-flow.zw-play .zw-chip-cloud span:nth-child(4),
-  html.zw-anim .zw-flow.zw-play .zw-file-stack span:nth-child(4) { animation-delay: 0.24s; }
-  html.zw-anim .zw-flow.zw-play .zw-chip-cloud span:nth-child(5),
-  html.zw-anim .zw-flow.zw-play .zw-file-stack span:nth-child(5) { animation-delay: 0.32s; }
-  html.zw-anim .zw-flow.zw-play .zw-chip-cloud span:nth-child(6),
-  html.zw-anim .zw-flow.zw-play .zw-file-stack span:nth-child(6) { animation-delay: 0.4s; }
-  @keyframes zwChipIn {
-    to { opacity: 1; transform: none; }
+  html.zw-anim [data-anim="hero"].zw-play .zw-flow-chips li,
+  html.zw-anim [data-anim="hero"].zw-play .zw-flow-files li,
+  html.zw-anim [data-anim="hero"].zw-play .zw-flow-caps li { opacity: 1; }
+
+  /* ── Core-knowledge chip row ── */
+  .zw-chiprow { display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 0; padding: 0; list-style: none; }
+  .zw-chiprow li {
+    font-size: 0.82rem;
+    color: var(--zw-ink);
+    background: var(--zw-cream);
+    border: 1px solid var(--zw-border);
+    border-radius: 999px;
+    padding: 0.3rem 0.8rem;
   }
 
-  .zw-strip { padding: clamp(1.65rem, 3.2vw, 2.35rem) 0; }
-  .zw-strip-line {
-    max-width: 920px;
-    margin: 0 auto;
-    text-align: center;
-    font-family: 'Lora', Georgia, serif;
-    font-size: clamp(1.35rem, 2.8vw, 2.35rem);
-    font-weight: 650;
-    line-height: 1.12;
-    text-wrap: balance;
-  }
+  /* ── Before/after ── */
+  .zw-compare-before { background: var(--zw-cream); border-style: dashed; }
+  .zw-compare-item-before::before { content: '· '; color: var(--zw-muted); }
+  .zw-compare-item-after::before { content: '→ '; color: var(--zw-teal); font-family: 'DM Mono', ui-monospace, monospace; }
 
-  .zw-problem-grid,
-  .zw-outcome-grid {
-    display: grid;
-    gap: 0.85rem;
-  }
-  @media (min-width: 720px) {
-    .zw-problem-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-    .zw-outcome-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-  }
-  @media (min-width: 1024px) {
-    .zw-problem-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-  }
-
-  .zw-demo {
-    display: grid;
-    gap: 0.85rem;
-    align-items: stretch;
-  }
-  @media (min-width: 960px) {
-    .zw-demo { grid-template-columns: 1fr 2.4rem 0.72fr 2.4rem 1.05fr; }
-  }
-  .zw-demo-panel {
-    display: flex;
-    flex-direction: column;
-    gap: 0.85rem;
-    min-height: 14.25rem;
-    padding: 0.95rem;
-    border: 1px solid rgba(255,255,255,0.13);
-    border-radius: 8px;
-    background: rgba(255,255,255,0.055);
-  }
-  .zw-demo-answer-panel { justify-content: space-between; }
-  .zw-demo-label {
-    margin: 0;
-    color: #F0A184;
-    font-family: 'DM Mono', ui-monospace, monospace;
-    font-size: 0.66rem;
-    text-transform: uppercase;
-    letter-spacing: 0.12em;
-  }
-  .zw-demo-question,
-  .zw-demo-answer {
-    margin: 0;
-    color: var(--zw-cream);
-    font-size: clamp(0.98rem, 1.05vw, 1.08rem);
-    line-height: 1.45;
-  }
-  .zw-demo-presets {
-    display: grid;
-    gap: 0.42rem;
-    margin-top: auto;
-  }
-  .zw-demo-presets button {
-    border: 1px solid rgba(255,255,255,0.12);
-    border-radius: 7px;
-    background: transparent;
-    color: rgba(245,245,247,0.72);
-    padding: 0.5rem 0.6rem;
+  /* ── Ownership table: horizontal rules only, two line weights ── */
+  .zw-owntable { border-collapse: collapse; }
+  .zw-owntable th, .zw-owntable td {
     text-align: left;
-    font: inherit;
-    font-size: 0.8rem;
-    line-height: 1.25;
-    cursor: pointer;
+    padding: 0.85rem 1.2rem 0.85rem 0;
+    font-size: 0.92rem;
+    min-width: 16rem;
   }
-  .zw-demo-presets button:hover,
-  .zw-demo-presets button[aria-pressed="true"] {
-    border-color: rgba(240,161,132,0.5);
-    background: rgba(224,69,48,0.2);
-    color: var(--zw-cream);
-  }
-  .zw-demo-files,
-  .zw-demo-sources {
-    display: grid;
-    gap: 0.45rem;
-  }
-  .zw-demo-files span,
-  .zw-demo-sources span {
-    border: 1px solid rgba(240,161,132,0.45);
-    border-radius: 7px;
-    background: rgba(224,69,48,0.16);
-    color: var(--zw-cream);
+  .zw-owntable th {
     font-family: 'DM Mono', ui-monospace, monospace;
-    font-size: 0.78rem;
-    padding: 0.5rem 0.58rem;
-  }
-  .zw-demo-sources {
-    display: flex;
-    flex-wrap: wrap;
-    margin-top: 0.45rem;
-  }
-  .zw-demo-sources span {
-    font-size: 0.68rem;
-    padding: 0.32rem 0.44rem;
-  }
-  .zw-demo-rail {
-    position: relative;
-    display: none;
-    align-items: center;
-    justify-content: center;
-  }
-  @media (min-width: 960px) {
-    .zw-demo-rail { display: flex; }
-  }
-  .zw-demo-rail::before {
-    content: "";
-    position: absolute;
-    left: 0;
-    right: 0;
-    height: 2px;
-    background: linear-gradient(90deg, rgba(240,161,132,0.12), rgba(240,161,132,0.8));
-  }
-  .zw-demo-rail span {
-    position: relative;
-    width: 7px;
-    height: 7px;
-    border-radius: 999px;
-    background: #F0A184;
-    animation: zwPulse 1.8s ease-in-out infinite;
-  }
-  .zw-demo-rail span:nth-child(2) { animation-delay: 0.18s; }
-  .zw-demo-rail span:nth-child(3) { animation-delay: 0.36s; }
-  @keyframes zwPulse {
-    0%, 100% { opacity: 0.25; transform: scale(0.82); }
-    45% { opacity: 1; transform: scale(1.08); }
-  }
-  .zw-demo-note {
-    max-width: 760px;
-    margin: 1rem 0 0;
-    color: rgba(245,245,247,0.75);
-  }
-
-  .zw-example {
-    display: grid;
-    gap: clamp(1.5rem, 4vw, 3rem);
-    align-items: start;
-    border: 1px solid var(--zw-border);
-    border-radius: 8px;
-    background:
-      linear-gradient(90deg, rgba(224,69,48,0.055), transparent 44%),
-      white;
-    padding: clamp(1.2rem, 3.4vw, 1.7rem);
-  }
-  @media (min-width: 900px) {
-    .zw-example { grid-template-columns: 0.88fr 1.12fr; }
-  }
-  .zw-example p {
-    color: var(--zw-muted);
-    max-width: 62ch;
-  }
-  .zw-example-lists {
-    display: grid;
-    gap: 0.85rem;
-  }
-  @media (min-width: 680px) {
-    .zw-example-lists { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  }
-  .zw-example-lists > div {
-    border: 1px solid var(--zw-border);
-    border-radius: 8px;
-    background: rgba(255,255,255,0.78);
-    padding: 0.9rem;
-  }
-  .zw-example h3 {
-    margin: 0 0 0.6rem;
-    font-size: 0.94rem;
-    font-weight: 800;
-  }
-  .zw-example ul {
-    display: grid;
-    gap: 0.45rem;
-    margin: 0;
-    padding: 0;
-    list-style: none;
-  }
-  .zw-example li {
-    position: relative;
-    padding-left: 1rem;
-    color: var(--zw-muted);
-    font-size: 0.88rem;
-    line-height: 1.45;
-  }
-  .zw-example li::before {
-    content: "";
-    position: absolute;
-    left: 0;
-    top: 0.72em;
-    width: 5px;
-    height: 5px;
-    border-radius: 999px;
-    background: var(--zw-teal);
-  }
-
-  .zw-core-grid,
-  .zw-ownership-grid {
-    display: grid;
-    gap: clamp(1.65rem, 4.4vw, 3.2rem);
-    align-items: start;
-  }
-  @media (min-width: 900px) {
-    .zw-core-grid { grid-template-columns: 0.95fr 1.05fr; }
-    .zw-ownership-grid { grid-template-columns: 0.85fr 1.15fr; }
-  }
-  .zw-knowledge-list {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.45rem;
-  }
-  .zw-knowledge-list span {
-    border: 1px solid var(--zw-border);
-    border-radius: 7px;
-    background: white;
-    padding: 0.48rem 0.62rem;
-    color: var(--zw-ink);
-    font-weight: 700;
-    font-size: 0.84rem;
-  }
-  .zw-vik-block {
-    display: grid;
-    gap: 1.4rem;
-    align-items: center;
-    margin-top: clamp(2.25rem, 5vw, 3.6rem);
-    padding: clamp(1.15rem, 3.5vw, 1.7rem);
-    border: 2px solid rgba(224,69,48,0.34);
-    border-radius: 8px;
-    background: rgba(224,69,48,0.045);
-  }
-  @media (min-width: 820px) {
-    .zw-vik-block { grid-template-columns: 1fr 0.85fr; }
-  }
-  .zw-vik-block p {
-    color: var(--zw-muted);
-    max-width: 64ch;
-  }
-  .zw-vik-own {
-    margin-top: 0.75rem;
-    color: var(--zw-ink) !important;
-    font-weight: 800;
-  }
-  .zw-vik-files {
-    display: grid;
-    gap: 0.4rem;
-    font-family: 'DM Mono', ui-monospace, monospace;
-  }
-  .zw-vik-files span {
-    border: 1px solid var(--zw-border);
-    border-radius: 7px;
-    background: white;
-    padding: 0.48rem 0.58rem;
-    color: var(--zw-ink);
-    font-size: 0.78rem;
-  }
-
-  .zw-before-after,
-  .zw-fit-grid {
-    display: grid;
-    gap: 0.85rem;
-  }
-  @media (min-width: 820px) {
-    .zw-before-after,
-    .zw-fit-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  }
-  .zw-compare {
-    border-radius: 8px;
-    padding: clamp(1.05rem, 2.5vw, 1.45rem);
-    border: 1px solid var(--zw-border);
-    background: white;
-  }
-  .zw-compare h3 {
-    margin: 0 0 0.75rem;
-    font-size: 1.08rem;
-    font-weight: 800;
-  }
-  .zw-compare li {
-    color: var(--zw-muted);
-    line-height: 1.45;
-    font-size: 0.9rem;
-  }
-  .zw-compare-before {
-    background:
-      linear-gradient(135deg, rgba(29,29,31,0.04), rgba(29,29,31,0.01)),
-      white;
-  }
-  .zw-compare-before li::before { background: rgba(29,29,31,0.34); }
-  .zw-compare-after {
-    border-color: rgba(224,69,48,0.24);
-    background: rgba(224,69,48,0.045);
-  }
-
-  .zw-ownership-table {
-    border: 1px solid rgba(255,255,255,0.14);
-    border-radius: 8px;
-    overflow: hidden;
-    background: rgba(255,255,255,0.045);
-  }
-  .zw-table-head,
-  .zw-table-row {
-    display: grid;
-    grid-template-columns: 1fr;
-  }
-  @media (min-width: 700px) {
-    .zw-table-head,
-    .zw-table-row { grid-template-columns: 1fr 1fr; }
-  }
-  .zw-table-head span,
-  .zw-table-row span {
-    padding: 0.68rem 0.82rem;
-    border-bottom: 1px solid rgba(255,255,255,0.12);
-    color: rgba(245,245,247,0.68);
-    font-size: 0.84rem;
-    line-height: 1.35;
-  }
-  .zw-table-head span {
-    color: #F0A184;
-    font-family: 'DM Mono', ui-monospace, monospace;
-    font-size: 0.66rem;
+    font-size: 0.7rem;
+    font-weight: 500;
     text-transform: uppercase;
-    letter-spacing: 0.12em;
+    letter-spacing: 0.14em;
+    color: rgba(245, 245, 247, 0.6);
+    border-bottom: 2px solid rgba(245, 245, 247, 0.35);
+    padding-bottom: 0.6rem;
   }
-  .zw-table-row span:nth-child(2) {
-    color: var(--zw-cream);
-    font-weight: 700;
-  }
-  @media (min-width: 700px) {
-    .zw-table-head span:nth-child(2),
-    .zw-table-row span:nth-child(2) { border-left: 1px solid rgba(255,255,255,0.12); }
-  }
+  .zw-owntable td { color: rgba(245, 245, 247, 0.75); border-bottom: 1px solid rgba(245, 245, 247, 0.14); }
+  .zw-owntable .zw-owntable-us { padding-left: 1rem; background: rgba(224, 69, 48, 0.06); }
+  .zw-owntable th.zw-owntable-us { color: var(--zw-rust-soft); border-bottom-color: var(--zw-teal); }
+  .zw-owntable td.zw-owntable-us { color: var(--zw-cream); }
 
-  .zw-process {
-    display: grid;
-    gap: 0.85rem;
-    margin: 0;
-    padding: 0;
-    list-style: none;
-  }
-  @media (min-width: 820px) {
-    .zw-process { grid-template-columns: repeat(4, minmax(0, 1fr)); }
-  }
-  .zw-process li {
-    position: relative;
-    border: 1px solid var(--zw-border);
-    border-radius: 8px;
-    background: white;
-    padding: 1rem;
-  }
-  .zw-process span {
-    display: block;
-    margin-bottom: 0.65rem;
-    color: var(--zw-teal);
-    font-family: 'DM Mono', ui-monospace, monospace;
-    font-size: 0.74rem;
-    font-weight: 700;
-  }
-  .zw-process h3 {
-    margin: 0 0 0.4rem;
-    font-size: 1rem;
-    font-weight: 800;
-  }
-  .zw-process p {
-    margin: 0;
-    color: var(--zw-muted);
-    font-size: 0.86rem;
-    line-height: 1.48;
-  }
-  .zw-final-cta {
-    max-width: 680px;
-    text-align: center;
-  }
-  .zw-final-cta p:not(.zw-eyebrow) {
-    color: rgba(245,245,247,0.75);
-    font-size: 1.06rem;
-    line-height: 1.5;
-  }
-
-  @media (max-width: 520px) {
-    .zw-hero-actions .zw-btn { width: 100%; }
-    .zw-hero-copy .zw-h1 {
-      max-width: none;
-      font-size: clamp(2.2rem, 13vw, 3.2rem);
-      line-height: 1.04;
-    }
-    .zw-section {
-      padding-top: 3rem;
-      padding-bottom: 3rem;
-    }
-    .zw-h2 {
-      font-size: clamp(1.45rem, 8vw, 1.9rem);
-      line-height: 1.16;
-    }
-    .zw-card,
-    .zw-process li,
-    .zw-compare,
-    .zw-example-lists > div {
-      padding: 1rem;
-    }
-    .zw-flow-title {
-      display: grid;
-      gap: 0.25rem;
-    }
-    .zw-flow-title strong {
-      text-align: left;
-    }
-    .zw-flow-col {
-      min-height: auto;
-    }
-    .zw-demo-panel {
-      min-height: auto;
-    }
-  }
+  .zw-hero-split { position: relative; }
 </style>

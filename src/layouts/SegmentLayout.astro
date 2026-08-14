@@ -3,9 +3,11 @@
 // Data-only pages pass copy in; structure is: hero → what your VIK holds →
 // what runs on it → demo band → condensed offer ladder → CTA.
 import LandingLayout from './LandingLayout.astro';
+import AuditCta from '../components/AuditCta.astro';
 import FileExplorer from '../components/FileExplorer.astro';
 import type { Route } from '../components/FileExplorer.astro';
 import OfferLadder from '../components/OfferLadder.astro';
+import Testimonials from '../components/Testimonials.astro';
 
 interface Props {
   title: string;
@@ -27,9 +29,12 @@ const { title, description, segment, eyebrow, h1, intro, holds, runs, routes, se
 const siteUrl = 'https://zeisworks.com';
 const startHref = `/start?segment=${segment}`;
 
+// All on-page anchors: a segment landing page should never send a visitor
+// away mid-scroll.
 const navLinks = [
+  { label: 'What you own', href: '#holds' },
   { label: 'See it working', href: '#demo' },
-  { label: 'How it works', href: '/#how-it-works' },
+  { label: 'Proof', href: '#proof' },
   { label: 'Pricing', href: '#pricing' },
 ];
 
@@ -57,20 +62,35 @@ const serviceJsonLd = {
   <script slot="head" type="application/ld+json" set:html={JSON.stringify(serviceJsonLd)} />
 
   <!-- ═══════════════════ HERO ═══════════════════ -->
-  <section class="zw-section bg-zw-cream border-b border-zw-border" style="padding-top: clamp(7rem, 12vw, 10rem);">
-    <div class="zw-wrap px-5 sm:px-8 max-w-[820px]">
+  <section class="zw-section zw-hero-pad bg-zw-cream border-b border-zw-border">
+    <div class="zw-wrap px-5 sm:px-8"><div class="zw-measure-wide">
       <p class="zw-eyebrow mb-4 zw-reveal" style="color: var(--zw-rust);">{eyebrow}</p>
-      <h1 class="zw-h1 text-zw-ink mb-7 zw-reveal">{h1}</h1>
-      <div class="space-y-5 text-zw-muted zw-reveal" style="font-size: clamp(1.02rem, 1.5vw, 1.15rem); line-height: 1.65;">
+      <h1 class="zw-h1 text-zw-ink mb-6 zw-reveal">{h1}</h1>
+      <div class="zw-lede space-y-5 zw-reveal">
         {intro.map((p) => <p set:html={p} />)}
       </div>
-    </div>
+      <div class="flex flex-col sm:flex-row gap-3 mt-8 zw-reveal">
+        <AuditCta
+          location="hero"
+          label="Book a free intro call"
+          href={startHref}
+          class="inline-flex items-center justify-center gap-2 bg-zw-teal text-white font-semibold px-7 py-3.5 rounded-full hover:bg-zw-rust transition-colors"
+        />
+        <a
+          href="#demo"
+          class="inline-flex items-center justify-center px-7 py-3.5 rounded-full font-medium text-zw-ink border border-zw-ink/15 hover:bg-zw-ink/[0.04] transition-colors"
+        >
+          See it working
+        </a>
+      </div>
+    </div></div>
   </section>
 
   <!-- ═══════════════════ WHAT YOUR VIK HOLDS ═══════════════════ -->
-  <section class="zw-anchor zw-section">
-    <div class="zw-wrap px-5 sm:px-8 max-w-[820px]">
-      <h2 class="zw-h2 mb-10 zw-reveal">What your VIK holds</h2>
+  <section id="holds" class="zw-anchor zw-section">
+    <div class="zw-wrap px-5 sm:px-8"><div class="zw-measure">
+      <p class="zw-eyebrow mb-4 zw-reveal">What you own</p>
+      <h2 class="zw-h2 mb-8 zw-reveal">What your VIK holds</h2>
       <ul class="space-y-6">
         {holds.map((item) => (
           <li class="zw-reveal flex gap-4">
@@ -81,13 +101,14 @@ const serviceJsonLd = {
           </li>
         ))}
       </ul>
-    </div>
+    </div></div>
   </section>
 
   <!-- ═══════════════════ WHAT RUNS ON IT ═══════════════════ -->
-  <section class="zw-anchor zw-section bg-white/40 border-y border-zw-border">
-    <div class="zw-wrap px-5 sm:px-8 max-w-[820px]">
-      <h2 class="zw-h2 mb-10 zw-reveal">What runs on it</h2>
+  <section class="zw-anchor zw-section bg-white border-y border-zw-border">
+    <div class="zw-wrap px-5 sm:px-8"><div class="zw-measure">
+      <p class="zw-eyebrow mb-4 zw-reveal">What it powers</p>
+      <h2 class="zw-h2 mb-8 zw-reveal">What runs on it</h2>
       <ul class="space-y-6">
         {runs.map((item) => (
           <li class="zw-reveal flex gap-4">
@@ -96,14 +117,14 @@ const serviceJsonLd = {
           </li>
         ))}
       </ul>
-    </div>
+    </div></div>
   </section>
 
   <!-- ═══════════════════ DEMO ═══════════════════ -->
   <section id="demo" class="zw-anchor zw-section bg-zw-forest text-zw-cream">
     <div class="zw-wrap px-5 sm:px-8">
-      <p class="zw-eyebrow mb-4 zw-reveal" style="color:#F0A184;">See it working</p>
-      <h2 class="zw-h2 mb-6 max-w-[820px] zw-reveal text-zw-cream">
+      <p class="zw-eyebrow zw-eyebrow-dark mb-4 zw-reveal">See it working</p>
+      <h2 class="zw-h2 mb-8 max-w-[820px] zw-reveal text-zw-cream">
         Every answer traces back to a file you can read and edit. Try it.
       </h2>
       <FileExplorer routes={routes} instanceId={segment} theme="dark" />
@@ -111,12 +132,21 @@ const serviceJsonLd = {
     </div>
   </section>
 
+  <!-- ═══════════════════ PROOF ═══════════════════ -->
+  <section id="proof" class="zw-anchor zw-section">
+    <div class="zw-wrap px-5 sm:px-8">
+      <p class="zw-eyebrow mb-4 zw-reveal">What clients say</p>
+      <h2 class="zw-h2 mb-8 zw-reveal">Real reviews from real work.</h2>
+      <Testimonials tone="on-white" />
+    </div>
+  </section>
+
   <!-- ═══════════════════ OFFER LADDER + CTA ═══════════════════ -->
-  <section id="pricing" class="zw-anchor zw-section">
-    <div class="zw-wrap px-5 sm:px-8 max-w-[820px]">
+  <section id="pricing" class="zw-anchor zw-section bg-white border-t border-zw-border">
+    <div class="zw-wrap px-5 sm:px-8"><div class="zw-measure">
       <p class="zw-eyebrow mb-4 zw-reveal">How to start</p>
       <h2 class="zw-h2 mb-8 zw-reveal">Start small. Keep everything.</h2>
       <OfferLadder variant="condensed" startHref={startHref} />
-    </div>
+    </div></div>
   </section>
 </LandingLayout>

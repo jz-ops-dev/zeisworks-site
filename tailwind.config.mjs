@@ -11,10 +11,10 @@ export default {
         // for heroes/dark sections. Legacy token names (rust*, orange*, navy*,
         // forest*, zw-*) are kept but REPOINTED so existing utility classes
         // restyle sitewide without per-file edits.
-        cream: '#F5F5F7',           // fog — page canvas
+        cream: '#F7F6F3',           // fog — page canvas
         'cream-dark': '#E8E8ED',    // silver mist — borders/dividers
         ink: '#1D1D1F',             // near-black primary text
-        'ink-mid': '#6E6E73',       // graphite — secondary
+        'ink-mid': '#5D5D63',       // graphite — secondary
         'ink-light': '#86868B',     // muted captions/meta
 
         // Azure — the single rationed accent (CTA + links).
@@ -32,19 +32,19 @@ export default {
         'navy-deep': '#1D1D1F',     // dark stage bg
 
         // Legacy homepage (zw-*) tokens, repointed.
-        'zw-cream': '#F5F5F7',
+        'zw-cream': '#F7F6F3',
         'zw-ink': '#1D1D1F',
         'zw-forest': '#1D1D1F',
         'zw-teal': '#E04530',
         'zw-rust': '#C2410C',
         'zw-card': '#FFFFFF',
         'zw-border': 'rgba(0,0,0,0.10)',
-        'zw-muted': '#6E6E73',
+        'zw-muted': '#5D5D63',
       },
       fontFamily: {
-        // One type system sitewide: Lora serif headings, DM Sans body,
+        // One type system sitewide: Space Grotesk display, DM Sans body,
         // DM Mono accents. `inter` + `mono` repointed off Inter/JetBrains.
-        serif: ['Lora', 'Georgia', 'serif'],
+        serif: ['Space Grotesk', 'DM Sans', 'system-ui', 'sans-serif'],
         sans: ['"DM Sans"', 'system-ui', 'sans-serif'],
         inter: ['"DM Sans"', 'system-ui', 'sans-serif'],
         mono: ['"DM Mono"', 'ui-monospace', 'SFMono-Regular', 'monospace'],
@@ -73,16 +73,16 @@ export default {
             lineHeight: '1.75',
             maxWidth: 'none',
             h1: {
-              fontFamily: 'Lora, Georgia, serif',
+              fontFamily: '"Space Grotesk", "DM Sans", system-ui, sans-serif',
               fontWeight: '700',
             },
             h2: {
-              fontFamily: 'Lora, Georgia, serif',
+              fontFamily: '"Space Grotesk", "DM Sans", system-ui, sans-serif',
               fontWeight: '600',
               marginTop: '2em',
             },
             h3: {
-              fontFamily: 'Lora, Georgia, serif',
+              fontFamily: '"Space Grotesk", "DM Sans", system-ui, sans-serif',
               fontWeight: '600',
             },
             a: {

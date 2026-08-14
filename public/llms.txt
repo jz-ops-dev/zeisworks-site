@@ -17,6 +17,7 @@
 
 ## Key pages
 
+- [Industries](https://zeisworks.com/industries)
 - [How it works](https://zeisworks.com/#how-it-works)
 - [Get started](https://zeisworks.com/start)
 

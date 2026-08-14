@@ -1,0 +1,88 @@
+---
+// Real client reviews (see src/data/testimonials.ts for provenance) plus a
+// proof bar that links to the third-party profile the ratings live on.
+// Deliberately NO Review/AggregateRating JSON-LD: self-serving review schema
+// on your own org pages is against Google's structured-data guidelines.
+import { TESTIMONIALS, UPWORK_PROFILE_URL, PROOF_BAR } from '../data/testimonials';
+
+interface Props {
+  /** 'on-cream' renders white cards; 'on-white' renders cream cards. */
+  tone?: 'on-cream' | 'on-white';
+  showBar?: boolean;
+  showCards?: boolean;
+}
+
+const { tone = 'on-white', showBar = true, showCards = true } = Astro.props;
+const cardClass = tone === 'on-white' ? 'zw-quote-card zw-quote-card--cream' : 'zw-quote-card';
+---
+
+<div>
+  {showBar && (
+    <p class="zw-proof-bar zw-reveal">
+      <a href={UPWORK_PROFILE_URL} target="_blank" rel="noopener">
+        <span class="zw-proof-stars" aria-hidden="true">★★★★★</span>
+        <span>{PROOF_BAR}</span>
+        <span class="zw-proof-ext" aria-hidden="true">↗</span>
+      </a>
+    </p>
+  )}
+  {showCards && (
+    <div class="grid md:grid-cols-3 gap-5 mt-8">
+      {TESTIMONIALS.map((t) => (
+        <figure class={`${cardClass} zw-reveal flex flex-col`}>
+          <p class="zw-quote-stars" aria-label="5 stars">
+            <span aria-hidden="true">★★★★★</span>
+          </p>
+          <blockquote class="zw-quote-text flex-1">{t.quote}</blockquote>
+          <figcaption class="mt-4">
+            <span class="block text-sm font-semibold text-zw-ink">{t.name}</span>
+            <span class="block text-sm text-zw-muted">{t.title}</span>
+          </figcaption>
+        </figure>
+      ))}
+    </div>
+  )}
+</div>
+
+<style is:global>
+  .zw-proof-bar { margin: 0; }
+  .zw-proof-bar a {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-family: 'DM Mono', ui-monospace, monospace;
+    font-size: 0.85rem;
+    color: var(--zw-ink);
+    border: 1px solid var(--zw-border);
+    background: var(--zw-card);
+    border-radius: 999px;
+    padding: 0.5rem 1rem;
+    text-decoration: none;
+    transition: border-color 0.18s var(--zw-ease);
+  }
+  .zw-proof-bar a:hover { border-color: rgba(224, 69, 48, 0.45); }
+  .zw-proof-stars { color: var(--zw-teal); letter-spacing: 0.08em; }
+  .zw-proof-ext { color: var(--zw-muted); }
+
+  .zw-quote-card {
+    background: var(--zw-card);
+    border: 1px solid var(--zw-border);
+    border-radius: 12px;
+    padding: 1.6rem;
+  }
+  .zw-quote-card--cream { background: var(--zw-cream); }
+  .zw-quote-stars {
+    margin: 0 0 0.7rem;
+    color: var(--zw-teal);
+    font-size: 0.85rem;
+    letter-spacing: 0.12em;
+  }
+  .zw-quote-text {
+    margin: 0;
+    font-family: 'DM Sans', system-ui, sans-serif;
+    font-style: italic;
+    font-size: 1.02rem;
+    line-height: 1.6;
+    color: var(--zw-ink);
+  }
+</style>

@@ -5,6 +5,7 @@
 // The Knowledge Audit price is AUDIT_PRICE in src/config.ts (decision D5):
 // null renders "fixed price" with no number.
 import { AUDIT_PRICE } from '../config';
+import AuditCta from './AuditCta.astro';
 
 interface Props {
   variant?: 'full' | 'condensed';
@@ -41,24 +42,31 @@ const steps = [
 
 {
   variant === 'full' ? (
-    <div class="zw-ladder">
+    <div>
       <ol class="grid md:grid-cols-3 gap-5">
         {steps.map((s) => (
           <li class="zw-card zw-reveal flex flex-col">
             <span class="zw-mono text-zw-teal text-sm font-medium mb-3">{s.n}</span>
-            <h3 class="zw-h3 mb-1">
-              {s.title}{' '}<span class="font-normal text-zw-muted">{s.terms}</span>
-            </h3>
-            <p class="text-sm text-zw-muted leading-relaxed mt-2">{s.body}</p>
+            <h3 class="zw-h3 mb-1">{s.title}</h3>
+            <p class="zw-mono text-sm text-zw-muted">{s.terms}</p>
+            <p class="text-sm text-zw-muted leading-relaxed mt-3 flex-1">{s.body}</p>
           </li>
         ))}
       </ol>
       <p class="mt-8 text-zw-ink font-medium zw-reveal">
         A fraction of an ops hire &mdash; and the knowledge doesn't walk out the door.
       </p>
+      <p class="mt-6 zw-reveal">
+        <AuditCta
+          location="mid"
+          label="Start with a free intro call"
+          href={startHref}
+          class="inline-flex items-center justify-center bg-zw-teal text-white font-semibold px-7 py-3.5 rounded-full hover:bg-zw-rust transition-colors"
+        />
+      </p>
     </div>
   ) : (
-    <div class="zw-ladder zw-ladder-condensed zw-reveal">
+    <div class="zw-reveal">
       <p class="text-zw-muted">
         <span class="text-zw-ink font-medium">Book a free intro call</span>
         <span class="zw-ladder-arrow" aria-hidden="true">→</span>
@@ -69,12 +77,14 @@ const steps = [
       <p class="mt-3 text-sm text-zw-muted">
         Cancel any month. Keep every file at every step.
       </p>
-      <a
-        href={startHref}
-        class="mt-6 inline-flex items-center justify-center bg-zw-teal text-white font-semibold px-7 py-3.5 rounded-full hover:bg-zw-rust transition-colors"
-      >
-        Start with the audit
-      </a>
+      <p class="mt-6">
+        <AuditCta
+          location="mid"
+          label="Start with the audit"
+          href={startHref}
+          class="inline-flex items-center justify-center bg-zw-teal text-white font-semibold px-7 py-3.5 rounded-full hover:bg-zw-rust transition-colors"
+        />
+      </p>
     </div>
   )
 }

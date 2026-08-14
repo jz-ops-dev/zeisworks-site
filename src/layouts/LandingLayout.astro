@@ -2,6 +2,8 @@
 import AuditCta from '../components/AuditCta.astro';
 import Logo from '../components/Logo.astro';
 import MotionScripts from '../components/MotionScripts.astro';
+import { CALENDLY_URL } from '../config';
+import { FOOTER_GROUPS } from '../data/footer';
 
 // Dedicated layout for the single-page AI-readiness rebuild (dev prompt).
 // Kept separate from BaseLayout so the new cream/forest/teal brand, the
@@ -22,12 +24,12 @@ const {
   description,
   ogImage,
   navLinks = [
-    { label: 'The problem', href: '#the-problem' },
     { label: 'See it working', href: '#demo' },
     { label: 'How it works', href: '#how-it-works' },
+    { label: 'Proof', href: '#proof' },
     { label: 'Pricing', href: '#pricing' },
   ],
-  ctaLabel = 'Get started',
+  ctaLabel = 'See what this looks like',
   brandHref = '#top',
 } = Astro.props;
 
@@ -48,11 +50,18 @@ const orgJsonLd = {
   founder: {
     '@type': 'Person',
     name: 'Jack Zeis',
+    jobTitle: 'Systems Consultant',
     url: siteUrl,
     sameAs: [
       'https://www.linkedin.com/in/jack-zeis/',
       'https://www.upwork.com/freelancers/~01ddd112c03a2e1428',
     ],
+  },
+  address: {
+    '@type': 'PostalAddress',
+    addressLocality: 'Golden',
+    addressRegion: 'CO',
+    addressCountry: 'US',
   },
   parentOrganization: {
     '@type': 'Organization',
@@ -86,7 +95,7 @@ const orgJsonLd = {
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=DM+Sans:wght@300;400;500;600;700&family=DM+Mono:wght@400;500&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=DM+Sans:wght@300;400;500;600;700&family=DM+Mono:wght@400;500&display=swap"
       rel="stylesheet"
     />
 
@@ -131,7 +140,7 @@ const orgJsonLd = {
     <style is:global>
       :root {
         /* Apple-inspired palette (achromatic neutrals + single brand-red accent). */
-        --zw-cream: #F5F5F7;
+        --zw-cream: #F7F6F3;
         --zw-ink: #1D1D1F;
         --zw-forest: #1D1D1F;
         --zw-forest-deep: #141416;
@@ -141,7 +150,7 @@ const orgJsonLd = {
         --zw-rust-soft: #F0A184;
         --zw-card: #FFFFFF;
         --zw-border: rgba(0, 0, 0, 0.10);
-        --zw-muted: #6E6E73;
+        --zw-muted: #5D5D63;
         --zw-ease: cubic-bezier(0.22, 1, 0.36, 1);
       }
 
@@ -161,19 +170,19 @@ const orgJsonLd = {
 
       /* Fluid type scale (section 3). */
       .zw-h1 {
-        font-family: 'Lora', Georgia, serif;
+        font-family: 'Space Grotesk', 'DM Sans', system-ui, sans-serif;
         font-weight: 600;
-        font-size: clamp(2.1rem, 4.6vw, 3.4rem);
-        line-height: 1.1;
-        letter-spacing: -0.01em;
+        font-size: clamp(2.4rem, 5.4vw, 4rem);
+        line-height: 1.05;
+        letter-spacing: -0.03em;
         text-wrap: balance;
       }
       .zw-h2 {
-        font-family: 'Lora', Georgia, serif;
+        font-family: 'Space Grotesk', 'DM Sans', system-ui, sans-serif;
         font-weight: 600;
-        font-size: clamp(1.7rem, 3.5vw, 2.6rem);
-        line-height: 1.12;
-        letter-spacing: -0.01em;
+        font-size: clamp(1.8rem, 3.6vw, 2.75rem);
+        line-height: 1.08;
+        letter-spacing: -0.02em;
       }
       .zw-h3 {
         font-family: 'DM Sans', system-ui, sans-serif;
@@ -195,6 +204,79 @@ const orgJsonLd = {
       }
       .zw-wrap { max-width: 1080px; margin-inline: auto; }
       .zw-mono { font-family: 'DM Mono', ui-monospace, monospace; }
+      .zw-anchor { scroll-margin-top: 5rem; }
+
+      /* Full-bleed hairline section rule: structure instead of background
+         swaps. (Own implementation of a section-divider idiom.) */
+      .zw-rule-t { position: relative; }
+      .zw-rule-t::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -100vw;
+        width: 200vw;
+        height: 1px;
+        background: var(--zw-border);
+      }
+
+      /* Small heading rung between h3 and h2, for card-group heads. */
+      .zw-h2-sm {
+        font-family: 'Space Grotesk', 'DM Sans', system-ui, sans-serif;
+        font-weight: 600;
+        font-size: clamp(1.35rem, 2.2vw, 1.7rem);
+        line-height: 1.2;
+      }
+
+      /* Content measures. Rule: never put a max-w-* utility on the same
+         element as .zw-wrap — the utilities live in per-page CSS chunks whose
+         order against this file is not guaranteed, so the caps silently lose
+         the cascade. Wrap sections as:
+           <div class="zw-wrap px-5 sm:px-8"><div class="zw-measure">…</div></div>
+         These are defined HERE, next to .zw-wrap, so order can never flip. */
+      .zw-measure { max-width: 760px; }
+      .zw-measure-wide { max-width: 820px; }
+
+      /* Hero lede + shared hero top padding (one recipe for all heroes). */
+      .zw-lede {
+        font-size: clamp(1.05rem, 1.6vw, 1.2rem);
+        line-height: 1.6;
+        color: var(--zw-muted);
+        text-wrap: pretty;
+      }
+      .zw-hero-pad { padding-top: clamp(6.5rem, 12vw, 9.5rem); }
+
+      /* Eyebrow variant for dark (forest) sections. */
+      .zw-eyebrow-dark { color: var(--zw-rust-soft); }
+
+      /* Card surfaces (radius 14px), shared across pages. */
+      .zw-card {
+        background: var(--zw-card);
+        border: 1px solid var(--zw-border);
+        border-radius: 12px;
+        padding: 1.6rem;
+      }
+      .zw-card-dark {
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        border-radius: 12px;
+        padding: 1.75rem;
+      }
+      .zw-card-dark-compact { padding: 1.3rem 1.3rem 1.4rem; }
+
+      /* Anti-positioning strip. */
+      .zw-strip {
+        padding-top: clamp(3rem, 6vw, 4.5rem);
+        padding-bottom: clamp(3rem, 6vw, 4.5rem);
+      }
+      .zw-strip-line {
+        font-family: 'Space Grotesk', 'DM Sans', system-ui, sans-serif;
+        font-weight: 500;
+        font-size: clamp(1.2rem, 2.4vw, 1.6rem);
+        line-height: 1.4;
+        text-wrap: balance;
+        max-width: 46ch;
+        margin-inline: auto;
+      }
 
       /* Visible, keyboard-reachable focus in --teal (section 7). */
       .zw-root a:focus-visible,
@@ -218,6 +300,10 @@ const orgJsonLd = {
         will-change: opacity, transform;
       }
       html.zw-anim .zw-reveal.zw-in { opacity: 1; transform: none; filter: none; }
+      /* Mobile: never hide content behind the reveal system. */
+      @media (max-width: 767px) {
+        html.zw-anim .zw-reveal { opacity: 1; transform: none; filter: none; transition: none; }
+      }
 
       @media (prefers-reduced-motion: reduce) {
         html { scroll-behavior: auto; }
@@ -254,17 +340,26 @@ const orgJsonLd = {
           />
         </nav>
 
-        <button
-          id="zw-menu-btn"
-          class="md:hidden flex flex-col justify-center gap-[5px] w-10 h-10 -mr-2"
-          aria-label="Open menu"
-          aria-expanded="false"
-          aria-controls="zw-mobile-menu"
-        >
-          <span class="block w-6 h-[2px] bg-zw-ink rounded transition-transform"></span>
-          <span class="block w-6 h-[2px] bg-zw-ink rounded transition-opacity"></span>
-          <span class="block w-6 h-[2px] bg-zw-ink rounded transition-transform"></span>
-        </button>
+        <!-- Mobile: keep a visible conversion action next to the hamburger —
+             previously the header had no CTA at all below md. -->
+        <div class="md:hidden flex items-center gap-2">
+          <AuditCta
+            location="nav"
+            label={ctaLabel}
+            class="bg-zw-teal text-white text-sm font-semibold px-3.5 py-1.5 rounded-full hover:bg-zw-rust transition-colors"
+          />
+          <button
+            id="zw-menu-btn"
+            class="flex flex-col justify-center gap-[5px] w-10 h-10 -mr-2"
+            aria-label="Open menu"
+            aria-expanded="false"
+            aria-controls="zw-mobile-menu"
+          >
+            <span class="block w-6 h-[2px] bg-zw-ink rounded transition-transform"></span>
+            <span class="block w-6 h-[2px] bg-zw-ink rounded transition-opacity"></span>
+            <span class="block w-6 h-[2px] bg-zw-ink rounded transition-transform"></span>
+          </button>
+        </div>
       </div>
     </header>
 
@@ -289,18 +384,44 @@ const orgJsonLd = {
       <slot />
     </main>
 
-    <footer class="bg-zw-forest text-zw-cream">
-      <div class="zw-wrap px-5 sm:px-8 py-12 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-6">
-        <a href={brandHref} class="flex items-center gap-2.5" aria-label="ZeisWorks home">
-          <Logo class="w-8 h-8 rounded-[7px]" />
-          <span class="font-serif text-xl font-semibold tracking-tight">zeisWorks<span class="text-zw-teal">.</span></span>
-        </a>
-        <p class="text-sm text-zw-cream/70">
-          <a href="mailto:jack@zeisworks.com" class="hover:text-white transition-colors">jack@zeisworks.com</a>
-        </p>
-        <p class="text-xs text-zw-cream/50">
-          &copy; {new Date().getFullYear()} ZeisWorks, a High Range Living LLC company.
-        </p>
+    <footer class="bg-zw-forest text-zw-cream" style="border-top: 1px solid rgba(245, 245, 247, 0.14);">
+      <div class="zw-wrap px-5 sm:px-8 py-14">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
+          <div>
+            <a href={brandHref} class="flex items-center gap-2.5" aria-label="ZeisWorks home">
+              <Logo class="w-8 h-8 rounded-[7px]" />
+              <span class="font-serif text-xl font-semibold tracking-tight">zeisWorks<span class="text-zw-teal">.</span></span>
+            </a>
+            <p class="mt-4 text-sm text-zw-cream/60 leading-relaxed max-w-[32ch]">
+              Your business, written down where your team and your AI both read it.
+            </p>
+          </div>
+          {FOOTER_GROUPS.map((group) => (
+            <div>
+              <p class="font-serif font-semibold mb-3">{group.heading}</p>
+              <ul class="space-y-2 text-sm text-zw-cream/70">
+                {group.links.map(({ label, href }) => (
+                  <li><a href={href} class="hover:text-white transition-colors">{label}</a></li>
+                ))}
+              </ul>
+            </div>
+          ))}
+          <div>
+            <p class="font-serif font-semibold mb-3">Contact</p>
+            <ul class="space-y-2 text-sm text-zw-cream/70">
+              <li><a href="mailto:jack@zeisworks.com" class="hover:text-white transition-colors">jack@zeisworks.com</a></li>
+              <li><a href={CALENDLY_URL} class="hover:text-white transition-colors">Book 15 minutes</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="mt-12 pt-6 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3 text-xs text-zw-cream/50" style="border-top: 1px solid rgba(245, 245, 247, 0.12);">
+          <p>&copy; {new Date().getFullYear()} ZeisWorks, a High Range Living LLC company.</p>
+          <p class="flex gap-3 zw-mono">
+            <a href="/privacy" class="hover:text-zw-cream/80 transition-colors">Privacy</a>
+            <span aria-hidden="true">&middot;</span>
+            <a href="/terms" class="hover:text-zw-cream/80 transition-colors">Terms</a>
+          </p>
+        </div>
       </div>
     </footer>
 
@@ -456,9 +577,14 @@ const orgJsonLd = {
   /* Nav resting (transparent over hero) and solid (scrolled) states. */
   #zw-nav { background: transparent; }
   #zw-nav.zw-nav-solid {
-    background: rgba(245, 245, 247, 0.92);
-    backdrop-filter: saturate(140%) blur(8px);
+    background: rgba(245, 245, 247, 0.97);
     border-bottom: 1px solid var(--zw-border);
+  }
+  @media (min-width: 768px) {
+    #zw-nav.zw-nav-solid {
+      background: rgba(245, 245, 247, 0.92);
+      backdrop-filter: saturate(140%) blur(8px);
+    }
   }
   /* Hamburger to X when the menu is open. */
   #zw-menu-btn.zw-menu-open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }

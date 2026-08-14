@@ -4,7 +4,6 @@ description: "Open injector slots drain real revenue. Here's how med spas can fi
 publishDate: 2026-04-30
 readingTime: "9 min read"
 vertical: "med-spa"
-pillarUrl: "/med-spas/"
 keywords:
   - "fill injector slots"
   - "med spa appointment scheduling"
@@ -57,7 +56,7 @@ A waitlist is only useful if it fires fast enough to matter. A cancellation that
 
 ### Instant SMS notifications: the difference between a filled slot and a missed one
 
-When a cancellation hits your booking system, the clock starts. Clients most likely to take a last-minute slot respond to a text within ten minutes, not a phone call that goes to voicemail. The mechanics are straightforward: a client cancels, your system triggers an SMS to everyone on the waitlist who fits the slot criteria, and the first person to confirm gets the appointment. No manual outreach, no lag. If you are [automating your booking and follow-up workflows](/operations) correctly, this entire sequence runs without anyone on your staff lifting a finger.
+When a cancellation hits your booking system, the clock starts. Clients most likely to take a last-minute slot respond to a text within ten minutes, not a phone call that goes to voicemail. The mechanics are straightforward: a client cancels, your system triggers an SMS to everyone on the waitlist who fits the slot criteria, and the first person to confirm gets the appointment. No manual outreach, no lag. If you are [automating your booking and follow-up workflows](/consulting/) correctly, this entire sequence runs without anyone on your staff lifting a finger.
 
 ### How to structure your waitlist so clients opt in and stay engaged
 
@@ -73,7 +72,7 @@ A three-message sequence spaced over two weeks works consistently. Message one, 
 
 ### How to segment lapsed clients so you are not spamming your whole list
 
-Build two tiers: 90 to 180 days lapsed and 180-plus days lapsed. The first gets the sequence above. The second gets a softer message that acknowledges the gap without pressure. Within each tier, filter by treatment type. A Botox lapsed client does not need to hear about filler promotions. Most CRMs handle this with basic tagging. Getting the right [local marketing systems](/marketing) in place makes segmented outreach repeatable instead of a one-time manual effort.
+Build two tiers: 90 to 180 days lapsed and 180-plus days lapsed. The first gets the sequence above. The second gets a softer message that acknowledges the gap without pressure. Within each tier, filter by treatment type. A Botox lapsed client does not need to hear about filler promotions. Most CRMs handle this with basic tagging. Getting the right local marketing systems in place makes segmented outreach repeatable instead of a one-time manual effort.
 
 ## What referral programs actually fill slots without cutting prices?
 
@@ -97,7 +96,7 @@ Instead of quoting $600 for filler and $350 for neurotoxin as separate decisions
 
 ### Example: jawline sculpt combos and what makes them convert
 
-Take a mid-volume med spa running two injectors. They build three named bundles: a "Refresh" tier (neurotoxin only), a "Restore" tier (neurotoxin plus one syringe of filler), and a "Sculpt" tier (neurotoxin, two syringes of filler, optional thread lift consult). Front desk presents these when clients call asking about Botox. Instead of quoting individual prices, the conversation becomes: "We have a few options depending on the result you are after. Want me to walk you through them?" Booking rates go up because the client has a framework, not a price list to interrogate. [Custom tools built around how your practice actually runs](/custom-tools) can automate bundle presentation so your front desk is not winging it every time a call comes in.
+Take a mid-volume med spa running two injectors. They build three named bundles: a "Refresh" tier (neurotoxin only), a "Restore" tier (neurotoxin plus one syringe of filler), and a "Sculpt" tier (neurotoxin, two syringes of filler, optional thread lift consult). Front desk presents these when clients call asking about Botox. Instead of quoting individual prices, the conversation becomes: "We have a few options depending on the result you are after. Want me to walk you through them?" Booking rates go up because the client has a framework, not a price list to interrogate. [Custom tools built around how your practice actually runs](/consulting/) can automate bundle presentation so your front desk is not winging it every time a call comes in.
 
 ## How should you retarget lapsed clients with email and paid social?
 
@@ -105,7 +104,7 @@ Some clients will click your booking link and still not pull the trigger. They a
 
 ### Building retargeting audiences from your booking data
 
-Export a client list segmented by lapsed window, treatment type, or last visit date, and upload it as a custom audience in Meta Ads Manager. You can also build a retargeting audience from anyone who visited your booking page but did not complete a reservation. These two pools are the highest-value audiences for paid media. Spend here before you touch cold prospecting. If you want this automated, [custom tools built around how your practice actually runs](/custom-tools) can sync your CRM and ad platforms so the audience stays current without manual exports.
+Export a client list segmented by lapsed window, treatment type, or last visit date, and upload it as a custom audience in Meta Ads Manager. You can also build a retargeting audience from anyone who visited your booking page but did not complete a reservation. These two pools are the highest-value audiences for paid media. Spend here before you touch cold prospecting. If you want this automated, [custom tools built around how your practice actually runs](/consulting/) can sync your CRM and ad platforms so the audience stays current without manual exports.
 
 ### Creative that converts: before/afters, FAQs, and social proof
 

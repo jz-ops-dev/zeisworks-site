@@ -4,7 +4,6 @@ description: "Learn how to build a tiered med spa membership program at $99–$2
 publishDate: 2026-04-30
 readingTime: "9 min read"
 vertical: "med-spa"
-pillarUrl: "/med-spas/"
 keywords:
   - "med spa membership program"
   - "med spa MRR"
@@ -109,7 +108,7 @@ Train your team to bring up membership at two specific moments: post-treatment c
 
 "I'm not sure I can afford it right now." Point to the entry tier: "The $99 option includes your monthly facial and takes 10% off anything else. Most clients find it pays for itself within the first visit."
 
-"I want to think about it." Don't push. Leave a one-page membership summary at checkout. If your CRM supports it, trigger an automated follow-up email 48 hours later with a clear link to enroll. [Setting up that CRM workflow](/operations) takes less than an afternoon once you have the right system in place. A soft follow-up converts more hesitant clients than a harder close at the desk.
+"I want to think about it." Don't push. Leave a one-page membership summary at checkout. If your CRM supports it, trigger an automated follow-up email 48 hours later with a clear link to enroll. [Setting up that CRM workflow](/consulting/) takes less than an afternoon once you have the right system in place. A soft follow-up converts more hesitant clients than a harder close at the desk.
 
 The goal is to give every objection a calm, specific answer, not a pitch. Clients who feel informed enroll. Clients who feel sold to leave.
 
@@ -131,7 +130,7 @@ MRR is the number that tells you whether your business is growing or slowly leak
 
 Churn rate is the warning signal most owners ignore until it's too late. If 8–10% of your members cancel each month, you're running a treadmill, not a business. Track it monthly, not quarterly.
 
-Member lifetime value reframes how much you can spend to acquire a new member. If a VIP-tier member is worth $2,400 over 18 months, paying $150 to acquire her isn't a cost. It's an investment. That math is what makes paid acquisition sustainable. If your lead flow isn't converting into members at a predictable rate, [a full-funnel marketing review](/marketing) can identify exactly where the drop-off is happening.
+Member lifetime value reframes how much you can spend to acquire a new member. If a VIP-tier member is worth $2,400 over 18 months, paying $150 to acquire her isn't a cost. It's an investment. That math is what makes paid acquisition sustainable. If your lead flow isn't converting into members at a predictable rate, a full-funnel marketing review can identify exactly where the drop-off is happening.
 
 ### How do you use dashboards to spot at-risk members before they cancel?
 
@@ -147,13 +146,13 @@ Close behind that is over-discounting add-ons. Stacking a member discount on top
 
 Skipping a 30-day minimum term is another trap. Month-to-month memberships with no commitment period invite impulsive cancellations after the first month's service is redeemed. A 30-day minimum, clearly stated at sign-up, protects your revenue and filters out low-intent members.
 
-Finally, launching without a CRM to track membership status is how things fall apart quietly. Spreadsheets don't send renewal reminders, flag at-risk members, or stop charging someone who cancelled three months ago. If you don't have a system to manage membership data before launch, pause and [get one in place first](/operations).
+Finally, launching without a CRM to track membership status is how things fall apart quietly. Spreadsheets don't send renewal reminders, flag at-risk members, or stop charging someone who cancelled three months ago. If you don't have a system to manage membership data before launch, pause and [get one in place first](/consulting/).
 
 ---
 
 Memberships don't just add revenue. They change the entire rhythm of your business. You stop starting from zero at the beginning of every month. You stop depending on Instagram trends to fill your books. You start compounding. Each new member adds to a base that was already there. That's a fundamentally different business to operate. The practices that build strong membership programs now will carry a structural advantage over the ones still chasing walk-ins in three years. The model works. The question is whether you build it deliberately or keep waiting for a better time.
 
-I work directly with med spa owners to build the marketing systems that fill membership funnels and the operational workflows that keep them running. No account managers, no pitch deck. If you want a direct conversation about what a membership growth plan would look like for your practice, [book a free discovery call](/contact).
+I work directly with med spa owners to build the marketing systems that fill membership funnels and the operational workflows that keep them running. No account managers, no pitch deck. If you want a direct conversation about what a membership growth plan would look like for your practice, [book a free discovery call](/start).
 
 ---
 
