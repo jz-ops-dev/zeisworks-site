@@ -12,6 +12,7 @@ interface Props {
   description: string;
   ogImage?: string;
   navLinks?: { label: string; href: string }[];
+  ctaLabel?: string;
   /** Brand/footer logo target; segment pages pass "/" since #top is homepage-only. */
   brandHref?: string;
 }
@@ -26,6 +27,7 @@ const {
     { label: 'How it works', href: '#how-it-works' },
     { label: 'Pricing', href: '#pricing' },
   ],
+  ctaLabel = 'Get started',
   brandHref = '#top',
 } = Astro.props;
 
@@ -247,7 +249,7 @@ const orgJsonLd = {
           ))}
           <AuditCta
             location="nav"
-            label="Get started"
+            label={ctaLabel}
             class="bg-zw-teal text-white text-sm font-semibold px-4 py-2 rounded-full hover:bg-zw-rust transition-colors"
           />
         </nav>
@@ -277,7 +279,7 @@ const orgJsonLd = {
         ))}
         <AuditCta
           location="nav"
-          label="Get started"
+          label={ctaLabel}
           class="zw-mobile-link mt-6 inline-block bg-zw-teal text-white font-semibold text-lg px-7 py-3.5 rounded-full hover:bg-zw-rust transition-colors"
         />
       </nav>
