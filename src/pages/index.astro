@@ -4,22 +4,22 @@ import AuditCta from '../components/AuditCta.astro';
 import OfferLadder from '../components/OfferLadder.astro';
 
 const navLinks = [
+  { label: 'Problem', href: '#the-problem' },
   { label: 'How it works', href: '#how-it-works' },
-  { label: 'Example', href: '#demo' },
+  { label: 'Demo', href: '#demo' },
   { label: 'Fit', href: '#fit' },
-  { label: 'Pricing', href: '#pricing' },
 ];
 
 const knowledgeInputs = [
-  'Owner',
+  'Owner judgment',
   'Senior estimator',
-  'Pricing spreadsheet',
-  'Slack',
-  'CRM',
+  'Pricing sheets',
+  'Slack threads',
+  'CRM notes',
   'SOP',
-  'Email',
-  'Sales manager',
-  'Existing documents',
+  'Email history',
+  'Sales playbook',
+  'Field notes',
 ];
 
 const knowledgeFiles = [
@@ -32,40 +32,40 @@ const knowledgeFiles = [
 ];
 
 const aiOutputs = [
-  'Answer questions',
-  'Price work',
+  'Answer with sources',
+  'Price with rules',
   'Draft proposals',
-  'Train employees',
-  'Research',
+  'Train new hires',
+  'Research accounts',
   'Qualify leads',
   'Support customers',
-  'Assist operations',
+  'Guide operations',
 ];
 
 const problems = [
   {
     title: 'Everything runs through one person',
-    body: 'Your owner, estimator, operations manager, or senior employee keeps answering questions only they know how to answer.',
+    body: 'The owner, senior estimator, or operations lead keeps getting interrupted because the real answers live with them.',
   },
   {
     title: 'Your AI gives plausible answers, not company answers',
-    body: "ChatGPT knows the internet. It does not know how your company prices, sells, approves, escalates, or makes judgment calls.",
+    body: "ChatGPT knows the internet. It does not know your pricing logic, escalation rules, customer red flags, or proposal standards.",
   },
   {
     title: 'Training takes forever',
-    body: 'New employees learn through experience, interruptions, tribal knowledge, and asking the same questions repeatedly.',
+    body: 'New employees learn through shadowing, repeated questions, and a long trail of small exceptions nobody has written down.',
   },
   {
     title: 'Important rules are scattered everywhere',
-    body: "Some are in SOPs. Some are in spreadsheets. Some are in Slack. The important ones may only exist in someone's head.",
+    body: "Some rules are in SOPs. Some are in spreadsheets. Some are in Slack. The decisive ones may only exist in someone's head.",
   },
   {
     title: 'You have key-person risk',
-    body: 'If one experienced employee leaves, years of operational knowledge may leave with them.',
+    body: 'When one experienced employee leaves, the company can lose the judgment behind years of pricing, sales, and operations decisions.',
   },
   {
     title: "You want AI, but do not trust it",
-    body: 'The problem is often not the model. The model does not have enough context about how your company actually operates.',
+    body: 'The issue is rarely the model alone. It is that the model has not been taught how your company actually operates.',
   },
 ];
 
@@ -73,22 +73,22 @@ const demoQuestions = [
   {
     question: 'Can I give this customer a 15% discount?',
     files: ['pricing.md', 'approval-rules.md'],
-    answer: 'Discounts up to 10% may be approved by account managers. Discounts from 11-20% require sales manager approval.',
+    answer: 'No direct approval at the account-manager level. Discounts up to 10% are allowed. Discounts from 11-20% require sales manager approval and must preserve the minimum margin in pricing.md.',
   },
   {
     question: 'Should we take this customer?',
     files: ['customers.md', 'risk-signals.md'],
-    answer: 'Proceed only if payment terms are prepaid or manager-approved. This customer matches two risk signals: urgent timeline and prior scope disputes.',
+    answer: 'Proceed only with prepaid terms or manager approval. This account matches two risk signals: urgent timeline and prior scope disputes.',
   },
   {
     question: 'How should we price this job?',
     files: ['estimating.md', 'pricing.md', 'exceptions.md'],
-    answer: 'Use standard project pricing, then add the access surcharge and a 20% complexity adjustment because the site has constrained entry and after-hours work.',
+    answer: 'Use standard project pricing, then add the access surcharge and complexity adjustment because the site has constrained entry and after-hours work.',
   },
   {
     question: 'What happens when a customer requests a refund?',
     files: ['policies.md', 'escalation.md'],
-    answer: 'Refunds inside 30 days can be reviewed by support. Custom work and refunds above $500 require escalation before a commitment is made.',
+    answer: 'Support can review refunds inside 30 days. Custom work and refunds above $500 require escalation before anyone commits to the customer.',
   },
 ];
 
@@ -120,6 +120,21 @@ const afterItems = [
   'Institutional knowledge is explicit',
   'New hires have an internal knowledge system',
   'Updates happen at the knowledge layer',
+];
+
+const exampleCaptured = [
+  'Pricing logic and common exceptions',
+  'Customer qualification criteria',
+  'Proposal structure and approved language',
+  'Escalation rules for edge cases',
+  'Role-specific operating notes for new hires',
+];
+
+const exampleBuilt = [
+  'An internal question-answering system with source references',
+  'A pricing and scope reference for estimators',
+  'A proposal draft workflow using company language',
+  'A living file structure the team can review and update',
 ];
 
 const outcomes = [
@@ -197,11 +212,11 @@ const notFit = [
 ---
 
 <LandingLayout
-  title="ZeisWorks - Turn institutional knowledge into AI your company can use"
-  description="ZeisWorks captures the pricing rules, processes, judgment calls, and expertise inside your company, then turns that knowledge into AI systems your team can trust and own."
+  title="ZeisWorks - Your company already knows the answer"
+  description="ZeisWorks captures the rules, judgment, processes, and expertise inside your company, then turns that knowledge into AI systems your team can trust and own."
   ogImage="/og.png"
   navLinks={navLinks}
-  ctaLabel="See what this looks like"
+  ctaLabel="See your knowledge map"
 >
   <span id="top" aria-hidden="true"></span>
 
@@ -211,26 +226,31 @@ const notFit = [
         <div class="zw-hero-copy">
           <p class="zw-eyebrow mb-4 zw-reveal">Institutional knowledge, made usable</p>
           <h1 class="zw-h1 zw-reveal">
-            Your best employee should not be the only one who knows how your business works.
+            Your company already knows the answer. Your AI doesn't.
           </h1>
           <p class="zw-hero-lede zw-reveal">
-            ZeisWorks captures the pricing rules, processes, judgment calls, and expertise stuck
-            inside your team, then turns them into AI your entire company can actually use.
+            The useful intelligence is already inside your people, documents, spreadsheets, and
+            daily decisions. ZeisWorks captures it, structures it, and turns it into AI systems
+            your team can actually trust.
           </p>
           <div class="zw-hero-actions zw-reveal">
             <AuditCta
               location="hero"
-              label="See what this would look like for my company"
+              label="See what my company knows"
               class="zw-btn zw-btn-primary"
             />
-            <a href="#demo" class="zw-btn zw-btn-secondary">See an example VIK</a>
+            <a href="#demo" class="zw-btn zw-btn-secondary">Watch the knowledge demo</a>
           </div>
           <p class="zw-proof-line zw-reveal">
-            You own the knowledge. You own the systems. No proprietary AI platform required.
+            Knowledge first. Automation second. Everything we build is yours to keep.
           </p>
         </div>
 
         <div class="zw-flow zw-reveal" data-anim="hero" aria-label="Company knowledge becoming structured AI infrastructure">
+          <div class="zw-flow-title">
+            <span>Company knowledge</span>
+            <strong>from scattered to usable</strong>
+          </div>
           <div class="zw-flow-col">
             <p>What your company knows</p>
             <div class="zw-chip-cloud">
@@ -267,7 +287,7 @@ const notFit = [
   <section class="zw-strip bg-zw-forest text-zw-cream">
     <div class="zw-wrap px-5 sm:px-8">
       <p class="zw-strip-line zw-reveal">
-        Your company already has the intelligence. Your AI does not.
+        The problem with your AI probably isn't the AI. It's what the AI knows about your company.
       </p>
     </div>
   </section>
@@ -276,7 +296,7 @@ const notFit = [
     <div class="zw-wrap px-5 sm:px-8">
       <div class="zw-section-head">
         <p class="zw-eyebrow mb-4 zw-reveal">Does this sound familiar?</p>
-        <h2 class="zw-h2 zw-reveal">The knowledge your company relies on is probably not where your AI can use it.</h2>
+        <h2 class="zw-h2 zw-reveal">The most valuable rules in the business are often the least accessible.</h2>
       </div>
       <div class="zw-problem-grid">
         {problems.map((problem) => (
@@ -293,7 +313,7 @@ const notFit = [
     <div class="zw-wrap px-5 sm:px-8">
       <div class="zw-section-head">
         <p class="zw-eyebrow mb-4 zw-reveal" style="color:#F0A184;">See it working</p>
-        <h2 class="zw-h2 zw-reveal text-zw-cream">See what happens when AI actually knows your company.</h2>
+        <h2 class="zw-h2 zw-reveal text-zw-cream">A trustworthy answer has a trail back to company knowledge.</h2>
       </div>
 
       <div class="zw-demo zw-reveal" data-demo>
@@ -340,7 +360,7 @@ const notFit = [
         </div>
       </div>
       <p class="zw-demo-note zw-reveal">
-        The answer did not come from the internet. It came from the company's own knowledge layer.
+        The point is not another chatbot. It is question -> company knowledge -> answer with sources.
       </p>
     </div>
   </section>
@@ -350,12 +370,12 @@ const notFit = [
       <div class="zw-core-grid">
         <div>
           <p class="zw-eyebrow mb-4 zw-reveal">The core idea</p>
-          <h2 class="zw-h2 mb-6 zw-reveal">Before you automate your company, your AI needs to understand it.</h2>
+          <h2 class="zw-h2 mb-6 zw-reveal">Before you automate the workflow, capture the judgment behind it.</h2>
           <p class="text-zw-muted zw-reveal">
-            Most AI projects start with the workflow. ZeisWorks starts with the knowledge behind
-            the workflow: the rules, exceptions, judgment, processes, pricing logic, customer
-            definitions, escalation paths, brand voice, and institutional memory that make your
-            company work.
+            Most AI projects start by asking, "What should we automate?" ZeisWorks starts one
+            level deeper: "What does the company need to know to do this correctly?" Once that
+            knowledge is explicit, it can power assistants, search, proposals, estimating, training,
+            and operations support.
           </p>
         </div>
         <div class="zw-knowledge-list zw-reveal">
@@ -366,13 +386,13 @@ const notFit = [
       <div class="zw-vik-block zw-reveal">
         <div>
           <p class="zw-eyebrow mb-4">What we build</p>
-          <h2 class="zw-h2 mb-5">We call the finished knowledge system your VIK.</h2>
+          <h2 class="zw-h2 mb-5">The finished knowledge system is your VIK.</h2>
           <p>
             VIK means Visualized Institutional Knowledge: a structured, human-readable
             representation of how your business thinks and operates. It becomes the source material
             behind your AI systems.
           </p>
-          <p class="zw-vik-own">The important part: the client owns it.</p>
+          <p class="zw-vik-own">Readable files. Traceable answers. Owned by your company.</p>
         </div>
         <div class="zw-vik-files" aria-label="Example VIK files">
           {knowledgeFiles.map((file) => <span>{file}</span>)}
@@ -385,7 +405,7 @@ const notFit = [
     <div class="zw-wrap px-5 sm:px-8">
       <div class="zw-section-head">
         <p class="zw-eyebrow mb-4 zw-reveal">Before and after</p>
-        <h2 class="zw-h2 zw-reveal">The same company, with the knowledge made explicit.</h2>
+        <h2 class="zw-h2 zw-reveal">The same company, without the hidden bottleneck.</h2>
       </div>
       <div class="zw-before-after">
         <article class="zw-compare zw-compare-before zw-reveal">
@@ -406,12 +426,43 @@ const notFit = [
 
   <section class="zw-section">
     <div class="zw-wrap px-5 sm:px-8">
+      <div class="zw-example zw-reveal">
+        <div>
+          <p class="zw-eyebrow mb-4">Example engagement</p>
+          <h2 class="zw-h2 mb-5">From "ask the senior person" to a system the team can use.</h2>
+          <p>
+            For a founder-led service business, the most important operating knowledge is rarely in
+            one clean manual. It is spread across pricing decisions, proposal habits, edge-case
+            calls, and the judgment of experienced people. A ZeisWorks engagement turns that into a
+            working internal knowledge layer before building AI on top of it.
+          </p>
+        </div>
+        <div class="zw-example-lists">
+          <div>
+            <h3>What gets captured</h3>
+            <ul>
+              {exampleCaptured.map((item) => <li>{item}</li>)}
+            </ul>
+          </div>
+          <div>
+            <h3>What can be built</h3>
+            <ul>
+              {exampleBuilt.map((item) => <li>{item}</li>)}
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="zw-section bg-white/45 border-y border-zw-border">
+    <div class="zw-wrap px-5 sm:px-8">
       <div class="zw-section-head">
         <p class="zw-eyebrow mb-4 zw-reveal">Business outcomes</p>
-        <h2 class="zw-h2 zw-reveal">Once your AI understands your company, a lot becomes possible.</h2>
+        <h2 class="zw-h2 zw-reveal">Once the knowledge exists, the AI work gets easier.</h2>
         <p class="zw-head-copy zw-reveal">
-          These are possibilities enabled by the knowledge foundation. Not every client needs every
-          system.
+          The exact systems depend on the company. The foundation is the same: company-specific
+          knowledge that people and AI can both use.
         </p>
       </div>
       <div class="zw-outcome-grid">
@@ -432,10 +483,10 @@ const notFit = [
       <div class="zw-ownership-grid">
         <div>
           <p class="zw-eyebrow mb-4 zw-reveal" style="color:#F0A184;">Ownership</p>
-          <h2 class="zw-h2 mb-6 zw-reveal text-zw-cream">Most AI consultants build something you rent. We build something you own.</h2>
+          <h2 class="zw-h2 mb-6 zw-reveal text-zw-cream">We don't want to own your AI. We want you to own it.</h2>
           <p class="text-zw-cream/75 zw-reveal">
-            If ZeisWorks disappears tomorrow, the work we have done should still be useful to you.
-            Your knowledge stays readable. Your systems stay portable. Your company keeps the asset.
+            Most implementations hide the real knowledge inside someone else's platform. ZeisWorks
+            keeps the knowledge readable, portable, and useful even if the tool stack changes.
           </p>
         </div>
         <div class="zw-ownership-table zw-reveal">
@@ -458,7 +509,7 @@ const notFit = [
     <div class="zw-wrap px-5 sm:px-8">
       <div class="zw-section-head">
         <p class="zw-eyebrow mb-4 zw-reveal">Process</p>
-        <h2 class="zw-h2 zw-reveal">Map, capture, build, transfer.</h2>
+        <h2 class="zw-h2 zw-reveal">Four steps, no mystery box.</h2>
       </div>
       <ol class="zw-process">
         {processSteps.map((step) => (
@@ -499,7 +550,7 @@ const notFit = [
     <div class="zw-wrap px-5 sm:px-8">
       <div class="zw-section-head">
         <p class="zw-eyebrow mb-4 zw-reveal">Pricing</p>
-        <h2 class="zw-h2 zw-reveal">Build your company's AI knowledge infrastructure for less than the cost of another hire.</h2>
+        <h2 class="zw-h2 zw-reveal">Build an AI knowledge asset for less than the cost of another hire.</h2>
         <p class="zw-head-copy zw-reveal">
           Unlike a traditional retainer, the work accumulates. Every process captured becomes part
           of an asset your company keeps.
@@ -512,11 +563,11 @@ const notFit = [
   <section id="start" class="zw-anchor zw-section bg-zw-forest text-zw-cream">
     <div class="zw-wrap px-5 sm:px-8 zw-final-cta">
       <p class="zw-eyebrow mb-4 zw-reveal" style="color:#F0A184;">Start here</p>
-      <h2 class="zw-h2 mb-6 zw-reveal text-zw-cream">Your company already has an AI advantage. It is what your people know.</h2>
-      <p class="zw-reveal">Let's make it usable.</p>
+      <h2 class="zw-h2 mb-6 zw-reveal text-zw-cream">Your company already has an AI advantage.</h2>
+      <p class="zw-reveal">It is what your best people know. Let's make it usable.</p>
       <AuditCta
         location="footer"
-        label="See what this would look like for my company"
+        label="See what my company knows"
         class="zw-btn zw-btn-light zw-reveal"
       />
     </div>
@@ -567,7 +618,7 @@ const notFit = [
     background: var(--zw-card);
     border: 1px solid var(--zw-border);
     border-radius: 8px;
-    padding: 1.35rem;
+    padding: 1.45rem;
   }
   .zw-card h3 {
     font-size: 1.05rem;
@@ -606,7 +657,7 @@ const notFit = [
     background: var(--zw-teal);
   }
   .zw-section-head {
-    max-width: 780px;
+    max-width: 820px;
     margin-bottom: clamp(2rem, 5vw, 3.25rem);
   }
   .zw-head-copy {
@@ -645,8 +696,11 @@ const notFit = [
   .zw-btn-light:hover { background: white; }
 
   .zw-hero {
-    padding-top: clamp(6rem, 13vh, 9rem);
-    padding-bottom: clamp(3.5rem, 8vw, 6rem);
+    padding-top: clamp(6.5rem, 13vh, 9rem);
+    padding-bottom: clamp(4rem, 8vw, 6.5rem);
+    background:
+      linear-gradient(180deg, rgba(255,255,255,0.55), rgba(245,245,247,0)),
+      var(--zw-cream);
   }
   .zw-hero-grid {
     display: grid;
@@ -657,7 +711,7 @@ const notFit = [
     .zw-hero-grid { grid-template-columns: 0.92fr 1.08fr; }
   }
   .zw-hero-copy .zw-h1 {
-    max-width: 13ch;
+    max-width: 15ch;
     margin: 0;
   }
   .zw-hero-lede {
@@ -678,18 +732,21 @@ const notFit = [
     color: var(--zw-ink);
     font-size: 0.92rem;
     font-weight: 700;
+    max-width: 48ch;
   }
 
   .zw-flow {
     display: grid;
     grid-template-columns: 1fr;
     gap: 0.8rem;
-    padding: 1rem;
+    padding: 1.05rem;
     border: 1px solid var(--zw-border);
     border-radius: 8px;
     background:
-      linear-gradient(180deg, rgba(255,255,255,0.9), rgba(255,255,255,0.55)),
-      repeating-linear-gradient(90deg, rgba(0,0,0,0.045) 0 1px, transparent 1px 52px);
+      linear-gradient(180deg, rgba(255,255,255,0.95), rgba(255,255,255,0.66)),
+      linear-gradient(90deg, transparent 0 49px, rgba(0,0,0,0.045) 50px),
+      linear-gradient(180deg, transparent 0 49px, rgba(0,0,0,0.035) 50px);
+    background-size: auto, 50px 50px, 50px 50px;
   }
   @media (min-width: 760px) {
     .zw-flow {
@@ -697,11 +754,30 @@ const notFit = [
       align-items: stretch;
     }
   }
+  .zw-flow-title {
+    grid-column: 1 / -1;
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    border-bottom: 1px solid var(--zw-border);
+    padding: 0 0 0.8rem;
+    color: var(--zw-muted);
+    font-family: 'DM Mono', ui-monospace, monospace;
+    font-size: 0.72rem;
+    line-height: 1.35;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+  }
+  .zw-flow-title strong {
+    color: var(--zw-teal);
+    font-weight: 700;
+    text-align: right;
+  }
   .zw-flow-col {
-    min-height: 15rem;
+    min-height: 14rem;
     border: 1px solid var(--zw-border);
     border-radius: 8px;
-    background: rgba(255,255,255,0.78);
+    background: rgba(255,255,255,0.84);
     padding: 1rem;
   }
   .zw-flow-col p {
@@ -713,8 +789,8 @@ const notFit = [
     letter-spacing: 0.12em;
   }
   .zw-flow-center {
-    border-color: rgba(224, 69, 48, 0.34);
-    background: rgba(224, 69, 48, 0.045);
+    border-color: rgba(224, 69, 48, 0.38);
+    background: rgba(224, 69, 48, 0.055);
   }
   .zw-chip-cloud {
     display: flex;
@@ -809,11 +885,11 @@ const notFit = [
 
   .zw-strip { padding: clamp(2rem, 4vw, 3rem) 0; }
   .zw-strip-line {
-    max-width: 850px;
+    max-width: 920px;
     margin: 0 auto;
     text-align: center;
     font-family: 'Lora', Georgia, serif;
-    font-size: clamp(1.55rem, 4vw, 3.4rem);
+    font-size: clamp(1.45rem, 3.2vw, 2.75rem);
     font-weight: 700;
     line-height: 1.08;
     text-wrap: balance;
@@ -844,8 +920,8 @@ const notFit = [
     display: flex;
     flex-direction: column;
     gap: 1rem;
-    min-height: 17rem;
-    padding: 1rem;
+    min-height: 16.5rem;
+    padding: 1.1rem;
     border: 1px solid rgba(255,255,255,0.13);
     border-radius: 8px;
     background: rgba(255,255,255,0.055);
@@ -863,7 +939,7 @@ const notFit = [
   .zw-demo-answer {
     margin: 0;
     color: var(--zw-cream);
-    font-size: 1.12rem;
+    font-size: clamp(1.02rem, 1.2vw, 1.16rem);
     line-height: 1.5;
   }
   .zw-demo-presets {
@@ -948,6 +1024,67 @@ const notFit = [
     max-width: 760px;
     margin: 1.2rem 0 0;
     color: rgba(245,245,247,0.75);
+  }
+
+  .zw-example {
+    display: grid;
+    gap: clamp(2rem, 5vw, 4rem);
+    align-items: start;
+    border: 1px solid var(--zw-border);
+    border-radius: 8px;
+    background:
+      linear-gradient(90deg, rgba(224,69,48,0.055), transparent 44%),
+      white;
+    padding: clamp(1.4rem, 4vw, 2rem);
+  }
+  @media (min-width: 900px) {
+    .zw-example { grid-template-columns: 0.88fr 1.12fr; }
+  }
+  .zw-example p {
+    color: var(--zw-muted);
+    max-width: 62ch;
+  }
+  .zw-example-lists {
+    display: grid;
+    gap: 1rem;
+  }
+  @media (min-width: 680px) {
+    .zw-example-lists { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  }
+  .zw-example-lists > div {
+    border: 1px solid var(--zw-border);
+    border-radius: 8px;
+    background: rgba(255,255,255,0.78);
+    padding: 1rem;
+  }
+  .zw-example h3 {
+    margin: 0 0 0.75rem;
+    font-size: 1rem;
+    font-weight: 800;
+  }
+  .zw-example ul {
+    display: grid;
+    gap: 0.55rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  .zw-example li {
+    position: relative;
+    padding-left: 1rem;
+    color: var(--zw-muted);
+    font-size: 0.94rem;
+    line-height: 1.5;
+  }
+  .zw-example li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0.72em;
+    width: 5px;
+    height: 5px;
+    border-radius: 999px;
+    background: var(--zw-teal);
   }
 
   .zw-core-grid,
